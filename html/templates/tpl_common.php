@@ -51,7 +51,21 @@ function draw_navbar(){ ?>
  */
 function draw_footer(){?>
             </body>
-        <footer class="footer">Copyright © 2019 LTW FEUP</footer>
+        <footer class="fixed-bottom">
+            <div class="container-expanded border-top px-5 py-2">
+                <div class="row">
+                    <div class="col-sm-8"> 
+                        ola 
+                    </div>
+                    <div class="col-sm-4"> 
+                        adeus 
+                    </div>
+              
+                </div>
+                Copyright © 2019 LTW FEUP
+            </div>
+
+        </footer>
     </html> 
 <?php }
 
