@@ -27,7 +27,7 @@ function draw_header(){ ?>
 function draw_navbar(){ ?>
    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <a class="navbar-brand" href="../pages/home.php">
-            <img class="img-fluid" src="../images/logo.jpg" alt="ArtifactInk" height="auto" width="100">
+            <img class="img-fluid" src="../images/artifact_ink_horizontal.svg" alt="ArtifactInk" height="auto" width="100">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,7 @@ function draw_navbar(){ ?>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home &#xf39e;<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -60,7 +60,7 @@ function draw_footer(){?>
         <footer class="fixed-bottom">
             <div class="container-expanded border-top  py-2">
                 <div class="row">
-                    <div class="col-sm-2"></div>
+                    <div class="col-sm-1"></div>
                     <div class="col-sm-4 border-right"> 
                         <ul class="list-inline"> <p class="text-uppercase font-weight-light"> Information</p> 
                             <li>
@@ -78,54 +78,65 @@ function draw_footer(){?>
                             <li>
                                 <a href="#" class="list-inline-item font-weight-normal text-dark ">Warranty</a>
                             </li>
+                            <br>
+                            <li> Copyright © ArtifactInk 2020 <li>
+                            
                         </ul> 
                     </div>
-                    <div class="col-sm-2"> 
+                    <div class="col-sm-3"> 
                         <ul class="list-inline"> <p class="text-uppercase"> CONTACTS </p> 
                             <li>
-                                <a href="#" class="list-inline-item font-weight-normal text-dark">Store 1</a>
+                                <a href="#" class="list-inline-item font-weight-bold text-dark">Store 1</a>
                             </li>
                             <li> Lorem ipsum dolor sit amet.</li>
                             <li> Lorem ipsum dolor sit amet.</li>
-                            <li> Lorem ipsum dolor sit amet.</li>     
+                            <li> Lorem ipsum dolor sit amet.<li>
                         </ul> 
                     </div>
-                    <div class="col-sm-2"> 
+                    <div class="col-sm-3"> 
                         <div class="container-expanded">
-                            <div class="row py-2">
+                            <div class="row py-1">
 
                             </div>
                             <div class="row ">
-                                <div class="col-sm-2">
+                                <div class="col-sm-3">
                                     <a href="../pages/home.php">
                                         <i class="fab fa-facebook-f fa-2x circle-icon"></i>
                                     </a>
                                 </div>
-                                <div class="col-sm-1"></div>
-                                <div class="col-sm-2">
+                                <div class="col-sm-3">
                                     <a href="../pages/home.php">
                                     <i class="fab fa-instagram fa-2x circle-icon"></i>
                                     </a>
-                                </div>
-                                <div class="col-sm-1"></div>
-                                <div class="col-sm-2">
+                                </div>          
+                                <div class="col-sm-3">
                                     <a href="../pages/home.php">
                                         <i class="fa fa-twitter fa-2x circle-icon"> </i>
                                     </a>
                                 </div>
-                                <div class="col-sm-2">
-                                Subscribe newsletter
+                                <div class="col-sm-3"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="newsletter_email" class="col-form-label-sm ">Subscribe to our Newsletter</label>
+                                            
+                                            <div class="input-group mb-3">
+                                                <input type="email" class="form-control-sm" id="newsletter_email" aria-describedby="emailHelp"  aria-describedby="button-newsletter">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-secondary btn-sm text" type="button" id="button-nwesletter">Subscribe</button>
+                                                </div>
+                                            </div>
+                                        </div>   
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2" >
-
-                    </div>
+                    <div class="col-sm-1"></div>
                 </div>
-                <p class="mx-auto" style="width: 300px;"> Copyright © 2019 LTW FEUP</p> 
-            </div>
-
+            </div>   
         </footer>   
     </html> 
 <?php }
