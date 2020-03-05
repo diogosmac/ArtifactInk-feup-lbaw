@@ -7,7 +7,7 @@ It is intended to develop an information system with a web interface to support 
 ## Group Members:
 
 * Diogo José Machado, up201706832@fe.up.pt
-* Gonçalo José Marantes, up201706917@fe.up.pt (Editor)
+* Gonçalo José Marantes, up201706917@fe.up.pt
 * Gustavo Magalhães, up201705072@fe.up.pt
 * Tiago Silva, up201705985@fe.up.pt
 
