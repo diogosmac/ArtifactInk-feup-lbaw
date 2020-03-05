@@ -72,6 +72,12 @@
     background-color: transparent;
     border: none;
 }
+.dropdownSupplies{
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-color: var(--main-color);
+}
+
 .dropdown>.dropdown-menu {
     top: 200%;
     transition: 0.3s all ease-in-out;
@@ -81,12 +87,10 @@
     top: 100%;
   }
   
-  .dropdown>.dropdown-toggle:active {
+.dropdown>.dropdown-toggle:active {
     /*Without this, clicking will make it sticky*/
     pointer-events: none;
   }
-
-
 
 /* FOOTER */
 footer > .container-expanded{

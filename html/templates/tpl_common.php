@@ -48,8 +48,8 @@ function draw_navbar(){ ?>
         <div class="collapse navbar-collapse" id="navbarBotSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li>
-                    <div class="dropdown">
-                        <a class="btn btn-secondary" href="../pages/home.php" role="button" id="dropdownSupplies"  aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown dropdownSupplies">
+                        <a class="btn btn-secondary" href="../pages/home.php" role="button"  aria-haspopup="true" aria-expanded="false">
                           Designs
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -62,8 +62,8 @@ function draw_navbar(){ ?>
                     </div>
                 </li>
                 <li>
-                    <div class="dropdown">
-                        <a class="btn btn-secondary" href="../pages/home.php" role="button" id="dropdownSupplies"  aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown dropdownSupplies">
+                        <a class="btn btn-secondary" href="../pages/home.php" role="button"  aria-haspopup="true" aria-expanded="false">
                           Machines
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -76,8 +76,8 @@ function draw_navbar(){ ?>
                     </div>
                 </li>
                 <li>
-                    <div class="dropdown">
-                        <a class="btn btn-secondary" href="../pages/home.php" role="button" id="dropdownSupplies"  aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown dropdownSupplies">
+                        <a class="btn btn-secondary" href="../pages/home.php" role="button"  aria-haspopup="true" aria-expanded="false">
                           Inks
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -90,8 +90,8 @@ function draw_navbar(){ ?>
                     </div>
                 </li>
                 <li>
-                    <div class="dropdown">
-                        <a class="btn btn-secondary" href="../pages/home.php" role="button" id="dropdownSupplies"  aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown dropdownSupplies">
+                        <a class="btn btn-secondary" href="../pages/home.php" role="button"  aria-haspopup="true" aria-expanded="false">
                           Needles and Cartridges
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -104,8 +104,8 @@ function draw_navbar(){ ?>
                     </div>
                 </li>
                 <li>
-                    <div class="dropdown">
-                        <a class="btn btn-secondary" href="../pages/home.php" role="button" id="dropdownSupplies"  aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown dropdownSupplies">
+                        <a class="btn btn-secondary" href="../pages/home.php" role="button"  aria-haspopup="true" aria-expanded="false">
                           Grips Tips and Tubes
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -118,8 +118,8 @@ function draw_navbar(){ ?>
                     </div>
                 </li>
                 <li>
-                    <div class="dropdown">
-                        <a class="btn btn-secondary" href="../pages/home.php" role="button" id="dropdownSupplies"  aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown dropdownSupplies">
+                        <a class="btn btn-secondary" href="../pages/home.php" role="button"  aria-haspopup="true" aria-expanded="false">
                           Studio Furniture
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -132,8 +132,8 @@ function draw_navbar(){ ?>
                     </div>
                 </li>
                 <li>
-                    <div class="dropdown">
-                        <a class="btn btn-secondary" href="../pages/home.php" role="button" id="dropdownSupplies"  aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown dropdownSupplies">
+                        <a class="btn btn-secondary" href="../pages/home.php" role="button"  aria-haspopup="true" aria-expanded="false">
                           Aftercare
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -146,8 +146,8 @@ function draw_navbar(){ ?>
                     </div>
                 </li>
                 <li>
-                    <div class="dropdown">
-                        <a class="btn btn-secondary" href="../pages/home.php" role="button" id="dropdownSupplies"  aria-haspopup="true" aria-expanded="false">
+                    <div class="dropdown dropdownSupplies">
+                        <a class="btn btn-secondary" href="../pages/home.php" role="button"  aria-haspopup="true" aria-expanded="false">
                           Medical Equipment
                         </a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
