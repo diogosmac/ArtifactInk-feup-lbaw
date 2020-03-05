@@ -7,22 +7,25 @@ function draw_header(){ ?>
     <!DOCTYPE html>
     <html lang="en-US">
         <head>
-            <title>Title of the document</title>
+            <title>Artifact Ink</title>
             <meta charset="UTF-8">
             <!-- bootstrap -->
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+            <link href="../fonts/fontawesome-free-5.12.1-web/css/all.css" rel="stylesheet"> <!--load all styles -->
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            <link rel="stylesheet" type="text/css" href="../css/custom.css">
         </head>
         <body>
-    <?php draw_navbar(); ?>
 
 <?php } 
 
 function draw_navbar(){ ?>
    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Carousel</a>
+        <a class="navbar-brand" href="../pages/home.php">
+            <img class="img-fluid" src="../images/logo.jpg" alt="ArtifactInk" height="auto" width="100">
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
@@ -52,20 +55,89 @@ function draw_navbar(){ ?>
 function draw_footer(){?>
             </body>
         <footer class="fixed-bottom">
-            <div class="container-expanded border-top px-5 py-2">
+            <div class="container-expanded border-top  py-2">
                 <div class="row">
-                    <div class="col-sm-8"> 
-                        ola 
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4 border-right"> 
+                        <ul class="list-inline"> <p class="text-uppercase font-weight-light"> Information</p> 
+                            <li>
+                                <a href="#" class="list-inline-item font-weight-normal  text-dark ">About us</a>
+                            </li>
+                            <li>
+                                <a href="#" class="list-inline-item font-weight-normal text-dark ">FAQ</a>
+                            </li>
+                            <li>
+                                <a href="#" class="list-inline-item font-weight-normal text-dark ">Payments and Orders</a>
+                            </li>
+                            <li>
+                                <a href="#" class="list-inline-item font-weight-normal text-dark ">Returns and Replacements</a>
+                            </li>
+                            <li>
+                                <a href="#" class="list-inline-item font-weight-normal text-dark ">Warranty</a>
+                            </li>
+                        </ul> 
                     </div>
-                    <div class="col-sm-4"> 
-                        adeus 
+                    <div class="col-sm-2"> 
+                        <ul class="list-inline"> <p class="text-uppercase"> CONTACTS </p> 
+                            <li>
+                                <a href="#" class="list-inline-item font-weight-normal text-dark">Store 1</a>
+                            </li>
+                            <li> Lorem ipsum dolor sit amet.</li>
+                            <li> Lorem ipsum dolor sit amet.</li>
+                            <li> Lorem ipsum dolor sit amet.</li>     
+                        </ul> 
+                    </div>
+                    <div class="col-sm-2"> 
+                        <div class="container-expanded">
+                            <div class="row py-3">
+
+                            </div>
+                            <div class="row ">
+                                <div class="col-sm-1">
+
+                                </div>
+                                <div class="col-sm-2">
+                                    <a href="../pages/home.php">
+                                        <svg class="bd-placeholder-img rounded-circle" width="50" height="50" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 50x50">
+                                            <title>Placeholder</title>
+                                            <rect width="100%" height="100%" fill="#777"></rect>
+                                            <text class="fa" x="50%" y="50%" fill="#777" dy=".3em">&#xf099;</text>
+                                        </svg>
+                                    </a>
+                                    
+                                </div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2">
+                                    <svg class="bd-placeholder-img rounded-circle" width="50" height="50" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 50x50">
+                                        <title>Placeholder</title>
+                                        <rect width="100%" height="100%" fill="#777"></rect>
+                                        <g><text x="0" y="0">&#xf099;</text></g>
+                                    </svg>
+                                </div>
+                                <div class="col-sm-1"></div>
+                                <div class="col-sm-2">
+                                    <svg class="bd-placeholder-img rounded-circle" width="50" height="50" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 60x60">
+                                        <title>Placeholder</title>
+                                        <rect width="100%" height="100%" fill="#777"></rect>
+                                        <text class="fa" x="50%" y="50%" fill="#777" dy=".3em">&#xf099;</text>
+                                        
+                                    </svg>
+                                </div>
+                                <div class="col-sm-2">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-2" >
+                    <i class="fab fa-twitter"></i>
                     </div>
               
                 </div>
-                Copyright © 2019 LTW FEUP
+                <p class="mx-auto" style="width: 300px;"> Copyright © 2019 LTW FEUP</p> 
             </div>
 
-        </footer>
+        </footer>   
     </html> 
 <?php }
 

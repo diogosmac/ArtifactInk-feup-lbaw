@@ -1,3 +1,18 @@
 *{
     font-family: Arial, Helvetica, sans-serif;
 }
+
+footer div p.mx-auto{
+    padding-top: 0.5em;
+
+}
+
+footer div.row li{
+    font-size: smaller;
+}
+
+footer svg :hover{
+    filter: brightness(150%);
+ }
+
+
