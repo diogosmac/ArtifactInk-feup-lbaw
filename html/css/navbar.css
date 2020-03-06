@@ -26,6 +26,13 @@
     color: var(--main-color-alpha);
 }
 
+.navbar-custom-top .nav-item{
+    padding: 0em .3em 0em .3em;
+}
+
+.navbar-custom-top .nav-item i{
+    padding: 0em .3em 0em .0em;
+}
 
 /* Modify brand and text color */ 
 .navbar-custom-top .navbar-brand, .navbar-custom-top .navbar-text, .navbar-custom-bot a{ 

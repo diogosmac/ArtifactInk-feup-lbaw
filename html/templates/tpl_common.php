@@ -68,7 +68,15 @@ function draw_main_navbar($session){ ?>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../pages/sign_in.php">Account</a>
+                        <a class="nav-link" href="../pages/sign_in.php">
+                            <span>
+                                <i class="fas fa-user"></i>
+                            </span>
+                            John Doe
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/sign_in.php">Sign Out</a>
                     </li>
                 <?php } else{ ?>
                     <li class="nav-item">
