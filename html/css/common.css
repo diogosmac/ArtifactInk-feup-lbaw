@@ -1,0 +1,25 @@
+/*COLORS*/
+:root{
+    --main-color: #11151C;
+    --main-color-alpha: #929497;
+    --main-red: #731F20; 
+    --background-color: #F1F1F2;
+    --text-color-black: #020203; 
+    --text-color-white: #F1F1F2;
+    --nav-color:  #262A30; 
+    --main-white: #F1F1F2;
+    --menu-top:#3C3F45;
+    --menu-bot:#A8A9AC;
+    --border-nav-bot: #dee2e6; 
+}
+
+
+/* COMMON  */
+*{
+    font-family: Arial, Helvetica, sans-serif ;
+    color: var(--text-color);
+
+}
+
+
+

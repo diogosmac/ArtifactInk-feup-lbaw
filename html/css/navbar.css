@@ -1,0 +1,120 @@
+/*  */
+.navbar-custom-top > button.navbar-toggler, .navbar-custom-top span.navbar-toggler-icon > *{
+    background-color: var(--menu-top);
+    color: white;
+}
+.navbar-custom-bot > button.navbar-toggler, .navbar-custom-bot span.navbar-toggler-icon > *{
+    background-color: var(--menu-bot);
+    color: white;
+}
+
+/* NAV BAR TOP */ 
+.navbar-custom-top { 
+    background-color: var(--main-color);
+    padding: .4em; 
+} 
+
+/* Modify brand and text color */ 
+.navbar-custom-top .navbar-brand, .navbar-custom-top .navbar-text, .navbar-custom-bot a{ 
+    color: var(--text-color-white); 
+} 
+.navbar-custom-top.nav-link{ 
+    color: var(--text-color-white); 
+    /*filter: brightness(5%);*/
+} 
+.navbar-custom-top.nav-link:hover{ 
+    color: var(--text-color-white);
+    filter: brightness(85%);
+
+} 
+.navbar-custom-top input.form-control{
+   margin-right: 0; 
+   border-radius: .2em .0em .0em .2em;
+   border: none;
+}
+.navbar-custom-top button.btn.btn-outline-success{
+    border-radius: .0em .2em .2em .0em;
+    background-color: white;
+    color: var(--text-color-black);
+    border: none;
+    padding: .44rem .7rem;
+}
+.navbar-custom-top button.btn.btn-outline-success:hover{
+    background-color: var(--main-color-alpha);
+    color: var(--text-color-white);
+}
+/* NAV BAR BOT */ 
+/* Modify the backgorund color */ 
+.navbar-custom-bot { 
+    background-color: var(--background-color);
+    padding: 0;
+
+} 
+
+/* Modify brand and text color */ 
+.navbar-custom-bot .navbar-brand, .navbar-custom-bot .navbar-text,.navbar-custom-bot a { 
+    color: var(--text-color-black); 
+    font-size: .9em;
+} 
+.navbar-custom-bot .nav-link{ 
+    color: var(--text-color-black); 
+    /*filter: brightness(5%);*/
+} 
+.navbar-custom-bot .nav-link:hover{ 
+    color: var(--text-color-black);
+    filter: brightness(85%);
+
+}
+.dropdown a{
+    background-color: transparent;
+    border: 0;
+}
+.navbar-custom-bot ul li {
+    background-color: transparent;
+    color: var(--text-color-black);
+    border-bottom: .2em solid var(--main-white);
+    border-radius: 0px;
+    border-left: .05em solid var(--border-nav-bot);
+}
+
+.navbar-custom-bot{
+    text-align: center;
+}
+
+.navbar-custom-bot ul li:last-child { 
+    border-right: .05em solid var(--border-nav-bot);
+    
+}
+
+.navbar-custom-bot ul li:hover{
+    background-color: transparent;
+    color: var(--text-color-black);
+    border-bottom: .2em solid var(--main-color);
+    border-radius: 0px;
+}
+
+.navbar-custom-bot ul li a:hover{
+    background-color: transparent;
+    color: var(--text-color-black);
+}
+
+.navbar-custom-bot ul li div a:hover{
+    background-color: var(--main-white);
+    color: var(--text-color-black);
+}
+
+.dropdown>.dropdown-menu {
+    top: 200%;
+    transition: 0.3s all ease-in-out;
+  }
+  .dropdown:hover>.dropdown-menu {
+    display: block;
+    top: 100%;
+    border-radius: 0;
+  }
+  
+.dropdown>.dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+ 
+  }

@@ -1,0 +1,53 @@
+/* FOOTER */
+footer > .container-expanded{
+    background-color:  var(--main-white);
+}
+footer div p.mx-auto{
+    padding-top: 0.5em;
+
+}
+
+footer div.row li{
+    font-size: smaller;
+}
+
+footer .circle-icon:hover{
+    filter: brightness(90%);
+}
+
+footer i{
+    color: white;
+}
+
+.circle-icon {
+    background: var(--main-color-alpha);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    vertical-align: middle;
+    padding: 0px;
+    color: var(--main-white) !important;
+}
+
+footer div form label{
+    font-weight: bolder;
+    font-size: smaller;
+    margin-top: 5%;
+}
+
+footer input{
+    border: 0px solid;
+}
+
+footer button{
+    background-color: var(--main-color-alpha)!important;
+    border-color: var(--main-color-alpha)!important;
+    color: var(--main-white) !important;
+    border: 0px solid;
+}
+
+footer button:hover{
+   filter: brightness(90%);
+}
