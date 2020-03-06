@@ -28,23 +28,71 @@ function draw_header(){ ?>
 
 <?php } 
 
-function draw_main_navbar(){ ?> 
+function draw_main_navbar($session){ ?> 
 
-    <nav class="navbar navbar-expand-lg navbar-custom-top">
+    <nav class="navbar navbar-expand-md navbar-custom-top">
         <a class="navbar-brand" href="../pages/home.php">
             <img class="d-inline-block align-top" src="../images/artifact_ink_logo_white.svg" alt="ArtifactInk" height="40" width="50">
             <img class="d-inline-block align-top" src="../images/artifact_ink_letters_white.svg" alt="ArtifactInk" height="40" width="125">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTopSupportedContent" aria-controls="navbarTopSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon">o</span>
+            <span class="navbar-toggler-icon"> 
+                <i class="fas fa-bars"></i> 
+            </span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTopSupportedContent">
-            <form class="form-inline mt-2 mt-md-0">
-                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success btn" type="submit">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <form class="form-inline mt-2 mt-md-0">
+                        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success btn" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <?php if($session == true){ ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span> 
+                                <i class="fas fa-heart"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span> 
+                                <i class="fas fa-shopping-cart"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/sign_in.php">Account</a>
+                    </li>
+                <?php } else{ ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span> 
+                                <i class="fas fa-heart"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <span> 
+                                <i class="fas fa-shopping-cart"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/sign_in.php">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/sign_in.php">Sign Up</a>
+                    </li>
+               <?php } ?>
+            </ul>
         </div>
     </nav> 
 <?php } 
@@ -54,7 +102,9 @@ function draw_secondary_navbar(){ ?>
    <nav class="navbar navbar-expand-lg navbar-custom-bot " > 
        <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarBotSupportedContent" aria-controls="navbarBotSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"> 
+                    <i class="fas fa-bars"></i> 
+                </span>
             </button>
             <div class="collapse navbar-collapse" id="navbarBotSupportedContent">
                 <ul class="navbar-nav nav-fill w-100">

@@ -11,8 +11,21 @@
 /* NAV BAR TOP */ 
 .navbar-custom-top { 
     background-color: var(--main-color);
-    padding: .4em; 
+    padding: .4em 1em .4em 1em;  /*TODO center stuff*/
 } 
+
+.navbar-custom-top input.form-control{
+    width:calc(100% - 50px);
+}
+
+.navbar-custom-top .nav-link{  
+    color: var(--text-color-white);
+}
+
+.navbar-custom-top .nav-link:hover{  
+    color: var(--main-color-alpha);
+}
+
 
 /* Modify brand and text color */ 
 .navbar-custom-top .navbar-brand, .navbar-custom-top .navbar-text, .navbar-custom-bot a{ 
