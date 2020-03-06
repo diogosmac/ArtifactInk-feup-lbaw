@@ -28,6 +28,15 @@ function draw_header(){ ?>
 
 <?php } 
 
+function draw_navbar($session){ ?>
+    <div class="fixed-top"> 
+        <?php 
+            draw_main_navbar($session); 
+            draw_secondary_navbar();
+        ?>
+    </div>
+<?php }
+
 function draw_main_navbar($session){ ?> 
 
     <nav class="navbar navbar-expand-md navbar-custom-top">
@@ -254,7 +263,7 @@ function draw_secondary_navbar(){ ?>
  */
 function draw_footer(){?>
             </body>
-        <footer class="fixed-bottom">
+        <footer class="">
             <div class="container-expanded border-top  py-2">
                 <div class="row">
                     <div class="col-sm-1"></div>
