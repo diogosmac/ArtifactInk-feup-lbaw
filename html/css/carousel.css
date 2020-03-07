@@ -30,13 +30,26 @@ div#carouselCardSales{
     width: auto;
 }
 
-.product-card:hover{
-    box-shadow: 10px 10px grey;
-}
-
 .card .card-body{
     border-color: black;
     border-top: solid .1em;
 }
+.card.product-card a{
+    color: var(--main-color-alpha);
+    border: solid .1em;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px; 
+    display: none;
+}
 
-.card .car
+.card.product-card a:hover{
+    color: var(--main-color);
+}
+.card.product-card i{
+    font-size: 1em;
+}
+

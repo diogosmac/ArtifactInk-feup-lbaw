@@ -83,18 +83,17 @@ function draw_card_carousel(){ ?>
 <?php } 
 
 function draw_card(){ ?>
-    <div class="card product-card" style="width: 18rem;">        
-        <div class="card-img-overlay d-flex justify-content-begin">
-            <a href="#" class="card-link text-danger like">
+    <div class="card product-card" style="width: 18rem;">      
+        <div class="card-img-overlay d-flex justify-content-between">
+            <a href="../pages/home.php" class="card-link">
+                <span>
+                    <i class="fas fa-shopping-cart"></i>
+                </span>   
+            </a>
+            <a href="#" class="card-link">
                 <i class="fas fa-heart"></i>
             </a>
         </div>
-        <div class="card-img-overlay d-flex justify-content-end">
-            <a href="#" class="card-link text-danger like">
-                <i class="fas fa-shopping-cart"></i>
-            </a>
-        </div>
-
         <img src="https://www.thetattooshop.com/uk/media/catalog/product/cache/e960f294cf534815b24fe57fbd9f1a95/y/e/yellow_carts.jpg" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Card title</h5>
