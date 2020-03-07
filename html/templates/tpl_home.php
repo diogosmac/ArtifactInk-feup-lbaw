@@ -94,10 +94,12 @@ function draw_card(){ ?>
                 <i class="fas fa-heart"></i>
             </a>
         </div>
-        <img src="https://www.thetattooshop.com/uk/media/catalog/product/cache/e960f294cf534815b24fe57fbd9f1a95/y/e/yellow_carts.jpg" class="card-img-top" alt="...">
+            <img src="https://www.thetattooshop.com/uk/media/catalog/product/cache/e960f294cf534815b24fe57fbd9f1a95/y/e/yellow_carts.jpg" class="card-img-top" alt="...">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <span class="detail">
+                <h5 class="card-title">Card title</h5>
+                <h6> 20.00 Eur</h6>
+            </span>
         </div>
     </div>
 
