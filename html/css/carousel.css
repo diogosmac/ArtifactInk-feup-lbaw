@@ -1,0 +1,42 @@
+
+.carousel-item img {
+    max-height: 400px; /* input your desired height here */
+  }
+
+div#carouselCardSales{
+    margin: 1em; 
+    border: solid 1em;
+    border-color: blueviolet;
+
+    padding: 0em;
+}
+.carousel-card  div.carousel-item div.row div {
+    border-color: red;
+    margin: 1em; 
+
+}
+
+/* CARD */ 
+.product-card{
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 100;
+}
+.product-card i{
+    display: none;
+}
+.product-card img {
+    height: auto;
+    width: auto;
+}
+
+.product-card:hover{
+    box-shadow: 10px 10px grey;
+}
+
+.card .card-body{
+    border-color: black;
+    border-top: solid .1em;
+}
+
+.card .car

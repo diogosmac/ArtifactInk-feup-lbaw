@@ -23,13 +23,16 @@ function draw_header(){ ?>
             <link rel="stylesheet" type="text/css" href="../css/common.css">
             <link rel="stylesheet" type="text/css" href="../css/footer.css">
             <link rel="stylesheet" type="text/css" href="../css/navbar.css">
+            <link rel="stylesheet" type="text/css" href="../css/carousel.css">
+
+            <script src="../script/product_card.js" defer></script>
         </head>
         <body>
 
 <?php } 
 
 function draw_navbar($session){ ?>
-    <div class="fixed-top"> 
+    <div class="fixed-top "> 
         <?php 
             draw_main_navbar($session); 
             draw_secondary_navbar();
