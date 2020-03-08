@@ -47,9 +47,9 @@ function draw_card_carousel($type){ ?>
         <h1> <?= $type ?> Products</h1>
     </span>
         <div class="d-flex justify-content-center ">
-            <div id="carouselCard<?= $type ?>" class="carousel slide itemCarousel d-flex justify-content-center" data-ride="carousel">
+            <div id="carouselCard<?= $type ?>" class="carousel slide itemCarousel d-flex justify-content-center" data-ride="carousel"  data-interval="false">
                     <div class="carousel-inner">
-                        <div class="carousel-item active"  data-interval="0">   
+                        <div class="carousel-item active">   
                             <div class="card-deck">
                             <?php   draw_card(); 
                                     draw_card_sale();
@@ -58,7 +58,7 @@ function draw_card_carousel($type){ ?>
                             </div>                   
                         </div>
 
-                        <div class="carousel-item" data-interval="0">   
+                        <div class="carousel-item" >   
                             <div class="card-deck">
                             <?php   draw_card(); 
                                     draw_card();
@@ -67,7 +67,7 @@ function draw_card_carousel($type){ ?>
                             </div>                   
                         </div>
 
-                        <div class="carousel-item" data-interval="0">   
+                        <div class="carousel-item" >   
                             <div class="card-deck">
                             <?php   draw_card(); 
                                     draw_card();

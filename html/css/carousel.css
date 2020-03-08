@@ -133,10 +133,11 @@ div#carouselCardSales{
     background-color: var(--main-red-alpha);
     color: var(--text-color-white);
     margin-top: 2em;
+    z-index: 200;
     
 }
 
-.add-to-cart-btn:hover{
+.add-to-cart-btn:hover,.add-to-cart-btn:link, .add-to-cart-btn:enabled{
     background-color: var(--main-red);
     color: var(--text-color-white);
 }
