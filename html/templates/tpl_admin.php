@@ -80,19 +80,19 @@ function draw_home()
             <div class="col-lg-3 col-md-6 col-sm-6 py-2">
               <div class="card text-center">
                 <div class="card-body">
-                  <h5 class="card-title">Users</h5>
+                  <h4 class="card-title">Users</h4>
                   <table class="table table-sm mb-0">
                     <tbody>
                       <tr>
-                        <th scope="row">Users Registered</th>
+                        <td scope="">Users Registered</td>
                         <td>675</td>
                       </tr>
                       <tr>
-                        <th scope="row">Users Online</th>
+                        <td scope="row">Users Online</td>
                         <td>12</td>
                       </tr>
                       <tr>
-                        <th scope="row">Site Visitors</th>
+                        <td scope="row">Site Visitors</td>
                         <td>8694</td>
                       </tr>
                     </tbody>
@@ -103,19 +103,19 @@ function draw_home()
             <div class="col-lg-3 col-md-6 col-sm-6 py-2">
               <div class="card text-center">
                 <div class="card-body">
-                  <h5 class="card-title">Products</h5>
+                  <h4 class="card-title">Products</h4>
                   <table class="table table-sm mb-0">
                     <tbody>
                       <tr>
-                        <th scope="row">Total Products</th>
+                        <td scope="row">Total Products</td>
                         <td>98</td>
                       </tr>
                       <tr>
-                        <th scope="row">Products On Sale</th>
+                        <td scope="row">Products On Sale</td>
                         <td>14</td>
                       </tr>
                       <tr>
-                        <th scope="row">Product Views</th>
+                        <td scope="row">Product Views</td>
                         <td>8694</td>
                       </tr>
                     </tbody>
@@ -126,19 +126,19 @@ function draw_home()
             <div class="col-lg-3 col-md-6 col-sm-6 py-2">
               <div class="card text-center">
                 <div class="card-body">
-                  <h5 class="card-title">Orders</h5>
+                  <h4 class="card-title">Orders</h4>
                   <table class="table table-sm mb-0">
                     <tbody>
                       <tr>
-                        <th scope="row">Total Orders</th>
+                        <td scope="row">Total Orders</td>
                         <td>562</td>
                       </tr>
                       <tr>
-                        <th scope="row">Orders Shipped</th>
+                        <td scope="row">Orders Shipped</td>
                         <td>496</td>
                       </tr>
                       <tr>
-                        <th scope="row">Orders Received</th>
+                        <td scope="row">Orders Received</td>
                         <td>365</td>
                       </tr>
                     </tbody>
@@ -149,20 +149,20 @@ function draw_home()
             <div class="col-lg-3 col-md-6 col-sm-6 py-2">
               <div class="card text-center">
                 <div class="card-body">
-                  <h5 class="card-title">Reviews</h5>
+                  <h4 class="card-title">Reviews</h4>
                   <table class="table table-sm mb-0">
                     <tbody>
                       <tr>
-                        <th scope="row">Total Orders</th>
-                        <td>562</td>
+                        <td scope="row">Total Reviews</td>
+                        <td>134</td>
                       </tr>
                       <tr>
-                        <th scope="row">Orders Shipped</th>
-                        <td>496</td>
+                        <td scope="row">Average Per Product</td>
+                        <td>2.7</td>
                       </tr>
                       <tr>
-                        <th scope="row">Orders Received</th>
-                        <td>365</td>
+                        <td scope="row">Incomplete Reviews</td>
+                        <td>27</td>
                       </tr>
                     </tbody>
                   </table>
