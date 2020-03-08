@@ -179,3 +179,9 @@ div .card-img-overlay.d-flex.justify-content-end{
 .item-carousel-button.nxt{
     margin-right:3em ;
 }
+
+.dropdown-item.add-to-cart-btn{
+    text-align: center;
+    text-transform: capitalize;
+
+}

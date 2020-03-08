@@ -41,13 +41,13 @@
         </div>
 <?php }
 
-function draw_card_carousel(){ ?>
+function draw_card_carousel($type){ ?>
 <div class="item-carousel-div">
     <span class="item-carousel-title">
-        <h1>Featured Products</h1>
+        <h1> <?= $type ?> Products</h1>
     </span>
         <div class="d-flex justify-content-center ">
-            <div id="carouselCardSales" class="carousel slide itemCarousel d-flex justify-content-center" data-ride="carousel">
+            <div id="carouselCard<?= $type ?>" class="carousel slide itemCarousel d-flex justify-content-center" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active"  data-interval="0">   
                             <div class="card-deck">
@@ -76,11 +76,11 @@ function draw_card_carousel(){ ?>
                             </div>                   
                         </div>
                     </div>
-                    <a class="carousel-control-prev item-carousel-button prv" href="#carouselCardSales" role="button" data-slide="prev">
+                    <a class="carousel-control-prev item-carousel-button prv" href="#carouselCard<?= $type ?>" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon custom" aria-hidden="true"> </span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next item-carousel-button nxt" href="#carouselCardSales" role="button" data-slide="next">
+                    <a class="carousel-control-next item-carousel-button nxt" href="#carouselCard<?= $type ?>" role="button" data-slide="next">
                         <span class="carousel-control-next-icon custom" aria-hidden="true"> </span>
                         <span class="sr-only">Next</span>
                     </a>
@@ -137,7 +137,6 @@ function draw_card_sale(){ ?>
                 <h4 class="card-title">Nome Do Produto Mas muito grande </h4>
                 <h5 class="card-price">33.33 EUR <span class="old-price">11.11 EUR</span></h5>
             </span>
-            <a href="#" class="dropdown-item add-to-cart-btn">Add to cart</a>
         </div>
         <a href="#" class="dropdown-item add-to-cart-btn">Add to cart</a>
     </div>
