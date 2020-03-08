@@ -173,7 +173,48 @@ function draw_home()
             <h1>Notifications</h1>
           </div>
 
-          <div class="container row mx-auto my-2">
+          <div class="row mx-auto my-2">
+            <table class="table table-striped table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Category</th>
+                  <th scope="col">#</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Timestamp</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Products</th>
+                  <td>234</td>
+                  <td>Product "Dynamic Black Ink" #45 is out of stock</td>
+                  <td>Sunday, 08-Mar-20 12:34:17</td>
+                  <td><button type="button" class="btn btn-link py-0">Clear</button></td>
+                </tr>
+                <tr>
+                  <th scope="row">Review</th>
+                  <td>134</td>
+                  <td>User miguel123 made a review on order #541</td>
+                  <td>Sunday, 08-Mar-20 12:34:17</td>
+                  <td><button type="button" class="btn btn-link py-0">Clear</button></td>
+                </tr>
+                <tr>
+                  <th scope="row">Order</th>
+                  <td>541</td>
+                  <td>User miguel123 made a new order</td>
+                  <td>Sunday, 08-Mar-20 12:34:17</td>
+                  <td><button type="button" class="btn btn-link py-0">Clear</button></td>
+                </tr>
+                <tr>
+                  <th scope="row">Users</th>
+                  <td>675</td>
+                  <td>User miguel123 just signed up</td>
+                  <td>Sunday, 08-Mar-20 12:34:17</td>
+                  <td><button type="button" class="btn btn-link py-0">Clear</button></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
         </main>
