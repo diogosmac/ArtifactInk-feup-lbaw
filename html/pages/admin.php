@@ -3,6 +3,6 @@
 
     draw_header();
     draw_navbar();
-    draw_sidebar();
-    draw_footer()
+    draw_home();
+    draw_footer();
 ?>
