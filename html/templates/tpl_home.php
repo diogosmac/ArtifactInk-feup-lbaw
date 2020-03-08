@@ -42,43 +42,48 @@
 <?php }
 
 function draw_card_carousel(){ ?>
-    <div id="carouselCardSales" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">   
-                    <div class="card-deck">
-                    <?php   draw_card(); 
-                            draw_card();
-                            draw_card();
-                            draw_card(); ?>
-                    </div>                   
-                </div>
-                
-                <div class="carousel-item">   
-                    <div class="card-deck">
-                    <?php   draw_card(); 
-                            draw_card();
-                            draw_card();
-                            draw_card(); ?>
-                    </div>                   
-                </div>
+<div class="item-carousel-div">
+    <h1>Some Deals</h1>
+        <div class="d-flex justify-content-center ">
+            <div id="carouselCardSales" class="carousel slide itemCarousel d-flex justify-content-center" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">   
+                            <div class="card-deck">
+                            <?php   draw_card(); 
+                                    draw_card_sale();
+                                    draw_card();
+                                    draw_card(); ?>
+                            </div>                   
+                        </div>
 
-                <div class="carousel-item">   
-                    <div class="card-deck">
-                    <?php   draw_card(); 
-                            draw_card();
-                            draw_card();
-                            draw_card(); ?>
-                    </div>                   
+                        <div class="carousel-item">   
+                            <div class="card-deck">
+                            <?php   draw_card(); 
+                                    draw_card();
+                                    draw_card();
+                                    draw_card(); ?>
+                            </div>                   
+                        </div>
+
+                        <div class="carousel-item">   
+                            <div class="card-deck">
+                            <?php   draw_card(); 
+                                    draw_card();
+                                    draw_card();
+                                    draw_card(); ?>
+                            </div>                   
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselCardSales" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"> <--- </span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselCardSales" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"> ---> </span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselCardSales" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"> <--- </span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselCardSales" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"> ---> </span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
 <?php } 
 
@@ -94,11 +99,38 @@ function draw_card(){ ?>
                 <i class="fas fa-heart"></i>
             </a>
         </div>
-            <img src="https://www.thetattooshop.com/uk/media/catalog/product/cache/e960f294cf534815b24fe57fbd9f1a95/y/e/yellow_carts.jpg" class="card-img-top" alt="...">
+            <img src="https://pbs.twimg.com/profile_images/905183271046193153/q_P1KBUJ_400x400.jpg" class="card-img-top" alt="...">
         <div class="card-body">
             <span class="detail">
-                <h5 class="card-title">Card title</h5>
-                <h6> 20.00 Eur</h6>
+                <h4 class="card-title">Nome Do Produto</h4>
+                <h6> Lorem ipsum isicing elit. In, optio?</h6>
+                <h5 class="card-price">33.33 EUR </h5>
+            </span>
+        </div>
+    </div>
+
+<?php } 
+
+function draw_card_sale(){ ?>
+    <div class="card product-card" style="width: 18rem;">      
+        <div class="card-img-overlay d-flex justify-content-between">
+            <a href="../pages/home.php" class="card-link">
+                <span>
+                    <i class="fas fa-shopping-cart"></i>
+                </span>   
+            </a>
+            <a href="#" class="card-link">
+                <i class="fas fa-heart"></i>
+            </a>
+        </div>
+           <!-- IF ON SALE -->
+            <img src="http://www.osmais.com/wallpapers/201503/montanhas-grandes-wallpaper.jpg" class="card-img-top" alt="...">
+            <span class="badge badge-primary sale-box">20%</span>
+        <div class="card-body">
+            <span class="detail">
+                <h4 class="card-title">Nome Do Produto</h4>
+                <h6 class="card-item-description"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui, labore optio impedit aspernatur nobis quaerat repellendus natus ad doloremque corporis.</h6>
+                <h5 class="card-price">33.33 EUR <span class="old-price">11.11 EUR</span></h5>
             </span>
         </div>
     </div>

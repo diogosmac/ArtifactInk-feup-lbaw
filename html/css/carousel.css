@@ -1,40 +1,53 @@
 
+/*CAROUSEL*/
+.item-carousel-div{
+   /*margin: 2em 0em 2em 0em;  */
+}
+
 .carousel-item img {
     max-height: 400px; /* input your desired height here */
   }
 
 div#carouselCardSales{
     margin: 1em; 
-    border: solid 1em;
-    border-color: blueviolet;
 
-    padding: 0em;
 }
 .carousel-card  div.carousel-item div.row div {
     border-color: red;
     margin: 1em; 
 
 }
+.card-deck{
+    padding: 2em;
+}
+
+.itemCarousel .carousel-control-prev{
+    color: black;
+}
 
 /* CARD */ 
 .product-card{
-
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     z-index: 100;
+  
+    
 }
+.product-card img{
+  
+}
+.product-card .card-body{
+    
+}   
 .product-card i{
     display: none;
 }
-.product-card img {
-    height: auto;
-    width: auto;
-}
+
 
 .card .card-body{
     border-color: black;
     border-top: solid .1em;
 }
-.card.product-card a{
+.card.product-card a.card-link{
     color: var(--main-color-alpha);
     border: solid .1em;
     border-radius: 50%;
@@ -46,7 +59,7 @@ div#carouselCardSales{
     display: none;
 }
 
-.card.product-card a:hover{
+.card.product-card a.card-link:hover{
     color: var(--main-color);
 }
 .card.product-card i{
@@ -55,4 +68,42 @@ div#carouselCardSales{
 
 .card.product-card .detail{
     display: inline;
+}
+
+.itemCarousel{
+    max-width: 1500px;
+    margin: auto;
+    align-content: center;
+}
+
+.card-price{
+    color: var(--main-red);
+    font-weight: bold;
+}
+
+.sale-box{
+    width: 75px;
+    background-color: var(--main-red);
+    font-size: large;
+    position: absolute;
+    bottom: 150px;
+    right: 0px;
+    border-radius: 0%;
+}
+
+.old-price{
+    color: var(--main-color-alpha);
+    font-size: smaller;
+    font-weight: normal;
+    text-decoration: line-through;
+}
+
+.card-item-description{
+    /*
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    height: 2.4em; 
+    overflow: hidden;
+    text-overflow: -o-ellipsis-lastline; 
+    */
 }

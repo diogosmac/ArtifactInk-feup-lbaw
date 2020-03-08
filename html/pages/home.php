@@ -6,7 +6,7 @@
     draw_navbar(true);
     draw_preview_carousel(); 
     draw_card_carousel(); 
-    draw_card();
+    draw_card_carousel(); 
     draw_footer();
 
 ?>
