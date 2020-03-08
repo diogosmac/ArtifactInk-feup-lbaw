@@ -92,7 +92,7 @@ a.btn.btn-secondary:active{
     background-color: white;
     color: var(--text-color-black);
     border: none;
-    padding: .43rem .7rem;
+    padding: .435rem .7rem;
 }
 .navbar-custom-top button.btn.btn-outline-success:hover{
     background-color: var(--main-color-alpha);
