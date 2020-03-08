@@ -23,7 +23,7 @@ function draw_header(){ ?>
             <link rel="stylesheet" type="text/css" href="../css/common.css">
             <link rel="stylesheet" type="text/css" href="../css/footer.css">
             <link rel="stylesheet" type="text/css" href="../css/navbar.css">
-            <link rel="stylesheet" type="text/css" href="../css/carousel.css">
+            <link rel="stylesheet" type="text/css" href="../css/carousel_card.css">
 
             <script src="../script/product_card.js" defer></script>
         </head>

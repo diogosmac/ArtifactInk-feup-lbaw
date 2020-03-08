@@ -1,5 +1,100 @@
-*{
-    max-width: 1500px;
+body {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: var(--main-color);
+    
+
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
     margin: auto;
-    align-content: center;
+    text-align: center;
+}
+
+div.row{
+    width: 100%;
+    max-width: 420px;
+    padding: 15px;
+    margin: auto;
+    text-align: center;
+}
+.new-user{
+    text-align: center;
+}
+
+.sign-box{
+    padding: 1em;
+    text-align: start;
+    background-color: var(--main-white);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sign-box a{
+    color: var(--main-color-alpha);
+    font-size: .7em;
+}
+
+.sign-divider{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.sign-divider:before,
+.sign-divider:after {
+    content: '';
+    border-top: 2px solid;
+    margin: 0 20px 0 0;
+    flex: 1 0 20px;
+}
+
+.sign-divider:after{
+    margin: 0 0 0 20px;
+}
+
+.btn.btn-lg.btn-primary.btn-block{
+    background-color: var(--main-red-alpha);
+    border: 0px;
+    margin-bottom: .5em;
+}
+
+.btn.btn-lg.btn-primary.btn-block:hover{
+    background-color: var(--main-red);
+}
+
+.sign-in-api label{
+    background-color: var(--menu-bot);
+    border: 0;
+}
+
+.sign-in-api a{
+    color: var(--text-color-black);
+    font-size: 1em;
+}
+
+.sign-in-api label:hover{
+    background-color: var(--main-color-alpha);
+    border: 0;
+}
+
+.new-user{
+    color: var(--text-color-white);
+    text-align: center;
+}
+
+.copyright{
+    margin-top: 2em;
+}
+
+.form-group.email-input label, .form-group.password-input label{
+    font-weight: bold;
 }
