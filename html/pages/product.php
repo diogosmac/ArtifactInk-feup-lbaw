@@ -37,7 +37,7 @@ draw_header();
                         <i class="material-icons" style="color: gold;">star</i>
                         <i class="material-icons" style="color: gold;">star_half</i>
                         <i class="material-icons" style="color: gold;">star_outline</i>
-                        <a href="#specs" class="px-2"> 6 reviews</a>
+                        <a href="#specs" class="px-2"> 2 reviews</a>
                     </div>
                     <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
                         <h4>Available</h4>
@@ -100,11 +100,66 @@ draw_header();
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active bg-light p-4" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <div class="tab-pane fade show active bg-light p-5" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                 <p>Praesent vitae urna et odio ullamcorper finibus. Nunc dictum malesuada velit, eu molestie ligula. Phasellus ante diam, tempus sed lobortis eu, sollicitudin vel orci. Morbi interdum aliquam bibendum. Sed dapibus risus sit amet viverra aliquam. Suspendisse aliquam odio porttitor sem bibendum, a tempor massa pretium. Etiam eget accumsan magna. Donec euismod neque et metus aliquet sodales. Pellentesque sed enim ut elit maximus fringilla.</p>
                 <p>In a pretium mi. Nam mattis laoreet arcu, sit amet bibendum orci mollis vel. Vestibulum pulvinar enim tortor, et fringilla est aliquam in. Fusce nec nulla consequat, rhoncus nisi et, pellentesque sapien. Praesent pulvinar ut lorem eu tristique. Vivamus sit amet lacus sed ante finibus consequat. Donec ac fringilla lectus. Mauris facilisis erat velit, et suscipit eros egestas eget. Vestibulum vel orci in lacus sollicitudin posuere. Maecenas quis congue leo. Nullam ultricies, odio a vehicula sollicitudin, augue nunc commodo libero, vel feugiat tellus lorem non purus. Nam ultricies consectetur purus, vel varius leo viverra eget. </p>
             </div>
-            <div class="tab-pane fade bg-light" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"></div>
+            <div class="tab-pane fade bg-light p-4" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <div class="d-flex flex-row bd-highlight justify-content-around my-2">
+                    <div class="d-flex flex-column align-items-center">
+                        <div class="d-flex flex-row bd-highlight mb-3">
+                            <i class="material-icons" style="color: gold;">star</i>
+                            <i class="material-icons" style="color: gold;">star</i>
+                            <i class="material-icons" style="color: gold;">star</i>
+                            <i class="material-icons" style="color: gold;">star_half</i>
+                            <i class="material-icons" style="color: gold;">star_outline</i>
+                        </div>
+                        <h5>4,5/5</h5>
+                    </div>
+                    <div>
+
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <button type="button" class="btn btn-primary">Write a review</button>
+                    </div>
+                </div>
+                <div class="border-top border-dark my-4">
+                    <div class="input-group my-3 w-25">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Order by</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option value="1" selected>Newer</option>
+                            <option value="2">Older</option>
+                            <option value="3">Rating Lower to Higher</option>    
+                            <option value="4">Rating Higher to Lower</option>
+                        </select>
+                    </div>
+                    <div class="py-4">
+                        <div class=" p-0">
+                            <div class="row">
+                                <div class="col-4 d-flex flex-row justify-content-center">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTn9doOawyILir4RkSAH7LpWutreyCG1FlG4Vak3xamlUCkcG9L" alt="" style="max-width: 100px">
+                                        <h5>Name</h5>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center justify-content-start px-3 border-right border-dark">
+                                        <div class="d-flex flex-row align-items-center py-2">    
+                                            4/5 <i class="material-icons" style="color: gold;">star</i>
+                                        </div>
+                                        12/05/2019
+                                        <a href="" class="py-2">Report Review</a>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <p>Praesent vitae urna et odio ullamcorper finibus. Nunc dictum malesuada velit, eu molestie ligula. Phasellus ante diam, tempus sed lobortis eu, sollicitudin vel orci. Morbi interdum aliquam bibendum. Sed dapibus risus sit amet viverra aliquam. Suspendisse aliquam odio porttitor sem bibendum, a tempor massa pretium. Etiam eget accumsan magna. Donec euismod neque et metus aliquet sodales. Pellentesque sed enim ut elit maximus fringilla.</p>
+                                    <p>In a pretium mi. Nam mattis laoreet arcu, sit amet bibendum orci mollis vel. Vestibulum pulvinar enim tortor, et fringilla est aliquam in. Fusce nec nulla consequat, rhoncus nisi et, pellentesque sapien. Praesent pulvinar ut lorem eu tristique. Vivamus sit amet lacus sed ante finibus consequat. Donec ac fringilla lectus. Mauris facilisis erat velit, et suscipit eros egestas eget. Vestibulum vel orci in lacus sollicitudin posuere. Maecenas quis congue leo. Nullam ultricies, odio a vehicula sollicitudin, augue nunc commodo libero, vel feugiat tellus lorem non purus. Nam ultricies consectetur purus, vel varius leo viverra eget. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </main>
