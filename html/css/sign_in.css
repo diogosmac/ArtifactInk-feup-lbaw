@@ -98,3 +98,13 @@ div.row{
 .form-group.email-input label, .form-group.password-input label{
     font-weight: bold;
 }
+
+#recover-back{
+    font-size: 1.5em ;
+    padding-top: .25em;
+}
+
+#recover-button{
+    width: 110px;
+    text-align: center;
+}
