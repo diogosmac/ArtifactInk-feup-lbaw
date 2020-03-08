@@ -36,9 +36,8 @@ function draw_sign_in(){ ?>
             <div class="row">
                 <form class="form-signin ">
                 <a href="../pages/home.php">
-                <img class="mb-4" src="../images/artifact_ink_letters_white.svg" alt="ArtifactInk" width="300" height="72">
-            </a>
-                   
+                    <img class="mb-4" src="../images/artifact_ink_letters_white.svg" alt="ArtifactInk" width="300" height="72">
+                </a>
                     <div class="sign-box"> 
                         <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
                         <div class="form-group email-input">

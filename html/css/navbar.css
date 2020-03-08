@@ -272,3 +272,11 @@ a.btn.btn-secondary:active{
     /*Without this, clicking will make it sticky*/
     pointer-events: none;
   }
+
+  .card-link{
+      z-index: 100;
+  }
+
+  .card-img-link{
+      z-index: 90;
+  }

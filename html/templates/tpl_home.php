@@ -103,7 +103,9 @@ function draw_card(){ ?>
                 <i class="fas fa-heart"></i>
             </a>
         </div>
-            <img src="https://pbs.twimg.com/profile_images/905183271046193153/q_P1KBUJ_400x400.jpg" class="card-img-top" alt="...">
+            <a href="##" class="card-img-link">
+                <img src="https://pbs.twimg.com/profile_images/905183271046193153/q_P1KBUJ_400x400.jpg" class="card-img-top" alt="...">
+            </a>
         <div class="card-body">
             <span class="detail">
                 <h4 class="card-title">Nome Do Produto</h4>
@@ -130,7 +132,9 @@ function draw_card_sale(){ ?>
             </a>
         </div>
            <!-- IF ON SALE -->
-            <img src="http://www.osmais.com/wallpapers/201503/montanhas-grandes-wallpaper.jpg" class="card-img-top" alt="...">
+           <a href="##" class="card-img-link">
+                <img src="http://www.osmais.com/wallpapers/201503/montanhas-grandes-wallpaper.jpg" class="card-img-top" alt="...">
+           </a>
             <span class="badge badge-primary sale-box">20%</span>
         <div class="card-body">
             <span class="detail">
