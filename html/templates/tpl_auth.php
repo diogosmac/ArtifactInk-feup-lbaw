@@ -55,7 +55,7 @@ function draw_sign_in(){ ?>
                             <label class="form-check-label" for="exampleCheck1">Remember me</label>
                         </div>
                         <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign in</button>
-                        <p class="sign-divider"> or sign in with </p>
+                        <p class="sign-divider"> or Sign In with </p>
                         <div class="btn-group sign-in-api d-flex justify-content-center" data-toggle="buttons">
                             <label class="btn">
                                 <a class="btn" href="#"> 
@@ -83,7 +83,59 @@ function draw_sign_in(){ ?>
 <?php } 
 
 function draw_sign_up(){ ?>
-    //todo
+      <body>
+        <div class="container">
+            <div class="row">
+                <form class="form-signin ">
+                <a href="../pages/home.php">
+                    <img class="mb-4" src="../images/artifact_ink_letters_white.svg" alt="ArtifactInk" width="300" height="72">
+                </a>
+                    <div class="sign-box"> 
+                        <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
+                        <div class="form-group input">
+                            <label for="exampleInputName">Name</label>
+                            <input type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group email-input">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group password-input">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="form-group password-input">
+                            <label for="exampleInputPassword2">Confirm Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword2">
+                        </div>
+                       
+                        <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign Up</button>
+                        <p class="sign-divider"> or Sign In with </p>
+                        <div class="btn-group sign-in-api d-flex justify-content-center" data-toggle="buttons">
+                            <label class="btn">
+                                <a class="btn" href="#"> 
+                                    <i class="fab fa-google"></i>
+                                    Google
+                                </a>
+                            </label>
+                            <label class="btn ">
+                                <a class="btn" href="#">
+                                    <i class="fab fa-facebook-square"></i> 
+                                    Facebook
+                                </a>
+                            </label>
+                        </div>
+                    </div>
+                </form>  
+                <div class="row new-user justify-content-center">
+                    <h6>Already have an account?</h6>
+                        <a class="btn btn-lg btn-secondary btn-block" href="../pages/sign_.php">Sign In</a>
+                    <p class="copyright"> Copyright © ArtifactInk 2020 </p>
+                </div>
+            </div>
+        </div>
+    </body>
 <?php } 
 
 function draw_recover_password(){ ?>
@@ -113,6 +165,4 @@ function draw_recover_password(){ ?>
             </div>
         </div>
     </body>
-<?php } 
-
-?>
+<?php } ?>
