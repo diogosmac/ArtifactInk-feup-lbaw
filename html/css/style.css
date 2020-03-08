@@ -1,3 +1,116 @@
 main {
     padding-top: 3.5rem;
 }
+
+/* PROFILE PAGE > GENERAL */
+
+#profile-user-name {
+    color: #222222;
+    font-weight: 500;
+}
+
+/* PROFILE PAGE > GENERAL - END */
+
+/* PROFILE PAGE > INFO */
+
+#profile-info span {
+    font-size: large;
+}
+
+#profile-photo img {
+    max-height: 10em;
+}
+
+#profile-tag span {
+    font-size: x-large;
+    font-weight: 500;
+}
+
+#profile-name span::before {
+    content: "Name:\00a0";
+}
+
+#profile-dob span::before {
+    content: "Date of Birth:\00a0";
+}
+
+#profile-email span::before {
+    content: "E-mail:\00a0";
+}
+
+#profile-phone span::before {
+    content: "Phone Number:\00a0";
+}
+
+#profile-card span::before {
+    content: "Credit Card:\00a0";
+}
+
+#profile-address span::before {
+    content: "Address:\00a0";
+}
+
+
+/* PROFILE PAGE > INFO - END */
+
+/* PROFILE PAGE > REVIEWS */
+
+#review-container {
+    margin: auto;
+}
+
+#review-text {
+    padding: 0;
+}
+
+.review-product-name {
+    font-weight: 700;
+    font-size: x-large;
+}
+
+.review-title {
+    font-weight: 600;
+    font-size: large;
+    word-wrap: normal;
+    overflow-x: scroll;
+}
+
+#edit-review-button {
+    padding: 0;
+}
+
+/* PROFILE PAGE > REVIEWS - END */
+
+/* PROFILE PAGE > HISTORY */
+
+#purchase-address {
+    font-weight: 500;
+    font-size: larger;
+}
+
+#purchase-details {
+    font-size: large;
+}
+
+#purchase-items-container {
+    width: 20em;
+}
+
+#purchase-shipping::before {
+    content: "Shipping:\00a0";
+}
+
+#purchase-shipping {
+    font-size: large;
+}
+
+#purchase-total::before {
+    content: "Total:\00a0";
+}
+
+#purchase-total {
+    font-weight: 600;
+    font-size: x-large;
+}
+
+/* PROFILE PAGE > HISTORY - END */
