@@ -136,7 +136,7 @@ draw_header();
                         </select>
                     </div>
                     <div class="py-4">
-                        <div class=" p-0">
+                        <div class="container p-0 mb-5">
                             <div class="row">
                                 <div class="col-4 d-flex flex-row justify-content-center">
                                     <div class="d-flex flex-column align-items-center">
