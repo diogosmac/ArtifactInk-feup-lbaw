@@ -30,8 +30,8 @@ function draw_header()
  */
 function draw_navbar()
 { ?>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+    <header class="sticky-top">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-md-nowrap p-0">
         <div class="collapse navbar-collapse my-2">
 
           <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Artifact Ink Admin</a>
@@ -444,6 +444,70 @@ function draw_faq()
     <div class="row">
 
       <?php draw_sidebar("faq") ?>
+
+      <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap border-bottom mt-2">
+          <h1>Frequently Asked Questions</h1>
+          <button type="submit" class="btn btn-primary">Add Question</button>
+        </div>
+
+        <div class="container mx-auto my-2">
+
+          <div class="d-flex justify-content-between align-items-start flex-wrap">
+            <h3>Lorem ipsum dolor sit amet?</h3>
+            <div>
+              <button type="submit" class="btn btn-secondary">Edit</button>
+            </div>
+          </div>
+          <div class="text-justify">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra dui libero, a venenatis justo fermentum at. Cras id tellus quis ex aliquam egestas. Pellentesque vel erat vitae libero semper consectetur. Mauris ligula ante, aliquet interdum lobortis non, elementum non dolor. Vestibulum sodales pulvinar pellentesque. Sed eget volutpat metus, non vulputate nulla. Nulla in elit quam. Donec pulvinar, felis hendrerit molestie volutpat, lectus risus luctus ipsum, ut suscipit nibh dolor eu arcu. Ut efficitur commodo fermentum. Sed et laoreet diam, vel mattis diam.
+            </p>
+            <p>
+              Sed vitae mattis magna. Maecenas tortor libero, maximus sit amet dictum nec, venenatis nec nulla. Nunc eu dapibus eros, ut iaculis justo. Integer auctor condimentum massa, eget aliquam eros dictum ut. Donec ac vestibulum orci. Donec et sodales nulla. In mauris massa, condimentum ut tellus ornare, aliquet luctus sapien. Cras id sagittis turpis. Quisque sed porta libero. Quisque vitae orci fringilla, porta justo in, sollicitudin sem. Donec sit amet finibus lectus. Nulla tincidunt sit amet tortor et venenatis. Ut tincidunt magna a convallis ornare. Cras porttitor dolor at turpis congue, eu cursus nisl fringilla. Curabitur a eleifend dui, commodo ornare quam.
+            </p>
+            <p>
+              Maecenas pulvinar purus id mauris lacinia euismod. Morbi pretium cursus nulla, sed volutpat urna. Sed efficitur arcu et nibh accumsan, ac faucibus neque feugiat. Phasellus id eros finibus, tincidunt quam et, blandit magna. Curabitur quis mollis mauris. Sed faucibus nulla risus, at volutpat ligula maximus a. Sed tellus tellus, mollis quis justo quis, porttitor scelerisque metus. Praesent enim est, posuere nec sodales ut, placerat id arcu. Praesent iaculis vulputate quam, egestas porttitor eros bibendum vel. Integer semper enim ligula, quis fermentum augue iaculis vitae. Donec gravida et erat eget eleifend. Morbi sagittis dapibus tempus. Nulla gravida massa varius pellentesque ultricies. Suspendisse orci erat, maximus vulputate laoreet eget, lacinia eget lacus. Donec congue feugiat sapien in tincidunt.
+            </p>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-start flex-wrap">
+            <h3>Lorem ipsum dolor sit amet?</h3>
+            <div>
+              <button type="submit" class="btn btn-secondary">Edit</button>
+            </div>
+          </div>
+          <div class="text-justify">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra dui libero, a venenatis justo fermentum at. Cras id tellus quis ex aliquam egestas. Pellentesque vel erat vitae libero semper consectetur. Mauris ligula ante, aliquet interdum lobortis non, elementum non dolor. Vestibulum sodales pulvinar pellentesque. Sed eget volutpat metus, non vulputate nulla. Nulla in elit quam. Donec pulvinar, felis hendrerit molestie volutpat, lectus risus luctus ipsum, ut suscipit nibh dolor eu arcu. Ut efficitur commodo fermentum. Sed et laoreet diam, vel mattis diam.
+            </p>
+            <p>
+              Sed vitae mattis magna. Maecenas tortor libero, maximus sit amet dictum nec, venenatis nec nulla. Nunc eu dapibus eros, ut iaculis justo. Integer auctor condimentum massa, eget aliquam eros dictum ut. Donec ac vestibulum orci. Donec et sodales nulla. In mauris massa, condimentum ut tellus ornare, aliquet luctus sapien. Cras id sagittis turpis. Quisque sed porta libero. Quisque vitae orci fringilla, porta justo in, sollicitudin sem. Donec sit amet finibus lectus. Nulla tincidunt sit amet tortor et venenatis. Ut tincidunt magna a convallis ornare. Cras porttitor dolor at turpis congue, eu cursus nisl fringilla. Curabitur a eleifend dui, commodo ornare quam.
+            </p>
+            <p>
+              Maecenas pulvinar purus id mauris lacinia euismod. Morbi pretium cursus nulla, sed volutpat urna. Sed efficitur arcu et nibh accumsan, ac faucibus neque feugiat. Phasellus id eros finibus, tincidunt quam et, blandit magna. Curabitur quis mollis mauris. Sed faucibus nulla risus, at volutpat ligula maximus a. Sed tellus tellus, mollis quis justo quis, porttitor scelerisque metus. Praesent enim est, posuere nec sodales ut, placerat id arcu. Praesent iaculis vulputate quam, egestas porttitor eros bibendum vel. Integer semper enim ligula, quis fermentum augue iaculis vitae. Donec gravida et erat eget eleifend. Morbi sagittis dapibus tempus. Nulla gravida massa varius pellentesque ultricies. Suspendisse orci erat, maximus vulputate laoreet eget, lacinia eget lacus. Donec congue feugiat sapien in tincidunt.
+            </p>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-start flex-wrap">
+            <h3>Lorem ipsum dolor sit amet?</h3>
+            <div>
+              <button type="submit" class="btn btn-secondary">Edit</button>
+            </div>
+          </div>
+          <div class="text-justify">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra dui libero, a venenatis justo fermentum at. Cras id tellus quis ex aliquam egestas. Pellentesque vel erat vitae libero semper consectetur. Mauris ligula ante, aliquet interdum lobortis non, elementum non dolor. Vestibulum sodales pulvinar pellentesque. Sed eget volutpat metus, non vulputate nulla. Nulla in elit quam. Donec pulvinar, felis hendrerit molestie volutpat, lectus risus luctus ipsum, ut suscipit nibh dolor eu arcu. Ut efficitur commodo fermentum. Sed et laoreet diam, vel mattis diam.
+            </p>
+            <p>
+              Sed vitae mattis magna. Maecenas tortor libero, maximus sit amet dictum nec, venenatis nec nulla. Nunc eu dapibus eros, ut iaculis justo. Integer auctor condimentum massa, eget aliquam eros dictum ut. Donec ac vestibulum orci. Donec et sodales nulla. In mauris massa, condimentum ut tellus ornare, aliquet luctus sapien. Cras id sagittis turpis. Quisque sed porta libero. Quisque vitae orci fringilla, porta justo in, sollicitudin sem. Donec sit amet finibus lectus. Nulla tincidunt sit amet tortor et venenatis. Ut tincidunt magna a convallis ornare. Cras porttitor dolor at turpis congue, eu cursus nisl fringilla. Curabitur a eleifend dui, commodo ornare quam.
+            </p>
+            <p>
+              Maecenas pulvinar purus id mauris lacinia euismod. Morbi pretium cursus nulla, sed volutpat urna. Sed efficitur arcu et nibh accumsan, ac faucibus neque feugiat. Phasellus id eros finibus, tincidunt quam et, blandit magna. Curabitur quis mollis mauris. Sed faucibus nulla risus, at volutpat ligula maximus a. Sed tellus tellus, mollis quis justo quis, porttitor scelerisque metus. Praesent enim est, posuere nec sodales ut, placerat id arcu. Praesent iaculis vulputate quam, egestas porttitor eros bibendum vel. Integer semper enim ligula, quis fermentum augue iaculis vitae. Donec gravida et erat eget eleifend. Morbi sagittis dapibus tempus. Nulla gravida massa varius pellentesque ultricies. Suspendisse orci erat, maximus vulputate laoreet eget, lacinia eget lacus. Donec congue feugiat sapien in tincidunt.
+            </p>
+          </div>
+
+        </div>
 
     </div>
   </div>
