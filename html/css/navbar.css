@@ -82,7 +82,7 @@
     background-color: white;
     color: var(--text-color-black);
     border: none;
-    padding: .44rem .7rem;
+    padding: .43rem .7rem;
 }
 .navbar-custom-top button.btn.btn-outline-success:hover{
     background-color: var(--main-color-alpha);

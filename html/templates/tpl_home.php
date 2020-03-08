@@ -43,11 +43,13 @@
 
 function draw_card_carousel(){ ?>
 <div class="item-carousel-div">
-    <h1>Some Deals</h1>
+    <span class="item-carousel-title">
+        <h1>Featured Products</h1>
+    </span>
         <div class="d-flex justify-content-center ">
             <div id="carouselCardSales" class="carousel slide itemCarousel d-flex justify-content-center" data-ride="carousel">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">   
+                        <div class="carousel-item active"  data-interval="0">   
                             <div class="card-deck">
                             <?php   draw_card(); 
                                     draw_card_sale();
@@ -56,7 +58,7 @@ function draw_card_carousel(){ ?>
                             </div>                   
                         </div>
 
-                        <div class="carousel-item">   
+                        <div class="carousel-item" data-interval="0">   
                             <div class="card-deck">
                             <?php   draw_card(); 
                                     draw_card();
@@ -65,7 +67,7 @@ function draw_card_carousel(){ ?>
                             </div>                   
                         </div>
 
-                        <div class="carousel-item">   
+                        <div class="carousel-item" data-interval="0">   
                             <div class="card-deck">
                             <?php   draw_card(); 
                                     draw_card();
@@ -74,12 +76,12 @@ function draw_card_carousel(){ ?>
                             </div>                   
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselCardSales" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"> <--- </span>
+                    <a class="carousel-control-prev item-carousel-button prv" href="#carouselCardSales" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon custom" aria-hidden="true"> </span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carouselCardSales" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"> ---> </span>
+                    <a class="carousel-control-next item-carousel-button nxt" href="#carouselCardSales" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon custom" aria-hidden="true"> </span>
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
@@ -89,12 +91,14 @@ function draw_card_carousel(){ ?>
 
 function draw_card(){ ?>
     <div class="card product-card" style="width: 18rem;">      
-        <div class="card-img-overlay d-flex justify-content-between">
+        <div class="card-img-overlay d-flex justify-content-end">
+            <!--
             <a href="../pages/home.php" class="card-link">
                 <span>
                     <i class="fas fa-shopping-cart"></i>
                 </span>   
             </a>
+            -->
             <a href="#" class="card-link">
                 <i class="fas fa-heart"></i>
             </a>
@@ -103,22 +107,24 @@ function draw_card(){ ?>
         <div class="card-body">
             <span class="detail">
                 <h4 class="card-title">Nome Do Produto</h4>
-                <h6> Lorem ipsum isicing elit. In, optio?</h6>
                 <h5 class="card-price">33.33 EUR </h5>
             </span>
         </div>
+        <a href="#" class="dropdown-item add-to-cart-btn">Add to cart</a>
     </div>
 
 <?php } 
 
 function draw_card_sale(){ ?>
     <div class="card product-card" style="width: 18rem;">      
-        <div class="card-img-overlay d-flex justify-content-between">
+        <div class="card-img-overlay d-flex justify-content-end">
+            <!--
             <a href="../pages/home.php" class="card-link">
                 <span>
                     <i class="fas fa-shopping-cart"></i>
                 </span>   
             </a>
+            -->
             <a href="#" class="card-link">
                 <i class="fas fa-heart"></i>
             </a>
@@ -128,11 +134,12 @@ function draw_card_sale(){ ?>
             <span class="badge badge-primary sale-box">20%</span>
         <div class="card-body">
             <span class="detail">
-                <h4 class="card-title">Nome Do Produto</h4>
-                <h6 class="card-item-description"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui, labore optio impedit aspernatur nobis quaerat repellendus natus ad doloremque corporis.</h6>
+                <h4 class="card-title">Nome Do Produto Mas muito grande </h4>
                 <h5 class="card-price">33.33 EUR <span class="old-price">11.11 EUR</span></h5>
             </span>
+            <a href="#" class="dropdown-item add-to-cart-btn">Add to cart</a>
         </div>
+        <a href="#" class="dropdown-item add-to-cart-btn">Add to cart</a>
     </div>
 
 <?php } ?>

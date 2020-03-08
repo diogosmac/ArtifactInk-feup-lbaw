@@ -18,7 +18,7 @@ div#carouselCardSales{
 
 }
 .card-deck{
-    padding: 2em;
+    padding: 2em 10em 2em 10em;
 }
 
 .itemCarousel .carousel-control-prev{
@@ -29,15 +29,18 @@ div#carouselCardSales{
 .product-card{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     z-index: 100;
-  
-    
+    width: 100px;
+    height: 400px;
 }
 .product-card img{
-  
+    height: 250px;
 }
+
 .product-card .card-body{
-    
+    align-items: center;
+    text-align: center;
 }   
+
 .product-card i{
     display: none;
 }
@@ -76,9 +79,14 @@ div#carouselCardSales{
     align-content: center;
 }
 
+.card-title{
+    font-size: 1.2em;
+}
+
 .card-price{
     color: var(--main-red);
     font-weight: bold;
+    font-size: 1em;
 }
 
 .sale-box{
@@ -86,8 +94,8 @@ div#carouselCardSales{
     background-color: var(--main-red);
     font-size: large;
     position: absolute;
-    bottom: 150px;
-    right: 0px;
+    top: 25px;
+    left: 0px;
     border-radius: 0%;
 }
 
@@ -98,6 +106,19 @@ div#carouselCardSales{
     text-decoration: line-through;
 }
 
+.item-carousel-div{
+    margin-top: 3em;
+}
+.item-carousel-title{
+    align-items: center;
+    text-align: center;
+}
+
+.item-carousel-title h1{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 .card-item-description{
     /*
     text-overflow: ellipsis;
@@ -106,4 +127,55 @@ div#carouselCardSales{
     overflow: hidden;
     text-overflow: -o-ellipsis-lastline; 
     */
+}
+
+.add-to-cart-btn{
+    background-color: var(--main-red-alpha);
+    color: var(--text-color-white);
+    margin-top: 2em;
+    
+}
+
+.add-to-cart-btn:hover{
+    background-color: var(--main-red);
+    color: var(--text-color-white);
+}
+div .card-img-overlay.d-flex.justify-content-end{
+    padding-bottom: .1em;
+}
+
+
+.item-carousel-button{
+    width: 6em;
+    z-index: 100; 
+}
+
+.item-carousel-button span{
+    height: 100px;
+    width: 100px;
+    outline: black;
+    background-size: 100%, 100%;
+    
+    background-image: none;
+    vertical-align: middle;
+}
+
+.carousel-control-next-icon.custom:after{
+    content: '>';
+    font-size: 55px;
+    color: var(--main-color);
+}
+
+.carousel-control-prev-icon.custom:after{
+    content: '<';
+    font-size: 55px;
+    color: var(--main-color);
+}
+
+.item-carousel-button.prv{
+    margin-left:3em ;
+}
+
+.item-carousel-button.nxt{
+    margin-right:3em ;
 }
