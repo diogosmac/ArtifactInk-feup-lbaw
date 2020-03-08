@@ -47,14 +47,14 @@ function draw_sign_in(){ ?>
                         </div>
                         <div class="form-group password-input">
                             <label for="exampleInputPassword1">Password</label>
-                            <a href=""> Forget your password?</a>
+                            <a href="../pages/recover_password.php"> Forget your password?</a>
                             <input type="password" class="form-control" id="exampleInputPassword1">
                         </div>
                         <div class="form-group form-check">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">Remember me</label>
                         </div>
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                        <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign in</button>
                         <p class="sign-divider"> or sign in with </p>
                         <div class="btn-group sign-in-api d-flex justify-content-center" data-toggle="buttons">
                             <label class="btn">
@@ -74,12 +74,68 @@ function draw_sign_in(){ ?>
                 </form>  
                 <div class="row new-user justify-content-center">
                     <h6>Don't have an account yet?</h6>
-                        <a class="btn btn-lg btn-primary btn-block" href="../pages/sign_up.php">Sign Up</a>
+                        <a class="btn btn-lg btn-secondary btn-block" href="../pages/sign_up.php">Sign Up</a>
                     <p class="copyright"> Copyright © ArtifactInk 2020 </p>
                 </div>
             </div>
         </div>
     </body>
-<?php }
+<?php } 
+
+function draw_sign_up(){ ?>
+    //todo
+<?php } 
+
+function draw_recover_password(){ ?>
+    <body>
+        <div class="container">
+            <div class="row">
+                <form class="form-signin ">
+                <a href="../pages/home.php">
+                    <img class="mb-4" src="../images/artifact_ink_letters_white.svg" alt="ArtifactInk" width="300" height="72">
+                </a>
+                    <div class="sign-box"> 
+                        <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
+                        <div class="form-group email-input">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group password-input">
+                            <label for="exampleInputPassword1">Password</label>
+                            <a href="../pages/recover_password.php"> Forget your password?</a>
+                            <input type="password" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="form-group form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                        </div>
+                        <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign in</button>
+                        <p class="sign-divider"> or sign in with </p>
+                        <div class="btn-group sign-in-api d-flex justify-content-center" data-toggle="buttons">
+                            <label class="btn">
+                                <a class="btn" href="#"> 
+                                    <i class="fab fa-google"></i>
+                                    Google
+                                </a>
+                            </label>
+                            <label class="btn ">
+                                <a class="btn" href="#">
+                                    <i class="fab fa-facebook-square"></i> 
+                                    Facebook
+                                </a>
+                            </label>
+                        </div>
+                    </div>
+                </form>  
+                <div class="row new-user justify-content-center">
+                    <h6>Don't have an account yet?</h6>
+                        <a class="btn btn-lg btn-secondary btn-block" href="../pages/sign_up.php">Sign Up</a>
+                    <p class="copyright"> Copyright © ArtifactInk 2020 </p>
+                </div>
+            </div>
+        </div>
+    </body>
+<?php } 
 
 ?>

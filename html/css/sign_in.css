@@ -61,13 +61,13 @@ div.row{
     margin: 0 0 0 20px;
 }
 
-.btn.btn-lg.btn-primary.btn-block{
+.btn.btn-lg.btn-secondary.btn-block{
     background-color: var(--main-red-alpha);
     border: 0px;
     margin-bottom: .5em;
 }
 
-.btn.btn-lg.btn-primary.btn-block:hover{
+.btn.btn-lg.btn-secondary.btn-block:hover{
     background-color: var(--main-red);
 }
 
