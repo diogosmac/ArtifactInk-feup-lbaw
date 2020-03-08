@@ -18,7 +18,11 @@ main {
 }
 
 #profile-photo img {
-    max-height: 10em;
+    max-width: 10em;
+}
+
+#profile-edit-button {
+    width: fit-content;
 }
 
 #profile-tag span {
@@ -80,6 +84,31 @@ main {
 }
 
 /* PROFILE PAGE > REVIEWS - END */
+
+
+/* PROFILE PAGE > WISHLIST */
+
+#wishlist-product-name {
+    font-weight: 500;
+    font-size: x-large;
+}
+
+#wishlist-product-remove {
+    width: fit-content;
+}
+
+#wishlist-product-available {
+    font-weight: 500;
+    font-size: large;
+}
+
+#wishlist-product-price {
+    font-weight: 600;
+    font-size: x-large;
+}
+
+/* PROFILE PAGE > WISHLIST - END */
+
 
 /* PROFILE PAGE > HISTORY */
 

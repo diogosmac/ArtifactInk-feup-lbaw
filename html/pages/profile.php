@@ -13,7 +13,7 @@ draw_header();
                 <div class="row">
 
                     <!-- TABS -->
-                    <div class="col-md-auto nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <div class="col-md-auto nav flex-column nav-pills hidden-xs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
                         <a class="nav-link disabled" id="profile-user-name">John Doe</a>
 

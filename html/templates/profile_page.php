@@ -7,10 +7,10 @@
                 <span>Photo</span>
             </div>
             <div class="row align-items-center" id="profile-photo">
-                <div class="col-md-auto">
+                <div class="col">
                     <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" class="img-fluid">
                 </div>
-                <div class="col">
+                <div class="col-md-auto" id="profile-edit-button">
                     <button class="btn btn-primary">Edit your profile</button>
                 </div>
             </div>
@@ -102,53 +102,61 @@
 <?php } ?>
 
 
+<?php function draw_wishlist_prod_info()
+{ ?>
+    <div class="col-md-3">
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" class="img-fluid">
+    </div>
+    <div class="d-flex flex-column col" id="wishlist-product-info">
+        <div class="d-flex flex-row my-1 align-items-center">
+            <div class="col">
+                <div class="d-flex flex-row">
+                    <span id="wishlist-product-name">Black Ink</span>
+                </div>
+            </div>
+            <div class="col-md-auto" id="wishlist-product-remove">
+                <button type="button" class="btn float-right btn-outline-danger"><i class="material-icons" style="color: red;">favorite</i></button>
+            </div>
+        </div>
+        <div class="d-flex flex-row my-1">
+            <div class="col">
+                <div class="d-flex flex-row">
+                    <i class="material-icons" style="color: gold;">star</i>
+                    <i class="material-icons" style="color: gold;">star</i>
+                    <i class="material-icons" style="color: gold;">star</i>
+                    <i class="material-icons" style="color: gold;">star_half</i>
+                    <i class="material-icons" style="color: gold;">star_outline</i>
+                </div>
+                <div class="d-flex flex-row align-items-center">
+                    <span id="wishlist-product-available">Available&nbsp;</span>
+                    <i class="material-icons" style="color: green;">fiber_manual_record</i>
+                </div>
+            </div>
+            <div class="col">
+                <span class="align-middle float-right" id="wishlist-product-price">17.99€</span>
+            </div>
+        </div>
+        <div class="d-flex flex-row my-1">
+            <div class="col">
+                <div class="d-flex flex-row">
+                    <label class="input-group-text" for="inputGroupSelect01">QTY</label>
+                    <input type="number" value="1" min="1" max="30" step="1" />
+                </div>
+            </div>
+            <div class="col">
+                <input id="add-to-cart-btn" class="btn float-right btn-primary" type="submit" value="ADD TO CART">
+            </div>
+        </div>
+    </div>
+
+<?php } ?>
+
 <?php function draw_wishlist_product()
 { ?>
 
     <section id="wishlist-product">
         <div class="row">
-            <div class="col-md-4">
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" class="img-fluid">
-            </div>
-            <div class="col" id="wishlist-product-info">
-                <div class="row my-1">
-                    <div class="col">
-                        <h2>Black Ink</h2>
-                    </div>
-                    <div class="col-md-4">
-                        <button type="button" class="btn float-right btn-outline-danger"><i class="material-icons" style="color: red;">favorite</i></button>
-                    </div>
-                </div>
-                <div class="row my-1 align-items-center">
-                    <div class="col ml-3">
-                        <div class="row">
-                            <i class="material-icons" style="color: gold;">star</i>
-                            <i class="material-icons" style="color: gold;">star</i>
-                            <i class="material-icons" style="color: gold;">star</i>
-                            <i class="material-icons" style="color: gold;">star_half</i>
-                            <i class="material-icons" style="color: gold;">star_outline</i>
-                        </div>
-                        <div class="row align-items-center">
-                            <h4>Available&nbsp;</h4>
-                            <i class="material-icons" style="color: green;">fiber_manual_record</i>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <h3 class="align-middle float-right">17.99€</h3>
-                    </div>
-                </div>
-                <div class="row my-1">
-                    <div class="col ml-3">
-                        <div class="row">
-                            <label class="input-group-text" for="inputGroupSelect01">QTY</label>
-                            <input type="number" value="1" min="1" max="30" step="1" />
-                        </div>
-                    </div>
-                    <div class="col">
-                        <input id="add-to-cart-btn" class="btn float-right btn-primary" type="submit" value="ADD TO CART">
-                    </div>
-                </div>
-            </div>
+            <?php draw_wishlist_prod_info(); ?>
         </div>
     </section>
 
