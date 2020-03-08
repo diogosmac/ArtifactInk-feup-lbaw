@@ -73,19 +73,75 @@ function draw_main_navbar($session){ ?>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <span> 
-                                <i class="fas fa-shopping-cart"></i>
-                            </span>
-                        </a>
+                        <div class="btn-group">
+                            <a class="btn" href="#" role="button" id="dropdownMenuCart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span> 
+                                    <i class="fas fa-shopping-cart"></i>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-cart" aria-labelledby="dropdownMenuCart">
+                                <div class="panel-body">
+                                    <ul class="list-group list-cart">
+                                        <a class="item-link-cart" href="#"> 
+                                            <li class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
+                                                <span>
+                                                <img class="cart-item-list-img"src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg" alt="Cool Tattoo">
+                                                </span>
+                                                <h5 class="cart-item-list-name">Cool Tattoo</h5><h6 class="cart-item-list-price">4.99 €</h6>
+                                                <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
+                                            </li>  
+                                        </a>   
+                                        <a class="item-link-cart" href="#"> 
+                                            <li class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
+                                                <span>
+                                                <img class="cart-item-list-img"src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg" alt="Cool Tattoo">
+                                                </span>
+                                                <h5 class="cart-item-list-name">Cool Tattoo</h5><h6 class="cart-item-list-price">4.99 €</h6>
+                                                <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
+                                            </li>  
+                                        </a>
+                                        <a class="item-link-cart" href="#"> 
+                                            <li class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
+                                                <span>
+                                                <img class="cart-item-list-img"src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg" alt="Cool Tattoo">
+                                                </span>
+                                                <h5 class="cart-item-list-name">Cool Tattoo</h5><h6 class="cart-item-list-price">4.99 €</h6>
+                                                <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
+                                            </li>  
+                                        </a>
+                                    </ul>
+                                </div>
+                                <div class="d-inline cart-list-total">
+                                    <div id="total-label" class="d-inline p-2" >
+                                        Total
+                                    </div> 
+                                    <div id="price-total"class="d-inline p-2" >
+                                       33.33 €
+                                    </div> 
+                                 </div>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item checkout-button" href="#">Checkout</a>
+                            </div>
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../pages/sign_in.php">
-                            <span>
-                                <i class="fas fa-user"></i>
-                            </span>
-                            John Doe
-                        </a>
+                        <div class="btn-group">
+                            <a class="btn " href="#" role="button" id="dropdownMenuAccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span>
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                John Doe
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuAccount">
+                                <img class="profile-pic-bubble" src="https://www.diretoriodigital.com.br/wp-content/uploads/2013/05/Team-Member-3.jpg" alt="John Doe">
+                                <h5 class="dropdown-header">John Doe</h5>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">My Account</a>
+                                <a class="dropdown-item" href="#">My Order</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Sign Out</a>
+                            </div>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../pages/sign_in.php">Sign Out</a>

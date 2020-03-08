@@ -47,6 +47,31 @@
     filter: brightness(85%);
 
 } 
+.navbar-custom-top .dropdown-menu{
+    border-radius: 0;
+    text-align: center;
+}
+
+.navbar-custom-top .btn {
+    color: var(--text-color-white)!important; 
+}
+
+.navbar-custom-top .btn:hover{ 
+    color: var(--text-color-white);
+    filter: brightness(85%);
+
+} 
+
+.profile-pic-bubble{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.navbar-custom-top .dropdown-item:hover{
+    background-color: var(--main-white);
+}
+
 .navbar-custom-top input.form-control{
    margin-right: 0; 
    border-radius: .2em .0em .0em .2em;
@@ -63,6 +88,80 @@
     background-color: var(--main-color-alpha);
     color: var(--text-color-white);
 }
+
+.list-cart{
+    margin: .2em;
+    max-height: 150px;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    border: none;
+    margin-bottom: 1em;
+}
+
+.list-cart li{
+    border: none;
+    margin: .1em;
+}
+
+.cart-item-list-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.cart-item-list{
+    padding: .1em;
+    padding-right: .5em;
+    height: 60px;
+}
+
+.cart-item-list-name, .cart-item-list-name:hover{
+    font-weight: bold;
+    font-size: .8em;
+    color: var(--text-color-black);
+    
+}
+
+.dropdown-cart a:hover{
+    text-decoration: none;
+}
+
+.cart-item-list-price{
+    font-size: .8em;
+    color: var(--main-red);
+    border: none;
+}
+
+.cart-item-list-quant{
+    background-color: var(--main-red);
+}
+
+.cart-list-total h5{
+    display: inline;
+}
+
+
+
+.dropdown-cart{
+    width: 225px;
+}
+
+
+.cart-list-total #total-label{
+    font-weight: bold;
+    font-size: .9em;
+    text-decoration: none;
+    color: var(--text-color-black);
+  
+}
+
+.cart-list-total #price-total{
+    color: var(--main-red);
+    font-size: 1em;
+    text-decoration: none
+  
+}
+
 /* NAV BAR BOT */ 
 /* Modify the backgorund color */ 
 .navbar-custom-bot { 
@@ -70,6 +169,16 @@
     padding: 0;
 
 } 
+
+.dropdown-cart a.checkout-button{
+    background-color: var(--main-red-alpha);
+    color: var(--text-color-white);
+}
+
+.dropdown-cart a.checkout-button:hover{
+    background-color: var(--main-red)!important;
+    color: var(--text-color-white);
+}
 
 /* Modify brand and text color */ 
 .navbar-custom-bot .navbar-brand, .navbar-custom-bot .navbar-text,.navbar-custom-bot a { 
@@ -136,5 +245,4 @@
 .dropdown>.dropdown-toggle:active {
     /*Without this, clicking will make it sticky*/
     pointer-events: none;
- 
   }
