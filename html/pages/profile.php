@@ -1,7 +1,7 @@
 <?php
 
 include_once("../templates/tpl_common.php");
-include_once("../templates/profile_page.php");
+include_once("../templates/tpl_profile.php");
 
 draw_header();
 ?>
@@ -13,7 +13,7 @@ draw_header();
                 <div class="row">
 
                     <!-- TABS -->
-                    <div class="col-md-auto my-3 nav flex-column nav-pills hidden-xs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <div class="col-md-auto col-xs-12 my-3 nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
                         <a class="nav-link disabled" id="profile-user-name">John Doe</a>
 
