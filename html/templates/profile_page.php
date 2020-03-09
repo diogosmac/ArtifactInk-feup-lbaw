@@ -69,8 +69,8 @@
                     <div class="col" id="review-text">
                         <span class="review-product-name float-left">Black Ink</span>
                     </div>
-                    <div class="col-md-auto">
-                        <button type="button" class="btn float-right" id="edit-review-button"><i class="material-icons">edit</i></button>
+                    <div class="col-md-auto" id="profile-edit-review">
+                        <button type="button" class="btn float-right" id="profile-edit-review-button"><i class="material-icons">edit</i></button>
                     </div>
                 </div>
                 <div class="row my-1 align-items-center">
@@ -78,7 +78,7 @@
                         <span class="review-title">Cor viva, pouco resistente.</span>
                         <!-- <span class="review-title">Cor viva, pouco resistente.</span> -->
                     </div>
-                    <div class="col-md-auto">
+                    <div class="col-md-auto" id="profile-review-rating">
                         <div class="row float-right">
                             <i class="material-icons" style="color: gold;">star</i>
                             <i class="material-icons" style="color: gold;">star</i>

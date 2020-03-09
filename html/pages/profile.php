@@ -13,7 +13,7 @@ draw_header();
                 <div class="row">
 
                     <!-- TABS -->
-                    <div class="col-md-auto nav flex-column nav-pills hidden-xs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <div class="col-md-auto my-3 nav flex-column nav-pills hidden-xs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
                         <a class="nav-link disabled" id="profile-user-name">John Doe</a>
 
@@ -36,7 +36,7 @@ draw_header();
                     </div>
 
                     <!-- CONTENT -->
-                    <div class="col tab-content" id="v-pills-tabContent">
+                    <div class="col tab-content my-3" id="v-pills-tabContent">
 
                         <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                             <section id="profile">

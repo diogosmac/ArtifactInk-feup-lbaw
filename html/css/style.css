@@ -79,8 +79,16 @@ main {
     overflow-x: scroll;
 }
 
-#edit-review-button {
+#profile-edit-review {
+    width: fit-content;
+}
+
+#profile-edit-review-button {
     padding: 0;
+}
+
+#profile-review-rating {
+    width: fit-content;
 }
 
 /* PROFILE PAGE > REVIEWS - END */
