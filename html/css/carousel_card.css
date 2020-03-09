@@ -48,11 +48,11 @@ div#carouselCardSales{
 
 .card .card-body{
     border-color: black;
-    border-top: solid .1em;
+    border-top: solid .1rem;
 }
 .card.product-card a.card-link{
     color: var(--main-color-alpha);
-    border: solid .1em;
+    border: solid .1rem;
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -66,7 +66,7 @@ div#carouselCardSales{
     color: var(--main-color);
 }
 .card.product-card i{
-    font-size: 1em;
+    font-size: 1rem;
 }
 
 .card.product-card .detail{
@@ -80,13 +80,13 @@ div#carouselCardSales{
 }
 
 .card-title{
-    font-size: 1.2em;
+    font-size: 1.2rem;
 }
 
 .card-price{
     color: var(--main-red);
     font-weight: bold;
-    font-size: 1em;
+    font-size: 1rem;
 }
 
 .sale-box{
@@ -107,7 +107,7 @@ div#carouselCardSales{
 }
 
 .item-carousel-div{
-    margin-top: 3em;
+    margin-top: 3rem;
 }
 .item-carousel-title{
     align-items: center;
