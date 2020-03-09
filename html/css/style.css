@@ -105,12 +105,24 @@ main {
     width: fit-content;
 }
 
+#wishlist-product-details {
+    width: fit-content;
+}
+
+#wishlist-product-rating {
+    width: fit-content;
+}
+
 #wishlist-product-available {
     font-weight: 500;
     font-size: large;
 }
 
 #wishlist-product-price {
+    width: fit-content;
+}
+
+#wishlist-product-price span {
     font-weight: 600;
     font-size: x-large;
 }
