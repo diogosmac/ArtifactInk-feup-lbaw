@@ -1,8 +1,12 @@
 <?php
 include_once("../templates/tpl_common.php");
 include_once("../templates/tpl_review.php");
+include_once("../templates/tpl_home.php");
+
 
 draw_header();
+
+draw_navbar(true);
 
 ?>
 <main>
@@ -68,29 +72,10 @@ draw_header();
             </div>
         </div>
     </section>
+    
     <hr class="w-75">
     <section id="related" class="mx-auto">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="height: 200px">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" class="d-block w-100" alt="..." style="height: 200px">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" class="d-block w-100" alt="..." style="height: 200px">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" class="d-block w-100" alt="..." style="height: 200px">
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
+        <?php draw_card_carousel(); ?>
     </section>
     <hr class="w-75">
     <section id="specs" class="mx-auto">
