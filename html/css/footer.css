@@ -1,4 +1,8 @@
 /* FOOTER */
+
+footer{
+    margin-top: 2em;
+}
 footer > .container-expanded{
     background-color:  var(--main-white);
 }
