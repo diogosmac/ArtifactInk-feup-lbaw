@@ -31,6 +31,7 @@ function draw_header(){ ?>
 
         </head>
         <body>
+            <div class="main-container">
 
 <?php } 
 
@@ -324,7 +325,6 @@ function draw_secondary_navbar(){ ?>
  * Function to draw website footer
  */
 function draw_footer(){?>
-            </body>
         <footer class="">
             <div class="container-expanded border-top  py-2">
                 <div class="row">
@@ -405,7 +405,9 @@ function draw_footer(){?>
                     <div class="col-sm-1"></div>
                 </div>
             </div>   
-        </footer>   
+        </footer>  
+        </div>
+        </body> 
     </html> 
 <?php }
 
