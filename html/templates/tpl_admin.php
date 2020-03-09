@@ -14,8 +14,10 @@ function draw_header()
     <meta charset="UTF-8">
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- custom bootstrap -->
+    <!-- custom css -->
     <link rel="stylesheet" href="../css/admin.css">
+    <!-- custom js -->
+    <script src="../js/admin.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -368,6 +370,13 @@ function draw_products()
 
       <?php draw_sidebar("products") ?>
 
+      <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="border-bottom mt-2">
+          <h1>Products</h1>
+        </div>
+
+      </main>
+
     </div>
   </div>
 <?php }
@@ -378,6 +387,13 @@ function draw_categories()
     <div class="row">
 
       <?php draw_sidebar("categories") ?>
+
+      <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="border-bottom mt-2">
+          <h1>Categories</h1>
+        </div>
+
+      </main>
 
     </div>
   </div>
@@ -390,6 +406,13 @@ function draw_orders()
 
       <?php draw_sidebar("orders") ?>
 
+      <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="border-bottom mt-2">
+          <h1>Orders</h1>
+        </div>
+
+      </main>
+
     </div>
   </div>
 <?php }
@@ -400,6 +423,13 @@ function draw_reviews()
     <div class="row">
 
       <?php draw_sidebar("reviews") ?>
+
+      <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="border-bottom mt-2">
+          <h1>Reviews</h1>
+        </div>
+
+      </main>
 
     </div>
   </div>
@@ -412,6 +442,13 @@ function draw_users()
 
       <?php draw_sidebar("users") ?>
 
+      <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="border-bottom mt-2">
+          <h1>Users</h1>
+        </div>
+
+      </main>
+
     </div>
   </div>
 <?php }
@@ -423,6 +460,13 @@ function draw_sales()
 
       <?php draw_sidebar("sales") ?>
 
+      <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="border-bottom mt-2">
+          <h1>Sales</h1>
+        </div>
+
+      </main>
+
     </div>
   </div>
 <?php }
@@ -433,6 +477,13 @@ function draw_newsletter()
     <div class="row">
 
       <?php draw_sidebar("newsletter") ?>
+
+      <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="border-bottom mt-2">
+          <h1>Newsletter</h1>
+        </div>
+
+      </main>
 
     </div>
   </div>
@@ -673,6 +724,42 @@ function draw_info()
     <div class="row">
 
       <?php draw_sidebar("info") ?>
+
+      <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap border-bottom mt-2">
+          <h1>General Information</h1>
+          <button onclick="editGeneralInfo()" type="button" class="btn btn-primary">
+            Edit Information
+          </button>
+        </div>
+        <div class="container mt-2">
+          <div id="infoSubmitButtons" class="d-flex mt-2 flex-row-reverse my-2 info-submit-buttons">
+            <button onclick="saveGeneralInfo()" type="button" class="btn btn-primary mx-1">
+              Save Information
+            </button>
+            <button onclick="cancelGeneralInfo()" type="button" class="btn btn-secondary mx-1">
+              Cancel
+            </button>
+          </div>
+          <div class="text-justify p-2" id="generalInfo">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates assumenda nihil inventore sed laudantium earum ipsa. Accusamus accusantium aliquid ducimus aperiam dicta, animi, dolor esse asperiores tenetur at voluptate aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore labore rem quo molestias! Nihil velit doloribus sint fugit repellat? Consectetur laborum tenetur similique. Ex laudantium eaque quibusdam dolorem eum voluptatum?
+            </p>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates assumenda nihil inventore sed laudantium earum ipsa. Accusamus accusantium aliquid ducimus aperiam dicta, animi, dolor esse asperiores tenetur at voluptate aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore labore rem quo molestias! Nihil velit doloribus sint fugit repellat? Consectetur laborum tenetur similique. Ex laudantium eaque quibusdam dolorem eum voluptatum?
+            </p>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates assumenda nihil inventore sed laudantium earum ipsa. Accusamus accusantium aliquid ducimus aperiam dicta, animi, dolor esse asperiores tenetur at voluptate aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore labore rem quo molestias! Nihil velit doloribus sint fugit repellat? Consectetur laborum tenetur similique. Ex laudantium eaque quibusdam dolorem eum voluptatum?
+            </p>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates assumenda nihil inventore sed laudantium earum ipsa. Accusamus accusantium aliquid ducimus aperiam dicta, animi, dolor esse asperiores tenetur at voluptate aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore labore rem quo molestias! Nihil velit doloribus sint fugit repellat? Consectetur laborum tenetur similique. Ex laudantium eaque quibusdam dolorem eum voluptatum?
+            </p>
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates assumenda nihil inventore sed laudantium earum ipsa. Accusamus accusantium aliquid ducimus aperiam dicta, animi, dolor esse asperiores tenetur at voluptate aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore labore rem quo molestias! Nihil velit doloribus sint fugit repellat? Consectetur laborum tenetur similique. Ex laudantium eaque quibusdam dolorem eum voluptatum?
+            </p>
+          </div>
+        </div>
+      </main>
 
     </div>
   </div>
