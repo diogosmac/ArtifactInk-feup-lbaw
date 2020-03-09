@@ -8,6 +8,12 @@
     color: white;
 }
 
+a.btn.btn-secondary:active{
+    background-color:transparent !important;
+    color: var(--main-red) !important;
+    border: 0px solid !important;
+}
+
 /* NAV BAR TOP */ 
 .navbar-custom-top { 
     background-color: var(--main-color);
@@ -72,6 +78,10 @@
     background-color: var(--main-white);
 }
 
+.navbar-custom-top .dropdown-item:active{
+    background-color: var(--main-red);
+}
+
 .navbar-custom-top input.form-control{
    margin-right: 0; 
    border-radius: .2em .0em .0em .2em;
@@ -82,7 +92,7 @@
     background-color: white;
     color: var(--text-color-black);
     border: none;
-    padding: .44rem .7rem;
+    padding: .435rem .7rem;
 }
 .navbar-custom-top button.btn.btn-outline-success:hover{
     background-color: var(--main-color-alpha);
@@ -102,6 +112,16 @@
     border: none;
     margin: .1em;
 }
+
+.list-cart li:hover{
+    background-color: var(--main-white);
+}
+
+.list-cart li:active{
+    background-color: var(--main-color-alpha);
+}
+
+
 
 .cart-item-list-img{
     width: 50px;
@@ -180,6 +200,7 @@
     color: var(--text-color-white);
 }
 
+
 /* Modify brand and text color */ 
 .navbar-custom-bot .navbar-brand, .navbar-custom-bot .navbar-text,.navbar-custom-bot a { 
     color: var(--text-color-black); 
@@ -232,6 +253,11 @@
     color: var(--text-color-black);
 }
 
+.navbar-custom-bot ul li div a:active{
+    background-color: var(--main-red);
+    color: var(--text-color-white);
+}
+
 .dropdown>.dropdown-menu {
     top: 200%;
     transition: 0.3s all ease-in-out;
@@ -245,4 +271,12 @@
 .dropdown>.dropdown-toggle:active {
     /*Without this, clicking will make it sticky*/
     pointer-events: none;
+  }
+
+  .card-link{
+      z-index: 100;
+  }
+
+  .card-img-link{
+      z-index: 90;
   }

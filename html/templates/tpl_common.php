@@ -24,9 +24,12 @@ function draw_header(){ ?>
             <link rel="stylesheet" type="text/css" href="../css/common.css">
             <link rel="stylesheet" type="text/css" href="../css/footer.css">
             <link rel="stylesheet" type="text/css" href="../css/navbar.css">
-            <link rel="stylesheet" type="text/css" href="../css/carousel.css">
+            <link rel="stylesheet" type="text/css" href="../css/carousel_card.css">
+            <link rel="stylesheet" type="text/css" href="../css/checkout.css">
 
             <script src="../script/product_card.js" defer></script>
+            <script src="../script/checkout_list.js" defer></script>
+
         </head>
         <body>
 
@@ -121,7 +124,7 @@ function draw_main_navbar($session){ ?>
                                     </div> 
                                  </div>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item checkout-button" href="#">Checkout</a>
+                                <a class="dropdown-item checkout-button" href="../pages/shopping_cart.php">View Cart</a>
                             </div>
                         </div>
                     </li>
