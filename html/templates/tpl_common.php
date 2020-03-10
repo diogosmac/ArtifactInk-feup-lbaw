@@ -44,12 +44,6 @@ function draw_header(){ ?>
 /**
  * Function to draw website navbar
  */
-function draw_navbar(){ ?>
-   <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark" id="navbar">
-        <a class="navbar-brand" href="#">Carousel</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-
 function draw_navbar($session){ ?>
     <div class="fixed-top "> 
         <?php 
