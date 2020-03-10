@@ -84,7 +84,7 @@ function draw_simple_navbar($session){ ?>
                                 <img class="profile-pic-bubble" src="https://www.diretoriodigital.com.br/wp-content/uploads/2013/05/Team-Member-3.jpg" alt="John Doe">
                                 <h5 class="dropdown-header">John Doe</h5>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">My Account</a>
+                                <a class="dropdown-item" href="/pages/profile.php">My Account</a>
                                 <a class="dropdown-item" href="#">My Order</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Sign Out</a>
@@ -196,7 +196,7 @@ function draw_main_navbar($session){ ?>
                                 <img class="profile-pic-bubble" src="https://www.diretoriodigital.com.br/wp-content/uploads/2013/05/Team-Member-3.jpg" alt="John Doe">
                                 <h5 class="dropdown-header">John Doe</h5>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">My Account</a>
+                                <a class="dropdown-item" href="/pages/profile.php">My Account</a>
                                 <a class="dropdown-item" href="#">My Order</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Sign Out</a>

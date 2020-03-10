@@ -108,13 +108,13 @@ draw_navbar(true);
 <?php } ?>
 
 <main>
-    <section id="profile-page">
-        <div class="container">
+    <div class="container">
+        <section id="profile-page">
             <div class="row">
                 <?php draw_profile_page(); ?>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </main>
-
+    
 <?php draw_footer(); ?>
