@@ -1,6 +1,8 @@
 <?php
 include_once("../templates/tpl_common.php");
 include_once("../templates/tpl_home.php");
+include_once("../templates/tpl_filters.php");
+
 
 
 draw_header();
@@ -33,18 +35,26 @@ draw_navbar(true);
             </ul>
         </div>
     </div>
+    <div class="d-md-none my-2">
+        <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#mobileFilters" aria-expanded="false" aria-controls="mobileFilters">
+            Filters
+        </button>
+    </div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3">
+            <div id="filters" class="d-none d-md-block col-md-3 my-2">
                 <?php draw_filters(); ?>
             </div>
-            <section class="col-lg-9">
+            <div id="mobileFilters" class="collapse d-md-none col-md-3 my-2">
+                <?php draw_filters(); ?>
+            </div>
+            <section class="col-md-9">
                 <div class="tab-content mx-auto" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                         <div class="row">
-                            <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center"><?php draw_card(); ?></div>
-                            <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center"><?php draw_card(); ?></div>
-                            <div class="col-12  col-sm-6 col-md-4 d-flex justify-content-center"><?php draw_card(); ?></div>
+                            <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center"><?php draw_card(); ?></div>
+                            <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center"><?php draw_card(); ?></div>
+                            <div class="col-12  col-sm-6 col-lg-4 d-flex justify-content-center"><?php draw_card(); ?></div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">

@@ -1,7 +1,7 @@
 <?php 
 function draw_filters()
 { ?>
-    <aside class="d-flex flex-column justify-content-center bg-light rounded p-2" style="width: 14em">
+    <aside class="d-flex flex-column justify-content-center bg-light rounded p-2">
         <h4 class="text-center">Filters</h4>
         <div>
             <label class="mt-2" for="categories">Categories</label>
