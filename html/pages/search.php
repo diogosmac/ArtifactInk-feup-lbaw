@@ -36,7 +36,7 @@ draw_navbar(true);
         </div>
     </div>
     <div class="d-md-none my-2">
-        <button class="btn btn-primary collapsed" type="button" data-toggle="collapse" data-target="#mobileFilters" aria-expanded="false" aria-controls="mobileFilters">
+        <button class="btn btn-primary button collapsed" type="button" data-toggle="collapse" data-target="#mobileFilters" aria-expanded="false" aria-controls="mobileFilters">
             Filters
         </button>
     </div>

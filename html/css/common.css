@@ -25,3 +25,20 @@
 body {
     padding-top: 100px;
 }
+
+.a_link {
+    color: var(--main-red);
+}
+
+.button {
+    background-color: var(--main-red-alpha);
+    color: var(--text-color-white);
+    border-color: var(--main-red);
+}
+
+.button:hover {
+    background-color: var(--main-red);
+    color: var(--text-color-white);
+    border-color: var(--main-red);
+
+}

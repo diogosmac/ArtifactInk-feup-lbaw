@@ -14,7 +14,7 @@ function draw_review()
                         4/5 <i class="material-icons pl-1" style="color: gold;">star</i>
                     </div>
                     12/05/2019
-                    <a href="" class="py-2 text-center">Report Review</a>
+                    <a href="" class="py-2 text-center a_link">Report Review</a>
                 </div>
             </div>
             <div class="col-8">
@@ -36,7 +36,7 @@ function draw_review()
                         4/5 <i class="material-icons pl-1" style="color: gold;">star</i>
                     </div>
                     12/05/2019
-                    <a href="" class="py-2 text-center">Report Review</a>
+                    <a href="" class="py-2 text-center a_link">Report Review</a>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@ function draw_review_popup()
             </div>
             <input class="form-control m-1" type="text" placeholder="Subject">
             <textarea class="form-control m-1" rows="6" placeholder="Tell us what you think"></textarea>
-            <button type="button" class="btn btn-primary w-50 mt-2">Submit</button>
+            <button type="button" class="btn btn-primary button w-50 mt-2">Submit</button>
         </div>
     </div>
 <?php
