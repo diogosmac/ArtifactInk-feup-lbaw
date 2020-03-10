@@ -331,32 +331,32 @@ function draw_home()
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">Products</th>
-                  <td>234</td>
-                  <td>Product "Dynamic Black Ink" #45 is out of stock</td>
-                  <td>Sunday, 08-Mar-20 12:34:17</td>
-                  <td><button type="button" class="btn btn-link py-0">Clear</button></td>
+                  <th class="align-middle" scope="row">Products</th>
+                  <td class="align-middle">234</td>
+                  <td class="align-middle">Product "Dynamic Black Ink" #45 is out of stock</td>
+                  <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
+                  <td class="align-middle"><button type="button" class="btn btn-link py-0">Clear</button></td>
                 </tr>
                 <tr>
-                  <th scope="row">Review</th>
-                  <td>134</td>
-                  <td>User miguel123 made a review on order #541</td>
-                  <td>Sunday, 08-Mar-20 12:34:17</td>
-                  <td><button type="button" class="btn btn-link py-0">Clear</button></td>
+                  <th class="align-middle" scope="row">Review</th>
+                  <td class="align-middle">134</td>
+                  <td class="align-middle">User miguel123 made a review on order #541</td>
+                  <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
+                  <td class="align-middle"><button type="button" class="btn btn-link py-0">Clear</button></td>
                 </tr>
                 <tr>
-                  <th scope="row">Order</th>
-                  <td>541</td>
-                  <td>User miguel123 made a new order</td>
-                  <td>Sunday, 08-Mar-20 12:34:17</td>
-                  <td><button type="button" class="btn btn-link py-0">Clear</button></td>
+                  <th class="align-middle" scope="row">Order</th>
+                  <td class="align-middle">541</td>
+                  <td class="align-middle">User miguel123 made a new order</td>
+                  <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
+                  <td class="align-middle"><button type="button" class="btn btn-link py-0">Clear</button></td>
                 </tr>
                 <tr>
-                  <th scope="row">Users</th>
-                  <td>675</td>
-                  <td>User miguel123 just signed up</td>
-                  <td>Sunday, 08-Mar-20 12:34:17</td>
-                  <td><button type="button" class="btn btn-link py-0">Clear</button></td>
+                  <th class="align-middle" scope="row">Users</th>
+                  <td class="align-middle">675</td>
+                  <td class="align-middle">User miguel123 just signed up</td>
+                  <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
+                  <td class="align-middle"><button type="button" class="btn btn-link py-0">Clear</button></td>
                 </tr>
               </tbody>
             </table>
@@ -703,7 +703,7 @@ function draw_users()
   </div>
 <?php }
 
-function draw_sales()
+function draw_add_sale()
 { ?>
   <div class="container-fluid">
     <div class="row">
@@ -714,18 +714,32 @@ function draw_sales()
         <div class="container">
 
           <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap border-bottom mt-2">
-            <h1>Sales</h1>
+            <h1>Add Sale</h1>
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addQuestionModal">
-              New Sale
+              Submit
             </button>
           </div>
 
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputTitle">Title</label>
+                <input type="text" class="form-control" id="inputTitle" placeholder="Write sale title...">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="inputStartDate">Start Date</label>
+                <input type="date" class="form-control" id="inputStartDate">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="inputEndDate">End Date</label>
+                <input type="date" class="form-control" min="0" id="inputEndDate">
+              </div>
+            </div>
+          </form>
+
           <div class="mx-auto mt-2">
-
             <div class="row">
-
               <div class="col-md-6 col-sm-12">
-
                 <div class="mt-2">
                   <h3>Add Items</h3>
                 </div>
@@ -853,6 +867,99 @@ function draw_sales()
               </div>
             </div>
           </div>
+
+        </div>
+      </main>
+
+    </div>
+  </div>
+<?php }
+
+function draw_sales()
+{ ?>
+  <div class="container-fluid">
+    <div class="row">
+
+      <?php draw_sidebar("sales") ?>
+
+      <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="container">
+
+          <div class="mb-4 border-bottom mt-2">
+            <h1>Sales</h1>
+          </div>
+
+          <div class="d-flex align-items-center">
+            <div class="input-group my-3 mr-sm-2">
+              <input class="form-control" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter</button>
+                <div class="dropdown-menu p-4">
+                  <strong>IMPLEMENT FILTERING</strong>
+                </div>
+              </div>
+            </div>
+            <div class="flex-shrink-0">
+              <button type="button" class="btn btn-primary" onclick="location.href='/admin/add_sale.php'">
+                Add Sale
+              </button>
+            </div>
+          </div>
+
+          <table class="table table-striped text-center">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">End Date</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th class="align-middle" scope="row">4</th>
+                <td class="align-middle">Inktober Fest</td>
+                <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
+                <td class="align-middle">Sunday, 15-Mar-20 12:34:17</td>
+                <td class="align-middle">
+                  <button type="button" class="btn btn-secondary mx-2" onclick="location.href='/admin/add_sale.php'">Edit</button>
+                  <button type="button" class="btn btn-danger mx-2">Remove</button>
+                </td>
+              </tr>
+              <tr>
+                <th class="align-middle" scope="row">3</th>
+                <td class="align-middle">Inktober Fest</td>
+                <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
+                <td class="align-middle">Sunday, 15-Mar-20 12:34:17</td>
+                <td class="align-middle">
+                  <button type="button" class="btn btn-secondary mx-2" onclick="location.href='/admin/add_sale.php'">Edit</button>
+                  <button type="button" class="btn btn-danger mx-2">Remove</button>
+                </td>
+              </tr>
+              <tr>
+                <th class="align-middle" scope="row">2</th>
+                <td class="align-middle">Inktober Fest</td>
+                <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
+                <td class="align-middle">Sunday, 15-Mar-20 12:34:17</td>
+                <td class="align-middle">
+                  <button type="button" class="btn btn-secondary mx-2" onclick="location.href='/admin/add_sale.php'">Edit</button>
+                  <button type="button" class="btn btn-danger mx-2">Remove</button>
+                </td>
+              </tr>
+              <tr>
+                <th class="align-middle" scope="row">1</th>
+                <td class="align-middle">Inktober Fest</td>
+                <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
+                <td class="align-middle">Sunday, 15-Mar-20 12:34:17</td>
+                <td class="align-middle">
+                  <button type="button" class="btn btn-secondary mx-2" onclick="location.href='/admin/add_sale.php'">Edit</button>
+                  <button type="button" class="btn btn-danger mx-2">Remove</button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
 
         </div>
       </main>
