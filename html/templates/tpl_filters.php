@@ -39,7 +39,7 @@ function draw_filters()
             <label for="maxPrice">Maximum Price</label>
             <input type="range" class="custom-range" value="100" min="0" max="500" step="2" id="maxPrice">
         </div>
-        <button class="btn btn-primary my-2" type="submit">Apply</button>
+        <button class="btn btn-primary button my-2" type="submit">Apply</button>
     </aside>
 <?php
 }

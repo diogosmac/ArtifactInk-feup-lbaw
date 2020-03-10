@@ -13,9 +13,9 @@ draw_navbar(true);
     <section id="product" class="mx-auto">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-white mt-2 mb-1">
-                <li class="breadcrumb-item"><a href="#">Ink</a></li>
-                <li class="breadcrumb-item"><a href="#">Subcat</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Black Ink</li>
+                <li class="breadcrumb-item"><a href="#" class="a_link">Ink</a></li>
+                <li class="breadcrumb-item"><a href="#" class="a_link">Subcat</a></li>
+                <li class="breadcrumb-item active" aria-current="page" class="a_link">Black Ink</li>
             </ol>
         </nav>
         <?php
@@ -32,8 +32,8 @@ draw_navbar(true);
     <section id="specs" class="mx-auto">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                <a class="nav-item nav-link active" id="nav-specs-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Technical Specs</a>
-                <a class="nav-item nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Reviews</a>
+                <a class="nav-item nav-link active a_link" id="nav-specs-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Technical Specs</a>
+                <a class="nav-item nav-link a_link" id="nav-reviews-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Reviews</a>
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
@@ -57,7 +57,7 @@ draw_navbar(true);
 
                     </div>
                     <div class="d-flex align-items-center">
-                        <button type="button" class="btn btn-primary">Write a review</button>
+                        <button type="button" class="btn btn-primary button">Write a review</button>
                     </div>
                 </div>
                 <div class="border-top border-dark my-4">
@@ -114,7 +114,7 @@ function draw_product()
                     <i class="material-icons" style="color: gold;">star</i>
                     <i class="material-icons" style="color: gold;">star_half</i>
                     <i class="material-icons" style="color: gold;">star_outline</i>
-                    <a href="#specs" class="px-2"> 2 reviews</a>
+                    <a href="#specs" class="px-2 a_link"> 2 reviews</a>
                 </div>
                 <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
                     <h4>Available</h4>
@@ -135,9 +135,9 @@ function draw_product()
                     <h1>17,80€</h1>
                 </div>
                 <div class="d-flex flex-row justify-content-around bd-highlight my-2">
-                    <button type="button" class="btn btn-outline-danger">
+                    <button type="button" class="btn btn-outline-danger button">
                         <!--<i class="material-icons" style="color: red;">favorite</i>-->Add to wishlist</button>
-                    <input class="btn btn-primary" type="submit" value="Add to Cart">
+                    <input class="btn btn-primary button" type="submit" value="Add to Cart">
                 </div>
 
             </div>
