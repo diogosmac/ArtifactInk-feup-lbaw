@@ -909,7 +909,7 @@ function draw_info()
                 Cancel
               </button>
             </div>
-            <div class="text-justify p-2" id="generalInfo">
+            <div class="text-justify" id="generalInfo">
               <p>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates assumenda nihil inventore sed laudantium earum ipsa. Accusamus accusantium aliquid ducimus aperiam dicta, animi, dolor esse asperiores tenetur at voluptate aliquam. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore labore rem quo molestias! Nihil velit doloribus sint fugit repellat? Consectetur laborum tenetur similique. Ex laudantium eaque quibusdam dolorem eum voluptatum?
               </p>
