@@ -97,6 +97,7 @@ div#carouselCardSales{
     top: 25px;
     left: 0px;
     border-radius: 0%;
+    z-index: 100;
 }
 
 .old-price{
