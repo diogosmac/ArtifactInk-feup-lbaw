@@ -75,7 +75,7 @@ draw_navbar(true);
     
     <hr class="w-75">
     <section id="related" class="mx-auto">
-        <?php draw_card_carousel(); ?>
+        <?php draw_card_carousel('featured'); ?>
     </section>
     <hr class="w-75">
     <section id="specs" class="mx-auto">
