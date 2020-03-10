@@ -387,7 +387,7 @@ function draw_footer(){?>
                                 <a href="#" class="list-inline-item font-weight-normal  text-dark ">About us</a>
                             </li>
                             <li>
-                                <a href="#" class="list-inline-item font-weight-normal text-dark ">FAQ</a>
+                                <a href="../pages/faq.php" class="list-inline-item font-weight-normal text-dark ">FAQ</a>
                             </li>
                             <li>
                                 <a href="#" class="list-inline-item font-weight-normal text-dark ">Payments and Orders</a>
