@@ -33,8 +33,10 @@ draw_header();
                     <h5 class="m-0 text-center">
                         <button class="btn btn-block" type="button" data-toggle="collapse" data-target="#profile-dropdown-collapse" aria-expanded="true" aria-controls="profile-dropdown-collapse">
                             <h5 class="my-1" id="profile-dropdown-title">
-                                John Doe
-                                <i class="material-icons icon-align">arrow_drop_down</i>
+                                <strong>
+                                    John Doe
+                                    <i class="material-icons icon-align">arrow_drop_down</i>
+                                </strong>
                             </h5>
                         </button>
                     </h5>

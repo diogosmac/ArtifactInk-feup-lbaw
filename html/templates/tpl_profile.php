@@ -16,8 +16,8 @@
             </div>
     
             <div class="d-none d-md-block my-4">
-                <div class="row align-items-center">
-                    <div class="col" id="profile-photo">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-md-auto" id="profile-photo">
                         <img src="https://i1.rgstatic.net/ii/profile.image/731946594365440-1551521075108_Q512/Manuel_Torres42.jpg" alt="Person" class="img-fluid">
                     </div>
                     <div class="col-md-auto" id="profile-edit-button">

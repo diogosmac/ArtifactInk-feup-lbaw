@@ -28,6 +28,7 @@ function draw_header(){ ?>
             <link rel="stylesheet" type="text/css" href="../css/navbar.css">
             <link rel="stylesheet" type="text/css" href="../css/carousel_card.css">
             <link rel="stylesheet" type="text/css" href="../css/checkout.css">
+            <link rel="stylesheet" type="text/css" href="../css/profile.css">
 
             <script src="../script/product_card.js" defer></script>
             <script src="../script/checkout_list.js" defer></script>
