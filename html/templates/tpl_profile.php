@@ -4,7 +4,7 @@
     <section id="profile-info">
         <div class="col px-0">
             <div class="row justify-content-center d-md-none">
-                <button class="btn btn-primary">Edit Profile</button>
+                <button class="btn profile-btn">Edit Profile</button>
             </div>
 
             <div class="row" id="profile-tag">
@@ -21,7 +21,7 @@
                         <img src="https://i1.rgstatic.net/ii/profile.image/731946594365440-1551521075108_Q512/Manuel_Torres42.jpg" alt="Person" class="img-fluid">
                     </div>
                     <div class="col-md-auto" id="profile-edit-button">
-                        <button class="btn btn-primary my-2">Edit Profile</button>
+                        <button class="btn my-2 profile-btn">Edit Profile</button>
                     </div>
                 </div>
             </div>
@@ -197,7 +197,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                     </div>
                 </div>
                 <div class="col-md-auto">
-                    <button class="btn float-right btn-primary" id="wishlist-add-to-cart">ADD TO CART</button>
+                    <button class="btn float-right profile-btn" id="wishlist-add-to-cart">ADD TO CART</button>
                 </div>
             </div>
         </div>

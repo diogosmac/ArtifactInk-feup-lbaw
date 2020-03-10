@@ -3,7 +3,9 @@
 include_once("../templates/tpl_common.php");
 include_once("../templates/tpl_profile.php");
 
+
 draw_header();
+draw_navbar(true);
 ?>
 
 <?php function draw_profile_page() { ?>
@@ -12,16 +14,16 @@ draw_header();
     <div class="d-none d-md-block" id="profile-nav-desktop">
         <div class="col-md-auto col-xs-12 my-3 px-0 nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <h5 class="text-center">John Doe</h5>
-            <a class="nav-link active text-center" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">
+            <a class="nav-link active text-center profile-tab" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">
                 <i class="material-icons icon-align">person</i>&nbsp;Profile
             </a>
-            <a class="nav-link text-center" id="v-pills-reviews-tab" data-toggle="pill" href="#v-pills-reviews" role="tab" aria-controls="v-pills-reviews" aria-selected="false">
+            <a class="nav-link text-center profile-tab" id="v-pills-reviews-tab" data-toggle="pill" href="#v-pills-reviews" role="tab" aria-controls="v-pills-reviews" aria-selected="false">
                 <i class="material-icons icon-align">menu_book</i>&nbsp;Reviews
             </a>
-            <a class="nav-link text-center" id="v-pills-wishlist-tab" data-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-wishlist" aria-selected="false">
+            <a class="nav-link text-center profile-tab" id="v-pills-wishlist-tab" data-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-wishlist" aria-selected="false">
                 <i class="material-icons icon-align">favorite</i>&nbsp;Wishlist
             </a>
-            <a class="nav-link text-center" id="v-pills-history-tab" data-toggle="pill" href="#v-pills-history" role="tab" aria-controls="v-pills-history" aria-selected="false">
+            <a class="nav-link text-center profile-tab" id="v-pills-history-tab" data-toggle="pill" href="#v-pills-history" role="tab" aria-controls="v-pills-history" aria-selected="false">
                 <i class="material-icons icon-align">shopping_cart</i>&nbsp;History
             </a>
         </div>
@@ -44,16 +46,16 @@ draw_header();
                 <div id="profile-dropdown-collapse" class="collapse hide" aria-labelledby="profile-dropdown-header" data-parent="#profile-dropdown">
                     <div class="card-body p-0">
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                            <a class="nav-link active text-center" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">
+                            <a class="nav-link active text-center profile-tab" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">
                                 <i class="material-icons icon-align">person</i>&nbsp;Profile
                             </a>
-                            <a class="nav-link text-center" id="v-pills-reviews-tab" data-toggle="pill" href="#v-pills-reviews" role="tab" aria-controls="v-pills-reviews" aria-selected="false">
+                            <a class="nav-link text-center profile-tab" id="v-pills-reviews-tab" data-toggle="pill" href="#v-pills-reviews" role="tab" aria-controls="v-pills-reviews" aria-selected="false">
                                 <i class="material-icons icon-align">menu_book</i>&nbsp;Reviews
                             </a>
-                            <a class="nav-link text-center" id="v-pills-wishlist-tab" data-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-wishlist" aria-selected="false">
+                            <a class="nav-link text-center profile-tab" id="v-pills-wishlist-tab" data-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-wishlist" aria-selected="false">
                                 <i class="material-icons icon-align">favorite</i>&nbsp;Wishlist
                             </a>
-                            <a class="nav-link text-center" id="v-pills-history-tab" data-toggle="pill" href="#v-pills-history" role="tab" aria-controls="v-pills-history" aria-selected="false">
+                            <a class="nav-link text-center profile-tab" id="v-pills-history-tab" data-toggle="pill" href="#v-pills-history" role="tab" aria-controls="v-pills-history" aria-selected="false">
                                 <i class="material-icons icon-align">shopping_cart</i>&nbsp;History
                             </a>
                         </div>
@@ -115,8 +117,4 @@ draw_header();
     </section>
 </main>
 
-<?php
-
-draw_footer();
-
-?>
+<?php draw_footer(); ?>
