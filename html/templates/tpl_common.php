@@ -37,6 +37,7 @@ function draw_header(){ ?>
             <script src="../script/product_card.js" defer></script>
             <script src="../script/checkout_list.js" defer></script>
             <script src="../script/payment.js" defer></script>
+            <script src="../script/address.js" defer></script>
 
         </head>
         <body>
@@ -114,7 +115,7 @@ function draw_main_navbar($session){ ?>
                 <li class="nav-item">
                     <form class="form-inline mt-2 mt-md-0">
                         <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success btn" type="submit">
+                        <button class="btn btn-outline-success btn" id="btn-search"type="submit">
                             <i class="fas fa-search"></i>
                         </button>
                     </form>
