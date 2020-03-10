@@ -166,7 +166,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
                 </div>
             </div>
             <div class="col-md-auto float-right" id="wishlist-product-remove">
-                <button type="button" class="btn float-right btn-outline-danger"><i class="material-icons" style="color: red;">favorite</i></button>
+                <button type="button" class="btn float-right btn-outline-danger"><i class="fas fa-trash"></i></button>
             </div>
         </div>
         <div class="d-flex flex-row justify-content-between my-1">
