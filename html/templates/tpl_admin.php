@@ -585,7 +585,7 @@ function draw_add_product()
 
                 <!-- Standar Form -->
                 <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
-                <label for="">Upload pictures</label>
+                  <label for="">Upload pictures</label>
                   <div class="form-inline">
                     <div class="form-group">
                       <input type="file" name="files[]" id="js-upload-files" multiple>
@@ -713,8 +713,145 @@ function draw_sales()
       <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
         <div class="container">
 
-          <div class="border-bottom mt-2">
+          <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap border-bottom mt-2">
             <h1>Sales</h1>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addQuestionModal">
+              New Sale
+            </button>
+          </div>
+
+          <div class="mx-auto mt-2">
+
+            <div class="row">
+
+              <div class="col-md-6 col-sm-12">
+
+                <div class="mt-2">
+                  <h3>Add Items</h3>
+                </div>
+                <div class="input-group my-3 mr-sm-2">
+                  <input class="form-control" placeholder="Search" aria-label="Search">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter</button>
+                    <div class="dropdown-menu p-4">
+                      <strong>IMPLEMENT FILTERING</strong>
+                    </div>
+                  </div>
+                </div>
+                <table class="table table-striped table-hover text-center">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Photo</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Price</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th class="align-middle" scope="row">234</th>
+                      <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
+                      <td class="align-middle">Dynamic Black Ink 100ml</td>
+                      <td class="align-middle">17,99€</td>
+                      <td class="align-middle"><button type="button" class="btn btn-primary">Add</button></td>
+                    </tr>
+                    <tr>
+                      <th class="align-middle" scope="row">234</th>
+                      <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
+                      <td class="align-middle">Dynamic Black Ink 100ml</td>
+                      <td class="align-middle">17,99€</td>
+                      <td class="align-middle"><button type="button" class="btn btn-primary">Add</button></td>
+                    </tr>
+                    <tr>
+                      <th class="align-middle" scope="row">234</th>
+                      <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
+                      <td class="align-middle">Dynamic Black Ink 100ml</td>
+                      <td class="align-middle">17,99€</td>
+                      <td class="align-middle"><button type="button" class="btn btn-primary">Add</button></td>
+                    </tr>
+                    <tr>
+                      <th class="align-middle" scope="row">234</th>
+                      <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
+                      <td class="align-middle">Dynamic Black Ink 100ml</td>
+                      <td class="align-middle">17,99€</td>
+                      <td class="align-middle"><button type="button" class="btn btn-primary">Add</button></td>
+                    </tr>
+                    <tr>
+                      <th class="align-middle" scope="row">234</th>
+                      <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
+                      <td class="align-middle">Dynamic Black Ink 100ml</td>
+                      <td class="align-middle">17,99€</td>
+                      <td class="align-middle"><button type="button" class="btn btn-primary">Add</button></td>
+                    </tr>
+                    <tr>
+                      <th class="align-middle" scope="row">234</th>
+                      <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
+                      <td class="align-middle">Dynamic Black Ink 100ml</td>
+                      <td class="align-middle">17,99€</td>
+                      <td class="align-middle"><button type="button" class="btn btn-primary">Add</button></td>
+                    </tr>
+                    <tr>
+                      <th class="align-middle" scope="row">234</th>
+                      <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
+                      <td class="align-middle">Dynamic Black Ink 100ml</td>
+                      <td class="align-middle">17,99€</td>
+                      <td class="align-middle"><button type="button" class="btn btn-primary">Add</button></td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <div class="mt-2">
+                  <h3>Item List</h3>
+                </div>
+                <div class="input-group my-3 mr-sm-2">
+                  <input class="form-control" placeholder="Search" aria-label="Search">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter</button>
+                    <div class="dropdown-menu p-4">
+                      <strong>IMPLEMENT FILTERING</strong>
+                    </div>
+                  </div>
+                </div>
+                <table class="table table-striped table-hover text-center">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Photo</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Price</th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th class="align-middle" scope="row">234</th>
+                      <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
+                      <td class="align-middle">Dynamic Black Ink 100ml</td>
+                      <td class="align-middle">17,99€</td>
+                      <td class="align-middle"><button type="button" class="btn btn-danger">Remove</button></td>
+                    </tr>
+                    <tr>
+                      <th class="align-middle" scope="row">234</th>
+                      <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
+                      <td class="align-middle">Dynamic Black Ink 100ml</td>
+                      <td class="align-middle">17,99€</td>
+                      <td class="align-middle"><button type="button" class="btn btn-danger">Remove</button></td>
+                    </tr>
+                    <tr>
+                      <th class="align-middle" scope="row">234</th>
+                      <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
+                      <td class="align-middle">Dynamic Black Ink 100ml</td>
+                      <td class="align-middle">17,99€</td>
+                      <td class="align-middle"><button type="button" class="btn btn-danger">Remove</button></td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -761,7 +898,15 @@ function draw_newsletter()
                   <div class="mt-2">
                     <h3>Add Items</h3>
                   </div>
-                  <input class="form-control mr-sm-2 my-3" type="search" placeholder="Search" aria-label="Search">
+                  <div class="input-group my-3 mr-sm-2">
+                    <input class="form-control" placeholder="Search" aria-label="Search">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter</button>
+                      <div class="dropdown-menu p-4">
+                        <strong>IMPLEMENT FILTERING</strong>
+                      </div>
+                    </div>
+                  </div>
                   <table class="table table-striped table-hover text-center">
                     <thead>
                       <tr>
@@ -830,7 +975,15 @@ function draw_newsletter()
                   <div class="mt-2">
                     <h3>Item List</h3>
                   </div>
-                  <input class="form-control mr-sm-2 my-3" type="search" placeholder="Search" aria-label="Search">
+                  <div class="input-group my-3 mr-sm-2">
+                    <input class="form-control" placeholder="Search" aria-label="Search">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter</button>
+                      <div class="dropdown-menu p-4">
+                        <strong>IMPLEMENT FILTERING</strong>
+                      </div>
+                    </div>
+                  </div>
                   <table class="table table-striped table-hover text-center">
                     <thead>
                       <tr>
