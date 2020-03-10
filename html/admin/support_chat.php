@@ -113,6 +113,28 @@ draw_navbar();
           <div class="col-md-8 px-1">
             <div class="chat-messenger">
               
+              <div class="chat-messenger-area border-bottom">
+
+              </div>
+
+              <div class="chat-messenger-send">
+                <form class="d-flex justify-content-center align-items-center chat-messenger-form">
+                  <div class="row w-100">
+                    <div class="col-10">
+                      <input type="text" class="form-control" placeholder="Write message">
+                    </div>
+                    <div class="col-2">
+                      <button class="btn btn-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send">
+                          <line x1="22" y1="2" x2="11" y2="13"></line>
+                          <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                        Send
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
 

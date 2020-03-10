@@ -105,3 +105,17 @@ body {
     height: 40rem;
 }
 
+.chat-messenger-area {
+    height: 85%;
+    overflow-y: scroll;
+}
+
+.chat-messenger-send {
+    height: 15%;
+    background-color: #f0f0f0;
+}
+
+
+.chat-messenger-form {
+    height: 100%;
+}
