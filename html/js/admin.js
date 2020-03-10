@@ -23,6 +23,8 @@ function saveGeneralInfo() {
     let submitButtons = document.getElementById("infoSubmitButtons");
     submitButtons.classList.replace("d-flex", "info-submit-buttons");
     submitButtons.style.display = "none !important";
+
+    generalInfo = infoArea.innerHTML;
 }
 
 function cancelGeneralInfo() {
@@ -39,6 +41,10 @@ function cancelGeneralInfo() {
     infoArea.innerHTML = generalInfo;
 }
 
-window.onload = function() {
+window.onload = function () {
     generalInfo = document.getElementById("generalInfo").innerHTML;
 }
+
+/**
+ * file upload -> https://bootsnipp.com/snippets/D7MvX
+ */
