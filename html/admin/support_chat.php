@@ -112,8 +112,86 @@ draw_navbar();
 
           <div class="col-md-8 px-1">
             <div class="chat-messenger">
-              
+
               <div class="chat-messenger-area border-bottom">
+
+                <div class="border-bottom card p-2 m-1 chat-message-card">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col-md-1">
+                      <img src="https://jet7.pt/wp-content/uploads/2019/10/img_414x371242019_04_09_21_12_15_195560.jpg" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-11">
+                      <div class="card-body chat-message-card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, beatae, explicabo sequi quae perspiciatis esse unde eaque repellendus itaque hic aliquam at, temporibus sapiente iure laudantium odit deserunt iusto voluptatum..</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="border-bottom card p-2 m-1 chat-message-card">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col-md-11">
+                      <div class="card-body chat-message-card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, beatae, explicabo sequi quae perspiciatis esse unde eaque repellendus itaque hic aliquam at, temporibus sapiente iure laudantium odit deserunt iusto voluptatum..</p>
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <img src="https://jet7.pt/wp-content/uploads/2019/10/img_414x371242019_04_09_21_12_15_195560.jpg" class="card-img" alt="...">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="border-bottom card p-2 m-1 chat-message-card">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col-md-1">
+                      <img src="https://jet7.pt/wp-content/uploads/2019/10/img_414x371242019_04_09_21_12_15_195560.jpg" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-11">
+                      <div class="card-body chat-message-card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, beatae, explicabo sequi quae perspiciatis esse unde eaque repellendus itaque hic aliquam at, temporibus sapiente iure laudantium odit deserunt iusto voluptatum..</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="border-bottom card p-2 m-1 chat-message-card">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col-md-11">
+                      <div class="card-body chat-message-card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, beatae, explicabo sequi quae perspiciatis esse unde eaque repellendus itaque hic aliquam at, temporibus sapiente iure laudantium odit deserunt iusto voluptatum..</p>
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <img src="https://jet7.pt/wp-content/uploads/2019/10/img_414x371242019_04_09_21_12_15_195560.jpg" class="card-img" alt="...">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="border-bottom card p-2 m-1 chat-message-card">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col-md-1">
+                      <img src="https://jet7.pt/wp-content/uploads/2019/10/img_414x371242019_04_09_21_12_15_195560.jpg" class="card-img" alt="...">
+                    </div>
+                    <div class="col-md-11">
+                      <div class="card-body chat-message-card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, beatae, explicabo sequi quae perspiciatis esse unde eaque repellendus itaque hic aliquam at, temporibus sapiente iure laudantium odit deserunt iusto voluptatum..</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="border-bottom card p-2 m-1 chat-message-card">
+                  <div class="row align-items-center no-gutters">
+                    <div class="col-md-11">
+                      <div class="card-body chat-message-card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, beatae, explicabo sequi quae perspiciatis esse unde eaque repellendus itaque hic aliquam at, temporibus sapiente iure laudantium odit deserunt iusto voluptatum..</p>
+                      </div>
+                    </div>
+                    <div class="col-md-1">
+                      <img src="https://jet7.pt/wp-content/uploads/2019/10/img_414x371242019_04_09_21_12_15_195560.jpg" class="card-img" alt="...">
+                    </div>
+                  </div>
+                </div>
 
               </div>
 
