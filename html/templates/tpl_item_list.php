@@ -45,7 +45,7 @@ function draw_cart_list(){ ?>
                  <button class="btn return-btn">Keep Shopping</button>
             </div>
             <div>
-                <button class="btn checkout-btn">Checkout</button>
+                <a class="btn checkout-btn" href="../pages/checkout.php?p=1">Checkout</a>
             </div>
         </div>
     </div>

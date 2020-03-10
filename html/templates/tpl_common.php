@@ -10,6 +10,7 @@ function draw_header(){ ?>
             <title>Artifact Ink</title>
             <link rel="icon" href="../images/single_logo.svg">
             <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
             <!-- bootstrap -->
             <link rel="stylesheet" href="../css/style.css">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -35,9 +36,11 @@ function draw_header(){ ?>
 
             <script src="../script/product_card.js" defer></script>
             <script src="../script/checkout_list.js" defer></script>
+            <script src="../script/payment.js" defer></script>
 
         </head>
         <body>
+            <div class="main-container">
 
 <?php } 
 
@@ -50,6 +53,47 @@ function draw_navbar($session){ ?>
             draw_main_navbar($session); 
             draw_secondary_navbar();
         ?>
+    </div>
+<?php }
+
+function draw_simple_navbar($session){ ?>
+<div class="fixed-top "> 
+     <nav class="navbar navbar-expand-md navbar-custom-top">
+        <a class="navbar-brand" href="../pages/home.php">
+            <img class="d-inline-block align-top" src="../images/artifact_ink_logo_white.svg" alt="ArtifactInk" height="40" width="50">
+            <img class="d-inline-block align-top" src="../images/artifact_ink_letters_white.svg" alt="ArtifactInk" height="40" width="125">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTopSupportedContent" aria-controls="navbarTopSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"> 
+                <i class="fas fa-bars"></i> 
+            </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTopSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <?php if($session){ ?>
+                    <li class="nav-item">
+                        <div class="btn-group">
+                            <a class="btn " href="#" role="button" id="dropdownMenuAccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span>
+                                    <i class="fas fa-user"></i>
+                                </span>
+                                John Doe
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuAccount">
+                                <img class="profile-pic-bubble" src="https://www.diretoriodigital.com.br/wp-content/uploads/2013/05/Team-Member-3.jpg" alt="John Doe">
+                                <h5 class="dropdown-header">John Doe</h5>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">My Account</a>
+                                <a class="dropdown-item" href="#">My Order</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Sign Out</a>
+                            </div>
+                        </div>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
+    </nav> 
     </div>
 <?php }
 
@@ -92,7 +136,7 @@ function draw_main_navbar($session){ ?>
                                     <i class="fas fa-shopping-cart"></i>
                                 </span>
                             </a>
-                            <div class="dropdown-menu dropdown-cart" aria-labelledby="dropdownMenuCart">
+                            <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
                                 <div class="panel-body">
                                     <ul class="list-group list-cart">
                                         <a class="item-link-cart" href="#"> 
@@ -145,7 +189,7 @@ function draw_main_navbar($session){ ?>
                                 </span>
                                 John Doe
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuAccount">
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuAccount">
                                 <img class="profile-pic-bubble" src="https://www.diretoriodigital.com.br/wp-content/uploads/2013/05/Team-Member-3.jpg" alt="John Doe">
                                 <h5 class="dropdown-header">John Doe</h5>
                                 <div class="dropdown-divider"></div>
@@ -155,9 +199,6 @@ function draw_main_navbar($session){ ?>
                                 <a class="dropdown-item" href="#">Sign Out</a>
                             </div>
                         </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../pages/sign_in.php">Sign Out</a>
                     </li>
                 <?php } else{ ?>
                     <li class="nav-item">
@@ -334,7 +375,6 @@ function draw_secondary_navbar(){ ?>
  * Function to draw website footer
  */
 function draw_footer(){?>
-            </body>
         <footer class="">
             <div class="container-expanded border-top  py-2">
                 <div class="row">
@@ -415,7 +455,9 @@ function draw_footer(){?>
                     <div class="col-sm-1"></div>
                 </div>
             </div>   
-        </footer>   
+        </footer>  
+        </div>
+        </body> 
     </html> 
 <?php }
 

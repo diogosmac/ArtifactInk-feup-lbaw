@@ -75,7 +75,7 @@ function draw_sign_in(){ ?>
                 <div class="row new-user justify-content-center">
                     <h6>Don't have an account yet?</h6>
                         <a class="btn btn-lg btn-secondary btn-block" href="../pages/sign_up.php">Sign Up</a>
-                    <p class="copyright"> Copyright © ArtifactInk 2020 </p>
+                    <footer class="copyright"> Copyright © ArtifactInk 2020 </footer>
                 </div>
             </div>
         </div>
@@ -131,7 +131,7 @@ function draw_sign_up(){ ?>
                 <div class="row new-user justify-content-center">
                     <h6>Already have an account?</h6>
                         <a class="btn btn-lg btn-secondary btn-block" href="../pages/sign_.php">Sign In</a>
-                    <p class="copyright"> Copyright © ArtifactInk 2020 </p>
+                    <footer class="copyright"> Copyright © ArtifactInk 2020 </footer>
                 </div>
             </div>
         </div>
@@ -160,7 +160,7 @@ function draw_recover_password(){ ?>
                     </div>
                 </form>  
                 <div class="row new-user justify-content-center">
-                    <p class="copyright"> Copyright © ArtifactInk 2020 </p>
+                    <footer class="copyright"> Copyright © ArtifactInk 2020 </footer>
                 </div>
             </div>
         </div>
