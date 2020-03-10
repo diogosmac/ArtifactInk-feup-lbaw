@@ -27,6 +27,10 @@ body {
 }
 
 .a_link {
+    color: var(--main-red-alpha);
+}
+
+.a_link:hover {
     color: var(--main-red);
 }
 
