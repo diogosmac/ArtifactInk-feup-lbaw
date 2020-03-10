@@ -103,7 +103,7 @@ function draw_card(){ ?>
                 <i class="fas fa-heart"></i>
             </a>
         </div>
-            <a href="##" class="card-img-link">
+            <a href="../pages/product.php" class="card-img-link">
                 <img src="https://pbs.twimg.com/profile_images/905183271046193153/q_P1KBUJ_400x400.jpg" class="card-img-top" alt="...">
             </a>
         <div class="card-body">

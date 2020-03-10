@@ -93,16 +93,16 @@ function draw_product()
     <div class="container-fluid d-none d-md-block">
         <div class="row">
             <div class="col-6">
-                <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fdazedimg.dazedgroup.netdna-cdn.com%2F1200%2F0-0-1992-1328%2Fazure%2Fdazed-prod%2F1180%2F1%2F1181858.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%">
+                <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:20em">
                 <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
                     <div class="p-2 bd-highlight text-center">
-                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%; max-height:100%">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:100%">
                     </div>
                     <div class="p-2 bd-highlight text-center">
-                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%; max-height:100%">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/71rPjaRWUDL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:100%">
                     </div>
                     <div class="p-2 bd-highlight text-center">
-                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%; max-height:100%">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/715F04zdnEL._SL1500_.jpg" alt="" style="max-width: 100%; max-height:100%">
                     </div>
                 </div>
             </div>
@@ -155,16 +155,16 @@ function draw_product()
             <a href="#specs" class="px-2"> 2 reviews</a>
         </div>
         <div class="">
-            <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fdazedimg.dazedgroup.netdna-cdn.com%2F1200%2F0-0-1992-1328%2Fazure%2Fdazed-prod%2F1180%2F1%2F1181858.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height: 20em">
             <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
                 <div class="p-2 bd-highlight text-center">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%; max-height:100%">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:100%">
                 </div>
                 <div class="p-2 bd-highlight text-center">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%; max-height:100%">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/71rPjaRWUDL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:100%">
                 </div>
                 <div class="p-2 bd-highlight text-center">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%; max-height:100%">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/715F04zdnEL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:100%">
                 </div>
             </div>
         </div>
