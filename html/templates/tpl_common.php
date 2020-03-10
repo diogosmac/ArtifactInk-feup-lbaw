@@ -112,12 +112,14 @@ function draw_main_navbar($session){ ?>
         <div class="collapse navbar-collapse" id="navbarTopSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <form class="form-inline mt-2 mt-md-0">
-                        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success btn" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" aria-describedby="search-button">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-success" type="button" id="search-button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
