@@ -133,7 +133,7 @@ function draw_card2(){ ?>
                 <i class="fas fa-heart"></i>
             </a>
         </div>
-            <a href="##" class="card-img-link">
+            <a href="../pages/product.php" class="card-img-link">
                 <img src="https://www.inkme.tattoo/wp-content/uploads/2016/10/forearm-tattoo-design-86.jpg" class="card-img-top" alt="...">
             </a>
         <div class="card-body">
