@@ -92,9 +92,14 @@ a.btn.btn-secondary:active {
     background-color: white;
     color: var(--text-color-black);
     border: none;
+ 
+}
+
+#btn-search{
     padding: .435rem .7rem;
 }
-.navbar-custom-top button.btn.btn-outline-success:hover {
+
+.navbar-custom-top button.btn.btn-outline-success:hover{
     background-color: var(--main-color-alpha);
     color: var(--text-color-white);
 }
