@@ -580,11 +580,6 @@ function draw_add_product()
               <textarea class="form-control" id="inputTechincal" rows="5" placeholder="Write product technical description..."></textarea>
             </div>
 
-            <div class="form-group">
-              <label for="inputTechincal">Pictures</label>
-              <textarea class="form-control" id="inputTechincal" rows="5" placeholder="Write product technical description..."></textarea>
-            </div>
-
             <div class="panel panel-default">
               <div class="panel-body">
 
