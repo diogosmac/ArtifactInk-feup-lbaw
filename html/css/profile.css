@@ -1,5 +1,5 @@
 main {
-    padding-top: 3.5rem;
+    padding-top: 2rem;
 }
 
 * {
@@ -8,6 +8,30 @@ main {
 
 .icon-align {
     vertical-align: text-bottom;
+}
+
+.nav-link.text-center.profile-tab.active {
+    border-color: var(--main-red);
+    background-color: var(--main-red);
+    color: var(--text-color-white);
+    z-index: 200;
+}
+
+.nav-link.text-center.profile-tab{
+    color: var(--main-red);
+}
+
+.profile-btn{
+    border-color: var(--main-red-alpha);
+    background-color: var(--main-red-alpha);
+    color: var(--text-color-white);
+    z-index: 200;
+}
+
+.profile-btn:hover {
+    border-color: var(--main-red);
+    background-color: var(--main-red);
+    color: var(--text-color-white);
 }
 
 /* PROFILE PAGE > GENERAL */
