@@ -117,7 +117,9 @@ function draw_main_navbar($session){ ?>
                         <input type="text" class="form-control" placeholder="Search" aria-describedby="search-button">
                         <div class="input-group-append">
                             <button class="btn btn-outline-success" type="button" id="search-button">
-                                <i class="fas fa-search"></i>
+                                <a href="/pages/search.php">
+                                    <i class="fas fa-search"></i>
+                                </a>
                             </button>
                         </div>
                     </div>
