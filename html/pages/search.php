@@ -33,57 +33,30 @@ draw_navbar(true);
             </ul>
         </div>
     </div>
-    <div class="tab-content mx-auto" id="pills-tabContent">
-        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <div class="row">
-                <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center"><?php draw_card(); ?></div>
-                <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center"><?php draw_card(); ?></div>
-                <div class="col-12  col-sm-6 col-md-4 d-flex justify-content-center"><?php draw_card(); ?></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3">
+                <?php draw_filters(); ?>
             </div>
-        </div>
-        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <section class="col-lg-9">
+                <div class="tab-content mx-auto" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center"><?php draw_card(); ?></div>
+                            <div class="col-12 col-sm-6 col-md-4 d-flex justify-content-center"><?php draw_card(); ?></div>
+                            <div class="col-12  col-sm-6 col-md-4 d-flex justify-content-center"><?php draw_card(); ?></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </section>
 <?php
-draw_filters();
+
 draw_footer();
 
-function draw_filters()
-{ ?>
-    <aside class="bg-light rounded p-2" style="width: 15em">
-        <h4 class="text-center">Filters</h4>
-        <div>
-            <label class="mt-2" for="categories">Categories</label>
-            <div id="categories" class="rounded border border-secondary p-2" style="max-height:10em; overflow-y: scroll">
-                <?php for ($i = 1; $i < 6; $i++) { ?>
-                    
-                    <div class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input" id="category<?= $i ?>">
-                        <label class="custom-control-label" for="category<?= $i ?>">Category <?= $i ?></label>
-                    </div>
-                    <?php } ?>
-                </div>
-        </div>
-        <div>
-            <label class="mt-3" for="brands">Brands</label>
-            <div id="brands" class="rounded border border-secondary p-2" style="max-height:10em; overflow-y: scroll">
-                <?php for ($i = 1; $i < 6; $i++) { ?>
-                    
-                    <div class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input" id="brand<?= $i ?>">
-                        <label class="custom-control-label" for="brand<?= $i ?>">Brand <?= $i ?></label>
-                    </div>
-                    <?php } ?>
-                </div>
-        </div>
-        <div class="custom-control custom-switch my-3">
-            <input type="checkbox" class="custom-control-input" id="stockSwitch">
-            <label class="custom-control-label" for="stockSwitch">In-Stock</label>
-        </div>
-        <button class="btn btn-primary" type="submit">Apply</button>          
-    </aside>
-<?php
-}
 ?>
