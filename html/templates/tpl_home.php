@@ -132,7 +132,7 @@ function draw_card_sale(){ ?>
             </a>
         </div>
            <!-- IF ON SALE -->
-           <a href="##" class="card-img-link">
+           <a href="../pages/product.php" class="card-img-link">
                 <img src="http://www.osmais.com/wallpapers/201503/montanhas-grandes-wallpaper.jpg" class="card-img-top" alt="...">
            </a>
             <span class="badge badge-primary sale-box">20%</span>
