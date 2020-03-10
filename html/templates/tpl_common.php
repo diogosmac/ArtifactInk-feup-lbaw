@@ -112,7 +112,7 @@ function draw_main_navbar($session){ ?>
         <div class="collapse navbar-collapse" id="navbarTopSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <form class="form-inline mt-2 mt-md-0">
+                    <form class="form-inline mt-2 mt-md-0" action="../pages/search.php">
                         <input class="form-control" type="text" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success btn" type="submit">
                             <i class="fas fa-search"></i>
@@ -385,7 +385,7 @@ function draw_footer(){?>
                                 <a href="#" class="list-inline-item font-weight-normal  text-dark ">About us</a>
                             </li>
                             <li>
-                                <a href="#" class="list-inline-item font-weight-normal text-dark ">FAQ</a>
+                                <a href="../pages/faq.php" class="list-inline-item font-weight-normal text-dark ">FAQ</a>
                             </li>
                             <li>
                                 <a href="#" class="list-inline-item font-weight-normal text-dark ">Payments and Orders</a>
