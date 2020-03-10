@@ -47,7 +47,43 @@ draw_navbar(true);
     </div>
 </section>
 <?php
-
+draw_filters();
 draw_footer();
 
+function draw_filters()
+{ ?>
+    <aside class="bg-light rounded p-2" style="width: 15em">
+        <h4 class="text-center">Filters</h4>
+        <div>
+            <label class="mt-2" for="categories">Categories</label>
+            <div id="categories" class="rounded border border-secondary p-2" style="max-height:10em; overflow-y: scroll">
+                <?php for ($i = 1; $i < 6; $i++) { ?>
+                    
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="category<?= $i ?>">
+                        <label class="custom-control-label" for="category<?= $i ?>">Category <?= $i ?></label>
+                    </div>
+                    <?php } ?>
+                </div>
+        </div>
+        <div>
+            <label class="mt-3" for="brands">Brands</label>
+            <div id="brands" class="rounded border border-secondary p-2" style="max-height:10em; overflow-y: scroll">
+                <?php for ($i = 1; $i < 6; $i++) { ?>
+                    
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="brand<?= $i ?>">
+                        <label class="custom-control-label" for="brand<?= $i ?>">Brand <?= $i ?></label>
+                    </div>
+                    <?php } ?>
+                </div>
+        </div>
+        <div class="custom-control custom-switch my-3">
+            <input type="checkbox" class="custom-control-input" id="stockSwitch">
+            <label class="custom-control-label" for="stockSwitch">In-Stock</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Apply</button>          
+    </aside>
+<?php
+}
 ?>
