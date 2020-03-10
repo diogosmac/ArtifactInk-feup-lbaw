@@ -18,65 +18,15 @@ draw_navbar(true);
                 <li class="breadcrumb-item active" aria-current="page">Black Ink</li>
             </ol>
         </nav>
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fdazedimg.dazedgroup.netdna-cdn.com%2F1200%2F0-0-1992-1328%2Fazure%2Fdazed-prod%2F1180%2F1%2F1181858.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%">
-                    <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
-                        <div class="p-2 bd-highlight text-center">
-                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%; max-height:100%">
-                        </div>
-                        <div class="p-2 bd-highlight text-center">
-                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%; max-height:100%">
-                        </div>
-                        <div class="p-2 bd-highlight text-center">
-                            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%; max-height:100%">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 d-flex flex-column justify-content-start">
-                    <h2>Product Name</h2>
-                    <div class="d-flex flex-row bd-highlight mb-3">
-                        <i class="material-icons" style="color: gold;">star</i>
-                        <i class="material-icons" style="color: gold;">star</i>
-                        <i class="material-icons" style="color: gold;">star</i>
-                        <i class="material-icons" style="color: gold;">star_half</i>
-                        <i class="material-icons" style="color: gold;">star_outline</i>
-                        <a href="#specs" class="px-2"> 2 reviews</a>
-                    </div>
-                    <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
-                        <h4>Available</h4>
-                        <i class="material-icons px-2 pt-1" style="color: #00ee00">fiber_manual_record</i>
-                    </div>
-                    <div class="d-flex flex-row justify-content-between bd-highlight mb-3 pb-1">
-                        <div class="input-group mb-3 w-50 pt-2">
-                            <div class="input-group-prepend">
-                                <label class="input-group-text" for="inputGroupSelect01">Quantity</label>
-                            </div>
-                            <select class="custom-select" id="inputGroupSelect01">
-                                <option value="1" selected>1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
-                        <h1>17,80€</h1>
-                    </div>
-                    <div class="d-flex flex-row justify-content-around bd-highlight my-2">
-                        <button type="button" class="btn btn-outline-danger">
-                            <!--<i class="material-icons" style="color: red;">favorite</i>-->Add to wishlist</button>
-                        <input class="btn btn-primary" type="submit" value="Add to Cart">
-                    </div>
+        <?php
+        draw_product();
+        ?>
+    </section>
 
-                </div>
-            </div>
-        </div>
-    </section>
-    
     <hr class="w-75">
-    <section id="related" class="mx-auto">
+    <div id="related" class="mx-auto">
         <?php draw_card_carousel('featured'); ?>
-    </section>
+    </div>
     <hr class="w-75">
     <section id="specs" class="mx-auto">
         <nav>
@@ -117,12 +67,12 @@ draw_navbar(true);
                         <select class="custom-select" id="inputGroupSelect01">
                             <option value="1" selected>Newer</option>
                             <option value="2">Older</option>
-                            <option value="3">Rating Lower to Higher</option>    
+                            <option value="3">Rating Lower to Higher</option>
                             <option value="4">Rating Higher to Lower</option>
                         </select>
                     </div>
                     <div class="py-4">
-                    <?= draw_review(); ?>
+                        <?= draw_review(); ?>
                     </div>
                 </div>
             </div>
@@ -144,7 +94,7 @@ draw_navbar(true);
                     <i class="material-icons" style="color: gold;">star_outline</i>
                     <i class="material-icons" style="color: gold;">star_outline</i>
                     <i class="material-icons" style="color: gold;">star_outline</i>
-                </div>                    
+                </div>
             </div>
             <input class="form-control m-1" type="text" placeholder="Subject">
             <textarea class="form-control m-1" rows="3" placeholder="Tell us what you think"></textarea>
@@ -157,4 +107,112 @@ draw_navbar(true);
 
 draw_footer();
 
+
+function draw_product()
+{
+?>
+    <div class="container d-none d-md-block">
+        <div class="row">
+            <div class="col-6">
+                <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fdazedimg.dazedgroup.netdna-cdn.com%2F1200%2F0-0-1992-1328%2Fazure%2Fdazed-prod%2F1180%2F1%2F1181858.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%">
+                <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
+                    <div class="p-2 bd-highlight text-center">
+                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%; max-height:100%">
+                    </div>
+                    <div class="p-2 bd-highlight text-center">
+                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%; max-height:100%">
+                    </div>
+                    <div class="p-2 bd-highlight text-center">
+                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%; max-height:100%">
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 d-flex flex-column justify-content-start">
+                <h2>Product Name</h2>
+                <div class="d-flex flex-row bd-highlight mb-3">
+                    <i class="material-icons" style="color: gold;">star</i>
+                    <i class="material-icons" style="color: gold;">star</i>
+                    <i class="material-icons" style="color: gold;">star</i>
+                    <i class="material-icons" style="color: gold;">star_half</i>
+                    <i class="material-icons" style="color: gold;">star_outline</i>
+                    <a href="#specs" class="px-2"> 2 reviews</a>
+                </div>
+                <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
+                    <h4>Available</h4>
+                    <i class="material-icons px-2 pt-1" style="color: #00ee00">fiber_manual_record</i>
+                </div>
+                <div class="d-flex flex-row justify-content-between bd-highlight mb-3 pb-1">
+                    <div class="input-group mb-3 w-50 pt-2">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Quantity</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    <h1>17,80€</h1>
+                </div>
+                <div class="d-flex flex-row justify-content-around bd-highlight my-2">
+                    <button type="button" class="btn btn-outline-danger">
+                        <!--<i class="material-icons" style="color: red;">favorite</i>-->Add to wishlist</button>
+                    <input class="btn btn-primary" type="submit" value="Add to Cart">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex flex-column justify-content-center mx-2 mx-sm-3 d-md-none">
+        <h2>Product Name</h2>
+        <div class="d-flex flex-row bd-highlight mb-3">
+            <i class="material-icons" style="color: gold;">star</i>
+            <i class="material-icons" style="color: gold;">star</i>
+            <i class="material-icons" style="color: gold;">star</i>
+            <i class="material-icons" style="color: gold;">star_half</i>
+            <i class="material-icons" style="color: gold;">star_outline</i>
+            <a href="#specs" class="px-2"> 2 reviews</a>
+        </div>
+        <div class="">
+            <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fdazedimg.dazedgroup.netdna-cdn.com%2F1200%2F0-0-1992-1328%2Fazure%2Fdazed-prod%2F1180%2F1%2F1181858.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%">
+            <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
+                <div class="p-2 bd-highlight text-center">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%; max-height:100%">
+                </div>
+                <div class="p-2 bd-highlight text-center">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%; max-height:100%">
+                </div>
+                <div class="p-2 bd-highlight text-center">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%; max-height:100%">
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
+            <h4>Available</h4>
+            <i class="material-icons px-2 pt-1" style="color: #00ee00">fiber_manual_record</i>
+        </div>
+        <div class="d-flex flex-row justify-content-between bd-highlight mb-3 pb-1">
+            <div class="input-group mb-3 w-50 pt-2">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Quantity</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <h1>17,80€</h1>
+        </div>
+        <div class="d-flex flex-row justify-content-around bd-highlight my-2">
+            <button type="button" class="btn btn-outline-danger">
+                <!--<i class="material-icons" style="color: red;">favorite</i>-->Add to wishlist</button>
+            <input class="btn btn-primary" type="submit" value="Add to Cart">
+        </div>
+    </div>
+<?php
+}
 ?>
