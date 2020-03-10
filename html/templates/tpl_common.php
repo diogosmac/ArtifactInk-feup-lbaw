@@ -29,6 +29,7 @@ function draw_header(){ ?>
 
             <script src="../script/product_card.js" defer></script>
             <script src="../script/checkout_list.js" defer></script>
+            <script src="../script/payment.js" defer></script>
 
         </head>
         <body>
