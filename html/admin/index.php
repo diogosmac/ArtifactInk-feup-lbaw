@@ -1,6 +1,3 @@
-<?php 
-
-    include_once("../templates/tpl_admin.php");
-
-    draw_sign_in();
+<?php
+  header("Location: /admin/sign_in.php");
 ?>
