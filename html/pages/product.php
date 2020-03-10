@@ -78,6 +78,7 @@ draw_navbar(true);
                 </div>
             </div>
         </div>
+<?php        draw_review_popup();?>
     </section>
 </main>
 
@@ -89,7 +90,7 @@ draw_footer();
 function draw_product()
 {
 ?>
-    <div class="container d-none d-md-block">
+    <div class="container-fluid d-none d-md-block">
         <div class="row">
             <div class="col-6">
                 <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fdazedimg.dazedgroup.netdna-cdn.com%2F1200%2F0-0-1992-1328%2Fazure%2Fdazed-prod%2F1180%2F1%2F1181858.jpg&f=1&nofb=1" alt="Ink" style="max-width: 100%">

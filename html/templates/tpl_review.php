@@ -53,7 +53,7 @@ function draw_review()
 function draw_review_popup()
 {
 ?>
-    <div class="d-flex flex-column border rounded border-secondary bg-light w-25 mx-auto">
+    <div id="reviewPopup"class="d-flex flex-column border rounded border-secondary bg-light mx-auto">
         <div class="px-2">
             <button type="button" class="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -72,7 +72,7 @@ function draw_review_popup()
                 </div>
             </div>
             <input class="form-control m-1" type="text" placeholder="Subject">
-            <textarea class="form-control m-1" rows="3" placeholder="Tell us what you think"></textarea>
+            <textarea class="form-control m-1" rows="6" placeholder="Tell us what you think"></textarea>
             <button type="button" class="btn btn-primary w-50 mt-2">Submit</button>
         </div>
     </div>
