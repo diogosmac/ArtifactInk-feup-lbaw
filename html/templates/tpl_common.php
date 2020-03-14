@@ -380,7 +380,7 @@ function draw_secondary_navbar(){ ?>
  * Function to draw website footer
  */
 function draw_footer(){?>
-        <footer class="">
+        <footer class="mt-2">
             <div class="container-expanded border-top  py-2">
                 <div class="row">
                     <div class="col-sm-1"></div>
