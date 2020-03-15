@@ -40,6 +40,7 @@
 
 .shopping-cart-h{ 
     margin: .5em .0em 1em 0em;
+    padding: 0em .5em;
     text-transform: uppercase;
 }
 
@@ -161,10 +162,65 @@ h6.shipping-method{
 }
 
 .confirmation-div h4{
-    font-weight: bold;
     padding:  .2em 0em; 
 }
-.checkout-form-steps .progress-bar{
-    background-color: var(--main-red);
+
+div.progress{ 
+    padding: 0em;
 }
 
+.checkout-header{
+    padding: 0em 1em;
+}
+
+.progress-checkout li{
+    padding: 0em .2em;
+    border-radius: 0%;
+   
+    
+}
+
+.progress-checkout li{
+    border-radius: 0% !important;
+}
+
+.progress-checkout li.disabled a{
+    color: var(--main-white);
+}
+
+.progress-checkout li a{
+    color: var(--main-red-alpha);
+    border-radius: 0% !important;
+    border: solid .1em;
+    
+}
+
+.progress-checkout li a:hover{
+    color: var(--text-color-white);
+    background-color: var(--main-red);
+    
+}
+
+
+#checkout-items-list li{
+    border-radius: 0%;
+}
+
+#move-buttons{
+    padding: 0em 1em;
+}
+
+
+@media screen and (max-width: 768px) {
+    #checkout-list{
+        display: none;
+    }
+
+}
+
+
+@media screen and (min-width: 768px) {
+    #confirm_cart{
+        display: none;
+    }
+}
