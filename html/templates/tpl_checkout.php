@@ -3,10 +3,13 @@
 function draw_checkout_cart($shipping,$price){ ?>
 <div class="container">
     <div class="row">
-        <h2 class="shopping-cart-h">Checkout</h2>
+        <div>
+            <h2 class="shopping-cart-h">Checkout</h2>
+        </div>
+       
     </div>
     <div class="row">
-        <div class="col-md-4 order-md-2 mb-4">
+        <div class="col-md-4 order-md-2 mb-4" id="checkout-list">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Your cart</span>
                 <span class="badge badge-secondary badge-pill">3</span>
@@ -53,10 +56,25 @@ function draw_checkout_1(){
     
     draw_checkout_cart("",0);
     ?>
+    
 <div class="col-md-8 order-md-1 checkout-form-steps">
-    <hr class="mb-4">
-    <h4 class="mb-3">Shipping Adress</h4>
     <form class="needs-validation" novalidate="">
+        <div class="row justify-content-between checkout-header">
+            <h4 class="mb-3">Shipping Adress</h4>
+            <nav aria-label="..." class="progress-checkout">
+                <ul class="pagination pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="../pages/checkout.php?p=2">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="../pages/checkout.php?p=3">3</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
         <div class="checkout-addr-field">
             <div class="input-group mb-3" id="addr-selector">
                 <select class="custom-select" id="adress-input-group" >
@@ -70,7 +88,7 @@ function draw_checkout_1(){
                     </option>
                 </select>
                 <div class="input-group-append">
-                    <label class="input-group-text" id="change-button" for="adress-input-group" >Change</label>
+                  
                 </div>
             </div>
 
@@ -176,16 +194,11 @@ function draw_checkout_1(){
             </div>
         </div>
         <hr class="mb-4">
-        <div class="row">
-            <div class="col-sm-2">
+        <div class="row justify-content-between" id="move-buttons">
+            <div >
                 <a class="btn btn-primary" type="submit" href="../pages/shopping_cart.php" id="btn-prv">Return</a>
             </div>
-            <div class="progress col-sm-8 ">
-                <div class="progress-bar w-33 " role="progressbar" style="width: 33%;" aria-valuenow="33" aria-valuemin="0"
-                    aria-valuemax="100"> 
-                </div>
-            </div>
-            <div class="col-sm-2">
+            <div >
             <a class="btn btn-primary" type="submit" href="../../pages/checkout.php?p=2" id="btn-next">Next</a>
             </div>
         </div>
@@ -200,8 +213,20 @@ function draw_checkout_2(){
     draw_checkout_cart("",0);
     ?>
 <div class="col-md-8 order-md-1 checkout-form-steps">
-    <h4 class="mb-3">Shipping Info</h4>
     <form class="needs-validation" novalidate="">
+
+    <div class="row justify-content-between checkout-header">
+        <h4 class="mb-3">Shipping Info</h4>
+            <nav aria-label="..." class="progress-checkout">
+                <ul class="pagination pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="../pages/checkout.php?p=1" tabindex="-1">1</a>
+                    </li>
+                    <li class="page-item disabled"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="../pages/checkout.php?p=3">3</a></li>
+                </ul>
+            </nav>
+        </div>
     <div class="d-block my-3">
             <div class="custom-control custom-radio">
                 <input id="standard" name="shippingMethod" type="radio" class="custom-control-input" checked=""
@@ -230,17 +255,12 @@ function draw_checkout_2(){
             </div>
         </div>
         <hr class="mb-4">
-        <div class="row">
-            <div class="col-sm-2">
+        <div class="row justify-content-between" id="move-buttons">
+            <div >
                 <a class="btn btn-primary" type="submit" href="../pages/checkout.php?p=1" id="btn-prv">Previous</a>
             </div>
-            <div class="progress col-sm-8 ">
-                <div class="progress-bar w-66 " role="progressbar" style="width: 66%;" aria-valuenow="66" aria-valuemin="0"
-                    aria-valuemax="100">
-                    
-                </div>
-            </div>
-            <div class="col-sm-2">
+           
+            <div >
                 <a class="btn btn-primary" type="submit" href="../../pages/checkout.php?p=3" id="btn-next">Next</a>
             </div>
         </div>
@@ -254,35 +274,89 @@ function draw_checkout_2(){
 function draw_checkout_3(){
     
     draw_checkout_cart("Standard Shipping","2.00€");
+    $shipping = "Standard Shipping"; 
+    $price = "2.00€";
     ?>
 <div class="col-md-8 order-md-1 checkout-form-steps">
     <form class="needs-validation" novalidate="">
+    <div class="row justify-content-between checkout-header">
+        <h4 class="mb-3">Confirm Info</h4>
+            <nav aria-label="..." class="progress-checkout">
+                <ul class="pagination pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="../pages/checkout.php?p=1" tabindex="-1">1</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="../pages/checkout.php?p=2">2</a></li>
+                    <li class="page-item disabled"><a class="page-link" href="#">3</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class=" confirmation-div">
+            <div class="col-md-4 order-md-2 mb-4" id="confirm_cart">
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Your cart</span>
+                    <span class="badge badge-secondary badge-pill">3</span>
+                </h4>
+                <ul class="list-group mb-3" id="checkout-items-list">
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Product name</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">12.00€</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Second product</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">8.00€</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0">Third item</h6>
+                            <small class="text-muted">Brief description</small>
+                        </div>
+                        <span class="text-muted">5.00€</span>
+                    </li>
+                    <?php if($shipping != ""){ ?> 
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <h6 class="my-0"><?= $shipping ?></h6>
+                            </div>
+                            <span class="text-muted"><?=$price?></span>
+                        </li>
+                   <?php } ?>
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Total (EUR)</span>
+                        <strong>20€</strong>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class=" confirmation-div" id="#confirm_adress">
             <h4> Adress</h4>
             <h5> Main Adress for Delivery, 99, 1st lf </h5>
             <h6> Portugal, Porto - Porto 4763-384</h6>
         </div> 
+        <hr class="mb-4">
         <div class=" confirmation-div" id="#confirm_payment">
             <h4> Payment Method</h4>
             <h5> Credit Card </h5>
             <h6> Matercard - ending 8634 - 11/76</h6>
         </div>
+        <hr class="mb-4">
         <div class=" confirmation-div"id="#confirm_shipping">
             <h4> Shipping Method</h4>
             <h6> Standard Shipping - 2.00€</h6>
         </div>
         <hr class="mb-4">
-        <div class="row">
-            <div class="col-sm-2">
+        <div class="row justify-content-between" id="move-buttons">
+            <div >
                 <a class="btn btn-primary" type="submit" href="../pages/checkout.php?p=2" id="btn-prv">Previous</a>
             </div>
-            <div class="progress col-sm-8 ">
-                <div class="progress-bar w-100 " role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0"
-                    aria-valuemax="100">
-                    
-                </div>
-            </div>
-            <div class="col-sm-2">
+          
+            <div >
                 <a class="btn btn-primary" type="submit" href="#" id="btn-confirm">Confirm</a>
             </div>
         </div>
