@@ -7,7 +7,7 @@ function draw_checkout_list(){ ?>
 function draw_cart_list(){ ?>
 <div class="container">
     <div class="row">
-    <h4 class="shopping-cart-h">My Shopping Cart</h4>
+    <h2 class="shopping-cart-h">My Shopping Cart</h2>
     </div>
     <div class="checkout-box">
         <div class="row shopping-cart-div">
@@ -39,7 +39,7 @@ function draw_cart_list(){ ?>
               </tbody>
             </table>
         </div>
-        <div class="row checkout-menu d-flex justify-content-between buttons ">
+        <div class="row checkout-menu d-flex justify-content-between buttons " id="checkout-buttons-div">
             <div>
                  <button class="btn return-btn">Keep Shopping</button>
             </div>
