@@ -1,0 +1,15 @@
+a#pills-home-tab.active,a#pills-profile-tab.active {
+    border-radius: 0%;
+    background-color: var(--main-red);
+    color: var(--text-color-white);
+}
+
+a#pills-home-tab,a#pills-profile-tab{
+    border-radius: 0%;
+    background-color: transparent;
+    color: var(--text-color-black);
+}
+
+.my-2{
+    border-radius: 0%;
+}

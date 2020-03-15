@@ -32,7 +32,7 @@ function draw_header(){ ?>
             <link rel="stylesheet" type="text/css" href="../css/product.css">
             <link rel="stylesheet" type="text/css" href="../css/review.css">
             <link rel="stylesheet" type="text/css" href="../css/profile.css">
-
+            <link rel="stylesheet" type="text/css" href="../css/item_list.css">
 
             <script src="../script/product_card.js" defer></script>
             <script src="../script/checkout_list.js" defer></script>
@@ -402,7 +402,7 @@ function draw_footer(){?>
                                 <a href="#" class="list-inline-item font-weight-normal text-dark ">Warranty</a>
                             </li>
                             <br>
-                            <li> Copyright © ArtifactInk 2020 <li>
+                            <li id="copyright-desktop"> Copyright © ArtifactInk 2020 <li>
                             
                         </ul> 
                     </div>
@@ -421,26 +421,25 @@ function draw_footer(){?>
                             <div class="row py-1">
 
                             </div>
-                            <div class="row ">
-                                <div class="col-sm-3">
+                            <div class="row justify-content-start">
+                                <div class="social-network-bubble">
                                     <a href="../pages/home.php">
                                         <i class="fab fa-facebook-f fa-2x circle-icon"></i>
                                     </a>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="social-network-bubble">
                                     <a href="../pages/home.php">
                                     <i class="fab fa-instagram fa-2x circle-icon"></i>
                                     </a>
                                 </div>          
-                                <div class="col-sm-3">
+                                <div class="social-network-bubble">
                                     <a href="../pages/home.php">
                                         <i class="fa fa-twitter fa-2x circle-icon"> </i>
                                     </a>
                                 </div>
-                                <div class="col-sm-3"></div>
                             </div>
                             <div class="row">
-                                <div class="col-sm-12">
+                                <div >
                                     <form>
                                         <div class="form-group">
                                             <label for="newsletter_email" class="col-form-label-sm ">Subscribe to our Newsletter</label>
@@ -454,12 +453,14 @@ function draw_footer(){?>
                                         </div>   
                                     </form>
                                 </div>
+                                <p id="copyright-mobile"> Copyright © ArtifactInk 2020 </p> 
                             </div>
+                           
                         </div>
                     </div>
-                    <div class="col-sm-1"></div>
+                    <div class="col-sm-1"></div>                
                 </div>
-            </div>   
+            </div>  
         </footer>  
         </div>
         </body> 

@@ -52,6 +52,29 @@ footer button{
     border: 0px solid;
 }
 
+.social-network-bubble{
+    margin-right: .5em;
+}
+
 footer button:hover{
    filter: brightness(90%);
+}
+#copyright-mobile{
+    font-size: .8em;
+}
+@media screen and (max-width: 768px){
+    footer div.container-expanded{
+       padding: 0em 1em;
+    }
+    #copyright-desktop{
+        display: none;
+    }
+    
+}
+
+@media screen and (min-width: 768px){
+    #copyright-mobile{
+       display: none;
+    }
+    
 }
