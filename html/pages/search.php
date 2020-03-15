@@ -2,8 +2,7 @@
 include_once("../templates/tpl_common.php");
 include_once("../templates/tpl_home.php");
 include_once("../templates/tpl_filters.php");
-
-
+include_once("../templates/tpl_item.php");
 
 draw_header();
 draw_navbar(true);
@@ -58,7 +57,15 @@ draw_navbar(true);
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-
+                        <ul class="list-group">
+                            <?php 
+                            draw_item_list();
+                            draw_item_list();
+                            draw_item_list();
+                            draw_item_list();
+                            draw_item_list();
+                            ?>
+                        </ul>
                     </div>
                 </div>
             </section>
