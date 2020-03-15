@@ -60,7 +60,7 @@ function draw_checkout_1(){
 <div class="col-md-8 order-md-1 checkout-form-steps">
     <form class="needs-validation" novalidate="">
         <div class="row justify-content-between checkout-header">
-            <h4 class="mb-3">Shipping Adress</h4>
+            <h4 class="mb-3">Shipping Address</h4>
             <nav aria-label="..." class="progress-checkout">
                 <ul class="pagination pagination">
                     <li class="page-item disabled">
@@ -77,13 +77,13 @@ function draw_checkout_1(){
         </div>
         <div class="checkout-addr-field">
             <div class="input-group mb-3" id="addr-selector">
-                <select class="custom-select" id="adress-input-group" >
+                <select class="custom-select" id="address-input-group" >
                     <option value="1">
-                        <h5> Main Adress for Delivery, 99, 1st lf </h5>
+                        <h5> Main Address for Delivery, 99, 1st lf </h5>
                         <h6> Portugal, Porto - Porto 4763-384</h6>
                     </option>
                     <option value="2">
-                        <h5> Secondary Address for Delivery, 99, 2st lf </h5>
+                        <h5> Secondary Adddress for Delivery, 99, 2st lf </h5>
                         <h6> Portugal, Porto - Porto 4763-384</h6>
                     </option>
                 </select>
@@ -93,15 +93,15 @@ function draw_checkout_1(){
             </div>
 
             <div class="mb-3">
-                <button class="btn" id="new_addr_btn" type="button">New Address</button>
+                <button class="btn" id="new_addr_btn" type="button">New Adddress</button>
             </div>
 
             <div id="new-addr-form">
                 <div class="mb-3 ">
-                    <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+                    <label for="adddress">Adddress</label>
+                    <input type="text" class="form-control" id="adddress" placeholder="1234 Main St" required="">
                     <div class="invalid-feedback">
-                        Please enter your shipping address.
+                        Please enter your shipping adddress.
                     </div>
                 </div>
                 <div class="row">
@@ -334,9 +334,9 @@ function draw_checkout_3(){
                 </ul>
             </div>
         </div>
-        <div class=" confirmation-div" id="#confirm_adress">
-            <h4> Adress</h4>
-            <h5> Main Adress for Delivery, 99, 1st lf </h5>
+        <div class=" confirmation-div" id="#confirm_address">
+            <h4> Address</h4>
+            <h5> Main Address for Delivery, 99, 1st lf </h5>
             <h6> Portugal, Porto - Porto 4763-384</h6>
         </div> 
         <hr class="mb-4">
