@@ -1,8 +1,8 @@
 <?php
-  include_once("../templates/tpl_admin.php");
+include_once("../templates/tpl_admin.php");
 
-  draw_header();
-  draw_navbar();
+draw_header();
+draw_navbar();
 ?>
 
 <div class="container-fluid">
@@ -19,18 +19,39 @@
 
         <div class="d-flex align-items-center mb-3">
           <div class="input-group mr-sm-2">
-            <input class="form-control" placeholder="Search" aria-label="Search">
+            <input class="form-control" placeholder="Search Sale" aria-label="Search">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter</button>
-              <div class="dropdown-menu p-4">
-                <strong>IMPLEMENT FILTERING</strong>
-              </div>
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter">
+                Filter
+              </button>
             </div>
           </div>
           <div class="flex-shrink-0">
             <button type="button" class="btn btn-primary" onclick="location.href='/admin/add_sale.php'">
               Add Sale
             </button>
+          </div>
+        </div>
+
+        <div class="collapse" id="collapseFilter">
+          <div class="row align-items-center justify-content-around">
+            <div class="form-row col-12">
+              <!-- Sale ID -->
+              <div class="form-group col-md-2">
+                <label for="inputUserID">Sale ID</label>
+                <input type="number" min=1 class="form-control" id="inputUserID">
+              </div>
+              <!-- Min Date -->
+              <div class="form-group col-md-5">
+                <label for="inputMinDate">Minimum Date</label>
+                <input type="date" class="form-control" id="inputMinDate">
+              </div>
+              <!-- Max Date -->
+              <div class="form-group col-md-5">
+                <label for="inputMaxDate">Maximum Date</label>
+                <input type="date" class="form-control" id="inputMaxDate">
+              </div>
+            </div>
           </div>
         </div>
 
@@ -96,5 +117,5 @@
 </div>
 
 <?php
-  draw_footer();
+draw_footer();
 ?>
