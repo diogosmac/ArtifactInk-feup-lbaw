@@ -3,7 +3,6 @@ include_once("../templates/tpl_common.php");
 include_once("../templates/tpl_review.php");
 include_once("../templates/tpl_home.php");
 
-
 draw_header();
 
 draw_navbar(true);
