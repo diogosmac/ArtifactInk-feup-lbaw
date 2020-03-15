@@ -12,12 +12,21 @@
 }
 
 
+
 .checkout-table .btn{
-    background-color: var(--main-white);
+    background-color: transparent;
     color: var(--main-color-alpha);
     border-color: transparent;
-    border-radius: 60%;
+    
     padding: .5em;
+}
+
+.checkout-table .btn.btn.add-button:active, .checkout-table .btn.btn.sub-button:active, .checkout-table .btn.rmv-button:active{
+    background-color: transparent;
+    color: var(--main-color-alpha);
+    border-color: transparent;
+    color: var(--text-color-black);
+
 }
 
 
@@ -31,6 +40,7 @@
 
 .shopping-cart-h{ 
     margin: .5em .0em 1em 0em;
+    text-transform: uppercase;
 }
 
 /*checkout menu*/
@@ -39,6 +49,7 @@
 }
 
 .checkout-menu .checkout-btn{
+    border-radius: 0%;
     background-color: var(--main-red-alpha);
     border: .2em solid ;
     color: var(--text-color-white);
@@ -46,6 +57,7 @@
 }
 
 .checkout-menu .checkout-btn:hover{
+    border-radius: 0%;
     background-color: var(--main-red);
     border: .2em solid ;
     color: var(--text-color-white);
@@ -53,15 +65,18 @@
 }
 
 .checkout-menu .return-btn{
+    border-radius: 0%;
     border: .2em solid ;
     color: var(--main-red-alpha);
     border-color: var(--main-red-alpha);
 }
 
 .checkout-menu .return-btn:hover{
+    border-radius: 0%;
     border: .2em solid ;
     color: var(--main-red);
     border-color: var(--main-red);
+    background-color: var(--main-white);
 }
 
 .checkout-table span.total{
@@ -79,14 +94,18 @@
     border-color: var(--main-white );   
   
 }
+div.checkout-box thead th{
+    text-transform: uppercase;
+    font-weight: normal;
 
+} 
 .buttons {
-    margin: 0em 4em;
+    margin: 1em 4em;
 }
 
 .checkout-box{
     padding: 1em;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   
 }
 
 
@@ -102,6 +121,7 @@
     border-color:var(--main-red-alpha);
     border: solid .2em ;
     color: var(--main-red);
+    border-radius: 0%;
 
 }
 
@@ -110,14 +130,16 @@
     border: solid .2em ;
     color: var(--main-red);
     background-color: transparent;
+      border-radius: 0%;
 }
 
-#new_addr_btn:hover, #return_addr_btn:hover, #btn-next:hover,#btn-prv:hover, #btn-confirm:hover{
+#new_addr_btn:hover, #btn-next:hover,#btn-prv:hover, #btn-confirm:hover{
     border-color:var(--main-red-alpha);
     border: solid .2em ;
     color: var(--text-color-white);
     background-color: var(--main-red);
     border-color: var(--main-red);
+    border-radius: 0%;
 
 }
 
