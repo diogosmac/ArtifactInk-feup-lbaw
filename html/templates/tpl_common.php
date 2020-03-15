@@ -380,26 +380,26 @@ function draw_secondary_navbar(){ ?>
  * Function to draw website footer
  */
 function draw_footer(){?>
-        <footer class="">
+        <footer class="mt-2">
             <div class="container-expanded border-top  py-2">
                 <div class="row">
                     <div class="col-sm-1"></div>
                     <div class="col-sm-4 border-right"> 
                         <ul class="list-inline"> <p class="text-uppercase font-weight-light"> Information</p> 
                             <li>
-                                <a href="#" class="list-inline-item font-weight-normal  text-dark ">About us</a>
+                                <a href="../pages/about_us.php" class="list-inline-item font-weight-normal  text-dark ">About us</a>
                             </li>
                             <li>
                                 <a href="../pages/faq.php" class="list-inline-item font-weight-normal text-dark ">FAQ</a>
                             </li>
                             <li>
-                                <a href="#" class="list-inline-item font-weight-normal text-dark ">Payments and Orders</a>
+                                <a href="../pages/payments_and_shipment.php" class="list-inline-item font-weight-normal text-dark ">Payments and Shipment</a>
                             </li>
                             <li>
-                                <a href="#" class="list-inline-item font-weight-normal text-dark ">Returns and Replacements</a>
+                                <a href="../pages/returns_and_replacements.php" class="list-inline-item font-weight-normal text-dark ">Returns and Replacements</a>
                             </li>
                             <li>
-                                <a href="#" class="list-inline-item font-weight-normal text-dark ">Warranty</a>
+                                <a href="../pages/warranty.php" class="list-inline-item font-weight-normal text-dark ">Warranty</a>
                             </li>
                             <br>
                             <li id="copyright-desktop"> Copyright © ArtifactInk 2020 <li>
