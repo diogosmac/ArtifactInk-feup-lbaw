@@ -28,6 +28,16 @@ draw_navbar();
         <div class="collapse" id="collapseFilter">
           <div class="row align-items-center justify-content-around">
             <div class="form-row col-12">
+              <!-- Item ID -->
+              <div class="form-group col-md-1">
+                <label for="inputItemID">Item ID</label>
+                <input type="number" min=1 class="form-control" id="inputItemID">
+              </div>
+              <!-- Item Name -->
+              <div class="form-group col-md-5">
+                <label for="inputItemName">Item Name</label>
+                <input type="text" class="form-control" id="inputItemName" placeholder="Item name">
+              </div>
               <!-- Min Date -->
               <div class="form-group col-md-3">
                 <label for="inputMinDate">Minimum Date</label>
@@ -37,25 +47,6 @@ draw_navbar();
               <div class="form-group col-md-3">
                 <label for="inputMaxDate">Maximum Date</label>
                 <input type="date" class="form-control" id="inputMaxDate">
-              </div>
-              <!-- Payment Method -->
-              <div class="form-group col-md-3">
-                <label for="inputPaymentMethod">Payment Method</label>
-                <select id="inputPaymentMethod" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>MasterCard</option>
-                  <option>PayPal</option>
-                </select>
-              </div>
-              <!-- Order Status -->
-              <div class="form-group col-md-3">
-                <label for="inputStatus">Order Status</label>
-                <select id="inputStatus" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>Processing</option>
-                  <option>Shipped</option>
-                  <option>Arrived</option>
-                </select>
               </div>
             </div>
             <!-- Rating -->
@@ -138,7 +129,7 @@ draw_navbar();
                 </div>
               </td>
               <td class="align-middle">
-                <button type="button" class="btn btn-primary" onclick="location.href='/admin/products.php'">
+                <button type="button" class="btn btn-primary" onclick="location.href='/admin/orders.php'">
                   View Order #13
                 </button>
               </td>
@@ -227,7 +218,7 @@ draw_navbar();
                 </div>
               </td>
               <td class="align-middle">
-                <button type="button" class="btn btn-primary" onclick="location.href='/admin/products.php'">
+                <button type="button" class="btn btn-primary" onclick="location.href='/admin/orders.php'">
                   View Order #13
                 </button>
               </td>
@@ -316,7 +307,7 @@ draw_navbar();
                 </div>
               </td>
               <td class="align-middle">
-                <button type="button" class="btn btn-primary" onclick="location.href='/admin/products.php'">
+                <button type="button" class="btn btn-primary" onclick="location.href='/admin/orders.php'">
                   View Order #13
                 </button>
               </td>
