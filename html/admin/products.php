@@ -68,7 +68,7 @@ draw_navbar();
             </div>
 
             <div class="col-10">
-              <div class="range-slider mb-2">
+              <div class="range-slider my-3">
                 <label for="price">Price:
                   <span class="rangeValues"></span>
                 </label>
