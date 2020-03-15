@@ -1,8 +1,8 @@
 <?php
-  include_once("../templates/tpl_admin.php");
+include_once("../templates/tpl_admin.php");
 
-  draw_header();
-  draw_navbar();
+draw_header();
+draw_navbar();
 ?>
 
 <div class="container-fluid">
@@ -21,10 +21,9 @@
           <div class="input-group mr-sm-2">
             <input class="form-control" placeholder="Search" aria-label="Search">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Filter</button>
-              <div class="dropdown-menu p-4">
-                <strong>IMPLEMENT FILTERING</strong>
-              </div>
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter">
+                Filter
+              </button>
             </div>
           </div>
           <div class="flex-shrink-0">
@@ -33,6 +32,55 @@
             </button>
           </div>
         </div>
+
+        <div class="collapse" id="collapseFilter">
+          <div class="row align-items-center justify-content-around">
+            <div class="col-md-6 col-sm-12">
+              <label for="categories">Categories</label>
+              <div id="categories" class="rounded border p-2 search-box-category">
+                <?php for ($i = 1; $i < 6; $i++) { ?>
+
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input type="checkbox" class="custom-control-input" id="category<?= $i ?>">
+                    <label class="custom-control-label" for="category<?= $i ?>">Category <?= $i ?></label>
+                  </div>
+                <?php } ?>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <label for="brands">Brands</label>
+              <div id="brands" class="rounded border p-2 search-box-category">
+                <?php for ($i = 1; $i < 6; $i++) { ?>
+
+                  <div class="custom-control custom-checkbox mb-3">
+                    <input type="checkbox" class="custom-control-input" id="brand<?= $i ?>">
+                    <label class="custom-control-label" for="brand<?= $i ?>">Brand <?= $i ?></label>
+                  </div>
+                <?php } ?>
+              </div>
+            </div>
+
+            <div class="col-2 text-center">
+              <div class="custom-control custom-switch my-3">
+                <input type="checkbox" class="custom-control-input" id="stockSwitch">
+                <label class="custom-control-label" for="stockSwitch">In-Stock</label>
+              </div>
+            </div>
+
+            <div class="col-10">
+              <div class="range-slider my-3">
+                <label for="price">Price:
+                  <span class="rangeValues"></span>
+                </label>
+                <input type="range" class="custom-range price-slider" name="minprice" value="0" min="0" max="200" step="1">
+                <input type="range" class="custom-range price-slider" name="maxprice" value="200" min="0" max="200" step="1">
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
 
         <table class="table table-striped text-center">
           <thead>
@@ -149,5 +197,5 @@
   </div>
 </div>
 <?php
-  draw_footer();
+draw_footer();
 ?>
