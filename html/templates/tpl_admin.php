@@ -210,16 +210,112 @@ function draw_sidebar($currentPage)
 function draw_product_row($product)
 { ?>
   <tr>
-    <th class="align-middle" scope="row"><?=$product["id"]?></th>
-    <td class="align-middle col-1"><img class="img-fluid img-thumbnail" src="<?=$product['img']?>"></td>
-    <td class="align-middle"><?=$product["name"]?></td>
-    <td class="align-middle"><?=$product["price"]?></td>
-    <td class="align-middle"><?=$product["category"]?></td>
-    <td class="align-middle"><?=$product["subcategory"]?></td>
-    <td class="align-middle"><?=$product["stock"]?></td>
+    <th class="align-middle" scope="row"><?= $product["id"] ?></th>
+    <td class="align-middle col-1"><img class="img-fluid img-thumbnail" src="<?= $product['img'] ?>"></td>
+    <td class="align-middle"><?= $product["name"] ?></td>
+    <td class="align-middle"><?= $product["price"] ?></td>
+    <td class="align-middle"><?= $product["category"] ?></td>
+    <td class="align-middle"><?= $product["subcategory"] ?></td>
+    <td class="align-middle"><?= $product["stock"] ?></td>
     <td class="align-middle">
       <button type="button" class="btn button-secondary mx-2" onclick="location.href='/admin/add_product.php'">Edit</button>
       <button type="button" class="btn btn-link a_link mx-2">Archive</button>
+    </td>
+  </tr>
+<?php }
+
+/**
+ * Function to draw category row
+ */
+function draw_category_row($category)
+{ ?>
+  <tr>
+    <th class="align-middle" scope="row"><?= $category["id"] ?></th>
+    <td class="align-middle"><?= $category["name"] ?></td>
+    <td class="align-middle">
+      <button type="button" class="btn button-secondary" data-toggle="modal" data-target="#editCategory<?= $category["id"] ?>">
+        Edit
+      </button>
+
+      <!-- Modal -->
+      <div class="text-left modal fade" id="editCategory<?= $category["id"] ?>" tabindex="-1" role="dialog" aria-labelledby="category<?= $category["id"] ?>Modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="category<?= $category["id"] ?>Modal">Edit Category</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="categoryName">Name</label>
+                  <input type="text" class="form-control" id="categoryName" placeholder="<?= $category["name"] ?>">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
+              <button type="button" class="btn button">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-link a_link">Delete</button>
+    </td>
+  </tr>
+<?php }
+
+/**
+ * Function to draw category row
+ */
+function draw_subcategory_row($subcategory)
+{ ?>
+  <tr>
+    <th class="align-middle" scope="row"><?= $subcategory["id"] ?></th>
+    <td class="align-middle"><?= $subcategory["name"] ?></td>
+    <td class="align-middle">
+      <button type="button" class="btn button-secondary" data-toggle="modal" data-target="#editSubcategory<?= $subcategory["id"] ?>">
+        Edit
+      </button>
+
+      <!-- Modal -->
+      <div class="text-left modal fade" id="editSubcategory<?= $subcategory["id"] ?>" tabindex="-1" role="dialog" aria-labelledby="subcategory<?= $subcategory["id"] ?>Modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="subcategory<?= $subcategory["id"] ?>Modal">Edit Category</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="subcategoryName">Name</label>
+                  <input type="text" class="form-control" id="subcategoryName" placeholder="<?= $subcategory["name"] ?>">
+                </div>
+                <div class="form-group">
+                  <label for="subcategoryCategory">Parent Category</label>
+                  <select class="custom-select" id="subcategoryCategory">
+                    <option value="Ink">Ink</option>
+                    <option value="Machines">Machines</option>
+                    <option value="...">...</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
+              <button type="button" class="btn button">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-link a_link">Delete</button>
     </td>
   </tr>
 <?php }
