@@ -27,14 +27,7 @@ body {
     padding-top: 100px;
 }
 
-.a_link {
-    color: var(--main-red-alpha);
-}
-
-.a_link:hover {
-    color: var(--main-red);
-}
-
+/* BUTTON */
 .button {
     background-color: var(--main-red-alpha);
     color: var(--text-color-white);
@@ -45,4 +38,39 @@ body {
     background-color: var(--main-red);
     color: var(--text-color-white);
     border-color: var(--main-red);
+}
+
+.button:active, .button:focus {
+    background-color: var(--main-red) !important;
+    color: var(--text-color-white) !important;
+    border-color: var(--main-red) !important;
+    box-shadow: 0 0 0 !important;
+}
+
+.button-secondary {
+    background-color: transparent;
+    color: var(--main-red);
+    border-color: var(--main-red);
+}
+
+.button-secondary:hover {
+    background-color: var(--main-red);
+    color: var(--text-color-white);
+    border-color: var(--main-red-alpha);
+}
+
+.button-secondary:active, .button-secondary:focus {
+    background-color: var(--main-red) !important;
+    color: var(--text-color-white) !important;
+    border-color: var(--main-red) !important;
+    box-shadow: 0 0 0 !important;
+}
+
+/* LINK / BUTTON */
+.a_link {
+    color: var(--main-red-alpha);
+}
+
+.a_link:hover {
+    color: var(--main-red);
 }

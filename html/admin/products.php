@@ -27,7 +27,7 @@ draw_navbar();
             </div>
           </div>
           <div class="flex-shrink-0">
-            <button type="button" class="btn btn-primary" onclick="location.href='/admin/add_product.php'">
+            <button type="button" class="btn btn-primary button" onclick="location.href='/admin/add_product.php'">
               Add Item
             </button>
           </div>
@@ -96,97 +96,21 @@ draw_navbar();
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th class="align-middle" scope="row">234</th>
-              <td class="align-middle col-1"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
-              <td class="align-middle">Dynamic Black Ink 100ml</td>
-              <td class="align-middle">17,99€</td>
-              <td class="align-middle">Ink</td>
-              <td class="align-middle">Black</td>
-              <td class="align-middle">34</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-secondary mx-2" onclick="location.href='/admin/add_product.php'">Edit</button>
-                <button type="button" class="btn btn-danger mx-2">Remove</button>
-              </td>
-            </tr>
-            <tr>
-              <th class="align-middle" scope="row">234</th>
-              <td class="align-middle col-1"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
-              <td class="align-middle">Dynamic Black Ink 100ml</td>
-              <td class="align-middle">17,99€</td>
-              <td class="align-middle">Ink</td>
-              <td class="align-middle">Black</td>
-              <td class="align-middle">34</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-secondary mx-2" onclick="location.href='/admin/add_product.php'">Edit</button>
-                <button type="button" class="btn btn-danger mx-2">Remove</button>
-              </td>
-            </tr>
-            <tr>
-              <th class="align-middle" scope="row">234</th>
-              <td class="align-middle col-1"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
-              <td class="align-middle">Dynamic Black Ink 100ml</td>
-              <td class="align-middle">17,99€</td>
-              <td class="align-middle">Ink</td>
-              <td class="align-middle">Black</td>
-              <td class="align-middle">34</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-secondary mx-2" onclick="location.href='/admin/add_product.php'">Edit</button>
-                <button type="button" class="btn btn-danger mx-2">Remove</button>
-              </td>
-            </tr>
-            <tr>
-              <th class="align-middle" scope="row">234</th>
-              <td class="align-middle col-1"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
-              <td class="align-middle">Dynamic Black Ink 100ml</td>
-              <td class="align-middle">17,99€</td>
-              <td class="align-middle">Ink</td>
-              <td class="align-middle">Black</td>
-              <td class="align-middle">34</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-secondary mx-2" onclick="location.href='/admin/add_product.php'">Edit</button>
-                <button type="button" class="btn btn-danger mx-2">Remove</button>
-              </td>
-            </tr>
-            <tr>
-              <th class="align-middle" scope="row">234</th>
-              <td class="align-middle col-1"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
-              <td class="align-middle">Dynamic Black Ink 100ml</td>
-              <td class="align-middle">17,99€</td>
-              <td class="align-middle">Ink</td>
-              <td class="align-middle">Black</td>
-              <td class="align-middle">34</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-secondary mx-2" onclick="location.href='/admin/add_product.php'">Edit</button>
-                <button type="button" class="btn btn-danger mx-2">Remove</button>
-              </td>
-            </tr>
-            <tr>
-              <th class="align-middle" scope="row">234</th>
-              <td class="align-middle col-1"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
-              <td class="align-middle">Dynamic Black Ink 100ml</td>
-              <td class="align-middle">17,99€</td>
-              <td class="align-middle">Ink</td>
-              <td class="align-middle">Black</td>
-              <td class="align-middle">34</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-secondary mx-2" onclick="location.href='/admin/add_product.php'">Edit</button>
-                <button type="button" class="btn btn-danger mx-2">Remove</button>
-              </td>
-            </tr>
-            <tr>
-              <th class="align-middle" scope="row">234</th>
-              <td class="align-middle col-1"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
-              <td class="align-middle">Dynamic Black Ink 100ml</td>
-              <td class="align-middle">17,99€</td>
-              <td class="align-middle">Ink</td>
-              <td class="align-middle">Black</td>
-              <td class="align-middle">34</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-secondary mx-2" onclick="location.href='/admin/add_product.php'">Edit</button>
-                <button type="button" class="btn btn-danger mx-2">Remove</button>
-              </td>
-            </tr>
+
+            <?php
+              $product = array(
+                'id' => 234,
+                'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
+                'name' => "Dynamic Black Ink 100ml",
+                'price' => 17.99,
+                'category' => "Ink",
+                'subcategory' => "Black",
+                'stock' => 34
+              );
+              
+              for ($i = 1; $i < 6; $i++) {
+                draw_product_row($product);
+            } ?>
 
           </tbody>
         </table>
