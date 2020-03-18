@@ -16,9 +16,9 @@ function draw_header()
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- custom css -->
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="../css/search.css">
-    <link rel="stylesheet" href="../css/common.css">
     <!-- custom js -->
     <script src="../script/admin.js"></script>
     <script src="../script/search.js"></script>
