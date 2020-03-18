@@ -18,6 +18,7 @@ function draw_header()
     <!-- custom css -->
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="../css/search.css">
+    <link rel="stylesheet" href="../css/common.css">
     <!-- custom js -->
     <script src="../script/admin.js"></script>
     <script src="../script/search.js"></script>
