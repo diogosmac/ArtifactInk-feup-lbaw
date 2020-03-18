@@ -10,12 +10,12 @@
 
     <?php draw_sidebar("products") ?>
 
-    <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <main class="col-md-9 ml-sm-auto col-lg-10 px-4 mb-5">
       <div class="container">
 
         <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap border-bottom mt-2">
           <h1>Add Product</h1>
-          <button type="button" class="btn btn-primary">
+          <button type="button" class="btn button">
             Submit
           </button>
         </div>
@@ -31,7 +31,7 @@
               <input type="number" step=".01" min="0" class="form-control" id="inputPrice">
             </div>
             <div class="form-group col-md-3">
-              <label for="inputQuantity">Quantity</label>
+              <label for="inputQuantity">Stock</label>
               <input type="number" class="form-control" min="0" id="inputQuantity">
             </div>
           </div>
@@ -76,7 +76,7 @@
                   <div class="form-group">
                     <input type="file" name="files[]" id="js-upload-files" multiple>
                   </div>
-                  <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
+                  <button type="submit" class="btn button-secondary" id="js-upload-submit">Upload files</button>
                 </div>
               </form>
 
