@@ -71,8 +71,8 @@ draw_navbar();
                     array("id" => 1, "name" => "Designs")
                   );
 
-                  for ($i = 0; $i < count($categories); $i++) {
-                    draw_category_row($categories[$i]);
+                  foreach ($categories as $category) {
+                    draw_category_row($category);
                   }
                   ?>
                 </tbody>
@@ -138,8 +138,8 @@ draw_navbar();
                     array("id" => 1, "name" => "Realism")
                   );
 
-                  for ($i = 0; $i < count($categories); $i++) {
-                    draw_subcategory_row($categories[$i]);
+                  foreach ($categories as $category) {
+                    draw_subcategory_row($category);
                   }
                   ?>
                 </tbody>
