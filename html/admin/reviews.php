@@ -78,273 +78,74 @@ draw_navbar();
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th class="align-middle" scope="row">3</th>
-              <td class="align-middle">miguel102</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewReview3Item">
-                  View Item #32
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="viewReview3Item" tabindex="-1" role="dialog" aria-labelledby="viewItem3Modal" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="viewItem3Modal">View Item</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <table class="table table-striped text-center">
-                          <thead>
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">Photo</th>
-                              <th scope="col">Name</th>
-                              <th scope="col">Price</th>
-                              <th scope="col">Category</th>
-                              <th scope="col">Subcategory</th>
-                              <th scope="col">Stock</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th class="align-middle" scope="row">234</th>
-                              <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
-                              <td class="align-middle">Dynamic Black Ink 100ml</td>
-                              <td class="align-middle">17,99€</td>
-                              <td class="align-middle">Ink</td>
-                              <td class="align-middle">Black</td>
-                              <td class="align-middle">34</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-primary" onclick="location.href='/admin/orders.php'">
-                  View Order #13
-                </button>
-              </td>
-              <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
-              <td class="align-middle">4.5</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewReview3Content">
-                  View Content
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="viewReview3Content" tabindex="-1" role="dialog" aria-labelledby="viewContent3Modal" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="viewContent3Modal">View Content</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <p class="text-justify">
-                          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem dolorem, adipisci tempora esse repellendus ab reprehenderit consequatur assumenda dolorum deserunt dolore eum qui necessitatibus cupiditate nostrum aut repellat natus mollitia!
-                        </p>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-danger">
-                  Remove
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th class="align-middle" scope="row">2</th>
-              <td class="align-middle">miguel102</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewReview2Item">
-                  View Item #45
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="viewReview2Item" tabindex="-1" role="dialog" aria-labelledby="viewItem2Modal" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="viewItem2Modal">View Content</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <table class="table table-striped text-center">
-                          <thead>
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">Photo</th>
-                              <th scope="col">Name</th>
-                              <th scope="col">Price</th>
-                              <th scope="col">Category</th>
-                              <th scope="col">Subcategory</th>
-                              <th scope="col">Stock</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th class="align-middle" scope="row">234</th>
-                              <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
-                              <td class="align-middle">Dynamic Black Ink 100ml</td>
-                              <td class="align-middle">17,99€</td>
-                              <td class="align-middle">Ink</td>
-                              <td class="align-middle">Black</td>
-                              <td class="align-middle">34</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-primary" onclick="location.href='/admin/orders.php'">
-                  View Order #13
-                </button>
-              </td>
-              <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
-              <td class="align-middle">4.5</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewReview2Content">
-                  View Content
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="viewReview2Content" tabindex="-1" role="dialog" aria-labelledby="viewContent2Modal" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="viewContent2Modal">View Content</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <p class="text-justify">
-                          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem dolorem, adipisci tempora esse repellendus ab reprehenderit consequatur assumenda dolorum deserunt dolore eum qui necessitatibus cupiditate nostrum aut repellat natus mollitia!
-                        </p>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-danger">
-                  Remove
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th class="align-middle" scope="row">1</th>
-              <td class="align-middle">miguel102</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewReview1Item">
-                  View Item #32
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="viewReview1Item" tabindex="-1" role="dialog" aria-labelledby="viewItem1Modal" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="viewItem1Modal">View Item</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <table class="table table-striped text-center">
-                          <thead>
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">Photo</th>
-                              <th scope="col">Name</th>
-                              <th scope="col">Price</th>
-                              <th scope="col">Category</th>
-                              <th scope="col">Subcategory</th>
-                              <th scope="col">Stock</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <th class="align-middle" scope="row">234</th>
-                              <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg"></td>
-                              <td class="align-middle">Dynamic Black Ink 100ml</td>
-                              <td class="align-middle">17,99€</td>
-                              <td class="align-middle">Ink</td>
-                              <td class="align-middle">Black</td>
-                              <td class="align-middle">34</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-primary" onclick="location.href='/admin/orders.php'">
-                  View Order #13
-                </button>
-              </td>
-              <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
-              <td class="align-middle">4.5</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewReview1Content">
-                  View Content
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="viewReview1Content" tabindex="-1" role="dialog" aria-labelledby="viewContent1Modal" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="viewContent1Modal">View Item</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <p class="text-justify">
-                          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem dolorem, adipisci tempora esse repellendus ab reprehenderit consequatur assumenda dolorum deserunt dolore eum qui necessitatibus cupiditate nostrum aut repellat natus mollitia!
-                        </p>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-danger">
-                  Remove
-                </button>
-              </td>
-            </tr>
+            <?php
+            $reviews = array(
+              // review 3
+              array(
+                "id" => 3,
+                "user" => "miguel102@gmail.com",
+                "title" => "Good product",
+                "body" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem dolorem, adipisci tempora esse repellendus ab reprehenderit consequatur assumenda dolorum deserunt dolore eum qui necessitatibus cupiditate nostrum aut repellat natus mollitia!",
+                "score" => 4.5,
+                "timestamp" => "Sunday, 08-Mar-20 12:34:17",
+                "order" => 13,
+                // item
+                "item" => array(
+                  'id' => 234,
+                  'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
+                  'name' => "Dynamic Black Ink 100ml",
+                  'price' => 17.99,
+                  'category' => "Ink",
+                  'subcategory' => "Black",
+                  'stock' => 34
+                )
+              ),
+              // review 2
+              array(
+                "id" => 2,
+                "user" => "outromiguel102@gmail.com",
+                "title" => "Another Good product",
+                "body" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem dolorem, adipisci tempora esse repellendus ab reprehenderit consequatur assumenda dolorum deserunt dolore eum qui necessitatibus cupiditate nostrum aut repellat natus mollitia!",
+                "score" => 4.7,
+                "timestamp" => "Sunday, 08-Mar-20 12:34:17",
+                "order" => 4,
+                // item
+                "item" => array(
+                  'id' => 234,
+                  'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
+                  'name' => "Dynamic Black Ink 100ml",
+                  'price' => 17.99,
+                  'category' => "Ink",
+                  'subcategory' => "Black",
+                  'stock' => 34
+                )
+              ),
+              // review 1
+              array(
+                "id" => 1,
+                "user" => "maisoutromiguel102@gmail.com",
+                "title" => "Yet Another Good product",
+                "body" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem dolorem, adipisci tempora esse repellendus ab reprehenderit consequatur assumenda dolorum deserunt dolore eum qui necessitatibus cupiditate nostrum aut repellat natus mollitia!",
+                "score" => 4.9,
+                "timestamp" => "Sunday, 08-Mar-20 12:34:17",
+                "order" => 98,
+                // item
+                "item" => array(
+                  'id' => 234,
+                  'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
+                  'name' => "Dynamic Black Ink 100ml",
+                  'price' => 17.99,
+                  'category' => "Ink",
+                  'subcategory' => "Black",
+                  'stock' => 34
+                )
+              )
+            );
+
+            foreach ($reviews as $review) {
+              draw_review_row($review);
+            }
+            ?>
           </tbody>
         </table>
 

@@ -1,8 +1,8 @@
 <?php
-  include_once("../templates/tpl_admin.php");
+include_once("../templates/tpl_admin.php");
 
-  draw_header();
-  draw_navbar();
+draw_header();
+draw_navbar();
 ?>
 
 <div class="container-fluid">
@@ -72,162 +72,51 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th class="align-middle" scope="row">3</th>
-              <td class="align-middle">Miguel</td>
-              <td class="align-middle">Ferreira</td>
-              <td class="align-middle">miguel.ferreira@mail.com</td>
-              <td class="align-middle">+351 987876453</td>
-              <td class="align-middle">25-04-1974</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewUser3">
-                  View Billing
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="viewUser3" tabindex="-1" role="dialog" aria-labelledby="viewUser3Modal" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="viewUser3Modal">Billing Information</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <table class="table table-striped text-center">
-                          <thead>
-                            <tr>
-                              <th scope="col">Credit Card</th>
-                              <th scope="col">Address 1</th>
-                              <th scope="col">Address 2</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td class="align-middle">MasterCard XXXX-XXXX-XXXX-XXXX</td>
-                              <td class="align-middle">Address Street, 123 - 6ª esq frente</td>
-                              <td class="align-middle">Avenida Sérgio Sobral Nunes, 123 - 6ª esq frente</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-danger">
-                  Delete
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th class="align-middle" scope="row">2</th>
-              <td class="align-middle">João</td>
-              <td class="align-middle">Massa</td>
-              <td class="align-middle">joao.massinhas@sigala.com</td>
-              <td class="align-middle">+351 987 876 453</td>
-              <td class="align-middle">25-04-1974</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewUser2">
-                  View Billing
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="viewUser2" tabindex="-1" role="dialog" aria-labelledby="viewUser2Modal" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="viewUser2Modal">Billing Information</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <table class="table table-striped text-center">
-                          <thead>
-                            <tr>
-                              <th scope="col">Credit Card</th>
-                              <th scope="col">Address 1</th>
-                              <th scope="col">Address 2</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td class="align-middle">MasterCard XXXX-XXXX-XXXX-XXXX</td>
-                              <td class="align-middle">Address Banana, 123 - 6ª esq frente</td>
-                              <td class="align-middle">Avenida Sérgio Sobral Nunes, 123 - 6ª esq frente</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-danger">
-                  Delete
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th class="align-middle" scope="row">1</th>
-              <td class="align-middle">Corona</td>
-              <td class="align-middle">Virus</td>
-              <td class="align-middle">covid-19@dgs.pt</td>
-              <td class="align-middle">+351 987 876 453</td>
-              <td class="align-middle">25-04-2019</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewUser1">
-                  View Billing
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="viewUser1" tabindex="-1" role="dialog" aria-labelledby="viewUser1Modal" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="viewUser1Modal">Billing Information</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <table class="table table-striped text-center">
-                          <thead>
-                            <tr>
-                              <th scope="col">Credit Card</th>
-                              <th scope="col">Address 1</th>
-                              <th scope="col">Address 2</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td class="align-middle">MasterCard XXXX-XXXX-XXXX-XXXX</td>
-                              <td class="align-middle">FEUP, Address Queijo, 127 - 6ª esq frente</td>
-                              <td class="align-middle">Avenida Sérgio Sobral Nunes, 123 - 6ª esq frente</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-danger">
-                  Delete
-                </button>
-              </td>
-            </tr>
+            <?php
+            $users = array(
+              // user 3
+              array(
+                "id" => 3,
+                "firstName" => "João",
+                "lastName" => "Massa",
+                "email" => "joao.massinhas@siaga.com",
+                "phone" => "+351 987 876 453",
+                "birthday" => "25-04-1974",
+                "card" => "MasterCard XXXX-XXXX-XXXX-1234",
+                "address1" => "Address Banana, 123 - 6ª esq frente",
+                "address2" => "Avenida Sérgio Sobral Nunes, 123 - 6ª esq frente"
+              ),
+              // user 2
+              array(
+                "id" => 2,
+                "firstName" => "Joana",
+                "lastName" => "Banana",
+                "email" => "joaninha@frutas.com",
+                "phone" => "+351 987 876 453",
+                "birthday" => "25-04-1974",
+                "card" => "VISA XXXX-XXXX-XXXX-9876",
+                "address1" => "Address Banana, 123 - 6ª esq frente",
+                "address2" => "Avenida Sérgio Sobral Nunes, 123 - 6ª esq frente"
+              ),
+              // user 1
+              array(
+                "id" => 1,
+                "firstName" => "Manuel",
+                "lastName" => "Coutinho",
+                "email" => "mc.coutinho@fe.up.pt",
+                "phone" => "+351 987 876 453",
+                "birthday" => "25-04-1974",
+                "card" => "PayPal mc.coutinho@fe.up.pt",
+                "address1" => "Address Banana, 123 - 6ª esq frente",
+                "address2" => "Avenida Sérgio Sobral Nunes, 123 - 6ª esq frente"
+              )
+            );
+
+
+            foreach ($users as $user) {
+              draw_user_row($user);
+            }
+            ?>
           </tbody>
         </table>
 
@@ -238,5 +127,5 @@
 </div>
 
 <?php
-  draw_footer();
+draw_footer();
 ?>

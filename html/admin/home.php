@@ -137,28 +137,28 @@
                 <td class="align-middle">234</td>
                 <td class="align-middle">Product "Dynamic Black Ink" #45 is out of stock</td>
                 <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
-                <td class="align-middle"><button type="button" class="btn btn-link py-0">Clear</button></td>
+                <td class="align-middle"><button type="button" class="btn btn-link py-0 a_link">Clear</button></td>
               </tr>
               <tr>
                 <th class="align-middle" scope="row">Review</th>
                 <td class="align-middle">134</td>
                 <td class="align-middle">User miguel123 made a review on order #541</td>
                 <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
-                <td class="align-middle"><button type="button" class="btn btn-link py-0">Clear</button></td>
+                <td class="align-middle"><button type="button" class="btn btn-link py-0 a_link">Clear</button></td>
               </tr>
               <tr>
                 <th class="align-middle" scope="row">Order</th>
                 <td class="align-middle">541</td>
                 <td class="align-middle">User miguel123 made a new order</td>
                 <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
-                <td class="align-middle"><button type="button" class="btn btn-link py-0">Clear</button></td>
+                <td class="align-middle"><button type="button" class="btn btn-link py-0 a_link">Clear</button></td>
               </tr>
               <tr>
                 <th class="align-middle" scope="row">Users</th>
                 <td class="align-middle">675</td>
                 <td class="align-middle">User miguel123 just signed up</td>
                 <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
-                <td class="align-middle"><button type="button" class="btn btn-link py-0">Clear</button></td>
+                <td class="align-middle"><button type="button" class="btn btn-link py-0 a_link">Clear</button></td>
               </tr>
             </tbody>
           </table>

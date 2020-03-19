@@ -16,6 +16,7 @@ function draw_header()
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- custom css -->
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="../css/search.css">
     <!-- custom js -->
@@ -202,3 +203,506 @@ function draw_sidebar($currentPage)
     </div>
   </nav>
 <?php }
+
+/**
+ * Function to draw product row
+ */
+function draw_product_row($product)
+{ ?>
+  <tr>
+    <th class="align-middle" scope="row"><?= $product["id"] ?></th>
+    <td class="align-middle col-1"><img class="img-fluid img-thumbnail" src="<?= $product['img'] ?>"></td>
+    <td class="align-middle"><?= $product["name"] ?></td>
+    <td class="align-middle"><?= $product["price"] ?></td>
+    <td class="align-middle"><?= $product["category"] ?></td>
+    <td class="align-middle"><?= $product["subcategory"] ?></td>
+    <td class="align-middle"><?= $product["stock"] ?></td>
+    <td class="align-middle">
+      <button type="button" class="btn button-secondary mx-2" onclick="location.href='/admin/add_product.php'">Edit</button>
+      <button type="button" class="btn btn-link a_link mx-2">Archive</button>
+    </td>
+  </tr>
+<?php }
+
+/**
+ * Function to draw category row
+ */
+function draw_category_row($category)
+{ ?>
+  <tr>
+    <th class="align-middle" scope="row"><?= $category["id"] ?></th>
+    <td class="align-middle"><?= $category["name"] ?></td>
+    <td class="align-middle">
+      <button type="button" class="btn button-secondary" data-toggle="modal" data-target="#editCategory<?= $category["id"] ?>">
+        Edit
+      </button>
+
+      <!-- Modal -->
+      <div class="text-left modal fade" id="editCategory<?= $category["id"] ?>" tabindex="-1" role="dialog" aria-labelledby="category<?= $category["id"] ?>Modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="category<?= $category["id"] ?>Modal">Edit Category</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="categoryName">Name</label>
+                  <input type="text" class="form-control" id="categoryName" placeholder="<?= $category["name"] ?>">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
+              <button type="button" class="btn button">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-link a_link">Delete</button>
+    </td>
+  </tr>
+<?php }
+
+/**
+ * Function to draw subcategory row
+ */
+function draw_subcategory_row($subcategory)
+{ ?>
+  <tr>
+    <th class="align-middle" scope="row"><?= $subcategory["id"] ?></th>
+    <td class="align-middle"><?= $subcategory["name"] ?></td>
+    <td class="align-middle">
+      <button type="button" class="btn button-secondary" data-toggle="modal" data-target="#editSubcategory<?= $subcategory["id"] ?>">
+        Edit
+      </button>
+
+      <!-- Modal -->
+      <div class="text-left modal fade" id="editSubcategory<?= $subcategory["id"] ?>" tabindex="-1" role="dialog" aria-labelledby="subcategory<?= $subcategory["id"] ?>Modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="subcategory<?= $subcategory["id"] ?>Modal">Edit Category</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="subcategoryName">Name</label>
+                  <input type="text" class="form-control" id="subcategoryName" placeholder="<?= $subcategory["name"] ?>">
+                </div>
+                <div class="form-group">
+                  <label for="subcategoryCategory">Parent Category</label>
+                  <select class="custom-select" id="subcategoryCategory">
+                    <option value="Ink">Ink</option>
+                    <option value="Machines">Machines</option>
+                    <option value="...">...</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
+              <button type="button" class="btn button">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-link a_link">Delete</button>
+    </td>
+  </tr>
+<?php }
+
+/**
+ * Function to draw product row
+ */
+function draw_order_row($order)
+{ ?>
+  <tr>
+    <th class="align-middle" scope="row"><?= $order['id'] ?></th>
+    <td class="align-middle"><?= $order['user'] ?></td>
+    <td class="align-middle">
+      <button type="button" class="btn button-secondary" data-toggle="modal" data-target="#viewOrder<?= $order['id'] ?>Items">
+        View Items
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="viewOrder<?= $order['id'] ?>Items" tabindex="-1" role="dialog" aria-labelledby="viewItems<?= $order['id'] ?>Modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="viewItems<?= $order['id'] ?>Modal">View Items</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <table class="table table-striped text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Photo</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($order['items'] as $item) { ?>
+                    <tr>
+                      <th class="align-middle" scope="row"><?= $item['id'] ?></th>
+                      <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="<?= $item['img'] ?>"></td>
+                      <td class="align-middle"><?= $item['name'] ?></td>
+                      <td class="align-middle"><?= $item['price'] ?>€</td>
+                      <td class="align-middle"><?= $item['quantity'] ?></td>
+                      <td class="align-middle"><?= $item['totalPrice'] ?>€</td>
+                    </tr>
+                  <?php } ?>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+    <td class="align-middle"><?= $order['timestamp'] ?></td>
+    <td class="align-middle"><?= $order['total'] ?>€</td>
+    <td class="align-middle"><?= $order['paymentMethod'] ?></td>
+    <td class="align-middle">
+      <select class="custom-select">
+        <option value="processing">Processing</option>
+        <option selected value="shipped">Shipped</option>
+        <option value="arrived">Arrived</option>
+      </select>
+    </td>
+  </tr>
+<?php }
+
+/**
+ * Function to draw review row
+ */
+function draw_review_row($review)
+{ ?>
+  <tr>
+    <th class="align-middle" scope="row"><?= $review['id'] ?></th>
+    <td class="align-middle"><?= $review['user'] ?></td>
+    <td class="align-middle">
+      <button type="button" class="btn button-secondary" data-toggle="modal" data-target="#viewReview<?= $review['id'] ?>Item">
+        View Item #<?= $review['item']['id'] ?>
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="viewReview<?= $review['id'] ?>Item" tabindex="-1" role="dialog" aria-labelledby="viewItem<?= $review['id'] ?>Modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="viewItem<?= $review['id'] ?>Modal">View Item</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <table class="table table-striped text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Photo</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Subcategory</th>
+                    <th scope="col">Stock</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th class="align-middle" scope="row"><?= $review['item']['id'] ?></th>
+                    <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="<?= $review['item']['img'] ?>"></td>
+                    <td class="align-middle"><?= $review['item']['name'] ?></td>
+                    <td class="align-middle"><?= $review['item']['price'] ?>€</td>
+                    <td class="align-middle"><?= $review['item']['category'] ?></td>
+                    <td class="align-middle"><?= $review['item']['subcategory'] ?></td>
+                    <td class="align-middle"><?= $review['item']['stock'] ?></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+    <td class="align-middle">
+      <button type="button" class="btn button-secondary" onclick="location.href='/admin/orders.php?order=<?= $review['order'] ?>'">
+        Go to Order #<?= $review['order'] ?>
+      </button>
+    </td>
+    <td class="align-middle"><?= $review['timestamp'] ?></td>
+    <td class="align-middle"><?= $review['score'] ?></td>
+    <td class="align-middle">
+      <button type="button" class="btn button-secondary" data-toggle="modal" data-target="#viewReview<?= $review['id'] ?>Content">
+        View Content
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="viewReview<?= $review['id'] ?>Content" tabindex="-1" role="dialog" aria-labelledby="viewContent<?= $review['id'] ?>Modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="viewContent<?= $review['id'] ?>Modal"><?= $review['title'] ?></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p class="text-justify"><?= $review['body'] ?></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+    <td class="align-middle">
+      <button type="button" class="btn btn-link a_link">
+        Delete
+      </button>
+    </td>
+  </tr>
+<?php }
+
+/**
+ * Function to user row
+ */
+function draw_user_row($user)
+{ ?>
+  <tr>
+    <th class="align-middle" scope="row"><?= $user['id'] ?></th>
+    <td class="align-middle"><?= $user['firstName'] ?></td>
+    <td class="align-middle"><?= $user['lastName'] ?></td>
+    <td class="align-middle"><?= $user['email'] ?>/td>
+    <td class="align-middle"><?= $user['phone'] ?></td>
+    <td class="align-middle"><?= $user['birthday'] ?></td>
+    <td class="align-middle">
+      <button type="button" class="btn button-secondary" data-toggle="modal" data-target="#viewUser<?= $user['id'] ?>">
+        View Billing
+      </button>
+      <!-- Modal -->
+      <div class="modal fade" id="viewUser<?= $user['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="viewUser<?= $user['id'] ?>Modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="viewUser<?= $user['id'] ?>Modal">Billing Information</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <table class="table table-striped text-center">
+                <thead>
+                  <tr>
+                    <th scope="col">Credit Card</th>
+                    <th scope="col">Address 1</th>
+                    <th scope="col">Address 2</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="align-middle"><?= $user['card'] ?></td>
+                    <td class="align-middle"><?= $user['address1'] ?></td>
+                    <td class="align-middle"><?= $user['address2'] ?></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+    <td class="align-middle">
+      <button type="button" class="btn btn-link a_link">
+        Delete
+      </button>
+    </td>
+  </tr>
+<?php }
+
+/**
+ * Function to sales row
+ */
+function draw_sale_row($sale)
+{ ?>
+  <tr>
+    <th class="align-middle" scope="row"><?= $sale['id'] ?></th>
+    <td class="align-middle"><?= $sale['name'] ?></td>
+    <td class="align-middle"><?= $sale['startTimestamp'] ?></td>
+    <td class="align-middle"><?= $sale['endTimestamp'] ?></td>
+    <td class="align-middle">
+      <button type="button" class="btn button-secondary" onclick="location.href='/admin/add_sale.php?sale=<?= $sale['id'] ?>'">Edit</button>
+      <button type="button" class="btn btn-link a_link">Remove</button>
+    </td>
+  </tr>
+<?php }
+
+/**
+ * Function to sales row
+ */
+function draw_product_add_sale_row($product)
+{ ?>
+  <tr>
+    <th class="align-middle" scope="row"><?= $product['id'] ?></th>
+    <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="<?= $product['img'] ?>"></td>
+    <td class="align-middle"><?= $product['name'] ?></td>
+    <td class="align-middle"><?= $product['price'] ?>€</td>
+    <td class="align-middle">
+      <button type="button" class="btn button-secondary">Add</button>
+    </td>
+  </tr>
+<?php }
+
+/**
+ * Function to sales row
+ */
+function draw_product_remove_sale_row($product)
+{ ?>
+  <tr>
+    <th class="align-middle" scope="row"><?= $product['id'] ?></th>
+    <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="<?= $product['img'] ?>"></td>
+    <td class="align-middle"><?= $product['name'] ?></td>
+    <td class="align-middle"><?= $product['price'] ?>€</td>
+    <td class="align-middle">
+      <button type="button" class="btn btn-link a_link">Remove</button>
+    </td>
+  </tr>
+<?php }
+
+/**
+ * Function to sales row
+ */
+function draw_faq_row($question)
+{ ?>
+  <div class="d-flex justify-content-between align-items-start flex-wrap">
+    <h3><?= $question['question'] ?></h3>
+    <div>
+      <button type="button" class="btn button-secondary" data-toggle="modal" data-target="#editQuestion<?= $question['id'] ?>Modal">
+        Edit
+      </button>
+      <div class="modal fade" id="editQuestion<?= $question['id'] ?>Modal" tabindex="-1" role="dialog" aria-labelledby="question<?= $question['id'] ?>Modal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="question<?= $question['id'] ?>Modal">Edit Frequently Asked Question</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="question<?= $question['id'] ?>Title">Question</label>
+                  <input type="text" class="form-control" id="question<?= $question['id'] ?>Title" value="<?= $question['question'] ?>" placeholder="Write question here...">
+                </div>
+                <div class="form-group">
+                  <label for="question<?= $question['id'] ?>Answer">Answer</label>
+                  <textarea class="form-control" id="<?= $question['id'] ?>Answer" rows="5" placeholder="Write answer here..."><?= $question['answer'] ?></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="question1Number">Question number:</label>
+                  <select class="form-control" id="question1Number">
+                    <option selected>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
+              <button type="button" class="btn button">Add Question</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-justify">
+    <p>
+      <?= $question['answer'] ?>
+    </p>
+  </div>
+<?php }
+
+/**
+ * Function to support card
+ */
+function draw_support_user_card($user)
+{ ?>
+  <div class="border-bottom card chat-card p-2 m-1">
+    <div class="row align-items-center no-gutters">
+      <div class="col-md-4">
+        <img src="<?= $user['img'] ?>" class="card-img" alt="UserPhoto">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><?= $user['name'] ?></h5>
+          <p class="card-text"><?= $user['message'] ?></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php }
+
+/**
+ * Function to support chat bubble
+ */
+function draw_support_chat_user_bubble($message, $userimg)
+{ ?>
+  <div class="border-bottom card p-2 m-1 chat-message-card">
+    <div class="row align-items-center no-gutters">
+      <div class="col-md-1">
+        <img src="<?= $userimg ?>" class="card-img" alt="...">
+      </div>
+      <div class="col-md-11">
+        <div class="card-body chat-message-card-body">
+          <p class="card-text">
+            <?= $message ?>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php }
+
+
+/**
+ * Function to support chat bubble
+ */
+function draw_support_chat_admin_bubble($message, $userimg)
+{ ?>
+  <div class="border-bottom card p-2 m-1 chat-message-card">
+    <div class="row align-items-center no-gutters">
+      <div class="col-md-11">
+        <div class="card-body chat-message-card-body">
+          <?= $message ?>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <img src="<?= $userimg ?>" class="card-img" alt="...">
+      </div>
+    </div>
+  </div>
+<?php } ?>

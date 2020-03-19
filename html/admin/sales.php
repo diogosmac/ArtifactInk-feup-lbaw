@@ -27,7 +27,7 @@ draw_navbar();
             </div>
           </div>
           <div class="flex-shrink-0">
-            <button type="button" class="btn btn-primary" onclick="location.href='/admin/add_sale.php'">
+            <button type="button" class="btn button" onclick="location.href='/admin/add_sale.php'">
               Add Sale
             </button>
           </div>
@@ -66,47 +66,42 @@ draw_navbar();
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th class="align-middle" scope="row">4</th>
-              <td class="align-middle">Inktober Fest</td>
-              <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
-              <td class="align-middle">Sunday, 15-Mar-20 12:34:17</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-secondary mx-2" onclick="location.href='/admin/add_sale.php'">Edit</button>
-                <button type="button" class="btn btn-danger mx-2">Remove</button>
-              </td>
-            </tr>
-            <tr>
-              <th class="align-middle" scope="row">3</th>
-              <td class="align-middle">Inktober Fest</td>
-              <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
-              <td class="align-middle">Sunday, 15-Mar-20 12:34:17</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-secondary mx-2" onclick="location.href='/admin/add_sale.php'">Edit</button>
-                <button type="button" class="btn btn-danger mx-2">Remove</button>
-              </td>
-            </tr>
-            <tr>
-              <th class="align-middle" scope="row">2</th>
-              <td class="align-middle">Inktober Fest</td>
-              <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
-              <td class="align-middle">Sunday, 15-Mar-20 12:34:17</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-secondary mx-2" onclick="location.href='/admin/add_sale.php'">Edit</button>
-                <button type="button" class="btn btn-danger mx-2">Remove</button>
-              </td>
-            </tr>
-            <tr>
-              <th class="align-middle" scope="row">1</th>
-              <td class="align-middle">Inktober Fest</td>
-              <td class="align-middle">Sunday, 08-Mar-20 12:34:17</td>
-              <td class="align-middle">Sunday, 15-Mar-20 12:34:17</td>
-              <td class="align-middle">
-                <button type="button" class="btn btn-secondary mx-2" onclick="location.href='/admin/add_sale.php'">Edit</button>
-                <button type="button" class="btn btn-danger mx-2">Remove</button>
-              </td>
-            </tr>
+            <?php
+            $sales = array(
+              // sale 4
+              array(
+                "id" => 4,
+                "name" => "Inktober Fest",
+                "startTimestamp" => "Sunday, 08-Mar-20 12:34:17",
+                "endTimestamp" => "Sunday, 15-Mar-20 12:34:17"
+              ),
+              // sale 3
+              array(
+                "id" => 3,
+                "name" => "Inktober Fest",
+                "startTimestamp" => "Sunday, 08-Mar-20 12:34:17",
+                "endTimestamp" => "Sunday, 15-Mar-20 12:34:17"
+              ),
+              // sale 2
+              array(
+                "id" => 2,
+                "name" => "Inktober Fest",
+                "startTimestamp" => "Sunday, 08-Mar-20 12:34:17",
+                "endTimestamp" => "Sunday, 15-Mar-20 12:34:17"
+              ),
+              // sale 1
+              array(
+                "id" => 1,
+                "name" => "Inktober Fest",
+                "startTimestamp" => "Sunday, 08-Mar-20 12:34:17",
+                "endTimestamp" => "Sunday, 15-Mar-20 12:34:17"
+              )
+            );
 
+            foreach ($sales as $sale) {
+              draw_sale_row($sale);
+            }
+            ?>
           </tbody>
         </table>
 
