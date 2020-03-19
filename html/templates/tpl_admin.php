@@ -557,3 +557,35 @@ function draw_sale_row($sale)
     </td>
   </tr>
 <?php }
+
+/**
+ * Function to sales row
+ */
+function draw_product_add_sale_row($product)
+{ ?>
+  <tr>
+    <th class="align-middle" scope="row"><?= $product['id'] ?></th>
+    <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="<?= $product['img'] ?>"></td>
+    <td class="align-middle"><?= $product['name'] ?></td>
+    <td class="align-middle"><?= $product['price'] ?>€</td>
+    <td class="align-middle">
+      <button type="button" class="btn button-secondary">Add</button>
+    </td>
+  </tr>
+<?php }
+
+/**
+ * Function to sales row
+ */
+function draw_product_remove_sale_row($product)
+{ ?>
+  <tr>
+    <th class="align-middle" scope="row"><?= $product['id'] ?></th>
+    <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="<?= $product['img'] ?>"></td>
+    <td class="align-middle"><?= $product['name'] ?></td>
+    <td class="align-middle"><?= $product['price'] ?>€</td>
+    <td class="align-middle">
+      <button type="button" class="btn btn-link a_link">Remove</button>
+    </td>
+  </tr>
+<?php }
