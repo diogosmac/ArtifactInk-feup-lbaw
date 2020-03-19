@@ -540,3 +540,20 @@ function draw_user_row($user)
     </td>
   </tr>
 <?php }
+
+/**
+ * Function to sales row
+ */
+function draw_sale_row($sale)
+{ ?>
+  <tr>
+    <th class="align-middle" scope="row"><?= $sale['id'] ?></th>
+    <td class="align-middle"><?= $sale['name'] ?></td>
+    <td class="align-middle"><?= $sale['startTimestamp'] ?></td>
+    <td class="align-middle"><?= $sale['endTimestamp'] ?></td>
+    <td class="align-middle">
+      <button type="button" class="btn button-secondary" onclick="location.href='/admin/add_sale.php?sale=<?= $sale['id'] ?>'">Edit</button>
+      <button type="button" class="btn btn-link a_link">Remove</button>
+    </td>
+  </tr>
+<?php }
