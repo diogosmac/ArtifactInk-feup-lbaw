@@ -645,3 +645,64 @@ function draw_faq_row($question)
     </p>
   </div>
 <?php }
+
+/**
+ * Function to support card
+ */
+function draw_support_user_card($user)
+{ ?>
+  <div class="border-bottom card chat-card p-2 m-1">
+    <div class="row align-items-center no-gutters">
+      <div class="col-md-4">
+        <img src="<?= $user['img'] ?>" class="card-img" alt="UserPhoto">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title"><?= $user['name'] ?></h5>
+          <p class="card-text"><?= $user['message'] ?></p>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php }
+
+/**
+ * Function to support chat bubble
+ */
+function draw_support_chat_user_bubble($message, $userimg)
+{ ?>
+  <div class="border-bottom card p-2 m-1 chat-message-card">
+    <div class="row align-items-center no-gutters">
+      <div class="col-md-1">
+        <img src="<?= $userimg ?>" class="card-img" alt="...">
+      </div>
+      <div class="col-md-11">
+        <div class="card-body chat-message-card-body">
+          <p class="card-text">
+            <?= $message ?>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php }
+
+
+/**
+ * Function to support chat bubble
+ */
+function draw_support_chat_admin_bubble($message, $userimg)
+{ ?>
+  <div class="border-bottom card p-2 m-1 chat-message-card">
+    <div class="row align-items-center no-gutters">
+      <div class="col-md-11">
+        <div class="card-body chat-message-card-body">
+          <?= $message ?>
+        </div>
+      </div>
+      <div class="col-md-1">
+        <img src="<?= $userimg ?>" class="card-img" alt="...">
+      </div>
+    </div>
+  </div>
+<?php } ?>
