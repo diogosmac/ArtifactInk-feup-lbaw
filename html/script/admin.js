@@ -7,6 +7,7 @@ function editGeneralInfo() {
     // wrap it around a border and add button to save changes
     infoArea.style.border = "1px solid #999";
     infoArea.style.borderRadius = "6px";
+    infoArea.classList.add("p-1");
 
     let submitButtons = document.getElementById("infoSubmitButtons");
     submitButtons.classList.replace("info-submit-buttons", "d-flex");
@@ -19,6 +20,8 @@ function saveGeneralInfo() {
     infoArea.setAttribute("contenteditable", "false");
     // remove border and remove button
     infoArea.style.border = "";
+    infoArea.classList.remove("p-3");
+
 
     let submitButtons = document.getElementById("infoSubmitButtons");
     submitButtons.classList.replace("d-flex", "info-submit-buttons");
@@ -33,12 +36,14 @@ function cancelGeneralInfo() {
     infoArea.setAttribute("contenteditable", "false");
     // remove border, remove button and reset info
     infoArea.style.border = "";
+    infoArea.classList.remove("p-3");
 
     let submitButtons = document.getElementById("infoSubmitButtons");
     submitButtons.classList.replace("d-flex", "info-submit-buttons");
     submitButtons.style.display = "none !important";
 
-    infoArea.innerHTML = generalInfo;
+    if (generalInfo != undefined)
+        infoArea.innerHTML = generalInfo;
 }
 
 window.onload = function () {
