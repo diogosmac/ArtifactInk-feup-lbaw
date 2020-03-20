@@ -1,11 +1,11 @@
 /*  */
 .navbar-custom-top > button.navbar-toggler, .navbar-custom-top span.navbar-toggler-icon > * {
-    background-color: var(--menu-top);
-    color: white;
+    background-color: transparent;
+    color: var(--main-white);
 }
 .navbar-custom-bot > button.navbar-toggler, .navbar-custom-bot span.navbar-toggler-icon > * {
-    background-color: var(--menu-bot);
-    color: white;
+    background-color: transparent;
+    color: var(--main-color);
 }
 
 a.btn.btn-secondary:active {
@@ -285,3 +285,29 @@ a.btn.btn-secondary:active {
   .card-img-link {
       z-index: 90;
   }
+
+  /* MOBILE VERSION */
+
+  #mobile-main-nav,  #mobile-main-nav a,  #mobile-main-nav button{
+      padding-right: 0em ;
+      padding-left: 0em;
+  }
+
+  nav#mobile-main-nav{
+      padding: 0.5em 0.5em;
+  }
+
+  
+@media screen and (min-width: 768px) {
+    #mobile-main-nav{
+        display: none;
+    }  
+}
+
+@media screen and (max-width: 768px) {
+    #desktop-main-nav, #secondary-navbar{
+        display: none;
+    }
+
+}
+

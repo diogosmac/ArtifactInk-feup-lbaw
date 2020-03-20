@@ -23,9 +23,6 @@
     color: var(--text-color);
 }
 
-body {
-    padding-top: 100px;
-}
 
 /* BUTTON */
 .button {
@@ -80,3 +77,7 @@ body {
     display: none;
 }
 */
+
+body {
+    padding-top: 65px;
+}
