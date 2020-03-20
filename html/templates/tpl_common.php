@@ -33,6 +33,7 @@ function draw_header(){ ?>
             <link rel="stylesheet" type="text/css" href="../css/review.css">
             <link rel="stylesheet" type="text/css" href="../css/profile.css">
             <link rel="stylesheet" type="text/css" href="../css/item_list.css">
+            <link rel="stylesheet" type="text/css" href="../css/search.css">
 
             <script src="../script/product_card.js" defer></script>
             <script src="../script/checkout_list.js" defer></script>

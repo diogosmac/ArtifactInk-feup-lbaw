@@ -48,3 +48,45 @@
 .range-slider input[type=range]::-moz-focus-outer {
     border: 0;
 }
+#filters{
+    padding-left: 0em;
+}
+#filters label.mt-2,#filters label.mt-3,#filters label#minPriceLabel,#filters label#maxPriceLabel,#filters label#inStockLabel {
+    font-weight: bold;
+}
+#filters aside, #filters aside div *{ 
+    border-radius: 0% !important; 
+}
+
+.custom-range::-moz-range-thumb, .custom-control-input::-moz-range-thumb{
+    background-color: var(--main-red) !important;
+    color: var(--main-red) !important;
+}
+
+#filters #categories,#filters #brands{
+    border-color: var(--menu-bot) !important;
+}
+
+
+body {
+    overflow: hidden; /* Hide scrollbars */
+  }
+
+  #searchOrder *{
+      border-radius: 0%;
+  }
+
+  #searchOrder .input-group-text{
+      background-color: transparent;
+      border-color: transparent;
+  }
+
+.order-icon{
+    font-size: 1.5em;
+    padding: 0em 0.2em ;
+    color: var(--main-color-alpha);
+}
+
+.order-icon:hover{
+    color: var(--main-color);
+}
