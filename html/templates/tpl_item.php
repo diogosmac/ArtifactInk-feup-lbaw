@@ -36,7 +36,7 @@
                         </div>
                         <div class="d-flex flex-row bd-highlight mb-3 li-item-div justify-content-start">
                             <label for="li-item-qty">Qty.</label>
-                            <input class="li-item-qty" type="number" value="1">
+                            <input class="li-item-qty" type="number" value="1" min="1">
                         </div>
                     </div>
                     <div class="col-sm-3 li-price-button">
