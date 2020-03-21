@@ -96,17 +96,17 @@ function draw_preview_carousel()
 function draw_product_deals($header)
 { ?>
     <div class="my-4 mx-auto d-flex flex-column justify-content-center" style="max-width: 65em;">
-        <div class="mx-3 my-2 d-flex justify-content-between align-items-end">
+        <div class="mx-3 mx-sm-5 mx-lg-3 my-2 d-flex justify-content-between align-items-end">
             <h1 class="my-2"><?= $header ?></h1>
             <a class="a_link my-2" href="../pages/search.php">View all</a>
         </div>
-        <div class="d-flex justify-content-center">
-            <?php 
-            draw_card2();
-            draw_card_sale1();
-            draw_card_sale2();
-            draw_card1();
-            ?>
+        <div class="container justify-content-center">
+            <div class="row">
+                <div class="p-0 col-12 col-sm-6 col-lg-3 d-flex justify-content-center"><?php draw_card1(); ?></div>
+                <div class="p-0 col-12 col-sm-6 col-lg-3 d-flex justify-content-center"><?php draw_card2(); ?></div>
+                <div class="p-0 col-12  col-sm-6 col-lg-3 d-flex justify-content-center"><?php draw_card_sale2(); ?></div>
+                <div class="p-0 col-12 col-sm-6 col-lg-3 d-flex justify-content-center"><?php draw_card_sale1(); ?></div>
+            </div>
         </div>
     </div>
 <?php
