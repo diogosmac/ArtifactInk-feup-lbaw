@@ -39,6 +39,9 @@
 }
 
 .button:active, .button:focus {
+    background-color: var(--main-red-alpha) !important;
+    color: var(--text-color-white) !important;
+    border-color: var(--main-red-alpha) !important;
     box-shadow: 0 0 0 !important;
 }
 
