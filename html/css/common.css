@@ -50,8 +50,8 @@
 }
 
 .button-secondary:hover {
-    background-color: var(--main-white);
-    color: var(--main-red);
+    background-color: var(--main-red);
+    color: var(--text-color-white);
     border-color: var(--main-red);
 }
 
