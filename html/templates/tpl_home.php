@@ -1,5 +1,7 @@
 <?php
 
+include_once("../templates/tpl_item.php");
+
 function draw_preview_carousel()
 { ?>
     <div id="carouselPreviewCaptions" class="carousel slide" data-ride="carousel">
@@ -96,9 +98,9 @@ function draw_preview_carousel()
 function draw_product_deals($header)
 { ?>
     <div class="my-4 mx-auto d-flex flex-column justify-content-center" style="max-width: 65em;">
-        <div class="mx-3 mx-sm-5 mx-lg-3 my-2 d-flex justify-content-between align-items-end">
-            <h1 class="my-2"><?= $header ?></h1>
-            <a class="a_link my-2" href="../pages/search.php">View all</a>
+        <div class="mx-3 mx-sm-5 mx-lg-3 d-flex justify-content-between align-items-end">
+            <h1 class="my-1"><?= $header ?></h1>
+            <a class="a_link my-1" href="../pages/search.php">View all</a>
         </div>
         <div class="container justify-content-center">
             <div class="row">
@@ -112,122 +114,3 @@ function draw_product_deals($header)
 <?php
 }
 
-function draw_card1()
-{ ?>
-    <div class="m-2 card product-card" style="width: 15em;">
-        <div class="card-img-overlay d-flex justify-content-end">
-            <!--
-            <a href="../pages/home.php" class="card-link">
-                <span>
-                    <i class="fas fa-shopping-cart"></i>
-                </span>   
-            </a>
-            -->
-            <a href="#" class="card-link">
-                <i class="fas fa-heart"></i>
-            </a>
-        </div>
-        <a href="../pages/product.php" class="card-img-link">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/61TBsibBdqL._SX425_.jpg" class="card-img-top" alt="...">
-        </a>
-        <div class="card-body">
-            <span class="detail">
-                <h4 class="card-title">Tattoo Machine</h4>
-                <h5 class="card-price">39.95 € </h5>
-            </span>
-        </div>
-        <a href="#" class="dropdown-item add-to-cart-btn">Add to cart</a>
-    </div>
-
-<?php }
-
-function draw_card2()
-{ ?>
-    <div class="m-2 card product-card" style="width: 15em;">
-        <div class="card-img-overlay d-flex justify-content-end">
-            <!--
-            <a href="../pages/home.php" class="card-link">
-                <span>
-                    <i class="fas fa-shopping-cart"></i>
-                </span>   
-            </a>
-            -->
-            <a href="#" class="card-link">
-                <i class="fas fa-heart"></i>
-            </a>
-        </div>
-        <a href="../pages/product.php" class="card-img-link">
-            <img src="https://www.inkme.tattoo/wp-content/uploads/2016/10/forearm-tattoo-design-86.jpg" class="card-img-top" alt="...">
-        </a>
-        <div class="card-body">
-            <span class="detail">
-                <h4 class="card-title">Awesome Design</h4>
-                <h5 class="card-price">10.00 € </h5>
-            </span>
-        </div>
-        <a href="#" class="dropdown-item add-to-cart-btn">Add to cart</a>
-    </div>
-
-<?php }
-
-function draw_card_sale1()
-{ ?>
-    <div class="m-2 card product-card" style="width: 15em;">
-        <div class="card-img-overlay d-flex justify-content-end">
-            <!--
-            <a href="../pages/home.php" class="card-link">
-                <span>
-                    <i class="fas fa-shopping-cart"></i>
-                </span>   
-            </a>
-            -->
-            <a href="#" class="card-link">
-                <i class="fas fa-heart"></i>
-            </a>
-        </div>
-        <!-- IF ON SALE -->
-        <a href="../pages/product.php" class="card-img-link">
-            <img src="https://cdn.shopify.com/s/files/1/1314/0625/products/19_Color_Ink_Set_600x600.jpg?v=1498235476" class="card-img-top" alt="...">
-        </a>
-        <span class="badge badge-primary sale-box">25%</span>
-        <div class="card-body">
-            <span class="detail">
-                <h4 class="card-title">19 Ink Color Set </h4>
-                <h5 class="card-price">99.99 € <span class="old-price">149.99 €</span></h5>
-            </span>
-        </div>
-        <a href="#" class="dropdown-item add-to-cart-btn">Add to cart</a>
-    </div>
-
-<?php }
-
-function draw_card_sale2()
-{ ?>
-    <div class="m-2 card product-card" style="width: 15em;">
-        <div class="card-img-overlay d-flex justify-content-end">
-            <!--
-            <a href="../pages/home.php" class="card-link">
-                <span>
-                    <i class="fas fa-shopping-cart"></i>
-                </span>   
-            </a>
-            -->
-            <a href="#" class="card-link">
-                <i class="fas fa-heart"></i>
-            </a>
-        </div>
-        <!-- IF ON SALE -->
-        <a href="../pages/product.php" class="card-img-link">
-            <img src="https://li0.rightinthebox.com/images/384x384/201807/lal1530675557629.jpg" class="card-img-top" alt="...">
-        </a>
-        <span class="badge badge-primary sale-box">50%</span>
-        <div class="card-body">
-            <span class="detail">
-                <h4 class="card-title">Tattoo Begginers Kit </h4>
-                <h5 class="card-price">25.00 € <span class="old-price">49.99 €</span></h5>
-            </span>
-        </div>
-        <a href="#" class="dropdown-item add-to-cart-btn">Add to cart</a>
-    </div>
-
-<?php } ?>
