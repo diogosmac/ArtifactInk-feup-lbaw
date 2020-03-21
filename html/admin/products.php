@@ -27,7 +27,7 @@ draw_navbar();
             </div>
           </div>
           <div class="flex-shrink-0">
-            <button type="button" class="btn btn-primary button" onclick="location.href='/admin/add_product.php'">
+            <button type="button" class="btn button" onclick="location.href='/admin/add_product.php'">
               Add Item
             </button>
           </div>
