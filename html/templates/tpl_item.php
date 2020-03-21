@@ -1,7 +1,5 @@
 <?php
 
-include_once("../templates/tpl_item.php");
-
 function draw_item_list()
 { ?>
     <li class="list-group-item li-item">

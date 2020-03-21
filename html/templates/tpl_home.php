@@ -1,5 +1,7 @@
 <?php
 
+include_once("../templates/tpl_item.php");
+
 function draw_preview_carousel()
 { ?>
     <div id="carouselPreviewCaptions" class="carousel slide" data-ride="carousel">
@@ -96,9 +98,9 @@ function draw_preview_carousel()
 function draw_product_deals($header)
 { ?>
     <div class="my-4 mx-auto d-flex flex-column justify-content-center" style="max-width: 65em;">
-        <div class="mx-3 mx-sm-5 mx-lg-3 my-2 d-flex justify-content-between align-items-end">
-            <h1 class="my-2"><?= $header ?></h1>
-            <a class="a_link my-2" href="../pages/search.php">View all</a>
+        <div class="mx-3 mx-sm-5 mx-lg-3 d-flex justify-content-between align-items-end">
+            <h1 class="my-1"><?= $header ?></h1>
+            <a class="a_link my-1" href="../pages/search.php">View all</a>
         </div>
         <div class="container justify-content-center">
             <div class="row">
