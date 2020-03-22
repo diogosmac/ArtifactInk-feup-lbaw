@@ -81,27 +81,38 @@ a.btn.btn-secondary:active {
     background-color: var(--main-red);
 }
 
+
 .navbar-custom-top input.form-control {
-    margin-right: 0;
-    border-radius: .2em .0em .0em .2em;
+    border-radius: 0;
     border: none;
 }
 
-.navbar-custom-top button.btn.btn-outline-success {
-    border-radius: .0em .2em .2em .0em;
+.navbar-custom-top input.form-control:focus {
+    z-index: 0;
+}
+
+#search-button {
+    border-radius: 0;
     background-color: white;
-    color: var(--text-color-black);
     border: none;
- 
+}
+
+#search-button:active {
+    background-color: white;
+    box-shadow: 0;
+}
+
+#search-button:focus {
+    box-shadow: none;
+    z-index: 0;
+}
+
+#search-button i {
+    color: var(--main-red-alpha);
 }
 
 #btn-search{
     padding: .435rem .7rem;
-}
-
-.navbar-custom-top button.btn.btn-outline-success:hover{
-    background-color: var(--main-color-alpha);
-    color: var(--text-color-white);
 }
 
 .list-cart {
@@ -308,14 +319,22 @@ a.btn.btn-secondary:active {
 }
 
 #searchMobile #search-button {
-    background-color: var(--main-color-alpha);
     color: var(--main-white);
     border-color: var(--main-color-alpha);
 }
 
 #searchMobile #search-button a{
     color: var(--main-white);
-} 
+}
+
+#searchMobile input.form-control {
+    border-radius: 0;
+    border: none;
+}
+
+#searchMobile input.form-control:focus {
+    z-index: 0;
+}
 
   
 @media screen and (min-width: 768px) { /*desktop settings*/ 
