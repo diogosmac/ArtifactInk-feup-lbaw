@@ -106,7 +106,7 @@ a.btn.btn-secondary:active {
 
 .list-cart {
     margin: .2em;
-    max-height: 150px;
+    height: 150px;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     border: none;
@@ -322,9 +322,36 @@ a.btn.btn-secondary:active {
     #mobile-main-nav, #searchMobile{
         display: none;
     }  
+    .dropdown-cart{
+       width: 300px;
+      
+    }
+    .profile-pic-bubble, .cart-item-list-img{
+        width: 75px;
+        height: 75px;
+    }
+
+    .dropdown-menu.dropdown-menu-right.show h5{
+        font-size: 1em;
+    }
+
+    .dropdown-menu.dropdown-menu-right.show a{
+        font-size: 1.2em;
+    } 
+    .cart-item-list.list-group-item{
+        padding: 2em 0em; 
+    }
+    .cart-list-total{
+        font-size: 1.3em;
+    }
+
+    .panel-body, .list-cart{
+        height: 300px ;
+    }
+
 }
 
-@media screen and (max-width: 768px) { /*mobiel settings */
+@media screen and (max-width: 768px) { /*mobile settings */
     #desktop-main-nav, #secondary-navbar{
         display: none;
     }
