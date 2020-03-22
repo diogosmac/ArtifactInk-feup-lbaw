@@ -1,6 +1,17 @@
+/* Preview Carousel Height*/
+.carousel-item img {
+    max-height: 400px; /* input your desired height here */
+}
+
+
 /* CARD */ 
 .product-card{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: background-color .10s ease-in-out;
+}
+
+.product-card:hover{
+    background-color: var(--main-white);
 }
 
 .product-card img{

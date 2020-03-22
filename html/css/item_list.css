@@ -24,6 +24,11 @@ a#pills-home-tab,a#pills-profile-tab{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
     z-index: 100;
 }
+
+.li-item{
+    transition: background-color .10s ease-in-out;
+}
+
 .li-item:hover{
     background-color: var(--main-white);
 }
