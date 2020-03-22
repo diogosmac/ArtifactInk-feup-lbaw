@@ -24,7 +24,7 @@ draw_navbar(true);
 
     <hr class="w-75">
     <div id="related" class="mx-auto">
-        <?php draw_card_carousel('featured'); ?>
+        <?php draw_product_deals('Related Items'); ?>
     </div>
     <hr class="w-75">
 
