@@ -97,7 +97,7 @@ draw_navbar();
 
                 </div>
 
-                <table class="table table-striped table-hover text-center">
+                <table class="table table-striped text-center">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
@@ -185,7 +185,7 @@ draw_navbar();
                   </div>
                 </div>
 
-                <table class="table table-striped table-hover text-center">
+                <table class="table table-striped text-center">
                   <thead>
                     <tr>
                       <th scope="col">#</th>

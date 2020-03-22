@@ -55,7 +55,7 @@ draw_navbar();
               <div class="input-group my-3 mr-sm-2">
                 <input class="form-control" placeholder="Search" aria-label="Search">
               </div>
-              <table class="table table-striped table-hover text-center">
+              <table class="table table-striped text-center">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -121,7 +121,7 @@ draw_navbar();
               <div class="input-group my-3 mr-sm-2">
                 <input class="form-control" placeholder="Search" aria-label="Search">
               </div>
-              <table class="table table-striped table-hover text-center">
+              <table class="table table-striped text-center">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
