@@ -11,14 +11,14 @@ main {
 }
 
 .nav-link.text-center.profile-tab.active {
-    border-color: var(--main-red);
-    background-color: var(--main-red);
+    border-radius: 0%;
+    background-color: var(--main-red-alpha);
     color: var(--text-color-white);
     z-index: 200;
 }
 
 .nav-link.text-center.profile-tab{
-    color: var(--main-red);
+    color: var(--main-red-alpha);
 }
 
 .profile-btn{
