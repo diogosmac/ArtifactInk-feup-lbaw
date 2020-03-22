@@ -48,6 +48,7 @@ function draw_header(){ ?>
     <script src="../script/checkout_list.js" defer></script>
     <script src="../script/payment.js" defer></script>
     <script src="../script/address.js" defer></script>
+    <script src="../script/mobile_nav.js" defer></script>
 
 </head>
 
@@ -276,7 +277,7 @@ function draw_main_navbar($session){ ?>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarBotSupportedContent" aria-controls="navbarBotSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon">
+                    <span class="navbar-toggler-icon navbar-toggler-mobile">
                         <i class="fas fa-bars"></i>
                     </span>
                 </button>
@@ -384,11 +385,10 @@ function draw_main_navbar($session){ ?>
                 <ul class="navbar-nav nav-fill w-100">
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Designs
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -399,11 +399,10 @@ function draw_main_navbar($session){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Machines
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -414,11 +413,10 @@ function draw_main_navbar($session){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Inks
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -429,11 +427,10 @@ function draw_main_navbar($session){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Needles and Cartridges
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -441,14 +438,13 @@ function draw_main_navbar($session){ ?>
                                 <a class="dropdown-item" href="#">Another action</a>
                             </div>
                         </div>
-                    </li class="nav-item">
-                    <li>
+                    </li>
+                    <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Grips Tips and Tubes
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -457,13 +453,13 @@ function draw_main_navbar($session){ ?>
                             </div>
                         </div>
                     </li>
+                
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Studio Furniture
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -474,11 +470,10 @@ function draw_main_navbar($session){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Aftercare
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -489,11 +484,10 @@ function draw_main_navbar($session){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Medical Equipment
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -504,11 +498,10 @@ function draw_main_navbar($session){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Piercings
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>

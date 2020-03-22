@@ -318,18 +318,32 @@ a.btn.btn-secondary:active {
 } 
 
   
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) { /*desktop settings*/ 
     #mobile-main-nav, #searchMobile{
         display: none;
     }  
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) { /*mobiel settings */
     #desktop-main-nav, #secondary-navbar{
         display: none;
     }
     body{
         padding-top: 110px;
+    }
+    .secondary-nav-link{
+        font-weight: normal;
+        font-size: 1em;
+        
+    } 
+    .dropdown.dropdownSupplies{
+        border-bottom: solid 0.1em var(--main-color-alpha);
+    }
+    .subclass-nav-mobile a{ 
+        color:var(--main-white);
+        font-weight: normal;
+        font-size: 0.8em;
+     
     }
 
 }
