@@ -11,7 +11,7 @@ function draw_review()
                 </div>
                 <div class="d-flex flex-column align-items-center justify-content-start px-3 border-right border-dark">
                     <div class="d-flex flex-row align-items-center py-2">
-                        4/5 <i class="material-icons pl-1" style="color: gold;">star</i>
+                        4/5 <i class="fas fa-star"></i>
                     </div>
                     12/05/2019
                     <a href="" class="py-2 text-center a_link">Report Review</a>
@@ -33,7 +33,7 @@ function draw_review()
                 </div>
                 <div class="col-6 d-flex flex-column align-items-center justify-content-center px-3">
                     <div class="d-flex flex-row align-items-center py-2">
-                        4/5 <i class="material-icons pl-1" style="color: gold;">star</i>
+                        4/5 <i class="fas fa-star"></i>
                     </div>
                     12/05/2019
                     <a href="" class="py-2 text-center a_link">Report Review</a>

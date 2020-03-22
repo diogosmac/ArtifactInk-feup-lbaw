@@ -10,14 +10,11 @@ a#pills-home-tab,a#pills-profile-tab{
     color: var(--text-color-black);
 }
 
-.my-2{
-    border-radius: 0%;
-}
-
 .list-img-link img{
     width: 100px;
     height: 100px;
 }
+
 #pills-profile .list-group li{
     border-radius: 0%;
 }    
@@ -27,12 +24,13 @@ a#pills-home-tab,a#pills-profile-tab{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
     z-index: 100;
 }
+
+.li-item{
+    transition: background-color .10s ease-in-out;
+}
+
 .li-item:hover{
     background-color: var(--main-white);
-}
-.li-item-price{
-    font-weight: bold;
-    text-align: left;
 }
 
 .li-item-review-wishlist{
@@ -40,17 +38,10 @@ a#pills-home-tab,a#pills-profile-tab{
 }
 
 
-.add-to-cart-btn.li-item:hover{
-    background-color: var(--main-red);
+.list-group-item.li-item a h3{
+    color: var(--text-color-black);
 }
 
-.list-group-item.li-item a h5{
- color: var(--text-color-black);
-}
-
-.mb-3.li-item-div{
-   margin: 0em !important;
-}
 .circle-available{
      color: green;
 }
@@ -61,10 +52,6 @@ a#pills-home-tab,a#pills-profile-tab{
 
 .li-wishlist:hover{
     color: var(--main-red);
-}
-
-.li-item-name{
-    font-weight: bold;
 }
 
 .li-item-qty{
