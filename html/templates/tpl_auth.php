@@ -9,8 +9,33 @@ function draw_auth_header(){ ?>
     <html lang="en-US">
         <head>
             <title>Artifact Ink</title>
-            <link rel="icon" href="../images/single_logo.svg">
             <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta charset="UTF-8">
+
+            <!-- ****** faviconit.com favicons ****** -->
+            <link rel="shortcut icon" href="../images/faviconit/favicon.ico">
+            <link rel="icon" sizes="16x16 32x32 64x64" href="../images/faviconit/favicon.ico">
+            <link rel="icon" type="image/png" sizes="196x196" href="../images/faviconit/favicon-192.png">
+            <link rel="icon" type="image/png" sizes="160x160" href="../images/faviconit/favicon-160.png">
+            <link rel="icon" type="image/png" sizes="96x96" href="../images/faviconit/favicon-96.png">
+            <link rel="icon" type="image/png" sizes="64x64" href="../images/faviconit/favicon-64.png">
+            <link rel="icon" type="image/png" sizes="32x32" href="../images/faviconit/favicon-32.png">
+            <link rel="icon" type="image/png" sizes="16x16" href="../images/faviconit/favicon-16.png">
+            <link rel="apple-touch-icon" href="../images/faviconit/favicon-57.png">
+            <link rel="apple-touch-icon" sizes="114x114" href="../images/faviconit/favicon-114.png">
+            <link rel="apple-touch-icon" sizes="72x72" href="../images/faviconit/favicon-72.png">
+            <link rel="apple-touch-icon" sizes="144x144" href="../images/faviconit/favicon-144.png">
+            <link rel="apple-touch-icon" sizes="60x60" href="../images/faviconit/favicon-60.png">
+            <link rel="apple-touch-icon" sizes="120x120" href="../images/faviconit/favicon-120.png">
+            <link rel="apple-touch-icon" sizes="76x76" href="../images/faviconit/favicon-76.png">
+            <link rel="apple-touch-icon" sizes="152x152" href="../images/faviconit/favicon-152.png">
+            <link rel="apple-touch-icon" sizes="180x180" href="../images/faviconit/favicon-180.png">
+            <meta name="msapplication-TileColor" content="#FFFFFF">
+            <meta name="msapplication-TileImage" content="../images/faviconit/favicon-144.png">
+            <meta name="msapplication-config" content="../images/faviconit/browserconfig.xml">
+            <!-- ****** faviconit.com favicons ****** -->
+
             <!-- bootstrap -->
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
             <link href="../fonts/fontawesome-free-5.12.1-web/css/all.css" rel="stylesheet"> <!--load all styles -->
@@ -36,7 +61,7 @@ function draw_sign_in(){ ?>
             <div class="row">
                 <form class="form-signin ">
                 <a href="../pages/home.php">
-                    <img class="mb-4" src="../images/artifact_ink_letters_white.svg" alt="ArtifactInk" width="300" height="72">
+                    <img class="mb-4" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk" width="300">
                 </a>
                     <div class="sign-box"> 
                         <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
@@ -88,7 +113,7 @@ function draw_sign_up(){ ?>
             <div class="row">
                 <form class="form-signin ">
                 <a href="../pages/home.php">
-                    <img class="mb-4" src="../images/artifact_ink_letters_white.svg" alt="ArtifactInk" width="300" height="72">
+                    <img class="mb-4" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk" width="300">
                 </a>
                     <div class="sign-box"> 
                         <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
@@ -130,7 +155,7 @@ function draw_sign_up(){ ?>
                 </form>  
                 <div class="row new-user justify-content-center">
                     <h6>Already have an account?</h6>
-                        <a class="btn btn-lg btn-secondary btn-block" href="../pages/sign_.php">Sign In</a>
+                        <a class="btn btn-lg btn-secondary btn-block" href="../pages/sign_in.php">Sign In</a>
                     <footer class="copyright"> Copyright © ArtifactInk 2020 </footer>
                 </div>
             </div>
@@ -144,7 +169,7 @@ function draw_recover_password(){ ?>
             <div class="row">
                 <form class="form-signin ">
                 <a href="../pages/home.php">
-                    <img class="mb-4" src="../images/artifact_ink_letters_white.svg" alt="ArtifactInk" width="300" height="72">
+                    <img class="mb-4" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk" width="300">
                 </a>
                     <div class="sign-box"> 
                         <h1 class="h3 mb-3 font-weight-normal">Recover Password</h1>
