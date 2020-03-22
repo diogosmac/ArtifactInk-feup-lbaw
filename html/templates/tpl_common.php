@@ -9,7 +9,6 @@ function draw_header(){ ?>
 
 <head>
     <title>Artifact Ink</title>
-    <link rel="icon" href="../images/single_logo.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -96,10 +95,10 @@ function draw_simple_navbar($session){ ?>
         <div class="fixed-top ">
             <nav class="navbar navbar-expand-md navbar-custom-top">
                 <a class="navbar-brand" href="../pages/home.php">
-                    <img class="d-inline-block align-top" src="../images/artifact_ink_logo_white.svg" alt="ArtifactInk"
-                        height="40" width="50">
-                    <img class="d-inline-block align-top" src="../images/artifact_ink_letters_white.svg"
-                        alt="ArtifactInk" height="40" width="125">
+                    <img class="d-inline-block align-center" src="../images/artifact_ink_logo_white.png" alt="ArtifactInk"
+                        height="40">
+                    <img class="d-inline-block align-center" src="../images/artifact_ink_letters_white.png"
+                        alt="ArtifactInk" width="125">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarTopSupportedContent" aria-controls="navbarTopSupportedContent"
@@ -144,10 +143,10 @@ function draw_main_navbar($session){ ?>
 
         <nav id="desktop-main-nav" class="navbar navbar-expand-md navbar-custom-top">
             <a class="navbar-brand" href="../pages/home.php">
-                <img class="d-inline-block align-top" src="../images/artifact_ink_logo_white.svg" alt="ArtifactInk"
-                    height="40" width="50">
-                <img class="d-inline-block align-top" src="../images/artifact_ink_letters_white.svg" alt="ArtifactInk"
-                    height="40" width="125">
+                <img class="d-inline-block align-center" src="../images/artifact_ink_logo_white.png" alt="ArtifactInk"
+                    height="40">
+                <img class="d-inline-block align-center" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk"
+                    width="125">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTopSupportedContent"
                 aria-controls="navbarTopSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -305,10 +304,10 @@ function draw_main_navbar($session){ ?>
                     </span>
                 </button>
                 <a class="navbar-brand" href="../pages/home.php">
-                    <img class="d-inline-block align-top" src="../images/artifact_ink_logo_white.svg" alt="ArtifactInk"
-                        height="40" width="50">
-                    <img class="d-inline-block align-top" src="../images/artifact_ink_letters_white.svg"
-                        alt="ArtifactInk" height="40" width="125">
+                    <img class="d-inline-block align-center" src="../images/artifact_ink_logo_white.png" alt="ArtifactInk"
+                        height="40">
+                    <img class="d-inline-block align-center" src="../images/artifact_ink_letters_white.png"
+                        alt="ArtifactInk" width="125">
                 </a>
                 <?php if($session == true){?>
                 <a class="nav-link" href="#">
