@@ -13,27 +13,6 @@
 
 
 
-.checkout-table .btn{
-    background-color: transparent;
-    color: var(--main-color-alpha);
-    border-color: transparent;
-    
-    padding: .5em;
-}
-
-.checkout-table .btn.btn.add-button:active, .checkout-table .btn.btn.sub-button:active, .checkout-table .btn.rmv-button:active{
-    background-color: transparent;
-    color: var(--main-color-alpha);
-    border-color: transparent;
-    color: var(--text-color-black);
-
-}
-
-
-.checkout-table .btn.add-button, .checkout-table .btn.sub-button{
-    background-color:transparent ;
-} 
-
 .checkout-table a{
     color: var(--text-color-black);
 }
@@ -49,36 +28,7 @@
     border-top: .1em var(--main-color-alpha);
 }
 
-.checkout-menu .checkout-btn{
-    border-radius: 0%;
-    background-color: var(--main-red-alpha);
-    border: .2em solid ;
-    color: var(--text-color-white);
-    border-color: var(--main-red-alpha);
-}
 
-.checkout-menu .checkout-btn:hover{
-    border-radius: 0%;
-    background-color: var(--main-red);
-    border: .2em solid ;
-    color: var(--text-color-white);
-    border-color: var(--main-red);
-}
-
-.checkout-menu .return-btn{
-    border-radius: 0%;
-    border: .2em solid ;
-    color: var(--main-red-alpha);
-    border-color: var(--main-red-alpha);
-}
-
-.checkout-menu .return-btn:hover{
-    border-radius: 0%;
-    border: .2em solid ;
-    color: var(--main-red);
-    border-color: var(--main-red);
-    background-color: var(--main-white);
-}
 
 .checkout-table span.total{
     color: var(--main-red);
@@ -118,31 +68,6 @@ div.checkout-box thead th{
 }
 
 
-#new_addr_btn{
-    border-color:var(--main-red-alpha);
-    border: solid .2em ;
-    color: var(--main-red);
-    border-radius: 0%;
-
-}
-
-#new_addr_btn, #return_addr_btn, #btn-next,#btn-prv, #btn-confirm{
-    border-color:var(--main-red-alpha);
-    border: solid .2em ;
-    color: var(--main-red);
-    background-color: transparent;
-      border-radius: 0%;
-}
-
-#new_addr_btn:hover, #btn-next:hover,#btn-prv:hover, #btn-confirm:hover{
-    border-color:var(--main-red-alpha);
-    border: solid .2em ;
-    color: var(--text-color-white);
-    background-color: var(--main-red);
-    border-color: var(--main-red);
-    border-radius: 0%;
-
-}
 
 .checkout-form-steps h4.mb-3{
     font-weight: bold;
