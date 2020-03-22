@@ -41,10 +41,10 @@ function draw_cart_list(){ ?>
         </div>
         <div class="row checkout-menu d-flex justify-content-between buttons " id="checkout-buttons-div">
             <div>
-                 <button class="btn return-btn">Keep Shopping</button>
+                <button class="btn button-secondary">Keep Shopping</button>
             </div>
             <div>
-                <a class="btn checkout-btn" href="../pages/checkout.php?p=1">Checkout</a>
+                <a class="btn button" href="../pages/checkout.php?p=1">Checkout</a>
             </div>
         </div>
     </div>
@@ -65,16 +65,16 @@ function draw_checkout_table_item1(){ ?>
         </th>
         <td colspan="0" class="item-price">89.90€</td>
         <td colspan="0">
-            <button type="button" class="btn btn-primary sub-button">
+            <button type="button" class="btn btn-link a_link sub-button">
                 <i class="fas fa-minus"></i>
             </button>   
             <span class="item-quant">1</span>
-            <button type="button" class="btn btn-primary add-button">
+            <button type="button" class="btn btn-link a_link add-button">
                 <i class="fas fa-plus"></i>
             </button>   
         </td>
         <td colspan="0">
-            <button type="button" class="btn btn-primary rmv-button">
+            <button type="button" class="btn btn-link a_link rmv-button">
                 <i class="fas fa-trash-alt"></i>
             </button>   
         </td>
@@ -96,16 +96,16 @@ function draw_checkout_table_item2(){ ?>
        </th>
        <td colspan="0" class="item-price">39.95 €</td>
        <td colspan="0">
-           <button type="button" class="btn btn-primary sub-button">
+           <button type="button" class="btn btn-link a_link sub-button">
                <i class="fas fa-minus"></i>
            </button>   
            <span class="item-quant"> 1</span>
-           <button type="button" class="btn btn-primary add-button">
+           <button type="button" class="btn btn-link a_link add-button">
                <i class="fas fa-plus"></i>
            </button>   
        </td>
        <td colspan="0">
-           <button type="button" class="btn btn-primary rmv-button">
+           <button type="button" class="btn btn-link a_link rmv-button">
                <i class="fas fa-trash-alt"></i>
            </button>   
        </td>
@@ -127,16 +127,16 @@ function draw_checkout_table_item3(){ ?>
        </th>
        <td colspan="0" class="item-price">10.00€</td>
        <td colspan="0">
-           <button type="button" class="btn btn-primary sub-button">
+           <button type="button" class="btn btn-link a_link sub-button">
                <i class="fas fa-minus"></i>
            </button>   
            <span class="item-quant"> 1</span>
-           <button type="button" class="btn btn-primary add-button">
+           <button type="button" class="btn btn-link a_link add-button">
                <i class="fas fa-plus"></i>
            </button>   
        </td>
        <td colspan="0">
-           <button type="button" class="btn btn-primary rmv-button">
+           <button type="button" class="btn btn-link a_link rmv-button">
                <i class="fas fa-trash-alt"></i>
            </button>   
        </td>
@@ -158,16 +158,16 @@ function draw_checkout_table_item4(){ ?>
        </th>
        <td colspan="0" class="item-price">99.99€</td>
        <td colspan="0">
-           <button type="button" class="btn btn-primary sub-button">
+           <button type="button" class="btn btn-link a_link sub-button">
                <i class="fas fa-minus"></i>
            </button>   
            <span class="item-quant"> 2</span>
-           <button type="button" class="btn btn-primary add-button">
+           <button type="button" class="btn btn-link a_link add-button">
                <i class="fas fa-plus"></i>
            </button>   
        </td>
        <td colspan="0">
-           <button type="button" class="btn btn-primary rmv-button">
+           <button type="button" class="btn btn-link a_link rmv-button">
                <i class="fas fa-trash-alt"></i>
            </button>   
        </td>

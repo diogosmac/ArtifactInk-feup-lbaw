@@ -297,9 +297,29 @@ a.btn.btn-secondary:active {
       padding: 0.5em 0.5em;
   }
 
+  #search-mobile{
+      padding: 0em 0.5em 0.5em 0.5em;
+      background-color: var(--main-color); 
+  }
+
+  #search-mobile {
+    padding: 0em 0.5em 0.5em 0.5em;
+    background-color: var(--main-color); 
+}
+
+#searchMobile #search-button {
+    background-color: var(--main-color-alpha);
+    color: var(--main-white);
+    border-color: var(--main-color-alpha);
+}
+
+#searchMobile #search-button a{
+    color: var(--main-white);
+} 
+
   
 @media screen and (min-width: 768px) {
-    #mobile-main-nav{
+    #mobile-main-nav, #searchMobile{
         display: none;
     }  
 }
@@ -307,6 +327,9 @@ a.btn.btn-secondary:active {
 @media screen and (max-width: 768px) {
     #desktop-main-nav, #secondary-navbar{
         display: none;
+    }
+    body{
+        padding-top: 110px;
     }
 
 }

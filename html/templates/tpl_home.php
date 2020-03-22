@@ -113,4 +113,3 @@ function draw_product_deals($header)
     </div>
 <?php
 }
-

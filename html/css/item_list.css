@@ -39,9 +39,6 @@ a#pills-home-tab,a#pills-profile-tab{
     font-size: .8em;
 }
 
-.add-to-cart-btn.li-item{
-    margin: 0em;
-}
 
 .add-to-cart-btn.li-item:hover{
     background-color: var(--main-red);
