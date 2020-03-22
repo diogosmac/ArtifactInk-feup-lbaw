@@ -14,6 +14,7 @@ a#pills-home-tab,a#pills-profile-tab{
     width: 100px;
     height: 100px;
 }
+
 #pills-profile .list-group li{
     border-radius: 0%;
 }    
@@ -26,10 +27,6 @@ a#pills-home-tab,a#pills-profile-tab{
 .li-item:hover{
     background-color: var(--main-white);
 }
-.li-item-price{
-    font-weight: bold;
-    text-align: left;
-}
 
 .li-item-review-wishlist{
     font-size: .8em;
@@ -37,12 +34,9 @@ a#pills-home-tab,a#pills-profile-tab{
 
 
 .list-group-item.li-item a h3{
- color: var(--text-color-black);
+    color: var(--text-color-black);
 }
 
-.mb-3.li-item-div{
-   margin: 0em !important;
-}
 .circle-available{
      color: green;
 }
@@ -53,10 +47,6 @@ a#pills-home-tab,a#pills-profile-tab{
 
 .li-wishlist:hover{
     color: var(--main-red);
-}
-
-.li-item-name{
-    font-weight: bold;
 }
 
 .li-item-qty{

@@ -107,13 +107,13 @@ function draw_product()
             </div>
             <div class="col-6 d-flex flex-column justify-content-start">
                 <h2>Product Name</h2>
-                <div class="d-flex flex-row bd-highlight mb-3">
+                <div class="d-flex flex-row align-items-center bd-highlight mb-3">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star-half-alt"></i>
-                    <a href="#specs" class="px-2 a_link"> 2 reviews</a>
+                    <a href="#specs" class="px-3 a_link"> 2 reviews</a>
                 </div>
                 <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
                     <h4>Available</h4>
@@ -146,13 +146,13 @@ function draw_product()
 
     <div class="d-flex flex-column justify-content-center mx-2 mx-sm-3 d-md-none">
         <h2>Product Name</h2>
-        <div class="d-flex flex-row bd-highlight mb-3">
+        <div class="d-flex flex-row align-items-center bd-highlight mb-3">
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
-            <a href="#specs" class="px-2"> 2 reviews</a>
+            <a href="#specs" class="px-3 a_link"> 2 reviews</a>
         </div>
         <div class="">
             <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height: 20em">
