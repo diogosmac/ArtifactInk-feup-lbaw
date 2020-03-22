@@ -15,20 +15,21 @@ draw_navbar(true);
     <div class="col-md-auto col-xs-12 my-3 px-0 nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
       <h5 class="text-center">John Doe</h5>
       <a class="nav-link active text-center profile-tab" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">
-        <i class="fas fa-user px-2"></i>Profile
+        <i class="fas fa-user pr-2"></i>Profile
       </a>
       <a class="nav-link text-center profile-tab" id="v-pills-reviews-tab" data-toggle="pill" href="#v-pills-reviews" role="tab" aria-controls="v-pills-reviews" aria-selected="false">
-        <i class="fas fa-pen px-2"></i>Reviews
+        <i class="fas fa-pen pr-2"></i>Reviews
       </a>
       <a class="nav-link text-center profile-tab" id="v-pills-wishlist-tab" data-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-wishlist" aria-selected="false">
-      <i class="fas fa-heart px-2"></i>Wishlist
+        <i class="fas fa-heart pr-2"></i>Wishlist
       </a>
       <a class="nav-link text-center profile-tab" id="v-pills-history-tab" data-toggle="pill" href="#v-pills-history" role="tab" aria-controls="v-pills-history" aria-selected="false">
-        <i class="fas fa-shopping-cart px-2"></i>History
+        <i class="fas fa-shopping-cart pr-2"></i>History
       </a>
     </div>
   </div>
-  <div class="d-md-none" id="profile-nav-mobile">
+
+  <div class="d-md-none mx-3" id="profile-nav-mobile">
     <div class="accordion" id="profile-dropdown">
       <div class="card">
         <div class="card-header p-0" id="profile-dropdown-header">
@@ -36,8 +37,8 @@ draw_navbar(true);
             <button class="btn btn-block" type="button" data-toggle="collapse" data-target="#profile-dropdown-collapse" aria-expanded="true" aria-controls="profile-dropdown-collapse">
               <h5 class="my-1" id="profile-dropdown-title">
                 <strong>
+                  <i class="fas fa-bars pr-2"></i>
                   John Doe
-                  <i class="material-icons icon-align">arrow_drop_down</i>
                 </strong>
               </h5>
             </button>
@@ -47,16 +48,16 @@ draw_navbar(true);
           <div class="card-body p-0">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
               <a class="nav-link active text-center profile-tab" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">
-                <i class="material-icons icon-align">person</i>&nbsp;Profile
+                <i class="fas fa-user pr-2"></i>Profile
               </a>
               <a class="nav-link text-center profile-tab" id="v-pills-reviews-tab" data-toggle="pill" href="#v-pills-reviews" role="tab" aria-controls="v-pills-reviews" aria-selected="false">
-                <i class="material-icons icon-align">menu_book</i>&nbsp;Reviews
+                <i class="fas fa-pen pr-2"></i>Reviews
               </a>
               <a class="nav-link text-center profile-tab" id="v-pills-wishlist-tab" data-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-wishlist" aria-selected="false">
-                <i class="material-icons icon-align">favorite</i>&nbsp;Wishlist
+                <i class="fas fa-heart pr-2"></i>Wishlist
               </a>
               <a class="nav-link text-center profile-tab" id="v-pills-history-tab" data-toggle="pill" href="#v-pills-history" role="tab" aria-controls="v-pills-history" aria-selected="false">
-                <i class="material-icons icon-align">shopping_cart</i>&nbsp;History
+                <i class="fas fa-shopping-cart pr-2"></i>History
               </a>
             </div>
           </div>
