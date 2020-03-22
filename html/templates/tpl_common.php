@@ -9,9 +9,32 @@ function draw_header(){ ?>
 
 <head>
     <title>Artifact Ink</title>
-    <link rel="icon" href="../images/single_logo.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="../images/faviconit/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="../images/faviconit/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="../images/faviconit/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="../images/faviconit/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../images/faviconit/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="../images/faviconit/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../images/faviconit/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../images/faviconit/favicon-16.png">
+	<link rel="apple-touch-icon" href="../images/faviconit/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../images/faviconit/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../images/faviconit/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../images/faviconit/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../images/faviconit/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../images/faviconit/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../images/faviconit/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../images/faviconit/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../images/faviconit/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="../images/faviconit/favicon-144.png">
+	<meta name="msapplication-config" content="../images/faviconit/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+
     <!-- bootstrap -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -72,10 +95,10 @@ function draw_simple_navbar($session){ ?>
         <div class="fixed-top ">
             <nav class="navbar navbar-expand-md navbar-custom-top">
                 <a class="navbar-brand" href="../pages/home.php">
-                    <img class="d-inline-block align-top" src="../images/artifact_ink_logo_white.svg" alt="ArtifactInk"
-                        height="40" width="50">
-                    <img class="d-inline-block align-top" src="../images/artifact_ink_letters_white.svg"
-                        alt="ArtifactInk" height="40" width="125">
+                    <img class="d-inline-block align-center" src="../images/artifact_ink_logo_white.png" alt="ArtifactInk"
+                        height="40">
+                    <img class="d-inline-block align-center" src="../images/artifact_ink_letters_white.png"
+                        alt="ArtifactInk" width="125">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarTopSupportedContent" aria-controls="navbarTopSupportedContent"
@@ -120,10 +143,10 @@ function draw_main_navbar($session){ ?>
 
         <nav id="desktop-main-nav" class="navbar navbar-expand-md navbar-custom-top">
             <a class="navbar-brand" href="../pages/home.php">
-                <img class="d-inline-block align-top" src="../images/artifact_ink_logo_white.svg" alt="ArtifactInk"
-                    height="40" width="50">
-                <img class="d-inline-block align-top" src="../images/artifact_ink_letters_white.svg" alt="ArtifactInk"
-                    height="40" width="125">
+                <img class="d-inline-block align-center" src="../images/artifact_ink_logo_white.png" alt="ArtifactInk"
+                    height="40">
+                <img class="d-inline-block align-center" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk"
+                    width="125">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTopSupportedContent"
                 aria-controls="navbarTopSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -281,10 +304,10 @@ function draw_main_navbar($session){ ?>
                     </span>
                 </button>
                 <a class="navbar-brand" href="../pages/home.php">
-                    <img class="d-inline-block align-top" src="../images/artifact_ink_logo_white.svg" alt="ArtifactInk"
-                        height="40" width="50">
-                    <img class="d-inline-block align-top" src="../images/artifact_ink_letters_white.svg"
-                        alt="ArtifactInk" height="40" width="125">
+                    <img class="d-inline-block align-center" src="../images/artifact_ink_logo_white.png" alt="ArtifactInk"
+                        height="40">
+                    <img class="d-inline-block align-center" src="../images/artifact_ink_letters_white.png"
+                        alt="ArtifactInk" width="125">
                 </a>
                 <?php if($session == true){?>
                 <a class="nav-link" href="#">
