@@ -205,4 +205,9 @@ function draw_card_sale2(){ ?>
         <a href="#" class="dropdown-item add-to-cart-btn">Add to cart</a>
     </div>
 
+
+<?php } 
+function draw_card_list(){ ?>
+    
+
 <?php } ?>
