@@ -92,7 +92,10 @@ a.btn.btn-secondary:active {
     background-color: white;
     color: var(--text-color-black);
     border: none;
- 
+}
+
+.navbar-custom-top button.btn.btn-outline-success a {
+    color: var(--main-red-alpha);
 }
 
 #btn-search{
