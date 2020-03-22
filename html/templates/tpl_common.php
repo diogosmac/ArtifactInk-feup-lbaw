@@ -162,10 +162,8 @@ function draw_main_navbar($session){ ?>
                             <input type="text" class="form-control" placeholder="Search"
                                 aria-describedby="search-button">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-success" type="button" id="search-button">
-                                    <a href="/pages/search.php">
-                                        <i class="fas fa-search"></i>
-                                    </a>
+                                <button class="btn" type="button" id="search-button" onclick="location.href='/pages/search.php'">
+                                    <i class="fas fa-search"></i>
                                 </button>
                             </div>
                         </div>
@@ -541,10 +539,8 @@ function draw_main_navbar($session){ ?>
     <div class="input-group" id="search-mobile">
         <input type="text" class="form-control" placeholder="Search" aria-describedby="search-button">
         <div class="input-group-append">
-            <button class="btn btn-outline-success" type="button" id="search-button">
-                <a href="/pages/search.php">
-                    <i class="fas fa-search"></i>
-                </a>
+            <button class="btn" type="button" id="search-button" onclick="location.href='/pages/search.php'">
+                <i class="fas fa-search"></i>
             </button>
         </div>
     </div>
