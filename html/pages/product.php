@@ -44,11 +44,11 @@ draw_navbar(true);
                 <div class="d-flex flex-row bd-highlight justify-content-around my-2">
                     <div class="d-flex flex-column align-items-center">
                         <div class="d-flex flex-row bd-highlight mb-3">
-                            <i class="material-icons" style="color: gold;">star</i>
-                            <i class="material-icons" style="color: gold;">star</i>
-                            <i class="material-icons" style="color: gold;">star</i>
-                            <i class="material-icons" style="color: gold;">star_half</i>
-                            <i class="material-icons" style="color: gold;">star_outline</i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
                         </div>
                         <h5>4,5/5</h5>
                     </div>
@@ -77,7 +77,7 @@ draw_navbar(true);
                 </div>
             </div>
         </div>
-<?php        draw_review_popup();?>
+        <?php //draw_review_popup(); ?>
     </section>
 </main>
 
@@ -108,16 +108,16 @@ function draw_product()
             <div class="col-6 d-flex flex-column justify-content-start">
                 <h2>Product Name</h2>
                 <div class="d-flex flex-row bd-highlight mb-3">
-                    <i class="material-icons" style="color: gold;">star</i>
-                    <i class="material-icons" style="color: gold;">star</i>
-                    <i class="material-icons" style="color: gold;">star</i>
-                    <i class="material-icons" style="color: gold;">star_half</i>
-                    <i class="material-icons" style="color: gold;">star_outline</i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
                     <a href="#specs" class="px-2 a_link"> 2 reviews</a>
                 </div>
                 <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
                     <h4>Available</h4>
-                    <i class="material-icons px-2 pt-1" style="color: #00ee00">fiber_manual_record</i>
+                    <i class="material-icons px-2 pt-1" style="color: green">fiber_manual_record</i>
                 </div>
                 <div class="d-flex flex-row justify-content-between bd-highlight mb-3 pb-1">
                     <div class="input-group mb-3 w-50 pt-2">
@@ -133,12 +133,13 @@ function draw_product()
                     </div>
                     <h1>17,80€</h1>
                 </div>
-                <div class="d-flex flex-row justify-content-around bd-highlight my-2">
-                    <button type="button" class="btn btn-outline-danger button">
-                        <!--<i class="material-icons" style="color: red;">favorite</i>-->Add to wishlist</button>
+                <div class="d-flex flex-row justify-content-between align-items-end bd-highlight my-3">
+                    <a href="#" class="p-2 li-wishlist">
+                        <i class="fas fa-heart"></i>
+                        Add to whishlist
+                    </a>
                     <input class="btn btn-primary button" type="submit" value="Add to Cart">
                 </div>
-
             </div>
         </div>
     </div>
@@ -146,11 +147,11 @@ function draw_product()
     <div class="d-flex flex-column justify-content-center mx-2 mx-sm-3 d-md-none">
         <h2>Product Name</h2>
         <div class="d-flex flex-row bd-highlight mb-3">
-            <i class="material-icons" style="color: gold;">star</i>
-            <i class="material-icons" style="color: gold;">star</i>
-            <i class="material-icons" style="color: gold;">star</i>
-            <i class="material-icons" style="color: gold;">star_half</i>
-            <i class="material-icons" style="color: gold;">star_outline</i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
             <a href="#specs" class="px-2"> 2 reviews</a>
         </div>
         <div class="">
@@ -169,7 +170,7 @@ function draw_product()
         </div>
         <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
             <h4>Available</h4>
-            <i class="material-icons px-2 pt-1" style="color: #00ee00">fiber_manual_record</i>
+            <i class="material-icons px-2 pt-1" style="color: green">fiber_manual_record</i>
         </div>
         <div class="d-flex flex-row justify-content-between bd-highlight mb-3 pb-1">
             <div class="input-group mb-3 w-50 pt-2">
@@ -185,10 +186,12 @@ function draw_product()
             </div>
             <h1>17,80€</h1>
         </div>
-        <div class="d-flex flex-row justify-content-around bd-highlight my-2">
-            <button type="button" class="btn btn-outline-danger">
-                <!--<i class="material-icons" style="color: red;">favorite</i>-->Add to wishlist</button>
-            <input class="btn btn-primary" type="submit" value="Add to Cart">
+        <div class="d-flex flex-row justify-content-between bd-highlight my-2">
+            <a href="#" class="p-2 li-wishlist">
+                <i class="fas fa-heart"></i>
+                Add to whishlist
+            </a>
+            <input class="btn btn-primary button" type="submit" value="Add to Cart">
         </div>
     </div>
 <?php

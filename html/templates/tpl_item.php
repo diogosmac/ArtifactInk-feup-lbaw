@@ -2,7 +2,7 @@
 
 function draw_item_list()
 { ?>
-    <li class="list-group-item li-item">
+    <li class="p-3 list-group-item li-item">
         <div class="container">
             <div class="row">
                 <div class="col-sm-3">
@@ -12,10 +12,10 @@ function draw_item_list()
                 </div>
                 <div class="col-sm-6">
                     <a href="../pages/product.php" class="list-img-link">
-                        <h5 class="li-item-name"> Tattoo Machine </h5>
+                        <h3 class="li-item-name"> Tattoo Machine </h3>
                     </a>
 
-                    <div class="d-flex flex-row bd-highlight mb-3 li-item-div justify-content-between">
+                    <div class="py-2 d-flex flex-row bd-highlight mb-3 li-item-div justify-content-between">
                         <div>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -23,26 +23,30 @@ function draw_item_list()
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star-half-alt"></i>
                             <a href="#specs" class="px-2 a_link"> (2)</a>
-                            <a href="#" class="li-wishlist">
-                                <i class="fas fa-heart"></i>
-                                Add to whishlist
-                            </a>
+                            
                         </div>
                     </div>
-                    <div class="d-flex flex-row bd-highlight mb-3 li-item-div justify-content-between">
+                    <div class="py-1 d-flex flex-row bd-highlight mb-3 li-item-div justify-content-between">
                         <div>
                             <i class="fas fa-circle circle-available"></i>
                             Available
                         </div>
                     </div>
-                    <div class="d-flex flex-row bd-highlight mb-3 li-item-div justify-content-start">
-                        <label for="li-item-qty">Qty.</label>
-                        <input class="li-item-qty" type="number" value="1" min="1">
+                    <div class="py-1 d-flex flex-row bd-highlight mb-3 li-item-div justify-content-between">
+                        <span>  
+                            <label for="li-item-qty">Qty.</label>
+                            <input class="li-item-qty" type="number" value="1" min="1">
+                        </span>
+                        <a href="#" class="li-wishlist">
+                            <i class="fas fa-heart"></i>
+                            Add to Whishlist
+                        </a>
                     </div>
+
                 </div>
-                <div class="col-sm-3 li-price-button">
-                    <h6 class="li-item-price">35.95€</h6>
-                    <a href="#" class="dropdown-item add-to-cart-btn li-item">Add to cart</a>
+                <div class="py-2 col-sm-3 d-flex flex-column justify-content-between align-items-end li-price-button">
+                    <h3 class="li-item-price" style="color: var(--main-red)">35.95€</h3>
+                    <a href="#" class="btn button">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -69,11 +73,11 @@ function draw_card1()
         </a>
         <div class="card-body">
             <span class="detail">
-                <h4 class="card-title">Tattoo Machine</h4>
+                <h2 class="card-title">Tattoo Machine</h2>
                 <h5 class="card-price">39.95 € </h5>
             </span>
+            <a href="#" class="dropdown-item btn button">Add to cart</a>
         </div>
-        <a href="#" class="dropdown-item add-to-cart-btn">Add to cart</a>
     </div>
 
 <?php }
@@ -101,8 +105,8 @@ function draw_card2()
                 <h4 class="card-title">Awesome Design</h4>
                 <h5 class="card-price">10.00 € </h5>
             </span>
+            <a href="#" class="dropdown-item btn button">Add to cart</a>
         </div>
-        <a href="#" class="dropdown-item add-to-cart-btn">Add to cart</a>
     </div>
 
 <?php }
