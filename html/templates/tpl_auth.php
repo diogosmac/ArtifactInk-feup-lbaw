@@ -59,7 +59,7 @@ function draw_sign_in(){ ?>
     <body>
         <div class="container">
             <div class="row">
-                <form class="form-signin ">
+                <form class="form-signin">
                 <a href="../pages/home.php">
                     <img class="mb-4" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk" width="300">
                 </a>
@@ -79,7 +79,7 @@ function draw_sign_in(){ ?>
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">Remember me</label>
                         </div>
-                        <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign in</button>
+                        <button class="btn btn-lg button btn-block" type="submit">Sign in</button>
                         <p class="sign-divider"> or Sign In with </p>
                         <div class="btn-group sign-in-api d-flex justify-content-center" data-toggle="buttons">
                             <label class="btn">
@@ -99,7 +99,7 @@ function draw_sign_in(){ ?>
                 </form>  
                 <div class="row new-user justify-content-center">
                     <h6>Don't have an account yet?</h6>
-                        <a class="btn btn-lg btn-secondary btn-block" href="../pages/sign_up.php">Sign Up</a>
+                        <a class="btn btn-lg button btn-block" href="../pages/sign_up.php">Sign Up</a>
                     <footer class="copyright"> Copyright © ArtifactInk 2020 </footer>
                 </div>
             </div>
@@ -135,7 +135,7 @@ function draw_sign_up(){ ?>
                             <input type="password" class="form-control" id="exampleInputPassword2">
                         </div>
                        
-                        <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign Up</button>
+                        <button class="btn btn-lg button btn-block" type="submit">Sign Up</button>
                         <p class="sign-divider"> or Sign In with </p>
                         <div class="btn-group sign-in-api d-flex justify-content-center" data-toggle="buttons">
                             <label class="btn">
@@ -155,7 +155,7 @@ function draw_sign_up(){ ?>
                 </form>  
                 <div class="row new-user justify-content-center">
                     <h6>Already have an account?</h6>
-                        <a class="btn btn-lg btn-secondary btn-block" href="../pages/sign_in.php">Sign In</a>
+                        <a class="btn btn-lg button btn-block" href="../pages/sign_in.php">Sign In</a>
                     <footer class="copyright"> Copyright © ArtifactInk 2020 </footer>
                 </div>
             </div>
@@ -178,7 +178,7 @@ function draw_recover_password(){ ?>
                             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         </div>
                         <div class="d-flex justify-content-between">
-                            <button id="recover-button" class="btn btn-lg btn-secondary btn-block" type="submit">Recover</button>
+                            <button id="recover-button" class="btn btn-lg button btn-block" type="submit">Recover</button>
                             <a id="recover-back" href="../pages/sign_in.php"> Back</a>
                         </div>
                         

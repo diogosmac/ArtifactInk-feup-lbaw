@@ -162,8 +162,10 @@ function draw_main_navbar($session){ ?>
                             <input type="text" class="form-control" placeholder="Search"
                                 aria-describedby="search-button">
                             <div class="input-group-append">
-                                <button class="btn" type="button" id="search-button" onclick="location.href='/pages/search.php'">
-                                    <i class="fas fa-search"></i>
+                                <button class="btn btn-outline-success" type="button" id="search-button">
+                                    <a href="/pages/search.php">
+                                        <i class="fas fa-search"></i>
+                                    </a>
                                 </button>
                             </div>
                         </div>
@@ -293,12 +295,12 @@ function draw_main_navbar($session){ ?>
         </nav>
 
         <!-- mobile nav -->
-        <nav id="mobile-main-nav" class="navbar navbar-expand-md navbar-custom-top">
+        <nav id="mobile-main-nav" class="navbar navbar-expand-lg navbar-custom-top">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarBotSupportedContent" aria-controls="navbarBotSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon navbar-toggler-mobile">
+                    <span class="navbar-toggler-icon navbar-toggler-mobile ">
                         <i class="fas fa-bars"></i>
                     </span>
                 </button>
@@ -404,9 +406,9 @@ function draw_main_navbar($session){ ?>
             </div>
             <div class="collapse navbar-collapse" id="navbarBotSupportedContent">
                 <ul class="navbar-nav nav-fill w-100">
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <div class="dropdown dropdownSupplies">
-                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
+                        <a class="btn btn-secondary secondary-nav-link ml-auto"  role="button" >
                                 Designs
                             </a>
                             <div class="subclass-nav-mobile">
@@ -491,10 +493,10 @@ function draw_main_navbar($session){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
+                        <a class="btn btn-secondary secondary-nav-link "  role="button" >
                                 Aftercare
                             </a>
-                            <div class="subclass-nav-mobile">
+                            <div class="subclass-nav-mobile ">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -503,7 +505,7 @@ function draw_main_navbar($session){ ?>
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item align-middle">
                         <div class="dropdown dropdownSupplies">
                         <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Medical Equipment
@@ -539,8 +541,10 @@ function draw_main_navbar($session){ ?>
     <div class="input-group" id="search-mobile">
         <input type="text" class="form-control" placeholder="Search" aria-describedby="search-button">
         <div class="input-group-append">
-            <button class="btn" type="button" id="search-button" onclick="location.href='/pages/search.php'">
-                <i class="fas fa-search"></i>
+            <button class="btn btn-outline-success" type="button" id="search-button">
+                <a href="/pages/search.php">
+                    <i class="fas fa-search"></i>
+                </a>
             </button>
         </div>
     </div>
@@ -555,14 +559,14 @@ function draw_secondary_navbar(){ ?>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarBotSupportedContent"
                 aria-controls="navbarBotSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
-                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-bars  pt-1"></i>
                 </span>
             </button>
             <div class="collapse navbar-collapse" id="navbarBotSupportedContent">
                 <ul class="navbar-nav nav-fill w-100">
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
+                            <a class="btn btn-secondary one-line" href="../pages/home.php" role="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 Designs
                             </a>
@@ -577,7 +581,7 @@ function draw_secondary_navbar(){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
+                            <a class="btn btn-secondary one-line" href="../pages/home.php" role="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 Machines
                             </a>
@@ -592,7 +596,7 @@ function draw_secondary_navbar(){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
+                            <a class="btn btn-secondary one-line" href="../pages/home.php" role="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 Inks
                             </a>
@@ -607,24 +611,9 @@ function draw_secondary_navbar(){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
+                            <a class="btn btn-secondary " href="../pages/home.php" role="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 Needles and Cartridges
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                            </div>
-                        </div>
-                    </li class="nav-item">
-                    <li>
-                        <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
-                                Grips Tips and Tubes
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <a class="dropdown-item" href="#">Action</a>
@@ -637,7 +626,22 @@ function draw_secondary_navbar(){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
+                            <a class="btn btn-secondary " href="../pages/home.php" role="button" aria-haspopup="true"
+                                aria-expanded="false">
+                               Grips Tips and Tubes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown dropdownSupplies">
+                            <a class="btn btn-secondary " href="../pages/home.php" role="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 Studio Furniture
                             </a>
@@ -652,7 +656,7 @@ function draw_secondary_navbar(){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
+                            <a class="btn btn-secondary one-line" href="../pages/home.php" role="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 Aftercare
                             </a>
@@ -667,7 +671,7 @@ function draw_secondary_navbar(){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
+                            <a class="btn btn-secondary " href="../pages/home.php" role="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 Medical Equipment
                             </a>
@@ -681,8 +685,8 @@ function draw_secondary_navbar(){ ?>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
+                        <div class="dropdown dropdownSupplies ">
+                            <a class="btn btn-secondary one-line" href="../pages/home.php" role="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 Piercings
                             </a>

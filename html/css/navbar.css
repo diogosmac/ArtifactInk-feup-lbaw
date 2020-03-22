@@ -200,6 +200,7 @@ a.btn.btn-secondary:active {
 
 /* NAV BAR BOT */ 
 /* Modify the backgorund color */ 
+
 .navbar-custom-bot { 
     background-color: var(--background-color);
     padding: 0;
@@ -220,7 +221,7 @@ a.btn.btn-secondary:active {
 /* Modify brand and text color */ 
 .navbar-custom-bot .navbar-brand, .navbar-custom-bot .navbar-text,.navbar-custom-bot a { 
     color: var(--text-color-black); 
-    font-size: .9em;
+    font-size: 1em;
 } 
 .navbar-custom-bot .nav-link { 
     color: var(--text-color-black); 
@@ -337,7 +338,7 @@ a.btn.btn-secondary:active {
 }
 
   
-@media screen and (min-width: 768px) { /*desktop settings*/ 
+@media screen and (min-width: 985px) { /*desktop settings*/ 
     #mobile-main-nav, #searchMobile{
         display: none;
     }  
@@ -370,7 +371,17 @@ a.btn.btn-secondary:active {
 
 }
 
-@media screen and (max-width: 768px) { /*mobile settings */
+
+@media screen and (max-width: 1185px){
+    .navbar-custom-bot .nav-item a.one-line{
+
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+}
+
+
+@media screen and (max-width: 985px) { /*mobile settings */
     #desktop-main-nav, #secondary-navbar{
         display: none;
     }
