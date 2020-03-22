@@ -18,6 +18,10 @@ body {
     text-align: center;
 }
 
+.sign-box label.btn{
+    border-radius: 0%;
+}
+
 div.row{
     width: 100%;
     max-width: 420px;
@@ -82,8 +86,9 @@ div.row{
 }
 
 .sign-in-api label:hover{
+   
     background-color: var(--main-color-alpha);
-    border: 0;
+    border-radius: 0%;
 }
 
 .new-user{
@@ -97,8 +102,11 @@ div.row{
 
 .form-group.email-input label, .form-group.password-input label, .form-group.input label{
     font-weight: bold;
+    
 }
-
+#exampleInputEmail1, #exampleInputPassword1, #exampleInputPassword2 ,#exampleInputName{
+    border-radius: 0%;
+}
 #recover-back{
     font-size: 1.2em ;
     padding-top: .4em;

@@ -199,7 +199,7 @@ function draw_checkout_1(){
                 <a class="btn button-secondary" type="submit" href="../pages/shopping_cart.php" >Return</a>
             </div>
             <div >
-            <a class="btn button-secondary" type="submit" href="../../pages/checkout.php?p=2" >Next</a>
+            <a class="btn button" type="submit" href="../../pages/checkout.php?p=2" >Next</a>
             </div>
         </div>
     </form>
@@ -261,7 +261,7 @@ function draw_checkout_2(){
             </div>
            
             <div >
-                <a class="btn button-secondary" type="submit" href="../../pages/checkout.php?p=3" >Next</a>
+                <a class="btn button" type="submit" href="../../pages/checkout.php?p=3" >Next</a>
             </div>
         </div>
     </form>
