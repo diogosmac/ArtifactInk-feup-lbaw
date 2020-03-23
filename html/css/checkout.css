@@ -166,6 +166,20 @@ div.progress{
         margin: 1em 2em;
         
     }
+
+    div.li-price{
+       padding: 0em 0em 0em 0.1em;
+    }
+    .mobile-checkout-box h5{
+        color: var(--main-color);
+        
+        
+    }
+
+    .mobile-checkout-box .total-price{
+        margin-left: 0.2em;
+    }
+   
 }
 
 
