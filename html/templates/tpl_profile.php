@@ -247,7 +247,11 @@
         </div>
         <div class="py-2 col-sm-3 d-flex flex-column justify-content-between align-items-end li-price-button">
           <h3 class="font-weight-bold" style="color: var(--main-red)">35.95€</h3>
-          <a href="#" class="btn button">Add to Cart</a>
+          <button class="btn button-secondary">
+            <i class="fas fa-trash"></i>
+            Remove
+          </button>
+          <button href="#" type="button" class="btn button">Add to Cart</button>
         </div>
       </div>
     </div>
