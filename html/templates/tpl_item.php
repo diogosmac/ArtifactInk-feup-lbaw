@@ -107,7 +107,9 @@ function draw_card2()
         </div>
         <div class="p-1">
             <a href="../pages/product.php" class="card-img-link">
-                <img src="https://www.inkme.tattoo/wp-content/uploads/2016/10/forearm-tattoo-design-86.jpg" class="card-img-top" alt="...">
+            <div>
+                <img src="https://www.inkme.tattoo/wp-content/uploads/2016/10/forearm-tattoo-design-86.jpg" class="card-img-top image-fit" alt="...">
+            </div>
             </a>
         </div>
         <div class="p-1 d-flex flex-column justify-content-center text-center card-body border-top border-dark">
@@ -141,7 +143,9 @@ function draw_card_sale1()
         <!-- IF ON SALE -->
         <div class="p-1">
             <a href="../pages/product.php" class="card-img-link">
-                <img src="https://cdn.shopify.com/s/files/1/1314/0625/products/19_Color_Ink_Set_600x600.jpg?v=1498235476" class="card-img-top" alt="...">
+                <div>
+                    <img src="https://cdn.shopify.com/s/files/1/1314/0625/products/19_Color_Ink_Set_600x600.jpg?v=1498235476" class="card-img-top image-fit" alt="...">
+                </div>
             </a>
         </div>
         <span class="badge badge-primary sale-box">25%</span>
@@ -176,7 +180,9 @@ function draw_card_sale2()
         <!-- IF ON SALE -->
         <div class="p-1">
             <a href="../pages/product.php" class="card-img-link">
-                <img src="https://li0.rightinthebox.com/images/384x384/201807/lal1530675557629.jpg" class="card-img-top" alt="...">
+                <div>
+                    <img src="https://li0.rightinthebox.com/images/384x384/201807/lal1530675557629.jpg" class="card-img-top image-fit" alt="...">
+                </div>
             </a>
         </div>
         <span class="badge badge-primary sale-box">50%</span>
