@@ -5,9 +5,11 @@ function draw_item_list()
     <li class="p-3 list-group-item li-item">
         <div class="container">
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-3 px-1">
                     <a href="../pages/product.php" class="list-img-link">
-                        <img src="https://images-na.ssl-images-amazon.com/images/I/61TBsibBdqL._SX425_.jpg" class="card-img-top" alt="...">
+                    <div>
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/61TBsibBdqL._SX425_.jpg" class="card-img-top image-fit" alt="...">
+                    </div>
                     </a>
                 </div>
                 <div class="col-sm-6">
@@ -32,7 +34,7 @@ function draw_item_list()
                             Available
                         </div>
                     </div>
-                    <div class="py-1 d-flex flex-row bd-highlight justify-content-between">
+                    <div class="py-1 pt-4 d-flex flex-row bd-highlight justify-content-between">
                         <span>  
                             <label for="li-item-qty">Qty.</label>
                             <input class="li-item-qty" type="number" value="1" min="1">
@@ -68,9 +70,13 @@ function draw_card1()
                 <i class="fas fa-heart"></i>
             </a>
         </div>
-        <a href="../pages/product.php" class="card-img-link">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/61TBsibBdqL._SX425_.jpg" class="card-img-top" alt="...">
-        </a>
+        <div class="p-1">
+            <a href="../pages/product.php" class="card-img-link">
+            <div>
+                <img src="https://images-na.ssl-images-amazon.com/images/I/61TBsibBdqL._SX425_.jpg" class="card-img-top image-fit" alt="...">
+            </div>
+            </a>
+        </div>
         <div class="p-1 d-flex flex-column justify-content-center text-center card-body border-top border-dark">
             <span class="detail">
                 <h5 class="card-title font-weight-bold">Tattoo Machine</h5>
@@ -99,9 +105,11 @@ function draw_card2()
                 <i class="fas fa-heart"></i>
             </a>
         </div>
-        <a href="../pages/product.php" class="card-img-link">
-            <img src="https://www.inkme.tattoo/wp-content/uploads/2016/10/forearm-tattoo-design-86.jpg" class="card-img-top" alt="...">
-        </a>
+        <div class="p-1">
+            <a href="../pages/product.php" class="card-img-link">
+                <img src="https://www.inkme.tattoo/wp-content/uploads/2016/10/forearm-tattoo-design-86.jpg" class="card-img-top" alt="...">
+            </a>
+        </div>
         <div class="p-1 d-flex flex-column justify-content-center text-center card-body border-top border-dark">
             <span class="detail">
                 <h5 class="card-title font-weight-bold">Awesome Design</h5>
@@ -131,9 +139,11 @@ function draw_card_sale1()
             </a>
         </div>
         <!-- IF ON SALE -->
-        <a href="../pages/product.php" class="card-img-link">
-            <img src="https://cdn.shopify.com/s/files/1/1314/0625/products/19_Color_Ink_Set_600x600.jpg?v=1498235476" class="card-img-top" alt="...">
-        </a>
+        <div class="p-1">
+            <a href="../pages/product.php" class="card-img-link">
+                <img src="https://cdn.shopify.com/s/files/1/1314/0625/products/19_Color_Ink_Set_600x600.jpg?v=1498235476" class="card-img-top" alt="...">
+            </a>
+        </div>
         <span class="badge badge-primary sale-box">25%</span>
         <div class="p-1 d-flex flex-column justify-content-center text-center card-body border-top border-dark">
             <span class="detail">
@@ -164,9 +174,11 @@ function draw_card_sale2()
             </a>
         </div>
         <!-- IF ON SALE -->
-        <a href="../pages/product.php" class="card-img-link">
-            <img src="https://li0.rightinthebox.com/images/384x384/201807/lal1530675557629.jpg" class="card-img-top" alt="...">
-        </a>
+        <div class="p-1">
+            <a href="../pages/product.php" class="card-img-link">
+                <img src="https://li0.rightinthebox.com/images/384x384/201807/lal1530675557629.jpg" class="card-img-top" alt="...">
+            </a>
+        </div>
         <span class="badge badge-primary sale-box">50%</span>
         <div class="p-1 d-flex flex-column justify-content-center text-center card-body border-top border-dark">
             <span class="detail">

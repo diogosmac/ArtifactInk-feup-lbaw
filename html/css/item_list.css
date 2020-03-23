@@ -10,11 +10,6 @@ a#pills-home-tab,a#pills-profile-tab{
     color: var(--text-color-black);
 }
 
-.list-img-link img{
-    width: 100px;
-    height: 100px;
-}
-
 #pills-profile .list-group li{
     border-radius: 0%;
 }    
