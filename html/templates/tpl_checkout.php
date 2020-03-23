@@ -93,7 +93,7 @@ function draw_checkout_1(){
             </div>
 
             <div class="mb-3">
-                <button class="btn" id="new_addr_btn" type="button">New Adddress</button>
+                <button class="btn button-secondary" id="new_addr_btn" type="button">New Adddress</button>
             </div>
 
             <div id="new-addr-form">
@@ -135,7 +135,7 @@ function draw_checkout_1(){
 
                 </div>
                 <div class="mb-3">
-                    <button class="btn" id="return_addr_btn" type="button">Return</button>
+                    <button class="btn button-secondary" id="return_addr_btn" type="button">Return</button>
                 </div>
             </div>
         </div>
@@ -196,10 +196,10 @@ function draw_checkout_1(){
         <hr class="mb-4">
         <div class="row justify-content-between" id="move-buttons">
             <div >
-                <a class="btn btn-primary" type="submit" href="../pages/shopping_cart.php" id="btn-prv">Return</a>
+                <a class="btn button-secondary" type="submit" href="../pages/shopping_cart.php" >Return</a>
             </div>
             <div >
-            <a class="btn btn-primary" type="submit" href="../../pages/checkout.php?p=2" id="btn-next">Next</a>
+            <a class="btn button" type="submit" href="../../pages/checkout.php?p=2" >Next</a>
             </div>
         </div>
     </form>
@@ -257,11 +257,11 @@ function draw_checkout_2(){
         <hr class="mb-4">
         <div class="row justify-content-between" id="move-buttons">
             <div >
-                <a class="btn btn-primary" type="submit" href="../pages/checkout.php?p=1" id="btn-prv">Previous</a>
+                <a class="btn button-secondary" type="submit" href="../pages/checkout.php?p=1" >Previous</a>
             </div>
            
             <div >
-                <a class="btn btn-primary" type="submit" href="../../pages/checkout.php?p=3" id="btn-next">Next</a>
+                <a class="btn button" type="submit" href="../../pages/checkout.php?p=3" >Next</a>
             </div>
         </div>
     </form>
@@ -353,11 +353,11 @@ function draw_checkout_3(){
         <hr class="mb-4">
         <div class="row justify-content-between" id="move-buttons">
             <div >
-                <a class="btn btn-primary" type="submit" href="../pages/checkout.php?p=2" id="btn-prv">Previous</a>
+                <a class="btn button-secondary" type="submit" href="../pages/checkout.php?p=2" >Previous</a>
             </div>
           
             <div >
-                <a class="btn btn-primary" type="submit" href="#" id="btn-confirm">Confirm</a>
+                <a class="btn button" type="submit" href="#" >Confirm</a>
             </div>
         </div>
     </form>

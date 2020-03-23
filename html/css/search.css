@@ -59,8 +59,26 @@
 }
 
 .custom-range::-moz-range-thumb, .custom-control-input::-moz-range-thumb{
-    background-color: var(--main-red) !important;
-    color: var(--main-red) !important;
+    background-color: var(--main-red-alpha) !important;
+    color: var(--main-red-alpha) !important;
+    border-color: var(--main-red) !important;
+    box-shadow: none !important;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+    background-color: var(--main-red-alpha);
+    border-color: var(--main-red-alpha);
+    box-shadow: var(--main-color-alpha);
+}
+
+.custom-control-input:focus  ~ .custom-control-label::before {
+    border-color: var(--menu-bot) !important;
+    box-shadow: var(--main-color-alpha) !important;
+}
+
+.custom-control-input:active ~ .custom-control-label::before {
+    background-color: var(--menu-bot) !important;
+    border-color: var(--menu-bot) !important;
 }
 
 #filters #categories,#filters #brands{

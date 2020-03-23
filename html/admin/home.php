@@ -121,7 +121,7 @@
         </div>
 
         <div class="mx-auto my-2">
-          <table class="table table-striped table-hover">
+          <table class="table table-striped text-center">
             <thead>
               <tr>
                 <th scope="col">Category</th>

@@ -26,9 +26,10 @@
 
 /* BUTTON */
 .button {
+    border-radius: 0%;
     background-color: var(--main-red-alpha);
     color: var(--text-color-white);
-    border-color: var(--main-red);
+    border-color: var(--main-red-alpha);
 }
 
 .button:hover {
@@ -38,28 +39,27 @@
 }
 
 .button:active, .button:focus {
-    background-color: var(--main-red) !important;
+    background-color: var(--main-red-alpha) !important;
     color: var(--text-color-white) !important;
-    border-color: var(--main-red) !important;
+    border-color: var(--main-red-alpha) !important;
     box-shadow: 0 0 0 !important;
 }
 
+/* Secondary buttons */
 .button-secondary {
+    border-radius: 0%;
     background-color: transparent;
-    color: var(--main-red);
-    border-color: var(--main-red);
+    color: var(--main-red-alpha);
+    border-color: var(--main-red-alpha);
 }
 
 .button-secondary:hover {
     background-color: var(--main-red);
     color: var(--text-color-white);
-    border-color: var(--main-red-alpha);
+    border-color: var(--main-red);
 }
 
 .button-secondary:active, .button-secondary:focus {
-    background-color: var(--main-red) !important;
-    color: var(--text-color-white) !important;
-    border-color: var(--main-red) !important;
     box-shadow: 0 0 0 !important;
 }
 
@@ -79,5 +79,22 @@
 */
 
 body {
-    padding-top: 65px;
+    padding-top: 100px;
+}
+
+.image-fit {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+  
+@media screen and (min-width: 768px) { /* desktop setttings */ 
+    
+}
+
+@media screen and (max-width: 768px) { /*mobile settings */ 
+    h1.my-1{ 
+        font-size: 2em;
+    }
+   
 }

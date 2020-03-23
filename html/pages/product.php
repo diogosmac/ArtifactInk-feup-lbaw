@@ -24,7 +24,7 @@ draw_navbar(true);
 
     <hr class="w-75">
     <div id="related" class="mx-auto">
-        <?php draw_card_carousel('featured'); ?>
+        <?php draw_product_deals('Related Items'); ?>
     </div>
     <hr class="w-75">
 
@@ -44,11 +44,11 @@ draw_navbar(true);
                 <div class="d-flex flex-row bd-highlight justify-content-around my-2">
                     <div class="d-flex flex-column align-items-center">
                         <div class="d-flex flex-row bd-highlight mb-3">
-                            <i class="material-icons" style="color: gold;">star</i>
-                            <i class="material-icons" style="color: gold;">star</i>
-                            <i class="material-icons" style="color: gold;">star</i>
-                            <i class="material-icons" style="color: gold;">star_half</i>
-                            <i class="material-icons" style="color: gold;">star_outline</i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
                         </div>
                         <h5>4,5/5</h5>
                     </div>
@@ -77,7 +77,7 @@ draw_navbar(true);
                 </div>
             </div>
         </div>
-<?php        draw_review_popup();?>
+        <?php //draw_review_popup(); ?>
     </section>
 </main>
 
@@ -92,32 +92,34 @@ function draw_product()
     <div class="container-fluid d-none d-md-block">
         <div class="row">
             <div class="col-6">
-                <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:20em">
+                <div class="text-center">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:20em">
+                </div>
                 <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
                     <div class="p-2 bd-highlight text-center">
-                        <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:100%">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" class="image-fit">
                     </div>
                     <div class="p-2 bd-highlight text-center">
-                        <img src="https://images-na.ssl-images-amazon.com/images/I/71rPjaRWUDL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:100%">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/71rPjaRWUDL._SL1500_.jpg" alt="Ink" class="image-fit">
                     </div>
                     <div class="p-2 bd-highlight text-center">
-                        <img src="https://images-na.ssl-images-amazon.com/images/I/715F04zdnEL._SL1500_.jpg" alt="" style="max-width: 100%; max-height:100%">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/715F04zdnEL._SL1500_.jpg" alt="" class="image-fit">
                     </div>
                 </div>
             </div>
             <div class="col-6 d-flex flex-column justify-content-start">
                 <h2>Product Name</h2>
-                <div class="d-flex flex-row bd-highlight mb-3">
-                    <i class="material-icons" style="color: gold;">star</i>
-                    <i class="material-icons" style="color: gold;">star</i>
-                    <i class="material-icons" style="color: gold;">star</i>
-                    <i class="material-icons" style="color: gold;">star_half</i>
-                    <i class="material-icons" style="color: gold;">star_outline</i>
-                    <a href="#specs" class="px-2 a_link"> 2 reviews</a>
+                <div class="d-flex flex-row align-items-center bd-highlight mb-3">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <a href="#specs" class="px-3 a_link"> 2 reviews</a>
                 </div>
                 <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
                     <h4>Available</h4>
-                    <i class="material-icons px-2 pt-1" style="color: #00ee00">fiber_manual_record</i>
+                    <i class="material-icons px-2 pt-1" style="color: green">fiber_manual_record</i>
                 </div>
                 <div class="d-flex flex-row justify-content-between bd-highlight mb-3 pb-1">
                     <div class="input-group mb-3 w-50 pt-2">
@@ -133,43 +135,46 @@ function draw_product()
                     </div>
                     <h1>17,80€</h1>
                 </div>
-                <div class="d-flex flex-row justify-content-around bd-highlight my-2">
-                    <button type="button" class="btn btn-outline-danger button">
-                        <!--<i class="material-icons" style="color: red;">favorite</i>-->Add to wishlist</button>
+                <div class="d-flex flex-row justify-content-between align-items-end bd-highlight my-3">
+                    <a href="#" class="p-2 li-wishlist">
+                        <i class="fas fa-heart"></i>
+                        Add to whishlist
+                    </a>
                     <input class="btn btn-primary button" type="submit" value="Add to Cart">
                 </div>
-
             </div>
         </div>
     </div>
 
     <div class="d-flex flex-column justify-content-center mx-2 mx-sm-3 d-md-none">
         <h2>Product Name</h2>
-        <div class="d-flex flex-row bd-highlight mb-3">
-            <i class="material-icons" style="color: gold;">star</i>
-            <i class="material-icons" style="color: gold;">star</i>
-            <i class="material-icons" style="color: gold;">star</i>
-            <i class="material-icons" style="color: gold;">star_half</i>
-            <i class="material-icons" style="color: gold;">star_outline</i>
-            <a href="#specs" class="px-2"> 2 reviews</a>
+        <div class="d-flex flex-row align-items-center bd-highlight mb-3">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+            <a href="#specs" class="px-3 a_link"> 2 reviews</a>
         </div>
         <div class="">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height: 20em">
-            <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
+            <div class="text-center">
+                <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" class="image-fit" style="max-height:20em">
+            </div>
+            <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 10em">
                 <div class="p-2 bd-highlight text-center">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:100%">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" class="image-fit">
                 </div>
                 <div class="p-2 bd-highlight text-center">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/71rPjaRWUDL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:100%">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/71rPjaRWUDL._SL1500_.jpg" alt="Ink" class="image-fit">
                 </div>
                 <div class="p-2 bd-highlight text-center">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/715F04zdnEL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:100%">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/715F04zdnEL._SL1500_.jpg" alt="Ink" class="image-fit">
                 </div>
             </div>
         </div>
         <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
             <h4>Available</h4>
-            <i class="material-icons px-2 pt-1" style="color: #00ee00">fiber_manual_record</i>
+            <i class="material-icons px-2 pt-1" style="color: green">fiber_manual_record</i>
         </div>
         <div class="d-flex flex-row justify-content-between bd-highlight mb-3 pb-1">
             <div class="input-group mb-3 w-50 pt-2">
@@ -185,10 +190,12 @@ function draw_product()
             </div>
             <h1>17,80€</h1>
         </div>
-        <div class="d-flex flex-row justify-content-around bd-highlight my-2">
-            <button type="button" class="btn btn-outline-danger">
-                <!--<i class="material-icons" style="color: red;">favorite</i>-->Add to wishlist</button>
-            <input class="btn btn-primary" type="submit" value="Add to Cart">
+        <div class="d-flex flex-row justify-content-between bd-highlight my-2">
+            <a href="#" class="p-2 li-wishlist">
+                <i class="fas fa-heart"></i>
+                Add to whishlist
+            </a>
+            <input class="btn btn-primary button" type="submit" value="Add to Cart">
         </div>
     </div>
 <?php

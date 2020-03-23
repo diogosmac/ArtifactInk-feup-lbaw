@@ -9,9 +9,32 @@ function draw_header(){ ?>
 
 <head>
     <title>Artifact Ink</title>
-    <link rel="icon" href="../images/single_logo.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="../images/faviconit/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="../images/faviconit/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="../images/faviconit/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="../images/faviconit/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../images/faviconit/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="../images/faviconit/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../images/faviconit/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../images/faviconit/favicon-16.png">
+	<link rel="apple-touch-icon" href="../images/faviconit/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../images/faviconit/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../images/faviconit/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../images/faviconit/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../images/faviconit/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../images/faviconit/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../images/faviconit/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../images/faviconit/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../images/faviconit/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="../images/faviconit/favicon-144.png">
+	<meta name="msapplication-config" content="../images/faviconit/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+
     <!-- bootstrap -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -48,6 +71,7 @@ function draw_header(){ ?>
     <script src="../script/checkout_list.js" defer></script>
     <script src="../script/payment.js" defer></script>
     <script src="../script/address.js" defer></script>
+    <script src="../script/mobile_nav.js" defer></script>
 
 </head>
 
@@ -72,10 +96,10 @@ function draw_simple_navbar($session){ ?>
         <div class="fixed-top ">
             <nav class="navbar navbar-expand-md navbar-custom-top">
                 <a class="navbar-brand" href="../pages/home.php">
-                    <img class="d-inline-block align-top" src="../images/artifact_ink_logo_white.svg" alt="ArtifactInk"
-                        height="40" width="50">
-                    <img class="d-inline-block align-top" src="../images/artifact_ink_letters_white.svg"
-                        alt="ArtifactInk" height="40" width="125">
+                    <img class="d-inline-block align-center" src="../images/artifact_ink_logo_white.png" alt="ArtifactInk"
+                        height="40">
+                    <img class="d-inline-block align-center" src="../images/artifact_ink_letters_white.png"
+                        alt="ArtifactInk" width="125">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarTopSupportedContent" aria-controls="navbarTopSupportedContent"
@@ -120,10 +144,10 @@ function draw_main_navbar($session){ ?>
 
         <nav id="desktop-main-nav" class="navbar navbar-expand-md navbar-custom-top">
             <a class="navbar-brand" href="../pages/home.php">
-                <img class="d-inline-block align-top" src="../images/artifact_ink_logo_white.svg" alt="ArtifactInk"
-                    height="40" width="50">
-                <img class="d-inline-block align-top" src="../images/artifact_ink_letters_white.svg" alt="ArtifactInk"
-                    height="40" width="125">
+                <img class="d-inline-block align-center" src="../images/artifact_ink_logo_white.png" alt="ArtifactInk"
+                    height="40">
+                <img class="d-inline-block align-center" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk"
+                    width="125">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTopSupportedContent"
                 aria-controls="navbarTopSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -271,123 +295,123 @@ function draw_main_navbar($session){ ?>
         </nav>
 
         <!-- mobile nav -->
-        <nav id="mobile-main-nav" class="navbar navbar-expand-md navbar-custom-top">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarBotSupportedContent"
-                aria-controls="navbarBotSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon">
-                    <i class="fas fa-bars"></i>
-                </span>
-            </button>
-            <a class="navbar-brand" href="../pages/home.php">
-                <img class="d-inline-block align-top" src="../images/artifact_ink_logo_white.svg" alt="ArtifactInk"
-                    height="40" width="50">
-                <img class="d-inline-block align-top" src="../images/artifact_ink_letters_white.svg" alt="ArtifactInk"
-                    height="40" width="125">
-            </a>
-            <?php if($session == true){?>
-            <a class="nav-link" href="#">
-                <span>
-                    <i class="fas fa-heart"></i>
-                </span>
-            </a>
-            <div class="btn-group">
-                <a class="btn" href="#" role="button" id="dropdownMenuCart" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
+        <nav id="mobile-main-nav" class="navbar navbar-expand-lg navbar-custom-top">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarBotSupportedContent" aria-controls="navbarBotSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon navbar-toggler-mobile ">
+                        <i class="fas fa-bars"></i>
+                    </span>
+                </button>
+                <a class="navbar-brand" href="../pages/home.php">
+                    <img class="d-inline-block align-center" src="../images/artifact_ink_logo_white.png" alt="ArtifactInk"
+                        height="40">
+                    <img class="d-inline-block align-center" src="../images/artifact_ink_letters_white.png"
+                        alt="ArtifactInk" width="125">
+                </a>
+                <?php if($session == true){?>
+                <a class="nav-link" href="#">
                     <span>
-                        <i class="fas fa-shopping-cart"></i>
+                        <i class="fas fa-heart"></i>
                     </span>
                 </a>
-                <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
-                    <div class="panel-body">
-                        <ul class="list-group list-cart">
-                            <a class="item-link-cart" href="#">
-                                <li
-                                    class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
-                                    <span>
-                                        <img class="cart-item-list-img"
-                                            src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg"
-                                            alt="Cool Tattoo">
-                                    </span>
-                                    <h5 class="cart-item-list-name">Cool Tattoo</h5>
-                                    <h6 class="cart-item-list-price">4.99 €</h6>
-                                    <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
-                                </li>
-                            </a>
-                            <a class="item-link-cart" href="#">
-                                <li
-                                    class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
-                                    <span>
-                                        <img class="cart-item-list-img"
-                                            src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg"
-                                            alt="Cool Tattoo">
-                                    </span>
-                                    <h5 class="cart-item-list-name">Cool Tattoo</h5>
-                                    <h6 class="cart-item-list-price">4.99 €</h6>
-                                    <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
-                                </li>
-                            </a>
-                            <a class="item-link-cart" href="#">
-                                <li
-                                    class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
-                                    <span>
-                                        <img class="cart-item-list-img"
-                                            src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg"
-                                            alt="Cool Tattoo">
-                                    </span>
-                                    <h5 class="cart-item-list-name">Cool Tattoo</h5>
-                                    <h6 class="cart-item-list-price">4.99 €</h6>
-                                    <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
-                                </li>
-                            </a>
-                        </ul>
-                    </div>
-                    <div class="d-inline cart-list-total">
-                        <div id="total-label" class="d-inline p-2">
-                            Total
+                <div class="btn-group">
+                    <a class="btn" href="#" role="button" id="dropdownMenuCart" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <span>
+                            <i class="fas fa-shopping-cart"></i>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
+                        <div class="panel-body">
+                            <ul class="list-group list-cart">
+                                <a class="item-link-cart" href="#">
+                                    <li
+                                        class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
+                                        <span>
+                                            <img class="cart-item-list-img"
+                                                src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg"
+                                                alt="Cool Tattoo">
+                                        </span>
+                                        <h5 class="cart-item-list-name">Cool Tattoo</h5>
+                                        <h6 class="cart-item-list-price">4.99 €</h6>
+                                        <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
+                                    </li>
+                                </a>
+                                <a class="item-link-cart" href="#">
+                                    <li
+                                        class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
+                                        <span>
+                                            <img class="cart-item-list-img"
+                                                src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg"
+                                                alt="Cool Tattoo">
+                                        </span>
+                                        <h5 class="cart-item-list-name">Cool Tattoo</h5>
+                                        <h6 class="cart-item-list-price">4.99 €</h6>
+                                        <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
+                                    </li>
+                                </a>
+                                <a class="item-link-cart" href="#">
+                                    <li
+                                        class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
+                                        <span>
+                                            <img class="cart-item-list-img"
+                                                src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg"
+                                                alt="Cool Tattoo">
+                                        </span>
+                                        <h5 class="cart-item-list-name">Cool Tattoo</h5>
+                                        <h6 class="cart-item-list-price">4.99 €</h6>
+                                        <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
+                                    </li>
+                                </a>
+                            </ul>
                         </div>
-                        <div id="price-total" class="d-inline p-2">
-                            33.33 €
+                        <div class="d-inline cart-list-total">
+                            <div id="total-label" class="d-inline p-2">
+                                Total
+                            </div>
+                            <div id="price-total" class="d-inline p-2">
+                                33.33 €
+                            </div>
                         </div>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item checkout-button" href="../pages/shopping_cart.php">View Cart</a>
                     </div>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item checkout-button" href="../pages/shopping_cart.php">View Cart</a>
                 </div>
-            </div>
-            <div class="btn-group">
-                <a class="btn " href="#" role="button" id="dropdownMenuAccount" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <span>
-                        <i class="fas fa-user"></i>
-                    </span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuAccount">
-                    <img class="profile-pic-bubble"
-                        src="https://www.diretoriodigital.com.br/wp-content/uploads/2013/05/Team-Member-3.jpg"
-                        alt="John Doe">
-                    <h5 class="dropdown-header">John Doe</h5>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/pages/profile.php">My Account</a>
-                    <a class="dropdown-item" href="#">My Order</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Sign Out</a>
+                <div class="btn-group">
+                    <a class="btn " href="#" role="button" id="dropdownMenuAccount" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        <span>
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuAccount">
+                        <img class="profile-pic-bubble"
+                            src="https://www.diretoriodigital.com.br/wp-content/uploads/2013/05/Team-Member-3.jpg"
+                            alt="John Doe">
+                        <h5 class="dropdown-header">John Doe</h5>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/pages/profile.php">My Account</a>
+                        <a class="dropdown-item" href="#">My Order</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Sign Out</a>
+                    </div>
                 </div>
+                <?php }else{?>
+                <a class="nav-link" href="../pages/sign_in.php">Sign In</a>
+                <a class="nav-link" href="../pages/sign_in.php">Sign Up</a>
+                <?php } ?>
+                </ul>
             </div>
-            <?php }else{?>
-            <a class="nav-link" href="../pages/sign_in.php">Sign In</a>
-            <a class="nav-link" href="../pages/sign_in.php">Sign Up</a>
-            <?php } ?>
-            </ul>
-    </div>
             <div class="collapse navbar-collapse" id="navbarBotSupportedContent">
                 <ul class="navbar-nav nav-fill w-100">
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link ml-auto"  role="button" >
                                 Designs
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -398,11 +422,10 @@ function draw_main_navbar($session){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Machines
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -413,11 +436,10 @@ function draw_main_navbar($session){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Inks
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -428,11 +450,10 @@ function draw_main_navbar($session){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Needles and Cartridges
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -440,14 +461,13 @@ function draw_main_navbar($session){ ?>
                                 <a class="dropdown-item" href="#">Another action</a>
                             </div>
                         </div>
-                    </li class="nav-item">
-                    <li>
+                    </li>
+                    <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Grips Tips and Tubes
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -456,13 +476,13 @@ function draw_main_navbar($session){ ?>
                             </div>
                         </div>
                     </li>
+                
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Studio Furniture
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -473,11 +493,10 @@ function draw_main_navbar($session){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link "  role="button" >
                                 Aftercare
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile ">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -486,13 +505,12 @@ function draw_main_navbar($session){ ?>
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item align-middle">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Medical Equipment
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -503,11 +521,10 @@ function draw_main_navbar($session){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
+                        <a class="btn btn-secondary secondary-nav-link"  role="button" >
                                 Piercings
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <div class="subclass-nav-mobile">
                                 <a class="dropdown-item" href="#">Action</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -517,9 +534,22 @@ function draw_main_navbar($session){ ?>
                         </div>
                     </li>
                 </ul>
+
             </div>
-        </div>
     </nav>
+    <nav id="searchMobile">
+    <div class="input-group" id="search-mobile">
+        <input type="text" class="form-control" placeholder="Search" aria-describedby="search-button">
+        <div class="input-group-append">
+            <button class="btn btn-outline-success" type="button" id="search-button">
+                <a href="/pages/search.php">
+                    <i class="fas fa-search"></i>
+                </a>
+            </button>
+        </div>
+    </div>
+    </nav>
+
     <?php } 
 
 function draw_secondary_navbar(){ ?>
@@ -529,14 +559,14 @@ function draw_secondary_navbar(){ ?>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarBotSupportedContent"
                 aria-controls="navbarBotSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
-                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-bars  pt-1"></i>
                 </span>
             </button>
             <div class="collapse navbar-collapse" id="navbarBotSupportedContent">
                 <ul class="navbar-nav nav-fill w-100">
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
+                            <a class="btn btn-secondary one-line" href="../pages/home.php" role="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 Designs
                             </a>
@@ -551,7 +581,7 @@ function draw_secondary_navbar(){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
+                            <a class="btn btn-secondary one-line" href="../pages/home.php" role="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 Machines
                             </a>
@@ -566,7 +596,7 @@ function draw_secondary_navbar(){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
+                            <a class="btn btn-secondary one-line" href="../pages/home.php" role="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 Inks
                             </a>
@@ -581,24 +611,9 @@ function draw_secondary_navbar(){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
+                            <a class="btn btn-secondary " href="../pages/home.php" role="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 Needles and Cartridges
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                            </div>
-                        </div>
-                    </li class="nav-item">
-                    <li>
-                        <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
-                                aria-expanded="false">
-                                Grips Tips and Tubes
                             </a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <a class="dropdown-item" href="#">Action</a>
@@ -611,7 +626,22 @@ function draw_secondary_navbar(){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
+                            <a class="btn btn-secondary " href="../pages/home.php" role="button" aria-haspopup="true"
+                                aria-expanded="false">
+                               Grips Tips and Tubes
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown dropdownSupplies">
+                            <a class="btn btn-secondary " href="../pages/home.php" role="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 Studio Furniture
                             </a>
@@ -626,7 +656,7 @@ function draw_secondary_navbar(){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
+                            <a class="btn btn-secondary one-line" href="../pages/home.php" role="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 Aftercare
                             </a>
@@ -641,7 +671,7 @@ function draw_secondary_navbar(){ ?>
                     </li>
                     <li class="nav-item">
                         <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
+                            <a class="btn btn-secondary " href="../pages/home.php" role="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 Medical Equipment
                             </a>
@@ -655,8 +685,8 @@ function draw_secondary_navbar(){ ?>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <div class="dropdown dropdownSupplies">
-                            <a class="btn btn-secondary" href="../pages/home.php" role="button" aria-haspopup="true"
+                        <div class="dropdown dropdownSupplies ">
+                            <a class="btn btn-secondary one-line" href="../pages/home.php" role="button" aria-haspopup="true"
                                 aria-expanded="false">
                                 Piercings
                             </a>
@@ -777,6 +807,8 @@ function draw_footer(){?>
 </body>
 
 </html>
-<?php }
 
+
+
+<?php }
 ?>

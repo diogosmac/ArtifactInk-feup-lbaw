@@ -81,32 +81,43 @@ a.btn.btn-secondary:active {
     background-color: var(--main-red);
 }
 
+
 .navbar-custom-top input.form-control {
-    margin-right: 0;
-    border-radius: .2em .0em .0em .2em;
+    border-radius: 0;
     border: none;
 }
 
-.navbar-custom-top button.btn.btn-outline-success {
-    border-radius: .0em .2em .2em .0em;
+.navbar-custom-top input.form-control:focus {
+    z-index: 0;
+}
+
+#search-button {
+    border-radius: 0;
     background-color: white;
-    color: var(--text-color-black);
     border: none;
- 
+}
+
+#search-button:active {
+    background-color: white;
+    box-shadow: 0;
+}
+
+#search-button:focus {
+    box-shadow: none;
+    z-index: 0;
+}
+
+#search-button i {
+    color: var(--main-red-alpha);
 }
 
 #btn-search{
     padding: .435rem .7rem;
 }
 
-.navbar-custom-top button.btn.btn-outline-success:hover{
-    background-color: var(--main-color-alpha);
-    color: var(--text-color-white);
-}
-
 .list-cart {
     margin: .2em;
-    max-height: 150px;
+    height: 150px;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     border: none;
@@ -189,6 +200,7 @@ a.btn.btn-secondary:active {
 
 /* NAV BAR BOT */ 
 /* Modify the backgorund color */ 
+
 .navbar-custom-bot { 
     background-color: var(--background-color);
     padding: 0;
@@ -209,7 +221,7 @@ a.btn.btn-secondary:active {
 /* Modify brand and text color */ 
 .navbar-custom-bot .navbar-brand, .navbar-custom-bot .navbar-text,.navbar-custom-bot a { 
     color: var(--text-color-black); 
-    font-size: .9em;
+    font-size: 1em;
 } 
 .navbar-custom-bot .nav-link { 
     color: var(--text-color-black); 
@@ -297,16 +309,98 @@ a.btn.btn-secondary:active {
       padding: 0.5em 0.5em;
   }
 
-  
-@media screen and (min-width: 768px) {
-    #mobile-main-nav{
-        display: none;
-    }  
+  #search-mobile{
+      padding: 0em 0.5em 0.5em 0.5em;
+      background-color: var(--main-color); 
+  }
+
+  #search-mobile {
+    padding: 0em 0.5em 0.5em 0.5em;
+    background-color: var(--main-color); 
 }
 
-@media screen and (max-width: 768px) {
+#searchMobile #search-button {
+    color: var(--main-white);
+    border-color: var(--main-color-alpha);
+}
+
+#searchMobile #search-button a{
+    color: var(--main-white);
+}
+
+#searchMobile input.form-control {
+    border-radius: 0;
+    border: none;
+}
+
+#searchMobile input.form-control:focus {
+    z-index: 0;
+}
+
+  
+@media screen and (min-width: 985px) { /*desktop settings*/ 
+    #mobile-main-nav, #searchMobile{
+        display: none;
+    }  
+    .dropdown-cart{
+       width: 300px;
+      
+    }
+    .profile-pic-bubble, .cart-item-list-img{
+        width: 75px;
+        height: 75px;
+    }
+
+    .dropdown-menu.dropdown-menu-right.show h5{
+        font-size: 1em;
+    }
+
+    .dropdown-menu.dropdown-menu-right.show a{
+        font-size: 1.2em;
+    } 
+    .cart-item-list.list-group-item{
+        padding: 2em 0em; 
+    }
+    .cart-list-total{
+        font-size: 1.3em;
+    }
+
+    .panel-body, .list-cart{
+        height: 300px ;
+    }
+
+}
+
+
+@media screen and (max-width: 1185px){
+    .navbar-custom-bot .nav-item a.one-line{
+
+        padding-top: 1em;
+        padding-bottom: 1em;
+    }
+}
+
+
+@media screen and (max-width: 985px) { /*mobile settings */
     #desktop-main-nav, #secondary-navbar{
         display: none;
+    }
+    body{
+        padding-top: 110px;
+    }
+    .secondary-nav-link{
+        font-weight: normal;
+        font-size: 1em;
+        
+    } 
+    .dropdown.dropdownSupplies{
+        border-bottom: solid 0.1em var(--main-color-alpha);
+    }
+    .subclass-nav-mobile a{ 
+        color:var(--main-white);
+        font-weight: normal;
+        font-size: 0.8em;
+     
     }
 
 }

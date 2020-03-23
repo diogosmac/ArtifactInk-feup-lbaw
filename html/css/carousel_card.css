@@ -1,55 +1,30 @@
-
-/*CAROUSEL*/
-.item-carousel-div{
-   /*margin: 2em 0em 2em 0em;  */
-}
-
+/* Preview Carousel Height*/
 .carousel-item img {
-    max-height: 400px; /* input your desired height here */
-  }
-
-div#carouselCardSales{
-    margin: 1em; 
-
-}
-.carousel-card  div.carousel-item div.row div {
-    border-color: red;
-    margin: 1em; 
-
-}
-.card-deck{
-    padding: 2em 10em 2em 10em;
+    max-height: 350px; /* input your desired height here */
+    background-color: black;
 }
 
-.itemCarousel .carousel-control-prev{
-    color: black;
-}
 
 /* CARD */ 
 .product-card{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    z-index: 100;
-    width: 100px;
-    height: 400px;
+    transition: background-color .10s ease-in-out;
 }
+
+.product-card:hover{
+    background-color: var(--main-white);
+}
+
 .product-card img{
     height: 250px;
 }
 
-.product-card .card-body{
-    align-items: center;
-    text-align: center;
-}   
 
+/*Wishlist Button*/
 .product-card i{
     display: none;
 }
 
-
-.card .card-body{
-    border-color: black;
-    border-top: solid .1rem;
-}
 .card.product-card a.card-link{
     color: var(--main-color-alpha);
     border: solid .1rem;
@@ -65,28 +40,15 @@ div#carouselCardSales{
 .card.product-card a.card-link:hover{
     color: var(--main-color);
 }
+
 .card.product-card i{
     font-size: 1rem;
 }
 
-.card.product-card .detail{
-    display: inline;
-}
-
-.itemCarousel{
-    max-width: 1500px;
-    margin: auto;
-    align-content: center;
-}
-
-.card-title{
-    font-size: 1.2rem;
-}
+/**/
 
 .card-price{
     color: var(--main-red);
-    font-weight: bold;
-    font-size: 1rem;
 }
 
 .sale-box{
@@ -107,83 +69,7 @@ div#carouselCardSales{
     text-decoration: line-through;
 }
 
-.item-carousel-div{
-    margin-top: 3rem;
-}
-.item-carousel-title{
-    align-items: center;
-    text-align: center;
-}
-
-.item-carousel-title h1{
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.card-item-description{
-    /*
-    text-overflow: ellipsis;
-    white-space: nowrap; 
-    height: 2.4em; 
-    overflow: hidden;
-    text-overflow: -o-ellipsis-lastline; 
-    */
-}
-
-.add-to-cart-btn{
-    background-color: var(--main-red-alpha);
-    color: var(--text-color-white);
-    margin-top: 2em;
-    z-index: 200;
-    
-}
-
-.add-to-cart-btn:hover,.add-to-cart-btn:link, .add-to-cart-btn:enabled{
-    background-color: var(--main-red);
-    color: var(--text-color-white);
-}
 div .card-img-overlay.d-flex.justify-content-end{
     padding-bottom: .1em;
 }
 
-
-.item-carousel-button{
-    width: 6em;
-    z-index: 100; 
-}
-
-.item-carousel-button span{
-    height: 100px;
-    width: 100px;
-    outline: black;
-    background-size: 100%, 100%;
-    
-    background-image: none;
-    vertical-align: middle;
-}
-
-.carousel-control-next-icon.custom:after{
-    content: '>';
-    font-size: 55px;
-    color: var(--main-color);
-}
-
-.carousel-control-prev-icon.custom:after{
-    content: '<';
-    font-size: 55px;
-    color: var(--main-color);
-}
-
-.item-carousel-button.prv{
-    margin-left:3em ;
-}
-
-.item-carousel-button.nxt{
-    margin-right:3em ;
-}
-
-.dropdown-item.add-to-cart-btn{
-    text-align: center;
-    text-transform: capitalize;
-
-}

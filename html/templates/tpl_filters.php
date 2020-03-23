@@ -28,7 +28,7 @@ function draw_filters()
             </div>
         </div>
         <div class="custom-control custom-switch my-3">
-            <input id ="inStockLabel" type="checkbox" class="custom-control-input" id="stockSwitch">
+            <input type="checkbox" class="custom-control-input" id="stockSwitch">
             <label class="custom-control-label" for="stockSwitch">In-Stock</label>
         </div>
         <div>

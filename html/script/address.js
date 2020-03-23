@@ -1,7 +1,3 @@
-let btn_change = document.querySelector(".change-addr-btn"); 
-
-
-
 let  new_addr_btn = document.querySelector('#new_addr_btn'); 
 let  ret_addr_btn = document.querySelector('#return_addr_btn'); 
 let  addr_selector = document.querySelector('#addr-selector'); 
