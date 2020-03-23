@@ -55,7 +55,7 @@ function draw_item_list()
 
 function draw_card1()
 { ?>
-    <div class="my-3 mx-2 card product-card" style="width: 15em;">
+    <div class="my-3 mx-2 card product-card rounded-0" style="width: 15em;">
         <div class="card-img-overlay d-flex justify-content-end h-25">
             <!--
             <a href="../pages/home.php" class="card-link">
@@ -86,7 +86,7 @@ function draw_card1()
 
 function draw_card2()
 { ?>
-    <div class="my-3 mx-2 card product-card" style="width: 15em;">
+    <div class="my-3 mx-2 card product-card rounded-0" style="width: 15em;">
         <div class="card-img-overlay d-flex justify-content-end h-25">
             <!--
             <a href="../pages/home.php" class="card-link">
@@ -117,7 +117,7 @@ function draw_card2()
 
 function draw_card_sale1()
 { ?>
-    <div class="my-3 mx-2 card product-card" style="width: 15em;">
+    <div class="my-3 mx-2 card product-card rounded-0" style="width: 15em;">
         <div class="card-img-overlay d-flex justify-content-end">
             <!--
             <a href="../pages/home.php" class="card-link">
@@ -150,7 +150,7 @@ function draw_card_sale1()
 
 function draw_card_sale2()
 { ?>
-    <div class="my-3 mx-2 card product-card" style="width: 15em;">
+    <div class="my-3 mx-2 card product-card rounded-0" style="width: 15em;">
         <div class="card-img-overlay d-flex justify-content-end">
             <!--
             <a href="../pages/home.php" class="card-link">

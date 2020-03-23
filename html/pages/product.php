@@ -92,16 +92,18 @@ function draw_product()
     <div class="container-fluid d-none d-md-block">
         <div class="row">
             <div class="col-6">
-                <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:20em">
+                <div class="text-center">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:20em">
+                </div>
                 <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
                     <div class="p-2 bd-highlight text-center">
-                        <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:100%">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" class="image-fit">
                     </div>
                     <div class="p-2 bd-highlight text-center">
-                        <img src="https://images-na.ssl-images-amazon.com/images/I/71rPjaRWUDL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:100%">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/71rPjaRWUDL._SL1500_.jpg" alt="Ink" class="image-fit">
                     </div>
                     <div class="p-2 bd-highlight text-center">
-                        <img src="https://images-na.ssl-images-amazon.com/images/I/715F04zdnEL._SL1500_.jpg" alt="" style="max-width: 100%; max-height:100%">
+                        <img src="https://images-na.ssl-images-amazon.com/images/I/715F04zdnEL._SL1500_.jpg" alt="" class="image-fit">
                     </div>
                 </div>
             </div>
@@ -155,16 +157,18 @@ function draw_product()
             <a href="#specs" class="px-3 a_link"> 2 reviews</a>
         </div>
         <div class="">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height: 20em">
-            <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
+            <div class="text-center">
+                <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" class="image-fit" style="max-height:20em">
+            </div>
+            <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 10em">
                 <div class="p-2 bd-highlight text-center">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:100%">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" class="image-fit">
                 </div>
                 <div class="p-2 bd-highlight text-center">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/71rPjaRWUDL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:100%">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/71rPjaRWUDL._SL1500_.jpg" alt="Ink" class="image-fit">
                 </div>
                 <div class="p-2 bd-highlight text-center">
-                    <img src="https://images-na.ssl-images-amazon.com/images/I/715F04zdnEL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:100%">
+                    <img src="https://images-na.ssl-images-amazon.com/images/I/715F04zdnEL._SL1500_.jpg" alt="Ink" class="image-fit">
                 </div>
             </div>
         </div>
