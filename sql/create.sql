@@ -1,9 +1,47 @@
+-- Drop Tables
+
+DROP TABLE IF EXISTS "store";
+DROP TABLE IF EXISTS "faq";
+DROP TABLE IF EXISTS "admin";
+DROP TABLE IF EXISTS "newsletter_subscriber";
+DROP TABLE IF EXISTS "support_chat_message";
+DROP TABLE IF EXISTS "user_payment_method";
+DROP TABLE IF EXISTS "user_address";
+DROP TABLE IF EXISTS "item_subscriber";
+DROP TABLE IF EXISTS "percentage_sale";
+DROP TABLE IF EXISTS "fixed_sale";
+DROP TABLE IF EXISTS "sale";
+DROP TABLE IF EXISTS "report_notification";
+DROP TABLE IF EXISTS "out_of_stock_notification";
+DROP TABLE IF EXISTS "admin_notification";
+DROP TABLE IF EXISTS "profile_picture";
+DROP TABLE IF EXISTS "item_picture";
+DROP TABLE IF EXISTS "picture";
+DROP TABLE IF EXISTS "wishlist";
+DROP TABLE IF EXISTS "cart";
+DROP TABLE IF EXISTS "review";
+DROP TABLE IF EXISTS "item_purchase";
+DROP TABLE IF EXISTS "archived_item";
+DROP TABLE IF EXISTS "item";
+DROP TABLE IF EXISTS "subcategory";
+DROP TABLE IF EXISTS "category";
+DROP TABLE IF EXISTS "order";
+DROP TABLE IF EXISTS "payment_method";
+DROP TABLE IF EXISTS "paypal";
+DROP TABLE IF EXISTS "credit_card";
+DROP TABLE IF EXISTS "address";
+DROP TABLE IF EXISTS "city";
+DROP TABLE IF EXISTS "country";
+DROP TABLE IF EXISTS "user";
+
+DROP TYPE IF EXISTS MessageSender;
+DROP TYPE IF EXISTS OrderStatus;
+
 -- Types
 
 CREATE TYPE OrderStatus AS ENUM ('processing', 'shipped', 'received');
 
 CREATE TYPE MessageSender AS ENUM ('user', 'admin');
-
 
 -- Tables
 
@@ -58,8 +96,8 @@ CREATE TABLE "payment_method" (
 
 CREATE TABLE "order" (
     id SERIAL PRIMARY KEY,
-    date DATETIME NOT NULL DEFAULT NOW() CONSTRAINT review_date_ck CHECK date <= NOW(),
-    total FLOAT NOT NULL CONSTRAINT order_total_ck CHECK total > 0,
+    date TIMESTAMP NOT NULL DEFAULT NOW() CONSTRAINT order_date_ck CHECK (date <= NOW()),
+    total FLOAT NOT NULL CONSTRAINT order_total_ck CHECK (total > 0),
     status OrderStatus DEFAULT 'processing' NOT NULL,
     idUser INTEGER REFERENCES "user" (id) ON UPDATE CASCADE,
     idAddress INTEGER REFERENCES "address" (id) ON UPDATE CASCADE,
@@ -79,8 +117,8 @@ CREATE TABLE "subcategory" (
 CREATE TABLE "item" (
     id SERIAL PRIMARY KEY,
     name text NOT NULL,
-    price FLOAT CONSTRAINT item_price_ck CHECK price > 0,
-    stock INTEGER CONSTRAINT item_stock_ck CHECK stock >= 0,
+    price FLOAT NOT NULL CONSTRAINT item_price_ck CHECK (price > 0),
+    stock INTEGER NOT NULL CONSTRAINT item_stock_ck CHECK (stock >= 0),
     description text,
     rating FLOAT CONSTRAINT item_rating_ck CHECK (
         (rating is NULL) or (rating is NOT NULL and rating > 0 and rating <= 0)
@@ -106,15 +144,15 @@ CREATE TABLE "review" (
     idUser INTEGER REFERENCES "user" (id) ON UPDATE CASCADE,
     title text NOT NULL,
     body text NOT NULL,
-    score INTEGER NOT NULL CONSTRAINT review_score_ck CHECK score > 0 and score <= 5,
-    date DATETIME NOT NULL DEFAULT now() CONSTRAINT review_date_ck CHECK date <= now()
+    score INTEGER NOT NULL CONSTRAINT review_score_ck CHECK (score > 0 and score <= 5),
+    date TIMESTAMP NOT NULL DEFAULT now() CONSTRAINT review_date_ck CHECK (date <= now())
 );
 
 CREATE TABLE "cart" (
     idUser INTEGER REFERENCES "user" (id) ON UPDATE CASCADE ON DELETE CASCADE,
     idItem INTEGER REFERENCES "item" (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    quantity INTEGER CONSTRAINT cart_quantity_ck CHECK quantity > 0,
-    dateAdded DATETIME NOT NULL,
+    quantity INTEGER CONSTRAINT cart_quantity_ck CHECK (quantity > 0),
+    dateAdded TIMESTAMP NOT NULL,
     PRIMARY KEY (idUser, idItem)
 );
 
@@ -142,7 +180,7 @@ CREATE TABLE "profile_picture" (
 CREATE TABLE "admin_notification" (
     id SERIAL PRIMARY KEY,
     body text NOT NULL,
-    sent DATETIME NOT NULL DEFAULT now()
+    sent TIMESTAMP NOT NULL DEFAULT now()
 );
 
 CREATE TABLE "out_of_stock_notification" (
@@ -158,19 +196,19 @@ CREATE TABLE "report_notification" (
 CREATE TABLE "sale" (
     id SERIAL PRIMARY KEY,
     name text,
-    start DATE NOT NULL,
-    end DATE NOT NULL,
-    CONSTRAINT sale_date_ck CHECK start < end
+    "start" DATE NOT NULL,
+    "end" DATE NOT NULL,
+    CONSTRAINT sale_date_ck CHECK ("start" < "end")
 );
 
 CREATE TABLE "fixed_sale" (
     idSale INTEGER PRIMARY KEY REFERENCES "sale" (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    amount FLOAT NOT NULL CONSTRAINT fixedsale_amount_ck CHECK amount > 0
+    amount FLOAT NOT NULL CONSTRAINT fixedsale_amount_ck CHECK (amount > 0)
 );
 
 CREATE TABLE "percentage_sale" (
     idSale INTEGER PRIMARY KEY REFERENCES "sale" (id) ON UPDATE CASCADE ON DELETE CASCADE,
-    percent FLOAT NOT NULL CONSTRAINT percentagesale_percent_ck CHECK percent > 0
+    percent FLOAT NOT NULL CONSTRAINT percentagesale_percent_ck CHECK (percent > 0)
 );
 
 CREATE TABLE "item_subscriber" (
@@ -192,7 +230,7 @@ CREATE TABLE "user_payment_method" (
 CREATE TABLE "support_chat_message" (
     id SERIAL PRIMARY KEY,
     idUser INTEGER REFERENCES "user" (id) ON UPDATE CASCADE,
-    time DATETIME NOT NULL,
+    time TIMESTAMP NOT NULL,
     body text NOT NULL,
     sender MessageSender NOT NULL
 );
@@ -210,5 +248,10 @@ CREATE TABLE "admin" (
 CREATE TABLE "faq" (
     id SERIAL PRIMARY KEY,
     question text UNIQUE NOT NULL,
-    answer NOT NULL
+    answer text NOT NULL
+);
+
+CREATE TABLE "store" (
+    idAddress INTEGER PRIMARY KEY REFERENCES "address" (id) ON UPDATE CASCADE,
+    phone text NOT NULL
 );
