@@ -62,14 +62,14 @@ CREATE TABLE "country" (
 CREATE TABLE "city" (
     id SERIAL PRIMARY KEY,
     name text NOT NULL,
-    idCountry INTEGER REFERENCES "country" (id) ON UPDATE CASCADE
+    idCountry INTEGER NOT NULL REFERENCES "country" (id) ON UPDATE CASCADE
 );
 
 CREATE TABLE "address" (
     id SERIAL PRIMARY KEY,
     street text NOT NULL,
     postalCode text NOT NULL,
-    idCity INTEGER REFERENCES "city" (id) ON UPDATE CASCADE
+    idCity INTEGER NOT NULL REFERENCES "city" (id) ON UPDATE CASCADE
 );
 
 CREATE TABLE "credit_card" (
