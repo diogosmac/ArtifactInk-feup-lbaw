@@ -20,7 +20,7 @@
 .shopping-cart-h{ 
     margin: .5em .0em 1em 0em;
     padding: 0em .5em;
-    text-transform: uppercase;
+    
 }
 
 /*checkout menu*/
@@ -46,7 +46,6 @@
   
 }
 div.checkout-box thead th{
-    text-transform: uppercase;
     font-weight: normal;
 
 } 
