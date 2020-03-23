@@ -20,7 +20,7 @@
 .shopping-cart-h{ 
     margin: .5em .0em 1em 0em;
     padding: 0em .5em;
-    text-transform: uppercase;
+    
 }
 
 /*checkout menu*/
@@ -46,7 +46,6 @@
   
 }
 div.checkout-box thead th{
-    text-transform: uppercase;
     font-weight: normal;
 
 } 
@@ -136,16 +135,47 @@ div.progress{
 }
 
 
+
+
 @media screen and (max-width: 768px) {
     #checkout-list{
         display: none;
     }
 
+    .checkout-box{
+        display: none; 
+    }
+
+    .mobile-checkout-box .li-item{
+        width: 500px; 
+    }
+
+    .total{
+        font-size: 1.5em;
+        margin-bottom: .5em;
+        margin-right: 1em;
+        font-weight: bold;
+    }
+
+    .total .total-price{   
+        color: var(--main-red);
+        font-weight: bold;
+    }
+
+    #checkout-buttons-div{
+        margin: 1em 2em;
+        
+    }
 }
 
 
 @media screen and (min-width: 768px) {
     #confirm_cart{
         display: none;
+    }
+
+
+    .mobile-checkout-box{
+        display: none; 
     }
 }
