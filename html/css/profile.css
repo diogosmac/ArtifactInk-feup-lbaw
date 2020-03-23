@@ -11,14 +11,14 @@ main {
 }
 
 .nav-link.text-center.profile-tab.active {
-    border-color: var(--main-red);
-    background-color: var(--main-red);
+    border-radius: 0%;
+    background-color: var(--main-red-alpha);
     color: var(--text-color-white);
     z-index: 200;
 }
 
 .nav-link.text-center.profile-tab{
-    color: var(--main-red);
+    color: var(--main-red-alpha);
 }
 
 .profile-btn{
@@ -66,20 +66,12 @@ main {
     font-weight: 600;
 }
 
-#profile-edit-button {
-    width: fit-content;
-}
-
 /* PROFILE PAGE > INFO - END */
 
 /* PROFILE PAGE > REVIEWS */
 
 #review-container {
     margin: auto;
-}
-
-#review-text {
-    padding: 0;
 }
 
 .review-product-name {
@@ -91,19 +83,6 @@ main {
     font-weight: 600;
     font-size: large;
     word-wrap: normal;
-    overflow-x: scroll;
-}
-
-#profile-edit-review {
-    width: fit-content;
-}
-
-#profile-edit-review-button {
-    padding: 0;
-}
-
-#profile-review-rating {
-    width: fit-content;
 }
 
 /* PROFILE PAGE > REVIEWS - END */
