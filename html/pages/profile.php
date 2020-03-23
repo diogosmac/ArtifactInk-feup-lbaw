@@ -86,11 +86,11 @@ draw_navbar(true);
         </div>
         <div class="tab-pane fade" id="v-pills-wishlist" role="tabpanel" aria-labelledby="v-pills-wishlist-tab">
           <section id="wishlist">
+          <ul class="list-group">
             <?php draw_wishlist_product(); ?>
-            <hr />
             <?php draw_wishlist_product(); ?>
-            <hr />
             <?php draw_wishlist_product(); ?>
+          </ul>
           </section>
         </div>
         <div class="tab-pane fade" id="v-pills-history" role="tabpanel" aria-labelledby="v-pills-history-tab">

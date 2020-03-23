@@ -205,86 +205,53 @@
 
 <?php } ?>
 
-<?php function draw_wishlist_prod_info()
-{ ?>
-  <div class="col-md-4" id="wishlist-product-picture">
-    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ebayimg.com%2Fimages%2Fi%2F301761272642-0-1%2Fs-l1000.jpg&f=1&nofb=1" alt="Ink" class="img-fluid">
-  </div>
-  <div class="d-flex flex-column col-md-8 justify-content-center" id="wishlist-product-info">
-    <div class="d-flex flex-row my-1 justify-content-between align-items-center">
-      <div class="col-md-auto">
-        <div class="d-flex flex-row">
-          <span id="wishlist-product-name">Black Ink</span>
-        </div>
-      </div>
-      <div class="col-md-auto float-right" id="wishlist-product-remove">
-        <button type="button" class="btn button-secondary float-right">
-          <i class="fas fa-trash pr-2"></i>Remove
-        </button>
-      </div>
-    </div>
-    <div class="d-flex flex-row justify-content-between my-1">
-      <div class="col-md-auto" id="wishlist-product-details">
-        <div class="d-flex flex-row" id="wishlist-product-rating">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
-          <i class="far fa-star"></i>
-        </div>
-        <div class="d-flex flex-row align-items-center">
-          <span id="wishlist-product-available">Available&nbsp;</span>
-          <i class="material-icons" style="color: green;">fiber_manual_record</i>
-        </div>
-      </div>
-      <div class="col-md-auto" id="wishlist-product-price">
-        <span class="align-middle">17.99€</span>
-      </div>
-    </div>
-
-    <div class="d-none d-md-block">
-      <div class="d-flex flex-row justify-content-between my-1">
-        <div class="col-md-auto">
-          <div class="d-flex flex-row align-content-stretch">
-            <label class="input-group-text" for="inputGroupSelect01">QTY</label>
-            <input type="number" value="1" min="1" max="30" step="1" />
-          </div>
-        </div>
-        <div class="col-md-auto">
-          <button class="btn float-right profile-btn" id="wishlist-add-to-cart">ADD TO CART</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="d-md-none">
-      <div class="d-flex flex-row justify-content-between my-1">
-        <div class="col-md-auto">
-          <div class="d-flex flex-row align-content-stretch">
-            <label class="input-group-text" for="inputGroupSelect01">QTY</label>
-            <input type="number" value="1" min="1" max="30" step="1" />
-          </div>
-        </div>
-        <div class="col-md-auto">
-          <button class="btn float-right btn-primary" id="wishlist-add-to-cart">
-            <i class="material-icons">add_shopping_cart</i>
-          </button>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-<?php } ?>
-
 <?php function draw_wishlist_product()
 { ?>
+  <li class="p-3 list-group-item li-item">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <a href="../pages/product.php" class="list-img-link">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/61TBsibBdqL._SX425_.jpg" class="card-img-top" alt="...">
+          </a>
+        </div>
+        <div class="col-sm-6">
+          <a href="../pages/product.php" class="list-img-link">
+            <h3 class="font-weight-bold"> Tattoo Machine </h3>
+          </a>
 
-  <section id="wishlist-product">
-    <div class="row">
-      <?php draw_wishlist_prod_info(); ?>
+          <div class="py-2 d-flex flex-row bd-highlight justify-content-between">
+            <div>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <a href="#specs" class="px-2 a_link"> (2)</a>
+
+            </div>
+          </div>
+          <div class="py-1 d-flex flex-row bd-highlight justify-content-between">
+            <div>
+              <i class="fas fa-circle circle-available"></i>
+              Available
+            </div>
+          </div>
+          <div class="py-1 d-flex flex-row bd-highlight justify-content-between">
+            <span>
+              <label for="li-item-qty">Qty.</label>
+              <input class="li-item-qty" type="number" value="1" min="1">
+            </span>
+          </div>
+
+        </div>
+        <div class="py-2 col-sm-3 d-flex flex-column justify-content-between align-items-end li-price-button">
+          <h3 class="font-weight-bold" style="color: var(--main-red)">35.95€</h3>
+          <a href="#" class="btn button">Add to Cart</a>
+        </div>
+      </div>
     </div>
-  </section>
-
+  </li>
 <?php } ?>
 
 <?php function draw_purchase_item()
