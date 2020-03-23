@@ -12,7 +12,7 @@ function draw_preview_carousel()
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="https://www.thetattooshop.com/uk/media/aw_rbslider/slides/Desktop.DynamicInk3for50.UK_1.jpg" class="d-block w-100" alt="...">
+                <img src="https://www.thetattooshop.com/uk/media/aw_rbslider/slides/Desktop.DynamicInk3for50.UK_1.jpg" class="d-block image-fit" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Lorem, ipsum.
                     </h5>
@@ -20,14 +20,14 @@ function draw_preview_carousel()
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="https://www.thetattooshop.com/uk/media/aw_rbslider/slides/Desktop.DynamicInk3for50.UK_1.jpg" class="d-block w-100" alt="...">
+                <img src="https://www.thetattooshop.com/uk/media/aw_rbslider/slides/Desktop.DynamicInk3for50.UK_1.jpg" class="d-block image-fit" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Lorem, ipsum.</h5>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="https://www.thetattooshop.com/uk/media/aw_rbslider/slides/Desktop.DynamicInk3for50.UK_1.jpg" class="d-block w-100" alt="...">
+                <img src="https://www.thetattooshop.com/uk/media/aw_rbslider/slides/Desktop.DynamicInk3for50.UK_1.jpg" class="d-block image-fit" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>Lorem, ipsum dolor.
                     </h5>
