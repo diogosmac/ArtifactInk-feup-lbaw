@@ -51,7 +51,7 @@ function draw_cart_list(){ ?>
 
     <!--mobile stuff-->
     <div class="mobile-checkout-box">
-        <span class="total d-flex justify-content-end">Total:  <span class="total-price">  339.83€</span></span>
+        <span class="total d-flex justify-content-end">Total:  <span class="total-price">  </span></span>
         <div class="row shopping-cart-div">
             <?php draw_checkout_mobile_item1(); 
                 draw_checkout_mobile_item2();
@@ -206,19 +206,19 @@ function draw_checkout_mobile_item1(){?>
 <li class="p-3 list-group-item li-item">
     <div class="container">
         <div class="row">
-            <div class="col-sm-3">
-                <a href="../pages/product.php" class="list-img-link">
+            <div class="col-4 col-sm-3">
+                <a href="../pages/product.php" class="list-img-link" >
                     <img src="https://amotatuagem.com/wp-content/uploads/2018/06/Unalome-Tattoo-10.jpg"
                         class="card-img-top" alt="...">
                 </a>
             </div>
-            <div class="col-sm-6">
+            <div class="col-6 col-sm-6">
                 <a href="../pages/product.php" class="list-img-link">
-                    <h3 class="font-weight-bold"> Girly Design </h3>
+                    <h5 class="font-weight-bold"> Girly Design </h5>
                 </a>
              
                 <div class="py-1 d-flex flex-row bd-highlight justify-content-between-mobile">
-                    <span>Quantity
+                    <span> Qty.
                         <button type="button" class="btn btn-link a_link sub-button">
                             <i class="fas fa-minus"></i>
                         </button>
@@ -229,13 +229,17 @@ function draw_checkout_mobile_item1(){?>
                     </span>
                     
                 </div>
+               
 
             </div>
-            <div class="py-2 col-sm-3 d-flex flex-column justify-content-between align-items-end li-price-button">
-                <h3 class="font-weight-bold item-price-mobile" style="color: var(--main-red)">89.90€</h3>
-                <button type="button" class="btn btn-link a_link rmv-button">
-                    <i class="fas fa-trash-alt"></i>
-                </button>
+            <div class="py-2  col-2 col-sm-3 col-smd-flex flex-column justify-content-between align-items-end li-price">
+                <h5 class="font-weight-bold item-value" style="color: var(--main-red)"> 89.90€</h5>
+                <h6 class="font-weight-bold item-price  " style="color: var(--main-red)">89.90€</h>
+                <div>
+                   <button type="button" class="btn btn-link a_link rmv-button">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -247,19 +251,19 @@ function draw_checkout_mobile_item2(){?>
     <li class="p-3 list-group-item li-item">
         <div class="container">
             <div class="row">
-                <div class="col-sm-3">
+            <div class="col-4 col-sm-3">
                     <a href="../pages/product.php" class="list-img-link">
                         <img src="https://images-na.ssl-images-amazon.com/images/I/61TBsibBdqL._SX425_.jpg"
                             class="card-img-top" alt="...">
                     </a>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-6 col-sm-6">
                     <a href="../pages/product.php" class="list-img-link">
-                        <h3 class="font-weight-bold"> Tattoo Machine </h3>
+                        <h5 class="font-weight-bold"> Tattoo Machine </h5>
                     </a>
                  
                     <div class="py-1 d-flex flex-row bd-highlight justify-content-between">
-                        <span>Quantity
+                        <span>Qty.
                             <button type="button" class="btn btn-link a_link sub-button">
                                 <i class="fas fa-minus"></i>
                             </button>
@@ -270,13 +274,18 @@ function draw_checkout_mobile_item2(){?>
                         </span>
                         
                     </div>
+        
+                 
     
                 </div>
-                <div class="py-2 col-sm-3 d-flex flex-column justify-content-between align-items-end li-price-button">
-                    <h3 class="font-weight-bold item-price-mobile" style="color: var(--main-red)">35.95€</h3>
-                    <button type="button" class="btn btn-link a_link rmv-button">
+                <div class="py-2  col-2 col-sm-3 col-smd-flex flex-column justify-content-between align-items-end li-price">
+                    <h5 class="font-weight-bold item-value" style="color: var(--main-red)"> 89.90€</h5>
+                    <h6 class="font-weight-bold item-price" style="color: var(--main-red)">35.95€</h6>
+                    <div>
+                   <button type="button" class="btn btn-link a_link rmv-button">
                         <i class="fas fa-trash-alt"></i>
                     </button>
+                </div>
                 </div>
             </div>
         </div>
@@ -288,19 +297,19 @@ function draw_checkout_mobile_item3(){?>
     <li class="p-3 list-group-item li-item">
         <div class="container">
             <div class="row">
-                <div class="col-sm-3">
+            <div class="col-4 col-sm-3">
                     <a href="../pages/product.php" class="list-img-link">
                         <img src="https://www.inkme.tattoo/wp-content/uploads/2016/10/forearm-tattoo-design-86.jpg"
                             class="card-img-top" alt="...">
                     </a>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-6 col-sm-6">
                     <a href="../pages/product.php" class="list-img-link">
-                        <h3 class="font-weight-bold"> Awesome Design </h3>
+                        <h5 class="font-weight-bold"> Awesome Design </h5>
                     </a>
                  
                     <div class="py-1 d-flex flex-row bd-highlight justify-content-between">
-                        <span>Quantity
+                        <span>Qty.
                             <button type="button" class="btn btn-link a_link sub-button">
                                 <i class="fas fa-minus"></i>
                             </button>
@@ -311,13 +320,17 @@ function draw_checkout_mobile_item3(){?>
                         </span>
                         
                     </div>
+                 
     
                 </div>
-                <div class="py-2 col-sm-3 d-flex flex-column justify-content-between align-items-end li-price-button">
-                    <h3 class="font-weight-bold item-price-mobile" style="color: var(--main-red)">10.00€</h3>
-                    <button type="button" class="btn btn-link a_link rmv-button">
+                <div class="py-2  col-2 col-sm-3 col-smd-flex flex-column justify-content-between align-items-end li-price">
+                    <h5 class="font-weight-bold item-value" style="color: var(--main-red)"> 89.90€</h5>
+                    <h6 class="font-weight-bold item-price" style="color: var(--main-red)">10.00€</h6>
+                    <div>
+                   <button type="button" class="btn btn-link a_link rmv-button">
                         <i class="fas fa-trash-alt"></i>
                     </button>
+                </div>
                 </div>
             </div>
         </div>
@@ -329,19 +342,19 @@ function draw_checkout_mobile_item4(){?>
     <li class="p-3 list-group-item li-item">
         <div class="container">
             <div class="row">
-                <div class="col-sm-3">
+            <div class="col-4 col-sm-3">
                     <a href="../pages/product.php" class="list-img-link">
                         <img src="https://cdn.shopify.com/s/files/1/1314/0625/products/19_Color_Ink_Set_600x600.jpg?v=1498235476"
                             class="card-img-top" alt="...">
                     </a>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-6 col-sm-6">
                     <a href="../pages/product.php" class="list-img-link">
-                        <h3 class="font-weight-bold"> 19 Ink Color Set </h3>
+                        <h5 class="font-weight-bold"> 19 Ink Color Set </h5>
                     </a>
                  
                     <div class="py-1 d-flex flex-row bd-highlight justify-content-between">
-                        <span>Quantity
+                        <span>Qty.
                             <button type="button" class="btn btn-link a_link sub-button">
                                 <i class="fas fa-minus"></i>
                             </button>
@@ -352,13 +365,17 @@ function draw_checkout_mobile_item4(){?>
                         </span>
                         
                     </div>
+                   
     
                 </div>
-                <div class="py-2 col-sm-3 d-flex flex-column justify-content-between align-items-end li-price-button">
-                    <h3 class="font-weight-bold item-price-mobile" style="color: var(--main-red)">99.99€</h3>
-                    <button type="button" class="btn btn-link a_link rmv-button">
+                <div class="py-2  col-2 col-sm-3 col-smd-flex flex-column justify-content-between align-items-end li-price">
+                    <h5 class="font-weight-bold item-value" style="color: var(--main-red)"> 89.90€</h5>
+                    <h6 class="font-weight-bold item-price" style="color: var(--main-red)">99.99€</h6>
+                    <div>
+                   <button type="button" class="btn btn-link a_link rmv-button">
                         <i class="fas fa-trash-alt"></i>
                     </button>
+                </div>
                 </div>
             </div>
         </div>
