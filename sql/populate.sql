@@ -349,33 +349,7 @@ INSERT INTO 'country' (name) VALUES
     ('Yemen'),
     ('Zambia'),
     ('Zimbabwe');
-
--------- city --------
-WITH 'portugal_cities' (name) AS (
-    VALUES
-    ('Albufeira'),
-    ('Alfena'),
-    ('Amarante'),
-    ('Barcelos'),
-    ('Beja'),
-    ('Braga'),
-    ('Chaves'),
-    ('Ermesinde'),
-    ('Gondomar'),
-    ('Guimarães'),
-    ('Lisboa'),
-    ('Maia'),
-    ('Matosinhos'),
-    ('Paredes'),
-    ('Porto'),
-    ('Rio Tinto'),
-    ('Valongo'),
-    ('Viseu'),
-    ('Vizela')
-)
-INSERT INTO 'city' (name, id_country)
-SELECT portugal_cities.name, country.id
-FROM 'country' JOIN 'portugal_cities' on country.name = 'Portugal';
+    
 -------- address --------
 
 -------- credit_card --------
