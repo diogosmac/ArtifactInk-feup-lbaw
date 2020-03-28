@@ -364,11 +364,11 @@ INSERT INTO 'country' (name) VALUES
 
 -------- category --------
 ---- main
-INSERT INTO 'category' (name) VALUES
-    ('Designs'),
-    ('Ink'),
-    ('Machines'),
-    ('Needles & Cartridges'),
+INSERT INTO 'category' (name, id_parent) VALUES
+    ('Designs', null),
+    ('Ink', null),
+    ('Machines', null),
+    ('Needles & Cartridges', null),
     ('Grips, Tips & Tubes'),
     ('Studio Furniture'),
     ('Aftercare'),
@@ -376,7 +376,8 @@ INSERT INTO 'category' (name) VALUES
     ('Tattoo Supplies');
 ---- secondary
 -- Designs
-INSERT INTO 'category' (name) VALUES
+WITH 'design_subcat' (name) AS (
+    VALUES
     ('Traditional/Old School'),
     ('Realism'),
     ('Watercolor'),
@@ -387,9 +388,14 @@ INSERT INTO 'category' (name) VALUES
     ('Blackwork'),
     ('Illustrative'),
     ('Chicano'),
-    ('Neo Traditional');
+    ('Neo Traditional')
+)
+INSERT INTO 'category' (name, id_parent)
+SELECT design_subcat.name, category.id
+FROM 'category' JOIN 'design_subcat' on category.name = 'Design';
 -- Ink
-INSERT INTO 'category' (name) VALUES
+WITH 'ink_subcat' (name) AS (
+    VALUES
     ('Black'),
     ('Grey'),
     ('Red'),
@@ -399,51 +405,87 @@ INSERT INTO 'category' (name) VALUES
     ('Pink'),
     ('Yellow'),
     ('Orange'),
-    ('Brown');
+    ('Brown')
+)
+INSERT INTO 'category' (name, id_parent)
+SELECT ink_subcat.name, category.id
+FROM 'category' JOIN 'ink_subcat' on category.name = 'Ink';
 -- Machines
-INSERT INTO 'category' (name) VALUES
+WITH 'machines_subcat' (name) AS (
+    VALUES
     ('Rotary Machines'),
     ('Tattoo Pen'),
-    ('Hand Poking');
+    ('Hand Poking')
+)
+INSERT INTO 'category' (name, id_parent)
+SELECT machines_subcat.name, category.id
+FROM 'category' JOIN 'machines_subcat' on category.name = 'Machines';
 -- Needles & Cartidges
-INSERT INTO 'category' (name) VALUES
+WITH 'needles_cartridges_subcat' (name) AS (
+    VALUES
     ('Needles'),
-    ('Cartridges');
+    ('Cartridges')
+)
+INSERT INTO 'category' (name, id_parent)
+SELECT needles_cartridges_subcat.name, category.id
+FROM 'category' JOIN 'needles_cartridges_subcat' on category.name = 'Needles & Cartridges';
 -- Grips, Tips & Tubes
-INSERT INTO 'category' (name) VALUES
+WITH 'grips_tips_tubes_subcat' (name) AS (
+    VALUES
     ('Grips'),
     ('Tips'),
-    ('Tubes');
+    ('Tubes')
+)
+INSERT INTO 'category' (name, id_parent)
+SELECT grips_tips_tubes_subcat.name, category.id
+FROM 'category' JOIN 'grips_tips_tubes_subcat' on category.name = 'Grips, Tips & Tubes';  
 -- Furniture
-INSERT INTO 'category' (name) VALUES
+WITH 'furniture_subcat' (name) AS (
+    VALUES
     ('Arm/Leg Rests'),
     ('Artist Chairs/Stools'),
     ('Chairs/Beds'),
     ('Lamps'),
-    ('Workstation/Trolleys');
+    ('Workstation/Trolleys')
+)
+INSERT INTO 'category' (name, id_parent)
+SELECT furniture_subcat.name, category.id
+FROM 'category' JOIN 'furniture_subcat' on category.name = 'Furniture';
 -- Aftercare
-INSERT INTO 'category' (name) VALUES
+WITH 'aftercare_subcat' (name) AS (
+    VALUES
     ('Balm Tattoo'),
     ('Hustle Butter'),
     ('Tattoo Goo'),
-    ('Aftercare Company');
+    ('Aftercare Company')
+)
+INSERT INTO 'category' (name, id_parent)
+SELECT aftercare_subcat.name, category.id
+FROM 'category' JOIN 'aftercare_subcat' on category.name = 'Aftercare';
 -- Medical Equipment
-INSERT INTO 'category' (name) VALUES
+WITH 'medical_equipment_subcat' (name) AS (
+    VALUES
     ('Gloves'),
     ('Masks'),
     ('Skin Preparation'),
     ('Bottles/Containers'),
     ('Couch Roll'),
     ('Disinfectants'),
-    ('Hygyene');
+    ('Hygyene')
+)
+INSERT INTO 'category' (name, id_parent)
+SELECT medical_equipment_subcat.name, category.id
+FROM 'category' JOIN 'medical_equipment_subcat' on category.name = 'Medical Equipment';
 -- Studio Supplies
-INSERT INTO 'category' (name) VALUES
+WITH 'studio_supplies_subcat' (name) AS (
+    VALUES
     ('Stencil Making'),
     ('Fake Skin'),
-    ('Books');
-
--------- subcategory --------
-
+    ('Books')
+)
+INSERT INTO 'category' (name, id_parent)
+SELECT studio_supplies_subcat.name, category.id
+FROM 'category' JOIN 'studio_supplies_subcat' on category.name = 'Studio Supplies';
 -------- item --------
 
 -------- archived_item --------
