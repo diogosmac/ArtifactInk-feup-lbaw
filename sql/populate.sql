@@ -1381,11 +1381,79 @@ INSERT INTO "out_of_stock_notification" ("id_notif", "id_item") VALUES
 INSERT INTO "report_notification" ("id_notif", "id_review") VALUES
     (2, 1);
 -------- sale --------
-
+INSERT INTO "sale" ("name", "start", "end", "type", "fixed_amount", "percentage_amount") VALUES
+    ('Black Devil Sale', '2020-03-20', '2020-03-30', 30, null),
+    ('Crazy Machine Sale', '2020-03-01', '2020-04-01', 'null', 50);
+-------- item_sale --------
+INSERT INTO "item_sale" ("id_item", "id_sale") VALUES 
+    -- Black Devil Sale
+    (34, 1), (35, 1), (36, 1), (37, 1), (38, 1), (39, 1), (40, 1), (41, 1), (42, 1), (43, 1), (44, 1), (45, 1), (46, 1), (47, 1), (48, 1), (49, 1), (50, 1), (51, 1), (52, 1), (53, 1), (54, 1), (55, 1), (56, 1), (57, 1), (58, 1), (59, 1),
+    -- Crazy Machine Sale
+    (162, 2), (163, 2), (164, 2), (165, 2), (166, 2), (167, 2);
 -------- item_subscriber --------
-
+INSERT INTO "item_subscriber" ("email", "date") VALUES
+    ('mmiell0@phpbb.com', '2020-03-25'),
+    ('gashpole1@sfgate.com', '2020-03-18'),
+    ('sduckers2@cbc.ca', '2020-03-15'),
+    ('roakeby3@google.ru', '2020-03-16'),
+    ('jpoundesford4@ehow.com', '2020-03-26'),
+    ('gpilch5@upenn.edu', '2020-03-25'),
+    ('sdomonkos6@marriott.com', '2020-03-02'),
+    ('clown7@reuters.com', '2020-03-28'),
+    ('nlitchfield8@mail.ru', '2020-03-09'),
+    ('qdobrovolski9@unblog.fr', '2020-03-17'),
+    ('emacclenana@php.net', '2020-03-07'),
+    ('nmuggachb@wired.com', '2020-03-01'),
+    ('cbavinc@businessweek.com', '2020-03-02'),
+    ('blaxed@berkeley.edu', '2020-03-07'),
+    ('swhitakere@ibm.com', '2020-03-26'),
+    ('tbrantonf@rakuten.co.jp', '2020-03-24'),
+    ('lleppingwellg@cdbaby.com', '2020-03-27'),
+    ('fwodhamh@yahoo.com', '2020-03-02'),
+    ('cderingi@fastcompany.com', '2020-03-01'),
+    ('acossellj@cam.ac.uk', '2020-03-16'),
+    ('bdufallk@china.com.cn', '2020-03-21'),
+    ('mbunnyl@ycombinator.com', '2020-03-27'),
+    ('tlintallm@nps.gov', '2020-03-05'),
+    ('epockettn@flavors.me', '2020-03-08'),
+    ('rheildso@goodreads.com', '2020-03-25'),
+    ('dyeskinp@cocolog-nifty.com', '2020-03-12'),
+    ('maxtellq@yahoo.com', '2020-02-29'),
+    ('sackeryr@latimes.com', '2020-03-05'),
+    ('ltibbs@com.com', '2020-02-28'),
+    ('btwydellt@vinaora.com', '2020-03-28');
 -------- item_subscription --------
-
+INSERT INTO "item_subscription" ("id_item", "email_subscriber") VALUES
+    (34, 'mmiell0@phpbb.com'),
+    (45, 'gashpole1@sfgate.com'),
+    (67, 'sduckers2@cbc.ca'),
+    (98, 'roakeby3@google.ru'),
+    (123, 'jpoundesford4@ehow.com'),
+    (32, 'gpilch5@upenn.edu'),
+    (224, 'sdomonkos6@marriott.com'),
+    (123, 'clown7@reuters.com',),
+    (98, 'nlitchfield8@mail.ru'),
+    (76, 'qdobrovolski9@unblog.fr'),
+    (24, 'emacclenana@php.net'),
+    (87, 'nmuggachb@wired.com'),
+    (98, 'cbavinc@businessweek.com'),
+    (75, 'blaxed@berkeley.edu'),
+    (67, 'swhitakere@ibm.com'),
+    (97, 'tbrantonf@rakuten.co.jp'),
+    (67, 'lleppingwellg@cdbaby.com'),
+    (58, 'fwodhamh@yahoo.com'),
+    (54, 'cderingi@fastcompany.com'),
+    (3, 'acossellj@cam.ac.uk'),
+    (96, 'bdufallk@china.com.cn'),
+    (45, 'mbunnyl@ycombinator.com'),
+    (165, 'tlintallm@nps.gov'),
+    (187, 'epockettn@flavors.me'),
+    (74, 'rheildso@goodreads.com'),
+    (75, 'dyeskinp@cocolog-nifty.com'),
+    (85, 'maxtellq@yahoo.com'),
+    (86, 'sackeryr@latimes.com'),
+    (75, 'ltibbs@com.com'),
+    (82, 'btwydellt@vinaora.com');
 -------- user_address --------
 
 -------- user_payment_method --------
@@ -1400,4 +1468,3 @@ INSERT INTO "report_notification" ("id_notif", "id_review") VALUES
 
 -------- store --------
 
--------- item_sale --------
