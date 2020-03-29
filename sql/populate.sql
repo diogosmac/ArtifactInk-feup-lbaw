@@ -100,6 +100,7 @@ INSERT INTO 'user' (name, date_of_birth, email, phone, password) VALUES
     ('Silvano Ianno', '1999-07-26', 'sianno2p@miibeian.gov.cn', '2008209852', '3pUdjY'),
     ('Nancie Condliffe', '1996-04-05', 'ncondliffe2q@state.gov', '6445224952', 'eO5RP2'),
     ('Cornelle Sisneros', '1991-10-11', 'csisneros2r@tumblr.com', null, 'FcLtUkdf5Hb');
+-------- address --------
 
 -------- country --------
 INSERT INTO 'country' (name) VALUES
@@ -349,14 +350,11 @@ INSERT INTO 'country' (name) VALUES
     ('Yemen'),
     ('Zambia'),
     ('Zimbabwe');
-
--------- address --------
+-------- payment_method --------
 
 -------- credit_card --------
 
 -------- paypal --------
-
--------- payment_method --------
 
 -------- order --------
 
@@ -771,11 +769,9 @@ FROM 'category' JOIN 'studio_supplies_subcat' on category.name = 'Rotary Machine
 
 -------- sale --------
 
--------- fixed_sale --------
-
--------- percentage_sale --------
-
 -------- item_subscriber --------
+
+-------- item_subscription --------
 
 -------- user_address --------
 
@@ -790,3 +786,5 @@ FROM 'category' JOIN 'studio_supplies_subcat' on category.name = 'Rotary Machine
 -------- faq --------
 
 -------- store --------
+
+-------- item_sale --------
