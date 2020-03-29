@@ -485,6 +485,105 @@ SELECT studio_supplies_subcat.name, category.id
 FROM 'category' JOIN 'studio_supplies_subcat' on category.name = 'Studio Supplies';
 -------- item --------
 -- Active
+WITH 'traditional_designs_items' (name, brand, price, stock, description) AS (
+    ('Mom Love', 'John Grimm', 29,99, 1, 'John Grimm is one of our best in-house artist that focuses on Old School and Tribal Styles.'),
+    ('Lucky Ace', 'John Grimm', 39,99, 1, 'John Grimm is one of our best in-house artist that focuses on Old School and Tribal Styles.'),
+    ('Dagger', 'John Grimm', 49,99, 1, 'John Grimm is one of our best in-house artist that focuses on Old School and Tribal Styles.')
+)
+INSERT INTO 'item' (name, price, stock, description, id_category)
+SELECT traditional_designs_items.name, traditional_designs_items.price, traditional_designs_items.stock, traditional_designs_items.description, category.id
+FROM 'category' JOIN 'traditional_designs_items' on category.name = 'Traditional/Old School';
+
+WITH 'realism_designs_items' (name, brand, price, stock, description) AS (
+    ('Wolf', 'Jackson Silva', 129,99, 1, 'Jackson Silva is a master when it comes to Realism. Having done is bachelors in fine arts, he found a passion for tattoos.'),
+    ('Heath Ledger''s Joker', 'Jackson Silva', 229,99, 1, 'Jackson Silva is a master when it comes to Realism. Having done is bachelors in fine arts, he found a passion for tattoos.'),
+    ('Skull', 'Jackson Silva', 129,99, 1, 'Jackson Silva is a master when it comes to Realism. Having done is bachelors in fine arts, he found a passion for tattoos.')
+)
+INSERT INTO 'item' (name, price, stock, description, id_category)
+SELECT realism_designs_items.name, realism_designs_items.price, realism_designs_items.stock, realism_designs_items.description, category.id
+FROM 'category' JOIN 'realism_designs_items' on category.name = 'Realism';
+
+WITH 'watercolor_designs_items' (name, brand, price, stock, description) AS (
+    ('Dog Paw', 'Gina Williamson', 49,99, 1, 'We all have a passion for color but our artist Gina Williamson is completely addicted to it.'),
+    ('Tree', 'Gina Williamson', 39,99, 1, 'We all have a passion for color but our artist Gina Williamson is completely addicted to it.'),
+    ('Bird', 'Gina Williamson', 49,99, 1, 'We all have a passion for color but our artist Gina Williamson is completely addicted to it.')
+)
+INSERT INTO 'item' (name, price, stock, description, id_category)
+SELECT watercolor_designs_items.name, watercolor_designs_items.price, watercolor_designs_items.stock, watercolor_designs_items.description, category.id
+FROM 'category' JOIN 'watercolor_designs_items' on category.name = 'Watercolor';
+
+WITH 'tribal_designs_items' (name, brand, price, stock, description) AS (
+    ('Leg Tribal', 'John Grimm', 69,99, 1, 'John Grimm is one of our best in-house artist that focuses on Old School and Tribal Styles.'),
+    ('Arm Tribal', 'John Grimm', 49,99, 1, 'John Grimm is one of our best in-house artist that focuses on Old School and Tribal Styles.'),
+    ('Arm and Chest Tribal', 'John Grimm', 49,99, 1, 'John Grimm is one of our best in-house artist that focuses on Old School and Tribal Styles.')
+)
+INSERT INTO 'item' (name, price, stock, description, id_category)
+SELECT tribal_designs_items.name, tribal_designs_items.price, tribal_designs_items.stock, tribal_designs_items.description, category.id
+FROM 'category' JOIN 'tribal_designs_items' on category.name = 'Tribal';
+
+WITH 'cartoon_designs_items' (name, brand, price, stock, description) AS (
+    ('Homer Simpson', 'Gina Williamson', 49,99, 1, 'We all have a passion for color but our artist Gina Williamson is completely addicted to it.'),
+    ('Spiderman', 'Gina Williamson', 49,99, 1, 'We all have a passion for color but our artist Gina Williamson is completely addicted to it.'),
+    ('Batman', 'Gina Williamson', 49,99, 1, 'We all have a passion for color but our artist Gina Williamson is completely addicted to it.')
+)
+INSERT INTO 'item' (name, price, stock, description, id_category)
+SELECT cartoon_designs_items.name, cartoon_designs_items.price, cartoon_designs_items.stock, cartoon_designs_items.description, category.id
+FROM 'category' JOIN 'cartoon_designs_items' on category.name = 'Cartoon/New School';
+
+WITH 'japanese_designs_items' (name, brand, price, stock, description) AS (
+    ('Full Body Temple', 'Alex Costa', 249,99, 1, 'All the way from Brazil, Alex Costa learnt his craft from is father Matteus Costa, a master in Dotwork and Japanese styles.'),
+    ('Buda', 'Alex Costa', 49,99, 1, 'All the way from Brazil, Alex Costa learnt his craft from is father Matteus Costa, a master in Dotwork and Japanese styles.'),
+    ('Farmer', 'Alex Costa', 49,99, 1, 'All the way from Brazil, Alex Costa learnt his craft from is father Matteus Costa, a master in Dotwork and Japanese styles.')
+)
+INSERT INTO 'item' (name, price, stock, description, id_category)
+SELECT japanese_designs_items.name, japanese_designs_items.price, japanese_designs_items.stock, japanese_designs_items.description, category.id
+FROM 'category' JOIN 'japanese_designs_items' on category.name = 'Japanese';
+
+WITH 'dotwork_designs_items' (name, brand, price, stock, description) AS (
+    ('Mandala', 'Alex Costa', 59,99, 1, 'All the way from Brazil, Alex Costa learnt his craft from is father Matteus Costa, a master in Dotwork and Japanese styles.'),
+    ('Hive', 'Alex Costa', 49,99, 1, 'All the way from Brazil, Alex Costa learnt his craft from is father Matteus Costa, a master in Dotwork and Japanese styles.'),
+    ('Skull', 'Alex Costa', 49,99, 1, 'All the way from Brazil, Alex Costa learnt his craft from is father Matteus Costa, a master in Dotwork and Japanese styles.')
+)
+INSERT INTO 'item' (name, price, stock, description, id_category)
+SELECT dotwork_designs_items.name, dotwork_designs_items.price, dotwork_designs_items.stock, dotwork_designs_items.description, category.id
+FROM 'category' JOIN 'dotwork_designs_items' on category.name = 'Dotwork';
+
+WITH 'blackwork_designs_items' (name, brand, price, stock, description) AS (
+    ('Floating House', 'Daniel Pedrada', 45,99, 1, 'Daniel uses one color and one color only: black. It may seem limited, but he also surprised us.'),
+    ('Skeleton with Geometry', 'Daniel Pedrada', 45,99, 1, 'Daniel uses one color and one color only: black. It may seem limited, but he also surprised us.'),
+    ('Smoking Heart', 'Daniel Pedrada', 45,99, 1, 'Daniel uses one color and one color only: black. It may seem limited, but he also surprised us.')
+)
+INSERT INTO 'item' (name, price, stock, description, id_category)
+SELECT blackwork_designs_items.name, blackwork_designs_items.price, blackwork_designs_items.stock, blackwork_designs_items.description, category.id
+FROM 'category' JOIN 'blackwork_designs_items' on category.name = 'Blackwork';
+
+WITH 'illustrative_designs_items' (name, brand, price, stock, description) AS (
+    ('Typing Machine', 'Marta Gomez', 45,99, 1, 'As a kid Marta Gomez loved to draw, after finishing school she found out tattoos were her passion.'),
+    ('Sleepy Cat', 'Marta Gomez', 45,99, 1, 'As a kid Marta Gomez loved to draw, after finishing school she found out tattoos were her passion.'),
+    ('Beetle', 'Marta Gomez', 45,99, 1, 'As a kid Marta Gomez loved to draw, after finishing school she found out tattoos were her passion.')
+)
+INSERT INTO 'item' (name, price, stock, description, id_category)
+SELECT illustrative_designs_items.name, illustrative_designs_items.price, illustrative_designs_items.stock, illustrative_designs_items.description, category.id
+FROM 'category' JOIN 'illustrative_designs_items' on category.name = 'Illustrative';
+
+WITH 'chicano_designs_items' (name, brand, price, stock, description) AS (
+    ('L.A. Passion', 'Marta Gomez', 45,99, 1, 'As a kid Marta Gomez loved to draw, after finishing school she found out tattoos were her passion.'),
+    ('Jesus on Cross', 'Marta Gomez', 45,99, 1, 'As a kid Marta Gomez loved to draw, after finishing school she found out tattoos were her passion.'),
+    ('Gang Queen', 'Marta Gomez', 45,99, 1, 'As a kid Marta Gomez loved to draw, after finishing school she found out tattoos were her passion.')
+)
+INSERT INTO 'item' (name, price, stock, description, id_category)
+SELECT chicano_designs_items.name, chicano_designs_items.price, chicano_designs_items.stock, chicano_designs_items.description, category.id
+FROM 'category' JOIN 'chicano_designs_items' on category.name = 'Chicano';
+
+WITH 'neo_traditional_designs_items' (name, brand, price, stock, description) AS (
+    ('Wolf', 'Jackson Silva', 129,99, 1, 'Jackson Silva is a master when it comes to Realism. Having done is bachelors in fine arts, he found a passion for tattoos.'),
+    ('Hawk', 'Jackson Silva', 129,99, 1, 'Jackson Silva is a master when it comes to Realism. Having done is bachelors in fine arts, he found a passion for tattoos.'),
+    ('Lion', 'Jackson Silva', 129,99, 1, 'Jackson Silva is a master when it comes to Realism. Having done is bachelors in fine arts, he found a passion for tattoos.')
+)
+INSERT INTO 'item' (name, price, stock, description, id_category)
+SELECT neo_traditional_designs_items.name, neo_traditional_designs_items.price, neo_traditional_designs_items.stock, neo_traditional_designs_items.description, category.id
+FROM 'category' JOIN 'neo_traditional_designs_items' on category.name = 'Neo Traditional';
+
 WITH 'black_ink_items' (name, brand, price, stock, description) AS (
     VALUES
     -- Dynamic
