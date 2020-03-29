@@ -1014,8 +1014,13 @@ INSERT INTO "item" ("name", "brand", "price", "stock", "description", "id_catego
     ('Sharps Bin for safe needle disposal', 'Sharps', 21.99, 2, 'For safe needle disposal. Once full, the trap door can be fastened securely shut to prevent needles falling or poking out. Most local councils will collect these bins, when full, for the correct disposal method through incineration.', 55);
 INSERT INTO "item" ("name", "brand", "price", "stock", "description", "id_category") VALUES
     -- Stencil Making - 56
-    -- Fake Skin - 58
-    -- Books - 59
+    ('Repro FX Spirit Purple Carbon Paper 11', 'Repro FX', 21.99, 32, 'For making stencils by hand, without the need for a thermal copier. These sheets use pressure instead of heat to make the transfer.', 56),
+    ('Stencil Spray Stuff 8oz', 'Spray Stuff', 23.99, 12, 'A revolutionary product that keeps your marker and pen drawings on longer while you work on your free hand tattoos. Spray Stuff "Draw it on... Keep it on!" Spray Stuff® allows you to work more confidently from the start tattooing.', 56),
+    -- Fake Skin - 57
+    ('Synthetic Tattoo Hands', 'Artifact Ink', 33.99, 2, 'The next best thing to real skin. Perfect for practicing your tattoos on, especially in places where you possibly haven''t done tattooing on before which will also create an amazing 3D piece once you have finished. This life like body part has been made from a rubber and silicone synthetic material and has been made to mimic the look and feel of tattooing on real skin. This product is ideal for both apprentice and experienced tattoo artists.', 57),
+    ('Sketch Tattoo Practice Skin', 'Artifact Ink', 23.99, 2, 'Synthetic Tattoo Skins from a Trusted Industry Name - Sketch.Practice tattoo skins that have all the features you need. What''s one of the biggest complaints tattoo artists have about skins? You guessed it. Thickness. These practice tattoo skins are as thick as human skin and can even be strapped to an arm or leg to simulate the actual experience.', 57),
+    -- Books - 58
+    ('PDF Tattoo Disclaimer Sheet', 'Artifact Ink', 1.99, 100, 'The disclaimer sheet helps to cover both artist and customer by providing a contract informing of any health issues from the customer and ensuring safe equipment is used by the artist. This legal document provides evidence that the customer has signed and granted full permission for the tattoo procedure to be carried out, knowing that the effects are irreversible. The aftercare pad should also be provided as this is mentioned with the disclaimer sheet.', 58);
 -- Archived
 
 -------- item_purchase --------
