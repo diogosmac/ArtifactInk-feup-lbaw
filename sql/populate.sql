@@ -1051,8 +1051,6 @@ INSERT INTO "item" ("name", "brand", "price", "stock", "description", "id_catego
     ('Sketch Tattoo Practice Skin', 'Artifact Ink', 23.99, 2, 'Synthetic Tattoo Skins from a Trusted Industry Name - Sketch.Practice tattoo skins that have all the features you need. What''s one of the biggest complaints tattoo artists have about skins? You guessed it. Thickness. These practice tattoo skins are as thick as human skin and can even be strapped to an arm or leg to simulate the actual experience.', 57),
     -- Books - 58
     ('PDF Tattoo Disclaimer Sheet', 'Artifact Ink', 1.99, 100, 'The disclaimer sheet helps to cover both artist and customer by providing a contract informing of any health issues from the customer and ensuring safe equipment is used by the artist. This legal document provides evidence that the customer has signed and granted full permission for the tattoo procedure to be carried out, knowing that the effects are irreversible. The aftercare pad should also be provided as this is mentioned with the disclaimer sheet.', 58);
--- Archived
-
 -------- item_purchase --------
 INSERT INTO "item_purchase" ("id_item", "id_order", "price", "quantity") VALUES
     (231, 8, 151.7, 2),
@@ -1455,16 +1453,137 @@ INSERT INTO "item_subscription" ("id_item", "email_subscriber") VALUES
     (75, 'ltibbs@com.com'),
     (82, 'btwydellt@vinaora.com');
 -------- user_address --------
-
+INSERT INTO "user_address" ("id_user", "id_address") VALUES
+    (90, 1),
+    (14, 2),
+    (43, 3),
+    (6, 4),
+    (76, 5),
+    (66, 6),
+    (56, 7),
+    (82, 8),
+    (19, 9),
+    (57, 10),
+    (95, 11),
+    (19, 12),
+    (30, 13),
+    (57, 14),
+    (48, 15),
+    (83, 16),
+    (66, 17),
+    (77, 18),
+    (75, 19),
+    (83, 20),
+    (51, 21),
+    (27, 22),
+    (34, 23),
+    (98, 24),
+    (13, 25),
+    (47, 26),
+    (89, 27),
+    (57, 28),
+    (33, 29),
+    (99, 30);
 -------- user_payment_method --------
-
+INSERT INTO "user_payment_method" ("id_user", "id_payment") VALUES
+    (22, 1),
+    (99, 2),
+    (42, 3),
+    (69, 4),
+    (22, 5),
+    (93, 6),
+    (2, 7),
+    (58, 8),
+    (98, 9),
+    (74, 10),
+    (63, 11),
+    (53, 12),
+    (69, 13),
+    (6, 14),
+    (69, 15),
+    (60, 16),
+    (5, 17),
+    (60, 18),
+    (99, 19),
+    (26, 20),
+    (79, 21),
+    (66, 22),
+    (100, 23),
+    (65, 24),
+    (3, 25),
+    (96, 26),
+    (100, 27),
+    (88, 28),
+    (15, 29),
+    (80, 30),
+    (96, 31),
+    (96, 32),
+    (14, 33),
+    (77, 34),
+    (66, 35),
+    (20, 36),
+    (49, 37),
+    (56, 38),
+    (56, 39),
+    (34, 40),
+    (24, 41),
+    (6, 42),
+    (57, 43),
+    (95, 44),
+    (89, 45),
+    (67, 46),
+    (6, 47),
+    (90, 48),
+    (51, 49),
+    (88, 50);
 -------- support_chat_message --------
-
+INSERT INTO "support_chat_message" ("id_user", "time", "body", "sender") VALUES
+    (1, '2020-03-22 19:10:25-00', 'Help me please!!! Do needles hurt? :(', 'user'),
+    (1, '2020-03-22 19:10:25-00', 'Hello, thank you for contacting us, yes they do go ''ouch''', 'admin');
 -------- newsletter_subscriber --------
-
+INSERT INTO "newsletter_subscriber" ("email", "date") VALUES
+    ('mmiell0@phpbb.com', '2020-03-25'),
+    ('gashpole1@sfgate.com', '2020-03-18'),
+    ('sduckers2@cbc.ca', '2020-03-15'),
+    ('roakeby3@google.ru', '2020-03-16'),
+    ('jpoundesford4@ehow.com', '2020-03-26'),
+    ('gpilch5@upenn.edu', '2020-03-25'),
+    ('sdomonkos6@marriott.com', '2020-03-02'),
+    ('clown7@reuters.com', '2020-03-28'),
+    ('nlitchfield8@mail.ru', '2020-03-09'),
+    ('qdobrovolski9@unblog.fr', '2020-03-17'),
+    ('emacclenana@php.net', '2020-03-07'),
+    ('nmuggachb@wired.com', '2020-03-01'),
+    ('cbavinc@businessweek.com', '2020-03-02'),
+    ('blaxed@berkeley.edu', '2020-03-07'),
+    ('swhitakere@ibm.com', '2020-03-26'),
+    ('tbrantonf@rakuten.co.jp', '2020-03-24'),
+    ('lleppingwellg@cdbaby.com', '2020-03-27'),
+    ('fwodhamh@yahoo.com', '2020-03-02'),
+    ('cderingi@fastcompany.com', '2020-03-01'),
+    ('acossellj@cam.ac.uk', '2020-03-16'),
+    ('bdufallk@china.com.cn', '2020-03-21'),
+    ('mbunnyl@ycombinator.com', '2020-03-27'),
+    ('tlintallm@nps.gov', '2020-03-05'),
+    ('epockettn@flavors.me', '2020-03-08'),
+    ('rheildso@goodreads.com', '2020-03-25'),
+    ('dyeskinp@cocolog-nifty.com', '2020-03-12'),
+    ('maxtellq@yahoo.com', '2020-02-29'),
+    ('sackeryr@latimes.com', '2020-03-05'),
+    ('ltibbs@com.com', '2020-02-28'),
+    ('btwydellt@vinaora.com', '2020-03-28');
 -------- admin --------
-
+INSERT INTO "admin" ("username", "password") VALUES
+    ('diogosmac', 'lbawefixe'),
+    ('gustavonrm', 'hipster'),
+    ('otiago', 'bananahash'),
+    ('marantesss', 'lmaaaoooo');
 -------- faq --------
-
+INSERT INTO "faq" ("order", "question", "answer") VALUES
+    (1, "How long does my item take to arrive?", "About 5 to 7 business days after purchase."),
+    (2, "How long does my item take to arrive?", "About 5 to 7 business days after purchase."),
+    (3, "How long does my item take to arrive?", "About 5 to 7 business days after purchase.");
 -------- store --------
+INSERT INTO "store" ("id_address", "phone") VALUES
+    (1, "935697241");
 
