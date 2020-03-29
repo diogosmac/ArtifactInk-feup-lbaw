@@ -843,7 +843,32 @@ WITH 'rotary_machine_items' (name, brand, price, stock, description) AS (
 )
 INSERT INTO 'item' (name, price, stock, description, id_category)
 SELECT rotary_machine_items.name, rotary_machine_items.price, rotary_machine_items.stock, rotary_machine_items.description, category.id
-FROM 'category' JOIN 'studio_supplies_subcat' on category.name = 'Rotary Machines';
+FROM 'category' JOIN 'rotary_machine_items' on category.name = 'Rotary Machines';
+
+WITH 'tattoo_pens_items' (name, brand, price, stock, description) AS (
+    VALUES
+    -- Sabre
+    ('Sabre Reign Pen Machine - Black', 'Sabre', 259.99, 13, 'Sabre are back with another high-end, innovative tattoo product. Introducing, the Sabre Reign Pen Machine. Designed and produced using knowledge and advice from a selection of top tattoo artists around the world. The pen features a German Hollow Cup Motor and an ‘all-rounder’ 3.5mm stroke with a needle depth adjustment of 3-4mm. It comes complete with two additional, autoclavable grips and a 3.5mm jack power cord. The Reign Pen weighs only 195 grams thanks to the aircraft aluminium casing, making it super comfortable to hold and work with. It’s one of the most adaptable tattoo machines of late thanks to the starting voltage of 3V, an operating voltage of between 8V and 12V and an notable 12,000 RPM. The machine is powered by a 3.5mm jack socket cable which is included in the box.'),
+    ('Sabre Reign Pen Machine - Gun Metal Grey', 'Sabre', 259.99, 13, 'Sabre are back with another high-end, innovative tattoo product. Introducing, the Sabre Reign Pen Machine. Designed and produced using knowledge and advice from a selection of top tattoo artists around the world. The pen features a German Hollow Cup Motor and an ‘all-rounder’ 3.5mm stroke with a needle depth adjustment of 3-4mm. It comes complete with two additional, autoclavable grips and a 3.5mm jack power cord. The Reign Pen weighs only 195 grams thanks to the aircraft aluminium casing, making it super comfortable to hold and work with. It’s one of the most adaptable tattoo machines of late thanks to the starting voltage of 3V, an operating voltage of between 8V and 12V and an notable 12,000 RPM. The machine is powered by a 3.5mm jack socket cable which is included in the box.'),
+    -- FK Irons
+    ('FK Irons Spektra Xion Pen - Seafoam', 'FK Irons', 459.99, 13, 'After over three years of extensive research and development, FK Irons is proud to announce the highly anticipated release of the new Spektra Xion. Spektra Xion is the first of its kind to have been designed, engineered and beta tested in cooperation with top, reputable tattoo artists from around the world. The collaboration enabled FK Irons to design a machine that caters to a broad scope of tattooing styles while giving the artist more control over the machine and their art.'),
+    ('FK Irons Spektra Xion Pen - Pink', 'FK Irons', 459.99, 13, 'After over three years of extensive research and development, FK Irons is proud to announce the highly anticipated release of the new Spektra Xion. Spektra Xion is the first of its kind to have been designed, engineered and beta tested in cooperation with top, reputable tattoo artists from around the world. The collaboration enabled FK Irons to design a machine that caters to a broad scope of tattooing styles while giving the artist more control over the machine and their art.'),
+    ('FK Irons Spektra Xion Pen - Kryptonite', 'FK Irons', 459.99, 13, 'After over three years of extensive research and development, FK Irons is proud to announce the highly anticipated release of the new Spektra Xion. Spektra Xion is the first of its kind to have been designed, engineered and beta tested in cooperation with top, reputable tattoo artists from around the world. The collaboration enabled FK Irons to design a machine that caters to a broad scope of tattooing styles while giving the artist more control over the machine and their art.'),
+    ('FK Irons Spektra Xion Pen - Tangerine', 'FK Irons', 459.99, 13, 'After over three years of extensive research and development, FK Irons is proud to announce the highly anticipated release of the new Spektra Xion. Spektra Xion is the first of its kind to have been designed, engineered and beta tested in cooperation with top, reputable tattoo artists from around the world. The collaboration enabled FK Irons to design a machine that caters to a broad scope of tattooing styles while giving the artist more control over the machine and their art.'),
+    ('FK Irons Spektra Xion Pen - Nebula', 'FK Irons', 459.99, 13, 'After over three years of extensive research and development, FK Irons is proud to announce the highly anticipated release of the new Spektra Xion. Spektra Xion is the first of its kind to have been designed, engineered and beta tested in cooperation with top, reputable tattoo artists from around the world. The collaboration enabled FK Irons to design a machine that caters to a broad scope of tattooing styles while giving the artist more control over the machine and their art.')
+)
+INSERT INTO 'item' (name, price, stock, description, id_category)
+SELECT tattoo_pens_items.name, tattoo_pens_items.price, tattoo_pens_items.stock, tattoo_pens_items.description, category.id
+FROM 'category' JOIN 'tattoo_pens_items' on category.name = 'Tattoo Pen';
+
+WITH 'hand_poking_items' (name, brand, price, stock, description) AS (
+    VALUES
+    -- Sabre
+    ('Sabre Dotwork Pen', 'Sabre', 39.99, 4, 'Sabre Designed in the UK. Ergonomically designed for perfect Dotwork. The flat back has been designed for securing your needle during use and comfort. Machined from aircraft grade aluminium. Durable black anodised Finish.')
+)
+INSERT INTO 'item' (name, price, stock, description, id_category)
+SELECT hand_poking_items.name, hand_poking_items.price, hand_poking_items.stock, hand_poking_items.description, category.id
+FROM 'category' JOIN 'hand_poking_items' on category.name = 'Hand Poking';
 -- Archived
 
 -------- item_purchase --------
