@@ -188,12 +188,18 @@ CREATE TABLE "sale" (
     CONSTRAINT sale_date_ck CHECK ("start" < "end"),
     "type" SALE_TYPE NOT NULL,
     "fixed_amount" FLOAT CONSTRAINT sale_fixed_ck CHECK (("fixed_amount" IS NULL) or ("fixed_amount" > 0)),
-    "percentage_amount" FLOAT CONSTRAINT sale_percentage_ck CHECK (("percentage_amount" IS NULL) or ("percentage_amount" > 0)),
+    "percentage_amount" FLOAT CONSTRAINT sale_percentage_ck CHECK (("percentage_amount" IS NULL) or ("percentage_amount" > 0 and "percentage_amount" < 100)),
     CONSTRAINT sale_xor_ck CHECK (
         (("fixed_amount" IS NULL) and ("percentage_amount" IS NOT NULL))
         or
         (("fixed_amount" IS NOT NULL) and ("percentage_amount" IS NULL))
     )
+);
+
+CREATE TABLE "item_sale" (
+    "id_item" INTEGER REFERENCES "item" ("id") ON UPDATE CASCADE ON DELETE CASCADE,
+    "id_sale" INTEGER REFERENCES "sale" ("id") ON UPDATE CASCADE ON DELETE CASCADE,
+    PRIMARY KEY ("id_item", "id_sale")
 );
 
 CREATE TABLE "item_subscriber" (
@@ -250,8 +256,3 @@ CREATE TABLE "store" (
     "phone" TEXT NOT NULL
 );
 
-CREATE TABLE "item_sale" (
-    "id_item" INTEGER REFERENCES "item" ("id") ON UPDATE CASCADE ON DELETE CASCADE,
-    "id_sale" INTEGER REFERENCES "sale" ("id") ON UPDATE CASCADE ON DELETE CASCADE,
-    PRIMARY KEY ("id_item", "id_sale")
-);
