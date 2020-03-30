@@ -72,7 +72,7 @@ ALTER SEQUENCE profile_picture_id_seq RESTART WITH 68;
 -------- user --------
 ALTER SEQUENCE user_id_seq RESTART WITH 1;
 INSERT INTO "user" ("name", "id_picture", "date_of_birth", "email", "phone", "password") VALUES
-    ('Ursa Glenton', 2, '2000-09-12', 'uglenton0@arizona.edu', '7263379823', 'CqScgZXR'),
+    ('User Usado', 2, '2000-09-12', 'user@lbaw.edu', '933235253', '$2y$10$956vhoYvaI4mZ0wNdKvkcuT5LDYe5lpL/LM65VyY/VkZPK6geh.C2'), -- lbaw2071
     ('Say Hallgalley', 3, '1984-09-12', 'shallgalley1@princeton.edu', null, 'emlAhP'),
     ('Antonina Peattie', 4, '1974-10-07', 'apeattie2@list-manage.com', '8421694480', 'fkp3P6I8SF'),
     ('Frasco Jacques', 5, '1996-08-31', 'fjacques3@bloomberg.com', '6813514088', 'lXwEGQeG'),
@@ -1589,10 +1589,10 @@ INSERT INTO "newsletter_subscriber" ("email", "date") VALUES
     ('btwydellt@vinaora.com', '2020-03-28');
 -------- admin --------
 INSERT INTO "admin" ("username", "password") VALUES
-    ('diogosmac', 'lbawefixe'),
-    ('gustavonrm', 'hipster'),
-    ('otiago', 'bananahash'),
-    ('marantesss', 'lmaaaoooo');
+    ('diogosmac', '$2y$10$66cJggj3GqLz9vTwcW8LyeSIihZDUOk.OceXbapUDk9Fpnu/4hEau'), -- lbawefixe
+    ('gustavonrm', '$2y$10$7M71G6Jom.Nyi9q5jaL8yeJANqpGP7fSxHtAuoroslOmmhpAEJv2e'), -- hipster
+    ('otiago', '$2y$10$8qMUqVA3xyS9ad1q0DOgYuHZUvfnO9FCK2IHeJozfrzYzsgSVCB.C'), -- banana
+    ('marantesss', '$2y$10$4D5FL8HDWUPLGzPmlo.qAu53msLM1AZHSTTLoQZ0A6u5hSAYDuTdG'); -- lmao
 -------- faq --------
 ALTER SEQUENCE faq_id_seq RESTART WITH 1;
 INSERT INTO "faq" ("order", "question", "answer") VALUES
