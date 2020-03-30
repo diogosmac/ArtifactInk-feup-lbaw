@@ -1,73 +1,76 @@
 -------- profile_picture --------
-INSERT INTO "profile_picture" ("link") VALUES
-    ('default_profile_picture.jpg'),
-    ('potenti.jpeg'),
-    ('faucibus_cursus.png'),
-    ('tempor_turpis_nec.png'),
-    ('dictumst_maecenas.jpeg'),
-    ('quam_pede.jpeg'),
-    ('risus_praesent.gif'),
-    ('cubilia.png'),
-    ('interdum.png'),
-    ('lectus_in_quam.jpeg'),
-    ('faucibus.tiff'),
-    ('metus_aenean.jpeg'),
-    ('vestibulum_ante.tiff'),
-    ('nam.png'),
-    ('nonummy.tiff'),
-    ('vel.png'),
-    ('vitae.png'),
-    ('ac_neque.jpeg'),
-    ('quam_sollicitudin_vitae.tiff'),
-    ('phasellus.tiff'),
-    ('proin_risus.tiff'),
-    ('ipsum_primis.jpeg'),
-    ('suspendisse_ornare.jpeg'),
-    ('hac_habitasse_platea.tiff'),
-    ('justo.jpeg'),
-    ('tortor_eu_pede.jpeg'),
-    ('vel.jpeg'),
-    ('leo.tiff'),
-    ('purus_sit_amet.jpeg'),
-    ('non_sodales_sed.jpeg'),
-    ('tortor_eu.png'),
-    ('porttitor_lorem.jpeg'),
-    ('sem.tiff'),
-    ('et.gif'),
-    ('et_tempus_semper.png'),
-    ('ante.jpeg'),
-    ('ullamcorper_augue_a.png'),
-    ('in_faucibus_orci.png'),
-    ('lacinia_eget_tincidunt.tiff'),
-    ('curae.tiff'),
-    ('mauris.png'),
-    ('enim.jpeg'),
-    ('in_hac.png'),
-    ('duis_bibendum_morbi.jpeg'),
-    ('ultrices_mattis.png'),
-    ('non.gif'),
-    ('convallis_nulla.tiff'),
-    ('libero.tiff'),
-    ('faucibus.png'),
-    ('ornare_imperdiet_sapien.jpeg'),
-    ('adipiscing_lorem_vitae.tiff'),
-    ('sagittis.jpeg'),
-    ('quis_orci.png'),
-    ('odio_odio.tiff'),
-    ('et.png'),
-    ('ut.gif'),
-    ('at_ipsum_ac.gif'),
-    ('odio_odio_elementum.gif'),
-    ('condimentum.png'),
-    ('volutpat_quam.png'),
-    ('in.png'),
-    ('pede_posuere.jpeg'),
-    ('quam_a_odio.tiff'),
-    ('accumsan.jpeg'),
-    ('sit_amet_lobortis.tiff'),
-    ('curae_nulla.jpeg'),
-    ('maecenas.tiff');
+INSERT INTO "profile_picture" ("id", "link") VALUES
+    (1, 'default_profile_picture.jpg'),
+    (2, 'Augue.gif'),
+    (3, 'VelAugueVestibulum.gif'),
+    (4, 'AugueAliquam.tiff'),
+    (5, 'BlanditMiIn.jpeg'),
+    (6, 'SagittisSapienCum.tiff'),
+    (7, 'AdipiscingElit.jpeg'),
+    (8, 'Ornare.jpeg'),
+    (9, 'DiamNequeVestibulum.jpeg'),
+    (10, 'Non.gif'),
+    (11, 'Fusce.jpeg'),
+    (12, 'SuspendisseOrnare.gif'),
+    (13, 'QuisOrci.tiff'),
+    (14, 'BibendumMorbiNon.jpeg'),
+    (15, 'Dolor.tiff'),
+    (16, 'Venenatis.png'),
+    (17, 'ProinAtTurpis.tiff'),
+    (18, 'DuiVel.gif'),
+    (19, 'In.jpeg'),
+    (20, 'QuamNecDui.tiff'),
+    (21, 'AmetSemFusce.tiff'),
+    (22, 'Ligula.jpeg'),
+    (23, 'OdioPorttitorId.jpeg'),
+    (24, 'Eleifend.gif'),
+    (25, 'EuSapien.tiff'),
+    (26, 'QuisTortor.gif'),
+    (27, 'ErosViverra.gif'),
+    (28, 'Montes.tiff'),
+    (29, 'PretiumNisl.tiff'),
+    (30, 'Enim.jpeg'),
+    (31, 'MollisMolestieLorem.jpeg'),
+    (32, 'DolorSitAmet.tiff'),
+    (33, 'LaciniaAenean.png'),
+    (34, 'Cum.jpeg'),
+    (35, 'AeneanAuctorGravida.tiff'),
+    (36, 'RutrumAc.png'),
+    (37, 'ElementumEuInterdum.tiff'),
+    (38, 'SuspendissePotentiCras.tiff'),
+    (39, 'Quisque.tiff'),
+    (40, 'Mi.png'),
+    (41, 'SemSed.png'),
+    (42, 'Diam.jpeg'),
+    (43, 'Nascetur.png'),
+    (44, 'NuncDonec.tiff'),
+    (45, 'MaecenasPulvinarLobortis.png'),
+    (46, 'Sed.jpeg'),
+    (47, 'Mauris.tiff'),
+    (48, 'Volutpat.tiff'),
+    (49, 'EleifendDonec.png'),
+    (50, 'EgetEleifendLuctus.png'),
+    (51, 'Quis.jpeg'),
+    (52, 'MattisPulvinarNulla.gif'),
+    (53, 'Venenatis.jpeg'),
+    (54, 'DuiVelSem.jpeg'),
+    (55, 'SapienNon.gif'),
+    (56, 'UtSuscipit.tiff'),
+    (57, 'Nibh.gif'),
+    (58, 'Eu.jpeg'),
+    (59, 'Lobortis.tiff'),
+    (60, 'Nunc.jpeg'),
+    (61, 'VestibulumAliquet.jpeg'),
+    (62, 'In.tiff'),
+    (63, 'LectusIn.jpeg'),
+    (64, 'In.jpeg'),
+    (65, 'MalesuadaInImperdiet.tiff'),
+    (66, 'Diam.jpeg'),
+    (67, 'Erat.jpeg'),
+    (68, 'Test.jpeg');
+ALTER SEQUENCE profile_picture_id_seq RESTART WITH 68;
 -------- user --------
+ALTER SEQUENCE user_id_seq RESTART WITH 1;
 INSERT INTO "user" ("name", "id_picture", "date_of_birth", "email", "phone", "password") VALUES
     ('Ursa Glenton', 2, '2000-09-12', 'uglenton0@arizona.edu', '7263379823', 'CqScgZXR'),
     ('Say Hallgalley', 3, '1984-09-12', 'shallgalley1@princeton.edu', null, 'emlAhP'),
@@ -171,6 +174,7 @@ INSERT INTO "user" ("name", "date_of_birth", "email", "phone", "password") VALUE
     ('Bren Rizon', '1970-06-20', 'brizonv@unblog.fr', null, 'm8i6KWy'),
     ('Jolynn Tyrone', '1971-11-02', 'jtyronew@blogspot.com', '9509405674', 'x2hIvj8eG3');
 -------- country --------
+ALTER SEQUENCE country_id_seq RESTART WITH 1;
 INSERT INTO "country" ("name") VALUES
     ('Afghanistan'),
     ('Albania'),
@@ -419,6 +423,7 @@ INSERT INTO "country" ("name") VALUES
     ('Zambia'),
     ('Zimbabwe');
 -------- address --------
+ALTER SEQUENCE address_id_seq RESTART WITH 1;
 INSERT INTO "address" ("street", "postal_code", "city", "id_country") VALUES
     ('3 Upham Crossing', '62930-000', 'Limoeiro do Norte', 122),
     ('23143 Mosinee Street', '895-98', 'Ea Drăng', 175),
@@ -471,6 +476,7 @@ INSERT INTO "address" ("street", "postal_code", "city", "id_country") VALUES
     ('6851 Moland Center', '650651', 'Dầu Tiếng', 228),
     ('8168 Ridgeview Lane', '26350', 'Miribel', 111);
 -------- credit_card --------
+ALTER SEQUENCE credit_card_id_seq RESTART WITH 1;
 INSERT INTO "credit_card" ("name", "number", "expiration", "cvv") VALUES 
     ('Brandi Londors', '5602246709903322', '2021-08-05', 280),
     ('Eartha Mountain', '5108752919388484', '2021-07-09', 140),
@@ -523,6 +529,7 @@ INSERT INTO "credit_card" ("name", "number", "expiration", "cvv") VALUES
     ('Caspar Turvie', '3538645594679695', '2020-10-07', 568),
     ('Craig Wogan', '3555805197041168', '2022-01-05', 583);
 -------- paypal --------
+ALTER SEQUENCE paypal_id_seq RESTART WITH 1;
 INSERT INTO "paypal" ("email") VALUES
     ('bbirkin0@foxnews.com'),
     ('jtolefree1@simplemachines.org'),
@@ -550,6 +557,7 @@ INSERT INTO "paypal" ("email") VALUES
     ('slamprechtn@purevolume.com'),
     ('gpueso@wordpress.org');
 -------- payment_method --------
+ALTER SEQUENCE payment_method_id_seq RESTART WITH 1;
 INSERT INTO "payment_method" ("id_cc", "id_pp") VALUES
     (20, null),
     (45, null),
@@ -586,7 +594,7 @@ INSERT INTO "payment_method" ("id_cc", "id_pp") VALUES
     (null, 3),
     (27, null),
     (null, 8),
-    (50, 12),
+    (null, 12),
     (7, null),
     (null, 1),
     (43, null),
@@ -602,6 +610,7 @@ INSERT INTO "payment_method" ("id_cc", "id_pp") VALUES
     (47, null),
     (6, null);
 -------- order --------
+ALTER SEQUENCE order_id_seq RESTART WITH 1;
 INSERT INTO "order" ("date", "total", "status", "id_user", "id_address", "id_payment_method") VALUES
     ('2020-02-04', 265.51, 'processing', 8, 18, 1),
     ('2020-02-23', 709.77, 'processing', 80, 16, 29),
@@ -707,6 +716,7 @@ INSERT INTO "category" ("id", "name", "id_parent") VALUES
 ALTER SEQUENCE category_id_seq RESTART WITH 60;
 -------- item --------
 -- Active
+ALTER SEQUENCE item_id_seq RESTART WITH 1;
 INSERT INTO "item" ("name", "brand", "price", "stock", "description", "id_category") VALUES
     -- Traditional/Old School - 10
     ('Mom Love', 'John Grimm', 29.99, 1, 'John Grimm is one of our best in-house artist that focuses on Old School and Tribal Styles.', 10),
@@ -1084,6 +1094,7 @@ INSERT INTO "item_purchase" ("id_item", "id_order", "price", "quantity") VALUES
     (199, 21, 241.5, 5),
     (30, 10, 229.01, 3);
 -------- review --------
+ALTER SEQUENCE review_id_seq RESTART WITH 1;
 INSERT INTO "review" ("id_item", "id_user", "title", "body", "score", "date") VALUES
     (248, 80, 'Nulla nisl.', 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet.', 0, '2020-03-20'),
     (148, 31, 'Suspendisse potenti.', 'Aenean fermentum.', 2, '2020-03-16'),
@@ -1103,16 +1114,17 @@ INSERT INTO "review" ("id_item", "id_user", "title", "body", "score", "date") VA
 -------- cart --------
 INSERT INTO "cart" ("id_user", "id_item", "quantity", "date_added") VALUES
     (1, 36, 2, '2020-03-29'),
-    (1, 36, 1, '2020-03-29'),
+    (1, 26, 1, '2020-03-29'),
     (2, 57, 4, '2020-03-25'),
     (3, 87, 2, '2020-03-23');
 -------- wishlist --------
 INSERT INTO "wishlist" ("id_user", "id_item") VALUES
     (1, 36),
-    (1, 36),
+    (1, 26),
     (2, 57),
     (3, 87);
 -------- item_picture --------
+ALTER SEQUENCE item_picture_id_seq RESTART WITH 1;
 INSERT INTO "item_picture" ("id_item", "link") VALUES
     (1, 'elementum.tiff'),
     (2, 'tincidunt.gif'),
@@ -1365,10 +1377,11 @@ INSERT INTO "item_picture" ("id_item", "link") VALUES
     (249, 'donec_posuere.jpeg'),
     (250, 'sed_accumsan_felis.tiff');
 -------- admin_notification --------
+ALTER SEQUENCE admin_notification_id_seq RESTART WITH 1;
 INSERT INTO "admin_notification" ("body", "sent") VALUES
     ('Item #34 out of stock', '2020-03-22 19:10:25-00'),
     ('Report notification on review #1', '2020-03-25 14:10:25-00'),
-    ('Item #14 out of stock', '2020-03-24 15:10:75-00'),
+    ('Item #14 out of stock', '2020-03-24 15:10:45-00'),
     ('Item #24 out of stock', '2020-03-22 11:0:25-00');
 -------- out_of_stock_notification --------
 INSERT INTO "out_of_stock_notification" ("id_notif", "id_item") VALUES
@@ -1379,9 +1392,10 @@ INSERT INTO "out_of_stock_notification" ("id_notif", "id_item") VALUES
 INSERT INTO "report_notification" ("id_notif", "id_review") VALUES
     (2, 1);
 -------- sale --------
+ALTER SEQUENCE sale_id_seq RESTART WITH 1;
 INSERT INTO "sale" ("name", "start", "end", "type", "fixed_amount", "percentage_amount") VALUES
-    ('Black Devil Sale', '2020-03-20', '2020-03-30', 30, null),
-    ('Crazy Machine Sale', '2020-03-01', '2020-04-01', 'null', 50);
+    ('Black Devil Sale', '2020-03-20', '2020-03-30', 'percentage', null, 30),
+    ('Crazy Machine Sale', '2020-03-01', '2020-04-01', 'fixed', 50, null);
 -------- item_sale --------
 INSERT INTO "item_sale" ("id_item", "id_sale") VALUES 
     -- Black Devil Sale
@@ -1429,7 +1443,7 @@ INSERT INTO "item_subscription" ("id_item", "email_subscriber") VALUES
     (123, 'jpoundesford4@ehow.com'),
     (32, 'gpilch5@upenn.edu'),
     (224, 'sdomonkos6@marriott.com'),
-    (123, 'clown7@reuters.com',),
+    (123, 'clown7@reuters.com'),
     (98, 'nlitchfield8@mail.ru'),
     (76, 'qdobrovolski9@unblog.fr'),
     (24, 'emacclenana@php.net'),
@@ -1485,7 +1499,7 @@ INSERT INTO "user_address" ("id_user", "id_address") VALUES
     (33, 29),
     (99, 30);
 -------- user_payment_method --------
-INSERT INTO "user_payment_method" ("id_user", "id_payment") VALUES
+INSERT INTO "user_payment_method" ("id_user", "id_payment_method") VALUES
     (22, 1),
     (99, 2),
     (42, 3),
@@ -1537,6 +1551,7 @@ INSERT INTO "user_payment_method" ("id_user", "id_payment") VALUES
     (51, 49),
     (88, 50);
 -------- support_chat_message --------
+ALTER SEQUENCE support_chat_message_id_seq RESTART WITH 1;
 INSERT INTO "support_chat_message" ("id_user", "time", "body", "sender") VALUES
     (1, '2020-03-22 19:10:25-00', 'Help me please!!! Do needles hurt? :(', 'user'),
     (1, '2020-03-22 19:10:25-00', 'Hello, thank you for contacting us, yes they do go ''ouch''', 'admin');
@@ -1579,11 +1594,11 @@ INSERT INTO "admin" ("username", "password") VALUES
     ('otiago', 'bananahash'),
     ('marantesss', 'lmaaaoooo');
 -------- faq --------
+ALTER SEQUENCE faq_id_seq RESTART WITH 1;
 INSERT INTO "faq" ("order", "question", "answer") VALUES
-    (1, "How long does my item take to arrive?", "About 5 to 7 business days after purchase."),
-    (2, "How long does my item take to arrive?", "About 5 to 7 business days after purchase."),
-    (3, "How long does my item take to arrive?", "About 5 to 7 business days after purchase.");
+    (1, 'How long does my item take to arrive?', 'About 5 to 7 business days after purchase.'),
+    (2, 'What is your return policy?', 'There is none, lmaaaooo!'),
+    (3, 'Can i submit my own designs for sale?', 'No, our designs are exclusive and we don''t accept designs from other people.');
 -------- store --------
 INSERT INTO "store" ("id_address", "phone") VALUES
-    (1, "935697241");
-
+    (1, '935697241');
