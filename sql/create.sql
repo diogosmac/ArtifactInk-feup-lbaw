@@ -256,3 +256,103 @@ CREATE TABLE "store" (
     "phone" TEXT NOT NULL
 );
 
+-- Indexes
+
+CREATE INDEX email_user ON "user" USING hash (email); 
+CREATE INDEX id_item ON item USING hash (id); 
+CREATE INDEX id_category ON category USING hash (id); 
+CREATE INDEX id_user_cart ON cart USING hash (id_user); 
+CREATE INDEX search_idx ON item USING GIST (to_tsvector('english',"item"."name" || ' ' || "item"."brand"|| ' ' || "item"."description"))
+
+-- Triggers
+
+CREATE OR REPLACE FUNCTION upd_rating()
+  RETURNS trigger AS
+$$
+BEGIN
+        UPDATE "item" 
+        SET rating = (SELECT AVG(score) FROM review WHERE id = NEW.id_item)
+        WHERE id = NEW.id_item;
+    RETURN NEW;
+END;
+$$
+LANGUAGE 'plpgsql';
+--
+CREATE TRIGGER update_rating
+  AFTER INSERT ON "review"
+  FOR EACH ROW
+  EXECUTE PROCEDURE upd_rating();
+
+  CREATE OR REPLACE FUNCTION add_to_cart()
+  RETURNS trigger AS
+$$
+BEGIN
+    IF (SELECT stock FROM "item" WHERE id=NEW.id_item) < NEW.quantity
+	  THEN 
+		  RAISE EXCEPTION 'Not enough stock';
+    END IF;
+  RETURN NEW;
+END;
+$$
+LANGUAGE 'plpgsql';
+
+CREATE TRIGGER add_to_cart
+  BEFORE INSERT
+  ON "cart"
+  FOR EACH ROW
+  EXECUTE PROCEDURE add_to_cart();
+--
+CREATE OR REPLACE FUNCTION check_stock()
+  RETURNS trigger AS
+$$
+DECLARE
+stock int;
+BEGIN
+    stock = (SELECT stock FROM "item" WHERE item=NEW.id_item)
+    IF (stock < NEW.quantity)
+    THEN 
+      RAISE EXCEPTION 'Not enough stock';
+    END IF;
+    RETURN NEW;
+END;
+$$
+LANGUAGE 'plpgsql';
+
+CREATE TRIGGER check_stock
+  BEFORE INSERT ON "item_purcahse"
+  FOR EACH ROW
+  EXECUTE PROCEDURE check_stock();
+--
+CREATE OR REPLACE FUNCTION update_stock()
+  RETURNS trigger AS
+$$
+DECLARE
+new_stock int;
+old_stock int;
+notif_id int;
+user int;
+BEGIN
+    old_stock = (SELECT stock FROM item WHERE id = NEW."id_item");
+    new_stock = old_stock - NEW.quantity;
+    IF (new_stock = 0) 
+	  THEN 
+		  INSERT INTO "admin_notification" ("body") VALUES (DEFAULT, 'Product out of stock') RETURNING id INTO notif_id;	
+		  INSERT INTO "out_of_stock_notification"("id_notif", "id_item") VALUES (notif_id, NEW.id_item);
+    END IF;
+
+    UPDATE "item" SET stock = new_stock
+    WHERE id = id_item;
+
+    user = (SELECT id_user FROM "order" WHERE id=NEW.id_order)
+    DELETE FROM "cart" WHERE id_user=user AND id_item=NEW.id_item;
+
+  RETURN NEW;
+END;
+$$
+LANGUAGE 'plpgsql';
+
+CREATE TRIGGER update_stock
+  AFTER INSERT
+  ON "item_purchase"
+  FOR EACH ROW
+  EXECUTE PROCEDURE update_stock();
