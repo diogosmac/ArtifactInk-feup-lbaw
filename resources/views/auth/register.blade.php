@@ -1,39 +1,71 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-<form method="POST" action="{{ route('register') }}">
-    {{ csrf_field() }}
+<form class="form-signin " method="POST" action="{{ route('register') }}">
+  {{ csrf_field() }}
 
-    <label for="name">Name</label>
-    <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
-    @if ($errors->has('name'))
+  <a href="../pages/home.php">
+    <img class="mb-4" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk" width="300">
+  </a>
+  <div class="sign-box">
+    <h1 class="h3 mb-3 font-weight-normal">Sign Up</h1>
+    <div class="form-group input">
+      <label for="exampleInputName">Name</label>
+      <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="exampleInputName" aria-describedby="emailHelp" required autofocus>
+      @if ($errors->has('name'))
       <span class="error">
-          {{ $errors->first('name') }}
+        {{ $errors->first('name') }}
       </span>
-    @endif
+      @endif
 
-    <label for="email">E-Mail Address</label>
-    <input id="email" type="email" name="email" value="{{ old('email') }}" required>
-    @if ($errors->has('email'))
+    </div>
+    <div class="form-group email-input">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" name="email" value="{{ old('email') }}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+      @if ($errors->has('email'))
       <span class="error">
-          {{ $errors->first('email') }}
+        {{ $errors->first('email') }}
       </span>
-    @endif
+      @endif
 
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password" required>
-    @if ($errors->has('password'))
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group password-input">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
+      @if ($errors->has('password'))
       <span class="error">
-          {{ $errors->first('password') }}
+        {{ $errors->first('password') }}
       </span>
-    @endif
+      @endif
 
-    <label for="password-confirm">Confirm Password</label>
-    <input id="password-confirm" type="password" name="password_confirmation" required>
+    </div>
+    <div class="form-group password-input">
+      <label for="exampleInputPassword2">Confirm Password</label>
+      <input type="password" name="password_confirmation" class="form-control" id="exampleInputPassword2" required>
+    </div>
 
-    <button type="submit">
-      Register
-    </button>
-    <a class="button button-outline" href="{{ route('login') }}">Login</a>
+    <button class="btn btn-lg button btn-block" type="submit">Sign Up</button>
+    <p class="sign-divider"> or Sign In with </p>
+    <div class="btn-group sign-in-api d-flex justify-content-center" data-toggle="buttons">
+      <label class="btn">
+        <a class="btn" href="#">
+          <i class="fab fa-google"></i>
+          Google
+        </a>
+      </label>
+      <label class="btn ">
+        <a class="btn" href="#">
+          <i class="fab fa-facebook-square"></i>
+          Facebook
+        </a>
+      </label>
+    </div>
+  </div>
 </form>
+<div class="row new-user justify-content-center">
+  <h6>Already have an account?</h6>
+  <a class="btn btn-lg button btn-block" href="{{ route('login') }}">Sign In</a>
+  <footer class="copyright"> Copyright © ArtifactInk 2020 </footer>
+</div>
 @endsection
