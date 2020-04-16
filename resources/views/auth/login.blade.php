@@ -23,7 +23,7 @@
         </div>
         <div class="form-group password-input">
             <label for="exampleInputPassword1">Password</label>
-            <a href="../pages/recover_password.php"> Forget your password?</a>
+            <a href="{{ asset('recover_password')}}"> Forget your password?</a>
             <input type="password" class="form-control" name="password" id="exampleInputPassword1" required>
             @if ($errors->has('password'))
             <span class="error">
