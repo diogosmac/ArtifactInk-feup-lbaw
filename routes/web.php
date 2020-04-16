@@ -36,3 +36,11 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::get('home', function () {
     return view('pages.home');
 });
+
+Route::get('cart', function () {
+    return view('pages.cart');
+});
+
+Route::get('checkout', function () {
+    return view('pages.home');
+});
