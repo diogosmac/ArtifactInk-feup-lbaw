@@ -7,6 +7,7 @@
                     <label class="input-group-text" for="inputGroupSelect01">Order by</label>
                 </div>
                 <select class="custom-select" id="inputGroupSelect01">
+                    <option value="0" selected>Best Match</option>
                     <option value="1" selected>Price</option>
                     <option value="2" selected>Date</option>
                     <option value="3" selected>Rating</option> 
