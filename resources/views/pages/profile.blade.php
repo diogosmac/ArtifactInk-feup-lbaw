@@ -1,7 +1,7 @@
 @extends('layouts.profile')
 
 @section('info')
-<div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+
 <section id="profile">
     <section id="profile-info">
         <div class="col">
@@ -138,5 +138,5 @@
         </div>
     </section>
 </section>
-</div>
+
 @endsection

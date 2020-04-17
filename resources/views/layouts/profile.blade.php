@@ -7,25 +7,48 @@
             <div class="row">
                 <!-- TABS -->
                 <div class="d-none d-md-block" id="profile-nav-desktop">
-                    <div class="col-md-auto col-xs-12 my-3 px-0 nav flex-column nav-pills" 
-                        role="tablist" aria-orientation="vertical">
+                    <div class="col-md-auto col-xs-12 my-3 px-0 nav flex-column nav-pills" role="tablist"
+                        aria-orientation="vertical">
                         <h5 class="text-center">John Doe</h5>
-                        <a class="nav-link active text-center profile-tab" 
-                            href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="true">
-                            <i class="fas fa-user pr-2"></i>Profile
-                        </a>
-                        <a class="nav-link text-center profile-tab" id="v-pills-reviews-tab" data-toggle="pill"
-                            href="#v-pills-reviews" role="tab" aria-controls="v-pills-reviews" aria-selected="false">
-                            <i class="fas fa-pen pr-2"></i>Reviews
-                        </a>
-                        <a class="nav-link text-center profile-tab" id="v-pills-wishlist-tab" data-toggle="pill"
-                            href="#v-pills-wishlist" role="tab" aria-controls="v-pills-wishlist" aria-selected="false">
-                            <i class="fas fa-heart pr-2"></i>Wishlist
-                        </a>
-                        <a class="nav-link text-center profile-tab" id="v-pills-history-tab" data-toggle="pill"
-                            href="#v-pills-history" role="tab" aria-controls="v-pills-history" aria-selected="false">
-                            <i class="fas fa-shopping-cart pr-2"></i>History
-                        </a>
+                        @if(Request::path() === 'profile')
+                            <a class="nav-link active text-center profile-tab" href="{{ url('/profile') }}" >
+                                <i class="fas fa-user pr-2"></i>Profile
+                            </a>
+                        @else
+                            <a class="nav-link text-center profile-tab" href="{{ url('/profile') }}" >
+                                <i class="fas fa-user pr-2"></i>Profile
+                            </a>
+                        @endif
+                       
+                        @if(Request::path() === 'review')
+                            <a class="nav-link active text-center profile-tab" href="{{ url('/review') }}" >
+                                <i class="fas fa-pen pr-2"></i>Reviews
+                            </a>
+                        @else
+                            <a class="nav-link text-center profile-tab" href="{{ url('/review') }}" >
+                                <i class="fas fa-pen pr-2"></i>Reviews
+                            </a>
+                        @endif
+
+                        @if(Request::path() === 'profile/wishlist')
+                            <a class="nav-link active text-center profile-tab" href="{{ url('/profile/wishlist') }}" >
+                                <i class="fas fa-heart pr-2"></i>Wishlist
+                            </a>
+                        @else
+                            <a class="nav-link text-center profile-tab" href="{{ url('/profile/wishlist') }}" >
+                                <i class="fas fa-heart pr-2"></i>Wishlist
+                            </a>
+                        @endif
+
+                        @if(Request::path() === 'profile/purchased_history')
+                            <a class="nav-link active text-center profile-tab" href="{{ url('/profile/purchased_history') }}" >
+                                <i class="fas fa-shopping-cart pr-2"></i>History
+                            </a>
+                        @else
+                            <a class="nav-link text-center profile-tab" href="{{ url('/profile/purchased_history') }}" >
+                                <i class="fas fa-shopping-cart pr-2"></i>History
+                            </a>
+                        @endif
                     </div>
                 </div>
 
@@ -49,28 +72,49 @@
                             <div id="profile-dropdown-collapse" class="collapse hide"
                                 aria-labelledby="profile-dropdown-header" data-parent="#profile-dropdown">
                                 <div class="card-body p-0">
-                                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                                    <div class="nav flex-column nav-pills" role="tablist"
                                         aria-orientation="vertical">
-                                        <a class="nav-link active text-center profile-tab" id="v-pills-profile-tab"
-                                            data-toggle="pill" href="#v-pills-profile" role="tab"
-                                            aria-controls="v-pills-profile" aria-selected="true">
-                                            <i class="fas fa-user pr-2"></i>Profile
-                                        </a>
-                                        <a class="nav-link text-center profile-tab" id="v-pills-reviews-tab"
-                                            data-toggle="pill" href="#v-pills-reviews" role="tab"
-                                            aria-controls="v-pills-reviews" aria-selected="false">
-                                            <i class="fas fa-pen pr-2"></i>Reviews
-                                        </a>
-                                        <a class="nav-link text-center profile-tab" id="v-pills-wishlist-tab"
-                                            data-toggle="pill" href="#v-pills-wishlist" role="tab"
-                                            aria-controls="v-pills-wishlist" aria-selected="false">
-                                            <i class="fas fa-heart pr-2"></i>Wishlist
-                                        </a>
-                                        <a class="nav-link text-center profile-tab" id="v-pills-history-tab"
-                                            data-toggle="pill" href="#v-pills-history" role="tab"
-                                            aria-controls="v-pills-history" aria-selected="false">
-                                            <i class="fas fa-shopping-cart pr-2"></i>History
-                                        </a>
+
+                                        @if(Request::path() === 'profile')
+                                            <a class="nav-link active text-center profile-tab" href="{{ url('/profile') }}" >
+                                                <i class="fas fa-user pr-2"></i>Profile
+                                            </a>
+                                        @else
+                                            <a class="nav-link text-center profile-tab" href="{{ url('/profile') }}" >
+                                                <i class="fas fa-user pr-2"></i>Profile
+                                            </a>
+                                        @endif
+
+                                        @if(Request::path() === 'review')
+                                            <a class="nav-link active text-center profile-tab" href="{{ url('/review') }}">
+                                                <i class="fas fa-pen pr-2"></i>Reviews
+                                            </a>
+                                        @else
+                                            <a class="nav-link text-center profile-tab" href="{{ url('/review') }}">
+                                                <i class="fas fa-pen pr-2"></i>Reviews
+                                            </a>
+                                        @endif
+
+                                        @if(Request::path() === 'profile/wishlist')
+                                            <a class="nav-link active text-center profile-tab" href="{{ url('/profile/wishlist') }}">
+                                                <i class="fas fa-heart pr-2"></i>Wishlist
+                                            </a>
+                                        @else
+                                            <a class="nav-link text-center profile-tab" href="{{ url('/profile/wishlist') }}">
+                                                <i class="fas fa-heart pr-2"></i>Wishlist
+                                            </a>
+                                        @endif
+
+                                        @if(Request::path() === 'profile/purchased_history')
+                                            <a class="nav-link active text-center profile-tab" href="{{ url('/profile/purchased_history') }}" >
+                                                <i class="fas fa-shopping-cart pr-2"></i>History
+                                            </a>
+                                        @else
+                                            <a class="nav-link text-center profile-tab" href="{{ url('/profile/purchased_history') }}" >
+                                                <i class="fas fa-shopping-cart pr-2"></i>History
+                                            </a>
+                                        @endif
+
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +125,7 @@
                 <div class="col">
                     <div class="container">
                         <!-- CONTENT -->
-                        <div class="col tab-content my-3" id="v-pills-tabContent">
+                        <div class="col tab-content my-3" >
                             @yield('info')
                         </div>
                     </div>
