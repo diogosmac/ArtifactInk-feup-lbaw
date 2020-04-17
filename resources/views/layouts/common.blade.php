@@ -622,22 +622,22 @@
               <ul class="list-inline">
                 <p class="text-uppercase font-weight-light"> Information</p>
                 <li>
-                  <a href="../pages/about_us.php" class="list-inline-item font-weight-normal  text-dark ">About us</a>
+                  <a href="{{ url('/about_us') }}" class="list-inline-item font-weight-normal  text-dark ">About us</a>
                 </li>
                 <li>
-                  <a href="../pages/faq.php" class="list-inline-item font-weight-normal text-dark ">FAQ</a>
+                  <a href="{{ url('/faq') }}" class="list-inline-item font-weight-normal text-dark ">FAQ</a>
                 </li>
                 <li>
-                  <a href="../pages/payments_and_shipment.php"
+                  <a href="{{ url('/payments_and_shipment') }}"
                     class="list-inline-item font-weight-normal text-dark ">Payments
                     and Shipment</a>
                 </li>
                 <li>
-                  <a href="../pages/returns_and_replacements.php"
+                  <a href="{{ url('/returns_and_replacements') }}"
                     class="list-inline-item font-weight-normal text-dark ">Returns and Replacements</a>
                 </li>
                 <li>
-                  <a href="../pages/warranty.php" class="list-inline-item font-weight-normal text-dark ">Warranty</a>
+                  <a href="{{ url('/warranty') }}" class="list-inline-item font-weight-normal text-dark ">Warranty</a>
                 </li>
                 <br>
                 <li id="copyright-desktop"> Copyright © ArtifactInk 2020
