@@ -150,7 +150,8 @@ CREATE TABLE "review" (
     "title" TEXT NOT NULL,
     "body" TEXT NOT NULL,
     "score" INTEGER NOT NULL CONSTRAINT review_score_ck CHECK ("score" >= 0 and "score" <= 5),
-    "date" TIMESTAMP NOT NULL DEFAULT now() CONSTRAINT review_date_ck CHECK ("date" <= now())
+    "date" TIMESTAMP NOT NULL DEFAULT now() CONSTRAINT review_date_ck CHECK ("date" <= now()),
+    UNIQUE ("id_item", "id_user")
 );
 
 CREATE TABLE "cart" (
@@ -277,54 +278,52 @@ CREATE INDEX search_idx ON item USING GIST (to_tsvector('english',"item"."name" 
 
 -- TRIGGER01 --
 CREATE OR REPLACE FUNCTION update_rating()
-  RETURNS trigger AS
+    RETURNS trigger AS
 $$
 BEGIN
-        UPDATE "item" 
-        SET rating = (SELECT AVG(score) FROM review WHERE id_item = NEW.id_item)
-        WHERE id = NEW.id_item;
+    UPDATE "item" 
+    SET rating = (SELECT AVG(score) FROM review WHERE id_item = NEW.id_item)
+    WHERE id = NEW.id_item;
     RETURN NEW;
 END;
 $$
 LANGUAGE 'plpgsql';
 
 CREATE TRIGGER update_rating
-  AFTER INSERT ON "review"
-  FOR EACH ROW
-  EXECUTE PROCEDURE update_rating();
+    AFTER INSERT ON "review"
+    FOR EACH ROW
+    EXECUTE PROCEDURE update_rating();
 
 
 -- TRIGGER02 --
 
 CREATE OR REPLACE FUNCTION add_to_cart()
-  RETURNS trigger AS
+    RETURNS trigger AS
 $$
 BEGIN
-    IF (SELECT stock FROM "item" WHERE id=NEW.id_item) < NEW.quantity
-	  THEN 
-		  RAISE EXCEPTION 'Not enough stock';
+    IF (SELECT stock FROM "item" WHERE id=NEW.id_item) < NEW.quantity THEN 
+        RAISE EXCEPTION 'Not enough stock';
     END IF;
-  RETURN NEW;
+    RETURN NEW;
 END;
 $$
 LANGUAGE 'plpgsql';
 
 CREATE TRIGGER add_to_cart
-  BEFORE INSERT
-  ON "cart"
-  FOR EACH ROW
-  EXECUTE PROCEDURE add_to_cart();
+    BEFORE INSERT
+    ON "cart"
+    FOR EACH ROW
+    EXECUTE PROCEDURE add_to_cart();
 
 
 -- TRIGGER03 --
 
 CREATE OR REPLACE FUNCTION new_oos_notification()
-  RETURNS trigger AS
+    RETURNS trigger AS
 $$
 BEGIN
-    IF EXISTS (SELECT id_notif FROM "report_notification" WHERE id_notif=NEW.id_notif) 
-	  THEN 
-		  RAISE EXCEPTION 'Notification is already of type out_of_stock_notification' ;
+    IF EXISTS (SELECT id_notif FROM "report_notification" WHERE id_notif=NEW.id_notif) THEN 
+		RAISE EXCEPTION 'Notification is already of type out_of_stock_notification' ;
     END IF;
   RETURN NEW;
 END;
@@ -333,21 +332,20 @@ LANGUAGE 'plpgsql';
 
 
 CREATE TRIGGER new_oos_notification
-  BEFORE INSERT
-  ON "out_of_stock_notification"
-  FOR EACH ROW
-  EXECUTE PROCEDURE new_oos_notification();
+    BEFORE INSERT
+    ON "out_of_stock_notification"
+    FOR EACH ROW
+    EXECUTE PROCEDURE new_oos_notification();
 
 
 -- TRIGGER04 --
 
 CREATE OR REPLACE FUNCTION new_report_notification()
-  RETURNS trigger AS
+    RETURNS trigger AS
 $$
 BEGIN
-    IF EXISTS (SELECT id_notif FROM "out_of_stock_notification" WHERE id_notif=NEW.id_notif) 
-	  THEN 
-		  RAISE EXCEPTION 'Notification is already of type report_notification' ;
+    IF EXISTS (SELECT id_notif FROM "out_of_stock_notification" WHERE id_notif=NEW.id_notif) THEN 
+        RAISE EXCEPTION 'Notification is already of type report_notification' ;
     END IF;
   RETURN NEW;
 END;
@@ -355,16 +353,16 @@ $$
 LANGUAGE 'plpgsql';
 
 CREATE TRIGGER new_report_notification
-  BEFORE INSERT
-  ON "report_notification"
-  FOR EACH ROW
-  EXECUTE PROCEDURE new_report_notification();
+    BEFORE INSERT
+    ON "report_notification"
+    FOR EACH ROW
+    EXECUTE PROCEDURE new_report_notification();
 
 
-  -- TRIGGER05 --
+-- TRIGGER05 --
 
-  CREATE OR REPLACE FUNCTION new_item_sale()
-  RETURNS trigger AS
+CREATE OR REPLACE FUNCTION new_item_sale()
+    RETURNS trigger AS
 $$
 DECLARE 
     item_on_sale RECORD;
@@ -380,22 +378,19 @@ BEGIN
         END IF; 
     END IF;
 
-    IF EXISTS (SELECT * FROM "item", "sale", "item_sale" WHERE item.id=item_sale.id_item AND sale.id=item_sale.id_sale AND sale.start <= sale_end AND sale.end >= sale_start) 
-	  THEN 
+    IF EXISTS (SELECT * FROM "sale", "item_sale" WHERE NEW.id_item=item_sale.id_item AND sale.id=item_sale.id_sale AND sale.start <= sale_end AND sale.end >= sale_start) THEN 
 		  RAISE EXCEPTION 'The sale period colides with another sale for this item';
     END IF;
-  RETURN NEW;
+    RETURN NEW;
 END;
 $$
 LANGUAGE 'plpgsql';
 
 CREATE TRIGGER new_item_sale
-  BEFORE INSERT
-  ON "item_sale"
-  FOR EACH ROW
-  EXECUTE PROCEDURE new_item_sale();
-
-
+    BEFORE INSERT
+    ON "item_sale"
+    FOR EACH ROW
+    EXECUTE PROCEDURE new_item_sale();
 
 -- Transaction Functions 
 
