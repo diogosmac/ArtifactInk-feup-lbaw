@@ -33,6 +33,23 @@ Route::post('register', 'Auth\RegisterController@register');
 
 
 //routes for debugging pages - remove later 
+
 Route::get('home', function () {
     return view('pages.home');
+});
+
+Route::get('cart', function () {
+    return view('pages.cart');
+});
+
+Route::get('checkout/shipping', function () {
+    return view('pages.checkout.shipping');
+});
+
+Route::get('checkout/payment', function () {
+    return view('pages.checkout.payment');
+});
+
+Route::get('checkout/confirm', function () {
+    return view('pages.checkout.confirm');
 });

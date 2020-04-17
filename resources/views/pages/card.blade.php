@@ -1,4 +1,4 @@
-@extends('layouts.commmon')
+@extends('layouts.common')
 
 @section('title', $card->name)
 

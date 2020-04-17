@@ -68,11 +68,11 @@
 
   <!-- todo distribute scripts -->
 
-  <script src={{ asset('script/product_card.js') }} defer></script>
-  <script src={{ asset('script/checkout_list.js') }} defer></script>
-  <script src={{ asset('script/payment.js') }} defer></script>
-  <script src={{ asset('script/address.js') }} defer></script>
-  <script src={{ asset('script/mobile_nav.js') }} defer></script>
+  <script src={{ asset('js/product_card.js') }} defer></script>
+  <script src={{ asset('js/checkout_list.js') }} defer></script>
+  <script src={{ asset('js/payment.js') }} defer></script>
+  <script src={{ asset('js/address.js') }} defer></script>
+  <script src={{ asset('js/mobile_nav.js') }} defer></script>
   <script type="text/javascript">
     // Fix for Firefox autofocus CSS bug
     // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
@@ -85,7 +85,7 @@
     <div class="fixed-top ">
       <!-- main navbar -->
       <nav id="desktop-main-nav" class="navbar navbar-expand-md navbar-custom-top">
-        <a class="navbar-brand" href="../pages/home.php">
+        <a class="navbar-brand" href="{{ asset('/home') }}">
           <img class="d-inline-block align-center" src="../images/artifact_ink_logo_white.png" alt="ArtifactInk"
             height="40">
           <img class="d-inline-block align-center" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk"
@@ -132,42 +132,9 @@
                 <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
                   <div class="panel-body">
                     <ul class="list-group list-cart">
-                      <a class="item-link-cart" href="#">
-                        <li class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
-                          <span>
-                            <img class="cart-item-list-img"
-                              src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg"
-                              alt="Cool Tattoo">
-                          </span>
-                          <h5 class="cart-item-list-name">Cool Tattoo</h5>
-                          <h6 class="cart-item-list-price">4.99 €</h6>
-                          <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
-                        </li>
-                      </a>
-                      <a class="item-link-cart" href="#">
-                        <li class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
-                          <span>
-                            <img class="cart-item-list-img"
-                              src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg"
-                              alt="Cool Tattoo">
-                          </span>
-                          <h5 class="cart-item-list-name">Cool Tattoo</h5>
-                          <h6 class="cart-item-list-price">4.99 €</h6>
-                          <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
-                        </li>
-                      </a>
-                      <a class="item-link-cart" href="#">
-                        <li class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
-                          <span>
-                            <img class="cart-item-list-img"
-                              src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg"
-                              alt="Cool Tattoo">
-                          </span>
-                          <h5 class="cart-item-list-name">Cool Tattoo</h5>
-                          <h6 class="cart-item-list-price">4.99 €</h6>
-                          <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
-                        </li>
-                      </a>
+                      @include('partials.cartListItem')
+                      @include('partials.cartListItem')
+                      @include('partials.cartListItem')
                     </ul>
                   </div>
                   <div class="d-inline cart-list-total">
@@ -179,7 +146,7 @@
                     </div>
                   </div>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item checkout-button" href="../pages/shopping_cart.php">View Cart</a>
+                  <a class="dropdown-item checkout-button" href="{{ asset('/cart') }}">View Cart</a>
                 </div>
               </div>
             </li>
@@ -207,11 +174,33 @@
             </li>
             @else
             <li class="nav-item">
-              <a class="nav-link" href="#">
-                <span>
-                  <i class="fas fa-shopping-cart"></i>
-                </span>
-              </a>
+              <div class="btn-group">
+                <a class="btn" href="#" role="button" id="dropdownMenuCart" data-toggle="dropdown" aria-haspopup="true"
+                  aria-expanded="false">
+                  <span>
+                    <i class="fas fa-shopping-cart"></i>
+                  </span>
+                </a>
+                <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
+                  <div class="panel-body">
+                    <ul class="list-group list-cart">
+                      @include('partials.cartListItem')
+                      @include('partials.cartListItem')
+                      @include('partials.cartListItem')
+                    </ul>
+                  </div>
+                  <div class="d-inline cart-list-total">
+                    <div id="total-label" class="d-inline p-2">
+                      Total
+                    </div>
+                    <div id="price-total" class="d-inline p-2">
+                      33.33 €
+                    </div>
+                  </div>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item checkout-button" href="{{ asset('/cart') }}">View Cart</a>
+                </div>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('login') }}">Sign In</a>
@@ -233,7 +222,7 @@
               <i class="fas fa-bars"></i>
             </span>
           </button>
-          <a class="navbar-brand" href="../pages/home.php">
+          <a class="navbar-brand" href="{{ asset('/home') }}">
             <img class="d-inline-block align-center" src="../images/artifact_ink_logo_white.png" alt="ArtifactInk"
               height="40">
             <img class="d-inline-block align-center" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk"
@@ -255,42 +244,9 @@
             <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
               <div class="panel-body">
                 <ul class="list-group list-cart">
-                  <a class="item-link-cart" href="#">
-                    <li class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
-                      <span>
-                        <img class="cart-item-list-img"
-                          src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg"
-                          alt="Cool Tattoo">
-                      </span>
-                      <h5 class="cart-item-list-name">Cool Tattoo</h5>
-                      <h6 class="cart-item-list-price">4.99 €</h6>
-                      <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
-                    </li>
-                  </a>
-                  <a class="item-link-cart" href="#">
-                    <li class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
-                      <span>
-                        <img class="cart-item-list-img"
-                          src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg"
-                          alt="Cool Tattoo">
-                      </span>
-                      <h5 class="cart-item-list-name">Cool Tattoo</h5>
-                      <h6 class="cart-item-list-price">4.99 €</h6>
-                      <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
-                    </li>
-                  </a>
-                  <a class="item-link-cart" href="#">
-                    <li class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
-                      <span>
-                        <img class="cart-item-list-img"
-                          src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg"
-                          alt="Cool Tattoo">
-                      </span>
-                      <h5 class="cart-item-list-name">Cool Tattoo</h5>
-                      <h6 class="cart-item-list-price">4.99 €</h6>
-                      <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
-                    </li>
-                  </a>
+                 @include('partials.cartListItem')
+                 @include('partials.cartListItem')
+                 @include('partials.cartListItem')
                 </ul>
               </div>
               <div class="d-inline cart-list-total">
@@ -302,7 +258,7 @@
                 </div>
               </div>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item checkout-button" href="../pages/shopping_cart.php">View Cart</a>
+              <a class="dropdown-item checkout-button" href="{{ asset('/cart') }}">View Cart</a>
             </div>
           </div>
           <div class="btn-group">
@@ -323,7 +279,8 @@
               <a class="dropdown-item" href="{{ url('/logout') }}">Sign Out</a>
             </div>
           </div>
-          @else{<div class="btn-group">
+          @else
+          <div class="btn-group">
             <a class="btn" href="#" role="button" id="dropdownMenuCart" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
               <span>
@@ -333,42 +290,9 @@
             <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
               <div class="panel-body">
                 <ul class="list-group list-cart">
-                  <a class="item-link-cart" href="#">
-                    <li class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
-                      <span>
-                        <img class="cart-item-list-img"
-                          src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg"
-                          alt="Cool Tattoo">
-                      </span>
-                      <h5 class="cart-item-list-name">Cool Tattoo</h5>
-                      <h6 class="cart-item-list-price">4.99 €</h6>
-                      <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
-                    </li>
-                  </a>
-                  <a class="item-link-cart" href="#">
-                    <li class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
-                      <span>
-                        <img class="cart-item-list-img"
-                          src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg"
-                          alt="Cool Tattoo">
-                      </span>
-                      <h5 class="cart-item-list-name">Cool Tattoo</h5>
-                      <h6 class="cart-item-list-price">4.99 €</h6>
-                      <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
-                    </li>
-                  </a>
-                  <a class="item-link-cart" href="#">
-                    <li class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
-                      <span>
-                        <img class="cart-item-list-img"
-                          src="https://i.pinimg.com/originals/03/5d/9e/035d9ee5c531a63269a106d6daa87af0.jpg"
-                          alt="Cool Tattoo">
-                      </span>
-                      <h5 class="cart-item-list-name">Cool Tattoo</h5>
-                      <h6 class="cart-item-list-price">4.99 €</h6>
-                      <h6 class="badge badge-primary badge-pill cart-item-list-quant">1</h6>
-                    </li>
-                  </a>
+                  @include('partials.cartListItem')
+                  @include('partials.cartListItem')
+                  @include('partials.cartListItem')
                 </ul>
               </div>
               <div class="d-inline cart-list-total">
@@ -380,7 +304,7 @@
                 </div>
               </div>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item checkout-button" href="../pages/shopping_cart.php">View Cart</a>
+              <a class="dropdown-item checkout-button" href="{{ asset('/cart') }}">View Cart</a>
             </div>
 
             <a class="nav-link" href="{{ route('login') }}">Sign In</a>
@@ -685,6 +609,7 @@
           </div>
         </div>
       </nav>
+      </div>
 
       @yield('content')
 
