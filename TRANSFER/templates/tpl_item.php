@@ -1,4 +1,5 @@
 <?php
+/* IMPORTED */
 
 function draw_item_list()
 { ?>
@@ -124,6 +125,8 @@ function draw_card2()
     </div>
 
 <?php }
+
+/*IMPORTED (END) */
 
 function draw_card_sale1()
 { ?>
