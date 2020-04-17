@@ -1062,7 +1062,6 @@ INSERT INTO "item_purchase" ("id_item", "id_order", "price", "quantity") VALUES
     (109, 25, 162.64, 2),
     (213, 28, 121.19, 5),
     (13, 10, 57.85, 4),
-    (246, 28, 177.07, 5),
     (147, 21, 13.89, 4),
     (219, 30, 195.17, 1),
     (79, 26, 190.77, 4),
@@ -1091,7 +1090,6 @@ INSERT INTO "item_purchase" ("id_item", "id_order", "price", "quantity") VALUES
 -------- review --------
 ALTER SEQUENCE review_id_seq RESTART WITH 1;
 INSERT INTO "review" ("id_item", "id_user", "title", "body", "score", "date") VALUES
-    (248, 80, 'Nulla nisl.', 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet.', 0, '2020-03-20'),
     (148, 31, 'Suspendisse potenti.', 'Aenean fermentum.', 2, '2020-03-16'),
     (226, 98, 'Etiam vel augue.', 'Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.', 5, '2020-03-08'),
     (160, 10, 'Etiam pretium iaculis justo.', 'Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.', 1, '2020-03-28'),
@@ -1101,9 +1099,9 @@ INSERT INTO "review" ("id_item", "id_user", "title", "body", "score", "date") VA
     (69, 8, 'In congue.', 'Morbi a ipsum. Integer a nibh.', 2, '2020-03-07'),
     (165, 63, 'Curabitur at ipsum ac tellus semper interdum.', 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', 3, '2020-03-15'),
     (78, 15, 'Morbi non quam nec dui luctus rutrum.', 'Quisque ut erat.', 2, '2020-03-10'),
-    (187, 29, 'Phasellus id sapien in sapien iaculis congue.', 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.', 0, '2020-03-23'),
+    (187, 29, 'Phasellus id sapien in sapien iaculis congue.', 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.', 1, '2020-03-23'),
     (20, 20, 'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.', 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae, Duis faucibus accumsan odio.', 4, '2020-03-09'),
-    (164, 43, 'Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.', 'Vestibulum sed magna at nunc commodo placerat. Praesent blandit.', 0, '2020-03-24'),
+    (164, 43, 'Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.', 'Vestibulum sed magna at nunc commodo placerat. Praesent blandit.', 1, '2020-03-24'),
     (93, 56, 'Nunc purus.', 'Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', 3, '2020-03-12'),
     (30, 17, 'Curabitur gravida nisi at nibh.', 'Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices.', 2, '2020-03-07');
 -------- cart --------

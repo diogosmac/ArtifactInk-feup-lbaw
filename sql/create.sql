@@ -270,7 +270,7 @@ CREATE TABLE "store" (
 CREATE INDEX idx_user_picture ON "user" USING btree(id_picture);  
 CREATE INDEX idx_review ON "review" USING btree(id_user);
 CREATE INDEX idx_item_picture ON item_picture USING hash (id_item); 
-CREATE INDEX search_idx ON item USING GIST (to_tsvector('english',"item"."name" || ' ' || "item"."brand"|| ' ' || "item"."description"))
+CREATE INDEX search_idx ON item USING GIST (to_tsvector('english',"item"."name" || ' ' || "item"."brand"|| ' ' || "item"."description"));
 
 
 -- Triggers
@@ -401,6 +401,7 @@ CREATE TRIGGER new_item_sale
 
 CREATE OR REPLACE FUNCTION purchase_items(user_id int) RETURNS void AS $$
 DECLARE
+	item_sale_rec RECORD;
     purchase_product RECORD;
     product_price float;
 BEGIN
@@ -446,7 +447,7 @@ BEGIN
     	PERFORM purchase_items(user_id);
 
         order_total = (SELECT SUM(price) FROM "item_purchase" WHERE id_order=currval('order_id_seq'));
-        UPDATE order SET total=order_total WHERE id=currval('order_id_seq');
+        UPDATE "order" SET total=order_total WHERE id=currval('order_id_seq');
 
         DELETE FROM "cart" WHERE id_user = user_id;
 	END IF;
