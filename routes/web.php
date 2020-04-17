@@ -38,6 +38,25 @@ Route::get('home', function () {
     return view('pages.home');
 });
 
+//profile pages and stuff related 
+Route::get('profile', function () {
+    return view('pages.profile');
+});
+
+Route::get('review', function () {
+    return view('pages.review');
+});
+
+Route::get('profile/wishlist', function () {
+    return view('pages.wishlist');
+});
+
+Route::get('profile/purchased_history', function () {
+    return view('pages.purchased_history');
+});
+
+
+//shopping cart and checkout 
 Route::get('cart', function () {
     return view('pages.cart');
 });
