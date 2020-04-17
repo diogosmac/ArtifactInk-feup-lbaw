@@ -1,9 +1,4 @@
-<?php 
-
-/* IMPORTED*/
-function draw_filters()
-{ ?>
-    <aside class="d-flex flex-column justify-content-center bg-light rounded p-2">
+<aside class="d-flex flex-column justify-content-center bg-light rounded p-2">
         <h4 class="text-start">Filters</h4>
         <div>
             <label class="mt-2" for="categories">Categories</label>
@@ -43,6 +38,3 @@ function draw_filters()
         </div>
         <button class="btn btn-primary button my-2" type="submit">Apply</button>
     </aside>
-<?php
-}  /**/
-?>
