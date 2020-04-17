@@ -1,4 +1,5 @@
 <?php 
+$rating = 4.5;
 for($i = 1; $i <= 5; $i++) {
     if ($rating > $i - 0.25):
         echo '<i class="fas fa-star"></i>';

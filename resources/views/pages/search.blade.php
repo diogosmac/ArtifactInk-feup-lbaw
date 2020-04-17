@@ -40,25 +40,35 @@
     <div class="container-fluid">
         <div class="row">
             <div id="filters" class="d-none d-md-block col-md-3 my-2">
-                <!--@include('partials.filters', [])-->
+                @include('partials.filters', [])
             </div>
             <div id="mobileFilters" class="collapse d-md-none col-md-3 my-2">
-                <!--@include('partials.filters', [])-->
+                @include('partials.filters', [])
             </div>
             <section class="col-md-9">
                 <div class="tab-content mx-auto" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                         <div class="row justify-content-around">
-                            <!--
-                                <div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
+                            <div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
                                     @include('partials.item_card', [])
-                                </div>
-                            -->
+                            </div>
+                            <div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
+                                    @include('partials.item_card', [])
+                            </div>
+                            <div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
+                                    @include('partials.item_card', [])
+                            </div>
+                            <div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
+                                    @include('partials.item_card', [])
+                            </div>
+                            <div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
+                                    @include('partials.item_card', [])
+                            </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                         <ul class="list-group">
-                            <!--('partials.item_card_alt', [])-->
+                            @include('partials.item_card_alt', [])
                         </ul>
                     </div>
                 </div>
