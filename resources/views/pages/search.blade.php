@@ -1,3 +1,6 @@
+@extends('layouts.common')
+
+@section('content')
 <section class="mx-auto my-4">
     <h3>Search for 'black ink'</h3>
     <div class="d-flex flex-row justify-content-between align-items-center">
@@ -37,25 +40,25 @@
     <div class="container-fluid">
         <div class="row">
             <div id="filters" class="d-none d-md-block col-md-3 my-2">
-                @include('partials.filters', ['item' => $item])
+                <!--@include('partials.filters', [])-->
             </div>
             <div id="mobileFilters" class="collapse d-md-none col-md-3 my-2">
-                @include('partials.filters', ['item' => $item])
+                <!--@include('partials.filters', [])-->
             </div>
             <section class="col-md-9">
                 <div class="tab-content mx-auto" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                         <div class="row justify-content-around">
-                            @foreach ($items as $item)
+                            <!--
                                 <div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
-                                    @include('partials.item_card_vert', ['item' => $item])
+                                    @include('partials.item_card', [])
                                 </div>
-                            @endforeach
+                            -->
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                         <ul class="list-group">
-                            @each(partials.item_card_horz, ['item' => $item])
+                            <!--('partials.item_card_alt', [])-->
                         </ul>
                     </div>
                 </div>
@@ -63,3 +66,5 @@
         </div>
     </div>
 </section>
+
+@endsection
