@@ -32,21 +32,13 @@
 
         <div class="form-group col-md-6">
           <label for="inputAddress">Description</label>
-<<<<<<< HEAD
           <textarea class="form-control" id="titleInput" rows="4" placeholder="Write product description...">{{ $product->description }}</textarea>
-=======
-          <textarea class="form-control" id="titleInput" rows="4" placeholder="Write product description..."></textarea>
->>>>>>> Started working on admin pages
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="inputCategory">Category</label>
             <select class="custom-select" id="inputCategory">
-<<<<<<< HEAD
               <option value="Ink" selected>{{ $product->category }}</option>
-=======
-              <option value="Ink">Ink</option>
->>>>>>> Started working on admin pages
               <option value="Machines">Machines</option>
               <option value="...">...</option>
             </select>
@@ -54,11 +46,7 @@
           <div class="form-group">
             <label for="inputSubcategory">Subcategory</label>
             <select class="custom-select" id="inputCategory">
-<<<<<<< HEAD
               <option value="Ink" selected>{{ $product->subcategory }}</option>
-=======
-              <option value="Ink">Ink</option>
->>>>>>> Started working on admin pages
               <option value="Machines">Machines</option>
               <option value="...">...</option>
             </select>

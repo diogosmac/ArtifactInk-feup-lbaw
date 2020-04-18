@@ -11,6 +11,11 @@
 |
 */
 
+// test
+Route::get('test', function() {
+    return view('pages.test');
+});
+
 Route::get('/', 'Auth\LoginController@home');
 // Cards
 Route::get('cards', 'CardController@list');
