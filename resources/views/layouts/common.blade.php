@@ -115,7 +115,7 @@
           <ul class="navbar-nav ml-auto">
             @if (Auth::check())
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/profile/wishlist">
                 <span>
                   <i class="fas fa-heart"></i>
                 </span>
