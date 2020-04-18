@@ -124,8 +124,7 @@
 
     <hr class="w-75">
     <div id="related" class="mx-auto">
-        <?php //draw_product_deals('Related Items'); 
-        ?>
+        @include('partials.item_deals', [])
     </div>
     <hr class="w-75">
 
