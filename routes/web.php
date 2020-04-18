@@ -11,6 +11,11 @@
 |
 */
 
+// test
+Route::get('test', function() {
+    return view('pages.test');
+});
+
 Route::get('/', 'Auth\LoginController@home');
 // Cards
 Route::get('cards', 'CardController@list');
@@ -77,7 +82,6 @@ Route::get('checkout/confirm', function () {
     return view('pages.checkout.confirm');
 });
 
-<<<<<<< HEAD
 //static pages 
 Route::get('about_us', function () {
     return view('pages.about_us');
@@ -98,42 +102,50 @@ Route::get('returns_and_replacements', function () {
 Route::get('warranty', function () {
     return view('pages.warranty');
 });
-=======
 
 // admin routes
-// auth
-Route::get('admin/sign_in', function () {
-    return view('pages.admin.sign_in');
+Route::prefix('admin')->group(function () {
+    // auth
+    Route::get('/', function () {
+        return view('pages.admin.sign_in');
+    });
+
+    // auth
+    Route::get('sign_in', function () {
+        return view('pages.admin.sign_in');
+    });
+
+    // home
+    Route::get('home', function () {
+        return view('pages.admin.home');
+    });
+
+    // products
+    Route::get('products', function () {
+        return view('pages.admin.products');
+    });
+    // create product
+    Route::get('products/add', function () {
+        return view('pages.admin.add_product');
+    });
+    // edit product
+    Route::get('products/{id}/edit', function ($id) {
+        // TODO SEND OBJECT ARRAY WITH ID = $ID
+        $product = (object) array(
+            'id' => $id,
+            'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
+            'name' => "Dynamic Black Ink 100ml",
+            'price' => 17.99,
+            'category' => "Ink",
+            'subcategory' => "Black",
+            'stock' => 34,
+            'description' => "SUPER COOL DESCRIPTION"
+        );
+        return view('pages.admin.edit_product', ['product' => $product]);
+    })->where('id', '[0-9]+');
+    
+    // categories
+    Route::get('orders', function() {
+        return view('pages.admin.orders');
+    });
 });
-
-// home
-Route::get('admin/home', function () {
-    return view('pages.admin.home');
-});
-
-// products
-Route::get('admin/products', function () {
-    return view('pages.admin.products');
-});
-// create product
-Route::get('admin/products/add', function () {
-    return view('pages.admin.add_product');
-});
-// edit product
-Route::get('admin/products/{id}/edit', function ($id) {
-    // TODO SEND OBJECT ARRAY WITH ID = $ID
-    $product = (object) array(
-        'id' => $id,
-        'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
-        'name' => "Dynamic Black Ink 100ml",
-        'price' => 17.99,
-        'category' => "Ink",
-        'subcategory' => "Black",
-        'stock' => 34
-    );
-    return view('pages.admin.edit_product', ['product' => $product]);
-})->where('id', '[0-9]+');
-
-
-
->>>>>>> Started working on admin pages

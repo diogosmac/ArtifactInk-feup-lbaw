@@ -8,7 +8,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name', 'Laravel') }} Admin</title>
+  <title>{{ config('app.name', 'Laravel') }} @yield('title', 'Admin')</title>
 
   <!-- ****** faviconit.com favicons ****** -->
   <link rel="shortcut icon" href="{{ asset('images/faviconit/favicon.ico') }}">

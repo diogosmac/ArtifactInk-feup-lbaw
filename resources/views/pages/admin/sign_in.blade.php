@@ -1,8 +1,8 @@
 @extends('layouts.auth')
 
 @section('content')
-<form class="form-signin" method="POST" action="{{ route('admin/home') }}">
-  { csrf_field() }}
+<form class="form-signin" method="POST" action="{{ url('/home') }}">
+  {{ csrf_field() }}
   <a href="{{ asset('/home') }}">
     <img class="mb-4" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk" width="300">
   </a>
@@ -16,7 +16,7 @@
       <label for="inputAdminPassword">Password</label>
       <input type="password" class="form-control" id="inputAdminPassword">
     </div>
-    <button class="btn btn-lg btn-secondary btn-block" type="button" onclick="location.href='/admin/home.php'">Sign in</button>
+    <button class="btn btn-lg btn-secondary btn-block" type="button" onclick="location.href='{{ url('/admin/home') }}'">Sign in</button>
   </div>
 </form>
 @endsection

@@ -30,13 +30,13 @@
 
         <div class="form-group col-md-6">
           <label for="inputAddress">Description</label>
-          <textarea class="form-control" id="titleInput" rows="4" placeholder="Write product description..."></textarea>
+          <textarea class="form-control" id="titleInput" rows="4" placeholder="Write product description...">{{ $product->description }}</textarea>
         </div>
         <div class="col-md-6">
           <div class="form-group">
             <label for="inputCategory">Category</label>
             <select class="custom-select" id="inputCategory">
-              <option value="Ink">Ink</option>
+              <option value="Ink" selected>{{ $product->category }}</option>
               <option value="Machines">Machines</option>
               <option value="...">...</option>
             </select>
@@ -44,7 +44,7 @@
           <div class="form-group">
             <label for="inputSubcategory">Subcategory</label>
             <select class="custom-select" id="inputCategory">
-              <option value="Ink">Ink</option>
+              <option value="Ink" selected>{{ $product->subcategory }}</option>
               <option value="Machines">Machines</option>
               <option value="...">...</option>
             </select>
