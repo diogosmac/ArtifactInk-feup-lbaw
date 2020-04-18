@@ -4,8 +4,8 @@
 <form class="form-signin" method="POST" action="{{ route('login') }}">
     {{ csrf_field() }}
 
-    <a href="{{ asset('/home') }}">
-        <img class="mb-4" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk" width="300">
+    <a href="{{ url('/home') }}">
+        <img class="mb-4" src="{{ asset('/assets/artifact_ink_letters_white.png') }}" alt="ArtifactInk" width="300">
     </a>
     <div class="sign-box">
         <h1 class="h3 mb-3 font-weight-normal">Sign In</h1>
@@ -23,7 +23,7 @@
         </div>
         <div class="form-group password-input">
             <label for="exampleInputPassword1">Password</label>
-            <a href="{{ asset('recover_password')}}"> Forget your password?</a>
+            <a href="{{ url('recover_password') }}"> Forget your password?</a>
             <input type="password" class="form-control" name="password" id="exampleInputPassword1" required>
             @if ($errors->has('password'))
             <span class="error">

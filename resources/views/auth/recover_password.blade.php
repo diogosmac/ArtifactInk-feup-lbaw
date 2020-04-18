@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
 <form class="form-signin " method="POST" action="#">
-    <a href="../pages/home.php">
-        <img class="mb-4" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk" width="300">
+    <a href="{{ url('/home') }}">
+        <img class="mb-4" src="{{ asset('/assets/artifact_ink_letters_white.png') }}" alt="ArtifactInk" width="300">
     </a>
     <div class="sign-box">
         <h1 class="h3 mb-3 font-weight-normal">Recover Password</h1>

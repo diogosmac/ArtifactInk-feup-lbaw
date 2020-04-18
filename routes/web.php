@@ -32,6 +32,11 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 
+
+Route::get('recover_password', function () {
+    return view('auth.recover_password');
+});
+
 //routes for debugging pages - remove later 
 
 Route::get('home', function () {

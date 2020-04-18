@@ -12,29 +12,6 @@
 
   <title>{{ config('app.name', 'Laravel') }}</title>
 
-  <!-- ****** faviconit.com favicons ****** -->
-  <link rel="shortcut icon" href="{{ asset('images/faviconit/favicon.ico') }}">
-  <link rel="icon" sizes="16x16 32x32 64x64" href="{{ asset('images/faviconit/favicon.ico') }}">
-  <link rel="icon" type="image/png" sizes="196x196" href="{{ asset('images/faviconit/favicon-192.png') }}">
-  <link rel="icon" type="image/png" sizes="160x160" href="{{ asset('images/faviconit/favicon-160.png') }}">
-  <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('images/faviconit/favicon-96.png') }}">
-  <link rel="icon" type="image/png" sizes="64x64" href="{{ asset('images/faviconit/favicon-64.png') }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/faviconit/favicon-32.png') }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/faviconit/favicon-16.png') }}">
-  <link rel="apple-touch-icon" href="{{ asset('images/faviconit/favicon-57.png') }}">
-  <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('images/faviconit/favicon-114.png') }}">
-  <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('images/faviconit/favicon-72.png') }}">
-  <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('images/faviconit/favicon-144.png') }}">
-  <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('images/faviconit/favicon-60.png') }}">
-  <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('images/faviconit/favicon-120.png') }}">
-  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('images/faviconit/favicon-76.png') }}">
-  <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('images/faviconit/favicon-152.png') }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/faviconit/favicon-180.png') }}">
-  <meta name="msapplication-TileColor" content="#FFFFFF">
-  <meta name="msapplication-TileImage" content="{{ asset('images/faviconit/favicon-144.png') }}">
-  <meta name="msapplication-config" content="{{ asset('images/faviconit/browserconfig.xml') }}">
-  <!-- ****** faviconit.com favicons ****** -->
-
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -68,11 +45,11 @@
 
   <!-- todo distribute scripts -->
 
-  <script src={{ asset('js/product_card.js') }} defer></script>
-  <script src={{ asset('js/checkout_list.js') }} defer></script>
-  <script src={{ asset('js/payment.js') }} defer></script>
-  <script src={{ asset('js/address.js') }} defer></script>
-  <script src={{ asset('js/mobile_nav.js') }} defer></script>
+  <script src="{{ asset('js/product_card.js') }}" defer></script>
+  <script src="{{ asset('js/checkout_list.js') }}" defer></script>
+  <script src="{{ asset('js/payment.js') }}" defer></script>
+  <script src="{{ asset('js/address.js') }}" defer></script>
+  <script src="{{ asset('js/mobile_nav.js') }}" defer></script>
   <script type="text/javascript">
     // Fix for Firefox autofocus CSS bug
     // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
@@ -85,10 +62,10 @@
     <div class="fixed-top ">
       <!-- main navbar -->
       <nav id="desktop-main-nav" class="navbar navbar-expand-md navbar-custom-top">
-        <a class="navbar-brand" href="{{ asset('/home') }}">
-          <img class="d-inline-block align-center" src="../images/artifact_ink_logo_white.png" alt="ArtifactInk"
+        <a class="navbar-brand" href="{{ url('/home') }}">
+          <img class="d-inline-block align-center" src="{{ asset('/assets/artifact_ink_logo_white.png') }}" alt="ArtifactInk"
             height="40">
-          <img class="d-inline-block align-center" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk"
+          <img class="d-inline-block align-center" src="{{ asset('/assets/artifact_ink_letters_white.png') }}" alt="ArtifactInk"
             width="125">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTopSupportedContent"
@@ -146,7 +123,7 @@
                     </div>
                   </div>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item checkout-button" href="{{ asset('/cart') }}">View Cart</a>
+                  <a class="dropdown-item checkout-button" href="{{ url('/cart') }}">View Cart</a>
                 </div>
               </div>
             </li>
@@ -198,7 +175,7 @@
                     </div>
                   </div>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item checkout-button" href="{{ asset('/cart') }}">View Cart</a>
+                  <a class="dropdown-item checkout-button" href="{{ url('/cart') }}">View Cart</a>
                 </div>
               </div>
             </li>
@@ -222,7 +199,7 @@
               <i class="fas fa-bars"></i>
             </span>
           </button>
-          <a class="navbar-brand" href="{{ asset('/home') }}">
+          <a class="navbar-brand" href="{{ url('/home') }}">
             <img class="d-inline-block align-center" src="../images/artifact_ink_logo_white.png" alt="ArtifactInk"
               height="40">
             <img class="d-inline-block align-center" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk"
@@ -258,7 +235,7 @@
                 </div>
               </div>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item checkout-button" href="{{ asset('/cart') }}">View Cart</a>
+              <a class="dropdown-item checkout-button" href="{{ url('/cart') }}">View Cart</a>
             </div>
           </div>
           <div class="btn-group">
@@ -304,7 +281,7 @@
                 </div>
               </div>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item checkout-button" href="{{ asset('/cart') }}">View Cart</a>
+              <a class="dropdown-item checkout-button" href="{{ url('/cart') }}">View Cart</a>
             </div>
 
             <a class="nav-link" href="{{ route('login') }}">Sign In</a>

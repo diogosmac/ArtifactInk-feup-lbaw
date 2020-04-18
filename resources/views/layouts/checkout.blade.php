@@ -12,28 +12,6 @@
 
   <title>{{ config('app.name', 'Laravel') }}</title>
 
-  <!-- ****** faviconit.com favicons ****** -->
-  <link rel="shortcut icon" href="{{ asset('images/faviconit/favicon.ico') }}">
-  <link rel="icon" sizes="16x16 32x32 64x64" href="{{ asset('images/faviconit/favicon.ico') }}">
-  <link rel="icon" type="image/png" sizes="196x196" href="{{ asset('images/faviconit/favicon-192.png') }}">
-  <link rel="icon" type="image/png" sizes="160x160" href="{{ asset('images/faviconit/favicon-160.png') }}">
-  <link rel="icon" type="image/png" sizes="96x96" href="{{ asset('images/faviconit/favicon-96.png') }}">
-  <link rel="icon" type="image/png" sizes="64x64" href="{{ asset('images/faviconit/favicon-64.png') }}">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('images/faviconit/favicon-32.png') }}">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/faviconit/favicon-16.png') }}">
-  <link rel="apple-touch-icon" href="{{ asset('images/faviconit/favicon-57.png') }}">
-  <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('images/faviconit/favicon-114.png') }}">
-  <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('images/faviconit/favicon-72.png') }}">
-  <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('images/faviconit/favicon-144.png') }}">
-  <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('images/faviconit/favicon-60.png') }}">
-  <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('images/faviconit/favicon-120.png') }}">
-  <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('images/faviconit/favicon-76.png') }}">
-  <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('images/faviconit/favicon-152.png') }}">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/faviconit/favicon-180.png') }}">
-  <meta name="msapplication-TileColor" content="#FFFFFF">
-  <meta name="msapplication-TileImage" content="{{ asset('images/faviconit/favicon-144.png') }}">
-  <meta name="msapplication-config" content="{{ asset('images/faviconit/browserconfig.xml') }}">
-  <!-- ****** faviconit.com favicons ****** -->
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -58,18 +36,14 @@
   <link href="{{ asset('css/common.css') }}" rel="stylesheet">
   <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
   <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/carousel_card.css') }}" rel="stylesheet">
   <link href="{{ asset('css/checkout.css') }}" rel="stylesheet">
   <link href="{{ asset('css/product.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/review.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/profile.css') }}" rel="stylesheet">
   <link href="{{ asset('css/item_list.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/search.css') }}" rel="stylesheet">
 
   <!-- todo distribute scripts -->
 
-  <script src={{ asset('js/payment.js') }} defer></script>
-  <script src={{ asset('js/address.js') }} defer></script>
+  <script src="{{ asset('js/payment.js') }}" defer></script>
+  <script src="{{ asset('js/address.js') }}" defer></script>
   <script type="text/javascript">
     // Fix for Firefox autofocus CSS bug
     // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
@@ -82,9 +56,9 @@
     <div class="fixed-top ">
       <nav class="navbar navbar-expand-md navbar-custom-top">
         <a class="navbar-brand" href="{{ url('/home') }}">
-          <img class="d-inline-block align-center" src="../images/artifact_ink_logo_white.png" alt="ArtifactInk"
+          <img class="d-inline-block align-center" src="{{ asset('/assets/artifact_ink_logo_white.png') }}" alt="ArtifactInk"
             height="40">
-          <img class="d-inline-block align-center" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk"
+          <img class="d-inline-block align-center" src="{{ asset('/assets/artifact_ink_letters_white.png') }}" alt="ArtifactInk"
             width="125">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTopSupportedContent"
