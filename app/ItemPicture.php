@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class ItemPicture extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'product';
+    protected $table = 'item';
 
     /**
      * Indicates if the model should be timestamped.
@@ -21,9 +21,9 @@ class Product extends Model
     public $timestamps = false;
 
     /**
-     * 
+     * A product picture belongs to a single product
      */
-    public function category(){
-        return $this->belongsTo('App\Category');
+    public function item() {
+        return $this->belongsTo('App\Item');
     }
 }
