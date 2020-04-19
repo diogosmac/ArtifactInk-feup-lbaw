@@ -156,6 +156,11 @@ Route::prefix('admin')->group(function () {
         return view('pages.admin.newsletter');
     });
 
+    // faqs
+    Route::get('faqs', function () {
+        return view('pages.admin.faqs');
+    });
+
 });
 
 
