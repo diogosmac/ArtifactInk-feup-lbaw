@@ -69,7 +69,8 @@ CREATE TABLE "user" (
     "date_of_birth" DATE NOT NULL CONSTRAINT user_dob_ck CHECK (date_part('year', age(now(), date_of_birth)) >= 18),
     "email" TEXT NOT NULL CONSTRAINT user_email_uk UNIQUE,
     "phone" TEXT,
-    "password" TEXT NOT NULL
+    "password" TEXT NOT NULL,
+    "remember_token" VARCHAR
 );
 
 CREATE TABLE "country" (

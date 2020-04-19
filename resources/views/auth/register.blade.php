@@ -40,9 +40,15 @@
       @endif
 
     </div>
+
     <div class="form-group password-input">
       <label for="exampleInputPassword2">Confirm Password</label>
       <input type="password" name="password_confirmation" class="form-control" id="exampleInputPassword2" required>
+    </div>
+
+    <div class="form-group date-input"> 
+      <label for="inputBirthday">Date of Birth</label>
+      <input type="date" name="date_of_birth" class="form-control" id="inputBirthday" required>
     </div>
 
     <button class="btn btn-lg button btn-block" type="submit">Sign Up</button>

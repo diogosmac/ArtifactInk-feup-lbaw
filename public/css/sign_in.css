@@ -100,7 +100,7 @@ div.row{
     margin-top: 2em;
 }
 
-.form-group.email-input label, .form-group.password-input label, .form-group.input label{
+.form-group.email-input label, .form-group.password-input label, .form-group.input label,  .date-input label{
     font-weight: bold;
     
 }
