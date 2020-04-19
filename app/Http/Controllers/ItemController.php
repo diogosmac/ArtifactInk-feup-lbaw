@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Item;
+use App\ItemPicture;
 
 class ItemController extends Controller
 {
@@ -13,10 +14,13 @@ class ItemController extends Controller
     public function show($id_item)
     {
         try {
-            $product = Item::findOrFail($id_item);
+            $item = Item::findOrFail($id_item);
+            //$pictures = $item->images()->get();
+
             //$reviews = Review::where('id_item', $id_item)->orderBy('date', 'DESC')->get();
-            if ($product != null) {
-                //return view('pages.product', ['item' => $item, 'reviews' => $reviews]);
+            if ($item != null) {
+                //return $pictures;
+                return view('pages.product', ['item' => $item/*, 'reviews' => $reviews*/]);
             } else {
                 return response(json_encode("This product does not exist"), 404);
             }

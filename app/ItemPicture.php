@@ -11,7 +11,7 @@ class ItemPicture extends Model
      *
      * @var string
      */
-    protected $table = 'item';
+    protected $table = 'item_picture';
 
     /**
      * Indicates if the model should be timestamped.
@@ -24,6 +24,6 @@ class ItemPicture extends Model
      * A product picture belongs to a single product
      */
     public function item() {
-        return $this->belongsTo('App\Item');
+        return $this->belongsTo('App\Item', 'id_item');
     }
 }

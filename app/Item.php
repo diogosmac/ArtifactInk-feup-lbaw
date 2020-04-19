@@ -40,6 +40,6 @@ class Item extends Model
      * An item has many images
      */
     public function images() {
-        return $this->hasMany('App\ItemPicture');
+        return $this->hasMany('App\ItemPicture', 'id_item');
     }
 }
