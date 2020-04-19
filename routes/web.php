@@ -161,6 +161,10 @@ Route::prefix('admin')->group(function () {
         return view('pages.admin.faqs');
     });
 
+    // info
+    Route::get('info', function () {
+        return view('pages.admin.info');
+    });
 });
 
 
