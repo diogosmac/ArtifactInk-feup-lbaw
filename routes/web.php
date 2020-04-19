@@ -119,6 +119,11 @@ Route::prefix('admin')->group(function () {
     Route::get('reviews', function() {
         return view('pages.admin.reviews');
     });
+
+    // users
+    Route::get('users', function() {
+        return view('pages.admin.users');
+    });
 });
 
 
