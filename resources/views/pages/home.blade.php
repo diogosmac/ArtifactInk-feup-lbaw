@@ -42,5 +42,9 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+
+    @include('partials.item_deals', [])
+    @include('partials.item_deals', [])
+    @include('partials.item_deals', [])    
     
 @endsection
