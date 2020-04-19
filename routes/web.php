@@ -16,6 +16,11 @@ Route::get('test', function () {
     return view('pages.test');
 });
 
+//Route::get('/', 'Auth\LoginController@home');
+// Cards
+Route::get('cards', 'CardController@list');
+Route::get('cards/{id}', 'CardController@show');
+
 // API
 // Authentication
 
@@ -32,6 +37,10 @@ Route::get('recover_password', function () {
 });
 
 //routes for debugging pages - remove later 
+Route::get('/', function () {
+    return view('pages.home');
+});
+
 Route::get('home', function () {
     return view('pages.home');
 });
@@ -46,19 +55,19 @@ Route::get('product/{id}', function () {
 
 //profile pages and stuff related 
 Route::get('profile', function () {
-    return view('pages.profile');
+    return view('pages.profile.profile');
 });
 
 Route::get('review', function () {
-    return view('pages.review');
+    return view('pages.profile.review');
 });
 
 Route::get('profile/wishlist', function () {
-    return view('pages.wishlist');
+    return view('pages.profile.wishlist');
 });
 
 Route::get('profile/purchased_history', function () {
-    return view('pages.purchased_history');
+    return view('pages.profile.purchased_history');
 });
 
 // admin routes
@@ -189,21 +198,21 @@ Route::get('checkout/confirm', function () {
 
 //static pages 
 Route::get('about_us', function () {
-    return view('pages.about_us');
+    return view('pages.info.about_us');
 });
 
 Route::get('faq', function () {
-    return view('pages.faq');
+    return view('pages.info.faq');
 });
 
 Route::get('payments_and_shipment', function () {
-    return view('pages.payments_and_shipment');
+    return view('pages.info.payments_and_shipment');
 });
 
 Route::get('returns_and_replacements', function () {
-    return view('pages.returns_and_replacements');
+    return view('pages.info.returns_and_replacements');
 });
 
 Route::get('warranty', function () {
-    return view('pages.warranty');
+    return view('pages.info.warranty');
 });

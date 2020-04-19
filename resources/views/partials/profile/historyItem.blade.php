@@ -10,8 +10,8 @@
       </div>
 
       <div class="col my-3" id="purchase-items-container">
-       @include('partials.purchasedItem')
-       @include('partials.purchasedItem')
+       @include('partials.profile.purchasedItem')
+       @include('partials.profile.purchasedItem')
       </div>
 
       <div class="row" id="purchase-shipping">
