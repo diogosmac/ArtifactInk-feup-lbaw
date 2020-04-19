@@ -12,7 +12,7 @@
 */
 
 // test
-Route::get('test', function() {
+Route::get('test', function () {
     return view('pages.test');
 });
 
@@ -81,48 +81,74 @@ Route::prefix('admin')->group(function () {
         return view('pages.admin.home');
     });
 
-    // products
-    Route::get('products', function () {
-        return view('pages.admin.products');
+    // products routes
+    Route::prefix('products')->group(function () {
+        // view products
+        Route::get('/', function () {
+            return view('pages.admin.products.products');
+        });
+        // create product
+        Route::get('add', function () {
+            return view('pages.admin.products.add_product');
+        });
+        // edit product
+        Route::get('{id}/edit', function ($id) {
+            // TODO SEND OBJECT ARRAY WITH ID = $ID
+            $product = (object) array(
+                'id' => $id,
+                'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
+                'name' => "Dynamic Black Ink 100ml",
+                'price' => 17.99,
+                'category' => "Ink",
+                'subcategory' => "Black",
+                'stock' => 34,
+                'description' => "SUPER COOL DESCRIPTION"
+            );
+            return view('pages.admin.products.edit_product', ['product' => $product]);
+        })->where('id', '[0-9]+');
     });
-    // create product
-    Route::get('products/add', function () {
-        return view('pages.admin.add_product');
-    });
-    // edit product
-    Route::get('products/{id}/edit', function ($id) {
-        // TODO SEND OBJECT ARRAY WITH ID = $ID
-        $product = (object) array(
-            'id' => $id,
-            'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
-            'name' => "Dynamic Black Ink 100ml",
-            'price' => 17.99,
-            'category' => "Ink",
-            'subcategory' => "Black",
-            'stock' => 34,
-            'description' => "SUPER COOL DESCRIPTION"
-        );
-        return view('pages.admin.edit_product', ['product' => $product]);
-    })->where('id', '[0-9]+');
-    
+
     // categories
-    Route::get('categories', function() {
+    Route::get('categories', function () {
         return view('pages.admin.categories');
     });
 
     // orders
-    Route::get('orders', function() {
+    Route::get('orders', function () {
         return view('pages.admin.orders');
     });
 
     // reviews
-    Route::get('reviews', function() {
+    Route::get('reviews', function () {
         return view('pages.admin.reviews');
     });
 
     // users
-    Route::get('users', function() {
+    Route::get('users', function () {
         return view('pages.admin.users');
+    });
+
+    // sales
+    Route::prefix('sales')->group(function () {
+        // view sales
+        Route::get('/', function () {
+            return view('pages.admin.sales.sales');
+        });
+        // create sale
+        Route::get('add', function () {
+            return view('pages.admin.sales.add_sale');
+        });
+        // edit sale
+        Route::get('{id}/edit', function ($id) {
+            // TODO SEND OBJECT ARRAY WITH ID = $ID
+            $sale = (object) array(
+                "id" => $id,
+                "name" => "Inktober Fest",
+                "startDate" => "2020-03-01",
+                "endDate" => "2020-04-01"
+            );
+            return view('pages.admin.sales.edit_sale', ['sale' => $sale]);
+        })->where('id', '[0-9]+');
     });
 });
 

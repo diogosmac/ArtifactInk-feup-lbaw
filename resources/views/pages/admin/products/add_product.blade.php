@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', ' Admin - Add Product')
+
 @section('content')
 <main class="col-md-9 ml-sm-auto col-lg-10 px-4 mb-5">
   <div class="container">

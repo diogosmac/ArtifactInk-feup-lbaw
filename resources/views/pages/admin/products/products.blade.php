@@ -91,11 +91,7 @@
               $products = array(
                 (object) array(
                 'id' => 2,
-<<<<<<< HEAD
                 'img' => "146_aftercare.jpg",
-=======
-                'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
->>>>>>> Started working on admin pages
                 'name' => "Dynamic Black Ink 100ml",
                 'price' => 17.99,
                 'category' => "Ink",
@@ -104,11 +100,7 @@
                 ),
                 (object) array(
                   'id' => 1,
-<<<<<<< HEAD
                   'img' => "135_compact_tattoo_arm_leg_rest.jpg",
-=======
-                  'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
->>>>>>> Started working on admin pages
                   'name' => "Dynamic Black Ink 100ml",
                   'price' => 17.99,
                   'category' => "Ink",
