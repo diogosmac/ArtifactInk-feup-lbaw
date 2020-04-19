@@ -2,7 +2,7 @@
 
 @section('content')
 <form class="form-signin " method="POST" action="#">
-    <a href="{{ url('/home') }}">
+    <a href="{{ url('/') }}">
         <img class="mb-4" src="{{ asset('/assets/artifact_ink_letters_white.png') }}" alt="ArtifactInk" width="300">
     </a>
     <div class="sign-box">

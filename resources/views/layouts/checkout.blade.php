@@ -55,7 +55,7 @@
   <div class="main-container">
     <div class="fixed-top ">
       <nav class="navbar navbar-expand-md navbar-custom-top">
-        <a class="navbar-brand" href="{{ url('/home') }}">
+        <a class="navbar-brand" href="{{ url('/') }}">
           <img class="d-inline-block align-center" src="{{ asset('/assets/artifact_ink_logo_white.png') }}" alt="ArtifactInk"
             height="40">
           <img class="d-inline-block align-center" src="{{ asset('/assets/artifact_ink_letters_white.png') }}" alt="ArtifactInk"

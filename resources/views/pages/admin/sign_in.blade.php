@@ -1,9 +1,9 @@
 @extends('layouts.auth')
 
 @section('content')
-<form class="form-signin" method="POST" action="{{ url('/home') }}">
+<form class="form-signin" method="POST" action="{{ url('/') }}">
   {{ csrf_field() }}
-  <a href="{{ asset('/home') }}">
+  <a href="{{ asset('/') }}">
     <img class="mb-4" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk" width="300">
   </a>
   <div class="sign-box">

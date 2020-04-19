@@ -62,7 +62,7 @@
     <div class="fixed-top ">
       <!-- main navbar -->
       <nav id="desktop-main-nav" class="navbar navbar-expand-md navbar-custom-top">
-        <a class="navbar-brand" href="{{ url('/home') }}">
+        <a class="navbar-brand" href="{{ url('/') }}">
           <img class="d-inline-block align-center" src="{{ asset('/assets/artifact_ink_logo_white.png') }}" alt="ArtifactInk"
             height="40">
           <img class="d-inline-block align-center" src="{{ asset('/assets/artifact_ink_letters_white.png') }}" alt="ArtifactInk"
@@ -199,7 +199,7 @@
               <i class="fas fa-bars"></i>
             </span>
           </button>
-          <a class="navbar-brand" href="{{ url('/home') }}">
+          <a class="navbar-brand" href="{{ url('/') }}">
             <img class="d-inline-block align-center" src="{{ asset('/assets/artifact_ink_logo_white.png') }}" alt="ArtifactInk"
               height="40">
             <img class="d-inline-block align-center" src="{{ asset('/assets/artifact_ink_letters_white.png') }}" alt="ArtifactInk"
