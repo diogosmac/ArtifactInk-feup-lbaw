@@ -33,11 +33,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /**
-     * The cards this user owns.
-     */
     public function profilePicture() {
         return $this->belongsTo('App\ProfilePicture','id_picture');
+    }
+
+    /**
+     * The items in this user's cart
+     */
+    public function cart_items() {
+        return $this->belongsToMany('App\Item', 'cart', 'id_user', 'id_item')->withPivot(['quantity', 'date_added']);
     }
 
     

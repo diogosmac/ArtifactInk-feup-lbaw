@@ -181,9 +181,10 @@ Route::prefix('admin')->group(function () {
 
 
 //shopping cart and checkout 
-Route::get('cart', function () {
+/*Route::get('cart', function () {
     return view('pages.cart');
-});
+});*/
+Route::get('cart', 'CartController@list');
 
 Route::get('checkout/shipping', function () {
     return view('pages.checkout.shipping');

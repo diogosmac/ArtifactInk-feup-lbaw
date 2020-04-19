@@ -19,6 +19,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @each('partials.cart.cartTableItem', $items, 'item')
                    @include('partials.cart.cartTableItem')
                    @include('partials.cart.cartTableItem')
                    @include('partials.cart.cartTableItem')
