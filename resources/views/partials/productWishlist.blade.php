@@ -2,12 +2,12 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
-          <a href="../pages/product.php" class="list-img-link">
+          <a href="/product/1" class="list-img-link">
             <img src="https://images-na.ssl-images-amazon.com/images/I/61TBsibBdqL._SX425_.jpg" class="card-img-top" alt="...">
           </a>
         </div>
         <div class="col-sm-6">
-          <a href="../pages/product.php" class="list-img-link">
+          <a href="/product/1" class="list-img-link">
             <h3 class="font-weight-bold"> Tattoo Machine </h3>
           </a>
 

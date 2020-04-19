@@ -9,14 +9,14 @@
                     </a>
                 </div>
                 <div class="col-sm-6">
-                    <a href="../pages/product.php" class="list-img-link">
+                    <a href="/product/1" class="list-img-link">
                         <h3 class="font-weight-bold"> <!---->Product Name </h3>
                     </a>
 
                     <div class="py-2 d-flex flex-row bd-highlight justify-content-between">
                         <div>
                             @include('partials.rating_stars', [] )
-                            <a href="#specs" class="px-2 a_link"> (<!--No ratings-->)</a>
+                            <a href="/product/1#specs" class="px-2 a_link"> (<!--No ratings-->)</a>
                             
                         </div>
                     </div>

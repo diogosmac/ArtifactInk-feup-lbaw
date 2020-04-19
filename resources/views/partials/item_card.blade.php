@@ -12,7 +12,7 @@
             </a>
         </div>
         <div class="p-1">
-            <a href="../pages/product.php" class="card-img-link">
+            <a href="/product/1" class="card-img-link">
             <div>
                 <img src="https://images-na.ssl-images-amazon.com/images/I/61TBsibBdqL._SX425_.jpg" class="card-img-top image-fit" alt="...">
             </div>

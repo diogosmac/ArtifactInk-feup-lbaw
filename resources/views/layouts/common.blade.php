@@ -81,7 +81,7 @@
                 <input type="text" class="form-control" placeholder="Search" aria-describedby="search-button">
                 <div class="input-group-append">
                   <button class="btn btn-outline-success" type="button" id="search-button">
-                    <a href="/pages/search.php">
+                    <a href="/search">
                       <i class="fas fa-search"></i>
                     </a>
                   </button>
@@ -142,7 +142,7 @@
                     alt="John Doe">
                   <h5 class="dropdown-header">John Doe</h5>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/pages/profile.php">My Account</a>
+                  <a class="dropdown-item" href="/profile">My Account</a>
                   <a class="dropdown-item" href="#">My Order</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{ url('/logout') }}">Sign Out</a>
@@ -297,11 +297,11 @@
                     Designs
                   </a>
                   <div class="subclass-nav-mobile">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -311,11 +311,11 @@
                     Machines
                   </a>
                   <div class="subclass-nav-mobile">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -325,11 +325,11 @@
                     Inks
                   </a>
                   <div class="subclass-nav-mobile">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -339,11 +339,11 @@
                     Needles and Cartridges
                   </a>
                   <div class="subclass-nav-mobile">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -353,11 +353,11 @@
                     Grips Tips and Tubes
                   </a>
                   <div class="subclass-nav-mobile">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -368,11 +368,11 @@
                     Studio Furniture
                   </a>
                   <div class="subclass-nav-mobile">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -382,11 +382,11 @@
                     Aftercare
                   </a>
                   <div class="subclass-nav-mobile ">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -396,11 +396,11 @@
                     Medical Equipment
                   </a>
                   <div class="subclass-nav-mobile">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -410,11 +410,11 @@
                     Piercings
                   </a>
                   <div class="subclass-nav-mobile">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -454,11 +454,11 @@
                     Designs
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -469,11 +469,11 @@
                     Machines
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -484,11 +484,11 @@
                     Inks
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -499,11 +499,11 @@
                     Needles and Cartridges
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -514,11 +514,11 @@
                     Grips Tips and Tubes
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -529,11 +529,11 @@
                     Studio Furniture
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -544,11 +544,11 @@
                     Aftercare
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -559,11 +559,11 @@
                     Medical Equipment
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
@@ -574,11 +574,11 @@
                     Piercings
                   </a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
+                    <a class="dropdown-item" href="/search">Something else here</a>
+                    <a class="dropdown-item" href="/search">Action</a>
+                    <a class="dropdown-item" href="/search">Another action</a>
                   </div>
                 </div>
               </li>
