@@ -165,6 +165,11 @@ Route::prefix('admin')->group(function () {
     Route::get('info', function () {
         return view('pages.admin.info');
     });
+
+    // support message
+    Route::get('support_chat', function () {
+        return view('pages.admin.support_chat');
+    });
 });
 
 
