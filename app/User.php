@@ -34,9 +34,9 @@ class User extends Authenticatable
     ];
 
     /**
-     * The cards this user owns.
+     * The items in this user's cart
      */
-     public function cards() {
-      return $this->hasMany('App\Card');
+    public function cart_items() {
+        return $this->belongsToMany('App\Item', 'cart', 'id_user', 'id_item')->withPivot(['quantity', 'date_added']);
     }
 }
