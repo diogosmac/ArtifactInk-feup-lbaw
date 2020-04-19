@@ -14,9 +14,9 @@
                 <span class="badge badge-secondary badge-pill">3</span>
             </h4>
             <ul class="list-group mb-3" id="checkout-items-list">
-                @include('partials.checkoutItem')
-                @include('partials.checkoutItem')
-                @include('partials.checkoutItem')
+                @include('partials.checkout.checkoutItem')
+                @include('partials.checkout.checkoutItem')
+                @include('partials.checkout.checkoutItem')
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total (EUR)</span>
                     <strong>20€</strong>

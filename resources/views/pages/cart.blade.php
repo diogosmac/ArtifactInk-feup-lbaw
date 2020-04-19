@@ -19,11 +19,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                   @include('partials.cartTableItem')
-                   @include('partials.cartTableItem')
-                   @include('partials.cartTableItem')
-                   @include('partials.cartTableItem')
-                   @include('partials.cartTableItem')
+                   @include('partials.cart.cartTableItem')
+                   @include('partials.cart.cartTableItem')
+                   @include('partials.cart.cartTableItem')
+                   @include('partials.cart.cartTableItem')
+                   @include('partials.cart.cartTableItem')
                     <tr class="total">
                         <th></th>
                         <th></th>
@@ -49,11 +49,11 @@
     <div class="mobile-checkout-box">
         <span class="total d-flex justify-content-end">Total:  <span class="total-price">  </span></span>
         <div class="row shopping-cart-div">
-            @include('partials.cartTableItemMobile')
-            @include('partials.cartTableItemMobile')
-            @include('partials.cartTableItemMobile')
-            @include('partials.cartTableItemMobile')
-            @include('partials.cartTableItemMobile')
+            @include('partials.cart.cartTableItemMobile')
+            @include('partials.cart.cartTableItemMobile')
+            @include('partials.cart.cartTableItemMobile')
+            @include('partials.cart.cartTableItemMobile')
+            @include('partials.cart.cartTableItemMobile')
         </div>
         <div class="row checkout-menu d-flex justify-content-between buttons " id="checkout-buttons-div">
             <div>

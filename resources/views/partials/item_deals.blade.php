@@ -5,10 +5,10 @@
     </div>
     <div class="container justify-content-center">
         <div class="row">
-            <div class="p-0 col-12 col-sm-6 col-lg-3 d-flex justify-content-center">@include('partials.item_card', [])</div>
-            <div class="p-0 col-12 col-sm-6 col-lg-3 d-flex justify-content-center">@include('partials.item_card', [])</div>
-            <div class="p-0 col-12  col-sm-6 col-lg-3 d-flex justify-content-center">@include('partials.item_card', [])</div>
-            <div class="p-0 col-12 col-sm-6 col-lg-3 d-flex justify-content-center">@include('partials.item_card', [])</div>
+            <div class="p-0 col-12 col-sm-6 col-lg-3 d-flex justify-content-center">@include('partials.item.item_card', [])</div>
+            <div class="p-0 col-12 col-sm-6 col-lg-3 d-flex justify-content-center">@include('partials.item.item_card', [])</div>
+            <div class="p-0 col-12 col-sm-6 col-lg-3 d-flex justify-content-center">@include('partials.item.item_card', [])</div>
+            <div class="p-0 col-12 col-sm-6 col-lg-3 d-flex justify-content-center">@include('partials.item.item_card', [])</div>
         </div>
     </div>
 </div>

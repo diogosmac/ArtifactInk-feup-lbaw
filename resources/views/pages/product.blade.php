@@ -172,7 +172,7 @@
                         </select>
                     </div>
                     <div class="py-4">
-                        @include('partials.review', [])
+                        @include('partials.product.review', [])
                     </div>
                 </div>
             </div>

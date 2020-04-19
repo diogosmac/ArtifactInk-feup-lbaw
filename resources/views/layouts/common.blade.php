@@ -109,9 +109,9 @@
                 <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
                   <div class="panel-body">
                     <ul class="list-group list-cart">
-                      @include('partials.cartListItem')
-                      @include('partials.cartListItem')
-                      @include('partials.cartListItem')
+                      @include('partials.cart.cartListItem')
+                      @include('partials.cart.cartListItem')
+                      @include('partials.cart.cartListItem')
                     </ul>
                   </div>
                   <div class="d-inline cart-list-total">
@@ -161,9 +161,9 @@
                 <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
                   <div class="panel-body">
                     <ul class="list-group list-cart">
-                      @include('partials.cartListItem')
-                      @include('partials.cartListItem')
-                      @include('partials.cartListItem')
+                      @include('partials.cart.cartListItem')
+                      @include('partials.cart.cartListItem')
+                      @include('partials.cart.cartListItem')
                     </ul>
                   </div>
                   <div class="d-inline cart-list-total">
@@ -221,9 +221,9 @@
             <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
               <div class="panel-body">
                 <ul class="list-group list-cart">
-                 @include('partials.cartListItem')
-                 @include('partials.cartListItem')
-                 @include('partials.cartListItem')
+                 @include('partials.cart.cartListItem')
+                 @include('partials.cart.cartListItem')
+                 @include('partials.cart.cartListItem')
                 </ul>
               </div>
               <div class="d-inline cart-list-total">
@@ -267,9 +267,9 @@
             <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
               <div class="panel-body">
                 <ul class="list-group list-cart">
-                  @include('partials.cartListItem')
-                  @include('partials.cartListItem')
-                  @include('partials.cartListItem')
+                  @include('partials.cart.cartListItem')
+                  @include('partials.cart.cartListItem')
+                  @include('partials.cart.cartListItem')
                 </ul>
               </div>
               <div class="d-inline cart-list-total">
