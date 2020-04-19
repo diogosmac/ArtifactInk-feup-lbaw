@@ -30,6 +30,9 @@ Route::get('sign_out', 'Auth\LoginController@logout')->name('sign_out');
 Route::get('sign_up', 'Auth\RegisterController@showRegistrationForm')->name('sign_up');
 Route::post('sign_up', 'Auth\RegisterController@register');
 
+//profile
+
+Route::get('profile_nav','UserController@showUserNavbar');
 
 
 Route::get('recover_password', function () {

@@ -7,7 +7,7 @@
       <div class="container">
 
         <div class="mb-4 border-bottom mt-2">
-          <h1>Products</h1>
+          <h1>{{ $item->name }}</h1>
         </div>
 
         <div class="d-flex align-items-center mb-3">

@@ -134,13 +134,14 @@
                   <span>
                     <i class="fas fa-user"></i>
                   </span>
-                  John Doe
+                  {{ Auth::user()->name }}
+                  
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuAccount">
                   <img class="profile-pic-bubble"
-                    src="https://www.diretoriodigital.com.br/wp-content/uploads/2013/05/Team-Member-3.jpg"
-                    alt="John Doe">
-                  <h5 class="dropdown-header">John Doe</h5>
+                    src="{{ asset('storage/img_user/' . Auth::user()->profilePicture()->get()->first()->link) }}"
+                    alt="{{ Auth::user()->name}}">
+                  <h5 class="dropdown-header">{{ Auth::user()->name}}</h5>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="/profile">My Account</a>
                   <a class="dropdown-item" href="#">My Order</a>
@@ -247,8 +248,8 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuAccount">
               <img class="profile-pic-bubble"
-                src="https://www.diretoriodigital.com.br/wp-content/uploads/2013/05/Team-Member-3.jpg" alt="John Doe">
-              <h5 class="dropdown-header">John Doe</h5>
+                src="{{ asset('storage/img_user/' . Auth::user()->profilePicture()->get()->first()->link) }}" alt="{{ Auth::user()->name}}">
+              <h5 class="dropdown-header">{{ Auth::user()->name}}</h5>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{ url('/profile') }}">My Account</a>
               <a class="dropdown-item" href="#">My Order</a>
