@@ -13,7 +13,7 @@
     </div>
     <!-- IF ON SALE -->
     <div class="p-1">
-        <a href="../pages/product.php" class="card-img-link">
+        <a href="/product/1" class="card-img-link">
             <div>
                 <img src="https://cdn.shopify.com/s/files/1/1314/0625/products/19_Color_Ink_Set_600x600.jpg?v=1498235476" class="card-img-top image-fit" alt="...">
             </div>

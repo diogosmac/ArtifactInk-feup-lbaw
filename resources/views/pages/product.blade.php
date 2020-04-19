@@ -6,8 +6,8 @@
     <section id="product" class="mx-auto">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb bg-white mt-2 mb-1">
-                <li class="breadcrumb-item"><a href="#" class="a_link">Ink</a></li>
-                <li class="breadcrumb-item"><a href="#" class="a_link">Subcat</a></li>
+                <li class="breadcrumb-item"><a href="/search" class="a_link">Ink</a></li>
+                <li class="breadcrumb-item"><a href="/search" class="a_link">Subcat</a></li>
                 <li class="breadcrumb-item active" aria-current="page" class="a_link">Black Ink</li>
             </ol>
         </nav>

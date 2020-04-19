@@ -47,6 +47,14 @@ Route::get('home', function () {
     return view('pages.home');
 });
 
+Route::get('search', function () {
+    return view('pages.search');
+});
+
+Route::get('product/{id}', function () {
+    return view('pages.product');
+});
+
 //profile pages and stuff related 
 Route::get('profile', function () {
     return view('pages.profile');
