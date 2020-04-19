@@ -150,6 +150,12 @@ Route::prefix('admin')->group(function () {
             return view('pages.admin.sales.edit_sale', ['sale' => $sale]);
         })->where('id', '[0-9]+');
     });
+
+    // newsletter
+    Route::get('newsletter', function () {
+        return view('pages.admin.newsletter');
+    });
+
 });
 
 

@@ -153,7 +153,7 @@
               <div class="col-md-6 col-sm-12">
                 <label for="brands">Brands</label>
                 <div id="brands" class="rounded border p-2 search-box-category">
-                @for ($i = 1; $i < 6; $i++)
+                  @for ($i = 1; $i < 6; $i++)
                     <div class="custom-control custom-checkbox mb-3">
                       <input type="checkbox" class="custom-control-input" id="brand{{ $i }}">
                       <label class="custom-control-label" for="brand{{ $i }}">Brand {{ $i }}</label>
