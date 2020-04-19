@@ -49,9 +49,7 @@ Route::get('search', function () {
     return view('pages.search');
 });
 
-Route::get('product/{id}', function () {
-    return view('pages.product');
-});
+Route::get('product/{id}', 'ItemController@show');
 
 //profile pages and stuff related 
 Route::get('profile', function () {
