@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', ' Admin - Products')
+
 @section('content')
 <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="container">
@@ -89,7 +91,7 @@
               $products = array(
                 (object) array(
                 'id' => 2,
-                'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
+                'img' => "146_aftercare.jpg",
                 'name' => "Dynamic Black Ink 100ml",
                 'price' => 17.99,
                 'category' => "Ink",
@@ -98,7 +100,7 @@
                 ),
                 (object) array(
                   'id' => 1,
-                  'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
+                  'img' => "135_compact_tattoo_arm_leg_rest.jpg",
                   'name' => "Dynamic Black Ink 100ml",
                   'price' => 17.99,
                   'category' => "Ink",

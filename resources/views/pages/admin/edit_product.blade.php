@@ -1,11 +1,13 @@
 @extends('layouts.admin')
 
+@section('title', ' Admin - Edit ' . $product->name)
+
 @section('content')
 <main class="col-md-9 ml-sm-auto col-lg-10 px-4 mb-5">
   <div class="container">
 
     <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap border-bottom mt-2">
-      <h1>Edit Product {{ $product->id }}</h1>
+      <h1>Edit Product</h1>
       <button type="button" class="btn button">
         Submit
       </button>

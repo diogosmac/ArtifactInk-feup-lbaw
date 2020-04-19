@@ -11,11 +11,6 @@
 |
 */
 
-// test
-Route::get('test', function() {
-    return view('pages.test');
-});
-
 Route::get('/', 'Auth\LoginController@home');
 // Cards
 Route::get('cards', 'CardController@list');
@@ -64,45 +59,6 @@ Route::get('profile/purchased_history', function () {
     return view('pages.purchased_history');
 });
 
-
-//shopping cart and checkout 
-Route::get('cart', function () {
-    return view('pages.cart');
-});
-
-Route::get('checkout/shipping', function () {
-    return view('pages.checkout.shipping');
-});
-
-Route::get('checkout/payment', function () {
-    return view('pages.checkout.payment');
-});
-
-Route::get('checkout/confirm', function () {
-    return view('pages.checkout.confirm');
-});
-
-//static pages 
-Route::get('about_us', function () {
-    return view('pages.about_us');
-});
-
-Route::get('faq', function () {
-    return view('pages.faq');
-});
-
-Route::get('payments_and_shipment', function () {
-    return view('pages.payments_and_shipment');
-});
-
-Route::get('returns_and_replacements', function () {
-    return view('pages.returns_and_replacements');
-});
-
-Route::get('warranty', function () {
-    return view('pages.warranty');
-});
-
 // admin routes
 Route::prefix('admin')->group(function () {
     // auth
@@ -145,7 +101,51 @@ Route::prefix('admin')->group(function () {
     })->where('id', '[0-9]+');
     
     // categories
+    Route::get('categories', function() {
+        return view('pages.admin.categories');
+    });
+
+    // orders
     Route::get('orders', function() {
         return view('pages.admin.orders');
     });
+});
+
+
+//shopping cart and checkout 
+Route::get('cart', function () {
+    return view('pages.cart');
+});
+
+Route::get('checkout/shipping', function () {
+    return view('pages.checkout.shipping');
+});
+
+Route::get('checkout/payment', function () {
+    return view('pages.checkout.payment');
+});
+
+Route::get('checkout/confirm', function () {
+    return view('pages.checkout.confirm');
+});
+
+//static pages 
+Route::get('about_us', function () {
+    return view('pages.about_us');
+});
+
+Route::get('faq', function () {
+    return view('pages.faq');
+});
+
+Route::get('payments_and_shipment', function () {
+    return view('pages.payments_and_shipment');
+});
+
+Route::get('returns_and_replacements', function () {
+    return view('pages.returns_and_replacements');
+});
+
+Route::get('warranty', function () {
+    return view('pages.warranty');
 });
