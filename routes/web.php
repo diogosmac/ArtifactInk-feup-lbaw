@@ -11,6 +11,11 @@
 |
 */
 
+// test
+Route::get('test', function () {
+    return view('pages.test');
+});
+
 Route::get('/', 'Auth\LoginController@home');
 // Cards
 Route::get('cards', 'CardController@list');
@@ -38,7 +43,6 @@ Route::get('recover_password', function () {
 });
 
 //routes for debugging pages - remove later 
-
 Route::get('home', function () {
     return view('pages.home');
 });
@@ -58,6 +62,114 @@ Route::get('profile/wishlist', function () {
 
 Route::get('profile/purchased_history', function () {
     return view('pages.purchased_history');
+});
+
+// admin routes
+Route::prefix('admin')->group(function () {
+    // auth
+    Route::get('/', function () {
+        return view('pages.admin.sign_in');
+    });
+
+    // auth
+    Route::get('sign_in', function () {
+        return view('pages.admin.sign_in');
+    });
+
+    // home
+    Route::get('home', function () {
+        return view('pages.admin.home');
+    });
+
+    // products routes
+    Route::prefix('products')->group(function () {
+        // view products
+        Route::get('/', function () {
+            return view('pages.admin.products.products');
+        });
+        // create product
+        Route::get('add', function () {
+            return view('pages.admin.products.add_product');
+        });
+        // edit product
+        Route::get('{id}/edit', function ($id) {
+            // TODO SEND OBJECT ARRAY WITH ID = $ID
+            $product = (object) array(
+                'id' => $id,
+                'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
+                'name' => "Dynamic Black Ink 100ml",
+                'price' => 17.99,
+                'category' => "Ink",
+                'subcategory' => "Black",
+                'stock' => 34,
+                'description' => "SUPER COOL DESCRIPTION"
+            );
+            return view('pages.admin.products.edit_product', ['product' => $product]);
+        })->where('id', '[0-9]+');
+    });
+
+    // categories
+    Route::get('categories', function () {
+        return view('pages.admin.categories');
+    });
+
+    // orders
+    Route::get('orders', function () {
+        return view('pages.admin.orders');
+    });
+
+    // reviews
+    Route::get('reviews', function () {
+        return view('pages.admin.reviews');
+    });
+
+    // users
+    Route::get('users', function () {
+        return view('pages.admin.users');
+    });
+
+    // sales
+    Route::prefix('sales')->group(function () {
+        // view sales
+        Route::get('/', function () {
+            return view('pages.admin.sales.sales');
+        });
+        // create sale
+        Route::get('add', function () {
+            return view('pages.admin.sales.add_sale');
+        });
+        // edit sale
+        Route::get('{id}/edit', function ($id) {
+            // TODO SEND OBJECT ARRAY WITH ID = $ID
+            $sale = (object) array(
+                "id" => $id,
+                "name" => "Inktober Fest",
+                "startDate" => "2020-03-01",
+                "endDate" => "2020-04-01"
+            );
+            return view('pages.admin.sales.edit_sale', ['sale' => $sale]);
+        })->where('id', '[0-9]+');
+    });
+
+    // newsletter
+    Route::get('newsletter', function () {
+        return view('pages.admin.newsletter');
+    });
+
+    // faqs
+    Route::get('faqs', function () {
+        return view('pages.admin.faqs');
+    });
+
+    // info
+    Route::get('info', function () {
+        return view('pages.admin.info');
+    });
+
+    // support message
+    Route::get('support_chat', function () {
+        return view('pages.admin.support_chat');
+    });
 });
 
 

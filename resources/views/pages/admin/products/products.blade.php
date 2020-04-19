@@ -1,16 +1,9 @@
-<?php
-include_once("../templates/tpl_admin.php");
+@extends('layouts.admin')
 
-draw_header();
-draw_navbar();
-?>
+@section('title', ' Admin - Products')
 
-<div class="container-fluid">
-  <div class="row">
-
-    <?php draw_sidebar("products") ?>
-
-    <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
+@section('content')
+<main class="col-md-9 ml-sm-auto col-lg-10 px-4">
       <div class="container">
 
         <div class="mb-4 border-bottom mt-2">
@@ -27,7 +20,7 @@ draw_navbar();
             </div>
           </div>
           <div class="flex-shrink-0">
-            <button type="button" class="btn button" onclick="location.href='/admin/add_product.php'">
+          <button type="button" class="btn button" onclick="location.href='{{ url('/admin/products/add') }}'">
               Add Item
             </button>
           </div>
@@ -38,25 +31,23 @@ draw_navbar();
             <div class="col-md-6 col-sm-12">
               <label for="categories">Categories</label>
               <div id="categories" class="rounded border p-2 search-box-category">
-                <?php for ($i = 1; $i < 6; $i++) { ?>
-
+                @for ($i = 1; $i < 6; $i++)
                   <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" id="category<?= $i ?>">
-                    <label class="custom-control-label" for="category<?= $i ?>">Category <?= $i ?></label>
+                    <input type="checkbox" class="custom-control-input" id="category{{ $i }}">
+                    <label class="custom-control-label" for="category{{ $i }}">Category {{ $i }}</label>
                   </div>
-                <?php } ?>
+                @endfor
               </div>
             </div>
             <div class="col-md-6 col-sm-12">
               <label for="brands">Brands</label>
               <div id="brands" class="rounded border p-2 search-box-category">
-                <?php for ($i = 1; $i < 6; $i++) { ?>
-
+                @for ($i = 1; $i < 6; $i++)
                   <div class="custom-control custom-checkbox mb-3">
-                    <input type="checkbox" class="custom-control-input" id="brand<?= $i ?>">
-                    <label class="custom-control-label" for="brand<?= $i ?>">Brand <?= $i ?></label>
+                    <input type="checkbox" class="custom-control-input" id="brand{{ $i }}">
+                    <label class="custom-control-label" for="brand{{ $i }}">Brand {{ $i }}</label>
                   </div>
-                <?php } ?>
+                @endfor
               </div>
             </div>
 
@@ -96,22 +87,29 @@ draw_navbar();
             </tr>
           </thead>
           <tbody>
-
-            <?php
-              $product = array(
-                'id' => 234,
-                'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
+            @php
+              $products = array(
+                (object) array(
+                'id' => 2,
+                'img' => "146_aftercare.jpg",
                 'name' => "Dynamic Black Ink 100ml",
                 'price' => 17.99,
                 'category' => "Ink",
                 'subcategory' => "Black",
                 'stock' => 34
+                ),
+                (object) array(
+                  'id' => 1,
+                  'img' => "135_compact_tattoo_arm_leg_rest.jpg",
+                  'name' => "Dynamic Black Ink 100ml",
+                  'price' => 17.99,
+                  'category' => "Ink",
+                  'subcategory' => "Black",
+                  'stock' => 34
+                )
               );
-              
-              for ($i = 1; $i < 6; $i++) {
-                draw_product_row($product);
-            } ?>
-
+            @endphp
+            @each('partials.admin.product_row', $products, 'product')
           </tbody>
         </table>
 
@@ -120,6 +118,4 @@ draw_navbar();
 
   </div>
 </div>
-<?php
-draw_footer();
-?>
+@endsection
