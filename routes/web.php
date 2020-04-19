@@ -24,11 +24,11 @@ Route::get('cards/{id}', 'CardController@show');
 // API
 // Authentication
 
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+Route::get('sign_in', 'Auth\LoginController@showLoginForm')->name('sign_in');
+Route::post('sign_in', 'Auth\LoginController@login');
+Route::get('sign_out', 'Auth\LoginController@logout')->name('sign_out');
+Route::get('sign_up', 'Auth\RegisterController@showRegistrationForm')->name('sign_up');
+Route::post('sign_up', 'Auth\RegisterController@register');
 
 
 

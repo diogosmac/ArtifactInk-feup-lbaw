@@ -145,7 +145,7 @@
                   <a class="dropdown-item" href="/profile">My Account</a>
                   <a class="dropdown-item" href="#">My Order</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{{ url('/logout') }}">Sign Out</a>
+                  <a class="dropdown-item" href="{{ url('sign_out') }}">Sign Out</a>
                 </div>
               </div>
             </li>
@@ -180,10 +180,10 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('login') }}">Sign In</a>
+              <a class="nav-link" href="{{ route('sign_in') }}">Sign In</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('register') }}">Sign Up</a>
+              <a class="nav-link" href="{{ route('sign_up') }}">Sign Up</a>
             </li>
             @endif
           </ul>
@@ -253,7 +253,7 @@
               <a class="dropdown-item" href="{{ url('/profile') }}">My Account</a>
               <a class="dropdown-item" href="#">My Order</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{{ url('/logout') }}">Sign Out</a>
+              <a class="dropdown-item" href="{{ url('sign_out') }}">Sign Out</a>
             </div>
           </div>
           @else
@@ -284,8 +284,8 @@
               <a class="dropdown-item checkout-button" href="{{ url('/cart') }}">View Cart</a>
             </div>
 
-            <a class="nav-link" href="{{ route('login') }}">Sign In</a>
-            <!--TODO THINK ABOUT THIS <a class="nav-link" href="{{ route('register') }}">Sign Up</a> -->
+            <a class="nav-link" href="{{ route('sign_in') }}">Sign In</a>
+            <!--TODO THINK ABOUT THIS <a class="nav-link" href="{{ route('sign_up') }}">Sign Up</a> -->
             @endif
             </ul>
           </div>

@@ -1,7 +1,7 @@
 @extends('layouts.auth')
 
 @section('content')
-<form class="form-signin" method="POST" action="{{ route('login') }}">
+<form class="form-signin" method="POST" action="{{ route('sign_in') }}">
     {{ csrf_field() }}
 
     <a href="{{ url('/') }}">
@@ -58,7 +58,7 @@
 </form>
 <div class="row new-user justify-content-center">
     <h6>Don't have an account yet?</h6>
-    <a class="btn btn-lg button btn-block" href="{{ route('register') }}">Sign Up</a>
+    <a class="btn btn-lg button btn-block" href="{{ route('sign_up') }}">Sign Up</a>
     <footer class="copyright"> Copyright © ArtifactInk 2020 </footer>
 </div>
 @endsection
