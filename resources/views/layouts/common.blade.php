@@ -80,8 +80,8 @@
               <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search" aria-describedby="search-button">
                 <div class="input-group-append">
-                  <button class="btn btn-outline-success" type="button" id="search-button">
-                    <a href="/search">
+                  <button class="btn btn-outline-success" type="button" id="search-button" href="{{ url('/search') }}">
+                    <a href="{{ url('/search') }}">
                       <i class="fas fa-search"></i>
                     </a>
                   </button>
@@ -200,9 +200,9 @@
             </span>
           </button>
           <a class="navbar-brand" href="{{ url('/home') }}">
-            <img class="d-inline-block align-center" src="../images/artifact_ink_logo_white.png" alt="ArtifactInk"
+            <img class="d-inline-block align-center" src="{{ asset('/assets/artifact_ink_logo_white.png') }}" alt="ArtifactInk"
               height="40">
-            <img class="d-inline-block align-center" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk"
+            <img class="d-inline-block align-center" src="{{ asset('/assets/artifact_ink_letters_white.png') }}" alt="ArtifactInk"
               width="125">
           </a>
           @if (Auth::check())
@@ -250,7 +250,7 @@
                 src="https://www.diretoriodigital.com.br/wp-content/uploads/2013/05/Team-Member-3.jpg" alt="John Doe">
               <h5 class="dropdown-header">John Doe</h5>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/pages/profile.php">My Account</a>
+              <a class="dropdown-item" href="{{ url('/profile') }}">My Account</a>
               <a class="dropdown-item" href="#">My Order</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{ url('/logout') }}">Sign Out</a>
@@ -427,7 +427,7 @@
           <input type="text" class="form-control" placeholder="Search" aria-describedby="search-button">
           <div class="input-group-append">
             <button class="btn btn-outline-success" type="button" id="search-button">
-              <a href="/pages/search.php">
+              <a href="{{ url('/search') }}">
                 <i class="fas fa-search"></i>
               </a>
             </button>
@@ -449,7 +449,7 @@
             <ul class="navbar-nav nav-fill w-100">
               <li class="nav-item">
                 <div class="dropdown dropdownSupplies">
-                  <a class="btn btn-secondary one-line" href="../pages/home.php" role="button" aria-haspopup="true"
+                  <a class="btn btn-secondary one-line" href="{{ url('/') }}" role="button" aria-haspopup="true"
                     aria-expanded="false">
                     Designs
                   </a>
@@ -464,7 +464,7 @@
               </li>
               <li class="nav-item">
                 <div class="dropdown dropdownSupplies">
-                  <a class="btn btn-secondary one-line" href="../pages/home.php" role="button" aria-haspopup="true"
+                  <a class="btn btn-secondary one-line" href="{{ url('/') }}" role="button" aria-haspopup="true"
                     aria-expanded="false">
                     Machines
                   </a>
@@ -479,7 +479,7 @@
               </li>
               <li class="nav-item">
                 <div class="dropdown dropdownSupplies">
-                  <a class="btn btn-secondary one-line" href="../pages/home.php" role="button" aria-haspopup="true"
+                  <a class="btn btn-secondary one-line" href="{{ url('/') }}" role="button" aria-haspopup="true"
                     aria-expanded="false">
                     Inks
                   </a>
@@ -494,7 +494,7 @@
               </li>
               <li class="nav-item">
                 <div class="dropdown dropdownSupplies">
-                  <a class="btn btn-secondary " href="../pages/home.php" role="button" aria-haspopup="true"
+                  <a class="btn btn-secondary " href="{{ url('/') }}" role="button" aria-haspopup="true"
                     aria-expanded="false">
                     Needles and Cartridges
                   </a>
@@ -509,7 +509,7 @@
               </li>
               <li class="nav-item">
                 <div class="dropdown dropdownSupplies">
-                  <a class="btn btn-secondary " href="../pages/home.php" role="button" aria-haspopup="true"
+                  <a class="btn btn-secondary " href="{{ url('/') }}" role="button" aria-haspopup="true"
                     aria-expanded="false">
                     Grips Tips and Tubes
                   </a>
@@ -524,7 +524,7 @@
               </li>
               <li class="nav-item">
                 <div class="dropdown dropdownSupplies">
-                  <a class="btn btn-secondary " href="../pages/home.php" role="button" aria-haspopup="true"
+                  <a class="btn btn-secondary " href="{{ url('/') }}" role="button" aria-haspopup="true"
                     aria-expanded="false">
                     Studio Furniture
                   </a>
@@ -539,7 +539,7 @@
               </li>
               <li class="nav-item">
                 <div class="dropdown dropdownSupplies">
-                  <a class="btn btn-secondary one-line" href="../pages/home.php" role="button" aria-haspopup="true"
+                  <a class="btn btn-secondary one-line" href="{{ url('/') }}" role="button" aria-haspopup="true"
                     aria-expanded="false">
                     Aftercare
                   </a>
@@ -554,7 +554,7 @@
               </li>
               <li class="nav-item">
                 <div class="dropdown dropdownSupplies">
-                  <a class="btn btn-secondary " href="../pages/home.php" role="button" aria-haspopup="true"
+                  <a class="btn btn-secondary " href="{{ url('/') }}" role="button" aria-haspopup="true"
                     aria-expanded="false">
                     Medical Equipment
                   </a>
@@ -569,7 +569,7 @@
               </li>
               <li class="nav-item">
                 <div class="dropdown dropdownSupplies ">
-                  <a class="btn btn-secondary one-line" href="../pages/home.php" role="button" aria-haspopup="true"
+                  <a class="btn btn-secondary one-line" href="{{ url('/') }}" role="button" aria-haspopup="true"
                     aria-expanded="false">
                     Piercings
                   </a>
@@ -641,17 +641,17 @@
                 </div>
                 <div class="row justify-content-start">
                   <div class="social-network-bubble">
-                    <a href="../pages/home.php">
+                    <a href="{{ url('/') }}">
                       <i class="fab fa-facebook-f fa-2x circle-icon"></i>
                     </a>
                   </div>
                   <div class="social-network-bubble">
-                    <a href="../pages/home.php">
+                    <a href="{{ url('/') }}">
                       <i class="fab fa-instagram fa-2x circle-icon"></i>
                     </a>
                   </div>
                   <div class="social-network-bubble">
-                    <a href="../pages/home.php">
+                    <a href="{{ url('/') }}">
                       <i class="fa fa-twitter fa-2x circle-icon"> </i>
                     </a>
                   </div>
