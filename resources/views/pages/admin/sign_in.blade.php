@@ -4,7 +4,7 @@
 <form class="form-signin" method="POST" action="{{ url('/') }}">
   {{ csrf_field() }}
   <a href="{{ asset('/') }}">
-    <img class="mb-4" src="../images/artifact_ink_letters_white.png" alt="ArtifactInk" width="300">
+    <img class="mb-4" src="{{ asset('/assets/artifact_ink_letters_white.png') }}" alt="ArtifactInk" width="300">
   </a>
   <div class="sign-box">
     <h1 class="h3 mb-3 font-weight-normal">Admin Sign In</h1>
