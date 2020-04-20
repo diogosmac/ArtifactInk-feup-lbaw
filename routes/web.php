@@ -186,9 +186,11 @@ Route::prefix('admin')->group(function () {
 });*/
 Route::get('cart', 'CartController@list');
 Route::post('cart', 'CartController@add_to_cart');
+Route::delete('cart', 'CartController@delete_from_cart');
+Route::put('cart', 'CartController@update_item_quantity');
 
-Route::get('cart/delete', 'CartController@delete_from_cart');
-Route::get('cart/update', 'CartController@update_item_quantity');
+
+Route::post('cart', 'CartController@add_to_cart');
 
 
 Route::get('checkout/shipping', function () {

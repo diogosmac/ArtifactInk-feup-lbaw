@@ -1,4 +1,4 @@
-<tr class="checkout-item-list">
+<tr class="checkout-item-list" data-id="{{ $item->id }}">
     <td scope="row">
         <a href="item-page">
             <img src=" {{ asset('storage/img_product/' . $picture->link) }}" alt="">
