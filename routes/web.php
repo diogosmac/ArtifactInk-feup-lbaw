@@ -186,6 +186,8 @@ Route::prefix('admin')->group(function () {
 });*/
 Route::get('cart', 'CartController@list');
 
+Route::get('cart/add', 'CartController@add_to_cart');
+
 Route::get('checkout/shipping', function () {
     return view('pages.checkout.shipping');
 });
