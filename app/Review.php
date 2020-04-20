@@ -26,4 +26,11 @@ class Review extends Model
     public function item() {
         return $this->belongsTo('App\Item', 'id_item');
     }
+
+    /**
+     * A review belongs to user because fk is in the review table
+     */
+    public function user() {
+        return $this->belongsTo('App\User', 'id_user');
+    }
 }

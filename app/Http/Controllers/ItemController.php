@@ -16,7 +16,7 @@ class ItemController extends Controller
             $item = Item::findOrFail($id_item);
             $pictures = $item->images()->get();
             $reviews = $item->reviews()->orderBy('date', 'desc')->get();
-            
+
             if ($item != null) {
                 return view('pages.product', ['item' => $item, 'pictures' => $pictures, 'reviews' => $reviews]);
             } else {

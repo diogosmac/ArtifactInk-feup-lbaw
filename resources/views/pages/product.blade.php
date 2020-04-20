@@ -6,9 +6,9 @@
   <section id="product" class="mx-auto">
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-white mt-2 mb-1">
-        <li class="breadcrumb-item"><a href="/search" class="a_link">Ink</a></li>
-        <li class="breadcrumb-item"><a href="/search" class="a_link">Subcat</a></li>
-        <li class="breadcrumb-item active" aria-current="page" class="a_link">Black Ink</li>
+        <li class="breadcrumb-item"><a href="/search" class="a_link">{{ $item->category->parent->name }}</a></li>
+        <li class="breadcrumb-item"><a href="/search" class="a_link">{{ $item->category->name }}</a></li>
+        <li class="breadcrumb-item active" aria-current="page" class="a_link">{{ $item->name }}</li>
       </ol>
     </nav>
     <div class="container-fluid d-none d-md-block">
@@ -26,16 +26,20 @@
               </div>
             @endif
           @endforeach
-            </div>
+          </div>
         </div>
         <div class="col-6 d-flex flex-column justify-content-start">
           <h2>{{ $item->name }}</h2>
           <div class="d-flex flex-row align-items-center bd-highlight mb-3">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star-half-alt"></i>
+            @for ($i = 0; $i < 5; $i++)
+              @if (($item->rating - $i) >= 1)
+                <i class="fas fa-star"></i>
+              @elseif (($item->rating - $i) > 0)
+                <i class="fas fa-star-half-alt"></i>
+              @else
+                <i class="far fa-star"></i>
+              @endif
+            @endfor
             <a href="#specs" class="px-3 a_link">{{ count($reviews) }}</a>
           </div>
           <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
@@ -72,34 +76,43 @@
     </div>
 
     <div class="d-flex flex-column justify-content-center mx-2 mx-sm-3 d-md-none">
-      <h2>Product Name</h2>
+      <h2>{{ $item->name }}</h2>
       <div class="d-flex flex-row align-items-center bd-highlight mb-3">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star-half-alt"></i>
-        <a href="#specs" class="px-3 a_link"> 2 reviews</a>
+        @for ($i = 0; $i < 5; $i++)
+          @if (($item->rating - $i) >= 1)
+            <i class="fas fa-star"></i>
+          @elseif (($item->rating - $i) > 0)
+            <i class="fas fa-star-half-alt"></i>
+          @else
+            <i class="far fa-star"></i>
+          @endif
+        @endfor
+        <a href="#specs" class="px-3 a_link">{{ count($reviews) }}</a>
       </div>
+    
       <div class="">
-        <div class="text-center">
-          <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" class="image-fit" style="max-height:20em">
-        </div>
-        <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 10em">
-          <div class="p-2 bd-highlight text-center">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" class="image-fit">
-          </div>
-          <div class="p-2 bd-highlight text-center">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/71rPjaRWUDL._SL1500_.jpg" alt="Ink" class="image-fit">
-          </div>
-          <div class="p-2 bd-highlight text-center">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/715F04zdnEL._SL1500_.jpg" alt="Ink" class="image-fit">
-          </div>
+        @foreach($pictures as $picture)
+          @if ($loop->first)
+            <div class="text-center">
+              <img src="{{ asset('storage/img_product/' . $picture->link) }}" alt="Product Photo" style="max-width: 100%; max-height:20em">
+            </div>
+          <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 10em">
+          @else
+            <div class="p-2 bd-highlight text-center">
+              <img src="{{ asset('storage/img_product/' . $picture->link) }}" alt="" class="image-fit">
+            </div>
+          @endif
+        @endforeach
         </div>
       </div>
       <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
+      @if ($item->stock > 0)
         <h4>Available</h4>
-        <i class="material-icons px-2 pt-1" style="color: green">fiber_manual_record</i>
+        <i class="fas fa-circle px-2 pt-1" style="color: green"></i>
+      @else
+        <h4>Unavailable</h4>
+        <i class="fas fa-circle px-2 pt-1" style="color: red"></i>
+      @endif
       </div>
       <div class="d-flex flex-row justify-content-between bd-highlight mb-3 pb-1">
         <div class="input-group mb-3 w-50 pt-2">
@@ -107,13 +120,12 @@
             <label class="input-group-text" for="inputGroupSelect01">Quantity</label>
           </div>
           <select class="custom-select" id="inputGroupSelect01">
-            <option value="1" selected>1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+            @for ($i = 1; $i <= $item->stock; $i++)
+              <option value="{{ $i }}">{{ $i }}</option>
+            @endfor
           </select>
         </div>
-        <h1>17,80€</h1>
+        <h1>{{ $item->price }}€</h1>
       </div>
       <div class="d-flex flex-row justify-content-between bd-highlight my-2">
         <a href="#" class="p-2 li-wishlist">
@@ -139,29 +151,37 @@
       </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
+      
       <div class="tab-pane fade show active bg-light p-5" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-        <p>Praesent vitae urna et odio ullamcorper finibus. Nunc dictum malesuada velit, eu molestie ligula. Phasellus ante diam, tempus sed lobortis eu, sollicitudin vel orci. Morbi interdum aliquam bibendum. Sed dapibus risus sit amet viverra aliquam. Suspendisse aliquam odio porttitor sem bibendum, a tempor massa pretium. Etiam eget accumsan magna. Donec euismod neque et metus aliquet sodales. Pellentesque sed enim ut elit maximus fringilla.</p>
-        <p>In a pretium mi. Nam mattis laoreet arcu, sit amet bibendum orci mollis vel. Vestibulum pulvinar enim tortor, et fringilla est aliquam in. Fusce nec nulla consequat, rhoncus nisi et, pellentesque sapien. Praesent pulvinar ut lorem eu tristique. Vivamus sit amet lacus sed ante finibus consequat. Donec ac fringilla lectus. Mauris facilisis erat velit, et suscipit eros egestas eget. Vestibulum vel orci in lacus sollicitudin posuere. Maecenas quis congue leo. Nullam ultricies, odio a vehicula sollicitudin, augue nunc commodo libero, vel feugiat tellus lorem non purus. Nam ultricies consectetur purus, vel varius leo viverra eget. </p>
+        <p>{{ $item->description }}</p>
       </div>
+
       <div class="tab-pane fade bg-light p-4" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
         <div class="d-flex flex-row bd-highlight justify-content-around my-2">
           <div class="d-flex flex-column align-items-center">
+          @if(count($reviews) == 0)
+            <p>There are no reviews yet</p>
+          @else
             <div class="d-flex flex-row bd-highlight mb-3">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
+            @for ($i = 0; $i < 5; $i++)
+              @if (($item->rating - $i) >= 1)
+                <i class="fas fa-star"></i>
+              @elseif (($item->rating - $i) > 0)
+                <i class="fas fa-star-half-alt"></i>
+              @else
+                <i class="far fa-star"></i>
+              @endif
+            @endfor
             </div>
-            <h5>4,5/5</h5>
-          </div>
-          <div>
-
+            <h5>{{ $item->rating }}/5</h5>
+          @endif
           </div>
           <div class="d-flex align-items-center">
             <button type="button" class="btn btn-primary button">Write a review</button>
           </div>
         </div>
+        
+        @unless(count($reviews) == 0)
         <div class="border-top border-dark my-4">
           <div class="input-group my-3 w-25">
             <div class="input-group-prepend">
@@ -175,9 +195,10 @@
             </select>
           </div>
           <div class="py-4">
-            @include('partials.product.review', [])
+            @each('partials.product.review', $reviews, 'review')
           </div>
         </div>
+        @endunless
       </div>
     </div>
     <?php //draw_review_popup(); 

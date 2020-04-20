@@ -24,7 +24,7 @@ class Category extends Model
      * A category has many items
      */
     public function item() {
-        return $this->hasMany('App\Item');
+        return $this->hasMany('App\Item', 'id_category');
     }
 
     /**
