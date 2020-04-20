@@ -89,3 +89,89 @@ function removeItemHandler(id) {
     item.remove();
     update_total_price();
 }
+
+//ADD TO CART 
+
+let add_to_cart_button = document.querySelectorAll('.add-to-cart-btn');
+
+//add butn click actions 
+for(let i=0; i < add_to_cart_button.length; i++){
+    let id_item = add_to_cart_button[i].getAttribute("data-product-type");
+    add_to_cart_button[i].addEventListener('click',add_to_cart.bind(null,id_item), false);
+}
+
+function add_to_cart(id_item){
+
+    let quantity = 1; 
+    //let qty_selector = document.querySelector('#inputGroupSelect01').value; 
+    if(document.getElementById('inputGroupSelect01') !== null)
+        quantity = document.getElementById('inputGroupSelect01').value; 
+
+    console.log('add to cart: '+id_item+ ' qty: '+quantity); 
+    sendAjaxRequest('post', '/cart', {id_item: id_item,quantity: quantity}, add_to_cart_hadler);
+}
+
+
+function add_to_cart_hadler(){
+    if (this.status != 200) 
+        alert(this.status); 
+    else{
+        let response = JSON.parse(this.responseText);
+        
+        let cart_list = document.querySelector('ul.list-cart'); 
+
+        //create A
+        let new_product = document.createElement('a'); 
+        new_product.classList.add('item-link-cart'); 
+        new_product.href = "/product/"+response.item.id;
+
+        //create Li 
+        let li = document.createElement('li'); 
+        li.setAttribute('class', 'cart-item-list'); 
+        li.className += ' list-group-item';
+        li.className += ' d-flex';
+        li.className += ' justify-content-between';
+        li.className += ' align-items-center';
+
+        //create span 
+        let span = document.createElement('span'); 
+
+        //create img 
+        let img = document.createElement('img'); 
+        img.setAttribute('class','cart-item-list-img'); 
+        img.setAttribute('alt',response.item.name); 
+        img.setAttribute('src','/storage/img_product/' + response.picture.link); 
+
+       // img.alt = response.item.name; 
+        //img.src = 'TODO'
+
+        //create h5
+        let h5 = document.createElement('h5'); 
+        h5.setAttribute('class','cart-item-list-name')
+        h5.innerHTML = response.item.name; 
+
+        //create h6 price
+        let h6_price = document.createElement('h6'); 
+        h6_price.setAttribute('class','cart-item-list-price')
+        h6_price.innerHTML = response.item.price; 
+
+        //create h6 quantity 
+        let h6_qty = document.createElement('h6'); 
+        h6_qty.setAttribute('class','badge');
+        h6_qty.className += ' badge-primary';
+        h6_qty.className += ' badge-pill';
+        h6_qty.className += ' cart-item-list-quant';
+        h6_qty.innerHTML = response.item.pivot.quantity;
+
+        span.appendChild(img); 
+        li.appendChild(span);
+        li.appendChild(h5); 
+        li.appendChild(h6_price); 
+        li.appendChild(h6_qty); 
+
+        new_product.appendChild(li); 
+
+        cart_list.appendChild(new_product);
+      
+    }  
+}

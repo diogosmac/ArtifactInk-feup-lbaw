@@ -27,6 +27,6 @@
         </span>
     </div>
     <div class="p-1" style="z-index: 200;">
-        <a href="#" class="dropdown-item btn button text-center" style="z-index: 200;">Add to cart</a>
+        <a href="#" class="dropdown-item btn button text-center add-to-cart-btn" style="z-index: 200;">Add to cart</a>
     </div>
 </div>

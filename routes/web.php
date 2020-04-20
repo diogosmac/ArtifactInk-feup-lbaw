@@ -185,10 +185,12 @@ Route::prefix('admin')->group(function () {
     return view('pages.cart');
 });*/
 Route::get('cart', 'CartController@list');
-
-Route::get('cart/add', 'CartController@add_to_cart');
+Route::post('cart', 'CartController@add_to_cart');
 Route::delete('cart', 'CartController@delete_from_cart');
 Route::put('cart', 'CartController@update_item_quantity');
+
+
+Route::post('cart', 'CartController@add_to_cart');
 
 
 Route::get('checkout/shipping', function () {

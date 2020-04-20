@@ -40,7 +40,7 @@
                 </div>
                 <div class="py-2 col-sm-3 d-flex flex-column justify-content-between align-items-end li-price-button">
                     <h3 class="font-weight-bold" style="color: var(--main-red)">50,2€</h3>
-                    <a href="#" class="btn button">Add to Cart</a>
+                    <a href="#" class="btn button add-to-cart-btn">Add to Cart</a>
                 </div>
             </div>
         </div>
