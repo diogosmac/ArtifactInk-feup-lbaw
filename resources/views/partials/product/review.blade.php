@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-4 d-flex flex-row justify-content-center">
       <div class="d-flex flex-column align-items-center">
-        <img src="{{ asset('/storage/img_user/' . $review->user->id . '.jpg') }}" alt="" style="max-width: 100px">
+        <img src="{{ asset('/storage/img_user/' . $review->user->profilePicture->link) }}" alt="" style="max-width: 100px">
         <h6>{{ $review->user->name }}</h6>
       </div>
       <div class="d-flex flex-column align-items-center justify-content-start px-3 border-right border-dark">
