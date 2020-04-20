@@ -12,7 +12,7 @@ for(let i =0; i< items.length; i++){
     let value = items[i].getElementsByClassName('item-value')[0]
 
     //action buttons 
-    add_button.addEventListener('click',()=>{
+    /*add_button.addEventListener('click',()=>{
         let old_val =  item_quant.innerHTML; 
         item_quant.innerHTML = parseInt(old_val) + 1
 
@@ -36,7 +36,7 @@ for(let i =0; i< items.length; i++){
     rmv_button.addEventListener('click',()=>{
         items[i].innerHTML = " "
         update_total_price();
-    },false)
+    },false)*/
 
     //update item quant 
     value.innerHTML = (parseFloat(price)*parseFloat(item_quant.innerHTML)).toFixed(2) +'€'
