@@ -46,6 +46,7 @@
   <!-- todo distribute scripts -->
 
   <script src="{{ asset('js/product_card.js') }}" defer></script>
+  <script src="{{ asset('js/cart.js') }}" defer></script>
   <script src="{{ asset('js/checkout_list.js') }}" defer></script>
   <script src="{{ asset('js/payment.js') }}" defer></script>
   <script src="{{ asset('js/address.js') }}" defer></script>

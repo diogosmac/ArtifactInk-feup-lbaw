@@ -65,8 +65,7 @@ class CartController extends Controller
 
       $cart = Auth::user()->cart_items();
 
-      $cart->detach(['id_user' => Auth::user()->id, 'id_item' => 6]);
-      //$cart->detach(['id_user' => Auth::user()->id, 'id_item' => 6]);
+      $cart->detach(['id_user' => Auth::user()->id, 'id_item' => $item]);
       
       $items = Auth::user()->cart_items()->orderBy('date_added')->get();
       return $items;
@@ -79,8 +78,7 @@ class CartController extends Controller
       $quantity = $request->input('quantity');
 
       $cart = Auth::user()->cart_items();
-      //$cart->updateExistinPivot(['id_user' => Auth::user()->id, 'id_item' => 5], ['quantity' => $quantity])
-      $cart->updateExistingPivot(['id_user' => Auth::user()->id, 'id_item' => 2], ['quantity' => 5]);
+      $cart->updateExistinPivot(['id_user' => Auth::user()->id, 'id_item' => $item], ['quantity' => $quantity]);
 
       $items = Auth::user()->cart_items()->orderBy('date_added')->get();
 
