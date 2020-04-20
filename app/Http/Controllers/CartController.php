@@ -59,10 +59,31 @@ class CartController extends Controller
     }
     
     public function delete_from_cart(Request $request) {
+      if (!Auth::check()) return redirect('/login');
 
+      $item = $request->input('id_item');
+
+      $cart = Auth::user()->cart_items();
+
+      $cart->detach(['id_user' => Auth::user()->id, 'id_item' => 6]);
+      //$cart->detach(['id_user' => Auth::user()->id, 'id_item' => 6]);
+      
+      $items = Auth::user()->cart_items()->orderBy('date_added')->get();
+      return $items;
     }
 
     public function update_item_quantity(Request $request) {
-      
+      if (!Auth::check()) return redirect('/login');
+
+      $item = $request->input('id_item');
+      $quantity = $request->input('quantity');
+
+      $cart = Auth::user()->cart_items();
+      //$cart->updateExistinPivot(['id_user' => Auth::user()->id, 'id_item' => 5], ['quantity' => $quantity])
+      $cart->updateExistingPivot(['id_user' => Auth::user()->id, 'id_item' => 2], ['quantity' => 5]);
+
+      $items = Auth::user()->cart_items()->orderBy('date_added')->get();
+
+      return $items;
     }
 }
