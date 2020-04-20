@@ -27,5 +27,19 @@ class Category extends Model
         return $this->hasMany('App\Item');
     }
 
+    /**
+     * A category may have a parent category
+     */
+    public function parent() {
+        return $this->belongsTo('App\Category', 'id_parent');
+    }
+
+    /**
+     * A category may have many children category
+     */
+    public function children() {
+        return $this->hasMany('App\Category', 'id_parent');
+    }
+
 
 }
