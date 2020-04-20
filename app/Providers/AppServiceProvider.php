@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Category;
 use Illuminate\Support\ServiceProvider;
+use View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Make categories accessible everywhere
+        View::composer(['*'], function($view) {
+            $view->with('parent_categories', Category::where('id_parent', null)->get());
+        });
     }
 
     /**
