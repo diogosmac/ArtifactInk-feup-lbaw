@@ -14,20 +14,19 @@
     <div class="container-fluid d-none d-md-block">
       <div class="row">
         <div class="col-6">
-          <div class="text-center">
-            <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" style="max-width: 100%; max-height:20em">
-          </div>
-          <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
-            <div class="p-2 bd-highlight text-center">
-              <img src="https://images-na.ssl-images-amazon.com/images/I/61zfqNDrFPL._SL1500_.jpg" alt="Ink" class="image-fit">
+          @foreach($pictures as $picture)
+            @if ($loop->first)
+              <div class="text-center">
+                <img src="{{ asset('storage/img_product/' . $picture->link) }}" alt="Product Photo" style="max-width: 100%; max-height:20em">
+              </div>
+            <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
+            @else
+              <div class="p-2 bd-highlight text-center">
+                <img src="{{ asset('storage/img_product/' . $picture->link) }}" alt="" class="image-fit">
+              </div>
+            @endif
+          @endforeach
             </div>
-            <div class="p-2 bd-highlight text-center">
-              <img src="https://images-na.ssl-images-amazon.com/images/I/71rPjaRWUDL._SL1500_.jpg" alt="Ink" class="image-fit">
-            </div>
-            <div class="p-2 bd-highlight text-center">
-              <img src="https://images-na.ssl-images-amazon.com/images/I/715F04zdnEL._SL1500_.jpg" alt="" class="image-fit">
-            </div>
-          </div>
         </div>
         <div class="col-6 d-flex flex-column justify-content-start">
           <h2>{{ $item->name }}</h2>
@@ -37,11 +36,16 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="fas fa-star-half-alt"></i>
-            <a href="#specs" class="px-3 a_link"> 2 reviews</a>
+            <a href="#specs" class="px-3 a_link">{{ count($reviews) }}</a>
           </div>
           <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
-            <h4>Available</h4>
-            <i class="fas fa-circle px-2 pt-1" style="color: green"></i>
+            @if ($item->stock > 0)
+              <h4>Available</h4>
+              <i class="fas fa-circle px-2 pt-1" style="color: green"></i>
+            @else
+              <h4>Unavailable</h4>
+              <i class="fas fa-circle px-2 pt-1" style="color: red"></i>
+            @endif
           </div>
           <div class="d-flex flex-row justify-content-between bd-highlight mb-3 pb-1">
             <div class="input-group mb-3 w-50 pt-2">
@@ -49,13 +53,12 @@
                 <label class="input-group-text" for="inputGroupSelect01">Quantity</label>
               </div>
               <select class="custom-select" id="inputGroupSelect01">
-                <option value="1" selected>1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
+                @for ($i = 1; $i <= $item->stock; $i++)
+                  <option value="{{ $i }}">{{ $i }}</option>
+                @endfor
               </select>
             </div>
-            <h1>17,80€</h1>
+            <h1>{{ $item->price }}€</h1>
           </div>
           <div class="d-flex flex-row justify-content-between align-items-end bd-highlight my-3">
             <a href="#" class="p-2 li-wishlist">
