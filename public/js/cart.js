@@ -56,12 +56,17 @@ for (let i = 0; i < items.length; i++) {
     value.innerHTML = (parseFloat(price) * parseFloat(item_quant.innerHTML)).toFixed(2) + '€';
 
 }
+update_total_price();
+
 
 function addQuantityHandler(id, quantity) {
     // if this.status == 200 
     
     let item = document.querySelector('tr.checkout-item-list[data-id="' + id + '"]');
     let item_quant = item.getElementsByClassName('item-quant')[0];
+    let value = item.getElementsByClassName('item-value')[0]
+    let price = item.getElementsByClassName('item-price')[0].innerHTML
+
     //update item quant
     item_quant.innerHTML = parseInt(quantity);
     
@@ -75,6 +80,8 @@ function subtractQuantityHandler(id, quantity) {
     
     let item = document.querySelector('tr.checkout-item-list[data-id="' + id + '"]');
     let item_quant = item.getElementsByClassName('item-quant')[0];
+    let value = item.getElementsByClassName('item-value')[0]
+    let price = item.getElementsByClassName('item-price')[0].innerHTML
 
     //update item quant
     item_quant.innerHTML = parseInt(quantity);
@@ -88,6 +95,19 @@ function removeItemHandler(id) {
     let item = document.querySelector('tr.checkout-item-list[data-id="' + id + '"]');
     item.remove();
     update_total_price();
+}
+
+function update_total_price(){ 
+    let sum=0; 
+    for(let i=0; i< items.length; i++){
+        if(items[i].getElementsByClassName('item-value')[0] !== undefined){
+            let value = items[i].getElementsByClassName('item-value')[0].innerHTML
+            sum = (parseFloat(sum)+ parseFloat(value)).toFixed(2)
+        }
+    }
+
+    total.innerHTML=sum + "€"
+
 }
 
 //ADD TO CART 

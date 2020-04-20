@@ -24,6 +24,6 @@
             <i class="fas fa-trash-alt"></i>
         </button>
     </td>
-    <th colspan="0" class="item-value">
-        </td>
+    <td colspan="0" class="item-value">
+    </td>
 </tr>
