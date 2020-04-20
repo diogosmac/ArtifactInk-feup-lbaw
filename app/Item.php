@@ -30,7 +30,7 @@ class Item extends Model
     ];
 
     /**
-     * An item belongs to a product because fk is in item table
+     * An item belongs to a category because fk is in item table
      */
     public function category() {
         return $this->belongsTo('App\Category');
@@ -41,5 +41,12 @@ class Item extends Model
      */
     public function images() {
         return $this->hasMany('App\ItemPicture', 'id_item');
+    }
+
+    /**
+     * An item has many reviews
+     */
+    public function reviews() {
+        return $this->hasMany('App\Review', 'id_item');
     }
 }
