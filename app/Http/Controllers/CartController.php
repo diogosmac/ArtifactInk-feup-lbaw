@@ -49,8 +49,7 @@ class CartController extends Controller
 
       $cart = Auth::user()->cart_items();
 
-      //$cart->attach(1, ['id_user' => Auth::user()->id, 'id_item' => $item, 'quantity' => $quantity]);
-      $cart->attach(1, ['id_user' => Auth::user()->id, 'id_item' => 6, 'quantity' => 1]);
+      $cart->attach(1, ['id_user' => Auth::user()->id, 'id_item' => $item, 'quantity' => $quantity]);
 
       $item = Auth::user()->cart_items()->orderBy('date_added', 'desc')->first();
       $picture = $item->images()->get()->first();

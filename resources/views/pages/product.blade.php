@@ -69,7 +69,7 @@
               <i class="fas fa-heart"></i>
               Add to whishlist
             </a>
-            <input class="btn btn-primary button" type="submit" value="Add to Cart">
+            <button class="btn btn-primary button add-to-cart-btn" data-product-type="{{ $item->id}}" type="submit"> Add to Cart</button>
           </div>
         </div>
       </div>
