@@ -33,7 +33,6 @@ class CartController extends Controller
 	
 
 			return view('pages.cart', ['items' => $items, 'pictures' => $pictures]);
-			
 		}
 
 		/**
@@ -41,8 +40,29 @@ class CartController extends Controller
      *
      * @return Response
      */
-		public function add_to_cart()
-    {
-      			
-		}
+		public function add_to_cart(Request $request) {
+      
+      if (!Auth::check()) return redirect('/login');
+
+      $item = $request->input('id_item');
+      $quantity = $request->input('quantity');
+
+      $cart = Auth::user()->cart_items();
+
+      //$cart->attach(1, ['id_user' => Auth::user()->id, 'id_item' => $item, 'quantity' => $quantity]);
+      $cart->attach(1, ['id_user' => Auth::user()->id, 'id_item' => 6, 'quantity' => 1]);
+
+      $item = Auth::user()->cart_items()->orderBy('date_added', 'desc')->first();
+      $picture = $item->images()->get()->first();
+
+      return ['item' => $item, 'picture' => $picture];
+    }
+    
+    public function delete_from_cart(Request $request) {
+
+    }
+
+    public function update_item_quantity(Request $request) {
+      
+    }
 }
