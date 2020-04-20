@@ -19,12 +19,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @each('partials.cart.cartTableItem', $items, 'item')
-                   @include('partials.cart.cartTableItem')
-                   @include('partials.cart.cartTableItem')
-                   @include('partials.cart.cartTableItem')
-                   @include('partials.cart.cartTableItem')
-                   @include('partials.cart.cartTableItem')
+                    @foreach($items as $item )
+                        @include('partials.cart.cartTableItem', ['item'=>$item, 'picture'=>$pictures[$loop->index]])
+                    @endforeach
                     <tr class="total">
                         <th></th>
                         <th></th>
@@ -50,11 +47,9 @@
     <div class="mobile-checkout-box">
         <span class="total d-flex justify-content-end">Total:  <span class="total-price">  </span></span>
         <div class="row shopping-cart-div">
-            @include('partials.cart.cartTableItemMobile')
-            @include('partials.cart.cartTableItemMobile')
-            @include('partials.cart.cartTableItemMobile')
-            @include('partials.cart.cartTableItemMobile')
-            @include('partials.cart.cartTableItemMobile')
+            @foreach($items as $item )
+                @include('partials.cart.cartTableItem', ['item'=>$item, 'picture'=>$pictures[$loop->index]])
+            @endforeach
         </div>
         <div class="row checkout-menu d-flex justify-content-between buttons " id="checkout-buttons-div">
             <div>
