@@ -11,11 +11,6 @@
 |
 */
 
-// test
-Route::get('test', function () {
-    return view('pages.test');
-});
-
 //Route::get('/', 'Auth\LoginController@home');
 // Cards
 Route::get('cards', 'CardController@list');
@@ -35,72 +30,49 @@ Route::post('sign_up', 'Auth\RegisterController@register');
 Route::get('profile_nav','UserController@showUserNavbar');
 
 
-Route::get('recover_password', function () {
-    return view('auth.recover_password');
-});
+Route::view('recover_password', 'auth/recover_password');
 
-//routes for debugging pages - remove later 
-Route::get('/', function () {
-    return view('pages.home');
-});
+//routes for debugging pages - remove later
+Route::view('/', 'pages/home');
 
-Route::get('home', function () {
-    return view('pages.home');
-});
-
-Route::get('search', function () {
-    return view('pages.search');
-});
+Route::view('search','pages/search');
 
 Route::get('product/{id}', 'ItemController@show');
 
 //profile pages and stuff related 
-Route::get('profile', function () {
-    return view('pages.profile.profile');
-});
+Route::prefix('profile')->group(function() {
+    Route::view('/', 'pages/profile/profile');
+    
+    Route::view('review', 'pages/profile/review');
+    
+    Route::view('wishlist', 'pages/profile/wishlist');
 
-Route::get('review', function () {
-    return view('pages.profile.review');
-});
-
-Route::get('profile/wishlist', function () {
-    return view('pages.profile.wishlist');
-});
-
-Route::get('profile/purchased_history', function () {
-    return view('pages.profile.purchased_history');
+    Route::view('purchased_history', 'pages/profile/purchased_history');
 });
 
 // admin routes
 Route::prefix('admin')->group(function () {
     // auth
-    Route::get('/', function () {
-        return view('pages.admin.sign_in');
-    });
+    Route::view('/', 'pages/admin/sign_in');
 
     // auth
-    Route::get('sign_in', function () {
-        return view('pages.admin.sign_in');
-    });
+    Route::view('sign_in', 'pages/admin/sign_in');
 
     // home
-    Route::get('home', function () {
-        return view('pages.admin.home');
-    });
+    Route::view('home', 'pages/admin/home');
 
     // products routes
     Route::prefix('products')->group(function () {
         // view products
-        Route::get('/', function () {
-            return view('pages.admin.products.products');
-        });
+        Route::view('/', 'pages/admin/products/products');
+
         // create product
-        Route::get('add', function () {
-            return view('pages.admin.products.add_product');
-        });
+        Route::view('add', 'pages.admin.products.add_product');
+
         // edit product
+        /*
         Route::get('{id}/edit', function ($id) {
-            // TODO SEND OBJECT ARRAY WITH ID = $ID
+
             $product = (object) array(
                 'id' => $id,
                 'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
@@ -112,40 +84,31 @@ Route::prefix('admin')->group(function () {
                 'description' => "SUPER COOL DESCRIPTION"
             );
             return view('pages.admin.products.edit_product', ['product' => $product]);
-        })->where('id', '[0-9]+');
+        })->where('id', '[0-9]+');*/
     });
 
     // categories
-    Route::get('categories', function () {
-        return view('pages.admin.categories');
-    });
+    Route::view('categories', 'pages.admin.categories');
 
     // orders
-    Route::get('orders', function () {
-        return view('pages.admin.orders');
-    });
+    Route::view('orders', 'pages.admin.orders');
 
     // reviews
-    Route::get('reviews', function () {
-        return view('pages.admin.reviews');
-    });
+    Route::view('reviews', 'pages.admin.reviews');
 
     // users
-    Route::get('users', function () {
-        return view('pages.admin.users');
-    });
+    Route::view('users', 'pages.admin.users');
 
     // sales
     Route::prefix('sales')->group(function () {
         // view sales
-        Route::get('/', function () {
-            return view('pages.admin.sales.sales');
-        });
+        Route::view('/', 'pages.admin.sales.sales');
+
         // create sale
-        Route::get('add', function () {
-            return view('pages.admin.sales.add_sale');
-        });
+        Route::view('add', 'pages.admin.sales.add_sale');
+
         // edit sale
+        /*
         Route::get('{id}/edit', function ($id) {
             // TODO SEND OBJECT ARRAY WITH ID = $ID
             $sale = (object) array(
@@ -155,28 +118,22 @@ Route::prefix('admin')->group(function () {
                 "endDate" => "2020-04-01"
             );
             return view('pages.admin.sales.edit_sale', ['sale' => $sale]);
-        })->where('id', '[0-9]+');
+        })->where('id', '[0-9]+'); */
     });
 
     // newsletter
-    Route::get('newsletter', function () {
-        return view('pages.admin.newsletter');
-    });
+    Route::view('newsletter', 'pages.admin.newsletter');
 
     // faqs
-    Route::get('faqs', function () {
-        return view('pages.admin.faqs');
-    });
+    Route::view('faqs', 'pages.admin.faqs');
 
+    
     // info
-    Route::get('info', function () {
-        return view('pages.admin.info');
-    });
+    Route::view('info', 'pages.admin.info');
 
+    
     // support message
-    Route::get('support_chat', function () {
-        return view('pages.admin.support_chat');
-    });
+    Route::view('support_chat', 'pages.admin.support_chat');
 });
 
 
@@ -193,35 +150,19 @@ Route::put('cart', 'CartController@update_item_quantity');
 Route::post('cart', 'CartController@add_to_cart');
 
 
-Route::get('checkout/shipping', function () {
-    return view('pages.checkout.shipping');
-});
+Route::view('checkout/shipping', 'pages.checkout.shipping');
 
-Route::get('checkout/payment', function () {
-    return view('pages.checkout.payment');
-});
+Route::view('checkout/payment', 'pages.checkout.payment');
 
-Route::get('checkout/confirm', function () {
-    return view('pages.checkout.confirm');
-});
+Route::view('checkout/confirm', 'pages.checkout.confirm');
 
 //static pages 
-Route::get('about_us', function () {
-    return view('pages.info.about_us');
-});
+Route::view('about_us', 'pages.info.about_us');
 
-Route::get('faq', function () {
-    return view('pages.info.faq');
-});
+Route::view('faq', 'pages.info.faq');
 
-Route::get('payments_and_shipment', function () {
-    return view('pages.info.payments_and_shipment');
-});
+Route::view('payments_and_shipment', 'pages.info.payments_and_shipment');
 
-Route::get('returns_and_replacements', function () {
-    return view('pages.info.returns_and_replacements');
-});
+Route::view('returns_and_replacements', 'pages.info.returns_and_replacements');
 
-Route::get('warranty', function () {
-    return view('pages.info.warranty');
-});
+Route::view('warranty', 'pages.info.warranty');

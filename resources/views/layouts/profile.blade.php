@@ -20,12 +20,12 @@
                             </a>
                         @endif
                        
-                        @if(Request::path() === 'review')
-                            <a class="nav-link active text-center profile-tab" href="{{ url('/review') }}" >
+                        @if(Request::path() === 'profile/review')
+                            <a class="nav-link active text-center profile-tab" href="{{ url('/profile/review') }}" >
                                 <i class="fas fa-pen pr-2"></i>Reviews
                             </a>
                         @else
-                            <a class="nav-link text-center profile-tab" href="{{ url('/review') }}" >
+                            <a class="nav-link text-center profile-tab" href="{{ url('/profile/review') }}" >
                                 <i class="fas fa-pen pr-2"></i>Reviews
                             </a>
                         @endif
@@ -85,12 +85,12 @@
                                             </a>
                                         @endif
 
-                                        @if(Request::path() === 'review')
-                                            <a class="nav-link active text-center profile-tab" href="{{ url('/review') }}">
+                                        @if(Request::path() === 'profile/review')
+                                            <a class="nav-link active text-center profile-tab" href="{{ url('/profile/review') }}">
                                                 <i class="fas fa-pen pr-2"></i>Reviews
                                             </a>
                                         @else
-                                            <a class="nav-link text-center profile-tab" href="{{ url('/review') }}">
+                                            <a class="nav-link text-center profile-tab" href="{{ url('/profile/review') }}">
                                                 <i class="fas fa-pen pr-2"></i>Reviews
                                             </a>
                                         @endif
