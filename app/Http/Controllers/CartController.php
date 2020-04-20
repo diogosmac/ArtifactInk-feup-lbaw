@@ -78,7 +78,7 @@ class CartController extends Controller
       $quantity = $request->input('quantity');
 
       $cart = Auth::user()->cart_items();
-      $cart->updateExistinPivot(['id_user' => Auth::user()->id, 'id_item' => $item], ['quantity' => $quantity]);
+      $cart->updateExistingPivot(['id_user' => Auth::user()->id, 'id_item' => $item], ['quantity' => $quantity]);
 
       $items = Auth::user()->cart_items()->orderBy('date_added')->get();
 
