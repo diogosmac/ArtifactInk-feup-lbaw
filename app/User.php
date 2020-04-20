@@ -36,8 +36,7 @@ class User extends Authenticatable
     /**
      * The cards this user owns.
      */
-     public function profilePicture() {
-      
+    public function profilePicture() {
         return $this->belongsTo('App\ProfilePicture','id_picture');
     }
 
