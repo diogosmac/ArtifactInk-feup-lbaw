@@ -49,4 +49,26 @@ class Item extends Model
     public function reviews() {
         return $this->hasMany('App\Review', 'id_item');
     }
+
+    /**
+     * An item belongs to many sales
+     */
+    public function sales() {
+        return $this->belongsToMany('App\Sale', 'item_sale', 'id_sale', 'id_item');
+    }
+
+    /**
+     * An item has many subscribers
+     */
+    public function subscribers() {
+        return $this->belongsToMany('App\ItemSubscriber', 'item_subscription', 'email_subscriber', 'id_item');
+    }
+
+    /**
+     * An order has many items
+     */
+    public function items() {
+        return $this->belongsToMany('App\Item', 'item_purchase', 'id_order', 'id_item')->withPivot(['price', 'quantity']);
+    }
+
 }
