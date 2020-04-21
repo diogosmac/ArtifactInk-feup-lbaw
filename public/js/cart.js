@@ -98,6 +98,9 @@ function removeItemHandler(id) {
 }
 
 function update_total_price(){ 
+    if (items.length == 0)
+        return;
+
     let sum=0; 
     for(let i=0; i< items.length; i++){
         if(items[i].getElementsByClassName('item-value')[0] !== undefined){
@@ -107,7 +110,6 @@ function update_total_price(){
     }
 
     total.innerHTML=sum + "€"
-
 }
 
 //ADD TO CART 
