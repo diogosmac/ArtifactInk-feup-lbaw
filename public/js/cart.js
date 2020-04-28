@@ -98,13 +98,17 @@ function removeItemHandler(id) {
 }
 
 function update_total_price(){ 
-    if (items.length == 0)
+    let newItems = document.querySelectorAll('.checkout-table .checkout-item-list');
+    
+    if (newItems.length == 0) {
+        total.innerHTML= "0.00" + "€"
         return;
+    }
 
     let sum=0; 
-    for(let i=0; i< items.length; i++){
-        if(items[i].getElementsByClassName('item-value')[0] !== undefined){
-            let value = items[i].getElementsByClassName('item-value')[0].innerHTML
+    for(let i=0; i< newItems.length; i++){
+        if(newItems[i].getElementsByClassName('item-value')[0] !== undefined){
+            let value = newItems[i].getElementsByClassName('item-value')[0].innerHTML
             sum = (parseFloat(sum)+ parseFloat(value)).toFixed(2)
         }
     }
