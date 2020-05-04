@@ -133,9 +133,11 @@
                 <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
                   <div class="panel-body">
                     <ul class="list-group list-cart">
-                    
-
-                      @include('partials.cart.cartListItem')
+                    @isset($cart_items)
+                      @foreach($cart_items as $cart_item )
+                          @include('partials.cart.cartListItem', ['cart_item'=>$cart_item, 'cart_picture'=>$cart_pictures[$loop->index]])
+                      @endforeach
+                    @endisset
                     </ul>
                   </div>
                   <div class="d-inline cart-list-total">
@@ -186,9 +188,11 @@
                 <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
                   <div class="panel-body">
                     <ul class="list-group list-cart">
-                      @include('partials.cart.cartListItem')
-                      @include('partials.cart.cartListItem')
-                      @include('partials.cart.cartListItem')
+                    @isset($cart_items)
+                      @foreach($cart_items as $cart_item )
+                          @include('partials.cart.cartListItem', ['cart_item'=>$cart_item, 'cart_picture'=>$cart_pictures[$loop->index]])
+                      @endforeach
+                    @endisset
                     </ul>
                   </div>
                   <div class="d-inline cart-list-total">
@@ -246,9 +250,11 @@
             <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
               <div class="panel-body">
                 <ul class="list-group list-cart">
-                 @include('partials.cart.cartListItem')
-                 @include('partials.cart.cartListItem')
-                 @include('partials.cart.cartListItem')
+                @isset($cart_items)
+                      @foreach($cart_items as $cart_item )
+                          @include('partials.cart.cartListItem', ['cart_item'=>$cart_item, 'cart_picture'=>$cart_pictures[$loop->index]])
+                      @endforeach
+                    @endisset
                 </ul>
               </div>
               <div class="d-inline cart-list-total">
@@ -292,9 +298,11 @@
             <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
               <div class="panel-body">
                 <ul class="list-group list-cart">
-                  @include('partials.cart.cartListItem')
-                  @include('partials.cart.cartListItem')
-                  @include('partials.cart.cartListItem')
+                @isset($cart_items)
+                      @foreach($cart_items as $cart_item )
+                          @include('partials.cart.cartListItem', ['cart_item'=>$cart_item, 'cart_picture'=>$cart_pictures[$loop->index]])
+                      @endforeach
+                    @endisset
                 </ul>
               </div>
               <div class="d-inline cart-list-total">
