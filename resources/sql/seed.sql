@@ -254,7 +254,8 @@ CREATE TABLE "newsletter_subscriber" (
 
 CREATE TABLE "admin" (
     "username" TEXT PRIMARY KEY,
-    "password" TEXT NOT NULL
+    "password" TEXT NOT NULL,
+    "remember_token" VARCHAR
 );
 
 CREATE TABLE "faq" (
