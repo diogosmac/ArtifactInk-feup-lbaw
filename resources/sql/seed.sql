@@ -1632,6 +1632,8 @@ INSERT INTO "item_picture" ("id_item", "link") VALUES
     (39, '36_world_famous_ink_pitch_black.jpg'),
     -- Eternal
     (40, '37_eternal_ink_maxx_black.jpg'),
+    (40, '37_eternal_ink_maxx_black.jpg'),
+    (40, '37_eternal_ink_maxx_black.jpg'),
     (41, '37_eternal_ink_maxx_black.jpg'),
     (42, '37_eternal_ink_maxx_black.jpg'),
     (43, '37_eternal_ink_maxx_black.jpg'),

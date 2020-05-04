@@ -13,22 +13,27 @@
     </nav>
     <div class="container-fluid d-none d-md-block">
       <div class="row">
-        <div class="col-6">
+        <div id="product-pictures" class="col-6">
           @foreach($pictures as $picture)
             @if ($loop->first)
               <div class="text-center">
-                <img src="{{ asset('storage/img_product/' . $picture->link) }}" alt="Product Photo" style="max-width: 100%; max-height:20em">
+                <img  id="active"
+                      src="{{ asset('storage/img_product/' . $picture->link) }}"
+                      alt="Product Photo">
               </div>
-            <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
-            @else
-              <div class="p-2 bd-highlight text-center">
-                <img src="{{ asset('storage/img_product/' . $picture->link) }}" alt="" class="image-fit">
-              </div>
+              <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
+            @endif
+                <div class="p-2 bd-highlight text-center">
+                  <img  id="thumbnail"
+                        src="{{ asset('storage/img_product/' . $picture->link) }}" 
+                        alt="Product Thumbnail" class="image-fit">
+                </div>
+            @if ($loop->last)
+            </div>
             @endif
           @endforeach
-          </div>
         </div>
-        <div class="col-6 d-flex flex-column justify-content-start">
+        <div id="product-basics" class="col-6 d-flex flex-column justify-content-start">
           <h2>{{ $item->name }}</h2>
           <div class="d-flex flex-row align-items-center bd-highlight mb-3">
             @for ($i = 0; $i < 5; $i++)
@@ -75,7 +80,7 @@
       </div>
     </div>
 
-    <div class="d-flex flex-column justify-content-center mx-2 mx-sm-3 d-md-none">
+    <div class="d-flex flex-column justify-content-center mx-2 mx-sm-3 d-md-none mx-2">
       <h2>{{ $item->name }}</h2>
       <div class="d-flex flex-row align-items-center bd-highlight mb-3">
         @for ($i = 0; $i < 5; $i++)
@@ -90,16 +95,22 @@
         <a href="#specs" class="px-3 a_link">{{ count($reviews) }}</a>
       </div>
     
-      <div class="">
+      <div id="product-pictures">
         @foreach($pictures as $picture)
           @if ($loop->first)
             <div class="text-center">
-              <img src="{{ asset('storage/img_product/' . $picture->link) }}" alt="Product Photo" style="max-width: 100%; max-height:20em">
+              <img  id="active"
+                    src="{{ asset('storage/img_product/' . $picture->link) }}"
+                    alt="Product Photo">
             </div>
-          <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 10em">
-          @else
-            <div class="p-2 bd-highlight text-center">
-              <img src="{{ asset('storage/img_product/' . $picture->link) }}" alt="" class="image-fit">
+            <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
+          @endif
+              <div class="p-2 bd-highlight text-center">
+                <img  id="thumbnail"
+                      src="{{ asset('storage/img_product/' . $picture->link) }}" 
+                      alt="Product Thumbnail" class="image-fit">
+              </div>
+          @if ($loop->last)
             </div>
           @endif
         @endforeach
@@ -183,7 +194,7 @@
         
         @unless(count($reviews) == 0)
         <div class="border-top border-dark my-4">
-          <div class="input-group my-3 w-25">
+          <div class="input-group my-3 col-lg-3">
             <div class="input-group-prepend">
               <label class="input-group-text" for="inputGroupSelect01">Order by</label>
             </div>
