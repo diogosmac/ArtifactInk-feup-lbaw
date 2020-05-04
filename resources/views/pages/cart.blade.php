@@ -48,7 +48,7 @@
         <span class="total d-flex justify-content-end">Total:  <span class="total-price">  </span></span>
         <div class="row shopping-cart-div">
             @foreach($items as $item )
-                @include('partials.cart.cartTableItem', ['item'=>$item, 'picture'=>$pictures[$loop->index]])
+                @include('partials.cart.cartTableItemMobile', ['item'=>$item, 'picture'=>$pictures[$loop->index]])
             @endforeach
         </div>
         <div class="row checkout-menu d-flex justify-content-between buttons " id="checkout-buttons-div">

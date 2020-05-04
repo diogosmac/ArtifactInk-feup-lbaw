@@ -98,6 +98,9 @@ function removeItemHandler(id) {
 }
 
 function update_total_price(){ 
+    if(total == null)
+        return; 
+        
     let newItems = document.querySelectorAll('.checkout-table .checkout-item-list');
     
     if (newItems.length == 0) {

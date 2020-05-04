@@ -9,10 +9,6 @@ function update_items(){
 let items_mobile = document.querySelectorAll('.mobile-checkout-box .li-item'); 
 let total_mobile = document.querySelector('.mobile-checkout-box .total .total-price');
 
-console.log(total_mobile.innerHTML);
-console.log(items_mobile);
-
-
 for(let i =0; i< items_mobile.length; i++){
 
     let add_button = items_mobile[i].getElementsByClassName('add-button')[0]
@@ -58,6 +54,10 @@ for(let i =0; i< items_mobile.length; i++){
 update_total_price_mobile();
 
 function update_total_price_mobile(){ 
+
+    if(total_mobile == null)
+        return; 
+
     let sum=0; 
     for(let i=0; i< items_mobile.length; i++){
         if(items_mobile[i].getElementsByClassName('item-value')[0] !== undefined){

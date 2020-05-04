@@ -2,13 +2,13 @@
     <div class="container">
         <div class="row">
             <div class="col-4 col-sm-3">
-                <a href="../pages/product.php" class="list-img-link" >
+                <a href="/product/{{$item->id}}" class="list-img-link" >
                     <img src="{{ asset('storage/img_product/' . $picture->link) }}"
                         class="card-img-top" alt="...">
                 </a>
             </div>
             <div class="col-6 col-sm-6">
-                <a href="../pages/product.php" class="list-img-link">
+                <a href="/product/{{$item->id}}" class="list-img-link">
                     <h5 class="font-weight-bold"> {{ $item->name }} </h5>
                 </a>
              
