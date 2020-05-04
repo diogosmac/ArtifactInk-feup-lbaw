@@ -25,6 +25,11 @@
 
 
 /* BUTTON */
+.btn:focus, .btn:active{
+    box-shadow:none !important;
+    outline:0px !important;
+}
+
 .button {
     border-radius: 0%;
     background-color: var(--main-red-alpha);
