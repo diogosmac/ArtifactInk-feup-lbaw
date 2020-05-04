@@ -1,11 +1,11 @@
 <tr class="checkout-item-list" data-id="{{ $item->id }}">
     <td scope="row">
-        <a href="/product/{{$item->id}}" >
+        <a href="{{ url('/product/' . $item->id) }}" >
             <img src=" {{ asset('storage/img_product/' . $picture->link) }}" alt="">
         </a>
     </td>
     <th colspan="0">
-        <a href="/product/{{$item->id}}">
+        <a href="{{ url('/product/' . $item->id) }}">
             {{ $item->name }}
         </a>
     </th>

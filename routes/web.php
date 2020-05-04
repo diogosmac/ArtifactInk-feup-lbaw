@@ -11,11 +11,6 @@
 |
 */
 
-//Route::get('/', 'Auth\LoginController@home');
-// Cards
-Route::get('cards', 'CardController@list');
-Route::get('cards/{id}', 'CardController@show');
-
 // API
 // Authentication
 
@@ -26,14 +21,10 @@ Route::get('sign_up', 'Auth\RegisterController@showRegistrationForm')->name('sig
 Route::post('sign_up', 'Auth\RegisterController@register');
 
 //profile
-
-Route::get('profile_nav','UserController@showUserNavbar');
-
-
 Route::view('recover_password', 'auth/recover_password');
 
 //routes for debugging pages - remove later
-Route::view('/', 'pages/home');
+Route::get('/', 'ItemController@showHomepage'); //todo reply function indide in all pages 
 
 Route::view('search','pages/search');
 
@@ -41,6 +32,7 @@ Route::get('product/{id}', 'ItemController@show');
 
 //profile pages and stuff related 
 Route::prefix('profile')->group(function() {
+    
     Route::view('/', 'pages/profile/profile');
     
     Route::view('review', 'pages/profile/review');
@@ -145,9 +137,6 @@ Route::get('cart', 'CartController@list');
 Route::post('cart', 'CartController@add_to_cart');
 Route::delete('cart', 'CartController@delete_from_cart');
 Route::put('cart', 'CartController@update_item_quantity');
-
-
-Route::post('cart', 'CartController@add_to_cart');
 
 
 Route::view('checkout/shipping', 'pages.checkout.shipping');

@@ -8,8 +8,6 @@ use phpDocumentor\Reflection\Types\Array_;
 
 class CartController extends Controller
 {
-    //
-
     /**
      * Shows all items in the cart.
      *
@@ -33,7 +31,21 @@ class CartController extends Controller
 	
 
 			return view('pages.cart', ['items' => $items, 'pictures' => $pictures]);
-		}
+    }
+    
+    public static function get_user_cart_items(){
+
+      $cart_items = array();
+      if( Auth::check())
+        $cart_items = Auth::user()->cart_items()->orderBy('date_added')->get();
+
+      $cart_pictures = array();
+			foreach ($cart_items as $cart_item) {
+				array_push($cart_pictures, $cart_item->images()->get()->first());
+			}
+			return  ['cart_items' => $cart_items, 'cart_pictures' => $cart_pictures];
+
+    }
 
 		/**
      * Add an item to the cart.
