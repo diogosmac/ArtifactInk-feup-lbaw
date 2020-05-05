@@ -12,6 +12,9 @@ class Admin extends Authenticatable
 
     use Notifiable;
 
+    // Don't add create and update timestamps in database.
+    public $timestamps  = false;
+
     /**
      * The attributes that are mass assignable.
      *
