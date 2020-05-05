@@ -38,9 +38,11 @@
           <div class="form-group">
             <label for="inputCategory">Category</label>
             <select class="custom-select" id="inputCategory">
-              <option value="Ink" selected>{{ $product->category }}</option>
-              <option value="Machines">Machines</option>
-              <option value="...">...</option>
+            @foreach ($parent_categories as $parent_category)
+              <option value="{{ $parent_category->name }}" {{ ($product->category->id_parent == $parent_category->id) ? 'selected' : '' }}>
+                {{ $parent_category->name }}
+              </option>
+            @endforeach
             </select>
           </div>
           <div class="form-group">

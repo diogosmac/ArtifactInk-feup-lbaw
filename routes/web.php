@@ -66,27 +66,13 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
     // products routes
     Route::prefix('products')->name('products.')->group(function () {
         // view products
-        Route::view('/', 'pages.admin.products.products')->name('home');
+        Route::get('/', 'AdminController@showProducts')->name('home');
 
-        // create product
-        Route::view('add', 'pages.admin.products.add_product')->name('add');
+        // create product form
+        Route::get('add', 'AdminController@showAddProductForm')->name('add');
 
         // edit product
-        /*
-        Route::get('{id}/edit', function ($id) {
-
-            $product = (object) array(
-                'id' => $id,
-                'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
-                'name' => "Dynamic Black Ink 100ml",
-                'price' => 17.99,
-                'category' => "Ink",
-                'subcategory' => "Black",
-                'stock' => 34,
-                'description' => "SUPER COOL DESCRIPTION"
-            );
-            return view('pages.admin.products.edit_product', ['product' => $product]);
-        })->where('id', '[0-9]+');*/
+        Route::get('{id}/edit', 'AdminController@showEditProductForm')->where('id', '[0-9]+')->name('edit');
     });
 
     // categories
