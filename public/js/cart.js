@@ -29,12 +29,13 @@ for (let i = 0; i < items.length; i++) {
     let value = items[i].getElementsByClassName('item-value')[0]
 
     //action buttons 
-    add_button.addEventListener('click', () => {
+    add_button.addEventListener('click', (event) => {
         let id = items[i].getAttribute('data-id');
         let old_quantity = item_quant.innerHTML;
         let quantity = parseInt(old_quantity) + 1;
 
-        sendAjaxRequest('put', '/cart', {id_item: id, quantity: quantity}, addQuantityHandler.bind(null, id, quantity)); // bind attributes
+        sendAjaxRequest('put', '/cart', {id_item: id, quantity: quantity}, addQuantityHandler);
+        event.preventDefault();
     }, false)
 
     sub_button.addEventListener('click', () => {
@@ -43,13 +44,13 @@ for (let i = 0; i < items.length; i++) {
         let quantity = parseInt(old_quantity) - 1;
 
         if (quantity > 0)
-            sendAjaxRequest('put', '/cart', {id_item: id, quantity: quantity}, subtractQuantityHandler.bind(null, id, quantity)); // bind attributes
+            sendAjaxRequest('put', '/cart', {id_item: id, quantity: quantity}, subtractQuantityHandler); 
     }, false)
 
     //remove button 
     rmv_button.addEventListener('click', () => {
         let id = items[i].getAttribute('data-id');
-        sendAjaxRequest('delete', '/cart', {id_item: id}, removeItemHandler.bind(null, id)); // bind attributes
+        sendAjaxRequest('delete', '/cart', {id_item: id}, removeItemHandler); // bind attributes
     }, false)
 
     //update item quant 
@@ -59,9 +60,15 @@ for (let i = 0; i < items.length; i++) {
 update_total_price();
 
 
-function addQuantityHandler(id, quantity) {
-    // if this.status == 200 
+function addQuantityHandler() {
+    if (this.status != 200) {
+        return;
+    }
     
+    let info = JSON.parse(this.responseText); 
+    let id = info.id_item;
+    let quantity = info.quantity;
+
     let item = document.querySelector('tr.checkout-item-list[data-id="' + id + '"]');
     let item_quant = item.getElementsByClassName('item-quant')[0];
     let value = item.getElementsByClassName('item-value')[0]
@@ -75,8 +82,14 @@ function addQuantityHandler(id, quantity) {
 }
 
 
-function subtractQuantityHandler(id, quantity) {
-    // if this.status == 200 
+function subtractQuantityHandler() {
+    if (this.status != 200) {
+        return;
+    }
+    
+    let info = JSON.parse(this.responseText); 
+    let id = info.id_item;
+    let quantity = info.quantity; 
     
     let item = document.querySelector('tr.checkout-item-list[data-id="' + id + '"]');
     let item_quant = item.getElementsByClassName('item-quant')[0];
@@ -90,8 +103,14 @@ function subtractQuantityHandler(id, quantity) {
     update_total_price();
 }
 
-function removeItemHandler(id) {
-    // if this.status == 200
+function removeItemHandler() {
+    if (this.status != 200) {
+        return;
+    }
+    
+    let info = JSON.parse(this.responseText); 
+    let id = info.id_item;
+
     let item = document.querySelector('tr.checkout-item-list[data-id="' + id + '"]');
     item.remove();
     update_total_price();
