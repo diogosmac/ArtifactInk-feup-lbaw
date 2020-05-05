@@ -64,12 +64,12 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
     Route::get('/', 'AdminController@index')->name('home');
 
     // products routes
-    Route::prefix('products')->name('products')->group(function () {
+    Route::prefix('products')->name('products.')->group(function () {
         // view products
-        Route::view('/', 'pages.admin.products.products')->name('');
+        Route::view('/', 'pages.admin.products.products')->name('home');
 
         // create product
-        Route::view('add', 'pages.admin.products.add_product')->name('.add');
+        Route::view('add', 'pages.admin.products.add_product')->name('add');
 
         // edit product
         /*

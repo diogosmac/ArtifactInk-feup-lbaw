@@ -15,7 +15,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {{ (Route::is('admin.products*')) ? 'active' : '' }} ?>" href="{{ route('admin.products') }}">
+        <a class="nav-link {{ (Route::is('admin.products*')) ? 'active' : '' }} ?>" href="{{ route('admin.products.home') }}">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-bag">
             <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
             <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -104,7 +104,7 @@
     </ul>
 
     <div class="mt-auto mb-3">
-      <a class="nav-link" onclick="event.preventDefault();document.querySelector('#admin-logout-form').submit();">
+      <a class="nav-link" onclick="document.querySelector('#admin-signout-form').submit();">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
           <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
           <polyline points="16 17 21 12 16 7"></polyline>
@@ -112,7 +112,7 @@
         </svg>
         Sign Out
       </a>
-      <form id="admin-logout-form" action="{{ route('admin.sign_out') }}" method="POST" style="display: none;">
+      <form id="admin-signout-form" action="{{ route('admin.sign_out') }}" method="POST" style="display: none;">
         @csrf
       </form>
     </div>
