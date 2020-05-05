@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDOException;
 use phpDocumentor\Reflection\Types\Array_;
 
 class CartController extends Controller
@@ -15,7 +16,7 @@ class CartController extends Controller
      */
     public function list()
     {
-      if (!Auth::check()) return redirect('/login');
+      if (!Auth::check()) return redirect('/sign_in');
 
       //$this->authorize('list', Card::class);
 			
@@ -54,7 +55,7 @@ class CartController extends Controller
      */
 		public function add_to_cart(Request $request) {
       
-      if (!Auth::check()) return redirect('/login');
+      if (!Auth::check()) return redirect('/sign_in');
 
       $item = $request->input('id_item');
       $quantity = $request->input('quantity');
@@ -70,29 +71,38 @@ class CartController extends Controller
     }
     
     public function delete_from_cart(Request $request) {
-      if (!Auth::check()) return redirect('/login');
+      if (!Auth::check()) return redirect('/sign_in');
 
       $item = $request->input('id_item');
 
       $cart = Auth::user()->cart_items();
 
-      $cart->detach(['id_user' => Auth::user()->id, 'id_item' => $item]);
-      
-      $items = Auth::user()->cart_items()->orderBy('date_added')->get();
-      return $items;
+      try {
+        $cart->detach(['id_user' => Auth::user()->id, 'id_item' => $item]);
+      } catch (PDOException $e) {
+          return response("Internal Server Error", 500);
+      }
+
+      return response()->json(['id_item' => $item]);
     }
 
     public function update_item_quantity(Request $request) {
-      if (!Auth::check()) return redirect('/login');
 
-      $item = $request->input('id_item');
-      $quantity = $request->input('quantity');
+        if (!Auth::check()) return redirect('/sign_in');
+        
+        $item = $request->input('id_item');
+        $quantity = $request->input('quantity');
+        
+        $cart = Auth::user()->cart_items();
+        
+        try {
+          $cart->updateExistingPivot(['id_user' => Auth::user()->id, 'id_item' => $item], ['quantity' => $quantity]);
+        } catch(PDOException $e) {
+          return response("Not enough stock", 409);
+        }
 
-      $cart = Auth::user()->cart_items();
-      $cart->updateExistingPivot(['id_user' => Auth::user()->id, 'id_item' => $item], ['quantity' => $quantity]);
-
-      $items = Auth::user()->cart_items()->orderBy('date_added')->get();
-
-      return $items;
+        $items = Auth::user()->cart_items()->orderBy('date_added')->get();
+        
+        return response()->json(['id_item' => $item, 'quantity' => $quantity]);
     }
 }
