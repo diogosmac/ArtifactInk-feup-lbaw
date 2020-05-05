@@ -27,7 +27,7 @@ Route::post('sign_up', 'Auth\RegisterController@register');
 Route::view('recover_password', 'auth/recover_password');
 
 //routes for debugging pages - remove later
-Route::get('/', 'ItemController@showHomepage'); //todo reply function indide in all pages 
+Route::get('/', 'ItemController@showHomepage')->name('home'); //todo reply function indide in all pages 
 
 Route::view('search','pages/search');
 
@@ -52,23 +52,24 @@ Route::prefix('profile')->group(function() {
 });
 
 // admin routes
-Route::prefix('admin')->group(function () {
+Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
     // auth
-    Route::view('/', 'pages/admin/sign_in');
-
-    // auth
-    Route::view('sign_in', 'pages/admin/sign_in');
+    Route::namespace('Auth')->group(function() {
+        Route::get('sign_in', 'LoginController@showLoginForm')->name('sign_in');
+        Route::post('sign_in', 'LoginController@login');
+        Route::post('sign_out', 'LoginController@logout')->name('sign_out');
+    });
 
     // home
-    Route::view('home', 'pages/admin/home');
+    Route::get('/', 'AdminController@index')->name('home');
 
     // products routes
-    Route::prefix('products')->group(function () {
+    Route::prefix('products')->name('products')->group(function () {
         // view products
-        Route::view('/', 'pages/admin/products/products');
+        Route::view('/', 'pages.admin.products.products')->name('');
 
         // create product
-        Route::view('add', 'pages.admin.products.add_product');
+        Route::view('add', 'pages.admin.products.add_product')->name('.add');
 
         // edit product
         /*
@@ -89,24 +90,24 @@ Route::prefix('admin')->group(function () {
     });
 
     // categories
-    Route::view('categories', 'pages.admin.categories');
+    Route::view('categories', 'pages.admin.categories')->name('categories');
 
     // orders
-    Route::view('orders', 'pages.admin.orders');
+    Route::view('orders', 'pages.admin.orders')->name('orders');
 
     // reviews
-    Route::view('reviews', 'pages.admin.reviews');
+    Route::view('reviews', 'pages.admin.reviews')->name('reviews');
 
     // users
-    Route::view('users', 'pages.admin.users');
+    Route::view('users', 'pages.admin.users')->name('users');
 
     // sales
-    Route::prefix('sales')->group(function () {
+    Route::prefix('sales')->name('sales')->group(function () {
         // view sales
-        Route::view('/', 'pages.admin.sales.sales');
+        Route::view('/', 'pages.admin.sales.sales')->name('');
 
         // create sale
-        Route::view('add', 'pages.admin.sales.add_sale');
+        Route::view('add', 'pages.admin.sales.add_sale')->name('.add');
 
         // edit sale
         /*
@@ -123,18 +124,18 @@ Route::prefix('admin')->group(function () {
     });
 
     // newsletter
-    Route::view('newsletter', 'pages.admin.newsletter');
+    Route::view('newsletter', 'pages.admin.newsletter')->name('newsletter');
 
     // faqs
-    Route::view('faqs', 'pages.admin.faqs');
+    Route::view('faqs', 'pages.admin.faqs')->name('faqs');
 
     
     // info
-    Route::view('info', 'pages.admin.info');
+    Route::view('info', 'pages.admin.info')->name('info');
 
     
     // support message
-    Route::view('support_chat', 'pages.admin.support_chat');
+    Route::view('support_chat', 'pages.admin.support_chat')->name('support_chat');
 });
 
 
