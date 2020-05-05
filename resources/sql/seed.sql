@@ -253,7 +253,8 @@ CREATE TABLE "newsletter_subscriber" (
 );
 
 CREATE TABLE "admin" (
-    "username" TEXT PRIMARY KEY,
+    "id" SERIAL PRIMARY KEY,
+    "username" TEXT NOT NULL CONSTRAINT admin_username_uk UNIQUE,
     "password" TEXT NOT NULL,
     "remember_token" VARCHAR
 );
