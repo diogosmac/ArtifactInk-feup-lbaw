@@ -43,6 +43,7 @@ DROP TYPE IF EXISTS MESSAGE_SENDER;
 
 DROP TRIGGER IF EXISTS update_rating on "review";
 DROP TRIGGER IF EXISTS add_to_cart on "cart";
+DROP TRIGGER IF EXISTS update_cart on "cart";
 DROP TRIGGER IF EXISTS new_oos_notification on "out_of_stock_notification";
 DROP TRIGGER IF EXISTS new_report_notification on "report_notification";
 DROP TRIGGER IF EXISTS new_item_sale on "item_sale";
@@ -300,7 +301,7 @@ CREATE TRIGGER update_rating
 
 -- TRIGGER02 --
 
-CREATE OR REPLACE FUNCTION add_to_cart()
+CREATE OR REPLACE FUNCTION manage_cart()
     RETURNS trigger AS
 $$
 BEGIN
@@ -312,11 +313,11 @@ END;
 $$
 LANGUAGE 'plpgsql';
 
-CREATE TRIGGER add_to_cart
-    BEFORE INSERT
+CREATE TRIGGER manage_cart
+    BEFORE INSERT OR UPDATE
     ON "cart"
     FOR EACH ROW
-    EXECUTE PROCEDURE add_to_cart();
+    EXECUTE PROCEDURE manage_cart();
 
 
 -- TRIGGER03 --
