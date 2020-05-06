@@ -1581,7 +1581,7 @@ INSERT INTO "item_picture" ("id_item", "link") VALUES
     -- Traditional/Old School - 10
     (1, '1_mom_love.jpg'),
     (2, '2_lucky_ace.jpg'),
-    (3, '3_dagger.jpg'),
+    (3, '3_dagger.png'),
     -- Realism - 11
     (4, '4_wolf.jpg'),
     (5, '5_heath_ledger_joker.jpg'),
