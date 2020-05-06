@@ -138,6 +138,8 @@ Route::post('cart', 'CartController@add_to_cart');
 Route::delete('cart', 'CartController@delete_from_cart');
 Route::put('cart', 'CartController@update_item_quantity');
 
+Route::post('profile/wishlist', 'WishlistController@add_to_wishlist')
+
 
 Route::view('checkout/shipping', 'pages.checkout.shipping');
 
