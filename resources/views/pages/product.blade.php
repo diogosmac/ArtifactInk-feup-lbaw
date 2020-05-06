@@ -114,7 +114,6 @@
             </div>
           @endif
         @endforeach
-        </div>
       </div>
       <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
       @if ($item->stock > 0)
