@@ -14,6 +14,9 @@
 // API
 // Authentication
 
+use App\Http\Controllers\WishlistController;
+use Illuminate\Routing\Route;
+
 Route::get('sign_in', 'Auth\LoginController@showLoginForm')->name('sign_in');
 Route::post('sign_in', 'Auth\LoginController@login');
 Route::get('sign_out', 'Auth\LoginController@logout')->name('sign_out');
@@ -38,6 +41,10 @@ Route::prefix('profile')->group(function() {
     Route::view('review', 'pages/profile/review');
     
     Route::view('wishlist', 'pages/profile/wishlist');
+
+    Route::post('wishlist', 'WishlistController@add_to_wishlist');
+
+    Route::delete('wishlist', 'WishlistController@remove_from_wishlist');
 
     Route::view('purchased_history', 'pages/profile/purchased_history');
 });
@@ -137,9 +144,6 @@ Route::get('cart', 'CartController@list');
 Route::post('cart', 'CartController@add_to_cart');
 Route::delete('cart', 'CartController@delete_from_cart');
 Route::put('cart', 'CartController@update_item_quantity');
-
-Route::post('profile/wishlist', 'WishlistController@add_to_wishlist')
-
 
 Route::view('checkout/shipping', 'pages.checkout.shipping');
 
