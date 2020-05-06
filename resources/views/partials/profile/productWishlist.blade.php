@@ -1,4 +1,4 @@
-<li class="p-3 list-group-item li-item">
+<li class="p-3 list-group-item li-item wishlist-item" data-id="{{ $item->id }}">
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
@@ -38,7 +38,7 @@
         </div>
         <div class="py-2 col-sm-3 d-flex flex-column justify-content-between align-items-end li-price-button">
           <h3 class="font-weight-bold" style="color: var(--main-red)">{{ $item->price }} €</h3>
-          <button class="btn button-secondary remove-wishlist">
+          <button class="btn button-secondary remove-wishlist" type="button" data-id="{{ $item->id }}"git >
             <i class="fas fa-trash"></i>
             Remove
           </button>

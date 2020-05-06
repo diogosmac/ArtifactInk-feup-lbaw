@@ -3,11 +3,11 @@
  */
 
 // Product Page
-let wishlist_buttons = document.querySelectorAll('.li-wishlist');
+let add_wishlist_buttons = document.querySelectorAll('button.li-wishlist');
 
-for (let i = 0; i < wishlist_buttons.length; i++) {
-    wishlist_buttons[i].addEventListener('click', (event) => {
-        let id = wishlist_buttons[i].getAttribute('data-id');
+for (let i = 0; i < add_wishlist_buttons.length; i++) {
+    add_wishlist_buttons[i].addEventListener('click', (event) => {
+        let id = add_wishlist_buttons[i].getAttribute('data-id');
         
         sendAjaxRequest('post', '/profile/wishlist', {id_item: id}, addToWishlistHandler);
         event.preventDefault();
@@ -15,7 +15,7 @@ for (let i = 0; i < wishlist_buttons.length; i++) {
 }
 
 // Cards
-wishlist_buttons = document.querySelectorAll();
+//let cards_wishlist_buttons = document.querySelectorAll('');
 
 function addToWishlistHandler() {
     // Success alert
@@ -25,13 +25,25 @@ function addToWishlistHandler() {
  * Remove item from wishlist
  */
 
-wishlist_buttons = document.querySelectorAll('button.remove-wishlist');
+let delete_wishlist_buttons = document.querySelectorAll('button.remove-wishlist');
 
-for (let i = 0; i < wishlist_buttons.length; i++) {
-    wishlist_buttons[i].addEventListener('click', (event) => {
-        let id = wishlist_buttons[i].getAttribute('data-id');
+for (let i = 0; i < delete_wishlist_buttons.length; i++) {
+    delete_wishlist_buttons[i].addEventListener('click', (event) => {
+        let id = delete_wishlist_buttons[i].getAttribute('data-id');
         
-        sendAjaxRequest('delete', '/profile/wishlist', {id_item: id}, addToWishlistHandler);
+        sendAjaxRequest('delete', '/profile/wishlist', {id_item: id}, removeFromWishlistHandler);
         event.preventDefault();
     }, false)
+}
+
+function removeFromWishlistHandler() {
+    if (this.status != 200) {
+        return;
+    }
+
+    let info = JSON.parse(this.responseText); 
+    let id = info.id_item;
+
+    let item = document.querySelector('li.wishlist-item[data-id="' + id + '"]');
+    item.remove();
 }
