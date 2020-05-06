@@ -14,8 +14,8 @@
 // API
 // Authentication
 
-use App\Http\Controllers\WishlistController;
-use Illuminate\Routing\Route;
+//use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Route;
 
 Route::get('sign_in', 'Auth\LoginController@showLoginForm')->name('sign_in');
 Route::post('sign_in', 'Auth\LoginController@login');
@@ -40,7 +40,9 @@ Route::prefix('profile')->group(function() {
     
     Route::view('review', 'pages/profile/review');
     
-    Route::view('wishlist', 'pages/profile/wishlist');
+    //Route::view('wishlist', 'pages/profile/wishlist');
+
+    Route::get('wishlist', 'WishlistController@list');
 
     Route::post('wishlist', 'WishlistController@add_to_wishlist');
 
