@@ -46,7 +46,7 @@ Route::prefix('profile')->group(function() {
 
     Route::post('wishlist', 'WishlistController@add_to_wishlist');
 
-    Route::delete('wishlist', 'WishlistController@remove_from_wishlist');
+    Route::delete('wishlist', 'WishlistController@delete_from_wishlist');
 
     Route::view('purchased_history', 'pages/profile/purchased_history');
 });
