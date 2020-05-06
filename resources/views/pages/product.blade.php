@@ -70,10 +70,10 @@
             <h1>{{ $item->price }}€</h1>
           </div>
           <div class="d-flex flex-row justify-content-between align-items-end bd-highlight my-3">
-            <a href="#" class="p-2 li-wishlist">
+            <button class="btn btn-link li-wishlist" data-id="{{ $item->id}}" type="button">
               <i class="fas fa-heart"></i>
               Add to whishlist
-            </a>
+            </button>
             <button class="btn btn-primary button add-to-cart-btn" data-product-type="{{ $item->id}}" type="submit"> Add to Cart</button>
           </div>
         </div>
@@ -138,10 +138,10 @@
         <h1>{{ $item->price }}€</h1>
       </div>
       <div class="d-flex flex-row justify-content-between bd-highlight my-2">
-        <a href="#" class="p-2 li-wishlist">
+        <button class="btn btn-link li-wishlist" data-id="{{ $item->id }}" type="button">
           <i class="fas fa-heart"></i>
           Add to whishlist
-        </a>
+        </button>
         <input class="btn btn-primary button" type="submit" value="Add to Cart">
       </div>
     </div>

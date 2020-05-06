@@ -4,9 +4,9 @@
 
           <section id="wishlist">
           <ul class="list-group">
-            @include('partials.profile.productWishlist')
-            @include('partials.profile.productWishlist')
-            @include('partials.profile.productWishlist')
+            @foreach($items as $item )
+              @include('partials.profile.productWishlist', ['item'=>$item, 'picture'=>$pictures[$loop->index]])
+            @endforeach
           </ul>
           </section>
 
