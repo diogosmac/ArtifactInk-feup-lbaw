@@ -11,7 +11,7 @@ class WishlistController extends Controller
 	/**
 	 * Shows all items in the wishlist.
 	 *
-	 * @return Response
+	 * @return View
 	 */
 	public function list()	{
 		if (!Auth::check()) return redirect('/sign_in');
@@ -19,7 +19,7 @@ class WishlistController extends Controller
 		//$this->authorize('list', Card::class);
 
 		$items = array();
-		$items = Auth::user()->wishlist_items();
+		$items = Auth::user()->wishlist_items()->get();
 
 		$pictures = array();
 		foreach ($items as $item) {
