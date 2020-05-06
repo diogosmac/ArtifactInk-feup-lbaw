@@ -44,5 +44,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Item', 'cart', 'id_user', 'id_item')->withPivot(['quantity', 'date_added']);
     }
 
+    /**
+     * The items in this user's wishlist
+     */
+    public function wishlist_items() {
+        return $this->belongsToMany('App\Item', 'wishlist', 'id_user', 'id_item');
+    }
     
 }
