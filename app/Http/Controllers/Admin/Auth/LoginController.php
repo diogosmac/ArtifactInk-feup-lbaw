@@ -43,7 +43,7 @@ class LoginController extends Controller
             // Redirect the admin
             return redirect()
                 ->intended(route('admin.home'))
-                ->with('status','You are Logged in as Admin!');
+                ->with('status','You are signed in as Admin!');
         }
 
         // Authentication failed
@@ -59,7 +59,7 @@ class LoginController extends Controller
         Auth::guard('admin')->logout();
         return redirect()
             ->route('admin.sign_in')
-            ->with('status','Admin has been logged out!');
+            ->with('status','Admin has been signed out!');
     }
 
     private function validator(Request $request) {
