@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Category;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
@@ -18,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
         // Make categories accessible everywhere
         View::composer(['*'], function($view) {
             $view->with('parent_categories', Category::where('id_parent', null)->get());
+            $view->with('cart_items', CartController::get_user_cart_items());
         });
     }
 

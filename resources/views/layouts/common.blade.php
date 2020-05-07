@@ -135,8 +135,8 @@
                   <div class="panel-body">
                     <ul class="list-group list-cart">
                     @isset($cart_items)
-                      @foreach($cart_items as $cart_item )
-                          @include('partials.cart.cartListItem', ['cart_item'=>$cart_item, 'cart_picture'=>$cart_pictures[$loop->index]])
+                      @foreach($cart_items['items'] as $cart_item )
+                          @include('partials.cart.cartListItem', ['cart_item'=>$cart_item, 'cart_picture'=>$cart_items['pictures'][$loop->index]])
                       @endforeach
                     @endisset
                     </ul>
@@ -190,8 +190,8 @@
                   <div class="panel-body">
                     <ul class="list-group list-cart">
                     @isset($cart_items)
-                      @foreach($cart_items as $cart_item )
-                          @include('partials.cart.cartListItem', ['cart_item'=>$cart_item, 'cart_picture'=>$cart_pictures[$loop->index]])
+                      @foreach($cart_items['items'] as $cart_item )
+                          @include('partials.cart.cartListItem', ['cart_item'=>$cart_item, 'cart_picture'=>$cart_items['pictures'][$loop->index]])
                       @endforeach
                     @endisset
                     </ul>
@@ -252,10 +252,10 @@
               <div class="panel-body">
                 <ul class="list-group list-cart">
                 @isset($cart_items)
-                      @foreach($cart_items as $cart_item )
-                          @include('partials.cart.cartListItem', ['cart_item'=>$cart_item, 'cart_picture'=>$cart_pictures[$loop->index]])
-                      @endforeach
-                    @endisset
+                  @foreach($cart_items['items'] as $cart_item )
+                    @include('partials.cart.cartListItem', ['cart_item'=>$cart_item, 'cart_picture'=>$cart_items['pictures'][$loop->index]])
+                  @endforeach
+                @endisset
                 </ul>
               </div>
               <div class="d-inline cart-list-total">
@@ -300,10 +300,10 @@
               <div class="panel-body">
                 <ul class="list-group list-cart">
                 @isset($cart_items)
-                      @foreach($cart_items as $cart_item )
-                          @include('partials.cart.cartListItem', ['cart_item'=>$cart_item, 'cart_picture'=>$cart_pictures[$loop->index]])
-                      @endforeach
-                    @endisset
+                  @foreach($cart_items['items'] as $cart_item )
+                    @include('partials.cart.cartListItem', ['cart_item'=>$cart_item, 'cart_picture'=>$cart_items['pictures'][$loop->index]])
+                  @endforeach
+                @endisset
                 </ul>
               </div>
               <div class="d-inline cart-list-total">

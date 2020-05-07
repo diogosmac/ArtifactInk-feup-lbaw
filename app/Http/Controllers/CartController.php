@@ -44,7 +44,7 @@ class CartController extends Controller
 			foreach ($cart_items as $cart_item) {
 				array_push($cart_pictures, $cart_item->images()->get()->first());
 			}
-			return  ['cart_items' => $cart_items, 'cart_pictures' => $cart_pictures];
+			return  ['items' => $cart_items, 'pictures' => $cart_pictures];
 
     }
 
