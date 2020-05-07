@@ -125,11 +125,13 @@ Route::post('cart', 'CartController@add_to_cart');
 Route::delete('cart', 'CartController@delete_from_cart');
 Route::put('cart', 'CartController@update_item_quantity');
 
-Route::view('checkout/shipping', 'pages.checkout.shipping');
+Route::prefix('/checkout')->name('checkout.')->namespace('Checkout')->group(function () {
+    Route::view('shipping', 'pages.checkout.shipping')->name('shipping');
 
-Route::view('checkout/payment', 'pages.checkout.payment');
+    Route::view('payment', 'pages.checkout.payment')->name('payment');
 
-Route::view('checkout/confirm', 'pages.checkout.confirm');
+    Route::view('confirm', 'pages.checkout.confirm')->name('confirm');
+});
 
 //static pages 
 Route::view('about_us', 'pages.info.about_us');

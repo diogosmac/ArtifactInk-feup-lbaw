@@ -1,7 +1,8 @@
 @extends('layouts.common')
 
-@section('content')
+@section('title', ' - ' . $item->name)
 
+@section('content')
 <main>
   <section id="product" class="mx-auto">
     <nav aria-label="breadcrumb">

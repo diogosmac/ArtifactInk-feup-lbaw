@@ -1,5 +1,7 @@
 @extends('layouts.common')
 
+@section('title', ' - Cart')
+
 @section('content')
 <div class="container">
     <div class="row">

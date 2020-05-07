@@ -1,5 +1,7 @@
 @extends('layouts.common')
 
+@section('title', ' - Search')
+
 @section('content')
 <section class="mx-auto my-4">
 	<h3>Search for 'black ink'</h3>

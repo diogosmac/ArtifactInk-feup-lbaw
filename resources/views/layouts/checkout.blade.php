@@ -10,7 +10,7 @@
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ config('app.name', 'Laravel') }}</title>
+  <title>{{ config('app.name', 'Laravel') }} @yield('title', '')</title>
 
   <!-- ****** faviconit.com favicons ****** -->
   <link rel="shortcut icon" href="{{ asset('assets/faviconit/favicon.ico') }}">
@@ -118,6 +118,7 @@
         </div>
       </nav>
     </div>
+
     @yield('content')
 
     <!-- Footer-->
