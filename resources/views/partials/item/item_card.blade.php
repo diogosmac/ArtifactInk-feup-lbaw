@@ -12,16 +12,16 @@
             </a>
         </div>
         <div class="p-1">
-            <a href="/product/1" class="card-img-link">
+            <a href="/product/{{ $item->id }}"   class="card-img-link">
             <div>
-                <img src="https://images-na.ssl-images-amazon.com/images/I/61TBsibBdqL._SX425_.jpg" class="card-img-top image-fit" alt="...">
+                <img src="{{ asset('storage/img_product/' . $picture->link) }}" class="card-img-top image-fit" alt="...">
             </div>
             </a>
         </div>
         <div class="p-1 d-flex flex-column justify-content-center text-center card-body border-top border-dark">
             <span class="detail">
-                <h5 class="card-title font-weight-bold">Tattoo Machine</h5>
-                <h5 class="card-price font-weight-bold">39.95 €</h5>
+                <h5 class="card-title font-weight-bold">{{ $item->name }}</h5>
+                <h5 class="card-price font-weight-bold">{{ $item->price }} €</h5>
             </span>
         </div>
         <div class="p-1"style="z-index: 200;">
