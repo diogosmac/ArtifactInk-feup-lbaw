@@ -27,7 +27,7 @@ Route::post('sign_up', 'Auth\RegisterController@register');
 Route::view('recover_password', 'auth/recover_password');
 
 //routes for debugging pages - remove later
-Route::get('/', 'ItemController@showHomepage'); //todo reply function indide in all pages 
+Route::get('/', 'ItemController@showHomepage')->name('home'); //todo reply function indide in all pages 
 
 Route::view('search','pages/search');
 
@@ -52,89 +52,67 @@ Route::prefix('profile')->group(function() {
 });
 
 // admin routes
-Route::prefix('admin')->group(function () {
+Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
     // auth
-    Route::view('/', 'pages/admin/sign_in');
-
-    // auth
-    Route::view('sign_in', 'pages/admin/sign_in');
+    Route::namespace('Auth')->group(function() {
+        Route::get('sign_in', 'LoginController@showLoginForm')->name('sign_in');
+        Route::post('sign_in', 'LoginController@login');
+        Route::post('sign_out', 'LoginController@logout')->name('sign_out');
+    });
 
     // home
-    Route::view('home', 'pages/admin/home');
+    Route::get('/', 'AdminController@index')->name('home');
 
     // products routes
-    Route::prefix('products')->group(function () {
+    Route::prefix('products')->name('products.')->group(function () {
         // view products
-        Route::view('/', 'pages/admin/products/products');
+        Route::get('/', 'AdminController@showProducts')->name('home');
 
-        // create product
-        Route::view('add', 'pages.admin.products.add_product');
+        // create product form
+        Route::get('add', 'AdminController@showAddProductForm')->name('add');
 
         // edit product
-        /*
-        Route::get('{id}/edit', function ($id) {
-
-            $product = (object) array(
-                'id' => $id,
-                'img' => "https://media.killerinktattoo.pt/media/catalog/product/cache/12/image/2495a9b687712b856acb717d0b834074/d/y/dynamic-tattoo-ink-black.jpg",
-                'name' => "Dynamic Black Ink 100ml",
-                'price' => 17.99,
-                'category' => "Ink",
-                'subcategory' => "Black",
-                'stock' => 34,
-                'description' => "SUPER COOL DESCRIPTION"
-            );
-            return view('pages.admin.products.edit_product', ['product' => $product]);
-        })->where('id', '[0-9]+');*/
+        // $url = route('profile', ['id' => 1]);
+        Route::get('{id}/edit', 'AdminController@showEditProductForm')->where('id', '[0-9]+')->name('edit');
     });
 
     // categories
-    Route::view('categories', 'pages.admin.categories');
+    Route::get('categories', 'AdminController@showCategories')->name('categories');
 
     // orders
-    Route::view('orders', 'pages.admin.orders');
+    Route::get('orders', 'AdminController@showOrders')->name('orders');
 
     // reviews
-    Route::view('reviews', 'pages.admin.reviews');
+    Route::get('reviews', 'AdminController@showReviews')->name('reviews');
 
     // users
-    Route::view('users', 'pages.admin.users');
+    Route::get('users', 'AdminController@showUsers')->name('users');
 
     // sales
-    Route::prefix('sales')->group(function () {
+    Route::prefix('sales')->name('sales.')->group(function () {
         // view sales
-        Route::view('/', 'pages.admin.sales.sales');
+        Route::get('/', 'AdminController@showSales')->name('home');
 
         // create sale
-        Route::view('add', 'pages.admin.sales.add_sale');
+        Route::get('add', 'AdminController@showAddSaleForm')->name('add');
 
         // edit sale
-        /*
-        Route::get('{id}/edit', function ($id) {
-            // TODO SEND OBJECT ARRAY WITH ID = $ID
-            $sale = (object) array(
-                "id" => $id,
-                "name" => "Inktober Fest",
-                "startDate" => "2020-03-01",
-                "endDate" => "2020-04-01"
-            );
-            return view('pages.admin.sales.edit_sale', ['sale' => $sale]);
-        })->where('id', '[0-9]+'); */
+        Route::get('{id}/edit', 'AdminController@showEditSaleForm')->where('id', '[0-9]+')->name('edit');
     });
 
     // newsletter
-    Route::view('newsletter', 'pages.admin.newsletter');
+    Route::get('newsletter', 'AdminController@showNewsletter')->name('newsletter');
 
     // faqs
-    Route::view('faqs', 'pages.admin.faqs');
+    Route::get('faqs', 'AdminController@showFaqs')->name('faqs');
 
     
     // info
-    Route::view('info', 'pages.admin.info');
+    Route::get('info', 'AdminController@showInfo')->name('info');
 
     
     // support message
-    Route::view('support_chat', 'pages.admin.support_chat');
+    Route::get('support_chat', 'AdminController@showSupportChat')->name('support_chat');
 });
 
 
