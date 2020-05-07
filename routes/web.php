@@ -34,21 +34,21 @@ Route::view('search','pages/search');
 Route::get('product/{id}', 'ItemController@show');
 
 //profile pages and stuff related 
-Route::prefix('profile')->group(function() {
+Route::prefix('profile')->name('profile.')->group(function() {
     
-    Route::view('/', 'pages/profile/profile');
+    Route::view('/', 'pages/profile/profile')->name('home');
     
-    Route::view('review', 'pages/profile/review');
+    Route::view('reviews', 'pages/profile/review')->name('reviews');
     
     //Route::view('wishlist', 'pages/profile/wishlist');
 
-    Route::get('wishlist', 'WishlistController@list');
+    Route::get('wishlist', 'WishlistController@list')->name('wishlist');
 
-    Route::post('wishlist', 'WishlistController@add_to_wishlist');
+    Route::post('wishlist', 'WishlistController@add_to_wishlist')->name('wishlist');
 
-    Route::delete('wishlist', 'WishlistController@delete_from_wishlist');
+    Route::delete('wishlist', 'WishlistController@delete_from_wishlist')->name('wishlist');
 
-    Route::view('purchased_history', 'pages/profile/purchased_history');
+    Route::view('purchased_history', 'pages/profile/purchased_history')->name('purchased_history');
 });
 
 // admin routes

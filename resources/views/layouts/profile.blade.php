@@ -9,45 +9,23 @@
           <div class="d-none d-md-block" id="profile-nav-desktop">
             <div class="col-md-auto col-xs-12 my-3 px-0 nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
               <h5 class="text-center">John Doe</h5>
-              @if(Request::path() === 'profile')
-              <a class="nav-link active text-center profile-tab" href="{{ url('/profile') }}">
+
+              <a class="nav-link {{ (Route::is('profile.home')) ? 'active' : '' }} text-center profile-tab" href="{{ route('profile.home') }}">
                 <i class="fas fa-user pr-2"></i>Profile
               </a>
-              @else
-              <a class="nav-link text-center profile-tab" href="{{ url('/profile') }}">
-                <i class="fas fa-user pr-2"></i>Profile
-              </a>
-              @endif
 
-              @if(Request::path() === 'profile/review')
-              <a class="nav-link active text-center profile-tab" href="{{ url('/profile/review') }}">
+              <a class="nav-link {{ (Route::is('profile.reviews')) ? 'active' : '' }} text-center profile-tab" href="{{ route('profile.reviews') }}">
                 <i class="fas fa-pen pr-2"></i>Reviews
               </a>
-              @else
-              <a class="nav-link text-center profile-tab" href="{{ url('/profile/review') }}">
-                <i class="fas fa-pen pr-2"></i>Reviews
-              </a>
-              @endif
 
-              @if(Request::path() === 'profile/wishlist')
-              <a class="nav-link active text-center profile-tab" href="{{ url('/profile/wishlist') }}">
+              <a class="nav-link {{ (Route::is('profile.wishlist')) ? 'active' : '' }} text-center profile-tab" href="{{ route('profile.wishlist') }}">
                 <i class="fas fa-heart pr-2"></i>Wishlist
               </a>
-              @else
-              <a class="nav-link text-center profile-tab" href="{{ url('/profile/wishlist') }}">
-                <i class="fas fa-heart pr-2"></i>Wishlist
-              </a>
-              @endif
 
-              @if(Request::path() === 'profile/purchased_history')
-              <a class="nav-link active text-center profile-tab" href="{{ url('/profile/purchased_history') }}">
+              <a class="nav-link {{ (Route::is('profile.purchased_history')) ? 'active' : '' }} text-center profile-tab" href="{{ route('profile.purchased_history') }}">
                 <i class="fas fa-shopping-cart pr-2"></i>History
               </a>
-              @else
-              <a class="nav-link text-center profile-tab" href="{{ url('/profile/purchased_history') }}">
-                <i class="fas fa-shopping-cart pr-2"></i>History
-              </a>
-              @endif
+
             </div>
           </div>
 
