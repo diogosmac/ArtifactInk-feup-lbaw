@@ -72,56 +72,47 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
         Route::get('add', 'AdminController@showAddProductForm')->name('add');
 
         // edit product
+        // $url = route('profile', ['id' => 1]);
         Route::get('{id}/edit', 'AdminController@showEditProductForm')->where('id', '[0-9]+')->name('edit');
     });
 
     // categories
-    Route::view('categories', 'pages.admin.categories')->name('categories');
+    Route::get('categories', 'AdminController@showCategories')->name('categories');
 
     // orders
-    Route::view('orders', 'pages.admin.orders')->name('orders');
+    Route::get('orders', 'AdminController@showOrders')->name('orders');
 
     // reviews
-    Route::view('reviews', 'pages.admin.reviews')->name('reviews');
+    Route::get('reviews', 'AdminController@showReviews')->name('reviews');
 
     // users
-    Route::view('users', 'pages.admin.users')->name('users');
+    Route::get('users', 'AdminController@showUsers')->name('users');
 
     // sales
-    Route::prefix('sales')->name('sales')->group(function () {
+    Route::prefix('sales')->name('sales.')->group(function () {
         // view sales
-        Route::view('/', 'pages.admin.sales.sales')->name('');
+        Route::get('/', 'AdminController@showSales')->name('home');
 
         // create sale
-        Route::view('add', 'pages.admin.sales.add_sale')->name('.add');
+        Route::get('add', 'AdminController@showAddSaleForm')->name('add');
 
         // edit sale
-        /*
-        Route::get('{id}/edit', function ($id) {
-            // TODO SEND OBJECT ARRAY WITH ID = $ID
-            $sale = (object) array(
-                "id" => $id,
-                "name" => "Inktober Fest",
-                "startDate" => "2020-03-01",
-                "endDate" => "2020-04-01"
-            );
-            return view('pages.admin.sales.edit_sale', ['sale' => $sale]);
-        })->where('id', '[0-9]+'); */
+        Route::get('{id}/edit', 'AdminController@showEditSaleForm')->where('id', '[0-9]+')->name('edit');
     });
 
     // newsletter
-    Route::view('newsletter', 'pages.admin.newsletter')->name('newsletter');
+    Route::get('newsletter', 'AdminController@showNewsletter')->name('newsletter');
 
     // faqs
-    Route::view('faqs', 'pages.admin.faqs')->name('faqs');
+    Route::get('faqs', 'AdminController@showFaqs')->name('faqs');
 
     
     // info
-    Route::view('info', 'pages.admin.info')->name('info');
+    Route::get('info', 'AdminController@showInfo')->name('info');
 
     
     // support message
-    Route::view('support_chat', 'pages.admin.support_chat')->name('support_chat');
+    Route::get('support_chat', 'AdminController@showSupportChat')->name('support_chat');
 });
 
 

@@ -17,11 +17,16 @@ class AdminController extends Controller
         return view('pages.admin.home');
     }
 
-    public function showProducts(){
+    /*
+    |--------------------------------------------------------------------------
+    | Products
+    |--------------------------------------------------------------------------
+    */
+    public function showProducts() {
         return view('pages.admin.products.products');
     }
 
-    public function showAddProductForm(){
+    public function showAddProductForm() {
         return view('pages.admin.products.add_product');
     }
 
@@ -38,6 +43,102 @@ class AdminController extends Controller
         } catch (\Exception $e) {
             return response(json_encode($e->getMessage()), 400);
         }
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Categories
+    |--------------------------------------------------------------------------
+    */
+    public function showCategories() {
+        return view('pages.admin.categories');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Categories
+    |--------------------------------------------------------------------------
+    */
+    public function showOrders() {
+        return view('pages.admin.orders');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Reviews
+    |--------------------------------------------------------------------------
+    */
+    public function showReviews() {
+        return view('pages.admin.reviews');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Users
+    |--------------------------------------------------------------------------
+    */
+    public function showUsers() {
+        return view('pages.admin.users');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Sales
+    |--------------------------------------------------------------------------
+    */
+    public function showSales() {
+        return view('pages.admin.sales.sales');
+    }
+
+    public function showAddSaleForm() {
+        return view('pages.admin.sales.add_sale');
+    }
+
+    public function showEditSaleForm($id_sale) {
+        // TODO GET SALE OBJECT
+        $sale = (object) array(
+            "id" => $id_sale,
+            "name" => "Inktober Fest",
+            "startDate" => "2020-03-01",
+            "endDate" => "2020-04-01"
+        );
+        return view('pages.admin.sales.edit_sale', ['sale' => $sale]);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Newsletter
+    |--------------------------------------------------------------------------
+    */
+    public function showNewsletter() {
+        return view('pages.admin.newsletter');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | FAQs
+    |--------------------------------------------------------------------------
+    */
+    public function showFaqs() {
+        return view('pages.admin.faqs');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Info
+    |--------------------------------------------------------------------------
+    */
+    public function showInfo() {
+        return view('pages.admin.info');
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | Support Chat
+    |--------------------------------------------------------------------------
+    */
+    public function showSupportChat() {
+        return view('pages.admin.support_chat');
     }
 
     public function __construct() {
