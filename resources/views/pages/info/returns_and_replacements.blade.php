@@ -1,5 +1,7 @@
 @extends('layouts.common')
 
+@section('title', ' - Returns and Replacements')
+
 @section('content')
 <section class="mx-auto my-3">
     <article class="bg-light p-4">

@@ -1,5 +1,7 @@
 @extends('layouts.auth')
 
+@section('title', ' - Recover Password')
+
 @section('content')
 <form class="form-signin " method="POST" action="#">
     <a href="{{ url('/') }}">

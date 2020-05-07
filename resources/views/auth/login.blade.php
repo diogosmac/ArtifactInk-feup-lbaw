@@ -1,5 +1,7 @@
 @extends('layouts.auth')
 
+@section('title', ' - Sign In')
+
 @section('content')
 <form class="form-signin" method="POST" action="{{ route('sign_in') }}">
     {{ csrf_field() }}
