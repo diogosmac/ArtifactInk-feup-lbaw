@@ -45,8 +45,8 @@
         </a>
     </div>
 
-    @include('partials.item_deals', [])
-    @include('partials.item_deals', [])
-    @include('partials.item_deals', [])    
+    @include('partials.item_deals', ['items' => $top_rated])
+    @include('partials.item_deals', ['items' => $featured_deals])
+    @include('partials.item_deals', ['items' => $best_sellers]) 
     
 @endsection
