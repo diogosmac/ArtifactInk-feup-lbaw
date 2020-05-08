@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="flex-shrink-0">
-        <button type="button" class="btn button" onclick="location.href='{{ url('/admin/products/add') }}'">
+        <button type="button" class="btn button" onclick="location.href='{{ route('admin.products.add') }}'">
           Add Item
         </button>
       </div>
@@ -31,42 +31,46 @@
         <div class="col-md-6 col-sm-12">
           <label for="categories">Categories</label>
           <div id="categories" class="rounded border p-2 search-box-category">
-            @for ($i = 1; $i < 6; $i++) <div class="custom-control custom-checkbox mb-3">
-              <input type="checkbox" class="custom-control-input" id="category{{ $i }}">
-              <label class="custom-control-label" for="category{{ $i }}">Category {{ $i }}</label>
+            @foreach ($parent_categories as $parent_category)
+            @foreach ($parent_category->children as $child_category)
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="category{{ $child_category->id }}">
+              <label class="custom-control-label" for="category{{ $child_category->id }}">{{ $child_category->name }}</label>
+            </div>
+            @endforeach
+            @endforeach
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label for="brands">Brands</label>
+          <div id="brands" class="rounded border p-2 search-box-category">
+            @for ($i = 1; $i < 6; $i++)
+            <div class="custom-control custom-checkbox mb-3">
+              <input type="checkbox" class="custom-control-input" id="brand{{ $i }}">
+              <label class="custom-control-label" for="brand{{ $i }}">Brand {{ $i }}</label>
           </div>
           @endfor
         </div>
       </div>
-      <div class="col-md-6 col-sm-12">
-        <label for="brands">Brands</label>
-        <div id="brands" class="rounded border p-2 search-box-category">
-          @for ($i = 1; $i < 6; $i++) <div class="custom-control custom-checkbox mb-3">
-            <input type="checkbox" class="custom-control-input" id="brand{{ $i }}">
-            <label class="custom-control-label" for="brand{{ $i }}">Brand {{ $i }}</label>
+
+      <div class="col-2 text-center">
+        <div class="custom-control custom-switch my-3">
+          <input type="checkbox" class="custom-control-input" id="stockSwitch">
+          <label class="custom-control-label" for="stockSwitch">In-Stock</label>
         </div>
-        @endfor
       </div>
-    </div>
 
-    <div class="col-2 text-center">
-      <div class="custom-control custom-switch my-3">
-        <input type="checkbox" class="custom-control-input" id="stockSwitch">
-        <label class="custom-control-label" for="stockSwitch">In-Stock</label>
+      <div class="col-10">
+        <div class="range-slider my-3">
+          <label for="price">Price:
+            <span class="rangeValues"></span>
+          </label>
+          <input type="range" class="custom-range price-slider" name="minprice" value="0" min="0" max="200" step="1">
+          <input type="range" class="custom-range price-slider" name="maxprice" value="200" min="0" max="200" step="1">
+        </div>
       </div>
-    </div>
 
-    <div class="col-10">
-      <div class="range-slider my-3">
-        <label for="price">Price:
-          <span class="rangeValues"></span>
-        </label>
-        <input type="range" class="custom-range price-slider" name="minprice" value="0" min="0" max="200" step="1">
-        <input type="range" class="custom-range price-slider" name="maxprice" value="200" min="0" max="200" step="1">
-      </div>
     </div>
-
-  </div>
 
   </div>
 
@@ -85,28 +89,6 @@
       </tr>
     </thead>
     <tbody>
-      @php
-      $products = array(
-      (object) array(
-      'id' => 2,
-      'img' => "146_aftercare.jpg",
-      'name' => "Dynamic Black Ink 100ml",
-      'price' => 17.99,
-      'category' => "Ink",
-      'subcategory' => "Black",
-      'stock' => 34
-      ),
-      (object) array(
-      'id' => 1,
-      'img' => "135_compact_tattoo_arm_leg_rest.jpg",
-      'name' => "Dynamic Black Ink 100ml",
-      'price' => 17.99,
-      'category' => "Ink",
-      'subcategory' => "Black",
-      'stock' => 34
-      )
-      );
-      @endphp
       @each('partials.admin.product_row', $products, 'product')
     </tbody>
   </table>

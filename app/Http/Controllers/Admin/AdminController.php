@@ -23,7 +23,9 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showProducts() {
-        return view('pages.admin.products.products');
+        $items = Item::paginate(10);
+        //$pictures = $item->images()->get();
+        return view('pages.admin.products.products', ['products' => $items]);
     }
 
     public function showAddProductForm() {
