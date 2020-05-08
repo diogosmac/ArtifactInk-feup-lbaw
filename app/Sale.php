@@ -24,7 +24,7 @@ class Sale extends Model
      * A sale is applied to many items
      */
     public function items() {
-        return $this->belongsToMany('App\Item', 'item_sale', 'id_item', 'id_sale');
+        return $this->belongsToMany('App\Item', 'item_sale', 'id_sale', 'id_item');
     }
 
 }

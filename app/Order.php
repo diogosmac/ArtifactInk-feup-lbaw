@@ -38,7 +38,7 @@ class Order extends Model
      * An order has many items
      */
     public function items() {
-        return $this->belongsToMany('App\Item', 'item_purchase', 'id_item', 'id_order')->withPivot(['price', 'quantity']);
+        return $this->belongsToMany('App\Item', 'item_purchase', 'id_order', 'id_item')->withPivot(['price', 'quantity']);
     }
 
 }

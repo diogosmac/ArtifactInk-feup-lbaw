@@ -23,8 +23,8 @@ class ItemSubscriber extends Model
     /**
      * A subscriber is subscribed to many items
      */
-    public function subscribers() {
-        return $this->belongsToMany('App\Item', 'item_subscription', 'id_item', 'email_subscriber');
+    public function items() {
+        return $this->belongsToMany('App\Item', 'item_subscription', 'email_subscriber', 'id_item');
     }
 
 
