@@ -38,8 +38,7 @@ class ItemController extends Controller
         $best_sellers = ItemController::best_sellers();
         $cart_items = CartController::get_user_cart_items();
         
-        return view('pages.home', [ 'cartitems' => $cart_items, 
-                                    'top_rated' => $top_rated, 
+        return view('pages.home', [ 'top_rated' => $top_rated, 
                                     'featured_deals' => $featured_deals, 
                                     'best_sellers' => $best_sellers
                                     ]); 
