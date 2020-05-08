@@ -15,6 +15,7 @@
 // Authentication
 
 //use Illuminate\Routing\Route;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('sign_in', 'Auth\LoginController@showLoginForm')->name('sign_in');
@@ -33,10 +34,12 @@ Route::view('search','pages/search');
 
 Route::get('product/{id}', 'ItemController@show');
 
+Route::get('profile','UserController@showProfile');
+
 //profile pages and stuff related 
 Route::prefix('profile')->name('profile.')->group(function() {
     
-    Route::view('/', 'pages/profile/profile')->name('home');
+    Route::get('/','UserController@showProfile')->name('home');;
     
     Route::view('reviews', 'pages/profile/review')->name('reviews');
     

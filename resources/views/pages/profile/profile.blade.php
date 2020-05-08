@@ -12,13 +12,14 @@
         </div>
 
         <div class="row align-content-center d-md-none">
-          <img class="rounded-circle" src="https://www.diretoriodigital.com.br/wp-content/uploads/2013/05/Team-Member-3.jpg" alt="Person" class="img-fluid">
+          <img class="rounded-circle" src="{{ asset('storage/img_user/' . $profilePicture->link) }}" alt="Person" class="img-fluid">
+          
         </div>
 
         <div class="d-none d-md-block my-4">
           <div class="row justify-content-between align-items-center">
             <div class="col-md-auto" id="profile-photo">
-              <img class="rounded-circle" src="https://www.diretoriodigital.com.br/wp-content/uploads/2013/05/Team-Member-3.jpg" alt="Person" class="img-fluid">
+              <img class="rounded-circle" src="{{ asset('storage/img_user/' . $profilePicture->link) }}" alt="Person" class="img-fluid">
             </div>
 
             <form>
@@ -44,15 +45,15 @@
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="inputFirstName">First Name</label>
-              <input type="text" class="form-control" id="inputFirstName" placeholder="First Name" value="John">
+              <input type="text" class="form-control" id="inputFirstName" placeholder="First Name" value="{{ $userInfo['name'] }}">
             </div>
             <div class="form-group col-md-4">
               <label for="inputLastName">Last Name</label>
-              <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" value="Doe">
+              <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" value="{{ $userInfo['name'] }}">
             </div>
             <div class="form-group col-md-4">
               <label for="inputBirthday">Date of Birth</label>
-              <input type="date" class="form-control" id="inputBirthday">
+              <input type="date" class="form-control" id="inputBirthday" value="{{ $userInfo['date_of_birth'] }}">
             </div>
           </div>
         </form>
@@ -66,11 +67,11 @@
           <div class="form-row">
             <div class="form-group col-md-8">
               <label for="inputEmail">Email</label>
-              <input type="email" class="form-control" id="inputFirstName" placeholder="Email" value="john@doe.co.uk">
+              <input type="email" class="form-control" id="inputFirstName" placeholder="Email" value="{{ $userInfo['email'] }}">
             </div>
             <div class="form-group col-md-4">
               <label for="inputPhoneNumber">Phone Number</label>
-              <input type="text" class="form-control" id="inputPhoneNumber" placeholder="Phone Number" value="+351 912345678">
+              <input type="text" class="form-control" id="inputPhoneNumber" placeholder="Phone Number" value="{{ $userInfo['phone'] }}">
             </div>
           </div>
         </form>
