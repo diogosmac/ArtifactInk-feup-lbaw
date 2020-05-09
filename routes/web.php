@@ -39,7 +39,9 @@ Route::get('profile','UserController@showProfile');
 //profile pages and stuff related 
 Route::prefix('profile')->name('profile.')->group(function() {
     
-    Route::get('/','UserController@showProfile')->name('home');;
+    Route::get('/','UserController@showProfile')->name('home');
+
+    Route::put('/','UserController@updateProfile')->name('home');
     
     Route::view('reviews', 'pages/profile/review')->name('reviews');
     

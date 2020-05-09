@@ -29,12 +29,15 @@ class UserController extends Controller
 
     $profilePicture = $user->profilePicture()->get()->first();
 
-    //payments //todo
-    //adresses  //todo
+    $paymentMethods = $user->payment_methods()->get();
+    $addresses = $user->addresses()->get();
 
-    //return redirect('/')->with('flash', 'message here');
-    return view('pages.profile.profile', ['userInfo' => $userInfo, 'profilePicture' => $profilePicture]);    
+    return view('pages.profile.profile', ['userInfo' => $userInfo, 'profilePicture' => $profilePicture, 'paymentMethods' => $paymentMethods, 'addresses' => $addresses]);    
 
+  }
+
+  public function updateProfile(){
+    //todo - member to check if data its not chnaged in the db 
   }
 
 }

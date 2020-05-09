@@ -37,14 +37,6 @@ class User extends Authenticatable
         return $this->belongsTo('App\ProfilePicture','id_picture');
     }
 
-    public function userAdresses(){
-        //TODO 
-    }
-
-    public function userPaymentMethods(){
-        //TODO 
-    }
-
     /**
      * The items in this user's cart
      */
