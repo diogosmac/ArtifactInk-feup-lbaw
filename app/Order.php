@@ -18,7 +18,7 @@ class Order extends Model
      *
      * @var bool
      */
-    public $timestamps = false;
+    public $timestamps = true;
 
     /**
      * An order belongs to one user

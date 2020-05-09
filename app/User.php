@@ -58,5 +58,19 @@ class User extends Authenticatable
     public function wishlist_items() {
         return $this->belongsToMany('App\Item', 'wishlist', 'id_user', 'id_item');
     }
+
+    /**
+     * The user's payment methods
+     */
+    public function payment_methods() {
+        return $this->belongsToMany('App\PaymentMethod', 'user_payment_method', 'id_user', 'id_payment_method');
+    }
+
+    /**
+     * The user's addresses
+     */
+    public function addresses() {
+        return $this->belongsToMany('App\Address', 'user_address', 'id_user', 'id_address');
+    }
     
 }
