@@ -16,6 +16,7 @@
 
 //use Illuminate\Routing\Route;
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('sign_in', 'Auth\LoginController@showLoginForm')->name('sign_in');
@@ -39,9 +40,37 @@ Route::get('profile','UserController@showProfile');
 //profile pages and stuff related 
 Route::prefix('profile')->name('profile.')->group(function() {
     
+
     Route::get('/','UserController@showProfile')->name('home');
 
-    Route::put('/','UserController@updateProfile')->name('home');
+    Route::get('edit','UserController@showEditProfile')->name('edit'); 
+
+    Route::put('/','UserController@updateProfile')->name('home'); 
+    
+    Route::put('delete','UserController@deleteProfile')->name('delete');
+    
+    /* 
+    TODO
+    
+    Route::post('address','AddressController@addAdress')->name('address'); 
+
+    Route::put('address','')->name('address'); 
+
+    Route::delete('address','')->name('address'); 
+
+    Route::post('credit_card','')->name('credit_card'); 
+
+    Route::put('credit_card','')->name('credit_card'); 
+
+    Route::delete('credit_card','')->name('credit_card'); 
+
+    Route::post('paypal','')->name('paypal'); 
+
+    Route::put('paypal','')->name('paypal'); 
+
+    Route::delete('paypal','')->name('paypal'); 
+    
+    */
     
     Route::view('reviews', 'pages/profile/review')->name('reviews');
     

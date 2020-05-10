@@ -24,15 +24,8 @@
               class="img-fluid">
           </div>
 
-          <form>
-            <div class="form-group">
-              <label for="exampleFormControlFile1">Upload new photo</label>
-              <input type="file" class="form-control-file" id="exampleFormControlFile1">
-            </div>
-          </form>
-
           <div class="col-md-auto d-flex flex-column" id="profile-edit-button">
-            <button class="btn button-secondary" type="button">Update Profile</button>
+            <a class="btn button-secondary" type="button" href=" {{ route('profile.edit') }} ">Edit Profile</a>
             <button class="btn btn-link a_link" type="button">Delete Account</button>
           </div>
         </div>
@@ -43,31 +36,30 @@
       <div class="row" id="profile-tag">
         <span>General</span>
       </div>
-      <form>
+      <fieldset disabled="disabled">
         <div class="form-row">
           <div class="form-group col-md-4">
             <label for="inputFirstName">First Name</label>
             <input type="text" class="form-control" id="inputFirstName" placeholder="First Name"
-              value="{{ $userInfo['name'] }}">
+              value="{{  explode(' ', trim($userInfo['name']))[0] }}">
           </div>
           <div class="form-group col-md-4">
             <label for="inputLastName">Last Name</label>
             <input type="text" class="form-control" id="inputLastName" placeholder="Last Name"
-              value="{{ $userInfo['name'] }}">
+              value="{{ explode(' ', trim($userInfo['name']))[1] }}">
           </div>
           <div class="form-group col-md-4">
             <label for="inputBirthday">Date of Birth</label>
             <input type="date" class="form-control" id="inputBirthday" value="{{ $userInfo['date_of_birth'] }}">
           </div>
         </div>
-      </form>
+        <fieldset>
 
       <hr>
 
       <div class="row" id="profile-tag">
         <span>Contact</span>
       </div>
-      <form>
         <div class="form-row">
           <div class="form-group col-md-8">
             <label for="inputEmail">Email</label>
@@ -76,31 +68,13 @@
           </div>
           <div class="form-group col-md-4">
             <label for="inputPhoneNumber">Phone Number</label>
-            <input type="text" class="form-control" id="inputPhoneNumber" placeholder="Phone Number"
+            <input type="text" class="form-control" id="inputPhoneNumber" placeholder="Phone Number" 
               value="{{ $userInfo['phone'] }}">
           </div>
         </div>
-      </form>
 
       <hr>
 
-      <div class="row" id="profile-tag">
-        <span>Change Password</span>
-      </div>
-      <form>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputNewPassword">New Password</label>
-            <input type="password" class="form-control" id="inputNewPassword" placeholder="Password">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputRepeatPassword">Repeat Password</label>
-            <input type="text" class="form-control" id="inputRepeatPassword" placeholder="Repeat Password">
-          </div>
-        </div>
-      </form>
-
-      <hr>
 
       <div class="row" id="profile-tag">
         <span>Billing</span>
@@ -119,7 +93,7 @@
       </div>
 
       <div class="row justify-content-center d-md-none my-3">
-        <button class="btn button-secondary" type="button">Edit Profile</button>
+        <a class="btn button-secondary" type="button" href=" {{ route('profile.edit') }} ">Edit Profile</a>
         <button class="btn btn-link a_link" type="button">Delete Account</button>
       </div>
     </div>
