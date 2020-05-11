@@ -65,4 +65,17 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Address', 'user_address', 'id_user', 'id_address');
     }
     
+    /**
+     * The user's reviews
+     */
+    public function reviews() {
+        return $this->hasMany('review', 'id_user');
+    } 
+
+    /**
+     * The user's orders
+     */
+    public function orders() {
+        return $this->hasMany('order', 'id_user');
+    }
 }
