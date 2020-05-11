@@ -105,9 +105,9 @@
                     {{ method_field('POST')}}
                     <div class="form-group">
                       <label for="countryAdd">Country: </label>
-                      <select name="country" class="form-control" id="countryAdd">
+                      <select name="id_country" class="form-control" id="countryAdd">
                         @foreach($countries as $country)
-                        <option>{{$country->name}}</option>
+                          <option value="{{ old('id_country',$country->id) }}">{{$country->name}}</option>
                         @endforeach
                       </select>
 
@@ -115,19 +115,19 @@
 
                     <div class="form-group">
                       <label for="cityAdd">City: </label>
-                      <input type="text" class="form-control" id="cityAdd" name="city"
+                      <input type="text" class="form-control" id="cityAdd" name="city" value="{{ old('city') }}"
                         placeholder="Type your city name">
                     </div>
 
                     <div class="form-group">
                       <label for="streetAdd">Street: </label>
-                      <input type="text" class="form-control" id="streetAdd" name="street"
+                      <input type="text" class="form-control" id="streetAdd" name="street" value="{{ old('street') }}"
                         placeholder="Type your Street name - Number - Floor ">
                     </div>
 
                     <div class="form-group">
                       <label for="postalCodeAdd">Postal Code: </label>
-                      <input type="text" class="form-control" id="postalCodeAdd" name="postal_code"
+                      <input type="text" class="form-control" id="postalCodeAdd" name="postal_code" value="{{ old('postal_code') }}"
                         placeholder="Type your city name"  pattern="^[0-9]*-[0-9]*$" >
                     </div>
 

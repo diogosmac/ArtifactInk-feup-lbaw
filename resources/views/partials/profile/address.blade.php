@@ -29,13 +29,14 @@
                     {{ method_field('PUT')}}
                     <div class="modal-body">
                         <div class="form-group">
+                            <input type="hidden" id="addressId" name="id" value="{{$address->id}}">
                             <label for="countryAdd">Country</label>
-                            <select name="country" class="form-control" id="countryAdd" >
+                            <select name="id_country" class="form-control" id="countryAdd" >
                                 @foreach($countries as $country)
                                     @if($country->name === $address->country->name)
-                                        <option value="{{$country->id}}" selected> {{$country->name}}</option>
+                                        <option value="{{ old('id_country',$country->id) }}" selected> {{$country->name}}</option>
                                     @else 
-                                        <option value="{{$country->id}}"> {{$country->name}} </option>
+                                        <option value="{{ old('id_country',$country->id) }}"> {{$country->name}} </option>
                                     @endif
                                 @endforeach
                             </select>
@@ -43,19 +44,19 @@
 
                         <div class="form-group">
                             <label for="cityAdd">City</label>
-                            <input type="text" class="form-control" id="cityAdd" name="city" value="{{ $address->city }}"
+                            <input type="text" class="form-control" id="cityAdd" name="city" value="{{ old('city',$address->city) }}"
                                 placeholder="Type your city name">
                         </div>
 
                         <div class="form-group">
                             <label for="streetAdd">Street</label>
-                            <input type="text" class="form-control" id="streetAdd" name="street" value="{{ $address->street }}"
+                            <input type="text" class="form-control" id="streetAdd" name="street" value="{{ old('street',$address->street) }}"
                                 placeholder="Type your Street name - Number - Floor ">
                         </div>
 
                         <div class="form-group">
                             <label for="postalCodeAdd">Postal Code</label>
-                            <input type="text" class="form-control" id="postalCodeAdd" name="postal_code" value="{{ $address->postal_code }}"
+                            <input type="text" class="form-control" id="postalCodeAdd" name="postal_code" value="{{ old('postal_code',$address->postal_code) }}"
                                 placeholder="Type your city name" pattern="^[0-9]*-[0-9]*$">
                         </div>
 

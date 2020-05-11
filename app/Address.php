@@ -13,6 +13,15 @@ class Address extends Model
      */
     protected $table = 'address';
 
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id_country', 'city', 'street', 'postal_code'
+    ];
+
     /**
      * Indicates if the model should be timestamped.
      *
