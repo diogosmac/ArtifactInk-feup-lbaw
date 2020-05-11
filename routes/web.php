@@ -40,7 +40,6 @@ Route::get('profile','UserController@showProfile');
 //profile pages and stuff related 
 Route::prefix('profile')->name('profile.')->group(function() {
     
-
     Route::get('/','UserController@showProfile')->name('home');
 
     Route::get('edit','UserController@showEditProfile')->name('edit'); 
@@ -49,28 +48,23 @@ Route::prefix('profile')->name('profile.')->group(function() {
     
     Route::put('delete','UserController@deleteProfile')->name('delete');
     
-    /* 
-    TODO
+    Route::post('address','AddressController@addAddress')->name('address'); 
     
-    Route::post('address','AddressController@addAdress')->name('address'); 
+    Route::put('address','AddressController@updateAddress')->name('address'); 
 
-    Route::put('address','')->name('address'); 
+    Route::delete('address','AddressController@deleteAddress')->name('address'); 
 
-    Route::delete('address','')->name('address'); 
+    Route::post('credit_card','CreditCardController@addCreditCard')->name('credit_card'); 
 
-    Route::post('credit_card','')->name('credit_card'); 
+    Route::put('credit_card','CreditCardController@editCreditCard')->name('credit_card'); 
 
-    Route::put('credit_card','')->name('credit_card'); 
+    Route::delete('credit_card','CreditCardController@deleteCreditCard')->name('credit_card'); 
 
-    Route::delete('credit_card','')->name('credit_card'); 
+    Route::post('paypal','PaypalController@addPaypal')->name('paypal'); 
 
-    Route::post('paypal','')->name('paypal'); 
+    Route::put('paypal','PaypalController@aupdatePaypal')->name('paypal'); 
 
-    Route::put('paypal','')->name('paypal'); 
-
-    Route::delete('paypal','')->name('paypal'); 
-    
-    */
+    Route::delete('paypal','PaypalController@deletePaypal')->name('paypal'); 
     
     Route::view('reviews', 'pages/profile/review')->name('reviews');
     

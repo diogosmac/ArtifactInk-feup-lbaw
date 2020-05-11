@@ -53,13 +53,13 @@
             <input type="date" class="form-control" id="inputBirthday" value="{{ $userInfo['date_of_birth'] }}">
           </div>
         </div>
-        <fieldset>
 
-      <hr>
 
-      <div class="row" id="profile-tag">
-        <span>Contact</span>
-      </div>
+        <hr>
+
+        <div class="row" id="profile-tag">
+          <span>Contact</span>
+        </div>
         <div class="form-row">
           <div class="form-group col-md-8">
             <label for="inputEmail">Email</label>
@@ -68,27 +68,198 @@
           </div>
           <div class="form-group col-md-4">
             <label for="inputPhoneNumber">Phone Number</label>
-            <input type="text" class="form-control" id="inputPhoneNumber" placeholder="Phone Number" 
+            <input type="text" class="form-control" id="inputPhoneNumber" placeholder="Phone Number"
               value="{{ $userInfo['phone'] }}">
           </div>
         </div>
+      </fieldset>
 
       <hr>
 
+      <div class="row d-flex justify-content-between mr-3" id="profile-tag">
 
-      <div class="row" id="profile-tag">
-        <span>Billing</span>
-      </div>
+        <div>
+          <span>Address </span>
+        </div>
 
-      <div class="col my-2" id="profile-card">
-        @foreach($paymentMethods as $paymentMethod)
-          @include('partials.profile.paymentMethod', ['paymentMethod' => $paymentMethod, 'loop' => $loop->iteration])
-        @endforeach
+        <div>
+          <button type="button" class="btn button float-right" id="profile-add-address-button" data-toggle="modal"
+            data-target="#modalAddAdressFrom">
+            <i class="fas fa-home"></i> New
+          </button>
+
+          <!-- MODAL -->
+          <div class="modal fade" id="modalAddAdressFrom" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle"> Add New Address </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form action="{{route('profile.address') }}" method="post">
+                  <div class="modal-body">
+                    {{csrf_field()}}
+                    {{ method_field('POST')}}
+                    <div class="form-group">
+                      <label for="countryAdd">Country: </label>
+                      <select name="country" class="form-control" id="countryAdd">
+                        @foreach($countries as $country)
+                        <option>{{$country->name}}</option>
+                        @endforeach
+                      </select>
+
+                    </div>
+
+                    <div class="form-group">
+                      <label for="cityAdd">City: </label>
+                      <input type="text" class="form-control" id="cityAdd" name="city"
+                        placeholder="Type your city name">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="streetAdd">Street: </label>
+                      <input type="text" class="form-control" id="streetAdd" name="street"
+                        placeholder="Type your Street name - Number - Floor ">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="postalCodeAdd">Postal Code: </label>
+                      <input type="text" class="form-control" id="postalCodeAdd" name="postal_code"
+                        placeholder="Type your city name"  pattern="^[0-9]*-[0-9]*$" >
+                    </div>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn button">Add New Address</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <div class="col my-2" id="profile-address">
         @foreach($addresses as $address)
-          @include('partials.profile.address', ['address' => $address, 'loop' => $loop->iteration])
+        @include('partials.profile.address', ['address' => $address, 'loop' => $loop->iteration])
+        @endforeach
+      </div>
+
+
+      <hr>
+
+      <div class="row d-flex justify-content-between mr-3" id="profile-tag">
+        <div>
+          <span>Payment Method</span>
+        </div>
+
+        <div>
+
+          <button type="button" class="btn button float-right" id="profile-add-payment-method-button"
+            data-toggle="modal" data-target="#modalAddPaypalForm">
+            <i class="fab fa-paypal"></i> New
+          </button>
+
+          <button type="button" class="btn button float-right mr-2" id="profile-add-payment-method-button"
+            data-toggle="modal" data-target="#modalAddCreditCardForm">
+            <i class="fas fa-credit-card"></i> New
+          </button>
+
+
+          <!-- MODAL -->
+          <div class="modal fade" id="modalAddPaypalForm" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Add New Paypal</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  
+                <form action="{{route('profile.credit_card')}}" method="post">
+                    {{csrf_field()}}
+                    {{ method_field('POST')}}
+                    <div class="form-group">
+                      <label for="ppEmail">Paypal email: </label>
+                      <input type="email" class="form-control" id="ppName">
+                    </div>
+                </form>
+
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn button">Add New Paypal Method</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- MODAL -->
+          <div class="modal fade" id="modalAddCreditCardForm" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Add New Credit Card</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  
+                <form action="{{route('profile.credit_card')}}" method="post">
+                    {{csrf_field()}}
+                    {{ method_field('POST')}}
+                    <div class="form-group">
+                      <label for="ccName">Cardholder name: </label>
+                      <input type="text" class="form-control" id="ccName">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="ccNumber">Card Number: </label>
+                      <input type="text" class="form-control" id="ccNumber">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="ccDate">Expiry Date: </label>
+                      <input type="date" class="form-control" id="ccDate">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="ccCVV">CVC/CCV: </label>
+                      <input type="text" class="form-control" id="ccCVV">
+                    </div>
+
+                </form>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn button">Add New Credit Card</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+
+
+      <div class="col my-2" id="profile-card">
+        @foreach($paymentMethods as $paymentMethod)
+        @include('partials.profile.paymentMethod', ['paymentMethod' => $paymentMethod, 'loop' => $loop->iteration])
         @endforeach
       </div>
 
@@ -96,6 +267,7 @@
         <a class="btn button-secondary" type="button" href=" {{ route('profile.edit') }} ">Edit Profile</a>
         <button class="btn btn-link a_link" type="button">Delete Account</button>
       </div>
+
     </div>
   </section>
 </section>

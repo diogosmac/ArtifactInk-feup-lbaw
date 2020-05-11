@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Country;
 use App\User;
 use App\ProfilePicture;
 use Illuminate\Http\Request;
@@ -27,12 +28,14 @@ class UserController extends Controller
       'phone' => $user->phone
     ); 
 
+    $countries = Country::get();
+
     $profilePicture = $user->profilePicture()->get()->first();
 
     $paymentMethods = $user->payment_methods()->get();
     $addresses = $user->addresses()->get();
 
-    return view('pages.profile.profile', ['userInfo' => $userInfo, 'profilePicture' => $profilePicture, 'paymentMethods' => $paymentMethods, 'addresses' => $addresses]);    
+    return view('pages.profile.profile', ['userInfo' => $userInfo, 'profilePicture' => $profilePicture, 'paymentMethods' => $paymentMethods, 'addresses' => $addresses, 'countries' => $countries]);    
 
   }
 
