@@ -16,7 +16,7 @@ class UserController extends Controller
 	 *
 	 * @return View
 	 */
-  public function showProfile(){ //todo consider auth - althought its already checked before 
+  public function showProfile(){ 
     
     if (!Auth::check()) return redirect('/');
     
