@@ -32,33 +32,32 @@
                 <form action="{{route('profile.credit_card')}}" method="post">
                     {{csrf_field()}}
                     {{ method_field('PUT')}}
+                    <input type="hidden" id="paymentMethodId" name="id" value="{{$paymentMethod->id_cc}}">
                     <div class="form-group">
-                      <label for="ccName">Cardholder name: </label>
-                      <input type="text" class="form-control" id="ccName" value="{{ $paymentMethod->credit_card->name }}">
+                      <label for="ccNameEdit{{$loop}}">Cardholder name: </label>
+                      <input type="text" class="form-control" id="ccNameEdit{{$loop}}" name="name" value="{{ old('name',$paymentMethod->credit_card->name) }}" required>
                     </div>
 
                     <div class="form-group">
-                      <label for="ccNumber">Card Number: </label>
-                      <input type="text" class="form-control" id="ccNumber" value="{{ $paymentMethod->credit_card->number }}">
+                      <label for="ccNumberEdit{{$loop}}">Card Number: </label>
+                      <input type="text" class="form-control" id="ccNumberEdit{{$loop}}" name="number" value="{{ old('number') }}" required>
                     </div>
 
                     <div class="form-group">
-                      <label for="ccDate">Expiry Date: </label>
-                      <input type="date" class="form-control" id="ccDate" value="{{ $paymentMethod->credit_card->expiration }}">
+                      <label for="ccDateEdit{{$loop}}">Expiry Date: </label>
+                      <input type="date" class="form-control" id="ccDateEdit{{$loop}}" name="expiration" value="{{ old('expiration',$paymentMethod->credit_card->expiration) }}" required>
                     </div>
 
                     <div class="form-group">
-                      <label for="ccCVV">CVC/CCV: </label>
-                      <input type="text" class="form-control" id="ccCVV" >
+                      <label for="ccCVVEdit{{$loop}}">CVC/CCV: </label>
+                      <input type="text" class="form-control" id="ccCVVEdit{{$loop}}" name="cvv" value="{{ old('cvv') }}" required>
                     </div>
-
-                </form>
-
-                </div>
+                    </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn button">Add New Credit Card</button>
+                  <button type="submit" class="btn button">Edit Credit Card Info</button>
                 </div>
+                </form>
               </div>
             </div>
           </div>
@@ -89,21 +88,23 @@
                 </div>
                 <div class="modal-body">
                   
-                <form action="{{route('profile.credit_card')}}" method="post">
+                <form action="{{route('profile.paypal')}}" method="post">
                     {{csrf_field()}}
                     {{ method_field('PUT')}}
+                    <input type="hidden" id="paymentMethodId" name="id" value="{{$paymentMethod->id_pp}}">
                     <div class="form-group">
-                      <label for="ppEmail">Paypal email: </label>
-                      <input type="email" class="form-control" id="ppName" value="{{ $paymentMethod->paypal->email }}">
+                      <label for="ppEmailEdit{{$loop}}">Paypal email: </label>
+                      <input type="email" class="form-control" id="ppNameEdit{{$loop}}" name="email" value="{{ $paymentMethod->paypal->email }}" required>
                     </div>
-                </form>
-
-                </div>
+                  </div>
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn button">Add New Paypal Method</button>
+                  <button type="submit" class="btn button">Edit Paypal Info</button>
                 </div>
+                </form>
+
+                
 
               </div>
             </div>

@@ -8,7 +8,7 @@
           <!-- TABS -->
           <div class="d-none d-md-block" id="profile-nav-desktop">
             <div class="col-md-auto col-xs-12 my-3 px-0 nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-              <h5 class="text-center">John Doe</h5>
+              <h5 class="text-center"> {{ Auth::user()->name}}</h5>
 
               <a class="nav-link {{ (Route::is('profile.home')) ? 'active' : '' }} text-center profile-tab" href="{{ route('profile.home') }}">
                 <i class="fas fa-user pr-2"></i>Profile
@@ -38,7 +38,7 @@
                       <h5 class="my-1" id="profile-dropdown-title">
                         <strong>
                           <i class="fas fa-bars pr-2"></i>
-                          John Doe
+                          {{ Auth::user()->name}}
                         </strong>
                       </h5>
                     </button>

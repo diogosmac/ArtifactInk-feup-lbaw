@@ -32,8 +32,8 @@ class UserController extends Controller
 
     $profilePicture = $user->profilePicture()->get()->first();
 
-    $paymentMethods = $user->payment_methods()->get();
-    $addresses = $user->addresses()->get();
+    $paymentMethods = $user->payment_methods()->orderBy('id_payment_method')->get();
+    $addresses = $user->addresses()->orderBy('id_address')->get();
 
     return view('pages.profile.profile', ['userInfo' => $userInfo, 'profilePicture' => $profilePicture, 'paymentMethods' => $paymentMethods, 'addresses' => $addresses, 'countries' => $countries]);    
 

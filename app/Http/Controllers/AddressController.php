@@ -30,7 +30,7 @@ class AddressController extends Controller
             //create new address 
             $address->save(); 
             //add tp users table
-			$userAddresses->attach($address->id);
+            $userAddresses->attach($address->id);
 		} catch (PDOException $e) {
 			return response('Added to addresses');
 		}
@@ -55,18 +55,25 @@ class AddressController extends Controller
     
       
         try {
-            $address->update(['street' => $street, 'postal_code' => $postal_code, 'city' => $city , 'id_country' => $id_country]); 
+            $address->update(['street' => $street, 'postal_code' => $postal_code, 'city' => $city , 'id_country' => $id_country]);
 		} catch (PDOException $e) {
 			return response('Updated Addresses');
 		}
-
        
          return redirect()->route('profile.home');
 
 
     }
 
-    public function deleteAddress(){
+    public function deleteAddress(Request $request){
+
+              
+        try {
+           Address::where('id', $request['id'])->delete(); 
+		} catch (PDOException $e) {
+			return response('Updated Addresses');
+		}
+        return redirect()->route('profile.home');
 
     }
 }

@@ -12,6 +12,15 @@ class CreditCard extends Model {
      */
     protected $table = 'credit_card';
 
+      /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'number', 'expiration', 'cvv'
+    ];
+
     /**
      * Indicates if the model should be timestamped.
      *

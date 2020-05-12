@@ -12,6 +12,15 @@ class Paypal extends Model {
      */
     protected $table = 'paypal';
 
+      /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'email'
+    ];
+
     /**
      * Indicates if the model should be timestamped.
      *

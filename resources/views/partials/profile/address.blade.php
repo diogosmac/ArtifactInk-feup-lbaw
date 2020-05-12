@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <input type="hidden" id="addressId" name="id" value="{{$address->id}}">
                             <label for="countryAdd">Country</label>
-                            <select name="id_country" class="form-control" id="countryAdd" >
+                            <select name="id_country" class="form-control" id="countryAdd" required>
                                 @foreach($countries as $country)
                                     @if($country->name === $address->country->name)
                                         <option value="{{ old('id_country',$country->id) }}" selected> {{$country->name}}</option>
@@ -43,21 +43,21 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="cityAdd">City</label>
-                            <input type="text" class="form-control" id="cityAdd" name="city" value="{{ old('city',$address->city) }}"
-                                placeholder="Type your city name">
+                            <label for="cityEdit{{serialize($loop)}}">City</label>
+                            <input type="text" class="form-control" id="cityEdit{{serialize($loop)}}" name="city" value="{{ old('city',$address->city) }}"
+                                placeholder="Type your city name" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="streetAdd">Street</label>
-                            <input type="text" class="form-control" id="streetAdd" name="street" value="{{ old('street',$address->street) }}"
-                                placeholder="Type your Street name - Number - Floor ">
+                            <label for="streetEdit{{serialize($loop)}}">Street</label>
+                            <input type="text" class="form-control" id="streetEdit{{serialize($loop)}}" name="street" value="{{ old('street',$address->street) }}"
+                                placeholder="Type your Street name - Number - Floor " required>
                         </div>
 
                         <div class="form-group">
-                            <label for="postalCodeAdd">Postal Code</label>
-                            <input type="text" class="form-control" id="postalCodeAdd" name="postal_code" value="{{ old('postal_code',$address->postal_code) }}"
-                                placeholder="Type your city name" pattern="^[0-9]*-[0-9]*$">
+                            <label for="postalCodeEdit{{serialize($loop)}}">Postal Code</label>
+                            <input type="text" class="form-control" id="postalCodeEdit{{serialize($loop)}}" name="postal_code" value="{{ old('postal_code',$address->postal_code) }}"
+                                placeholder="Type your city name" pattern="^[0-9]*-[0-9]*$" required>
                         </div>
 
                     </div>

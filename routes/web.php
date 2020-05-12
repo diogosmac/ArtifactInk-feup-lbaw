@@ -40,6 +40,7 @@ Route::get('profile','UserController@showProfile');
 //profile pages and stuff related 
 Route::prefix('profile')->name('profile.')->group(function() {
     
+    //user general info 
     Route::get('/','UserController@showProfile')->name('home');
 
     Route::get('edit','UserController@showEditProfile')->name('edit'); 
@@ -48,26 +49,31 @@ Route::prefix('profile')->name('profile.')->group(function() {
     
     Route::put('delete','UserController@deleteProfile')->name('delete');
     
+    //adresses
     Route::post('address','AddressController@addAddress')->name('address'); 
     
     Route::put('address','AddressController@updateAddress')->name('address'); 
 
     Route::delete('address','AddressController@deleteAddress')->name('address'); 
 
+    //creditcards
     Route::post('credit_card','CreditCardController@addCreditCard')->name('credit_card'); 
 
-    Route::put('credit_card','CreditCardController@editCreditCard')->name('credit_card'); 
+    Route::put('credit_card','CreditCardController@updateCreditCard')->name('credit_card'); 
 
     Route::delete('credit_card','CreditCardController@deleteCreditCard')->name('credit_card'); 
 
+    //paypal
     Route::post('paypal','PaypalController@addPaypal')->name('paypal'); 
 
-    Route::put('paypal','PaypalController@aupdatePaypal')->name('paypal'); 
+    Route::put('paypal','PaypalController@updatePaypal')->name('paypal'); 
 
     Route::delete('paypal','PaypalController@deletePaypal')->name('paypal'); 
     
+    //reviews 
     Route::view('reviews', 'pages/profile/review')->name('reviews');
     
+    //wishlist
     //Route::view('wishlist', 'pages/profile/wishlist');
 
     Route::get('wishlist', 'WishlistController@list')->name('wishlist');
@@ -76,6 +82,7 @@ Route::prefix('profile')->name('profile.')->group(function() {
 
     Route::delete('wishlist', 'WishlistController@delete_from_wishlist')->name('wishlist');
 
+    //purchased history
     Route::view('purchased_history', 'pages/profile/purchased_history')->name('purchased_history');
 });
 

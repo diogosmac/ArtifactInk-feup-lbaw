@@ -105,7 +105,7 @@
                     {{ method_field('POST')}}
                     <div class="form-group">
                       <label for="countryAdd">Country: </label>
-                      <select name="id_country" class="form-control" id="countryAdd">
+                      <select name="id_country" class="form-control" id="countryAdd" required>
                         @foreach($countries as $country)
                           <option value="{{ old('id_country',$country->id) }}">{{$country->name}}</option>
                         @endforeach
@@ -116,19 +116,19 @@
                     <div class="form-group">
                       <label for="cityAdd">City: </label>
                       <input type="text" class="form-control" id="cityAdd" name="city" value="{{ old('city') }}"
-                        placeholder="Type your city name">
+                        placeholder="Type your city name" required>
                     </div>
 
                     <div class="form-group">
                       <label for="streetAdd">Street: </label>
                       <input type="text" class="form-control" id="streetAdd" name="street" value="{{ old('street') }}"
-                        placeholder="Type your Street name - Number - Floor ">
+                        placeholder="Type your Street name - Number - Floor " required>
                     </div>
 
                     <div class="form-group">
                       <label for="postalCodeAdd">Postal Code: </label>
                       <input type="text" class="form-control" id="postalCodeAdd" name="postal_code" value="{{ old('postal_code') }}"
-                        placeholder="Type your city name"  pattern="^[0-9]*-[0-9]*$" >
+                        placeholder="Type your city name"  pattern="^[0-9]*-[0-9]*$" required>
                     </div>
 
                   </div>
@@ -184,21 +184,22 @@
                 </div>
                 <div class="modal-body">
                   
-                <form action="{{route('profile.credit_card')}}" method="post">
+                <form action="{{route('profile.paypal')}}" method="post">
                     {{csrf_field()}}
                     {{ method_field('POST')}}
                     <div class="form-group">
                       <label for="ppEmail">Paypal email: </label>
-                      <input type="email" class="form-control" id="ppName">
+                      <input type="email" class="form-control" id="ppName" name="email" value="{{old('email')}}" required>
                     </div>
-                </form>
-
-                </div>
+                    </div>
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn button">Add New Paypal Method</button>
+                  <button type="submit" class="btn button">Add New Paypal Method</button>
                 </div>
+                </form>
+
+              
 
               </div>
             </div>
@@ -222,31 +223,31 @@
                     {{ method_field('POST')}}
                     <div class="form-group">
                       <label for="ccName">Cardholder name: </label>
-                      <input type="text" class="form-control" id="ccName">
+                      <input type="text" class="form-control" id="ccName" name="name" value="{{old('name')}}" required>
                     </div>
 
                     <div class="form-group">
                       <label for="ccNumber">Card Number: </label>
-                      <input type="text" class="form-control" id="ccNumber">
+                      <input type="text" class="form-control" id="ccNumber" name="number" value="{{old('number')}}" required>
                     </div>
 
                     <div class="form-group">
                       <label for="ccDate">Expiry Date: </label>
-                      <input type="date" class="form-control" id="ccDate">
+                      <input type="date" class="form-control" id="ccDate"  name="expiration" value="{{old('expiration')}}" required>
                     </div>
 
                     <div class="form-group">
                       <label for="ccCVV">CVC/CCV: </label>
-                      <input type="text" class="form-control" id="ccCVV">
+                      <input type="text" class="form-control" id="ccCVV" name="cvv" value="{{old('cvv')}}" required>
                     </div>
 
-                </form>
-
-                </div>
+                    </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn button">Add New Credit Card</button>
+                  <button type="submit" class="btn button">Add New Credit Card</button>
                 </div>
+                </form>
+
               </div>
             </div>
           </div>
