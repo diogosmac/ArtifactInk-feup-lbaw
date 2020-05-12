@@ -15,6 +15,8 @@
 // Authentication
 
 //use Illuminate\Routing\Route;
+
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('sign_in', 'Auth\LoginController@showLoginForm')->name('sign_in');
@@ -48,7 +50,9 @@ Route::prefix('profile')->name('profile.')->group(function() {
 
     Route::delete('wishlist', 'WishlistController@delete_from_wishlist')->name('wishlist');
 
-    Route::view('purchased_history', 'pages/profile/purchased_history')->name('purchased_history');
+    //Route::view('purchased_history', 'pages/profile/purchased_history')->name('purchased_history');
+
+    Route::get('purchased_history', 'UserController@showOrders')->name('purchased_history');
 });
 
 // admin routes

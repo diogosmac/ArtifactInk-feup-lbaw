@@ -76,6 +76,6 @@ class User extends Authenticatable
      * The user's orders
      */
     public function orders() {
-        return $this->hasMany('order', 'id_user');
+        return $this->hasMany('App\Order', 'id_user');
     }
 }
