@@ -35,10 +35,36 @@ Route::view('search','pages/search');
 
 Route::get('product/{id}', 'ItemController@show');
 
+Route::get('profile','UserController@showProfile');
+
 //profile pages and stuff related 
 Route::prefix('profile')->name('profile.')->group(function() {
     
-    Route::view('/', 'pages/profile/profile')->name('home');
+    Route::get('/','UserController@showProfile')->name('home');
+
+    Route::get('edit','UserController@showEditProfile')->name('edit'); 
+
+    Route::put('/','UserController@updateProfile')->name('home'); 
+    
+    Route::put('delete','UserController@deleteProfile')->name('delete');
+    
+    Route::post('address','AddressController@addAddress')->name('address'); 
+    
+    Route::put('address','AddressController@updateAddress')->name('address'); 
+
+    Route::delete('address','AddressController@deleteAddress')->name('address'); 
+
+    Route::post('credit_card','CreditCardController@addCreditCard')->name('credit_card'); 
+
+    Route::put('credit_card','CreditCardController@editCreditCard')->name('credit_card'); 
+
+    Route::delete('credit_card','CreditCardController@deleteCreditCard')->name('credit_card'); 
+
+    Route::post('paypal','PaypalController@addPaypal')->name('paypal'); 
+
+    Route::put('paypal','PaypalController@aupdatePaypal')->name('paypal'); 
+
+    Route::delete('paypal','PaypalController@deletePaypal')->name('paypal'); 
     
     Route::view('reviews', 'pages/profile/review')->name('reviews');
     
