@@ -80,7 +80,14 @@ class CreditCardController extends Controller
 
     }
 
-    public function deleteCreditCard(){
+    public function deleteCreditCard(Request $request){
+        
+        try {
+            CreditCard::where('id', $request['id'])->delete(); 
+         } catch (PDOException $e) {
+             return response('error deleting address');
+         }
+         return redirect()->route('profile.home');
 
     }
 }

@@ -86,7 +86,7 @@ class AddressController extends Controller
         try {
            Address::where('id', $request['id'])->delete(); 
 		} catch (PDOException $e) {
-			return response('Updated Addresses');
+			return response('deleted Addresses');
 		}
         return redirect()->route('profile.home');
 

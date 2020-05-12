@@ -71,7 +71,12 @@ class PaypalController extends Controller
 
     }
 
-    public function deletePaypal(){
-        
+    public function deletePaypal(Request $request){
+        try {
+            Paypal::where('id', $request['id'])->delete(); 
+         } catch (PDOException $e) {
+             return response('error deleting address');
+         }
+         return redirect()->route('profile.home');
     }
 }
