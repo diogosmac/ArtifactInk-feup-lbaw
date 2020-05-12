@@ -87,11 +87,11 @@ class UserController extends Controller
     } 
     
     //check if password need to be changed
-    /*
+    
     if( $request['password'] != null ){
       if($request['password'] == $request['passwordConfirm'] ){
         try {
-          $user->update(['password' => $request['password']]);
+          $user->update(['password' => bcrypt($request['password'])]);
         } catch(PDOException $e) {
           return response("Error updating user info", 409);
         }
@@ -100,7 +100,7 @@ class UserController extends Controller
       }
 
     }
-    */
+    
     
     try {
       $user->update(['name' => $name, 'date_of_birth' => $date_of_birth, 'email' => $email, 'phone' => $phone ]);
