@@ -15,7 +15,13 @@ class CreditCardController extends Controller
 
         $userPaymentMethods = Auth::user()->payment_methods();
 
-        //todo validate 
+        $this->validate($request, [
+            'name' => 'required|max:255', 
+            'number' => 'required|max:20', 
+            'expiration' => 'required|date|after:today', 
+            'cvv' => 'required'
+          ]);
+
         $name = $request['name']; 
         $number = $request['number']; 
         $expiration = $request['expiration']; 
@@ -49,7 +55,13 @@ class CreditCardController extends Controller
     public function updateCreditCard(Request $request){
 
         if (!Auth::check()) return redirect('/sign_in');
-
+        $this->validate($request, [
+            'name' => 'required|max:255', 
+            'number' => 'required|max:20', 
+            'expiration' => 'required|date|after:today', 
+            'cvv' => 'required',
+            'id' => 'required'
+          ]);
         $id = $request['id']; 
         $name = $request['name']; 
         $number = $request['number']; 

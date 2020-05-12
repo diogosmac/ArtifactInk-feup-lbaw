@@ -13,6 +13,10 @@ class PaypalController extends Controller
        
         if (!Auth::check()) return redirect('/sign_in');
 
+        $this->validate($request, [
+            'email' => 'required|email'
+          ]);
+
         $userPaymentMethods = Auth::user()->payment_methods();
 
         //todo validate 
@@ -20,6 +24,7 @@ class PaypalController extends Controller
 
         $paypal= new Paypal;
         $paypal->email = $email; 
+
      
 
         try {
@@ -45,6 +50,12 @@ class PaypalController extends Controller
 
         if (!Auth::check()) return redirect('/sign_in');
 
+
+        $this->validate($request, [
+            'email' => 'required|email'
+          ]);
+
+          
         $id = $request['id']; 
         $email = $request['email']; 
 

@@ -13,6 +13,13 @@ class AddressController extends Controller
 
         $userAddresses = Auth::user()->addresses();
 
+        $this->validate($request, [
+            'street' => 'required|max:255', 
+            'postal_code' => 'required|max:20', 
+            'city' => 'required|max:255', 
+            'id_country' => 'required'
+          ]);
+
         $street = $request['street']; 
         $postal_code = $request['postal_code']; 
         $city = $request['city']; 
@@ -44,6 +51,14 @@ class AddressController extends Controller
 
         //Todo validate 
         //todo fix a bug where it updated to the last postition 
+
+        $this->validate($request, [
+            'street' => 'required|max:255', 
+            'postal_code' => 'required|max:20', 
+            'city' => 'required|max:255', 
+            'id_country' => 'required',
+            'id' => 'required'
+        ]);
 
         $id = $request['id'];
         $street = $request['street']; 
