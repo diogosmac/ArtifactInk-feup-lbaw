@@ -1,7 +1,11 @@
 <section id="history-purchase">
     <div class="col" id="review-container">
       <div class="row" id="purchase-address">
-        <span>Address St., 123 - 6º Esq. Frente</span>
+            {{ $order->address->street }}
+            <br>
+            {{$order->address->city . ', ' . $order->address->postal_code}} 
+            <br>
+            {{$order->address->country->name}}
       </div>
       <div class="row" id="purchase-details">
         <span>{{$order->date}}</span>
@@ -10,11 +14,8 @@
       </div>
 
       <div class="col my-3" id="purchase-items-container">
-        <?php $items = json_decode($items);
-            print_r($pictures); ?>
-        @foreach($items as $item)
-          <?php $picture = json_decode($pictures[$loop->index]); ?> 
-          @include('partials.profile.purchasedItem', ['item' => $item, 'picture' => $picture])
+        @foreach($order->items as $item) 
+          @include('partials.profile.purchasedItem', ['item' => $item])
         @endforeach
        
       </div>
