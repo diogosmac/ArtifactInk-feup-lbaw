@@ -4,20 +4,25 @@
         <span>Address St., 123 - 6º Esq. Frente</span>
       </div>
       <div class="row" id="purchase-details">
-        <span>27/02/2020</span>
+        <span>{{$order->date}}</span>
         <span>&nbsp;-&nbsp;</span>
-        <span>Shipped</span>
+        <span>{{$order->status}}</span>
       </div>
 
       <div class="col my-3" id="purchase-items-container">
-       @include('partials.profile.purchasedItem')
-       @include('partials.profile.purchasedItem')
+        <?php $items = json_decode($items);
+            print_r($pictures); ?>
+        @foreach($items as $item)
+          <?php $picture = json_decode($pictures[$loop->index]); ?> 
+          @include('partials.profile.purchasedItem', ['item' => $item, 'picture' => $picture])
+        @endforeach
+       
       </div>
 
       <div class="row" id="purchase-shipping">
-        <span>2,02€</span>
+        <span>2,02€ :( não temos</span>
       </div>
       <div class="row" id="purchase-total">
-        <span>30,00€</span>
+        <span>{{$order->total}} €</span>
       </div>
   </section>
