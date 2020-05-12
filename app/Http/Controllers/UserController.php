@@ -7,6 +7,7 @@ use App\User;
 use App\ProfilePicture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -15,7 +16,7 @@ class UserController extends Controller
 	 *
 	 * @return View
 	 */
-  public function showProfile(){ //todo consider auth - althought its already checked before 
+  public function showProfile(){ 
     
     if (!Auth::check()) return redirect('/');
     
@@ -32,8 +33,8 @@ class UserController extends Controller
 
     $profilePicture = $user->profilePicture()->get()->first();
 
-    $paymentMethods = $user->payment_methods()->get();
-    $addresses = $user->addresses()->get();
+    $paymentMethods = $user->payment_methods()->orderBy('id_payment_method')->get();
+    $addresses = $user->addresses()->orderBy('id_address')->get();
 
     return view('pages.profile.profile', ['userInfo' => $userInfo, 'profilePicture' => $profilePicture, 'paymentMethods' => $paymentMethods, 'addresses' => $addresses, 'countries' => $countries]);    
 
@@ -66,6 +67,12 @@ class UserController extends Controller
     $date_of_birth = $request['date_of_birth']; 
     $phone = $request['phone']; 
     $email = $request['email'];
+    $picture = $request['picture']; 
+
+    if($picture != null){
+        $filename = $user->profilePicture()->get()->first()->link;
+        $picture->storeAs('public/img_user', $filename);
+    } 
     
     //form validation
     if($user->email == $email){
@@ -87,11 +94,11 @@ class UserController extends Controller
     } 
     
     //check if password need to be changed
-    /*
+    
     if( $request['password'] != null ){
       if($request['password'] == $request['passwordConfirm'] ){
         try {
-          $user->update(['password' => $request['password']]);
+          $user->update(['password' => bcrypt($request['password'])]);
         } catch(PDOException $e) {
           return response("Error updating user info", 409);
         }
@@ -100,7 +107,7 @@ class UserController extends Controller
       }
 
     }
-    */
+    
     
     try {
       $user->update(['name' => $name, 'date_of_birth' => $date_of_birth, 'email' => $email, 'phone' => $phone ]);
@@ -109,6 +116,11 @@ class UserController extends Controller
     }
 
     return redirect()->route('profile.home');
+    
+  }
+
+  public function deleteProfile(){
+    //todo - it can be done with a trigger 
   }
 
   /**
