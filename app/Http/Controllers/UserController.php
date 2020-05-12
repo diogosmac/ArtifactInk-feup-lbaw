@@ -7,6 +7,7 @@ use App\User;
 use App\ProfilePicture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -66,6 +67,12 @@ class UserController extends Controller
     $date_of_birth = $request['date_of_birth']; 
     $phone = $request['phone']; 
     $email = $request['email'];
+    $picture = $request['picture']; 
+
+    if($picture != null){
+        $filename = $user->profilePicture()->get()->first()->link;
+        $picture->storeAs('public/img_user', $filename);
+    } 
     
     //form validation
     if($user->email == $email){
@@ -109,6 +116,11 @@ class UserController extends Controller
     }
 
     return redirect()->route('profile.home');
+    
+  }
+
+  public function deleteProfile(){
+    //todo - it can be done with a trigger 
   }
 
 }

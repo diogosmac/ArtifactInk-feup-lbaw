@@ -6,7 +6,7 @@
 <section id="profile">
   <section id="profile-info">
     <div class="col">
-      <form action="{{ route('profile.home')}}" method="post">
+      <form action="{{ route('profile.home')}}" method="post" enctype="multipart/form-data">
         {{csrf_field()}}
         {{ method_field('PUT')}}
         <div class="row" id="profile-tag">
@@ -27,7 +27,7 @@
             </div>
             <div class="form-group">
               <label for="exampleFormControlFile1">Upload new photo</label>
-              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+              <input type="file" class="form-control-file" id="exampleFormControlFile1" name="picture" >
             </div>
 
             <button class="btn button-secondary" type="submit">Update Profile</button>
