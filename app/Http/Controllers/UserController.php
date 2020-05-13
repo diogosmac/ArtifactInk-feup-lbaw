@@ -124,15 +124,27 @@ class UserController extends Controller
   }
 
   /**
-   * Show orders page
+   * Show orders' page
    */
 
   public function showOrders() {
     if (!Auth::check()) return redirect('/sign_in');
 
     $orders = Auth::user()->orders()->orderBy('date', 'desc')->get();
-  
+
     return view('pages.profile.purchased_history', ['orders' => $orders]);
+  }
+
+  /**
+   * Show reviews' page
+   */
+
+  public function showReviews() {
+    if (!Auth::check()) return redirect('/sign_in');
+
+    $reviews = Auth::user()->reviews()->orderBy('date', 'desc')->get();
+
+    return view('pages.profile.review', ['reviews' => $reviews]);
   }
 
 }

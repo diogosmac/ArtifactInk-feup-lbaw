@@ -70,8 +70,9 @@ Route::prefix('profile')->name('profile.')->group(function() {
 
     Route::delete('paypal','PaypalController@deletePaypal')->name('paypal'); 
     
-    //reviews 
-    Route::view('reviews', 'pages/profile/review')->name('reviews');
+    //Route::view('reviews', 'pages/profile/review')->name('reviews');
+
+    Route::get('reviews', 'UserController@showReviews')->name('reviews');
     
     //wishlist
     //Route::view('wishlist', 'pages/profile/wishlist');
