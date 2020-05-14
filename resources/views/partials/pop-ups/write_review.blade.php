@@ -31,12 +31,15 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
+			<form action="{{ route('profile.reviews') }}" method="post">
 			<div class="modal-body">
-				<form>
+					{{csrf_field()}}
+                    {{ method_field('POST')}}
+					<input type="hidden" name="item" value="{{$item->id}}">
 					<div class="form-group score_input">
 						<label for="rating_fieldset">Rating</label>
 						<div>
-						<fieldset id="rating_fieldset" class="rating_input">
+						<fieldset id="rating_fieldset" class="rating_input" required>
     						<input type="radio" id="star5" class="star" name="rating" value="5" /><label class = "star_label" for="star5"><i class="far fa-star"></i></label>
     						<input type="radio" id="star4" class="star" name="rating" value="4" /><label class = "star_label" for="star4"><i class="far fa-star"></i></label>
     						<input type="radio" id="star3" class="star" name="rating" value="3" /><label class = "star_label" for="star3"><i class="far fa-star"></i></label>
@@ -47,18 +50,18 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Review Title</label>
-						<input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Write question here...">
+						<input type="text" class="form-control" id="exampleFormControlInput1" name="title" placeholder="Write question here..." required>
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlTextarea1">Review</label>
-						<textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Tell us what you think..."></textarea>
+						<textarea class="form-control" id="exampleFormControlTextarea1" name="body" rows="5" placeholder="Tell us what you think..." required></textarea>
 					</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary button mt-2">Submit</button>
-			</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-primary button mt-2">Submit</button>
+				</div>
+			</form>
 		</div>
 	</div>
 </div>
