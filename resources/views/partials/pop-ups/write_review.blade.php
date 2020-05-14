@@ -22,7 +22,7 @@
 	</div>
 </div>
 -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="writeReview" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -33,15 +33,17 @@
 			</div>
 			<div class="modal-body">
 				<form>
-					<div class="form-group">
+					<div class="form-group score_input">
 						<label for="rating_fieldset">Rating</label>
-						<fieldset id="rating_fieldset" class="rating">
-    						<input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5"><i class="fas fa-star"></i></label>
-    						<input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4"><i class="fas fa-star"></i></label>
-    						<input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3"><i class="fas fa-star"></i></label>
-    						<input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2"><i class="fas fa-star"></i></label>
-    						<input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1"><i class="fas fa-star"></i></label>
+						<div>
+						<fieldset id="rating_fieldset" class="rating_input">
+    						<input type="radio" id="star5" class="star" name="rating" value="5" /><label class = "star_label" for="star5"><i class="far fa-star"></i></label>
+    						<input type="radio" id="star4" class="star" name="rating" value="4" /><label class = "star_label" for="star4"><i class="far fa-star"></i></label>
+    						<input type="radio" id="star3" class="star" name="rating" value="3" /><label class = "star_label" for="star3"><i class="far fa-star"></i></label>
+    						<input type="radio" id="star2" class="star" name="rating" value="2" /><label class = "star_label" for="star2"><i class="far fa-star"></i></label>
+    						<input type="radio" id="star1" class="star" name="rating" value="1" /><label class = "star_label" for="star1"><i class="far fa-star"></i></label>
 						</fieldset>
+						</div>
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">Review Title</label>

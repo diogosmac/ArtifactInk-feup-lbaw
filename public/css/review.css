@@ -1,3 +1,37 @@
-#reviewPopup {
-    max-width: 30em;
+.score_input {
+    padding-bottom: 1.8em;
+}
+
+.rating_input {
+    border: none;
+    float: left;
+}
+
+.rating_input>input {
+    display: none;
+}
+
+.rating_input>label:before {
+    margin: 5px;
+    font-size: 1.5em;
+    display: inline-block;
+}
+
+.rating_input>label {
+    float: right;
+    font-size: 1.25em;
+    padding: 0.1em;
+}
+
+.rating_input>input:checked~label {
+    color: #242128;
+}
+
+.rating_input:not(:checked)>label:hover,
+.rating_input:not(:checked)>label:hover~label,
+.rating_input>input:checked+label:hover,
+.rating_input>input:checked~label:hover,
+.rating_input>label:hover~input:checked~label,
+.rating_input>input:checked~label:hover~label {
+    color: #bbbbbb;
 }

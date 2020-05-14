@@ -8,7 +8,7 @@
         <div class="d-flex justify-content-between my-1 align-items-center">
           <span class="review-product-name float-left">{{$review->item->name}}</span>
 
-          <button type="button" class="btn button-secondary float-right" id="profile-edit-review-button" data-toggle="modal" data-target="#exampleModalCenter">
+          <button type="button" class="btn button-secondary float-right" id="profile-edit-review-button" data-toggle="modal" data-target="#editReview">
             <i class="fas fa-pen pr-2"></i>Edit
           </button>
 

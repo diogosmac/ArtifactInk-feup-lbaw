@@ -1,4 +1,4 @@
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="editReview" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,6 +9,37 @@
             </div>
             <div class="modal-body">
                 <form>
+                    <div class="form-group score_input">
+                        <label for="rating_fieldset">Rating</label>
+                        <div>
+                            <fieldset id="rating_fieldset" class="rating_input">
+                                <input type="radio" id="star5" class="star" name="rating" value="5" @if($review->score == 5) checked="checked" @endif/>
+                                <label class="star_label" for="star5">
+                                    <?php if ($review->score < 5) { ?> <i class="far fa-star"></i> <?php } else { ?> <i class="fas fa-star"> <?php } ?>
+                                </label>
+
+                                <input type="radio" id="star4" class="star" name="rating" value="4" @if($review->score == 4) checked="checked" @endif/>
+                                <label class="star_label" for="star4">
+                                    <?php if ($review->score < 4) { ?> <i class="far fa-star"></i> <?php } else { ?> <i class="fas fa-star"></i><?php } ?>
+                                </label>
+
+                                <input type="radio" id="star3" class="star" name="rating" value="3" @if($review->score == 3) checked="checked" @endif/>
+                                <label class="star_label" for="star3">
+                                    <?php if ($review->score < 3) { ?> <i class="far fa-star"></i> <?php } else { ?> <i class="fas fa-star"></i> <?php } ?>
+                                </label>
+
+                                <input type="radio" id="star2" class="star" name="rating" value="2" @if($review->score == 2) checked="checked" @endif/>
+                                <label class="star_label" for="star2">
+                                    <?php if ($review->score < 2) { ?> <i class="far fa-star"></i> <?php } else { ?> <i class="fas fa-star"></i> <?php } ?>
+                                </label>
+
+                                <input type="radio" id="star1" class="star" name="rating" value="1" @if($review->score == 1) checked="checked" @endif/>
+                                <label class="star_label" for="star1">
+                                    <?php if ($review->score < 1) { ?> <i class="far fa-star"></i> <?php } else { ?> <i class="fas fa-star"></i> <?php } ?>
+                                </label>
+                            </fieldset>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1">Review Title</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1" value="{{$review->title}}" placeholder="Write question here...">
