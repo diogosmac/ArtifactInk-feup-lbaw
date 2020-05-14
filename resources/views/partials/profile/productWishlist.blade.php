@@ -18,7 +18,7 @@
               <i class="fas fa-star"></i>
               <i class="fas fa-star"></i>
               <i class="fas fa-star-half-alt"></i>
-              <a href="#specs" class="px-2 a_link"> (2)</a>
+              <a href="#specs" class="px-2 a_link"> {{ count($item->reviews) }}</a>
 
             </div>
           </div>

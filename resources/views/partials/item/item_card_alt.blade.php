@@ -15,7 +15,7 @@
 
                     <div class="py-2 d-flex flex-row bd-highlight justify-content-between">
                         <div>
-                            @include('partials.rating_stars', [] )
+                            @include('partials.rating_stars', ['rating' => 4] )
                             <a href="/product/1#specs" class="px-2 a_link"> (<!--No ratings-->)</a>
                             
                         </div>
