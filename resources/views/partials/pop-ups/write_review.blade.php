@@ -27,11 +27,11 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<h5 class="modal-title" id="exampleModalLongTitle">Review on {{$item->name}}</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<button type="reset" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
-			<form action="{{ route('profile.reviews') }}" method="post">
+			<form action="{{ route('profile.reviews') }}" method="post" autocomplete="off">
 			<div class="modal-body">
 					{{csrf_field()}}
                     {{ method_field('POST')}}
@@ -58,7 +58,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
+					<button type="reset" name="Reset" class="btn btn-link a_link" data-dismiss="modal">Close</button>
 					<button type="submit" class="btn btn-primary button mt-2">Submit</button>
 				</div>
 			</form>
