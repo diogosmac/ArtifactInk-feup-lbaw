@@ -4,8 +4,8 @@
 
 @section('info')
   <section id="reviews">
-    @include('partials.profile.productReview')
-    @include('partials.profile.productReview')
-    @include('partials.profile.productReview')
+    @foreach($reviews as $review)
+      @include('partials.profile.productReview', ['review' => $review])
+    @endforeach
   </section>
 @endsection
