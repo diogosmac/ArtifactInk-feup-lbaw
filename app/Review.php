@@ -14,6 +14,15 @@ class Review extends Model
     protected $table = 'review';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id_item', 'id_user', 'title', 'body', 'score'
+    ];
+
+    /**
      * Indicates if the model should be timestamped.
      *
      * @var bool

@@ -9,6 +9,7 @@
             </div>
             <div class="modal-body">
                 <form>
+                    <input type="hidden" name="item" value="{{$review->item->id}}">
                     <div class="form-group score_input">
                         <label for="rating_fieldset">Rating</label>
                         <div>
@@ -52,7 +53,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
-                <button type="button" class="btn button">Save changes</button>
+                <button type="submit" class="btn button">Save changes</button>
             </div>
         </div>
     </div>

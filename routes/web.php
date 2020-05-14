@@ -72,7 +72,9 @@ Route::prefix('profile')->name('profile.')->group(function() {
     
     //Route::view('reviews', 'pages/profile/review')->name('reviews');
 
-    Route::get('reviews', 'UserController@showReviews')->name('reviews');
+    Route::get('reviews', 'ReviewController@showReviews')->name('reviews');
+
+    Route::post('reviews', 'ReviewController@addReview')->name('reviews');
     
     //wishlist
     //Route::view('wishlist', 'pages/profile/wishlist');
