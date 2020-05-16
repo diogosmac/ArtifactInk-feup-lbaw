@@ -40,9 +40,34 @@ class ReviewController extends Controller
     try {
         $reviews->save($review);
     } catch (PDOException $e) {
-
+        /** 
+         * TODO: Do something here
+         */
     }
 
     return redirect()->route('profile.purchased_history');
+  }
+
+  public function updateReview(Request $request) {
+    if (!Auth::check()) return redirect('/sign_in');
+
+    $reviews = Auth::user()->reviews();
+    /**
+     * TODO: Validate input; 
+     */
+    $score = $request['rating'];
+    $title = $request['title'];
+    $body = $request['body'];
+    $item = $request['item'];
+
+    try {
+        $reviews->where('id_item', '=', $item)->update(['title' => $title, 'body' => $body, 'score' => $score]);
+    } catch (PDOException $e) {
+        /** 
+         * TODO: Do something here
+         */    
+    }
+
+    return redirect()->route('profile.reviews');
   }
 }
