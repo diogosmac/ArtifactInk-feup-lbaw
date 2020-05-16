@@ -76,6 +76,9 @@ Route::prefix('profile')->name('profile.')->group(function() {
 
     Route::post('reviews', 'ReviewController@addReview')->name('reviews');
     
+    Route::put('reviews', 'ReviewController@updateReview')->name('reviews');
+
+    
     //wishlist
     //Route::view('wishlist', 'pages/profile/wishlist');
 
