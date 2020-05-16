@@ -49,29 +49,28 @@ Route::prefix('profile')->name('profile.')->group(function() {
     
     Route::put('delete','UserController@deleteProfile')->name('delete');
     
-    //adresses
+    // Addresses
     Route::post('address','AddressController@addAddress')->name('address'); 
     
     Route::put('address','AddressController@updateAddress')->name('address'); 
 
     Route::delete('address','AddressController@deleteAddress')->name('address'); 
 
-    //creditcards
+    // Credit cards
     Route::post('credit_card','CreditCardController@addCreditCard')->name('credit_card'); 
 
     Route::put('credit_card','CreditCardController@updateCreditCard')->name('credit_card'); 
 
     Route::delete('credit_card','CreditCardController@deleteCreditCard')->name('credit_card'); 
 
-    //paypal
+    // Paypal
     Route::post('paypal','PaypalController@addPaypal')->name('paypal'); 
 
     Route::put('paypal','PaypalController@updatePaypal')->name('paypal'); 
 
     Route::delete('paypal','PaypalController@deletePaypal')->name('paypal'); 
-    
-    //Route::view('reviews', 'pages/profile/review')->name('reviews');
 
+    // Reviews
     Route::get('reviews', 'ReviewController@showReviews')->name('reviews');
 
     Route::post('reviews', 'ReviewController@addReview')->name('reviews');
@@ -79,18 +78,34 @@ Route::prefix('profile')->name('profile.')->group(function() {
     Route::put('reviews', 'ReviewController@updateReview')->name('reviews');
 
     
-    //wishlist
-    //Route::view('wishlist', 'pages/profile/wishlist');
-
+    // Wishlist
     Route::get('wishlist', 'WishlistController@list')->name('wishlist');
 
     Route::post('wishlist', 'WishlistController@add_to_wishlist')->name('wishlist');
 
     Route::delete('wishlist', 'WishlistController@delete_from_wishlist')->name('wishlist');
 
-    //Route::view('purchased_history', 'pages/profile/purchased_history')->name('purchased_history');
-
+    // Purchased History
     Route::get('purchased_history', 'UserController@showOrders')->name('purchased_history');
+});
+
+
+// Cart 
+Route::get('cart', 'CartController@list');
+
+Route::post('cart', 'CartController@add_to_cart');
+
+Route::delete('cart', 'CartController@delete_from_cart');
+
+Route::put('cart', 'CartController@update_item_quantity');
+
+// Checkout
+Route::prefix('/checkout')->name('checkout.')->namespace('Checkout')->group(function () {
+    Route::view('shipping', 'pages.checkout.shipping')->name('shipping');
+
+    Route::view('payment', 'pages.checkout.payment')->name('payment');
+
+    Route::view('confirm', 'pages.checkout.confirm')->name('confirm');
 });
 
 // admin routes
@@ -155,24 +170,6 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
     
     // support message
     Route::get('support_chat', 'AdminController@showSupportChat')->name('support_chat');
-});
-
-
-//shopping cart and checkout 
-/*Route::get('cart', function () {
-    return view('pages.cart');
-});*/
-Route::get('cart', 'CartController@list');
-Route::post('cart', 'CartController@add_to_cart');
-Route::delete('cart', 'CartController@delete_from_cart');
-Route::put('cart', 'CartController@update_item_quantity');
-
-Route::prefix('/checkout')->name('checkout.')->namespace('Checkout')->group(function () {
-    Route::view('shipping', 'pages.checkout.shipping')->name('shipping');
-
-    Route::view('payment', 'pages.checkout.payment')->name('payment');
-
-    Route::view('confirm', 'pages.checkout.confirm')->name('confirm');
 });
 
 //static pages 
