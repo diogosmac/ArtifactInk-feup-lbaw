@@ -8,12 +8,13 @@
 
     <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap border-bottom mt-2">
       <h1>Add Product</h1>
-      <button type="button" class="btn button">
+      <button type="submit" form="add-product" value="Submit" class="btn button">
         Submit
       </button>
     </div>
 
-    <form>
+    <form action="{{ route('admin.products.add') }}" method="POST" id="add-product">
+      @csrf
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputTitle">Title</label>
@@ -38,9 +39,11 @@
           <div class="form-group">
             <label for="inputCategory">Category</label>
             <select class="custom-select" id="inputCategory">
-              <option value="Ink">Ink</option>
-              <option value="Machines">Machines</option>
-              <option value="...">...</option>
+            @foreach ($parent_categories as $parent_category)
+              <option value="{{ $parent_category->id }}">
+                {{ $parent_category->name }}
+              </option>
+            @endforeach
             </select>
           </div>
           <div class="form-group">

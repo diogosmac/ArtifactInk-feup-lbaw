@@ -32,6 +32,10 @@ class AdminController extends Controller
         return view('pages.admin.products.add_product');
     }
 
+    public function addProduct(Request $request) {
+        
+    }
+
     public function showEditProductForm($id_item) {
         try {
             $item = Item::findOrFail($id_item);
