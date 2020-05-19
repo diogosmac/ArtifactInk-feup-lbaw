@@ -24,7 +24,7 @@ class AdminController extends Controller
     */
     public function showProducts() {
         $items = Item::paginate(10);
-        //$pictures = $item->images()->get();
+        $items->withPath('');
         return view('pages.admin.products.products', ['products' => $items]);
     }
 
