@@ -40,18 +40,14 @@
             <label for="inputCategory">Category</label>
             <select class="custom-select" id="inputCategory">
             @foreach ($parent_categories as $parent_category)
-              <option value="{{ $parent_category->id }}">
-                {{ $parent_category->name }}
-              </option>
+              <optgroup label="{{ $parent_category->name }}">
+                @foreach ($parent_category->children as $child_category)
+                <option value="{{ $child_category->id }}">
+                  {{ $child_category->name }}
+                </option>
+                @endforeach
+              </optgroup>
             @endforeach
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="inputSubcategory">Subcategory</label>
-            <select class="custom-select" id="inputCategory">
-              <option value="Ink">Ink</option>
-              <option value="Machines">Machines</option>
-              <option value="...">...</option>
             </select>
           </div>
         </div>

@@ -33,6 +33,7 @@ class AdminController extends Controller
     }
 
     public function addProduct(Request $request) {
+        // get inputs
         
     }
 
