@@ -31,7 +31,7 @@ Route::view('recover_password', 'auth/recover_password');
 //routes for debugging pages - remove later
 Route::get('/', 'ItemController@showHomepage')->name('home'); //todo reply function indide in all pages 
 
-Route::get('search','SearchController@showSearch');
+Route::get('search','SearchController@showSearch')->name('search');
 
 Route::get('product/{id}', 'ItemController@show');
 
