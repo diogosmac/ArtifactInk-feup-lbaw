@@ -64,4 +64,13 @@ class Item extends Model
         return $this->belongsToMany('App\ItemSubscriber', 'item_subscription', 'id_item', 'email_subscriber');
     }
 
+    public function scopeSearch($query, $search) {
+        if (!$search) {
+            return $query;
+        }
+        return $query->
+        whereRaw('setweight(to_tsvector(\'english\', "item"."name"), \'A\') || setweight(to_tsvector(\'english\', "item"."description"), \'B\') || setweight(to_tsvector(\'english\', "item"."brand"), \'C\' ) @@ plainto_tsquery(\'english\', ?)', [$search])->
+        orderByRaw('ts_rank_cd(to_tsvector("item"."name" || \' \' || "item"."description"|| \' \' || "item"."brand"), plainto_tsquery(\'english\', ?) DESC', [$search]);
+    }
+
 }
