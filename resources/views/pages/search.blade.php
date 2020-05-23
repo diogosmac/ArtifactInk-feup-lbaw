@@ -67,7 +67,7 @@
 					</div>
 				</div>
 
-				{{$items->links()}}
+				{{$items->appends(request()->except('page'))->links()}}
 			
 			</section>
 		</div>

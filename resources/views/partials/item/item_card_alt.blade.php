@@ -26,9 +26,6 @@
                         @if($item->stock > 5)
                         <i class="fas fa-circle circle-available"></i>
                         Available
-                        @elseif($item->stock > 0)
-                        <i class="fas fa-circle circle-available" style="color:gold"></i>
-                        Last Units
                         @else
                         <i class="fas fa-circle circle-available" style="color:red"></i>
                         Unavailable
