@@ -50,30 +50,25 @@
 			<section class="col-md-9">
 				<div class="tab-content mx-auto" id="pills-tabContent">
 					<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-						<div class="row justify-content-around">
-							<div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
-								@include('partials.item.item_card', [])
-							</div>
-							<div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
-								@include('partials.item.item_card', [])
-							</div>
-							<div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
-								@include('partials.item.item_card', [])
-							</div>
-							<div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
-								@include('partials.item.item_card', [])
-							</div>
-							<div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
-								@include('partials.item.item_card', [])
-							</div>
+						<div class="row justify-content-start">
+							@foreach($items as $item)
+								<div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
+									@include('partials.item.item_card', ['item' => $item, 'picture' => $item->images()->get()->first()])
+								</div>
+							@endforeach
 						</div>
 					</div>
 					<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 						<ul class="list-group">
-							@include('partials.item.item_card_alt', [])
+							@foreach($items as $item)
+								@include('partials.item.item_card_alt', ['item' => $item, 'picture' => $item->images()->get()->first()])
+							@endforeach
 						</ul>
 					</div>
 				</div>
+
+				{{$items->appends(request()->except('page'))->links()}}
+			
 			</section>
 		</div>
 	</div>
