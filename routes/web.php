@@ -25,6 +25,10 @@ Route::get('sign_out', 'Auth\LoginController@logout')->name('sign_out');
 Route::get('sign_up', 'Auth\RegisterController@showRegistrationForm')->name('sign_up');
 Route::post('sign_up', 'Auth\RegisterController@register');
 
+//external sign in
+Route::get('sign_in/{provider}', 'Auth\LoginController@externalAuth');
+Route::get('sign_in/{provider}/redirect', 'Auth\LoginController@externalRedirect');
+
 //profile
 Route::view('recover_password', 'auth/recover_password');
 

@@ -44,13 +44,13 @@
         <p class="sign-divider"> or Sign In with </p>
         <div class="btn-group sign-in-api d-flex justify-content-center" data-toggle="buttons">
             <label class="btn">
-                <a class="btn" href="#">
+                <a class="btn" href="sign_in/google">
                     <i class="fab fa-google"></i>
                     Google
                 </a>
             </label>
             <label class="btn ">
-                <a class="btn" href="#">
+                <a class="btn" href="sign_in/facebook">
                     <i class="fab fa-facebook-square"></i>
                     Facebook
                 </a>
