@@ -233,7 +233,6 @@ let listQtyNav =  document.querySelectorAll('div.dropdown-cart div.panel-body ul
 
 for(let i = 0; i< cartItemsNav.length/2; i++ ){
     priceNav += listPriceNav[i].innerHTML * listQtyNav[i].innerHTML; 
-    console.log(priceNav); 
 }
 
 if(priceNav !== null){

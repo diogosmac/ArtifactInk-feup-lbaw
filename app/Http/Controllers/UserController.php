@@ -135,4 +135,21 @@ class UserController extends Controller
     return view('pages.profile.purchased_history', ['orders' => $orders]);
   }
 
+  /**
+   * Show Checkout Pages
+   */
+
+   public function showCheckoutShipping(){
+    if (!Auth::check()) return redirect('/');
+    
+    $user = Auth::user();
+
+    $cartItems = CartController::get_user_cart_items()['items'];
+    $paymentMethods = $user->payment_methods()->orderBy('id_payment_method')->get();
+    $addresses = $user->addresses()->orderBy('id_address')->get();
+
+
+    return view('pages.checkout.shipping', ['cartItems'=>$cartItems, 'addresses'=>$addresses] ); 
+   }
+
 }
