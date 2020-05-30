@@ -106,10 +106,10 @@
                     alt="{{ Auth::user()->name}}">
                   <h5 class="dropdown-header">{{ Auth::user()->name}}</h5>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/pages/profile.php">My Account</a>
+                  <a class="dropdown-item" href="{{ url('/profile') }}">My Account</a>
                   <a class="dropdown-item" href="#">My Order</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Sign Out</a>
+                  <a class="dropdown-item" href="{{ url('sign_out') }}">Sign Out</a>
                 </div>
               </div>
             </li>

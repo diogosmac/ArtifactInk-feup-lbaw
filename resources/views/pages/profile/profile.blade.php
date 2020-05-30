@@ -146,7 +146,7 @@
 
       <div class="col my-2" id="profile-address">
         @foreach($addresses as $address)
-        @include('partials.profile.address', ['address' => $address, 'loop' => $loop->iteration])
+          @include('partials.profile.address', ['address' => $address, 'loop' => $loop->iteration])
         @endforeach
       </div>
 
