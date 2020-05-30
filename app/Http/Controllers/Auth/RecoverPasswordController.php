@@ -32,6 +32,8 @@ class RecoverPasswordController extends Controller
 
         $hash = Hash::make($name . $email . $date_of_birth);
 
+        $url = url("/reset_password/{$hash}");
+
         /*//Create Password Reset Token
         DB::table('password_resets')->insert([
             'email' => $request->email,
@@ -43,11 +45,9 @@ class RecoverPasswordController extends Controller
             ->where('email', $request->email)->first();*/
 
         $email_service = new EmailServiceController();
-        $email_service->sendRecoverPasswordEmail($email, $hash);
-
         return;
-
-        if ($this->sendResetEmail($request->email, $tokenData->token)) {
+        
+        if ($email_service->sendRecoverPasswordEmail($email, $name, $url)) {
             return redirect()->back()->with('status', trans('A reset link has been sent to your email address.'));
         } else {
             return redirect()->back()->withErrors(['error' => trans('A Network Error occurred. Please try again.')]);
