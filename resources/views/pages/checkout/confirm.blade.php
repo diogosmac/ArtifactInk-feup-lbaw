@@ -17,9 +17,10 @@
           <span class="badge badge-secondary badge-pill">3</span>
         </h4>
         <ul class="list-group mb-3" id="checkout-items-list">
-          @include('partials.checkout.checkoutItem')
-          @include('partials.checkout.checkoutItem')
-          @include('partials.checkout.checkoutItem')
+        @foreach($cartItems as $cartItem)
+            @include('partials.checkout.checkoutItem',['cartItem' => $cartItem])
+          @endforeach 
+          <!-- TODO COM O FORM MULTIPAGINA --> 
           <li class="list-group-item d-flex justify-content-between lh-condensed">
             <div>
               <h6 class="my-0">Muito carooooo</h6>

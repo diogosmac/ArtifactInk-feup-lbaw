@@ -66,6 +66,15 @@ div.checkout-box thead th{
     display: none;
 }
 
+#new-payment-form{
+    display: none;
+}
+
+.payment-form2{
+    display: none;
+}
+
+
 
 
 .checkout-form-steps h4.mb-3{
