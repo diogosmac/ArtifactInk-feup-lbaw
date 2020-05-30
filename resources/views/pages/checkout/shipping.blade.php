@@ -23,7 +23,7 @@
           @endforeach 
           <li class="list-group-item d-flex justify-content-between">
             <span>Total (EUR)</span>
-            <strong>20€</strong>
+            <strong></strong>
           </li>
         </ul>
       </div>
@@ -49,6 +49,7 @@
               </ul>
             </nav>
           </div>
+
           <div class="checkout-addr-field">
             <div class="input-group mb-3" id="addr-selector">
               <select class="custom-select" id="address-input-group">
@@ -84,7 +85,7 @@
                   <select class="custom-select d-block w-100" id="country" required>
                     @foreach($countries as $country)
                     <option value="{{ $country->id }}">{{ $country->name}}</option>
-                    @endforeach+
+                    @endforeach
                   </select>
                   <div class="invalid-feedback">
                     Please select a valid country.
@@ -114,6 +115,7 @@
               </div>
             </div>
           </div>
+
           <hr class="mb-4">
 
           <div class="d-block my-3">

@@ -40,22 +40,50 @@ if(ret_addr_btn != null){
 }
 
 //PAYMENT METHOD 
+
 let paypal = document.getElementById('paypal'); 
-let credit= document.getElementById('credit'); 
-let debit= document.getElementById('debit'); 
+let credit = document.getElementById('credit'); 
 
 if(credit != null)
     credit.addEventListener('click',payment_event_handler, false); 
-
-if(debit != null)
-    debit.addEventListener('click',payment_event_handler, false); 
 
 if(paypal != null)
     paypal.addEventListener('click',payment_event_handler, false); 
 
 function payment_event_handler(){
-    if(!paypal.checked)
+    if(!paypal.checked){
         document.querySelector(".payment-form").style.display = "inherit"   
-    else 
-        document.querySelector(".payment-form").style.display = "none"   
+        document.querySelector(".payment-form2").style.display = "none"   
+    }
+    else{
+        document.querySelector(".payment-form").style.display = "none"  
+        document.querySelector(".payment-form2").style.display = "inherit"    
+    } 
+}
+
+let  new_payment_btn = document.querySelector('#new-payment-btn'); 
+let  ret_payment_btn = document.querySelector('#return-payment-btn'); 
+let  payment_selector = document.querySelector('#payment-selector'); 
+
+if(new_payment_btn != null){
+    
+    new_payment_btn.addEventListener('click', ()=>{
+        let payment_field = document.querySelector('#new-payment-form');
+        payment_field.style.display='initial'
+        new_payment_btn.style.display='none'; 
+        payment_selector.style.display='none'
+        document.querySelector(".payment-form").style.display = "inherit"   
+        
+    },false);
+}
+
+if(ret_payment_btn != null){
+  ret_payment_btn.addEventListener('click', ()=>{
+    let payment_field = document.querySelector('#new-payment-form');
+    payment_field.style.display='none'
+    document.querySelector(".payment-form").style.display = "none"
+    document.querySelector(".payment-form2").style.display = "none"    
+    new_payment_btn.style.display='initial'; 
+    payment_selector.style.display='flex'
+    },false);  
 }
