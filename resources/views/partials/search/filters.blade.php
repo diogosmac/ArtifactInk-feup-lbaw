@@ -3,11 +3,11 @@
         <div>
             <label class="mt-2" for="categories">Categories</label>
             <div id="categories" class="rounded border border-secondary p-2" style="max-height:10em; overflow-y: scroll">
-                <?php for ($i = 1; $i < 6; $i++) { ?>
-
+                <?php for ($i = 0; $i < count($categories); $i++) { ?>
+                    <?php $category = $categories[$i]['name']; ?>
                     <div class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input" id="category<?= $i ?>">
-                        <label class="custom-control-label" for="category<?= $i ?>">Category <?= $i ?></label>
+                        <input type="checkbox" class="custom-control-input" name="category[]" id="category<?= $i ?>" value="<?= $category ?>">
+                        <label class="custom-control-label" for="category<?= $i ?>"><?= $category ?></label>
                     </div>
                 <?php } ?>
             </div>
@@ -15,11 +15,11 @@
         <div>
             <label class="mt-3" for="brands">Brands</label>
             <div id="brands" class="rounded border border-secondary p-2" style="max-height:10em; overflow-y: scroll">
-                <?php for ($i = 1; $i < 6; $i++) { ?>
-
+                <?php for ($i = 0; $i < count($brands); $i++) { ?>
+                    <?php $brand = $brands[$i]; ?>
                     <div class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input" id="brand<?= $i ?>">
-                        <label class="custom-control-label" for="brand<?= $i ?>">Brand <?= $i ?></label>
+                        <input type="checkbox" class="custom-control-input" name="brand[]" id="brand<?= $i ?>"  value="<?= $brand ?>">
+                        <label class="custom-control-label" for="brand<?= $i ?>"><?= $brand ?></label>
                     </div>
                 <?php } ?>
             </div>
