@@ -3,12 +3,15 @@
 let checkoutItemQty = document.querySelectorAll('ul#checkout-items-list li div span:first-child'); 
 let checkoutItemPrice = document.querySelectorAll('ul#checkout-items-list li div span:nth-child(2)'); 
 let totalPrice = 0; 
+let totalQty = 0; 
 
 for(let i = 0; i < checkoutItemPrice.length; i++ ){
     totalPrice += checkoutItemPrice[i].innerHTML.substr(0,checkoutItemPrice[i].innerHTML.length -1) * checkoutItemQty[i].innerHTML; 
+    totalQty += checkoutItemQty[i].innerHTML * 1 ; 
 }
 
 document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice + " €"; 
+document.querySelectorAll('div#checkout-list span.badge-pill')[0].innerHTML = totalQty; 
 
 //ADDRESS 
 
