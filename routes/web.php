@@ -29,12 +29,6 @@ Route::post('recover_password', 'Auth\RecoverPasswordController@requestRecoverPa
 Route::get('reset_password/{token}', 'Auth\RecoverPasswordController@showResetPasswordForm')->name('reset_password');
 Route::post('reset_password', 'Auth\RecoverPasswordController@requestSetPassword');
 
-//Esta é só para o tiago
-
-//Route::view('reset_password', 'auth.reset_password'); 
-
-//profile
-//Route::view('recover_password', 'auth/recover_password');
 
 //routes for debugging pages - remove later
 Route::get('/', 'ItemController@showHomepage')->name('home'); //todo reply function indide in all pages 

@@ -4,7 +4,7 @@
 
 @section('content')
 
-@if(!$expired) 
+@if(!$expired && isset($token)) 
 <!-- Muda ali o true e chapa ali o token que queres -->
 <form class="form-signin" method="post" action="/reset_password">
     @csrf
@@ -66,3 +66,15 @@
 </div>
 
 @endsection
+
+{{-- Alert --}}
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    @foreach ($errors->all() as $error)
+    <p>{{ $error }}</p>
+    @endforeach
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif

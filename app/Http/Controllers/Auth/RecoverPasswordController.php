@@ -36,7 +36,7 @@ class RecoverPasswordController extends Controller
 
     public function requestRecoverPassword(Request $request)
     {
-        // Add validation here
+        // ! Add validation here
         $user = User::where('email', '=', $request->email)->first(); 
         
         //Check if the user exists
@@ -62,9 +62,9 @@ class RecoverPasswordController extends Controller
         
         $email_service = new EmailServiceController();
 
-        // ! redirect back with and without error (show different pages)
+        // Redirect back with and without error (show different pages)
         if ($email_service->sendRecoverPasswordEmail($email, $name, $url)) {
-            return redirect()->back()->with('status', trans('A reset link has been sent to your email address.'));
+            return redirect()->back()->with(['sent_email' => true, 'status' => trans('A reset link has been sent to your email.')]);
         } else {
             return redirect()->back()->withErrors(['error' => trans('A Network Error occurred. Please try again.')]);
         }
@@ -89,7 +89,7 @@ class RecoverPasswordController extends Controller
     }
 
     public function requestSetPassword(Request $request) {
-        //Validate input
+        // ! Validate input
         /*$validator = Validator::make($request->all(), [
             'email' => 'required|email|exists:users,email',
             'password' => 'required|confirmed'
@@ -108,7 +108,7 @@ class RecoverPasswordController extends Controller
                     ->orderBy('created_at', 'desc')->first();
         
         // Redirect the user back to the password reset request form if the token is invalid
-        if (!$tokenData) return view('auth/reset_password', ['token' => $token, 'expired' => true]);
+        if (!$tokenData) return view('auth/reset_password', ['expired' => true]);
         // If password is different from confirm password
         if ($password != $confirm_password) return redirect()->back()->withErrors(['password' => 'Passwords don\'t match']);
 
