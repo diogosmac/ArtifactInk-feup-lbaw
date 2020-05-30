@@ -56,9 +56,12 @@ class RecoverPasswordController extends Controller
 
     }
 
-    public function showSetNewPasswordForm(Request $request)
+    public function showResetPasswordForm($token)
     {
-        // 
+        // If token exipired redirect to request token
+        $expired = false;
+
+        return view('auth/password_reset', ['token' => $token, 'expired' => $expired]);
     }
 
     public function requestSetPassword(Request $request) {
@@ -74,22 +77,26 @@ class RecoverPasswordController extends Controller
         }*/
 
         $password = $request->password;// Validate the token
-        $tokenData = DB::table('recover_password_tokens')->where('token', $request->token)->first();
+        $confirm_password = $request->confirm_password;
+        $tokenData = \DB::table('recover_password_tokens')->where('token', $request->token)->orderBy('created_at', 'desc')->first();
         
         // Redirect the user back to the password reset request form if the token is invalid
         if (!$tokenData) return view('auth.passwords.email');
+        // If password is different from confirm password
+
 
         $user = User::where('email', $tokenData->email)->first();
+        
         // Redirect the user back if the email is invalid
         if (!$user) return redirect()->back()->withErrors(['email' => 'Email not found']);//Hash and update the new password
         $user->password = \Hash::make($password);
         $user->update(); //or $user->save();
 
         //login the user immediately they change password successfully
-        Auth::login($user);
+        \Auth::login($user);
 
         //Delete the token
-        DB::table('recover_password_tokens')->where('email', $user->email)->delete();
+        \DB::table('recover_password_tokens')->where('email', $user->email)->delete();
 
         //Send Email Reset Success Email
         /*if ($this->sendSuccessEmail($tokenData->email)) {
@@ -97,6 +104,7 @@ class RecoverPasswordController extends Controller
         } else {
             return redirect()->back()->withErrors(['email' => trans('A Network Error occurred. Please try again.')]);
         }*/
+
         return redirect()->intended();
     }
 }

@@ -4,10 +4,12 @@
 
 @section('content')
 
-@if(true) 
+@if(!$expired) 
 <!-- Muda ali o true e chapa ali o token que queres -->
-<form class="form-signin" method="POST" action="#">
-
+<form class="form-signin" method="post" action="/reset_password">
+    @csrf
+    <input type="hidden" name="token" value="{{$token}}">
+    
     <a href="{{ url('/') }}">
         <img class="mb-4" src="{{ asset('/assets/artifact_ink_letters_white.png') }}" alt="ArtifactInk" width="300">
     </a>
@@ -25,7 +27,7 @@
         <div class="form-group password-input">
             <label for="inputRepeatPassword">Confirm Password</label>
             <input type="password" class="form-control" id="inputRepeatPassword" placeholder="Repeat Password"
-                name="passwordConfirm" required autofocus>
+                name="confirm_password" required autofocus>
         </div>
 
         <div>
@@ -52,7 +54,7 @@
             Password reset request has expired!
         </div>
 
-        <a class="btn button btn-lg btn-block mt-3" href="{{ url('/')}}" > Home Page </a>
+        <a class="btn button btn-lg btn-block mt-3" href="{{ url('/recover_password')}}" > Recover Password </a>
     </div>
 
 </div>
