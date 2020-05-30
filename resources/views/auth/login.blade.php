@@ -25,7 +25,7 @@
         </div>
         <div class="form-group password-input">
             <label for="exampleInputPassword1">Password</label>
-            <a href="{{ url('recover_password') }}"> Forget your password?</a>
+            <a href="{{ url('recover_password') }}"> Forgot your password?</a>
             <input type="password" class="form-control" name="password" id="exampleInputPassword1" required>
             @if ($errors->has('password'))
             <span class="error">
