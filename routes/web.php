@@ -125,8 +125,10 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
         // view products
         Route::get('/', 'AdminController@showProducts')->name('home');
 
-        // create product form
+        // add product form
         Route::get('add', 'AdminController@showAddProductForm')->name('add');
+        // add product action
+        Route::post('add', 'AdminController@addProduct')->name('add');
 
         // edit product
         // $url = route('profile', ['id' => 1]);

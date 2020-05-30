@@ -1612,7 +1612,7 @@ INSERT INTO "item_picture" ("id_item", "link") VALUES
     -- Tribal - 13
     (10, '10_leg_tribal.jpg'),
     (11, '11_arm_tribal.jpg'),
-    (12, '12_arm_and_chest.jpg'),
+    (12, '12_arm_and_chest_tribal.jpg'),
     -- Cartoon/New School - 14
     (13, '13_homer_simpson.jpg'),
     (14, '14_spiderman.jpg'),

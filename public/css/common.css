@@ -77,6 +77,21 @@
     color: var(--main-red);
 }
 
+/* PAGINATOR */
+.custom-page-link {
+    color: var(--main-red-alpha);
+    border-radius: 0 !important;
+}
+
+.custom-page-link:hover {
+    color: var(--main-red-alpha);
+}
+
+.custom-page-link-active {
+    background-color: var(--main-red-alpha) !important;
+    border-color: var(--main-red-alpha) !important;
+}
+
 /*todo decide what to do about scrollbars later 
 *::-webkit-scrollbar{
     display: none;

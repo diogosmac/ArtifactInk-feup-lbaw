@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Item;
+use App\ItemPicture;
 
 class AdminController extends Controller
 {
@@ -23,11 +24,67 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showProducts() {
-        return view('pages.admin.products.products');
+        $items = Item::paginate(10);
+        $items->withPath('');
+        return view('pages.admin.products.products', ['products' => $items]);
     }
 
     public function showAddProductForm() {
         return view('pages.admin.products.add_product');
+    }
+
+    public function addProduct(Request $request) {
+        //validation rules.
+        $rules = [
+            'title' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
+            'description' => 'required|string',
+            'brand' => 'required|string',
+            'category' => 'required|numeric',
+            'pictures' => 'required|array',
+            'pictures.*' => 'image|mimes:jpeg,jpg,png'
+        ];
+
+        //custom validation error messages.
+        $messages = [
+            'pictures.*.mimes' => 'Only jpeg, jpg or png images are allowed',
+            'pictures.*.image' => 'Uploaded file must be an image',
+        ];
+
+        // validate the request.
+        $request->validate($rules, $messages);
+        // create product entry
+        $new_item = new Item;
+        $new_item->name = $request->title;
+        $new_item->price = $request->price;
+        $new_item->stock = $request->stock;
+        $new_item->brand = $request->brand;
+        $new_item->id_category = $request->category;
+        $new_item->description = $request->description;
+        $new_item->save();
+        
+        // create image entries
+        $pictures = $request->file('pictures');
+        $picture_id = 1;
+        foreach ($pictures as $picture) {
+            // create item picture entry
+            $item_picture = new ItemPicture;
+            $item_picture->id_item = $new_item->id;
+            // build picture name
+            $extension = $picture->getClientOriginalExtension();
+            $picture_name = $new_item->id . "_" . $picture_id . "_" . str_replace(" ", "_", strtolower($new_item->name)) . "." . $extension;
+            // save item picture entry
+            $item_picture->link = $picture_name;
+            $item_picture->save();
+            // store uploaded image
+            $picture->storeAs('public/img_product', $picture_name);
+            $picture_id = $picture_id + 1;
+        }
+
+        return redirect()
+            ->intended(route('admin.products.home'))
+            ->with('status','Product ' . $new_item->name . ' added successfuly!');
     }
 
     public function showEditProductForm($id_item) {
@@ -141,6 +198,11 @@ class AdminController extends Controller
         return view('pages.admin.support_chat');
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Middleware
+    |--------------------------------------------------------------------------
+    */
     public function __construct() {
         $this->middleware('admin');
     }
