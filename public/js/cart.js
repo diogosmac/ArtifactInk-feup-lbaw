@@ -223,3 +223,22 @@ function add_to_cart_hadler(){
       
     }  
 }
+
+//cart list on navbar 
+
+let priceNav = null;
+let cartItemsNav = document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart a li');
+let listPriceNav =  document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart a li .cart-item-list-price');
+let listQtyNav =  document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart a li .cart-item-list-quant'); 
+
+for(let i = 0; i< cartItemsNav.length/2; i++ ){
+    priceNav += listPriceNav[i].innerHTML * listQtyNav[i].innerHTML; 
+    console.log(priceNav); 
+}
+
+if(priceNav !== null){
+    document.querySelectorAll('div.dropdown-cart div.cart-list-total #price-total')[0].innerHTML = priceNav + " €"; 
+}else{ 
+    document.querySelectorAll('div.dropdown-cart div.cart-list-total #total-label')[0].innerHTML= "Cart is Empty";
+}
+   
