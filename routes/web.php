@@ -182,3 +182,7 @@ Route::view('payments_and_shipment', 'pages.info.payments_and_shipment');
 Route::view('returns_and_replacements', 'pages.info.returns_and_replacements');
 
 Route::view('warranty', 'pages.info.warranty');
+
+//Esta é só para o tiago
+
+Route::view('password_reset', 'auth.password_reset'); 

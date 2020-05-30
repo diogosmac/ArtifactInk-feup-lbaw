@@ -116,3 +116,8 @@ div.row{
     width: 110px;
     text-align: center;
 }
+
+.form-signin .sign-box a.btn.button.btn-lg.btn-block{
+    font-size: large;
+    color: var(--main-white);
+}
