@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Item;
+use App\ItemPicture;
 
 class AdminController extends Controller
 {
@@ -33,8 +34,31 @@ class AdminController extends Controller
     }
 
     public function addProduct(Request $request) {
-        // get inputs
-        
+        return $request;
+        //validation rules.
+        $rules = [
+            'title' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
+            'description' => 'required|string',
+            'brand' => 'required|string',
+            'category' => 'required|numeric',
+            'files' => 'mimes:jpeg,jpg,bmp,png|array'
+        ];
+        // validate the request.
+        $request->validate($rules);
+        // create product entry
+        $new_item = new Item;
+        $new_item->name = $request['title'];
+        $new_item->name = $request['title'];
+        $new_item->name = $request['title'];
+        $new_item->name = $request['title'];
+        // create image entries
+        $pictures = $request['files'];
+        foreach ($pictures as $picture) {
+            $item_picture = new ItemPicture;
+            //$item_picture->
+        }
     }
 
     public function showEditProductForm($id_item) {
@@ -148,6 +172,11 @@ class AdminController extends Controller
         return view('pages.admin.support_chat');
     }
 
+    /*
+    |--------------------------------------------------------------------------
+    | Middleware
+    |--------------------------------------------------------------------------
+    */
     public function __construct() {
         $this->middleware('admin');
     }
