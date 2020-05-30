@@ -31,7 +31,7 @@ Route::post('reset_password', 'Auth\RecoverPasswordController@requestSetPassword
 
 //Esta é só para o tiago
 
-//Route::view('password_reset', 'auth.password_reset'); 
+//Route::view('reset_password', 'auth.reset_password'); 
 
 //profile
 //Route::view('recover_password', 'auth/recover_password');

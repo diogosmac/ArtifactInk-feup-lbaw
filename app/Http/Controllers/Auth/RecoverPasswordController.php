@@ -12,7 +12,22 @@ use Illuminate\Support\Carbon;
 
 class RecoverPasswordController extends Controller
 {
-    //
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
 
     public function showRecoverPasswordForm()
     {
@@ -21,9 +36,10 @@ class RecoverPasswordController extends Controller
 
     public function requestRecoverPassword(Request $request)
     {
-        //You can add validation login here
-        $user = User::where('email', '=', $request->email)->first(); //Check if the user exists
-       
+        // Add validation here
+        $user = User::where('email', '=', $request->email)->first(); 
+        
+        //Check if the user exists
         if (!isset($user)) {
             return redirect()->back()->withErrors(['email' => trans('User does not exist')]);
         }
@@ -32,7 +48,7 @@ class RecoverPasswordController extends Controller
         $email = $user->email;
         $date_of_birth = $user->date_of_birth;
 
-        $token = Hash::make($name . $email . $date_of_birth);
+        $token = str_replace ('/', '%', Hash::make($name . $email . $date_of_birth));
 
         $url = url("/reset_password/{$token}");
 
@@ -58,10 +74,18 @@ class RecoverPasswordController extends Controller
 
     public function showResetPasswordForm($token)
     {
-        // If token exipired redirect to request token
         $expired = false;
+        // If token exipired redirect to request token
+        $tokenData = \DB::table('recover_password_tokens')
+                        ->where('token', $token)
+                        ->where( 'created_at', '>', Carbon::now()->subMinutes(30))
+                        ->orderBy('created_at', 'desc')->first();
 
-        return view('auth/password_reset', ['token' => $token, 'expired' => $expired]);
+        if (!$tokenData) {
+            $expired = true;
+        }
+
+        return view('auth/reset_password', ['token' => $token, 'expired' => $expired]);
     }
 
     public function requestSetPassword(Request $request) {
@@ -78,17 +102,23 @@ class RecoverPasswordController extends Controller
 
         $password = $request->password;// Validate the token
         $confirm_password = $request->confirm_password;
-        $tokenData = \DB::table('recover_password_tokens')->where('token', $request->token)->orderBy('created_at', 'desc')->first();
+        $tokenData = \DB::table('recover_password_tokens')
+                    ->where('token', $request->token)
+                    ->where( 'created_at', '>', Carbon::now()->subMinutes(30))
+                    ->orderBy('created_at', 'desc')->first();
         
         // Redirect the user back to the password reset request form if the token is invalid
-        if (!$tokenData) return view('auth.passwords.email');
+        if (!$tokenData) return view('auth/reset_password', ['token' => $token, 'expired' => true]);
         // If password is different from confirm password
+        if ($password != $confirm_password) return redirect()->back()->withErrors(['password' => 'Passwords don\'t match']);
 
 
         $user = User::where('email', $tokenData->email)->first();
         
         // Redirect the user back if the email is invalid
-        if (!$user) return redirect()->back()->withErrors(['email' => 'Email not found']);//Hash and update the new password
+        if (!$user) return redirect()->back()->withErrors(['email' => 'Email not found']);
+        
+        //Hash and update the new password
         $user->password = \Hash::make($password);
         $user->update(); //or $user->save();
 
@@ -99,11 +129,8 @@ class RecoverPasswordController extends Controller
         \DB::table('recover_password_tokens')->where('email', $user->email)->delete();
 
         //Send Email Reset Success Email
-        /*if ($this->sendSuccessEmail($tokenData->email)) {
-            return view('index');
-        } else {
-            return redirect()->back()->withErrors(['email' => trans('A Network Error occurred. Please try again.')]);
-        }*/
+        $email_service = new EmailServiceController();
+        $email_service->sendConfirmResetPasswordEmail($user->email, $user->name);
 
         return redirect()->intended();
     }
