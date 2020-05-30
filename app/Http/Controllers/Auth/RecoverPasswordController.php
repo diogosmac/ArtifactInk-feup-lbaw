@@ -36,18 +36,17 @@ class RecoverPasswordController extends Controller
 
         $url = url("/reset_password/{$token}");
 
-        /*
+        
         //Create Password Reset Token
-        DB::table('recover_password_tokens')->insert([
+        \DB::table('recover_password_tokens')->insert([
             'email' => $request->email,
             'token' => $token,
             'created_at' => Carbon::now()
         ]);
         
-        */
-
         $email_service = new EmailServiceController();
 
+        // ! redirect back with and without error (show different pages)
         if ($email_service->sendRecoverPasswordEmail($email, $name, $url)) {
             return redirect()->back()->with('status', trans('A reset link has been sent to your email address.'));
         } else {
@@ -55,7 +54,6 @@ class RecoverPasswordController extends Controller
         }
 
 
-        // ! redirect back with and without error (show different pages)
     }
 
     public function showSetNewPasswordForm(Request $request)
@@ -63,42 +61,42 @@ class RecoverPasswordController extends Controller
         // 
     }
 
-    public function requestSetPassword(Request $request)
-    {
+    public function requestSetPassword(Request $request) {
         //Validate input
-    $validator = Validator::make($request->all(), [
-        'email' => 'required|email|exists:users,email',
-        'password' => 'required|confirmed'
-        'token' => 'required' ]);
+        /*$validator = Validator::make($request->all(), [
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required|confirmed'
+            'token' => 'required' ]);
 
-    //check if payload is valid before moving on
-    if ($validator->fails()) {
-        return redirect()->back()->withErrors(['email' => 'Please complete the form']);
-    }
+        //check if payload is valid before moving on
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors(['email' => 'Please complete the form']);
+        }*/
 
-    $password = $request->password;// Validate the token
-    $tokenData = DB::table('recover_password_tokens')
-    ->where('token', $request->token)->first();// Redirect the user back to the password reset request form if the token is invalid
-    if (!$tokenData) return view('auth.passwords.email');
+        $password = $request->password;// Validate the token
+        $tokenData = DB::table('recover_password_tokens')->where('token', $request->token)->first();
+        
+        // Redirect the user back to the password reset request form if the token is invalid
+        if (!$tokenData) return view('auth.passwords.email');
 
-    $user = User::where('email', $tokenData->email)->first();
-    // Redirect the user back if the email is invalid
-    if (!$user) return redirect()->back()->withErrors(['email' => 'Email not found']);//Hash and update the new password
-    $user->password = \Hash::make($password);
-    $user->update(); //or $user->save();
+        $user = User::where('email', $tokenData->email)->first();
+        // Redirect the user back if the email is invalid
+        if (!$user) return redirect()->back()->withErrors(['email' => 'Email not found']);//Hash and update the new password
+        $user->password = \Hash::make($password);
+        $user->update(); //or $user->save();
 
-    //login the user immediately they change password successfully
-    Auth::login($user);
+        //login the user immediately they change password successfully
+        Auth::login($user);
 
-    //Delete the token
-    DB::table('password_resets')->where('email', $user->email)
-    ->delete();
+        //Delete the token
+        DB::table('recover_password_tokens')->where('email', $user->email)->delete();
 
-    //Send Email Reset Success Email
-    /*if ($this->sendSuccessEmail($tokenData->email)) {
-        return view('index');
-    } else {
-        return redirect()->back()->withErrors(['email' => trans('A Network Error occurred. Please try again.')]);
-    }*/
+        //Send Email Reset Success Email
+        /*if ($this->sendSuccessEmail($tokenData->email)) {
+            return view('index');
+        } else {
+            return redirect()->back()->withErrors(['email' => trans('A Network Error occurred. Please try again.')]);
+        }*/
+        return redirect()->intended();
     }
 }

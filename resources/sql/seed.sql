@@ -65,7 +65,7 @@ CREATE TABLE "recover_password_tokens" (
     "email" TEXT NOT NULL,
     "token" TEXT NOT NULL,
     "created_at" TIMESTAMP NOT NULL DEFAULT now()
-)
+);
 
 CREATE TABLE "profile_picture" (
     "id" SERIAL PRIMARY KEY,
