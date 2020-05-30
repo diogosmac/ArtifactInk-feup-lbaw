@@ -3,7 +3,8 @@
 @section('title', ' - Recover Password')
 
 @section('content')
-<form class="form-signin " method="POST" action="#">
+<form class="form-signin " method="POST" action="/recover_password">
+    @csrf
     <a href="{{ url('/') }}">
         <img class="mb-4" src="{{ asset('/assets/artifact_ink_letters_white.png') }}" alt="ArtifactInk" width="300">
     </a>
@@ -15,9 +16,8 @@
         </div>
         <div class="d-flex justify-content-between">
             <button id="recover-button" class="btn btn-lg button btn-block" type="submit">Recover</button>
-            <a id="recover-back" href="{{ route('login') }}"> Back</a>
+            <a id="recover-back" href="{{ route('sign_in') }}"> Back</a>
         </div>
-
     </div>
 </form>
 <div class="row new-user justify-content-center">
