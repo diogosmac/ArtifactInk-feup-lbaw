@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Item;
 use App\ItemPicture;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -121,11 +121,17 @@ class AdminController extends Controller
         $item->description = $request->description;
         $item->save();
 
-        // delete old images ffrom database
+        // get old pictures
         $old_item_pictures = $item->images;
-        ItemPicture::destroy(array_column($old_item_pictures, 'id'));
-        // delete from filesystem
-        File::delete(File::glob("storage/img_product/" . $item->id . "_*"));
+        // delete old images from database and
+        // delete images from filesystem if no
+        // other item is using this image
+        foreach ($old_item_pictures as $old_item_picture) {
+            ItemPicture::destroy($old_item_picture->id);
+            if (ItemPicture::where('link', $old_item_picture->link)->count() == 0)
+                Storage::delete('public/img_product/' . $old_item_picture->link);
+        }
+        
 
         // update images
         $pictures = $request->file('pictures');
@@ -145,7 +151,9 @@ class AdminController extends Controller
             $picture_id = $picture_id + 1;
         }
 
-        return $item;
+        return redirect()
+            ->intended(route('admin.products.home'))
+            ->with('status','Product ' . $item->name . ' updated successfuly!');
     }
 
     /*
