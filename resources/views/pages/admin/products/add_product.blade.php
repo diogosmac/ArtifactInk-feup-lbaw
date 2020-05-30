@@ -13,7 +13,7 @@
       </button>
     </div>
 
-    <form action="{{ route('admin.products.add') }}" method="POST" id="add-product">
+    <form action="{{ route('admin.products.add') }}" method="POST" id="add-product" enctype="multipart/form-data">
       @csrf
       <div class="form-row">
         <div class="form-group col-md-6">
@@ -66,7 +66,7 @@
             <label for="">Upload pictures</label>
             <div class="form-inline">
               <div class="form-group">
-                <input type="file" name="files[]" id="js-upload-files" multiple>
+                <input type="file" accept="image/*" name="pictures[]" id="js-upload-files" multiple>
               </div>
             </div>
           </form>
@@ -78,7 +78,7 @@
           </div>
           -->
 
-          <!-- Upload Finished -->
+          <!-- Upload Finished 
           <div class="js-upload-finished">
             <label>Processed Files</label>
             <div class="list-group">
@@ -86,6 +86,7 @@
               <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-02.jpg</a>
             </div>
           </div>
+          -->
         </div>
       </div>
 
@@ -93,3 +94,15 @@
   </div>
 </main>
 @endsection
+
+{{-- Alert --}}
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    @foreach ($errors->all() as $error)
+    <p>{{ $error }}</p>
+    @endforeach
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
