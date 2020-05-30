@@ -31,6 +31,8 @@ DROP TABLE IF EXISTS "address";
 DROP TABLE IF EXISTS "country";
 DROP TABLE IF EXISTS "user";
 DROP TABLE IF EXISTS "profile_picture";
+DROP TABLE IF EXISTS "recover_password_tokens";
+
 
 -- Drop Types
 
@@ -57,6 +59,13 @@ CREATE TYPE ORDER_STATUS AS ENUM ('processing', 'shipped', 'received');
 CREATE TYPE MESSAGE_SENDER AS ENUM ('user', 'admin');
 
 -- Tables
+
+CREATE TABLE "recover_password_tokens" (
+    "id" SERIAL PRIMARY KEY,
+    "email" TEXT NOT NULL,
+    "token" TEXT NOT NULL,
+    "created_at" TIMESTAMP NOT NULL DEFAULT now()
+)
 
 CREATE TABLE "profile_picture" (
     "id" SERIAL PRIMARY KEY,
