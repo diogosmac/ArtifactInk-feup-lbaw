@@ -105,12 +105,14 @@ Route::delete('cart', 'CartController@delete_from_cart');
 Route::put('cart', 'CartController@update_item_quantity');
 
 // Checkout
-Route::prefix('/checkout')->name('checkout.')->namespace('Checkout')->group(function () {
-    Route::view('shipping', 'pages.checkout.shipping')->name('shipping');
+Route::prefix('/checkout')->name('checkout.')->group(function () {
+   
+    Route::get('shipping',"UserController@showCheckoutShipping")->name('shipping');
 
     Route::view('payment', 'pages.checkout.payment')->name('payment');
 
     Route::view('confirm', 'pages.checkout.confirm')->name('confirm');
+    
 });
 
 // admin routes

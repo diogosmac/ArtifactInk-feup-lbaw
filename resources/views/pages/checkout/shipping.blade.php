@@ -3,6 +3,7 @@
 @section('title', ' - Checkout Shipping')
 
 @section('content')
+
   <div class="container">
     <div class="row">
       <div>
@@ -17,9 +18,9 @@
           <span class="badge badge-secondary badge-pill">3</span>
         </h4>
         <ul class="list-group mb-3" id="checkout-items-list">
-          @include('partials.checkout.checkoutItem')
-          @include('partials.checkout.checkoutItem')
-          @include('partials.checkout.checkoutItem')
+          @foreach($cartItems as $cartItem)
+            @include('partials.checkout.checkoutItem',['cartItem' => $cartItem])
+          @endforeach 
           <li class="list-group-item d-flex justify-content-between">
             <span>Total (EUR)</span>
             <strong>20€</strong>
@@ -31,6 +32,7 @@
 
       <div class="col-md-8 order-md-1 checkout-form-steps">
         <form class="needs-validation" novalidate="">
+        {{csrf_field()}}
           <div class="row justify-content-between checkout-header">
             <h4 class="mb-3">Shipping Address</h4>
             <nav aria-label="..." class="progress-checkout">

@@ -65,8 +65,7 @@
 
   <!-- todo distribute scripts -->
 
-  <script src="{{ asset('js/payment.js') }}" defer></script>
-  <script src="{{ asset('js/address.js') }}" defer></script>
+  <script src="{{ asset('js/checkout.js') }}" defer></script>
   <script type="text/javascript">
     // Fix for Firefox autofocus CSS bug
     // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
@@ -99,13 +98,13 @@
                   <span>
                     <i class="fas fa-user"></i>
                   </span>
-                  John Doe
+                  {{ Auth::user()->name}}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuAccount">
-                  <img class="profile-pic-bubble"
-                    src="https://www.diretoriodigital.com.br/wp-content/uploads/2013/05/Team-Member-3.jpg"
-                    alt="John Doe">
-                  <h5 class="dropdown-header">John Doe</h5>
+                <img class="profile-pic-bubble"
+                    src="{{ asset('storage/img_user/' . Auth::user()->profilePicture()->get()->first()->link) }}"
+                    alt="{{ Auth::user()->name}}">
+                  <h5 class="dropdown-header">{{ Auth::user()->name}}</h5>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="/pages/profile.php">My Account</a>
                   <a class="dropdown-item" href="#">My Order</a>

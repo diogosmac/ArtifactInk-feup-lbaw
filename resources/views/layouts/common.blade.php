@@ -74,8 +74,6 @@
   <script src="{{ asset('js/wishlist.js') }}" defer></script>
   <script src="{{ asset('js/review.js') }}" defer></script>
   <script src="{{ asset('js/checkout_list.js') }}" defer></script>
-  <script src="{{ asset('js/payment.js') }}" defer></script>
-  <script src="{{ asset('js/address.js') }}" defer></script>
   <script src="{{ asset('js/mobile_nav.js') }}" defer></script>
   <script type="text/javascript">
     // Fix for Firefox autofocus CSS bug
