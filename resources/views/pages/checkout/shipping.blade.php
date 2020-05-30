@@ -52,14 +52,11 @@
           <div class="checkout-addr-field">
             <div class="input-group mb-3" id="addr-selector">
               <select class="custom-select" id="address-input-group">
-                <option value="1">
-                  <h5> Main Address for Delivery, 99, 1st lf </h5>
-                  <h6> Portugal, Porto - Porto 4763-384</h6>
-                </option>
-                <option value="2">
-                  <h5> Secondary Adddress for Delivery, 99, 2st lf </h5>
-                  <h6> Portugal, Porto - Porto 4763-384</h6>
-                </option>
+                @foreach($addresses as $address)
+                  <option value="{{ $loop->iteration }}">
+                  {{ $address->country->name }} - {{ $address->city }} -  {{ $address->postal_code}} - {{$address->street }}
+                  </option>
+                @endforeach
               </select>
               <div class="input-group-append">
 
@@ -71,43 +68,47 @@
             </div>
 
             <div id="new-addr-form">
-              <div class="mb-3 ">
-                <label for="adddress">Adddress</label>
-                <input type="text" class="form-control" id="adddress" placeholder="1234 Main St" required="">
+              
+            <div class="mb-3 ">
+                <label for="streetAdd">Street</label>
+                <input type="text" class="form-control" id="streetAdd" placeholder="Type your Street name - Number - Floor" name="street" value="{{ old('') }}"required>
                 <div class="invalid-feedback">
                   Please enter your shipping adddress.
                 </div>
               </div>
+
               <div class="row">
-                <div class="col-md-5 mb-3">
-                  <label for="country">Country</label>
-                  <select class="custom-select d-block w-100" id="country" required="">
-                    <option value="">Choose...</option>
-                    <option>United States</option>
+                
+              <div class="col-md-5 mb-3">
+                  <label for="country">Country:</label>
+                  <select class="custom-select d-block w-100" id="country" required>
+                    @foreach($countries as $country)
+                    <option value="{{ $country->id }}">{{ $country->name}}</option>
+                    @endforeach+
                   </select>
                   <div class="invalid-feedback">
                     Please select a valid country.
                   </div>
                 </div>
+
                 <div class="col-md-4 mb-3">
-                  <label for="state">State</label>
-                  <select class="custom-select d-block w-100" id="state" required="">
-                    <option value="">Choose...</option>
-                    <option>California</option>
-                  </select>
+                  <label for="cityAdd">City:</label>
+                  <input type="text" class="form-control" id="cityAdd" placeholder="Type your city name" name="city" required>
                   <div class="invalid-feedback">
                     Please provide a valid state.
                   </div>
                 </div>
+
                 <div class="col-md-3 mb-3">
-                  <label for="zip">Zip</label>
-                  <input type="text" class="form-control" id="zip" placeholder="" required="">
+                  <label for="postalCodeAdd">Postal Code: </label>
+                  <input type="text" class="form-control" id="postalCodeAdd" placeholder="Type your Code" pattern="^[0-9]*-[0-9]*$"  required>
                   <div class="invalid-feedback">
-                    Zip code required.
+                    Postal code required.
                   </div>
                 </div>
 
               </div>
+
               <div class="mb-3">
                 <button class="btn button-secondary" id="return_addr_btn" type="button">Return</button>
               </div>

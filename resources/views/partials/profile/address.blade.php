@@ -98,7 +98,7 @@
                             <label for="postalCodeEdit{{serialize($loop)}}">Postal Code</label>
                             <input type="text" class="form-control" id="postalCodeEdit{{serialize($loop)}}"
                                 name="postal_code" value="{{ old('postal_code',$address->postal_code) }}"
-                                placeholder="Type your city name" pattern="^[0-9]*-[0-9]*$" required>
+                                placeholder="Type your Postal Code" pattern="^[0-9]*-[0-9]*$" required>
                         </div>
 
                     </div>
