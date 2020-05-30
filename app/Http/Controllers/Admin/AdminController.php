@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Item;
 use App\ItemPicture;
+use Illuminate\Support\Facades\File;
 
 class AdminController extends Controller
 {
@@ -32,8 +33,8 @@ class AdminController extends Controller
     public function showAddProductForm() {
         return view('pages.admin.products.add_product');
     }
-
-    public function addProduct(Request $request) {
+    
+    private function validateProduct(Request $request) {
         //validation rules.
         $rules = [
             'title' => 'required|string|max:255',
@@ -54,6 +55,11 @@ class AdminController extends Controller
 
         // validate the request.
         $request->validate($rules, $messages);
+    }
+
+    public function addProduct(Request $request) {
+        // validate product
+        $this->validateProduct($request);
         // create product entry
         $new_item = new Item;
         $new_item->name = $request->title;
@@ -100,6 +106,46 @@ class AdminController extends Controller
         } catch (\Exception $e) {
             return response(json_encode($e->getMessage()), 400);
         }
+    }
+
+    public function editProduct(Request $request) {
+        // validate product
+        $this->validateProduct($request);
+        // get item and update item
+        $item = Item::find($request->id);
+        $item->name = $request->title;
+        $item->price = $request->price;
+        $item->stock = $request->stock;
+        $item->brand = $request->brand;
+        $item->id_category = $request->category;
+        $item->description = $request->description;
+        $item->save();
+
+        // delete old images ffrom database
+        $old_item_pictures = $item->images;
+        ItemPicture::destroy(array_column($old_item_pictures, 'id'));
+        // delete from filesystem
+        File::delete(File::glob("storage/img_product/" . $item->id . "_*"));
+
+        // update images
+        $pictures = $request->file('pictures');
+        $picture_id = 1;
+        foreach ($pictures as $picture) {
+            // create item picture entry
+            $item_picture = new ItemPicture;
+            $item_picture->id_item = $item->id;
+            // build picture name
+            $extension = $picture->getClientOriginalExtension();
+            $picture_name = $item->id . "_" . $picture_id . "_" . str_replace(" ", "_", strtolower($item->name)) . "." . $extension;
+            // save item picture entry
+            $item_picture->link = $picture_name;
+            $item_picture->save();
+            // store uploaded image
+            $picture->storeAs('public/img_product', $picture_name);
+            $picture_id = $picture_id + 1;
+        }
+
+        return $item;
     }
 
     /*
