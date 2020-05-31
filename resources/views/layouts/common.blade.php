@@ -417,16 +417,17 @@
                 </div>
                 <div class="row">
                   <div>
-                    <form>
+                    <form action="{{ route('newsletter') }}" method="POST">
+                      @csrf
                       <div class="form-group">
                         <label for="newsletter_email" class="col-form-label-sm ">Subscribe to our
                           Newsletter</label>
 
                         <div class="input-group mb-3">
-                          <input type="email" class="form-control-sm" id="newsletter_email" aria-describedby="emailHelp"
+                          <input type="email" name="email" class="form-control-sm" id="newsletter_email" aria-describedby="emailHelp"
                             aria-describedby="button-newsletter">
                           <div class="input-group-append">
-                            <button class="btn btn-secondary btn-sm text" type="button"
+                            <button class="btn btn-secondary btn-sm text" type="submit"
                               id="button-nwesletter">Subscribe</button>
                           </div>
                         </div>
@@ -444,6 +445,28 @@
       </footer>
     </div>
 </body>
+
+{{-- Success Alert --}}
+@if(session('status'))
+  <div class="alert alert-success alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    {{session('status')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
+
+{{-- Error Alert --}}
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    @foreach ($errors->all() as $error)
+    <p>{{ $error }}</p>
+    @endforeach
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
 
 </html>
   

@@ -178,6 +178,9 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
     Route::get('support_chat', 'AdminController@showSupportChat')->name('support_chat');
 });
 
+// newsletter subscription
+Route::post('newsletter', 'NewsletterSubscriberController@subscribe')->name('newsletter');
+
 //static pages 
 Route::view('about_us', 'pages.info.about_us');
 
