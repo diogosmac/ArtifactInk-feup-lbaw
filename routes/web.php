@@ -49,7 +49,7 @@ Route::prefix('profile')->name('profile.')->group(function() {
 
     Route::put('/','UserController@updateProfile')->name('home'); 
     
-    Route::put('delete','UserController@deleteProfile')->name('delete');
+    Route::delete('/','UserController@deleteProfile')->name('delete');
     
     // Addresses
     Route::post('address','AddressController@addAddress')->name('address'); 
