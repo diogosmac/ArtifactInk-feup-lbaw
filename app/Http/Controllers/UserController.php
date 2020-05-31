@@ -68,11 +68,15 @@ class UserController extends Controller
     $date_of_birth = $request['date_of_birth']; 
     $phone = $request['phone']; 
     $email = $request['email'];
-    $picture = $request['picture']; 
+    $picture = $request['picture'];
 
-    if($picture != null){
-        $filename = $user->profilePicture()->get()->first()->link;
-        $picture->storeAs('public/img_user', $filename);
+    if($picture != null) {
+      // validate image
+      $this->validate($request, [
+        'picture' => 'image|mimes:jpeg,jpg,png',
+      ]);
+      $filename = $user->profilePicture()->get()->first()->link;
+      $picture->storeAs('public/img_user', $filename);
     } 
     
     //form validation
