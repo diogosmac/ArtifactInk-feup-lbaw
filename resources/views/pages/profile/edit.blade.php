@@ -27,7 +27,7 @@
             </div>
             <div class="form-group">
               <label for="exampleFormControlFile1">Upload new photo</label>
-              <input type="file" class="form-control-file" id="exampleFormControlFile1" name="picture" >
+              <input type="file" accept="image/*" class="form-control-file" id="exampleFormControlFile1" name="picture">
             </div>
 
             <button class="btn button-secondary" type="submit">Update Profile</button>
