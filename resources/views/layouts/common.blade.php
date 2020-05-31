@@ -70,6 +70,7 @@
 
   <script src="{{ asset('js/product_card.js') }}" defer></script>
   <script src="{{ asset('js/cart.js') }}" defer></script>
+  <script src="{{ asset('js/confirmText.js') }}" defer></script>
   <script src="{{ asset('js/wishlist.js') }}" defer></script>
   <script src="{{ asset('js/review.js') }}" defer></script>
   <script src="{{ asset('js/checkout_list.js') }}" defer></script>

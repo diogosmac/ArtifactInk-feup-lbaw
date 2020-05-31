@@ -60,6 +60,7 @@ class UserController extends Controller
   }
 
   public function updateProfile(Request $request){
+    if (!Auth::check()) return redirect('/');
     
     $user = Auth::user();
 
@@ -120,7 +121,30 @@ class UserController extends Controller
   }
 
   public function deleteProfile(){
-    //todo - it can be done with a trigger 
+    if (!Auth::check()) return redirect('/sign_in');
+    
+    $user = Auth::user();
+
+    $profilePicture = $user->profilePicture()->get()->first();
+
+    // Delete user 
+    try {
+      $user->delete();
+    } catch (\Exception $e) {
+      return redirect()->back()->withErrors(['delete' => 'Error trying to delete your account']);
+    }
+
+    // Delete profile pic if its not default
+    if ($profilePicture->id != 0) {
+      try {
+        $profilePicture->delete();
+        Storage::delete('public/img_user/' . $profilePicture->link);
+      } catch (\Exception $e) {
+        // ! Do something?
+      }
+    }
+
+    return redirect()->intended();
   }
 
   /**
