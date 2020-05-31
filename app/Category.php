@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Category extends Model
 {
@@ -39,6 +40,14 @@ class Category extends Model
      */
     public function children() {
         return $this->hasMany('App\Category', 'id_parent');
+    }
+
+    public function getUrlAttribute(): string {
+        return action('CategoryController@show', [$this->id, $this->getSlug()]);
+    }
+
+    public function getSlug(): string {
+        return Str::slug($this->name, "-");
     }
 
 
