@@ -12,7 +12,7 @@
     float: left;
 }
 
-.rating_input>input {
+.rating_input input {
     display: none;
 }
 
