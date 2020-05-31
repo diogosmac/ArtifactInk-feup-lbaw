@@ -196,7 +196,7 @@ function showConfirm(){
 
 //ADDRESS
 
-//todo add evebt listeners for this stuff 
+//todo add event listeners for this stuff 
 let addr1_confirm =  document.getElementById('addr1-confirm');
 let addr2_confirm =  document.getElementById('addr2-confirm'); 
 let addr_selected = document.getElementById('address-input-group'); 
@@ -212,9 +212,11 @@ function updateAddress(){
 
     }else{
 
-        addr1_confirm.innerHTML = document.getElementById('streetAdd').innerHTML; 
-        //todo
-        addr2_confirm.innerHTML = document.getElementById('cityAdd').innerHTML +" - "+document.getElementById('postalCodeAdd').innerHTML;
+        let countryElem = document.getElementById('countryAdd');
+        let selectedIndex = countryElem.selectedIndex;
+
+        addr1_confirm.innerHTML = document.getElementById('streetAdd').value; 
+        addr2_confirm.innerHTML = countryElem.options[selectedIndex].innerHTML+ ' - ' + document.getElementById('cityAdd').value +" - "+document.getElementById('postalCodeAdd').value;
     }
 }
 
@@ -234,14 +236,16 @@ function updatePayment(){
         
         if(str_payment_addr.includes('Credit')){
             payment1_confirm.innerHTML = "Credit Card"; 
-            payment2_confirm.innerHTML =str_payment; 
+            payment2_confirm.innerHTML = str_payment; 
         }else{
             payment1_confirm.innerHTML = "Paypal"; 
             payment2_confirm.innerHTML = str_payment; 
         }
     
     }else{
-    
+        
+        //TODO - check if credit card or paypal 
+
     }
 }
 

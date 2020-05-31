@@ -93,8 +93,8 @@
               <div class="row">
 
                 <div class="col-md-5 mb-3">
-                  <label for="country">Country:</label>
-                  <select class="custom-select d-block w-100" id="country" required>
+                  <label for="countryAdd">Country:</label>
+                  <select class="custom-select d-block w-100" id="countryAdd" required>
                     @foreach($countries as $country)
                     <option value="{{ $country->id }}">{{ $country->name}}</option>
                     @endforeach
