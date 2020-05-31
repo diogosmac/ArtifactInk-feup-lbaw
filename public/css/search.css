@@ -51,7 +51,7 @@
 #filters{
     padding-left: 0em;
 }
-#filters label.mt-2,#filters label.mt-3,#filters label#minPriceLabel,#filters label#maxPriceLabel,#filters label#inStockLabel {
+#filters label.mt-2,#filters label.mt-3,#filters label#priceRangeLabel,#filters label#inStockLabel {
     font-weight: bold;
 }
 #filters aside, #filters aside div *{ 
