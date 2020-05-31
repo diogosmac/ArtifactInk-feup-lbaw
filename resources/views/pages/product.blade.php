@@ -73,7 +73,31 @@
               </select>
             </div>
             @if ($item->status == 'active')
-            <h1>{{ $item->price }}€</h1>
+            <?php 
+                $sales = $item->sales()->get();
+                $currentSale = 0;
+                $price = $item->price;
+                foreach ($sales as $sale) {
+                    if ($sale->type == 'percentage') {
+                        $new_sale = 0.01 * $sale->percentage_amount * $price;
+                        if ($new_sale > $currentSale) {
+                            $currentSale = $new_sale;
+                        }
+                    } else if ($sale->type == 'fixed') {
+                        if ($amount > $currentSale) {
+                            $currentSale = $amount;
+                            $output = "(-" . $amount . "€) ";
+                        }
+                    }
+                }
+                $price = round($price - $currentSale, 2);
+            ?>
+            <div class="row d-flex align-items-center">
+                @if ($currentSale > 0)
+                    <h3 class="pr-2 old-price">{{ '( ' . $item->price . '€ )' }}</h3>
+                @endif
+                <h1>{{ $price }}€</h1>
+            </div>
             @else
             <h1>N/A</h1>
             @endif
@@ -131,13 +155,13 @@
         @endforeach
       </div>
       <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
-      @if ($item->stock > 0)
-        <h4>Available</h4>
-        <i class="fas fa-circle px-2 pt-1" style="color: green"></i>
-      @else
-        <h4>Unavailable</h4>
-        <i class="fas fa-circle px-2 pt-1" style="color: red"></i>
-      @endif
+            @if ($item->stock > 0 && $item->status == 'active')
+              <h4>Available</h4>
+              <i class="fas fa-circle px-2 pt-1" style="color: green"></i>
+            @else
+              <h4>Unavailable</h4>
+              <i class="fas fa-circle px-2 pt-1" style="color: red"></i>
+            @endif
       </div>
       <div class="d-flex flex-row justify-content-between bd-highlight mb-3 pb-1">
         <div class="input-group mb-3 w-50 pt-2">
@@ -145,12 +169,40 @@
             <label class="input-group-text" for="inputGroupSelect01">Quantity</label>
           </div>
           <select class="custom-select" id="inputGroupSelect01">
-            @for ($i = 1; $i <= $item->stock; $i++)
-              <option value="{{ $i }}">{{ $i }}</option>
-            @endfor
+                @if ($item->status == 'active')
+                    @for ($i = 1; $i <= $item->stock; $i++)
+                        <option value="{{ $i }}">{{ $i }}</option>
+                    @endfor
+                @else
+                    <option value="0">0</option>
+                @endif
           </select>
         </div>
-        <h1>{{ $item->price }}€</h1>
+        <?php 
+                $sales = $item->sales()->get();
+                $currentSale = 0;
+                $price = $item->price;
+                foreach ($sales as $sale) {
+                    if ($sale->type == 'percentage') {
+                        $new_sale = 0.01 * $sale->percentage_amount * $price;
+                        if ($new_sale > $currentSale) {
+                            $currentSale = $new_sale;
+                        }
+                    } else if ($sale->type == 'fixed') {
+                        if ($amount > $currentSale) {
+                            $currentSale = $amount;
+                            $output = "(-" . $amount . "€) ";
+                        }
+                    }
+                }
+                $price = round($price - $currentSale, 2);
+        ?>
+        <div class="row d-flex align-items-center mr-1">
+            @if ($currentSale > 0)
+                <h4 class="pr-2 old-price">{{ '( ' . $item->price . '€ )' }}</h4>
+            @endif
+            <h2>{{ $price }}€</h2>
+        </div>
       </div>
       <div class="d-flex flex-row justify-content-between bd-highlight my-2">
         <button class="btn btn-link li-wishlist" data-id="{{ $item->id }}" type="button">

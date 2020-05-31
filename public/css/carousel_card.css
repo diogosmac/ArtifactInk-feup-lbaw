@@ -69,6 +69,11 @@
     text-decoration: line-through;
 }
 
+h3.old-price {
+    font-size: large;
+    text-decoration: line-through;
+}
+
 div .card-img-overlay.d-flex.justify-content-end{
     padding-bottom: .1em;
 }
