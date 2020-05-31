@@ -23,7 +23,7 @@
                 </div>
                 <div class="py-1 d-flex flex-row bd-highlight justify-content-between">
                     <div>
-                        @if($item->stock > 5)
+                        @if($item->stock > 5 && $item->status == 'active')
                         <i class="fas fa-circle circle-available"></i>
                         Available
                         @else

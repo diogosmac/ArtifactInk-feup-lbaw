@@ -22,7 +22,13 @@
     <div class="p-1 d-flex flex-column justify-content-center text-center card-body border-top border-dark">
         <span class="detail">
             <h5 class="card-title font-weight-bold">{{ $item->name }}</h5>
-            <h5 class="card-price font-weight-bold">{{ $item->price }} €</h5>
+            <h5 class="card-price font-weight-bold">
+                @if ($item->status == 'active')
+                    {{ $item->price }} €
+                @else
+                    N/A
+                @endif
+            </h5>
         </span>
     </div>
     <div class="p-1" style="z-index: 200;">
