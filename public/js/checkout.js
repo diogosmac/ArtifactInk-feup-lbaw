@@ -10,10 +10,44 @@ for(let i = 0; i < checkoutItemPrice.length; i++ ){
     totalQty += checkoutItemQty[i].innerHTML * 1 ; 
 }
 
-document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice + " €"; 
-document.querySelectorAll('div#checkout-list span.badge-pill')[0].innerHTML = totalQty; 
 
 //SHIPPING METHOD ADD TO CART
+
+let standard_shipping_radio = document.getElementById('standard-shipping');
+let express_shipping_radio = document.getElementById('express-shipping'); 
+
+updateShipping(); 
+
+standard_shipping_radio .addEventListener('click', updateShipping, false );
+express_shipping_radio .addEventListener('click',updateShipping, false ); 
+
+function updateShipping(){
+   if(standard_shipping_radio.checked){
+        document.querySelector('#shipping-cost').innerHTML = 1.99; 
+
+        let shipping_price = document.getElementById('shipping-cost').innerHTML *1; 
+
+        document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice +shipping_price + " €"; 
+        
+    }else if(express_shipping_radio.checked){
+        document.querySelector('#shipping-cost').innerHTML = 4.99; 
+
+        let shipping_price = document.getElementById('shipping-cost').innerHTML *1; 
+
+        document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice +shipping_price + " €"; 
+    } 
+}
+
+let shipping_price = document.getElementById('shipping-cost').innerHTML *1; 
+
+document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice +shipping_price + " €"; 
+document.querySelectorAll('div#checkout-list span.badge-pill')[0].innerHTML = totalQty; 
+
+//todo document.querySelector('#shipping-cost').innerHTML; 
+
+//SHIPPING DATES 
+let currDate = new Date().getTime; 
+document.querySelector('#standard-date').innerHTML = 'Expected by ' + currDate; 
 
 //ADDRESS 
 
