@@ -24,12 +24,12 @@
                         >
                         <option value="bestMatch">Best Match</option>
                         <option value="price">Price</option>
-                        <option value="date">Date</option>
                         <option value="rating">Rating</option>
                     </select>
                     <div class="d-flex flex-row justify-content-between align-items-center">
-                        <i class="fa fa-long-arrow-down order-icon" aria-hidden="true"></i>
-                        <i class="fa fa-long-arrow-up order-icon" aria-hidden="true"></i>
+                        <input type="hidden" name="sortOrder" id="sortOrder">
+                        <i type="checkbox" id="sortAsc" value="asc" class="fa fa-long-arrow-up order-icon" aria-hidden="true"></i>
+                        <i type="checkbox" id="sortDesc" value="desc" class="fa fa-long-arrow-down order-icon" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
