@@ -11,93 +11,59 @@ class SearchController extends Controller
 
     public function showSearch() {
 
-        $query = Input::get('query');
-        $filterVars = ['query' => $query];
+        $search = Input::get('query');
+        $filterVars = ['query' => $search];
 
+        $query = Item::search($search);
+
+        $queryResults = $query->get();
+
+        $categories = SearchController::getCategories($queryResults);
+        $brands = SearchController::getBrands($queryResults);
+
+        $orderBy = 'bestMatch';
         if (Input::has('orderBy')) {
             $orderBy = Input::get('orderBy');
-            $filterVars['orderBy'] = $orderBy;
         }
-
+        $sortOrder = 'desc';
         if (Input::has('sortOrder')) {
             $sortOrder = Input::get('sortOrder');
-            $filterVars['sortOrder'] = $sortOrder;
+        }
+        switch ($orderBy) {
+            case 'bestMatch':
+                $query = Item::sortBestMatch($query, $search, $sortOrder);
+                break;
+            default:
+                $query = $query->orderBy($orderBy, $sortOrder);
+                break;
         }
 
         if (Input::has('category')) {
             $filterCategories = Input::get('category');
-            $filterVars['filterCategories'] = $filterCategories;
+            $query = $query->whereIn('id_category', $filterCategories);
         }
 
         if (Input::has('brand')) {
             $filterBrands = Input::get('brand');
-            $filterVars['filterBrands'] = $filterBrands;
+            $query = $query->whereIn('brand', $filterBrands);
         }
 
         if (Input::has('inStock')) {
-            $inStock = Input::get('inStock');
-            $filterVars['inStock'] = $inStock;
+            $query = $query->where('stock', '>', 0);
         }
 
         if (Input::has('minPrice')) {
             $minPrice = Input::get('minPrice');
-            $filterVars['minPrice'] = $minPrice;
+            $query = $query->where('price', '>=', $minPrice);
         }
 
         if (Input::has('maxPrice')) {
             $maxPrice = Input::get('maxPrice');
-            $filterVars['maxPrice'] = $maxPrice;
+            $query = $query->where('price', '<=', $maxPrice);
         }
 
-        $search = Item::search($query);
-
-        if (isset($orderBy)) {
-            if (!isset($sortOrder)) {
-                $sortOrder = 'desc';
-            }
-            switch($orderBy) {
-                case 'bestMatch':
-                    if ($sortOrder == 'asc') {
-                        $search = $search->reverse();
-                    }
-                    break;
-                case 'price':
-                    $search = $search->orderBy($orderBy, $sortOrder);
-                    break;
-                case 'rating':
-                    $search = $search->orderBy($orderBy, $sortOrder);
-                    break;
-            }
-        }
-
-        $searchResults = $search->get();
-
-        $categories = SearchController::getCategories($searchResults);
-        $brands = SearchController::getBrands($searchResults);
-
-        if (isset($filterCategories)) {
-            $search = $search->whereIn('id_category', $filterCategories);
-        }
-
-        if (isset($filterBrands)) {
-            $search = $search->whereIn('brand', $filterBrands);
-        }
-
-        if (isset($inStock)) {
-            $search = $search->where('stock', '>', 0);
-        }
-
-        if (isset($minPrice)) {
-            $search = $search->where('price', '>=', $minPrice);
-        }    
-
-        if (isset($maxPrice)) {
-            $search = $search->where('price', '<=', $maxPrice);
-        }    
-
-        $items = $search->paginate(18);
-        $items->withPath('');
-
+        $items = $query->paginate(18)->withPath('');
+        
         $filterVars['categories'] = $categories;
         $filterVars['brands'] = $brands;
         $filterVars['items'] = $items;

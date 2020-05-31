@@ -10,70 +10,72 @@
       <h1>Products</h1>
     </div>
 
-    <div class="d-flex align-items-center mb-3">
-      <div class="input-group mr-sm-2">
-        <input class="form-control" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter">
-            Filter
-          </button>
-        </div>
-      </div>
-      <div class="flex-shrink-0">
-        <button type="button" class="btn button" onclick="location.href='{{ route('admin.products.add') }}'">
-          Add Item
-        </button>
-      </div>
-    </div>
-
-    <div class="collapse" id="collapseFilter">
-      <div class="row align-items-center justify-content-around">
-        <div class="col-md-6 col-sm-12">
-          <label for="categories">Categories</label>
-          <div id="categories" class="rounded border p-2 search-box-category">
-            @foreach ($parent_categories as $parent_category)
-            @foreach ($parent_category->children as $child_category)
-            <div class="custom-control custom-checkbox mb-3">
-              <input type="checkbox" class="custom-control-input" id="category{{ $child_category->id }}">
-              <label class="custom-control-label" for="category{{ $child_category->id }}">{{ $child_category->name }}</label>
+    <form action="products" method="GET">
+        <div class="d-flex align-items-center mb-3">
+            <div class="input-group mr-sm-2">
+                <input class="form-control" name="query" id="filterQuery" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter">
+                        Filter
+                    </button>
+                </div>
             </div>
-            @endforeach
-            @endforeach
-          </div>
+            <div class="flex-shrink-0">
+                <button type="button" class="btn button" onclick="location.href='{{ route('admin.products.add') }}'">
+                    Add Item
+                </button>
+            </div>
         </div>
-        <div class="col-md-6 col-sm-12">
-          <label for="brands">Brands</label>
-          <div id="brands" class="rounded border p-2 search-box-category">
-            @for ($i = 1; $i < 6; $i++)
-            <div class="custom-control custom-checkbox mb-3">
-              <input type="checkbox" class="custom-control-input" id="brand{{ $i }}">
-              <label class="custom-control-label" for="brand{{ $i }}">Brand {{ $i }}</label>
-          </div>
-          @endfor
+        
+        <div class="collapse" id="collapseFilter">
+            <div class="row align-items-center justify-content-around">
+                <div class="col-md-6 col-sm-12">
+                    <label for="categories">Categories</label>
+                    <div id="categories" class="rounded border p-2 search-box-category">
+                        @foreach ($parent_categories as $parent_category)
+                            @foreach ($parent_category->children as $child_category)
+                                <div class="custom-control custom-checkbox mb-3">
+                                    <input type="checkbox" class="custom-control-input categoryCheckbox" name="category[]" id="category{{ $child_category->id }}" value="{{ $child_category->id }}">
+                                    <label class="custom-control-label" for="category{{ $child_category->id }}">{{ $child_category->name }}</label>
+                                </div>
+                            @endforeach
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <label for="brands">Brands</label>
+                    <div id="brands" class="rounded border p-2 search-box-category">
+                        @foreach ($brands as $brand)
+                            <div class="custom-control custom-checkbox mb-3">
+                                <input type="checkbox" class="custom-control-input brandCheckbox" name="brand[]" id="brand-{{ $brand }}" value="{{ $brand }}">
+                                <label class="custom-control-label" for="brand-{{ $brand }}">{{ $brand }}</label>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                
+                <div class="col-2 text-center">
+                    <div class="custom-control custom-switch my-3">
+                        <input type="checkbox" class="custom-control-input" name="inStock" id="stockSwitch">
+                        <label class="custom-control-label" for="stockSwitch">In-Stock</label>
+                    </div>
+                </div>
+                
+                <div class="col-10">
+                    <div class="range-slider my-3">
+                        <label for="price">Price:
+                            <span id="priceRangeDisplay">N/A</span>
+                        </label>
+                        <input type="range" class="custom-range price-slider" id="minPrice" name="minPrice" value="0" min="0" max="500" step="1">
+                        <input type="range" class="custom-range price-slider" id="maxPrice" name="maxPrice" value="500" min="0" max="500" step="1">
+                    </div>
+                </div>
+                <div class="input-group-append mx-3 w-100">
+                    <button class="btn btn-primary button my-2 w-100" id="filterSubmit" type="submit">Apply</button>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="col-2 text-center">
-        <div class="custom-control custom-switch my-3">
-          <input type="checkbox" class="custom-control-input" id="stockSwitch">
-          <label class="custom-control-label" for="stockSwitch">In-Stock</label>
-        </div>
-      </div>
-
-      <div class="col-10">
-        <div class="range-slider my-3">
-          <label for="price">Price:
-            <span class="rangeValues"></span>
-          </label>
-          <input type="range" class="custom-range price-slider" name="minprice" value="0" min="0" max="200" step="1">
-          <input type="range" class="custom-range price-slider" name="maxprice" value="200" min="0" max="200" step="1">
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
+    </form>
 
   <table class="table table-striped text-center">
     <thead>

@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SearchController;
 use App\Item;
 use App\ItemPicture;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Input;
 
 class AdminController extends Controller
 {
@@ -25,8 +27,46 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showProducts() {
-        $items = Item::orderBy('id', 'asc')->paginate(10)->withPath('');
-        return view('pages.admin.products.products', ['products' => $items]);
+
+        $items = Item::orderBy('id', 'asc');
+
+        if (Input::has('query')) {
+            $query = Input::get('query');
+            $items = Item::search($query)->orderBy('id', 'asc');
+        }
+
+        $allItems = $items->get();
+        $allCategories = SearchController::getCategories($allItems);
+        $allBrands = SearchController::getBrands($allItems);
+
+        if (Input::has('category')) {
+            $categories = Input::get('category');
+            $items = $items->whereIn('id_category', $categories);
+        }
+
+        if (Input::has('brand')) {
+            $brands = Input::get('brand');
+            $items = $items->whereIn('brand', $brands);
+        }
+
+        if (Input::has('inStock')) {
+            $items = $items->where('stock', '>', 0);
+        }
+
+        if (Input::has('minPrice')) {
+            $minPrice = Input::get('minPrice');
+            $items = $items->where('price', '>=', $minPrice);
+        }
+
+        if (Input::has('maxPrice')) {
+            $maxPrice = Input::get('maxPrice');
+            $items = $items->where('price', '<=', $maxPrice);
+        }
+
+        $items = $items->paginate(10)->withPath('');
+
+        return view('pages.admin.products.products', ['products' => $items, 'categories' => $allCategories, 'brands' => $allBrands]);
+
     }
 
     public function showAddProductForm() {

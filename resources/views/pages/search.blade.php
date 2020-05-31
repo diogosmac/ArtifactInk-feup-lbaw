@@ -28,8 +28,8 @@
                     </select>
                     <div class="d-flex flex-row justify-content-between align-items-center">
                         <input type="hidden" name="sortOrder" id="sortOrder">
-                        <i type="checkbox" id="sortAsc" value="asc" class="fa fa-long-arrow-up order-icon" aria-hidden="true"></i>
                         <i type="checkbox" id="sortDesc" value="desc" class="fa fa-long-arrow-down order-icon" aria-hidden="true"></i>
+                        <i type="checkbox" id="sortAsc" value="asc" class="fa fa-long-arrow-up order-icon" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
