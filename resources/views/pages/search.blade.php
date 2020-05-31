@@ -2,21 +2,30 @@
 
 @section('title', ' - Search \'' . $query . '\'')
 
+<script src="{{ asset('js/search.js') }}" defer></script>
+
 @section('content')
 <section class="mx-auto my-4">
     <h3>Search for '<?= $query ?>'</h3>
-    <form action="search" method="GET"> @csrf
+    <form action="search" method="GET">
         <div class="d-flex flex-row justify-content-between align-items-center">
             <div>
+                <input type="hidden" name="query" value="<?= $query ?>">
                 <div class="input-group my-3" id="searchOrder">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="inputGroupSelect01">Order by</label>
+                        <label class="input-group-text" for="searchResultSortOrder">Order by</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option value="0" selected>Best Match</option>
-                        <option value="1" selected>Price</option>
-                        <option value="2" selected>Date</option>
-                        <option value="3" selected>Rating</option>
+                    <select class="custom-select" name="orderBy" id="searchResultSortOrder"
+                        @if(isset($orderBy))
+                            value="<?= $orderBy ?>"
+                        @else
+                            value="bestMatch"
+                        @endif
+                        >
+                        <option value="bestMatch">Best Match</option>
+                        <option value="price">Price</option>
+                        <option value="date">Date</option>
+                        <option value="rating">Rating</option>
                     </select>
                     <div class="d-flex flex-row justify-content-between align-items-center">
                         <i class="fa fa-long-arrow-down order-icon" aria-hidden="true"></i>
@@ -55,29 +64,27 @@
                                 @if(count($items) == 0)
                                 <h5 class="pl-3">No products were found. Consider adjusting your search parameters!</h5>
                                 @else
-                                @foreach($items as $item)
-                                <div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
-                                    @include('partials.item.item_card', ['item' => $item, 'picture' => $item->images()->get()->first()])
-                                </div>
-                                @endforeach
+                                    @foreach($items as $item)
+                                    <div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
+                                        @include('partials.item.item_card', ['item' => $item, 'picture' => $item->images()->get()->first()])
+                                    </div>
+                                    @endforeach
                                 @endif
                             </div>
                         </div>
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <ul class="list-group">
                                 @if(count($items) == 0)
-                                <h5>No products were found. Consider adjusting your search parameters!</h5>
+                                    <h5>No products were found. Consider adjusting your search parameters!</h5>
                                 @else
-                                @foreach($items as $item)
-                                @include('partials.item.item_card_alt', ['item' => $item, 'picture' => $item->images()->get()->first()])
-                                @endforeach
+                                    @foreach($items as $item)
+                                        @include('partials.item.item_card_alt', ['item' => $item, 'picture' => $item->images()->get()->first()])
+                                    @endforeach
                                 @endif
                             </ul>
                         </div>
                     </div>
-                    
-                    {{$items->appends(request()->except('page'))->links()}}
-                    
+                    {{$items->appends(request()->except('page'))->links()}}                    
                 </section>
             </div>
         </div>

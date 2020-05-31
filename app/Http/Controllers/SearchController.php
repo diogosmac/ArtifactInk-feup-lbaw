@@ -8,13 +8,37 @@ use App\Item;
 
 class SearchController extends Controller
 {
-    //
 
     public function showSearch() {
 
         $query = Input::get('query');
-        $search = Item::search($query);
+        $filterVars = ['query' => $query];
 
+        if (Input::has('orderBy')) {
+            $filterVars['orderBy'] = Input::get('orderBy');
+        }
+
+        if (Input::has('category')) {
+            $filterVars['filterCategories'] = Input::get('category');
+        }
+
+        if (Input::has('brand')) {
+            $filterVars['filterBrands'] = Input::get('brands');
+        }
+
+        if (Input::has('inStock')) {
+            $filterVars['inStock'] = Input::get('inStock');
+        }
+
+        if (Input::has('minPrice')) {
+            $filterVars['minPrice'] = Input::get('minPrice');
+        }
+
+        if (Input::has('maxPrice')) {
+            $filterVars['maxPrice'] = Input::get('maxPrice');
+        }
+
+        $search = Item::search($query);
         $searchResults = $search->get();
 
         $categories = SearchController::getCategories($searchResults);
@@ -23,7 +47,11 @@ class SearchController extends Controller
         $items = $search->paginate(18);
         $items->withPath('');
 
-        return view('pages.search', ['items' => $items, 'categories' => $categories, 'brands' => $brands, 'query' => $query]);
+        $filterVars['categories'] = $categories;
+        $filterVars['brands'] = $brands;
+        $filterVars['items'] = $items;
+
+        return view('pages.search', $filterVars);
 
     }
 
