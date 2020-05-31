@@ -7,7 +7,6 @@
   <td class="align-middle">{{ $product->category->name }}</td>
   <td class="align-middle">{{ $product->stock }}</td>
   <td class="align-middle">
-  {{$product->status}}
     <button type="button" class="btn button-secondary mx-2" onclick="location.href='{{ route('admin.products.edit', ['id' => $product->id]) }}'">Edit</button>
     @if ($product->status == 'active')
     <button type="button" product-id="{{ $product->id }}" class="btn btn-link a_link mx-2 archive-button">Archive</button>

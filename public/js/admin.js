@@ -84,7 +84,7 @@ function unarchiveItemHandler() {
     replaceButton.classList.remove('unarchive-button');
     replaceButton.classList.add('archive-button');
     replaceButton.addEventListener('click', (event) => {
-        sendAjaxRequest('put', '/admin/products/archive', { id_item: info.id_item }, unarchiveItemHandler);
+        sendAjaxRequest('put', '/admin/products/archive', { id_item: info.id_item }, archiveItemHandler);
         event.preventDefault();
     });
 }
