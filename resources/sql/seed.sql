@@ -258,7 +258,7 @@ CREATE TABLE "support_chat_message" (
 
 CREATE TABLE "newsletter_subscriber" (
     "id" SERIAL PRIMARY KEY,
-    "email" TEXT NOT NULL,
+    "email" TEXT NOT NULL CONSTRAINT newsletter_subscriber_email UNIQUE,
     "date" DATE NOT NULL DEFAULT now()
 );
 
