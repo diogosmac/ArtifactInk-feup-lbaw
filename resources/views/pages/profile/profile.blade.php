@@ -26,8 +26,9 @@
 
           <div class="col-md-auto d-flex flex-column" id="profile-edit-button">
             <a class="btn button-secondary" type="button" href=" {{ route('profile.edit') }} ">Edit Profile</a>
-            <button class="btn btn-link a_link" type="button">Delete Account</button>
+            <button class="btn btn-link a_link" type="button" data-toggle="modal" data-target="#confirmDeleteAccount">Delete Account</button>
           </div>
+          @include('partials.pop-ups.confirm_delete_account')
         </div>
       </div>
 
