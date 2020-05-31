@@ -15,14 +15,18 @@ class ItemController extends Controller
     /**
      * Display item
      */
-    public function show($id_item) {
+    public function show($id_item, $slug='') {
         try {
             $item = Item::findOrFail($id_item);
             $pictures = $item->images()->get();
             $reviews = $item->reviews()->orderBy('date', 'desc')->get();
             
             if ($item != null) {
-                return view('pages.product', ['item' => $item, 'pictures' => $pictures, 'reviews' => $reviews]);
+                if ($slug !== $item->getSlug()) {
+                    return redirect()->to($item->getUrlAttribute());
+                } else {
+                    return view('pages.product', ['item' => $item, 'pictures' => $pictures, 'reviews' => $reviews]);
+                }
             } else {
                 return response(json_encode("This product does not exist"), 404);
             }
