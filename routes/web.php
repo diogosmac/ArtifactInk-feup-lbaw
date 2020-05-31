@@ -133,6 +133,8 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
         // edit product
         // $url = route('profile', ['id' => 1]);
         Route::get('{id}/edit', 'AdminController@showEditProductForm')->where('id', '[0-9]+')->name('edit');
+
+        Route::post('/edit', 'AdminController@editProduct')->name('edit_product');
     });
 
     // categories

@@ -8,51 +8,54 @@
 
     <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap border-bottom mt-2">
       <h1>Edit Product</h1>
-      <button type="button" class="btn button">
+      <button type="submit" form="edit-product" value="Submit" class="btn button">
         Submit
       </button>
     </div>
 
-    <form>
+    <form action="{{ route('admin.products.edit_product') }}" method="POST" id="edit-product" enctype="multipart/form-data">
+      @csrf
+      <input type="hidden" name="id" value="{{ $product->id }}">
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputTitle">Title</label>
-          <input type="text" class="form-control" id="inputTitle" value="{{ $product->name }}">
+          <input required name="title" type="text" class="form-control" id="inputTitle" value="{{ $product->name }}">
         </div>
         <div class="form-group col-md-3">
           <label for="inputPrice">Price</label>
-          <input type="number" step=".01" min="0" class="form-control" id="inputPrice" value="{{ $product->price }}">
+          <input required name="price" type="number" step=".01" min="0" class="form-control" id="inputPrice" value="{{ $product->price }}">
         </div>
         <div class="form-group col-md-3">
           <label for="inputQuantity">Stock</label>
-          <input type="number" class="form-control" min="0" id="inputQuantity" value="{{ $product->stock }}">
+          <input required name="stock" type="number" class="form-control" min="0" id="inputQuantity" value="{{ $product->stock }}">
         </div>
       </div>
       <div class="form-row">
 
         <div class="form-group col-md-6">
           <label for="inputAddress">Description</label>
-          <textarea class="form-control" id="titleInput" rows="4" placeholder="Write product description...">{{ $product->description }}</textarea>
+          <textarea required name="description" class="form-control" id="titleInput" rows="4" placeholder="Write product description...">{{ $product->description }}</textarea>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="inputCategory">Category</label>
-            <select class="custom-select" id="inputCategory">
-            @foreach ($parent_categories as $parent_category)
-              <option value="{{ $parent_category->name }}" {{ ($product->category->id_parent == $parent_category->id) ? 'selected' : '' }}>
-                {{ $parent_category->name }}
-              </option>
-            @endforeach
-            </select>
+            <label for="inputCategory">Brand</label>
+            <input required name="brand" type="text" class="form-control" id="inputTitle" value="{{ $product->brand }}" placeholder="Write product brand...">
           </div>
           <div class="form-group">
-            <label for="inputSubcategory">Subcategory</label>
-            <select class="custom-select" id="inputCategory">
-              <option value="Ink" selected>{{ $product->subcategory }}</option>
-              <option value="Machines">Machines</option>
-              <option value="...">...</option>
+            <label for="inputCategory">Category</label>
+            <select required name="category" class="custom-select" id="inputCategory">
+              @foreach ($parent_categories as $parent_category)
+              <optgroup label="{{ $parent_category->name }}">
+                @foreach ($parent_category->children as $child_category)
+                  <option value="{{ $child_category->id }}" {{ ($product->category->id == $child_category->id) ? 'selected' : '' }}>
+                    {{ $child_category->name }}
+                  </option>
+                @endforeach
+              </optgroup>
+              @endforeach
             </select>
           </div>
+
         </div>
       </div>
 
@@ -60,23 +63,21 @@
         <div class="panel-body">
 
           <!-- Standard Form -->
-          <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
-            <label for="">Upload pictures</label>
-            <div class="form-inline">
-              <div class="form-group">
-                <input type="file" name="files[]" id="js-upload-files" multiple>
-              </div>
-              <button type="submit" class="btn button-secondary" id="js-upload-submit">Upload files</button>
+          <label for="">Upload pictures</label>
+          <div class="form-inline">
+            <div class="form-group">
+              <input type="file" accept="image/*" name="pictures[]" id="js-upload-files" multiple>
             </div>
-          </form>
+          </div>
 
-          <!-- Drop Zone -->
+          <!-- Drop Zone
           <label>Or drag and drop files below</label>
           <div class="upload-drop-zone" id="drop-zone">
             Just drag and drop files here
           </div>
+          -->
 
-          <!-- Upload Finished -->
+          <!-- Upload Finished 
           <div class="js-upload-finished">
             <label>Processed Files</label>
             <div class="list-group">
@@ -84,6 +85,7 @@
               <a href="#" class="list-group-item list-group-item-success"><span class="badge alert-success pull-right">Success</span>image-02.jpg</a>
             </div>
           </div>
+          -->
         </div>
       </div>
 
@@ -91,3 +93,15 @@
   </div>
 </main>
 @endsection
+
+{{-- Alert --}}
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    @foreach ($errors->all() as $error)
+    <p>{{ $error }}</p>
+    @endforeach
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif

@@ -62,14 +62,12 @@
         <div class="panel-body">
 
           <!-- Standard Form -->
-          <form action="" method="post" enctype="multipart/form-data" id="js-upload-form">
-            <label for="">Upload pictures</label>
-            <div class="form-inline">
-              <div class="form-group">
-                <input type="file" accept="image/*" name="pictures[]" id="js-upload-files" multiple>
-              </div>
+          <label for="">Upload pictures</label>
+          <div class="form-inline">
+            <div class="form-group">
+              <input type="file" accept="image/*" name="pictures[]" id="js-upload-files" multiple>
             </div>
-          </form>
+          </div>
 
           <!-- Drop Zone
           <label>Or drag and drop files below</label>
