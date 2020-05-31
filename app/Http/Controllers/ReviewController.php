@@ -70,4 +70,19 @@ class ReviewController extends Controller
 
     return redirect()->route('profile.reviews');
   }
+
+  public function deleteReview(Request $request) {
+    if (!Auth::check()) return redirect('/sign_in');
+
+    $reviews = Auth::user()->reviews();
+    $item = $request['item'];
+
+    try {
+        $reviews->where('id_item', '=', $item)->delete();
+    } catch (PDOException $e) {
+        redirect()->back()->withErrors(['delete' => 'Could not delete review']);
+    }
+
+    return redirect()->route('profile.reviews');
+  }
 }

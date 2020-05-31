@@ -1,4 +1,4 @@
-<div class="modal fade" id="editReview" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="editReview{{$review->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{route('profile.reviews') }}" method="post">
+            <form class="editReviewForm" action="{{route('profile.reviews') }}" method="post">
                 <div class="modal-body">
                     {{csrf_field()}}
                     {{ method_field('PUT')}}
@@ -16,28 +16,28 @@
                         <label for="rating_fieldset">Rating</label>
                         <div>
                             <fieldset id="rating_fieldset" class="rating_input" required>
-                                <input type="radio" id="star5" class="star" name="rating" value="5" @if($review->score == 5) checked="checked" @endif/>
-                                <label class="star_label" for="star5">
+                                <label class="star_label">
+                                    <input type="radio" class="star" name="rating" value="5" @if($review->score == 5) checked="checked" @endif/>
                                     <?php if ($review->score < 5) { ?> <i class="far fa-star"></i> <?php } else { ?> <i class="fas fa-star"></i> <?php } ?>
                                 </label>
 
-                                <input type="radio" id="star4" class="star" name="rating" value="4" @if($review->score == 4) checked="checked" @endif/>
-                                <label class="star_label" for="star4">
+                                <label class="star_label">
+                                    <input type="radio" class="star" name="rating" value="4" @if($review->score == 4) checked="checked" @endif/>
                                     <?php if ($review->score < 4) { ?> <i class="far fa-star"></i> <?php } else { ?> <i class="fas fa-star"></i><?php } ?>
                                 </label>
 
-                                <input type="radio" id="star3" class="star" name="rating" value="3" @if($review->score == 3) checked="checked" @endif/>
-                                <label class="star_label" for="star3">
+                                <label class="star_label">
+                                    <input type="radio" class="star" name="rating" value="3" @if($review->score == 3) checked="checked" @endif/>
                                     <?php if ($review->score < 3) { ?> <i class="far fa-star"></i> <?php } else { ?> <i class="fas fa-star"></i> <?php } ?>
                                 </label>
 
-                                <input type="radio" id="star2" class="star" name="rating" value="2" @if($review->score == 2) checked="checked" @endif/>
-                                <label class="star_label" for="star2">
+                                <label class="star_label">
+                                    <input type="radio" class="star" name="rating" value="2" @if($review->score == 2) checked="checked" @endif/>
                                     <?php if ($review->score < 2) { ?> <i class="far fa-star"></i> <?php } else { ?> <i class="fas fa-star"></i> <?php } ?>
                                 </label>
 
-                                <input type="radio" id="star1" class="star" name="rating" value="1" @if($review->score == 1) checked="checked" @endif/>
-                                <label class="star_label" for="star1">
+                                <label class="star_label"> 
+                                    <input type="radio" class="star" name="rating" value="1" @if($review->score == 1) checked="checked" @endif/>
                                     <?php if ($review->score < 1) { ?> <i class="far fa-star"></i> <?php } else { ?> <i class="fas fa-star"></i> <?php } ?>
                                 </label>
                             </fieldset>
