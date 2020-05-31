@@ -13,6 +13,8 @@ for(let i = 0; i < checkoutItemPrice.length; i++ ){
 document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice + " €"; 
 document.querySelectorAll('div#checkout-list span.badge-pill')[0].innerHTML = totalQty; 
 
+//SHIPPING METHOD ADD TO CART
+
 //ADDRESS 
 
 let  new_addr_btn = document.querySelector('#new_addr_btn'); 
@@ -86,4 +88,55 @@ if(ret_payment_btn != null){
     new_payment_btn.style.display='initial'; 
     payment_selector.style.display='flex'
     },false);  
+}
+
+//FORM PAGES
+let next_shipping = document.querySelector('#next-shipping'); 
+let next_payment = document.querySelector('#next-payment'); 
+let previous_payment = document.querySelector('#previous-payment'); 
+let previous_confirm = document.querySelector('#previous-confirm'); 
+
+next_shipping.addEventListener('click',showPayment, false); 
+next_payment.addEventListener('click', showConfirm, false);
+previous_payment.addEventListener('click',showShipping, false);  
+previous_confirm.addEventListener('click',showPayment, false);  
+ 
+let p2_shipping = document.querySelector('#p2-shipping'); 
+let p3_shipping = document.querySelector('#p3-shipping'); 
+let p1_payment = document.querySelector('#p1-payment');  
+let p3_payment = document.querySelector('#p3-payment'); 
+let p1_confirm = document.querySelector('#p1-confirm'); 
+let p2_confirm = document.querySelector('#p2-confirm'); 
+
+p2_shipping.addEventListener('click', showPayment, false); 
+p3_shipping.addEventListener('click', showConfirm, false); 
+p1_payment.addEventListener('click', showShipping, false); 
+p3_payment.addEventListener('click', showConfirm, false); 
+p1_confirm.addEventListener('click', showShipping, false); 
+p2_confirm.addEventListener('click', showPayment, false); 
+
+let shipping_form = document.querySelector("#checkout-shipping");
+let payment_form = document.querySelector("#checkout-payment");
+let confirm_form = document.querySelector("#checkout-confirm");
+
+
+function showShipping(){
+    console.log(1)
+    shipping_form.style.display='initial'; 
+    payment_form.style.display='none'; 
+    confirm_form.style.display = 'none'; 
+}
+
+function showPayment(){
+    console.log(2)
+    shipping_form.style.display='none'; 
+    payment_form.style.display='initial'; 
+    confirm_form.style.display = 'none'; 
+}
+
+function showConfirm(){
+    console.log(3)
+    shipping_form.style.display='none'; 
+    payment_form.style.display='none'; 
+    confirm_form.style.display = 'initial'; 
 }

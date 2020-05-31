@@ -74,6 +74,14 @@ div.checkout-box thead th{
     display: none;
 }
 
+#checkout-payment{
+    display: none;
+}
+
+#checkout-confirm{
+    display: none;
+}
+
 
 
 
@@ -117,18 +125,18 @@ div.progress{
     border-radius: 0% !important;
 }
 
-.progress-checkout li.disabled a{
+.progress-checkout li.disabled button{
     color: var(--main-white);
 }
 
-.progress-checkout li a{
+.progress-checkout li button{
     color: var(--main-red-alpha);
     border-radius: 0% !important;
     border: solid .1em;
     
 }
 
-.progress-checkout li a:hover{
+.progress-checkout li button:hover{
     color: var(--text-color-white);
     background-color: var(--main-red);
     

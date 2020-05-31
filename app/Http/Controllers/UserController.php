@@ -139,7 +139,7 @@ class UserController extends Controller
    * Show Checkout Pages
    */
 
-   public function showCheckoutShipping(){
+   public function showCheckout(){
     if (!Auth::check()) return redirect('/');
     
     $user = Auth::user();
@@ -147,30 +147,9 @@ class UserController extends Controller
     $cartItems = CartController::get_user_cart_items()['items'];
     $countries = Country::get();
     $addresses = $user->addresses()->orderBy('id_address')->get();
-
-
-    return view('pages.checkout.shipping', ['cartItems'=>$cartItems, 'addresses'=>$addresses, 'countries' => $countries] ); 
-   }
-
-   public function showCheckoutPayment(){
-    if (!Auth::check()) return redirect('/');
-    
-    $user = Auth::user();
-
-    $cartItems = CartController::get_user_cart_items()['items'];
     $paymentMethods = $user->payment_methods()->orderBy('id_payment_method')->get();
 
-    return view('pages.checkout.payment', ['cartItems'=>$cartItems, 'paymentMethods'=>$paymentMethods] ); 
-   }
-
-   public function showCheckoutConfirm(){
-    if (!Auth::check()) return redirect('/');
-    
-    $user = Auth::user();
-
-    $cartItems = CartController::get_user_cart_items()['items'];
-
-    return view('pages.checkout.confirm', ['cartItems'=>$cartItems] ); 
+    return view('pages.checkout', ['cartItems'=>$cartItems, 'addresses'=>$addresses, 'countries' => $countries,'paymentMethods'=>$paymentMethods] ); 
    }
 
 }
