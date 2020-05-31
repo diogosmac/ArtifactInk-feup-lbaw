@@ -143,7 +143,7 @@
                     1.99€
                   </span>
                 </h6>
-                <p id="standard-date"> Expected by 7 March </p>
+                <p id="standard-date"> </p>
               </label>
             </div>
             <div class="custom-control custom-radio">
@@ -156,7 +156,7 @@
                     4.99€
                   </span>
                 </h6>
-                <p id="express-date"> Expected by 10 March </p>
+                <p id="express-date"> </p>
               </label>
             </div>
           </div>

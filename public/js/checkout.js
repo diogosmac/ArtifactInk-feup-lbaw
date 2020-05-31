@@ -49,9 +49,24 @@ document.querySelectorAll('div#checkout-list span.badge-pill')[0].innerHTML = to
 
 
 //SHIPPING DATES 
-let currDate = new Date().getTime; 
-document.querySelector('#standard-date').innerHTML = 'Expected by ' + currDate; 
+let standardTime = new Date(); 
+let expressTime = new Date(); 
 
+standardTime.setDate(standardTime.getDate() + 3 );
+expressTime.setDate(expressTime.getDate() + 5 );
+//standard
+let monthStandard = standardTime.getMonth() + 1
+let dayStandard = standardTime.getDate();
+
+//express
+var monthExpress = expressTime.getMonth() + 1
+var dayExpress = expressTime.getDate();
+
+
+
+
+document.querySelector('#standard-date').innerHTML = 'Expected by '  + getMonth(monthStandard) +' '+ dayStandard; 
+document.querySelector('#express-date').innerHTML = 'Expected by ' +  getMonth(monthExpress) +' '+ dayExpress; 
 //ADDRESS 
 
 let  new_addr_btn = document.querySelector('#new_addr_btn'); 
@@ -196,9 +211,10 @@ function updateAddress(){
         addr2_confirm.innerHTML = str_addr_arr[0] + ' - ' + str_addr_arr[1] + ' - '+str_addr_arr[2];
 
     }else{
-        //todo 
-        // addr1_confirm.innerHTML = ; 
-        //addr2_confirm.innerHTML = ;
+
+        addr1_confirm.innerHTML = document.getElementById('streetAdd').innerHTML; 
+        //todo
+        addr2_confirm.innerHTML = document.getElementById('cityAdd').innerHTML +" - "+document.getElementById('postalCodeAdd').innerHTML;
     }
 }
 
@@ -227,4 +243,11 @@ function updatePayment(){
     }else{
     
     }
+}
+
+
+// ===== UTILITY FUNCTIONS ======
+function getMonth(month){
+    let  monthStr = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+    return  monthStr[month-1]; 
 }
