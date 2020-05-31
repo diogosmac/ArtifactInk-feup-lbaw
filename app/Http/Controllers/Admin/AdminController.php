@@ -25,8 +25,7 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showProducts() {
-        $items = Item::paginate(10);
-        $items->withPath('');
+        $items = Item::orderBy('id', 'asc')->paginate(10)->withPath('');
         return view('pages.admin.products.products', ['products' => $items]);
     }
 
@@ -154,6 +153,26 @@ class AdminController extends Controller
         return redirect()
             ->intended(route('admin.products.home'))
             ->with('status','Product ' . $item->name . ' updated successfuly!');
+    }
+
+    public function archiveItem(Request $request) {
+        // get item
+        $item = Item::find($request->id_item);
+
+        $item->status = 'archived';
+        $item->save();
+
+        return response()->json(['id_item' => $item->id]);
+    }
+
+    public function unarchiveItem(Request $request) {
+        // get item
+        $item = Item::find($request->id_item);
+
+        $item->status = 'active';
+        $item->save();
+
+        return response()->json(['id_item' => $item->id]);
     }
 
     /*
