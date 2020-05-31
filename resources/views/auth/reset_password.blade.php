@@ -27,7 +27,7 @@
         <div class="form-group password-input">
             <label for="inputRepeatPassword">Confirm Password</label>
             <input type="password" class="form-control" id="inputRepeatPassword" placeholder="Repeat Password"
-                name="confirm_password" required autofocus>
+                name="password_confirmation" required autofocus>
         </div>
 
         <div>

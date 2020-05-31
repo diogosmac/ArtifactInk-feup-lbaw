@@ -36,7 +36,15 @@ class RecoverPasswordController extends Controller
 
     public function requestRecoverPassword(Request $request)
     {
-        // ! Add validation here
+        // Validate input
+        $validator = \Validator::make($request->all(), [
+            'email' => 'required|exists:user']);
+
+        //check if payload is valid before moving on
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors(['email' => trans('User does not exist')]);
+        }
+
         $user = User::where('email', '=', $request->email)->first(); 
         
         //Check if the user exists
@@ -47,8 +55,10 @@ class RecoverPasswordController extends Controller
         $name = $user->name;
         $email = $user->email;
         $date_of_birth = $user->date_of_birth;
+        $now = Carbon::now();
 
-        $token = str_replace ('/', '%', Hash::make($name . $email . $date_of_birth));
+        $hash = Hash::make($name . $email . $date_of_birth . $now);
+        $token = base64_encode($hash);
 
         $url = url("/reset_password/{$token}");
 
@@ -56,7 +66,7 @@ class RecoverPasswordController extends Controller
         //Create Password Reset Token
         \DB::table('recover_password_tokens')->insert([
             'email' => $request->email,
-            'token' => $token,
+            'token' => $hash,
             'created_at' => Carbon::now()
         ]);
         
@@ -75,9 +85,10 @@ class RecoverPasswordController extends Controller
     public function showResetPasswordForm($token)
     {
         $expired = false;
+        $hash = base64_decode($token);
         // If token exipired redirect to request token
         $tokenData = \DB::table('recover_password_tokens')
-                        ->where('token', $token)
+                        ->where('token', $hash)
                         ->where( 'created_at', '>', Carbon::now()->subMinutes(30))
                         ->orderBy('created_at', 'desc')->first();
 
@@ -89,29 +100,31 @@ class RecoverPasswordController extends Controller
     }
 
     public function requestSetPassword(Request $request) {
-        // ! Validate input
-        /*$validator = Validator::make($request->all(), [
-            'email' => 'required|email|exists:users,email',
-            'password' => 'required|confirmed'
-            'token' => 'required' ]);
+        // Validation rules.
+        $rules = [
+            'password' => 'required|confirmed',
+            'token' => 'required' 
+        ];
+        // Custom validation error messages.
+        $messages = [   'password.required' => 'Please complete the form',
+                        'password.confirmed' => 'Passwords don\'t match',
+                        'token' => 'Error with reset password token' 
+        ];
 
-        //check if payload is valid before moving on
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors(['email' => 'Please complete the form']);
-        }*/
+        // Validate the request.
+        $request->validate($rules, $messages);
 
-        $password = $request->password;// Validate the token
-        $confirm_password = $request->confirm_password;
+        $password = $request->password;
+        
+        $hash = base64_decode($request->token);
+        // Validate the token
         $tokenData = \DB::table('recover_password_tokens')
-                    ->where('token', $request->token)
+                    ->where('token', $hash)
                     ->where( 'created_at', '>', Carbon::now()->subMinutes(30))
                     ->orderBy('created_at', 'desc')->first();
         
         // Redirect the user back to the password reset request form if the token is invalid
         if (!$tokenData) return view('auth/reset_password', ['expired' => true]);
-        // If password is different from confirm password
-        if ($password != $confirm_password) return redirect()->back()->withErrors(['password' => 'Passwords don\'t match']);
-
 
         $user = User::where('email', $tokenData->email)->first();
         
