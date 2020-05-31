@@ -107,11 +107,7 @@ Route::put('cart', 'CartController@update_item_quantity');
 // Checkout
 Route::prefix('/checkout')->name('checkout.')->group(function () {
    
-    Route::get('shipping','UserController@showCheckoutShipping')->name('shipping');
-
-    Route::get('payment', 'UserController@showCheckoutPayment')->name('payment');
-
-    Route::get('confirm', 'UserController@showCheckoutConfirm')->name('confirm');
+    Route::get('/','UserController@showCheckout')->name('home');
 
 });
 

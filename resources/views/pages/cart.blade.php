@@ -40,7 +40,7 @@
                 <button class="btn button-secondary">Keep Shopping</button>
             </div>
             <div>
-                <a class="btn button" href="{{ url('/checkout/shipping') }}">Checkout</a>
+                <a class="btn button" href="{{ url('/checkout') }}">Checkout</a>
             </div>
         </div>
     </div>
@@ -58,7 +58,7 @@
                 <button class="btn button-secondary">Keep Shopping</button>
             </div>
             <div>
-                <a class="btn button" href="{{ route('checkout.shipping') }}">Checkout</a>
+                <a class="btn button" href="{{ url('/checkout') }}">Checkout</a>
             </div>
         </div>
     </div>
