@@ -29,12 +29,16 @@ function updateShipping(){
 
         document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice +shipping_price + " €"; 
         
+        document.getElementById('shipping-confirm').innerHTML = 'Standard Shipping - '+ 1.99 +'€'; 
+        
     }else if(express_shipping_radio.checked){
         document.querySelector('#shipping-cost').innerHTML = 4.99; 
 
         let shipping_price = document.getElementById('shipping-cost').innerHTML *1; 
 
         document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice +shipping_price + " €"; 
+
+        document.getElementById('shipping-confirm').innerHTML = 'Express Shipping - '+ 4.99 +'€'; 
     } 
 }
 
@@ -43,7 +47,6 @@ let shipping_price = document.getElementById('shipping-cost').innerHTML *1;
 document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice +shipping_price + " €"; 
 document.querySelectorAll('div#checkout-list span.badge-pill')[0].innerHTML = totalQty; 
 
-//todo document.querySelector('#shipping-cost').innerHTML; 
 
 //SHIPPING DATES 
 let currDate = new Date().getTime; 
@@ -155,22 +158,21 @@ let confirm_form = document.querySelector("#checkout-confirm");
 
 
 function showShipping(){
-    console.log(1)
     shipping_form.style.display='initial'; 
     payment_form.style.display='none'; 
     confirm_form.style.display = 'none'; 
 }
 
 function showPayment(){
-    console.log(2)
     shipping_form.style.display='none'; 
     payment_form.style.display='initial'; 
     confirm_form.style.display = 'none'; 
 }
 
 function showConfirm(){
-    console.log(3)
     shipping_form.style.display='none'; 
     payment_form.style.display='none'; 
     confirm_form.style.display = 'initial'; 
 }
+
+//  CONFIRM CHECKOUT
