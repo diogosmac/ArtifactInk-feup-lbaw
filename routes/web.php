@@ -24,9 +24,11 @@ Route::post('sign_in', 'Auth\LoginController@login');
 Route::get('sign_out', 'Auth\LoginController@logout')->name('sign_out');
 Route::get('sign_up', 'Auth\RegisterController@showRegistrationForm')->name('sign_up');
 Route::post('sign_up', 'Auth\RegisterController@register');
+Route::get('recover_password', 'Auth\RecoverPasswordController@showRecoverPasswordForm')->name('recover_password');
+Route::post('recover_password', 'Auth\RecoverPasswordController@requestRecoverPassword');
+Route::get('reset_password/{token}', 'Auth\RecoverPasswordController@showResetPasswordForm')->name('reset_password');
+Route::post('reset_password', 'Auth\RecoverPasswordController@requestSetPassword');
 
-//profile
-Route::view('recover_password', 'auth/recover_password');
 
 //routes for debugging pages - remove later
 Route::get('/', 'ItemController@showHomepage')->name('home'); //todo reply function indide in all pages 
@@ -186,7 +188,3 @@ Route::view('payments_and_shipment', 'pages.info.payments_and_shipment');
 Route::view('returns_and_replacements', 'pages.info.returns_and_replacements');
 
 Route::view('warranty', 'pages.info.warranty');
-
-//Esta é só para o tiago
-
-Route::view('password_reset', 'auth.password_reset'); 
