@@ -37,8 +37,6 @@ Route::get('search','SearchController@showSearch')->name('search');
 
 Route::get('product/{id}-{slug?}', 'ItemController@show');
 
-Route::get('profile','UserController@showProfile');
-
 //profile pages and stuff related 
 Route::prefix('profile')->name('profile.')->group(function() {
     
