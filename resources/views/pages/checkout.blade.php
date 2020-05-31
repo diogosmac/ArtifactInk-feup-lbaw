@@ -21,6 +21,12 @@
         @foreach($cartItems as $cartItem)
         @include('partials.checkout.checkoutItem',['cartItem' => $cartItem])
         @endforeach
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">Shipping: </h6>
+            </div>
+            <span class="text-muted" id="shipping-cost"></span>
+          </li>
         <li class="list-group-item d-flex justify-content-between">
           <span>Total (EUR)</span>
           <strong></strong>
@@ -36,7 +42,6 @@
         {{ method_field('POST')}}
         <!-- ADDRESS OPTION -->
         <div id="checkout-shipping">
-
 
           <div class="row justify-content-between checkout-header">
             <h4 class="mb-3">Shipping Address</h4>
@@ -127,30 +132,31 @@
 
           <hr class="mb-4">
 
-          <div class="d-block my-3">
+          <div class="d-block my-3" id="shipping-radio">
             <div class="custom-control custom-radio">
-              <input id="standard" name="shippingMethod" type="radio" class="custom-control-input" checked=""
-                required>
-              <label class="custom-control-label" for="standard">
+             
+              <input name="shippingMethod" type="radio" class="custom-control-input" id="standard-shipping" required> 
+              <label class="custom-control-label" for="standard-shipping">
                 <h6 class="shipping-method">
                   Standard Delivery -
                   <span class="shipping-price">
-                    2.00€
+                    1.99€
                   </span>
                 </h6>
-                <p> Expected by 7 March </p>
+                <p id="standard-date"> Expected by 7 March </p>
               </label>
             </div>
             <div class="custom-control custom-radio">
-              <input id="express" name="shippingMethod" type="radio" class="custom-control-input" required>
-              <label class="custom-control-label" for="express">
+            
+              <input name="shippingMethod" type="radio" class="custom-control-input" id="express-shipping" required>       
+              <label class="custom-control-label" for="express-shipping">
                 <h6 class="shipping-method">
                   Express Delivery -
                   <span class="shipping-price">
-                    2.00€
+                    4.99€
                   </span>
                 </h6>
-                <p> Expected by 10 March </p>
+                <p id="express-date"> Expected by 10 March </p>
               </label>
             </div>
           </div>
