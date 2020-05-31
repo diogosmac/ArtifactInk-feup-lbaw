@@ -156,6 +156,26 @@ class AdminController extends Controller
             ->with('status','Product ' . $item->name . ' updated successfuly!');
     }
 
+    public function archiveItem(Request $request) {
+        // get item
+        $item = Item::find($request->id_item);
+
+        $item->status = Item::ITEM_STATUS['archived'];
+        $item->save();
+
+        return response()->json($item);
+    }
+
+    public function unarchiveItem(Request $request) {
+        // get item
+        $item = Item::find($request->id_item);
+
+        $item->status = Item::ITEM_STATUS['active'];
+        $item->save();
+
+        return response()->json($item);
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Categories
