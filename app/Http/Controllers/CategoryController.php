@@ -29,7 +29,7 @@ class CategoryController extends Controller
                 if ($slug !== $category->getSlug()) {
                     return redirect()->to($category->getUrlAttribute());
                 } else {
-                    return view('pages.search', ['items' => $items]);
+                    return view('pages.category', ['category' => $category, 'items' => $items]);
                 }
             } else {
                 return response(json_encode("This product does not exist"), 404);
