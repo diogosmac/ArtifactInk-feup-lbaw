@@ -257,7 +257,8 @@ CREATE TABLE "support_chat_message" (
 );
 
 CREATE TABLE "newsletter_subscriber" (
-    "email" TEXT PRIMARY KEY,
+    "id" SERIAL PRIMARY KEY,
+    "email" TEXT NOT NULL CONSTRAINT newsletter_subscriber_email UNIQUE,
     "date" DATE NOT NULL DEFAULT now()
 );
 
@@ -2112,6 +2113,7 @@ INSERT INTO "support_chat_message" ("id_user", "time", "body", "sender") VALUES
     (1, '2020-03-22 19:10:25-00', 'Help me please!!! Do needles hurt? :(', 'user'),
     (1, '2020-03-22 19:10:25-00', 'Hello, thank you for contacting us, yes they do go ''ouch''', 'admin');
 -------- newsletter_subscriber --------
+ALTER SEQUENCE newsletter_subscriber_id_seq RESTART WITH 1;
 INSERT INTO "newsletter_subscriber" ("email", "date") VALUES
     ('mmiell0@phpbb.com', '2020-03-25'),
     ('gashpole1@sfgate.com', '2020-03-18'),
