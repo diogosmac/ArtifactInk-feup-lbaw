@@ -49,7 +49,7 @@
             <a href="#specs" class="px-3 a_link">{{ count($reviews) }}</a>
           </div>
           <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
-            @if ($item->stock > 0)
+            @if ($item->stock > 0 && $item->status == 'active')
               <h4>Available</h4>
               <i class="fas fa-circle px-2 pt-1" style="color: green"></i>
             @else
@@ -63,19 +63,33 @@
                 <label class="input-group-text" for="inputGroupSelect01">Quantity</label>
               </div>
               <select class="custom-select" id="inputGroupSelect01">
-                @for ($i = 1; $i <= $item->stock; $i++)
-                  <option value="{{ $i }}">{{ $i }}</option>
-                @endfor
+                @if ($item->status == 'active')
+                    @for ($i = 1; $i <= $item->stock; $i++)
+                        <option value="{{ $i }}">{{ $i }}</option>
+                    @endfor
+                @else
+                    <option value="0">0</option>
+                @endif
               </select>
             </div>
+            @if ($item->status == 'active')
             <h1>{{ $item->price }}€</h1>
+            @else
+            <h1>N/A</h1>
+            @endif
           </div>
           <div class="d-flex flex-row justify-content-between align-items-end bd-highlight my-3">
-            <button class="btn btn-link li-wishlist" data-id="{{ $item->id}}" type="button">
+            <?php 
+                if ($item->status == 'active')
+                    $value = $item->id;
+                else
+                    $value = 'archived';    
+            ?>
+            <button class="btn btn-link li-wishlist" data-id="{{ $value }}" type="button">
               <i class="fas fa-heart"></i>
               Add to whishlist
             </button>
-            <button class="btn btn-primary button add-to-cart-btn" data-product-type="{{ $item->id}}" type="submit"> Add to Cart</button>
+            <button class="btn btn-primary button add-to-cart-btn" data-product-type="{{ $value }}" type="submit"> Add to Cart</button>
           </div>
         </div>
       </div>
