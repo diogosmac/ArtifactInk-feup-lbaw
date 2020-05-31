@@ -1,16 +1,21 @@
-let stars = document.querySelectorAll('.star');
+/**
+ * Handle changes in review score input 
+ */
 
-for (let i = 0; i < stars.length; i++) {
- stars[i].addEventListener('click', replaceIcon.bind(null, i))
-}
+let reviewForms = document.querySelectorAll('.writeReviewForm, .editReviewForm')
 
-function replaceIcon(starNo) {
-    console.log(starNo)
-  let pus = document.querySelectorAll('.star_label');
-  for (let i = 0; i < starNo; i++) {
-    pus[i].innerHTML = "<i class=\"far fa-star\"></i>"
-  }
-  for (let i = starNo; i < pus.length; i++) {
-    pus[i].innerHTML = "<i class=\"fas fa-star\"></i>"
+for (let j = 0; j < reviewForms.length; j++) {
+  let stars = reviewForms[j].getElementsByClassName('star');
+  for (let i = 0; i < stars.length; i++) {
+    stars[i].addEventListener('click', (event) => {
+      let pus = event.target.parentNode.parentNode.querySelectorAll('.star_label i');
+      for (let k = 0; k < i; k++) {
+        pus[k].className = "far fa-star"
+      }
+      for (let k = i; k < pus.length; k++) {
+        pus[k].className = "fas fa-star"
+      }
+
+    })
   }
 }

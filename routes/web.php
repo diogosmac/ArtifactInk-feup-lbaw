@@ -78,6 +78,9 @@ Route::prefix('profile')->name('profile.')->group(function() {
     
     Route::put('reviews', 'ReviewController@updateReview')->name('reviews');
 
+    Route::delete('reviews', 'ReviewController@deleteReview')->name('reviews');
+
+
     
     // Wishlist
     Route::get('wishlist', 'WishlistController@list')->name('wishlist');
