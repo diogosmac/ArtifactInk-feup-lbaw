@@ -15,7 +15,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-link a_link" data-dismiss="modal">Cancel</button>
-        <button id="deleteAccountButton" type="button" class="btn button" autocomplete="off" disabled>Delete</button>
+        <form  method="post" action="{{route('profile.delete')}}" id="deleteAccountForm">
+            @csrf
+            @method('DELETE')
+            <button id="deleteAccountButton" type="submit" class="btn button" autocomplete="off" disabled>Delete</button>
+        </form>
       </div>
     </div>
   </div>

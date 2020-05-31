@@ -5,7 +5,6 @@
 @section('content')
 
 @if(!$expired && isset($token)) 
-<!-- Muda ali o true e chapa ali o token que queres -->
 <form class="form-signin" method="post" action="/reset_password">
     @csrf
     <input type="hidden" name="token" value="{{$token}}">
