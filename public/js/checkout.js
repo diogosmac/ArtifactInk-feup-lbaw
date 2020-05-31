@@ -18,8 +18,8 @@ let express_shipping_radio = document.getElementById('express-shipping');
 
 updateShipping(); 
 
-standard_shipping_radio .addEventListener('click', updateShipping, false );
-express_shipping_radio .addEventListener('click',updateShipping, false ); 
+standard_shipping_radio.addEventListener('click', updateShipping, false );
+express_shipping_radio.addEventListener('click',updateShipping, false ); 
 
 function updateShipping(){
    if(standard_shipping_radio.checked){
@@ -173,6 +173,58 @@ function showConfirm(){
     shipping_form.style.display='none'; 
     payment_form.style.display='none'; 
     confirm_form.style.display = 'initial'; 
+    updateAddress(); 
+    updatePayment(); 
 }
 
-//  CONFIRM CHECKOUT
+//===== CONFIRM PAGES =====
+
+//ADDRESS
+
+//todo add evebt listeners for this stuff 
+let addr1_confirm =  document.getElementById('addr1-confirm');
+let addr2_confirm =  document.getElementById('addr2-confirm'); 
+let addr_selected = document.getElementById('address-input-group'); 
+
+updateAddress(); 
+
+function updateAddress(){
+    if( document.querySelector('#new-addr-form').style.display == "none" || document.querySelector('#new-addr-form').style.display === "" ){
+        let str_addr = addr_selected.options[addr_selected.selectedIndex].innerHTML; 
+        let str_addr_arr = str_addr.split(' -'); 
+        addr1_confirm.innerHTML = str_addr_arr[3]; 
+        addr2_confirm.innerHTML = str_addr_arr[0] + ' - ' + str_addr_arr[1] + ' - '+str_addr_arr[2];
+
+    }else{
+        //todo 
+        // addr1_confirm.innerHTML = ; 
+        //addr2_confirm.innerHTML = ;
+    }
+}
+
+
+//PAYMENT METHOD 
+let payment1_confirm = document.getElementById('payment1-confirm');
+let payment2_confirm = document.getElementById('payment2-confirm');
+let payment_selected = document.getElementById('payment-input-group');
+
+updatePayment(); 
+
+function updatePayment(){
+    
+    if(document.querySelector('#new-payment-form').style.display == "none" || document.querySelector('#new-payment-form').style.display === ""){
+        let str_payment = payment_selected.options[payment_selected.selectedIndex].innerHTML; 
+        let str_payment_addr = str_payment.split(' '); 
+        
+        if(str_payment_addr.includes('Credit')){
+            payment1_confirm.innerHTML = "Credit Card"; 
+            payment2_confirm.innerHTML =str_payment; 
+        }else{
+            payment1_confirm.innerHTML = "Paypal"; 
+            payment2_confirm.innerHTML = str_payment; 
+        }
+    
+    }else{
+    
+    }
+}

@@ -318,8 +318,8 @@
           </div>
           <div class=" confirmation-div" id="#confirm_address">
             <h4> Address</h4>
-            <h5> Main Address for Delivery, 99, 1st lf </h5>
-            <h6> Portugal, Porto - Porto 4763-384</h6>
+            <h5 id="addr1-confirm"> </h5>
+            <h6 id="addr2-confirm"></h6>
           </div>
           <hr class="mb-4">
           <div class=" confirmation-div" id="#confirm_shipping">
@@ -329,8 +329,8 @@
           <hr class="mb-4">
           <div class=" confirmation-div" id="#confirm_payment">
             <h4> Payment Method</h4>
-            <h5> Credit Card </h5>
-            <h6> Matercard - ending 8634 - 11/76</h6>
+            <h5 id="payment1-confirm"></h5>
+            <h6 id="payment2-confirm"></h6>
           </div>
           <hr class="mb-4">
           <div class="row justify-content-between" id="move-buttons">
