@@ -29,13 +29,14 @@ Route::post('recover_password', 'Auth\RecoverPasswordController@requestRecoverPa
 Route::get('reset_password/{token}', 'Auth\RecoverPasswordController@showResetPasswordForm')->name('reset_password');
 Route::post('reset_password', 'Auth\RecoverPasswordController@requestSetPassword');
 
-
 //routes for debugging pages - remove later
 Route::get('/', 'ItemController@showHomepage')->name('home'); //todo reply function indide in all pages 
 
 Route::get('search','SearchController@showSearch')->name('search');
 
 Route::get('product/{id}-{slug?}', 'ItemController@show');
+
+Route::get('category/{id}-{slug?}', 'CategoryController@show');
 
 //profile pages and stuff related 
 Route::prefix('profile')->name('profile.')->group(function() {
