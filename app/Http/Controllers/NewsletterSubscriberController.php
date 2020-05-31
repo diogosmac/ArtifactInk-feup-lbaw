@@ -15,7 +15,7 @@ class NewsletterSubscriberController extends Controller
     public function subscribe(Request $request) {
         // validate request
         $this->validateSubscription($request);
-        
+
         $subscriber = new NewsletterSubscriber();
         $subscriber->email = $request->email;
         $subscriber->save();
@@ -28,12 +28,13 @@ class NewsletterSubscriberController extends Controller
     private function validateSubscription(Request $request) {
         //validation rules.
         $rules = [
-            'email' => 'required|email'
+            'email' => 'required|unique:newsletter_subscriber|email'
         ];
 
         //custom validation error messages.
         $messages = [
-            'email.*' => 'Please enter an email address.',
+            'email.email' => 'Please enter an email address.',
+            'email.unique' => 'This email address has already been added to our newsletter.',
         ];
 
         // validate the request.
