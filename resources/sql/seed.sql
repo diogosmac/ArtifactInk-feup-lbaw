@@ -80,7 +80,8 @@ CREATE TABLE "user" (
     "email" TEXT NOT NULL CONSTRAINT user_email_uk UNIQUE,
     "phone" TEXT,
     "password" TEXT NOT NULL,
-    "remember_token" VARCHAR
+    "remember_token" VARCHAR,
+    "is_banned" BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE "country" (
