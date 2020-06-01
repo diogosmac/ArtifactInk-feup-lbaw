@@ -1,5 +1,9 @@
-//ITEMS 
+//FORM FLAGS
+let new_addr = false; 
+let new_payment = false; 
+let curr_page = 1; 
 
+//ITEMS 
 let checkoutItemQty = document.querySelectorAll('ul#checkout-items-list li div span:first-child'); 
 let checkoutItemPrice = document.querySelectorAll('ul#checkout-items-list li div span:nth-child(2)'); 
 let totalPrice = 0; 
@@ -10,9 +14,7 @@ for(let i = 0; i < checkoutItemPrice.length; i++ ){
     totalQty += checkoutItemQty[i].innerHTML * 1 ; 
 }
 
-
 //SHIPPING METHOD ADD TO CART
-
 let standard_shipping_radio = document.getElementById('standard-shipping');
 let express_shipping_radio = document.getElementById('express-shipping'); 
 
@@ -47,7 +49,6 @@ let shipping_price = document.getElementById('shipping-cost').innerHTML *1;
 document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice +shipping_price + " €"; 
 document.querySelectorAll('div#checkout-list span.badge-pill')[0].innerHTML = totalQty; 
 
-
 //SHIPPING DATES 
 let standardTime = new Date(); 
 let expressTime = new Date(); 
@@ -62,9 +63,6 @@ let dayStandard = standardTime.getDate();
 var monthExpress = expressTime.getMonth() + 1
 var dayExpress = expressTime.getDate();
 
-
-
-
 document.querySelector('#standard-date').innerHTML = 'Expected by '  + getMonth(monthStandard) +' '+ dayStandard; 
 document.querySelector('#express-date').innerHTML = 'Expected by ' +  getMonth(monthExpress) +' '+ dayExpress; 
 //ADDRESS 
@@ -76,27 +74,48 @@ let  addr_selector = document.querySelector('#addr-selector');
 if(new_addr_btn != null){
     
     new_addr_btn.addEventListener('click', ()=>{
-        let addr_field = document.querySelector('#new-addr-form');
+        let addr_field = document.querySelector('#new-addr-form')
         addr_field.style.display='initial'
-        new_addr_btn.style.display='none'; 
+        new_addr_btn.style.display='none'
         addr_selector.style.display='none'
+
+        //set required elements 
+        document.getElementById('streetAdd').required = true; 
+        document.getElementById('countryAdd').required = true; 
+        document.getElementById('cityAdd').required = true; 
+        document.getElementById('postalCodeAdd').required = true; 
+        //unset 
+        document.getElementById('address-input-group').required= false; 
         
+        new_addr = true; 
+
     },false);
 }
 
 if(ret_addr_btn != null){
   ret_addr_btn.addEventListener('click', ()=>{
-    let addr_field = document.querySelector('#new-addr-form');
+    let addr_field = document.querySelector('#new-addr-form')
     addr_field.style.display='none'
     new_addr_btn.style.display='initial'; 
     addr_selector.style.display='flex'
+
+    //set required elements 
+    document.getElementById('address-input-group').required= false; 
+    //unset 
+    document.getElementById('streetAdd').required = true; 
+    document.getElementById('countryAdd').required = true; 
+    document.getElementById('cityAdd').required = true; 
+    document.getElementById('postalCodeAdd').required = true; 
+
+    new_addr = false; 
+
     },false);  
 }
 
 //PAYMENT METHOD 
 
-let paypal = document.getElementById('paypal'); 
-let credit = document.getElementById('credit'); 
+let paypal = document.getElementById('paypal-add'); 
+let credit = document.getElementById('cc-add'); 
 
 if(credit != null)
     credit.addEventListener('click',payment_event_handler, false); 
@@ -108,10 +127,26 @@ function payment_event_handler(){
     if(!paypal.checked){
         document.querySelector(".payment-form").style.display = "inherit"   
         document.querySelector(".payment-form2").style.display = "none"   
+
+         //set required
+         document.getElementById('cc-name-add').required = true; 
+         document.getElementById('cc-expiration-add').required = true; 
+         document.getElementById('cc-cvv-add').required = true; 
+         document.getElementById('cc-number-add').required = true; 
+
+         document.getElementById('pp-email').required = false; 
     }
     else{
         document.querySelector(".payment-form").style.display = "none"  
         document.querySelector(".payment-form2").style.display = "inherit"    
+
+         //set required
+         document.getElementById('pp-email').required = true; 
+
+         document.getElementById('cc-name-add').required = false; 
+         document.getElementById('cc-expiration-add').required = false; 
+         document.getElementById('cc-cvv-add').required = false; 
+         document.getElementById('cc-number-add').required = false; 
     } 
 }
 
@@ -124,14 +159,44 @@ if(new_payment_btn != null){
     new_payment_btn.addEventListener('click', ()=>{
         let payment_field = document.querySelector('#new-payment-form');
         payment_field.style.display='initial'
-        new_payment_btn.style.display='none'; 
+        new_payment_btn.style.display='none'
         payment_selector.style.display='none'
-        document.querySelector(".payment-form").style.display = "inherit"   
+
+        if(document.getElementById('cc-add').checked){
+            document.querySelector(".payment-form").style.display = "inherit"  
+            document.querySelector(".payment-form2").style.display = "none" 
+
+            //set required
+            document.getElementById('cc-name-add').required = true; 
+            document.getElementById('cc-expiration-add').required = true; 
+            document.getElementById('cc-cvv-add').required = true; 
+            document.getElementById('cc-number-add').required = true; 
+
+            document.getElementById('pp-email').required = false; 
+        }
+        else if(document.getElementById('paypal-add').checked){
+            document.querySelector(".payment-form").style.display =  "none" 
+            document.querySelector(".payment-form2").style.display = "inherit"
+
+            //set required
+            document.getElementById('pp-email').required = true; 
+
+            document.getElementById('cc-name-add').required = false; 
+            document.getElementById('cc-expiration-add').required = false; 
+            document.getElementById('cc-cvv-add').required = false; 
+            document.getElementById('cc-number-add').required = false; 
+        }
         
+        //set required elements 
+        document.getElementById('payment-input-group').required= false; 
+        
+        new_payment = true; 
+
     },false);
 }
 
 if(ret_payment_btn != null){
+
   ret_payment_btn.addEventListener('click', ()=>{
     let payment_field = document.querySelector('#new-payment-form');
     payment_field.style.display='none'
@@ -139,7 +204,21 @@ if(ret_payment_btn != null){
     document.querySelector(".payment-form2").style.display = "none"    
     new_payment_btn.style.display='initial'; 
     payment_selector.style.display='flex'
+ 
+
+    //set required elements 
+    document.getElementById('payment-input-group').required= true; 
+        
+    //unset
+    document.getElementById('pp-email').required =false; 
+    document.getElementById('cc-name-add').required = false; 
+    document.getElementById('cc-expiration-add').required = false; 
+    document.getElementById('cc-cvv-add').required = false; 
+    document.getElementById('cc-number-add').required = false; 
+
+    new_payment = false; 
     },false);  
+
 }
 
 //FORM PAGES
@@ -195,8 +274,6 @@ function showConfirm(){
 //===== CONFIRM PAGES =====
 
 //ADDRESS
-
-//todo add event listeners for this stuff 
 let addr1_confirm =  document.getElementById('addr1-confirm');
 let addr2_confirm =  document.getElementById('addr2-confirm'); 
 let addr_selected = document.getElementById('address-input-group'); 
@@ -231,6 +308,8 @@ updatePayment();
 function updatePayment(){
     
     if(document.querySelector('#new-payment-form').style.display == "none" || document.querySelector('#new-payment-form').style.display === ""){
+        new_payment = false; 
+
         let str_payment = payment_selected.options[payment_selected.selectedIndex].innerHTML; 
         let str_payment_addr = str_payment.split(' '); 
         
@@ -241,11 +320,17 @@ function updatePayment(){
             payment1_confirm.innerHTML = "Paypal"; 
             payment2_confirm.innerHTML = str_payment; 
         }
-    
     }else{
-        
-        //TODO - check if credit card or paypal 
 
+        new_payment = true; 
+
+        if(document.getElementById('cc-add').checked){
+            payment1_confirm.innerHTML = "Credit Card"; 
+            payment2_confirm.innerHTML = "Credit Card ending "+document.getElementById('cc-name').value ; 
+        }else if(document.getElementById('paypal-add').checked){
+            payment1_confirm.innerHTML = "Paypal"; 
+            payment2_confirm.innerHTML = "Paypal with email associated starting "+document.getElementById('pp-email').value; 
+        }
     }
 }
 
