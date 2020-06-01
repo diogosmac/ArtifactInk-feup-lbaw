@@ -104,7 +104,7 @@
         <div class="collapse navbar-collapse" id="navbarTopSupportedContent">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <form action="{{route('search')}}", method="get">
+              <form class="m-0" action="{{route('search')}}" method="get">
               <div class="input-group">
                 <input type="text" name="query" class="form-control" placeholder="Search" aria-describedby="search-button" required>
                 <div class="input-group-append">
