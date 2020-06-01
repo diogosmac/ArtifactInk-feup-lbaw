@@ -89,12 +89,15 @@ class OrderController extends Controller
            $address->save(); 
            //add tp users table
            $userAddresses->attach($address->id);
+
         }catch(\Exception $e){
             return redirect()->back()->withErrors("Failed creating new Address!");
         }
-           
+        //update address id 
+        $address_id = $address->id;  
     }
-  
+
+    
     //new payment method 
     if($new_payment == "true"){
         $userPaymentMethods = Auth::user()->payment_methods();
@@ -122,6 +125,9 @@ class OrderController extends Controller
             } catch (Exception $e) {
                 return redirect()->back()->withErrors("Failed creating new Credit Card payment method!");
             }
+            //update payment id 
+            $payment_id =  PaymentMethod::where('id_cc',$creditCard->id)->first();
+
         }else{//if paypal
             $paypal= new Paypal; 
             $paypal->email = $pp_email_new; 
@@ -141,7 +147,9 @@ class OrderController extends Controller
             } catch (Exception $e) {
                 return redirect()->back()->withErrors("Failed creating new Paypal paymenmt method!");
             }
-    
+            
+            $payment_id =  PaymentMethod::where('id_pp',$paypal->id)->first();
+
         }
     }
 
