@@ -65,49 +65,11 @@
         </tr>
       </thead>
       <tbody>
-        @php
-        $users = array(
-          // user 3
-          (object) array(
-            "id" => 3,
-            "firstName" => "João",
-            "lastName" => "Massa",
-            "email" => "joao.massinhas@siaga.com",
-            "phone" => "+351 987 876 453",
-            "birthday" => "25-04-1974",
-            "card" => "MasterCard XXXX-XXXX-XXXX-1234",
-            "address1" => "Address Banana, 123 - 6ª esq frente",
-            "address2" => "Avenida Sérgio Sobral Nunes, 123 - 6ª esq frente"
-          ),
-          // user 2
-          (object) array(
-            "id" => 2,
-            "firstName" => "Joana",
-            "lastName" => "Banana",
-            "email" => "joaninha@frutas.com",
-            "phone" => "+351 987 876 453",
-            "birthday" => "25-04-1974",
-            "card" => "VISA XXXX-XXXX-XXXX-9876",
-            "address1" => "Address Banana, 123 - 6ª esq frente",
-            "address2" => "Avenida Sérgio Sobral Nunes, 123 - 6ª esq frente"
-          ),
-          // user 1
-          (object) array(
-            "id" => 1,
-            "firstName" => "Manuel",
-            "lastName" => "Coutinho",
-            "email" => "mc.coutinho@fe.up.pt",
-            "phone" => "+351 987 876 453",
-            "birthday" => "25-04-1974",
-            "card" => "PayPal mc.coutinho@fe.up.pt",
-            "address1" => "Address Banana, 123 - 6ª esq frente",
-            "address2" => "Avenida Sérgio Sobral Nunes, 123 - 6ª esq frente"
-          )
-        );
-        @endphp
         @each('partials.admin.user_row', $users, 'user')
       </tbody>
     </table>
+
+    {{ $users->onEachSide(1)->links() }}
 
   </div>
 </main>

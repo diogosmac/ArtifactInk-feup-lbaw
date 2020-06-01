@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\SearchController;
 use App\Item;
 use App\ItemPicture;
+use App\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 
@@ -196,23 +197,43 @@ class AdminController extends Controller
     }
 
     public function archiveItem(Request $request) {
-        // get item
-        $item = Item::find($request->id_item);
+        try {
+            // get item
+            $item = Item::findOrFail($request->id_item);
 
-        $item->status = 'archived';
-        $item->save();
+            if ($item != null) {
+                // set new status
+                $item->status = 'archived';
+                $item->save();
+                // return item id
+                return response()->json(['id_item' => $item->id]);
+            } else {
+                return response(json_encode("This product does not exist"), 404);
+            }
 
-        return response()->json(['id_item' => $item->id]);
+        } catch (\Exception $e) {
+            return response(json_encode($e->getMessage()), 400);
+        }
     }
 
     public function unarchiveItem(Request $request) {
-        // get item
-        $item = Item::find($request->id_item);
+        try {
+            // get item
+            $item = Item::findOrFail($request->id_item);
+            
+            if ($item != null) {
+                // set new status
+                $item->status = 'active';
+                $item->save();
+                // return item id
+                return response()->json(['id_item' => $item->id]);
+            } else {
+                return response(json_encode("This product does not exist"), 404);
+            }
 
-        $item->status = 'active';
-        $item->save();
-
-        return response()->json(['id_item' => $item->id]);
+        } catch (\Exception $e) {
+            return response(json_encode($e->getMessage()), 400);
+        }
     }
 
     /*
@@ -248,6 +269,20 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showUsers() {
+        $users = User::orderBy('id', 'asc');
+
+        // TODO search
+
+        $users = $users->paginate(10)->withPath('');
+        return view('pages.admin.users', ['users' => $users]);
+    }
+
+    public function banUser(Request $request) {
+        $items = Item::orderBy('id', 'asc');
+
+        // TODO search
+
+        $items = $items->paginate(10)->withPath('');
         return view('pages.admin.users');
     }
 
