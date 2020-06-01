@@ -91,14 +91,15 @@ class ReviewController extends Controller
 
   public function reportReview(Request $request) {
     if (!Auth::check()) return redirect('/sign_in');
-    
+  
     try {
       $review = Review::findOrFail($request['review']);
       $notif = AdminNotification::create(['body' => 'New Reported Review']);
       ReportNotification::create(['id_notif' => $notif->id, 'id_review' => $review->id]);
 
     } catch (Exception $e){
-      redirect()->back()->withErrors(['report' => 'Could not report review']); 
+      return redirect()->back()->withErrors(['report' => 'Could not report review']); 
     }
+    return redirect()->back();
   }
 }

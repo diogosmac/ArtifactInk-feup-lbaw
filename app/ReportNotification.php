@@ -12,12 +12,14 @@ class ReportNotification extends Model {
      */
     protected $table = 'report_notification';
 
+    protected $primaryKey = 'id_notif';
+
     /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
      */
-    public $timestamps = true;
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.

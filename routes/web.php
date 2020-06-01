@@ -37,6 +37,8 @@ Route::get('product/{id}-{slug?}', 'ItemController@show');
 
 Route::get('category/{id}-{slug?}', 'CategoryController@show')->name('category');
 
+Route::post('report_review', 'ReviewController@reportReview')->name('report_review');
+
 //profile pages and stuff related 
 Route::prefix('profile')->name('profile.')->group(function() {
     

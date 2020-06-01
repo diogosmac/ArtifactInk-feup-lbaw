@@ -17,7 +17,7 @@ class AdminNotification extends Model {
      *
      * @var bool
      */
-    public $timestamps = true;
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.

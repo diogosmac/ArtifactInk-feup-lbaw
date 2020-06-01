@@ -12,10 +12,10 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-link a_link" data-dismiss="modal">Cancel</button>
-        <form action="" method="POST">
+        <form action="{{ route('report_review') }}" method="POST">
           @csrf
           @method('POST')
-          <input type="hidden" name="item" value="{{$review->id_item}}">
+          <input type="hidden" name="review" value="{{$review->id}}">
           <button type="submit" class="btn button">Confirm</button>
         </form>
       </div>
