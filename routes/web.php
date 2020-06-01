@@ -100,9 +100,11 @@ Route::delete('cart', 'CartController@delete_from_cart');
 Route::put('cart', 'CartController@update_item_quantity');
 
 // Checkout
-Route::prefix('/checkout')->name('checkout.')->group(function () {
+Route::prefix('checkout')->name('checkout.')->group(function () {
    
     Route::get('/','UserController@showCheckout')->name('home');
+
+    Route::post('/','OrderController@addOrder')->name('home'); 
 
 });
 

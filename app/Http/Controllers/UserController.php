@@ -152,4 +152,5 @@ class UserController extends Controller
     return view('pages.checkout', ['cartItems'=>$cartItems, 'addresses'=>$addresses, 'countries' => $countries,'paymentMethods'=>$paymentMethods] ); 
    }
 
+   
 }

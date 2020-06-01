@@ -37,7 +37,7 @@
 
 
     <div class="col-md-8 order-md-1 checkout-form-steps">
-      <form action="{{ route('profile.home')}}" class="needs-validation" novalidate="" method="post">
+      <form action="{{ route('checkout.home')}}" class="needs-validation" novalidate="" method="post">
         {{csrf_field()}}
         {{ method_field('POST')}}
         <!-- ADDRESS OPTION -->
@@ -63,7 +63,7 @@
           <div class="checkout-addr-field">
 
             <div class="input-group mb-3" id="addr-selector">
-              <select class="custom-select" id="address-input-group" required>
+              <select class="custom-select" id="address-input-group" name="addrOld" required>
                 @foreach($addresses as $address)
                 <option value="{{ $address->id }}">
                   {{ $address->country->name }} - {{ $address->city }} - {{ $address->postal_code}} -
@@ -90,7 +90,7 @@
               <div class="row">
                 <div class="col-md-5 mb-3">
                   <label for="countryAdd">Country:</label>
-                  <select class="custom-select d-block w-100" id="countryAdd">
+                  <select class="custom-select d-block w-100" id="countryAdd" name="country">
                     @foreach($countries as $country)
                     <option value="{{ $country->id }}">{{ $country->name}}</option>
                     @endforeach
@@ -111,7 +111,7 @@
                 <div class="col-md-3 mb-3">
                   <label for="postalCodeAdd">Postal Code: </label>
                   <input type="text" class="form-control" id="postalCodeAdd" placeholder="Type your Code"
-                    pattern="^[0-9]*-[0-9]*$">
+                    pattern="^[0-9]*-[0-9]*$" name="postalCode">
                   <div class="invalid-feedback">
                     Postal code required.
                   </div>
@@ -143,7 +143,7 @@
             </div>
             <div class="custom-control custom-radio">
 
-              <input name="shippingMethod" type="radio" class="custom-control-input" id="express-shipping" required>
+              <input name="shippingMethod" type="radio" class="custom-control-input" id="express-shipping">
               <label class="custom-control-label" for="express-shipping">
                 <h6 class="shipping-method">
                   Express Delivery -
@@ -190,7 +190,7 @@
 
           <div class="checkout-payment-field">
             <div class="input-group mb-3" id="payment-selector">
-              <select class="custom-select" id="payment-input-group" required>
+              <select class="custom-select" id="payment-input-group" name="paymentOld" required>
                 @foreach($paymentMethods as $paymentMethod)
                 @if($paymentMethod->id_cc != null)
                 <option value="{{ $loop->iteration }}">
@@ -234,7 +234,7 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="cc-name-add">Name on card</label>
-                <input type="text" class="form-control" id="cc-name-add" placeholder="Type the cardholder name">
+                <input type="text" class="form-control" id="cc-name-add" placeholder="Type the cardholder name" name="ccName">
                 <small class="text-muted">Full name as displayed on card</small>
                 <div class="invalid-feedback">
                   Name on card is required
@@ -242,7 +242,7 @@
               </div>
               <div class="col-md-6 mb-3">
                 <label for="cc-number-add">Credit card number</label>
-                <input type="text" class="form-control" id="cc-number-add" placeholder="Type Your credit Card Number">
+                <input type="text" class="form-control" id="cc-number-add" placeholder="Type Your credit Card Number" name="ccNumber">
                 <div class="invalid-feedback">
                   Credit card number is required
                 </div>
@@ -251,14 +251,14 @@
             <div class="row">
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration-add">Expiry Date: </label>
-                <input type="date" class="form-control" id="cc-expiration-add" placeholder="">
+                <input type="date" class="form-control" id="cc-expiration-add" placeholder="" cc="ccDate">
                 <div class="invalid-feedback">
                   Expiration date required
                 </div>
               </div>
               <div class="col-md-3 mb-3">
                 <label for="cc-cvv.add">CVV:</label>
-                <input type="text" class="form-control" id="cc-cvv-add" placeholder="Type Card CVV">
+                <input type="text" class="form-control" id="cc-cvv-add" placeholder="Type Card CVV" name="ccCVV">
                 <div class="invalid-feedback">
                   Security code required
                 </div>
@@ -270,7 +270,7 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="pp-email">Email:</label>
-                <input type="email" class="form-control" id="pp-email" placeholder="Type your Paypal Email">
+                <input type="email" class="form-control" id="pp-email" placeholder="Type your Paypal Email" name="ppEmail">
               </div>
             </div>
           </div>
@@ -331,11 +331,15 @@
               <button type="button" class="btn button-secondary" id="previous-confirm">Previous</button>
             </div>
             <div>
-              <button class="btn button" type="submit">Confirm</button> <!-- TODO this will be an action -->
+              <button id="confirm-button" class="btn button" type="submit">Confirm</button> <!-- TODO this will be an action -->
             </div>
           </div>
 
         </div>
+
+        <input type="hidden" id="total" name="total" >
+        <input type="hidden" id="payment" name="payment">
+        <input type="hidden" id="address" name="address">
 
       </form>
     </div>
