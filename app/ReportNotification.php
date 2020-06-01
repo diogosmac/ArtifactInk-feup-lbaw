@@ -18,6 +18,15 @@ class ReportNotification extends Model {
      * @var bool
      */
     public $timestamps = true;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id_notif','id_review'
+    ];
 }
 
 ?>

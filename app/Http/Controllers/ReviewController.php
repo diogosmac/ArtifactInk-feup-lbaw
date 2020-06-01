@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\AdminNotification;
+use App\ReportNotification;
 use App\Review;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDOException;
@@ -84,5 +87,18 @@ class ReviewController extends Controller
     }
 
     return redirect()->route('profile.reviews');
+  }
+
+  public function reportReview(Request $request) {
+    if (!Auth::check()) return redirect('/sign_in');
+    
+    try {
+      $review = Review::findOrFail($request['review']);
+      $notif = AdminNotification::create(['body' => 'New Reported Review']);
+      ReportNotification::create(['id_notif' => $notif->id, 'id_review' => $review->id]);
+
+    } catch (Exception $e){
+      redirect()->back()->withErrors(['report' => 'Could not report review']); 
+    }
   }
 }

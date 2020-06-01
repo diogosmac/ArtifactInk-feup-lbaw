@@ -17,7 +17,16 @@ class AdminNotification extends Model {
      *
      * @var bool
      */
-    public $timestamps = false;
+    public $timestamps = true;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'body'
+    ];
 
     public function out_of_stock_notification() {
         return $this->hasOne('App\OutOfStockNotification', 'id_notif');

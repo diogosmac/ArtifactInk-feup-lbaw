@@ -13,6 +13,8 @@
         </div>
         {{ date("F jS Y", strtotime($review->date)) }}
         <a href="" class="py-2 text-center a_link">Report Review</a>
+        <button class="btn btn-link a_link" type="button" data-toggle="modal" data-target="#confirmReportReview{{ $review->id }}">Report Review</button>
+        @include('partials.pop-ups.confirm_report_review')
       </div>
     </div>
     <div class="col-8">
@@ -37,6 +39,8 @@
         </div>
         {{ date("F jS Y", strtotime($review->date)) }}
         <a href="" class="py-2 text-center a_link">Report Review</a>
+        <button class="btn btn-link a_link" type="button" data-toggle="modal" data-target="#confirmReportReview{{ $review->id }}">Report Review</button>
+
       </div>
     </div>
   </div>
