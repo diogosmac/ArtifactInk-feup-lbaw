@@ -1,5 +1,6 @@
 <aside class="d-flex flex-column justify-content-center bg-light rounded p-2">
         <h4 class="text-start">Filters</h4>
+        @if (count($categories) > 0)
         <div>
             <label class="mt-2" for="categories">Categories</label>
             <div id="categories" class="rounded border border-secondary px-2" style="max-height:10em; overflow-y: scroll">
@@ -15,6 +16,7 @@
                 <?php } ?>
             </div>
         </div>
+        @endif
         <div>
             <label class="mt-3" for="brands">Brands</label>
             <div id="brands" class="rounded border border-secondary px-2" style="max-height:10em; overflow-y: scroll">

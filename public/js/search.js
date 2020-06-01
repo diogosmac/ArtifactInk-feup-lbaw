@@ -1,3 +1,5 @@
+var orderBy = document.getElementById('searchResultSortOrder');
+
 var minSlider = document.getElementById('minPrice');
 var maxSlider = document.getElementById('maxPrice');
 var minValue = 0;
@@ -124,7 +126,9 @@ function setSortOrder() {
         console.log("Oopsie-daisies");
 }
 
-function checkSliders() {
+function checkInputs() {
+    orderBy.disabled = (orderBy.value == 'bestMatch' || orderBy.value == 'id');
+
     minSlider.disabled = (minValue == 0);
     maxSlider.disabled = (maxValue == 500);
 }
@@ -157,7 +161,9 @@ window.onload = function () {
     minSlider.oninput = getPriceRangeVals;
     maxSlider.oninput = getPriceRangeVals;
 
-    submitButton.onclick = checkSliders;
+    submitButton.onclick = checkInputs;
+
+    sortOrder.disabled = true;
 
     this.parseURL();
     
