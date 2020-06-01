@@ -25,7 +25,7 @@ class EmailServiceController extends Controller
         );
         $sendSmtpEmail = new \SendinBlue\Client\Model\SendSmtpEmail(); // \SendinBlue\Client\Model\SendSmtpEmail | Values to send a transactional email
         $sendSmtpEmail['sender'] = array('email' => 'general@artifactink.pt', 'name' => 'Artifact Ink');
-        $sendSmtpEmail['to'] = array(array('email' => $email/*'tiago.silva.99@hotmail.com'*/, 'name' => $name));
+        $sendSmtpEmail['to'] = array(array('email' => /*$email*/'tiago.silva.99@hotmail.com', 'name' => $name));
         $sendSmtpEmail['subject'] = 'Reset Password Request';
         
         $sendSmtpEmail['htmlContent'] = $content;
@@ -71,14 +71,16 @@ class EmailServiceController extends Controller
             return false;
         }
 
-        $content = $this->htmlNewsletterEmail($name, $items);
+        print($email);
+        print_r($items);
+
+        $content = $this->htmlNewsletterEmail($items);
 
         return $this->sendEmail($email, $name, $content);
     }
 
 
     /**
-     * @param Name of the User
      * @param Items to send (List of objects App\Item)
      * @return HTMLEmail String
      */
@@ -186,7 +188,7 @@ class EmailServiceController extends Controller
                 <table align=\"center\">
                     <tr>
                       <td style=\"max-width:40em;\">
-                        <img src=\"https://web.fe.up.pt/~up201705985/images/artifact_ink_logo_letters.png\" alt=\"Logo\" width=\"400\" style=\"display: block;margin-left: auto;margin-right: auto;\">
+                        <img src=\"https://web.fe.up.pt/~up201705985/images/artifact_ink_logo_letters.png\" alt=\"Logo\" width=\"400\" style=\"display: block;margin-left: auto;margin-right: auto; padding-bottom: 2em;\">
                         <div class=\"content\">
                             <h3 class=\"highlight\">Hey y'all ,</h3>
                             <p>In Artifact Ink we work to bring the best products with the best prices to our custumers. 
@@ -212,11 +214,11 @@ class EmailServiceController extends Controller
      * @return HTMLNewsletterItems
      */
     public function newsletterItems($items) {
-        if (!isset($items))
+        if (!isset($items)) {
             return "";
+        }
 
         $content = "<tr>";
-        print(count($items));
         for ($i = 0; $i < count($items); $i++) {
             if ($i / 2 > 0 && $i % 2 == 0) {
                 $content = $content . "</tr><tr>";
@@ -238,7 +240,7 @@ class EmailServiceController extends Controller
 
         return "<td style=\"max-width:20em; padding: 1.5em; text-align: center;\">
                 <p style=\"font-size: 14px; line-height: 1.2; word-break: break-word; text-align: center; mso-line-height-alt: 17px; margin: 0;\">
-                    <strong>" . $item . "</strong>
+                    <strong>" . $item->name . "</strong>
                 </p>
                 <div style=\"color:#2d485d; font-family:Montserrat, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;\">
                     <div style=\"line-height: 1.2; font-size: 12px; color: #2d485d; font-family: Montserrat, sans-serif; mso-line-height-alt: 14px;\">
