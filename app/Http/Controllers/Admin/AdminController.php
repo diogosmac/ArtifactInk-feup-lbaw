@@ -418,7 +418,12 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showNewsletter() {
-        return view('pages.admin.newsletter');
+        $items = Item::all();
+        return view('pages.admin.newsletter', ['products' => $items]);
+    }
+
+    public function sendNewsletter(Request $request) {
+        return $request;
     }
 
     /*

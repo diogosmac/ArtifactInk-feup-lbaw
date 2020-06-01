@@ -178,6 +178,7 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
 
     // newsletter
     Route::get('newsletter', 'AdminController@showNewsletter')->name('newsletter');
+    Route::post('newsletter', 'AdminController@sendNewsletter')->name('newsletter');
 
     // faqs
     Route::get('faqs', 'AdminController@showFaqs')->name('faqs');
