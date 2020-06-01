@@ -73,31 +73,31 @@
               </select>
             </div>
             @if ($item->status == 'active')
-            <?php 
-                $sales = $item->sales()->get();
-                $currentSale = 0;
-                $price = $item->price;
-                foreach ($sales as $sale) {
-                    if ($sale->type == 'percentage') {
-                        $new_sale = 0.01 * $sale->percentage_amount * $price;
-                        if ($new_sale > $currentSale) {
-                            $currentSale = $new_sale;
-                        }
-                    } else if ($sale->type == 'fixed') {
-                        if ($amount > $currentSale) {
-                            $currentSale = $amount;
-                            $output = "(-" . $amount . "€) ";
+                <?php 
+                    $sales = $item->sales;
+                    $currentSale = 0;
+                    $price = $item->price;
+                    foreach ($sales as $sale) {
+                        if ($sale->type == 'percentage') {
+                            $new_sale = 0.01 * $sale->percentage_amount * $price;
+                            if ($new_sale > $currentSale) {
+                                $currentSale = $new_sale;
+                            }
+                        } else if ($sale->type == 'fixed') {
+                            if ($amount > $currentSale) {
+                                $currentSale = $amount;
+                                $output = "(-" . $amount . "€) ";
+                            }
                         }
                     }
-                }
-                $price = round($price - $currentSale, 2);
-            ?>
-            <div class="row d-flex align-items-center">
-                @if ($currentSale > 0)
-                    <h3 class="pr-2 old-price">{{ '( ' . $item->price . '€ )' }}</h3>
-                @endif
-                <h1>{{ $price }}€</h1>
-            </div>
+                    $price = round($price - $currentSale, 2);
+                ?>
+                <div class="row d-flex align-items-center">
+                    @if ($currentSale > 0)
+                        <h3 class="pr-2 old-price">{{ $item->price . '€' }}</h3>
+                    @endif
+                    <h1>{{ $price }}€</h1>
+                </div>
             @else
             <h1>N/A</h1>
             @endif
