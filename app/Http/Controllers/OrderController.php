@@ -176,8 +176,6 @@ class OrderController extends Controller
     }
 
     //empty cart 
-
-
     return redirect()->route('home')->with('status',"Order has been processed"); 
 
    }
