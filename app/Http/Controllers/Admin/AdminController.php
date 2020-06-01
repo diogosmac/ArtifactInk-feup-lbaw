@@ -334,15 +334,35 @@ class AdminController extends Controller
         return view('pages.admin.sales.add_sale');
     }
 
+    public function addSale() {
+        return 1;
+    }
+
     public function showEditSaleForm($id_sale) {
-        // TODO GET SALE OBJECT
-        $sale = (object) array(
-            "id" => $id_sale,
-            "name" => "Inktober Fest",
-            "startDate" => "2020-03-01",
-            "endDate" => "2020-04-01"
-        );
-        return view('pages.admin.sales.edit_sale', ['sale' => $sale]);
+        try {
+            $sale = Sale::findOrFail($id_sale);
+            $sale_items = $sale->items;
+            $sale_item_ids = array_column((array) $sale_items, 'id');
+            $non_sale_item = Item::whereNotIn('id', $sale_item_ids);
+            
+            if ($sale != null) {
+                // delete sale
+                return view('pages.admin.sales.edit_sale', ['sale' => $sale]);
+
+            } else {
+                return redirect()
+                    ->route('admin.sales.home')
+                    ->withErrors('Failed to load sale.');
+                }
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('admin.sales.home')
+                ->withErrors('Failed to laod sale. ' . $e->getMessage());
+        }
+    }
+
+    public function editSale(Request $request) {
+        return 1;
     }
 
     public function deleteSale(Request $request) {
@@ -363,8 +383,8 @@ class AdminController extends Controller
         } catch (\Exception $e) {
             return redirect()
                 ->route('admin.sales.home')
-                ->withErrors('EXCEPTION: Failed to delete sale. ' . $e->getMessage());
-            }
+                ->withErrors('Failed to delete sale. ' . $e->getMessage());
+        }
     }
 
     /*

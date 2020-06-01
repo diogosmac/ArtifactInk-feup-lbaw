@@ -163,6 +163,19 @@ function unbanUserHandler() {
 
 /**
  * 
+ * SALE ITEMS
+ * 
+ */
+function addSaleItemsForm() {
+    let submitButton = document.getElementById('submit-sale-button');
+    let saleForm = document.getElementById('edit-sale');
+    if (submitButton == null || saleForm == null)
+        return;
+    
+}
+
+/**
+ * 
  * GENERAL INFO
  * 
  */
@@ -218,6 +231,7 @@ function cancelGeneralInfo() {
 window.addEventListener('load', function () {
     addArchiveListeners();
     addBanListeners();
+    addSaleItemsForm();
     if (document.getElementById("generalInfo") != null)
         generalInfo = document.getElementById("generalInfo").innerHTML;
 });
