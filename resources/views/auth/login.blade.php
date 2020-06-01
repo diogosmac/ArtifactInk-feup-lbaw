@@ -3,6 +3,17 @@
 @section('title', ' - Sign In')
 
 @section('content')
+
+{{-- Error Alert --}}
+@if(session('error'))
+  <div class="alert alert-danger alert-dismissible fade show sticky-top mx-auto" role="alert">
+    {{session('error')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
+
 <form class="form-signin" method="POST" action="{{ route('sign_in') }}">
     {{ csrf_field() }}
 
@@ -65,12 +76,3 @@
 </div>
 @endsection
 
-{{-- Error Alert --}}
-@if(session('error'))
-  <div class="alert alert-danger alert-dismissible fade show sticky-top mx-auto" role="alert">
-    {{session('error')}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-@endif
