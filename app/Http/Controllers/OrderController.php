@@ -126,7 +126,7 @@ class OrderController extends Controller
                 return redirect()->back()->withErrors("Failed creating new Credit Card payment method!");
             }
             //update payment id 
-            $payment_id =  PaymentMethod::where('id_cc',$creditCard->id)->first();
+            $payment_id =  PaymentMethod::where('id_cc',$creditCard->id)->first()->id;
 
         }else{//if paypal
             $paypal= new Paypal; 
@@ -143,12 +143,12 @@ class OrderController extends Controller
             
                 //add the the payment method to the user 
                 $userPaymentMethods->attach($payment_method->id);
-    
+                
             } catch (Exception $e) {
                 return redirect()->back()->withErrors("Failed creating new Paypal paymenmt method!");
             }
             
-            $payment_id =  PaymentMethod::where('id_pp',$paypal->id)->first();
+            $payment_id =  PaymentMethod::where('id_pp',$paypal->id)->first()->id;
 
         }
     }

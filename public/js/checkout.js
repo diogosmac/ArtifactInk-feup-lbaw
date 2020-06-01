@@ -17,34 +17,34 @@ for(let i = 0; i < checkoutItemPrice.length; i++ ){
 //SHIPPING METHOD ADD TO CART
 let standard_shipping_radio = document.getElementById('standard-shipping');
 let express_shipping_radio = document.getElementById('express-shipping'); 
+let shipping_price =0; 
 
 updateShipping(); 
 
 standard_shipping_radio.addEventListener('click', updateShipping, false );
 express_shipping_radio.addEventListener('click',updateShipping, false ); 
 
+
 function updateShipping(){
    if(standard_shipping_radio.checked){
-        document.querySelector('#shipping-cost').innerHTML = 1.99; 
+        document.querySelector('#shipping-cost').innerHTML = 1.99 +' €'; 
 
-        let shipping_price = document.getElementById('shipping-cost').innerHTML *1; 
+        shipping_price = 1.99; 
 
         document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice +shipping_price + " €"; 
         
         document.getElementById('shipping-confirm').innerHTML = 'Standard Shipping - '+ 1.99 +'€'; 
         
     }else if(express_shipping_radio.checked){
-        document.querySelector('#shipping-cost').innerHTML = 4.99; 
+        document.querySelector('#shipping-cost').innerHTML = 4.99 +' €'; 
 
-        let shipping_price = document.getElementById('shipping-cost').innerHTML *1; 
+        shipping_price = 4.99; 
 
-        document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice +shipping_price + " €"; 
+        document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice + shipping_price + " €"; 
 
         document.getElementById('shipping-confirm').innerHTML = 'Express Shipping - '+ 4.99 +'€'; 
     } 
 }
-
-let shipping_price = document.getElementById('shipping-cost').innerHTML *1; 
 
 document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice +shipping_price + " €"; 
 document.querySelectorAll('div#checkout-list span.badge-pill')[0].innerHTML = totalQty; 
@@ -251,19 +251,30 @@ let payment_form = document.querySelector("#checkout-payment");
 let confirm_form = document.querySelector("#checkout-confirm");
 
 
-function showShipping(){
+function showShipping(){ 
+    if(!controlForm()){
+        return; 
+    }
+    curr_page = 1; 
     shipping_form.style.display='initial'; 
     payment_form.style.display='none'; 
     confirm_form.style.display = 'none'; 
 }
 
 function showPayment(){
+    
+    if(!controlForm())
+        return; 
+    curr_page = 2; 
     shipping_form.style.display='none'; 
     payment_form.style.display='initial'; 
     confirm_form.style.display = 'none'; 
 }
 
 function showConfirm(){
+    if(!controlForm())
+        return; 
+    curr_page = 3; 
     shipping_form.style.display='none'; 
     payment_form.style.display='none'; 
     confirm_form.style.display = 'initial'; 
@@ -326,10 +337,10 @@ function updatePayment(){
 
         if(document.getElementById('cc-add').checked){
             payment1_confirm.innerHTML = "Credit Card"; 
-            payment2_confirm.innerHTML = "Credit Card ending "+document.getElementById('cc-name').value ; 
+            payment2_confirm.innerHTML = "Credit Card ending "+document.getElementById('cc-number-add').value.substr(document.getElementById('cc-number-add').value.length-4, document.getElementById('cc-number-add').value) ; 
         }else if(document.getElementById('paypal-add').checked){
             payment1_confirm.innerHTML = "Paypal"; 
-            payment2_confirm.innerHTML = "Paypal with email associated starting "+document.getElementById('pp-email').value; 
+            payment2_confirm.innerHTML = "Paypal with email associated: "+ (document.getElementById('pp-email').value); 
         }
     }
 }
@@ -370,6 +381,46 @@ document.querySelector('form').addEventListener('submit',()=>{
 
 
 },false)
+
+//CONTROL FORM IF CAN MOVE THROUGH PAGES 
+
+function controlForm(){
+    switch(curr_page){
+        case 1:
+    
+            if(new_addr){
+                if(document.getElementById('streetAdd').value === "" || document.getElementById('cityAdd').value === "" || document.getElementById('postalCodeAdd') === "" )
+                    return false; 
+            }
+            if(document.getElementById('standard-shipping').checked == false && document.getElementById('express-shipping').checked == false)
+                return false;
+        break; 
+            
+        case 2:  
+           
+            if(new_payment){
+                if(document.getElementById('cc-add').checked == false && document.getElementById('paypal-add').checked == false)
+                    return false; 
+
+                if(document.getElementById('cc-add').checked){
+           
+                    if(document.getElementById('cc-name-add').value === "" || document.getElementById('cc-number-add').value === ""  || document.getElementById('cc-expiration-add').value === "" ||  document.getElementById('cc-cvv-add').value === "" )
+                        return false; 
+                }else if(document.getElementById('paypal-add').checked){
+        
+                    if(document.getElementById('pp-email').value === "")
+                        return false; 
+                }
+            }
+        break;
+        
+        default: 
+            return true; 
+    }
+    return true; 
+}
+
+
 
 
 // ===== UTILITY FUNCTIONS ======
