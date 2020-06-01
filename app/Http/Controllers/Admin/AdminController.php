@@ -135,7 +135,7 @@ class AdminController extends Controller
     public function showEditProductForm($id_item) {
         try {
             $item = Item::findOrFail($id_item);
-            $pictures = $item->images()->get();
+            $pictures = $item->images;
 
             if ($item != null) {
                 return view('pages.admin.products.edit_product', ['product' => $item, 'pictures' => $pictures]);

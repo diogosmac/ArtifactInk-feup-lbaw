@@ -25,7 +25,7 @@ class CartController extends Controller
 			
 			$pictures = array();
 			foreach ($items as $item) {
-				array_push($pictures, $item->images()->get()->first());
+				array_push($pictures, $item->images->first());
 			}
 			//return  ['items' => $items, 'pictures' => $pictures];
 			//return $items;	
@@ -42,7 +42,7 @@ class CartController extends Controller
 
       $cart_pictures = array();
 			foreach ($cart_items as $cart_item) {
-				array_push($cart_pictures, $cart_item->images()->get()->first());
+				array_push($cart_pictures, $cart_item->images->first());
 			}
 			return  ['items' => $cart_items, 'pictures' => $cart_pictures];
 
@@ -65,7 +65,7 @@ class CartController extends Controller
       $cart->attach(1, ['id_user' => Auth::user()->id, 'id_item' => $item, 'quantity' => $quantity]);
 
       $item = Auth::user()->cart_items()->orderBy('date_added', 'desc')->first();
-      $picture = $item->images()->get()->first();
+      $picture = $item->images->first();
 
       return ['item' => $item, 'picture' => $picture];
     }

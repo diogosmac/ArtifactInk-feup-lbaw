@@ -19,11 +19,11 @@ class WishlistController extends Controller
 		//$this->authorize('list', Card::class);
 
 		$items = array();
-		$items = Auth::user()->wishlist_items()->get();
+		$items = Auth::user()->wishlist_items;
 
 		$pictures = array();
 		foreach ($items as $item) {
-			array_push($pictures, $item->images()->get()->first());
+			array_push($pictures, $item->images->first());
 		}
 	
 		return view('pages.profile.wishlist', ['items' => $items, 'pictures' => $pictures]);

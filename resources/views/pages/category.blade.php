@@ -53,7 +53,7 @@
 						<div class="row justify-content-start">
 							@foreach($items as $item)
 								<div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
-									@include('partials.item.item_card', ['item' => $item, 'picture' => $item->images()->get()->first()])
+									@include('partials.item.item_card', ['item' => $item, 'picture' => $item->images->first()])
 								</div>
 							@endforeach
 						</div>
@@ -61,7 +61,7 @@
 					<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
 						<ul class="list-group">
 							@foreach($items as $item)
-								@include('partials.item.item_card_alt', ['item' => $item, 'picture' => $item->images()->get()->first()])
+								@include('partials.item.item_card_alt', ['item' => $item, 'picture' => $item->images->first()])
 							@endforeach
 						</ul>
 					</div>

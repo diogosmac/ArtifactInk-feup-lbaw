@@ -2,7 +2,7 @@
     <div class="row" id="review-container">
       <div class="col-md-4">
         <a href="/product/{{$review->item->id}}">
-          <img src="{{ asset('storage/img_product/' . $review->item->images()->get()->first()->link) }}" alt="Ink" class="img-fluid">
+          <img src="{{ asset('storage/img_product/' . $review->item->images->first()->link) }}" alt="Ink" class="img-fluid">
         </a>
       </div>
       <div class="col" id="product-review-info">

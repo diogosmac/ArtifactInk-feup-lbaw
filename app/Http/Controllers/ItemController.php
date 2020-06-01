@@ -18,7 +18,7 @@ class ItemController extends Controller
     public function show($id_item, $slug='') {
         try {
             $item = Item::findOrFail($id_item);
-            $pictures = $item->images()->get();
+            $pictures = $item->images;
             $reviews = $item->reviews()->orderBy('date', 'desc')->get();
             
             if ($item != null) {

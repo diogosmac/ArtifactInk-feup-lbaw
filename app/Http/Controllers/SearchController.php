@@ -76,16 +76,16 @@ class SearchController extends Controller
         
         $categories = array();
         if (count($search) > 0) {
-            array_push($categories, $search[0]->category()->get()[0]);
+            array_push($categories, $search[0]->category[0]);
             for ($i = 1; $i < count($search); $i++) {
                 $j = 0;
                 for (; $j < count($categories); $j++) {
-                    if ($search[$i]->category()->get()[0]->id == $categories[$j]->id) {
+                    if ($search[$i]->category[0]->id == $categories[$j]->id) {
                         break;
                     }
                 }
                 if ($j == count($categories)) {
-                    array_push($categories, $search[$i]->category()->get()[0]);
+                    array_push($categories, $search[$i]->category[0]);
                 }
             }
         }
