@@ -56,13 +56,6 @@ class RecoverPasswordController extends Controller
         $name = $user->name;
         $email = $user->email;
         $date_of_birth = $user->date_of_birth;
-        $items = array('Ink', 'Machine', 'Gloves', 'Mask');
-/*
-
-        $email_service = new EmailServiceController();
-        print($email_service->htmlNewsletterEmail('Tiago', $items));
-        return;
-*/
         $now = Carbon::now();
 
         $hash = Hash::make($name . $email . $date_of_birth . $now);
@@ -81,7 +74,7 @@ class RecoverPasswordController extends Controller
         $email_service = new EmailServiceController();
 
         // Redirect back with and without error (show different pages)
-        if ($email_service->sendNewsletterEmail($email, $name, $items)) {
+        if ($email_service->sendRecoverPasswordEmail($email, $name, $url)) {
             return redirect()->back()->with(['sent_email' => true, 'status' => trans('A reset link has been sent to your email.')]);
         } else {
             return redirect()->back()->withErrors(['error' => trans('A Network Error occurred. Please try again.')]);
