@@ -20,9 +20,11 @@ function sendAjaxRequest(method, url, data, handler) {
  * ARCHIVE/UNARCHIVE ITEMS
  * 
  */
-let normalButton;
+let normalArchiveButton;
 function addArchiveListeners() {
-    normalButton = document.getElementsByClassName('archive-button')[0].cloneNode(true);
+    if (document.getElementsByClassName('archive-button').length == 0)
+        return;
+    normalArchiveButton = document.getElementsByClassName('archive-button')[0].cloneNode(true);
     let productRows = document.getElementsByClassName('product-row');
     for (let i = 0; i < productRows.length; i++) {
         let archiveButton = productRows[i].getElementsByClassName('archive-button')[0];
@@ -46,15 +48,13 @@ function addArchiveListeners() {
 }
 
 function archiveItemHandler() {
-    debugger;
     if (this.status != 200) {
         return;
     }
-    debugger;
     let info = JSON.parse(this.responseText);
     let button = document.querySelector('.archive-button[product-id="' + info.id_item + '"]');
     // replace button
-    replaceButton = normalButton.cloneNode(true);
+    replaceButton = normalArchiveButton.cloneNode(true);
     button.parentNode.replaceChild(replaceButton, button);
     // set new button properties
     replaceButton.setAttribute('product-id', info.id_item.toString())
@@ -68,15 +68,13 @@ function archiveItemHandler() {
 }
 
 function unarchiveItemHandler() {
-    debugger;
     if (this.status != 200) {
         return;
     }
-    debugger;
     let info = JSON.parse(this.responseText);
     let button = document.querySelector('.unarchive-button[product-id="' + info.id_item + '"]');
     // replace button
-    replaceButton = normalButton.cloneNode(true);
+    replaceButton = normalArchiveButton.cloneNode(true);
     button.parentNode.replaceChild(replaceButton, button);
     // set new button properties
     replaceButton.setAttribute('product-id', info.id_item.toString())
@@ -85,6 +83,80 @@ function unarchiveItemHandler() {
     replaceButton.classList.add('archive-button');
     replaceButton.addEventListener('click', (event) => {
         sendAjaxRequest('put', '/admin/products/archive', { id_item: info.id_item }, archiveItemHandler);
+        event.preventDefault();
+    });
+}
+
+/**
+ * 
+ * BAN/UNBAN USERS
+ * 
+ */
+let normalBanButton;
+function addBanListeners() {
+    if (document.getElementsByClassName('ban-button').length == 0)
+        return;
+    normalBanButton = document.getElementsByClassName('ban-button')[0].cloneNode(true);
+    let userRows = document.getElementsByClassName('user-row');
+    for (let i = 0; i < userRows.length; i++) {
+        let banButton = userRows[i].getElementsByClassName('ban-button')[0];
+        let unbanButton = userRows[i].getElementsByClassName('unban-button')[0];
+
+        if (banButton != null)
+            banButton.addEventListener('click', (event) => {
+                let userID = userRows[i].getAttribute('user-id');
+                sendAjaxRequest('put', '/admin/users/ban', { id_user: userID }, banUserHandler);
+                event.preventDefault();
+            })
+
+        if (unbanButton != null)
+            unbanButton.addEventListener('click', (event) => {
+                let userID = userRows[i].getAttribute('user-id');
+                sendAjaxRequest('put', '/admin/users/unban', { id_user: userID }, unbanUserHandler);
+                event.preventDefault();
+            })
+    };
+
+}
+
+function banUserHandler() {
+    debugger;
+    if (this.status != 200) {
+        return;
+    }
+    let info = JSON.parse(this.responseText);
+    let button = document.querySelector('.ban-button[user-id="' + info.id_user + '"]');
+    // replace button
+    replaceButton = normalBanButton.cloneNode(true);
+    button.parentNode.replaceChild(replaceButton, button);
+    // set new button properties
+    replaceButton.setAttribute('user-id', info.id_user.toString())
+    replaceButton.innerHTML = "Unban";
+    replaceButton.classList.remove('ban-button');
+    replaceButton.classList.add('unban-button');
+    replaceButton.addEventListener('click', (event) => {
+        sendAjaxRequest('put', '/admin/users/unban', { id_user: info.id_user }, unbanUserHandler);
+        event.preventDefault();
+    });
+}
+
+function unbanUserHandler() {
+    debugger;
+    if (this.status != 200) {
+        return;
+    }
+    let info = JSON.parse(this.responseText);
+    let button = document.querySelector('.unban-button[user-id="' + info.id_user + '"]');
+    // replace button
+    replaceButton = normalBanButton.cloneNode(true);
+    button.parentNode.replaceChild(replaceButton, button);
+    // set new button properties
+    replaceButton.setAttribute('user-id', info.id_user.toString())
+    replaceButton.innerHTML = "Ban";
+    replaceButton.classList.remove('unban-button');
+    replaceButton.classList.add('ban-button');
+    replaceButton.addEventListener('click', (event) => {
+        sendAjaxRequest('put', '/admin/users/ban', { id_user: info.id_user }, banUserHandler);
         event.preventDefault();
     });
 }
@@ -145,6 +217,7 @@ function cancelGeneralInfo() {
 // perform actions when window loads
 window.addEventListener('load', function () {
     addArchiveListeners();
+    addBanListeners();
     if (document.getElementById("generalInfo") != null)
         generalInfo = document.getElementById("generalInfo").innerHTML;
 });

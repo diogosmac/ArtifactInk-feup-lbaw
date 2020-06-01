@@ -278,12 +278,43 @@ class AdminController extends Controller
     }
 
     public function banUser(Request $request) {
-        $items = Item::orderBy('id', 'asc');
+        try {
+            // get user
+            $user = User::findOrFail($request->id_user);
 
-        // TODO search
+            if ($user != null) {
+                // set new status
+                $user->is_banned = true;
+                $user->save();
+                // return user id
+                return response()->json(['id_user' => $user->id]);
+            } else {
+                return response(json_encode("This user does not exist"), 404);
+            }
 
-        $items = $items->paginate(10)->withPath('');
-        return view('pages.admin.users');
+        } catch (\Exception $e) {
+            return response(json_encode($e->getMessage()), 400);
+        }
+    }
+
+    public function unbanUser(Request $request) {
+        try {
+            // get user
+            $user = User::findOrFail($request->id_user);
+
+            if ($user != null) {
+                // set new status
+                $user->is_banned = false;
+                $user->save();
+                // return user id
+                return response()->json(['id_user' => $user->id]);
+            } else {
+                return response(json_encode("This user does not exist"), 404);
+            }
+
+        } catch (\Exception $e) {
+            return response(json_encode($e->getMessage()), 400);
+        }
     }
 
     /*

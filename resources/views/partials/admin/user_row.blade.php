@@ -1,7 +1,7 @@
-<tr>
+<tr class="user-row" user-id="{{ $user->id }}">
   <th class="align-middle" scope="row">{{ $user->id }}</th>
-  <td class="align-middle">{{ explode(' ', trim($user->name))[0] }}</td>
-  <td class="align-middle">{{ explode(' ', trim($user->name))[1] }}</td>
+  <td class="align-middle col-1"><img class="img-fluid img-thumbnail" src="{{ asset('storage/img_user/' . $user->profilePicture->link) }}"></td>
+  <td class="align-middle">{{ $user->name }}</td>
   <td class="align-middle">{{ $user->email }}</td>
   <td class="align-middle">{{ $user->phone }}</td>
   <td class="align-middle">{{ $user->date_of_birth }}</td>
@@ -60,11 +60,11 @@
   </td>
   <td class="align-middle">
     @if($user->is_banned)
-    <button type="button" class="btn btn-link a_link" user-id="{{ $user->id }}">
+    <button type="button" class="btn btn-link a_link unban-button" user-id="{{ $user->id }}">
       Unban
     </button>
     @else
-    <button type="button" class="btn btn-link a_link" user-id="{{ $user->id }}">
+    <button type="button" class="btn btn-link a_link ban-button" user-id="{{ $user->id }}">
       Ban
     </button>
     @endif
