@@ -16,7 +16,7 @@
                     </div>
                     <select class="custom-select" name="orderBy" id="searchResultSortOrder"
                         @if(isset($orderBy))
-                            value="<?= $orderBy ?>"
+                            value="{{ $orderBy }}"
                         @else
                             value="id"
                         @endif
@@ -60,11 +60,28 @@
                     <div class="tab-content mx-auto" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <div class="row justify-content-start">
-                                @foreach($items as $item)
-                                    <div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
-                                        @include('partials.item.item_card', ['item' => $item, 'picture' => $item->images()->get()->first()])
-                                    </div>
-                                @endforeach
+                                    @foreach($items as $item)
+                                        <?php 
+                                            $sales = $item->sales;
+                                            $currentSale = 0;
+                                            $price = $item->price;
+                                            foreach ($sales as $sale) {
+                                                $new_sale = 0;
+                                                if ($sale->type == 'percentage') {
+                                                    $new_sale = 0.01 * $sale->percentage_amount * $price;
+                                                } else if ($sale->type == 'fixed') {
+                                                    $new_sale = $sale->fixed_amount;
+                                                }
+                                                if ($new_sale > $currentSale) {
+                                                    $currentSale = $new_sale;
+                                                }
+                                            }
+                                            $price = round($price - $currentSale, 2);
+                                        ?>
+                                        <div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
+                                            @include('partials.item.item_card', ['item' => $item, 'price' => $price, 'picture' => $item->images->first()])
+                                        </div>
+                                    @endforeach
                             </div>
                         </div>
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">

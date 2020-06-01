@@ -18,7 +18,7 @@ class ItemController extends Controller
     public function show($id_item, $slug='') {
         try {
             $item = Item::findOrFail($id_item);
-            $pictures = $item->images()->get();
+            $pictures = $item->images;
             $reviews = $item->reviews()->orderBy('date', 'desc')->get();
             
             if ($item != null) {
@@ -59,13 +59,41 @@ class ItemController extends Controller
 
         $items = Item::whereNotNull('rating')->where('status', 'active')->take(25)->orderBy('rating', 'desc')->get();
 
+        $finalItems = array();
+        $prices = array();
         $pictures = array();
-		foreach ($items as $i) {
-			$item = Item::findOrFail($i->id);
-			array_push($pictures, $item->images()->get()->first());
+
+        foreach ($items as $i) {
+            $item = Item::findOrFail($i->id);
+            array_push($finalItems, $item);
+
+            $sales = $item->sales;
+            $currentSale = 0;
+            $price = $item->price;
+            foreach ($sales as $sale) {
+                $new_sale = 0;
+                if ($sale->type == 'percentage') {
+                    $new_sale = 0.01 * $sale->percentage_amount * $price;
+                } else if ($sale->type == 'fixed') {
+                    $new_sale = $sale->fixed_amount;
+                }
+                if ($new_sale > $currentSale) {
+                    $currentSale = $new_sale;
+                }
+            }
+            $price = round($price - $currentSale, 2);
+            array_push($prices, $price);
+
+            array_push($pictures, $item->images->first());
 		}
 
-        return ['title' => 'Top Rated', 'items' => $items, 'pictures' => $pictures];
+        return [
+            'title' => 'Top Rated',
+            'items' => $finalItems,
+            'prices' => $prices,
+            'pictures' => $pictures,
+        ];
+
     }
 
     public function featured_deals() {
@@ -86,13 +114,41 @@ class ItemController extends Controller
         orderByDesc('deal_value')->
         get()->toArray();
 
+        $finalItems = array();
+        $prices = array();
         $pictures = array();
+
 		foreach ($items as $i) {
             $item = Item::findOrFail($i->id);
-			array_push($pictures, $item->images()->get()->first());
-		}
+            array_push($finalItems, $item);
+            
+            $sales = $item->sales;
+            $currentSale = 0;
+            $price = $item->price;
+            foreach ($sales as $sale) {
+                $new_sale = 0;
+                if ($sale->type == 'percentage') {
+                    $new_sale = 0.01 * $sale->percentage_amount * $price;
+                } else if ($sale->type == 'fixed') {
+                    $new_sale = $sale->fixed_amount;
+                }
+                if ($new_sale > $currentSale) {
+                    $currentSale = $new_sale;
+                }
+            }
+            $price = round($price - $currentSale, 2);
+            array_push($prices, $price);
 
-        return ['title' => 'Featured Deals', 'items' => $items, 'pictures' => $pictures];
+            array_push($pictures, $item->images->first());
+        }
+
+        return [
+            'title' => 'Featured Deals',
+            'items' => $finalItems,
+            'prices' => $prices,
+            'pictures' => $pictures,
+        ];
+
     }
 
     /**
@@ -110,12 +166,41 @@ class ItemController extends Controller
         take(25)->
         get()->toArray();
 
+        $finalItems = array();
+        $prices = array();
         $pictures = array();
-		foreach ($items as $i) {
+
+        foreach ($items as $i) {
             $item = Item::findOrFail($i->id);
-			array_push($pictures, $item->images()->get()->first());
+            array_push($finalItems, $item);
+
+            $sales = $item->sales;
+            $currentSale = 0;
+            $price = $item->price;
+            foreach ($sales as $sale) {
+                $new_sale = 0;
+                if ($sale->type == 'percentage') {
+                    $new_sale = 0.01 * $sale->percentage_amount * $price;
+                } else if ($sale->type == 'fixed') {
+                    $new_sale = $sale->fixed_amount;
+                }
+                if ($new_sale > $currentSale) {
+                    $currentSale = $new_sale;
+                }
+            }
+            $price = round($price - $currentSale, 2);
+            array_push($prices, $price);
+
+            array_push($pictures, $item->images->first());
         }
-        
-        return ['title' => 'Best Sellers', 'items' => $items, 'pictures' => $pictures];
+
+        return [
+            'title' => 'Best Sellers',
+            'items' => $finalItems,
+            'prices' => $prices,
+            'pictures' => $pictures,
+        ];
+
     }   
+
 }

@@ -1,13 +1,6 @@
-@if(isset($item) && isset($picture))
+@if(isset($item) && isset($picture) && isset($price))
 <div class="my-3 mx-2 card product-card rounded-0" style="width: 15em;">
     <div class="card-img-overlay d-flex justify-content-end h-25">
-        <!--
-            <a href="../pages/home.php" class="card-link">
-                <span>
-                    <i class="fas fa-shopping-cart"></i>
-                </span>   
-            </a>
-            -->
         <a href="#" class="card-link">
             <i class="fas fa-heart"></i>
         </a>
@@ -24,7 +17,10 @@
             <h5 class="card-title font-weight-bold">{{ $item->name }}</h5>
             <h5 class="card-price font-weight-bold">
                 @if ($item->status == 'active')
-                    {{ $item->price }} €
+                    @if ($item->price != $price)
+                        <span class="pr-2 old-price">{{ $item->price . '€' }}</span>
+                    @endif
+                    {{ $price }} €
                 @else
                     N/A
                 @endif
