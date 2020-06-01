@@ -115,6 +115,8 @@ class ItemController extends Controller
             $item = Item::findOrFail($i->id);
 			array_push($pictures, $item->images()->get()->first());
         }
+
+        
         
         return ['title' => 'Best Sellers', 'items' => $items, 'pictures' => $pictures];
     }   

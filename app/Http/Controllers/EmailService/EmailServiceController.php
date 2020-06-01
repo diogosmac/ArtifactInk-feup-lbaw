@@ -6,7 +6,10 @@ namespace App\Http\Controllers\EmailService;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Filesystem\Filesystem;
+use App\Item;
 use Exception;
+use Illuminate\Support\Carbon;
+
 
 class EmailServiceController extends Controller
 {
@@ -65,8 +68,6 @@ class EmailServiceController extends Controller
     }
 
     public function sendNewsletterEmail($email, $name, $items) {
-        //https://web.fe.up.pt/~up201705985/images/artifact_ink_logo_letters.png\
-
         if (!isset($email) || !isset($items)) {
             return false;
         }
@@ -81,7 +82,7 @@ class EmailServiceController extends Controller
 
 
     /**
-     * @param Items to send (List of objects App\Item)
+     * @param Items to send (List of Item ids)
      * @return HTMLEmail String
      */
     public function htmlNewsletterEmail($items) {
@@ -170,8 +171,17 @@ class EmailServiceController extends Controller
                     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
                 }
         
-                img.product {
-                    max-width: 20em;
+                div.img_container {
+                    width: 20em;
+                    height: 20em;
+                    overflow: hidden;
+                }
+                
+                .image-fit {
+                    height: 100%;
+                    width: 100%;
+                    overflow: hidden;
+                    object-fit: contain;
                 }
         
                 p.trouble {
@@ -190,7 +200,7 @@ class EmailServiceController extends Controller
                       <td style=\"max-width:40em;\">
                         <img src=\"https://web.fe.up.pt/~up201705985/images/artifact_ink_logo_letters.png\" alt=\"Logo\" width=\"400\" style=\"display: block;margin-left: auto;margin-right: auto; padding-bottom: 2em;\">
                         <div class=\"content\">
-                            <h3 class=\"highlight\">Hey y'all ,</h3>
+                            <h3 class=\"highlight\">Hey y'all,</h3>
                             <p>In Artifact Ink we work to bring the best products with the best prices to our custumers. 
                             Fresh deals come out every month than make people want us as their prime supplier.</p>
                             <p>Here are the deals we thought you would like to know about.</p>
@@ -199,7 +209,7 @@ class EmailServiceController extends Controller
                     </tr>
                 </table>" . "<table align=\"center\">" . $this->newsletterItems($items) . 
                 "<tr>
-                    <td style=\"max-width:40em;\">
+                    <td style=\"max-width:40em; padding-left: 3em;\">
                     <div class=\"content\">
                     <p>Thank you,<br>The Artifact Ink Team</p>
                     </div>
@@ -210,7 +220,7 @@ class EmailServiceController extends Controller
     }
 
     /**
-     * @param Items to send (List of App\Item objects)
+     * @param Items to send (List of Item ids)
      * @return HTMLNewsletterItems
      */
     public function newsletterItems($items) {
@@ -220,10 +230,12 @@ class EmailServiceController extends Controller
 
         $content = "<tr>";
         for ($i = 0; $i < count($items); $i++) {
-            if ($i / 2 > 0 && $i % 2 == 0) {
+            if ($i / 2 > 0 && $i % 2 == 0)
                 $content = $content . "</tr><tr>";
-            }
-            $content = $content . $this->newsletterItem($items[$i]);
+
+            $item = Item::find($items[$i]);
+            if (isset($item))
+                $content = $content . $this->newsletterItem($item);
         }
             
         $content = $content . "</tr>";
@@ -231,38 +243,56 @@ class EmailServiceController extends Controller
     }
 
     /**
-     * @param Item to send (App\Item object)
+     * @param Item to send (Item object)
      * @return HTMLNewsletterItem String
      */
     public function newsletterItem($item) {
         if (!isset($item))
             return "";
 
+        $name = $item->name;
+        $price = $item->price;
+        $sale = $item->sales()->
+                whereDate('end', '>=', Carbon::now()->toDateString())->
+                whereDate('start', '<=', Carbon::now()->toDateString())->
+                get()->first();
+        $item_url = route('product', ['id' => $item->id, 'slug' => $item->getSlug()]);
+        $item_image_url = "https://web.fe.up.pt/~up201705985/images/img_product/" . $item->images()->first()->link;
+        $new_price = null;
+
+        if (isset($sale)) {
+            if ($sale->type == "percentage") {
+                $new_price = $price * (100 - $sale->percentage_amount);
+            }
+            else {
+                $new_price = $price - $sale->fixed_amount;
+            }
+            $discount = "<span style=\"text-decoration: line-through;\">
+                            <span style=\"color: #c1cad0; text-decoration: line-through;\">$new_price €</span>
+                        </span>"; 
+        }
+
         return "<td style=\"max-width:20em; padding: 1.5em; text-align: center;\">
                 <p style=\"font-size: 14px; line-height: 1.2; word-break: break-word; text-align: center; mso-line-height-alt: 17px; margin: 0;\">
-                    <strong>" . $item->name . "</strong>
+                    <strong> . $name . </strong>
                 </p>
                 <div style=\"color:#2d485d; font-family:Montserrat, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;\">
                     <div style=\"line-height: 1.2; font-size: 12px; color: #2d485d; font-family: Montserrat, sans-serif; mso-line-height-alt: 14px;\">
                         <p style=\"font-size: 24px; line-height: 1.2; word-break: break-word; text-align: center; mso-line-height-alt: 29px; margin: 0;\">
                             <span style=\"font-size: 24px;\">
                                 <strong>
-                                    <span style=\"text-decoration: line-through;\">
-                                        <span style=\"color: #c1cad0; text-decoration: line-through;\">
-                                            $99,00
-                                        </span>
-                                    </span> 
-                                    <span style=\"color: #8C4748\">$39,00</span>
+                                    $discount
+                                    <span style=\"color: #8C4748\">$price €</span>
                                 </strong>
                             </span>
                         </p>
                     </div>
                 </div>
-
-                <img class=\"product\" src=\"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSTxMFOBhPJi3mSMZ4Tix1Kkxvm8sDmys39nbojdCVOXV2t1SJ0&usqp=CAU\" alt=\"\">
-                
+                <div class=\"img_container\">
+                    <img class=\"image-fit\" src=\"$item_image_url\" alt=\"\">
+                </div>
                 <div class=\"button-container\">
-                    <a class=\"btn button\" href=\"%s\">Get deal</a>
+                    <a class=\"btn button\" href=\"$item_url\">Get deal</a>
                 </div>
             </td>";
     }

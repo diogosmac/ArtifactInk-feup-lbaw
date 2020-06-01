@@ -34,7 +34,7 @@ Route::get('/', 'ItemController@showHomepage')->name('home'); //todo reply funct
 
 Route::get('search','SearchController@showSearch')->name('search');
 
-Route::get('product/{id}-{slug?}', 'ItemController@show');
+Route::get('product/{id}-{slug?}', 'ItemController@show')->name('product');
 
 Route::get('category/{id}-{slug?}', 'CategoryController@show')->name('category');
 
