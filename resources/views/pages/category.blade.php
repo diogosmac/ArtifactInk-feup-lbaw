@@ -21,7 +21,7 @@
                             value="id"
                         @endif
                         >
-                        <option value="id">ID</option>
+                        <option value="name">Name</option>
                         <option value="price">Price</option>
                         <option value="rating">Rating</option>
                     </select>

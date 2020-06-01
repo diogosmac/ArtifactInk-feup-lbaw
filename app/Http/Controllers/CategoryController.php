@@ -23,8 +23,13 @@ class CategoryController extends Controller
                 $items = Item::where('id_category', $category->id);
             }
             
-            $orderBy = Input::get('orderBy', 'id');
-            $sortOrder = Input::get('sortOrder', 'desc');
+            $orderBy = Input::get('orderBy', 'name');
+
+            $defaultSortOrder = 'asc';
+            if ($orderBy == 'rating') {
+                $defaultSortOrder = 'desc';
+            }
+            $sortOrder = Input::get('sortOrder', $defaultSortOrder);
             $items = $items->orderBy($orderBy, $sortOrder);
 
             $brands = SearchController::getBrands($items->get());
