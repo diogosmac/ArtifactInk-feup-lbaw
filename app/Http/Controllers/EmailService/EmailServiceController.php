@@ -10,92 +10,79 @@ use Exception;
 
 class EmailServiceController extends Controller
 {
+    public function sendEmail($email, $name, $content) {
+        // Configure API key authorization: api-key
+        $config = \SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', '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');
 
+        // Uncomment below line to configure authorization using: partner-key
+        // $config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('partner-key', 'YOUR_API_KEY');
+
+        $apiInstance = new \SendinBlue\Client\Api\SMTPApi(
+            // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+            // This is optional, `GuzzleHttp\Client` will be used as default.
+            new \GuzzleHttp\Client(),
+            $config
+        );
+        $sendSmtpEmail = new \SendinBlue\Client\Model\SendSmtpEmail(); // \SendinBlue\Client\Model\SendSmtpEmail | Values to send a transactional email
+        $sendSmtpEmail['sender'] = array('email' => 'general@artifactink.pt', 'name' => 'Artifact Ink');
+        $sendSmtpEmail['to'] = array(array('email' => $email/*'tiago.silva.99@hotmail.com'*/, 'name' => $name));
+        $sendSmtpEmail['subject'] = 'Reset Password Request';
+        
+        $sendSmtpEmail['htmlContent'] = $content;
+        $sendSmtpEmail['textContent'] = 'SENDINBLUE AUTO EMAIL';
+        $sendSmtpEmail['params'] = array('name' => 'John', 'surname' => 'Doe');
+        $sendSmtpEmail['headers'] = array('X-Mailin-custom' => 'custom_header_1:custom_value_1|custom_header_2:custom_value_2');
+
+        try {
+            $apiInstance->sendTransacEmail($sendSmtpEmail);
+        } catch (Exception $e) {
+            echo 'Exception when calling SMTPApi->sendTransacEmail: ', $e->getMessage(), PHP_EOL;
+            return false;
+        }
+
+        return true;
+    }
 
     public function sendRecoverPasswordEmail($email, $name, $url)
     {
         if (!isset($email) || !isset($name) || !isset($url)) {
             return false;
         }
-        // Configure API key authorization: api-key
-        $config = \SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', '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');
 
-        // Uncomment below line to configure authorization using: partner-key
-        // $config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('partner-key', 'YOUR_API_KEY');
-
-        $apiInstance = new \SendinBlue\Client\Api\SMTPApi(
-            // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-            // This is optional, `GuzzleHttp\Client` will be used as default.
-            new \GuzzleHttp\Client(),
-            $config
-        );
-        $sendSmtpEmail = new \SendinBlue\Client\Model\SendSmtpEmail(); // \SendinBlue\Client\Model\SendSmtpEmail | Values to send a transactional email
-        $sendSmtpEmail['sender'] = array('email' => 'general@artifactink.pt', 'name' => 'Artifact Ink');
-        $sendSmtpEmail['to'] = array(array('email' => /*$email*/'tiago.silva.99@hotmail.com', 'name' => $name));
-        $sendSmtpEmail['subject'] = 'Reset Password Request';
-        
         $content = $this->htmlResetPasswordEmail($name, $url);
-        $htmlContent = $content;
 
-        $sendSmtpEmail['htmlContent'] = $htmlContent;
-        $sendSmtpEmail['textContent'] = 'SENDINBLUE AUTO EMAIL';
-        $sendSmtpEmail['params'] = array('name' => 'John', 'surname' => 'Doe');
-        $sendSmtpEmail['headers'] = array('X-Mailin-custom' => 'custom_header_1:custom_value_1|custom_header_2:custom_value_2');
-
-        try {
-            $apiInstance->sendTransacEmail($sendSmtpEmail);
-        } catch (Exception $e) {
-            echo 'Exception when calling SMTPApi->sendTransacEmail: ', $e->getMessage(), PHP_EOL;
-            return false;
-        }
-
-        return true;
+        return $this->sendEmail($email, $name, $content);
     }
 
     public function sendConfirmResetPasswordEmail($email, $name) {
         if (!isset($email) || !isset($name)) {
             return false;
         }
-        // Configure API key authorization: api-key
-        $config = \SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', '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');
 
-        // Uncomment below line to configure authorization using: partner-key
-        // $config = SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('partner-key', 'YOUR_API_KEY');
+        $content = $this->htmlConfirmResetPasswordEmail($name);
 
-        $apiInstance = new \SendinBlue\Client\Api\SMTPApi(
-            // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-            // This is optional, `GuzzleHttp\Client` will be used as default.
-            new \GuzzleHttp\Client(),
-            $config
-        );
-        $sendSmtpEmail = new \SendinBlue\Client\Model\SendSmtpEmail(); // \SendinBlue\Client\Model\SendSmtpEmail | Values to send a transactional email
-        $sendSmtpEmail['sender'] = array('email' => 'general@artifactink.pt', 'name' => 'Artifact Ink');
-        $sendSmtpEmail['to'] = array(array('email' => $email, 'name' => $name));
-        $sendSmtpEmail['subject'] = 'Reset Password Request';
-        
-        $content = $this->htmlConfirmResetPasswordEmail();
-        $htmlContent = sprintf($content, $name);
+        return $this->sendEmail($email, $name, $content);
+    }
 
-        $sendSmtpEmail['htmlContent'] = $htmlContent;
-        $sendSmtpEmail['textContent'] = 'SENDINBLUE AUTO EMAIL';
-        $sendSmtpEmail['params'] = array('name' => 'John', 'surname' => 'Doe');
-        $sendSmtpEmail['headers'] = array('X-Mailin-custom' => 'custom_header_1:custom_value_1|custom_header_2:custom_value_2');
+    public function sendNewsletterEmail($email, $name, $items) {
+        //https://web.fe.up.pt/~up201705985/images/artifact_ink_logo_letters.png\
 
-        try {
-            $apiInstance->sendTransacEmail($sendSmtpEmail);
-        } catch (Exception $e) {
-            echo 'Exception when calling SMTPApi->sendTransacEmail: ', $e->getMessage(), PHP_EOL;
+        if (!isset($email) || !isset($items)) {
             return false;
         }
 
-        return true;
+        $content = $this->htmlNewsletterEmail($name, $items);
+
+        return $this->sendEmail($email, $name, $content);
     }
 
-    public function sendNewsletterEmail($email) {
-        //https://web.fe.up.pt/~up201705985/images/artifact_ink_logo_letters.png\
-    }
 
-    public function htmlNewsletterEmail($name, $items) {
+    /**
+     * @param Name of the User
+     * @param Items to send (List of objects App\Item)
+     * @return HTMLEmail String
+     */
+    public function htmlNewsletterEmail($items) {
         return "<html>
         <head>
             <title>Artifact Ink</title>
@@ -201,10 +188,10 @@ class EmailServiceController extends Controller
                       <td style=\"max-width:40em;\">
                         <img src=\"https://web.fe.up.pt/~up201705985/images/artifact_ink_logo_letters.png\" alt=\"Logo\" width=\"400\" style=\"display: block;margin-left: auto;margin-right: auto;\">
                         <div class=\"content\">
-                            <h3 class=\"highlight\">Hi " . $name .",</h3>
-                            <p>You recently requested to reset your password for your Artifact Ink account.</p>
-                            <p>If you did not request a password reset, please ignore this email. This password reset is only valid for
-                                the next 30 minutes.</p>
+                            <h3 class=\"highlight\">Hey y'all ,</h3>
+                            <p>In Artifact Ink we work to bring the best products with the best prices to our custumers. 
+                            Fresh deals come out every month than make people want us as their prime supplier.</p>
+                            <p>Here are the deals we thought you would like to know about.</p>
                         </div>
                       </td>
                     </tr>
@@ -220,7 +207,14 @@ class EmailServiceController extends Controller
                 </div></body></html>";
     }
 
+    /**
+     * @param Items to send (List of App\Item objects)
+     * @return HTMLNewsletterItems
+     */
     public function newsletterItems($items) {
+        if (!isset($items))
+            return "";
+
         $content = "<tr>";
         print(count($items));
         for ($i = 0; $i < count($items); $i++) {
@@ -234,7 +228,14 @@ class EmailServiceController extends Controller
         return $content;
     }
 
+    /**
+     * @param Item to send (App\Item object)
+     * @return HTMLNewsletterItem String
+     */
     public function newsletterItem($item) {
+        if (!isset($item))
+            return "";
+
         return "<td style=\"max-width:20em; padding: 1.5em; text-align: center;\">
                 <p style=\"font-size: 14px; line-height: 1.2; word-break: break-word; text-align: center; mso-line-height-alt: 17px; margin: 0;\">
                     <strong>" . $item . "</strong>

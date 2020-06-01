@@ -56,13 +56,13 @@ class RecoverPasswordController extends Controller
         $name = $user->name;
         $email = $user->email;
         $date_of_birth = $user->date_of_birth;
-        
+/*
         $items = array('Ink', 'Machine', 'Gloves', 'Mask');
 
         $email_service = new EmailServiceController();
         print($email_service->htmlNewsletterEmail('Tiago', $items));
         return;
-
+*/
         $now = Carbon::now();
 
         $hash = Hash::make($name . $email . $date_of_birth . $now);
