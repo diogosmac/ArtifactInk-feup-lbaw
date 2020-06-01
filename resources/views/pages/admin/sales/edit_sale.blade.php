@@ -8,27 +8,30 @@
 
     <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap border-bottom mt-2">
       <h1>Edit Sale</h1>
-      <button type="button" class="btn button" data-toggle="modal" data-target="#addQuestionModal">
+      <button id="submit-sale-button" type="submit" form="edit-sale" value="Submit" class="btn button">
         Submit
       </button>
     </div>
 
-    <form>
+    <form action="{{ route('admin.sales.edit', ['id' => $sale->id]) }}" method="POST" id="edit-sale">
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputTitle">Title</label>
-          <input type="text" class="form-control" id="inputTitle" value="{{ $sale->name }}">
+          <input required name='name' type="text" class="form-control" id="inputTitle" value="{{ $sale->name }}">
         </div>
         <div class="form-group col-md-3">
           <label for="inputStartDate">Start Date</label>
-          <input type="date" class="form-control" id="inputStartDate" value="{{ $sale->startDate }}">
+          <input required name='start' type="date" class="form-control" id="inputStartDate" value="{{ $sale->start }}">
         </div>
         <div class="form-group col-md-3">
           <label for="inputEndDate">End Date</label>
-          <input type="date" class="form-control" id="inputEndDate" value="{{ $sale->endDate }}">
+          <input required name='end' type="date" class="form-control" id="inputEndDate" value="{{ $sale->end }}">
         </div>
       </div>
+      <input type="hidden" name='items[]' value="{{ $sale->items }}">
     </form>
+
+    {{ $sale->items }}
 
     <div class="mx-auto mt-2">
       <div class="row">
