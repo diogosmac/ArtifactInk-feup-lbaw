@@ -343,11 +343,11 @@ class AdminController extends Controller
             $sale = Sale::findOrFail($id_sale);
             $sale_items = $sale->items;
             $sale_item_ids = array_column((array) $sale_items, 'id');
-            $non_sale_item = Item::whereNotIn('id', $sale_item_ids);
+            $non_sale_items = Item::whereNotIn('id', $sale_item_ids)->get();
             
             if ($sale != null) {
                 // delete sale
-                return view('pages.admin.sales.edit_sale', ['sale' => $sale]);
+                return view('pages.admin.sales.edit_sale', ['sale' => $sale, 'items_sale' => $sale_items, 'items' => $non_sale_items]);
 
             } else {
                 return redirect()
@@ -379,7 +379,7 @@ class AdminController extends Controller
                 return redirect()
                     ->route('admin.sales.home')
                     ->withErrors('Failed to delete sale.');
-                }
+            }
         } catch (\Exception $e) {
             return redirect()
                 ->route('admin.sales.home')
