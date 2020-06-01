@@ -65,7 +65,7 @@
                             $price = round($price - $currentSale, 2);
                         ?>
                             @if ($item->price != $price)
-                                <h3 class="pr-2 old-price">{{ $item->price . '€' }}</h3>
+                                <h4 class="pr-2 old-price">{{ $item->price . '€' }}</h4>
                             @endif
                             <h3 class="font-weight-bold pr-3" style="color: var(--main-red)">{{ $price }}€</h3>
                     @else
