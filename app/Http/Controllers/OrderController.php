@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Address;
+use App\CreditCard;
 use App\Order;
+use App\PaymentMethod;
+use App\Paypal;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -68,12 +73,78 @@ class OrderController extends Controller
     echo " - "; 
     print_r($pp_email_new);
     echo " - "; 
+
+
+    //new address 
+    if($new_addr == "true"){
+        $address = new Address; 
+        $address->street = $street_new; 
+        $address->postal_code = $postal_code_new; 
+        $address->city = $city_new; 
+        $address->id_country = $country_new; 
+
+        $userAddresses = Auth::user()->addresses();
+        try{
+            //create new address 
+           $address->save(); 
+           //add tp users table
+           $userAddresses->attach($address->id);
+        }catch(\Exception $e){
+            return redirect()->back()->withErrors("Failed creating new Address!");
+        }
+           
+    }
+  
     //new payment method 
-
-    //new address
-
-
+    if($new_payment == "true"){
+        $userPaymentMethods = Auth::user()->payment_methods();
+        //if creditcard
+        if(empty($pp_email_new)){
+            
+            $creditCard = new CreditCard;
+            $creditCard->name = $cc_name_new; 
+            $creditCard->number = $cc_number_new; 
+            $creditCard->expiration = $cc_expiration_new; 
+            $creditCard->cvv = $cc_cvv_new; 
     
+            try {
+                //create new card
+                $creditCard->save(); 
+                
+                //add the card to payment methods table 
+                $payment_method = new PaymentMethod; 
+                $payment_method->id_cc = $creditCard->id; 
+                $payment_method->save();
+            
+                //add the the payment method to the user 
+                $userPaymentMethods->attach($payment_method->id);
+    
+            } catch (Exception $e) {
+                return redirect()->back()->withErrors("Failed creating new Credit Card payment method!");
+            }
+        }else{//if paypal
+            $paypal= new Paypal; 
+            $paypal->email = $pp_email_new; 
+    
+            try {
+                //create new card
+                $paypal->save(); 
+                
+                //add the card to payment methods table 
+                $payment_method = new PaymentMethod; 
+                $payment_method->id_pp = $paypal->id; 
+                $payment_method->save();
+            
+                //add the the payment method to the user 
+                $userPaymentMethods->attach($payment_method->id);
+    
+            } catch (Exception $e) {
+                return redirect()->back()->withErrors("Failed creating new Paypal paymenmt method!");
+            }
+    
+        }
+    }
+
     //process
     $order = new Order; 
     $order->total = $total; 
@@ -99,6 +170,12 @@ class OrderController extends Controller
     //empty cart 
 
 
+<<<<<<< HEAD
     //return redirect()->route('/');
+=======
+    return redirect()->route('home')->with('status',"Order has been processed"); 
+
+>>>>>>> order working with new
    }
+   
 }
