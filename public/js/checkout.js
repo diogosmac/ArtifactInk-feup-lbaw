@@ -334,6 +334,43 @@ function updatePayment(){
     }
 }
 
+//submit button 
+document.querySelector('form').addEventListener('submit',()=>{
+    //set hidden input values 
+    document.getElementById('total').value = totalPrice;  
+    document.getElementById('address').value = new_addr;  
+    document.getElementById('payment').value = new_payment;  
+
+    //clear inputs if new flags are set to false
+    if(!new_addr){
+        document.getElementById('streetAdd').value = ""; 
+        document.getElementById('countryAdd').value = ""; 
+        document.getElementById('cityAdd').value = ""; 
+        document.getElementById('potalCodeAdd').value = ""; 
+    } 
+
+    if(!new_payment){
+        document.getElementById('cc-name-add').value = "";
+        document.getElementById('cc-expiration-add').value = ""; 
+        document.getElementById('cc-number-add').value = "";  
+        document.getElementById('pp-email').value = ""; 
+    }else{
+        if(!paypal.checked){  
+            document.getElementById('pp-email').value = "";
+        }else{
+            document.getElementById('cc-name-add').value = "";
+            document.getElementById('cc-expiration-add').value = ""; 
+            document.getElementById('cc-number-add').value = "";  
+        } 
+    }
+    
+    //if paypal selected open paypal API 
+
+    //else process naturally 
+
+
+},false)
+
 
 // ===== UTILITY FUNCTIONS ======
 function getMonth(month){
