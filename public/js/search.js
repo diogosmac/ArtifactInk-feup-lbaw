@@ -127,7 +127,7 @@ function setSortOrder() {
 }
 
 function checkInputs() {
-    orderBy.disabled = (orderBy.value == 'bestMatch' || orderBy.value == 'id');
+    orderBy.disabled = (orderBy.value == 'bestMatch' || orderBy.value == 'name');
 
     minSlider.disabled = (minValue == 0);
     maxSlider.disabled = (maxValue == 500);
