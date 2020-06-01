@@ -331,7 +331,7 @@ class AdminController extends Controller
     }
 
     public function showAddSaleForm() {
-        return view('pages.admin.sales.add_sale');
+        return view('pages.admin.sales.add_sale', ['products' => []]);
     }
 
     public function addSale() {
@@ -341,9 +341,9 @@ class AdminController extends Controller
     public function showEditSaleForm($id_sale) {
         try {
             $sale = Sale::findOrFail($id_sale);
-            $sale_items = $sale->items;
-            $sale_item_ids = array_column((array) $sale_items, 'id');
-            $non_sale_items = Item::whereNotIn('id', $sale_item_ids)->get();
+            $sale_items = $sale->items()->orderBy('id', 'asc')->get();
+            $sale_item_ids = $sale_items->pluck('id');
+            $non_sale_items = Item::whereNotIn('id', $sale_item_ids)->orderBy('id', 'asc')->get();
             
             if ($sale != null) {
                 // delete sale
@@ -353,16 +353,16 @@ class AdminController extends Controller
                 return redirect()
                     ->route('admin.sales.home')
                     ->withErrors('Failed to load sale.');
-                }
+            }
         } catch (\Exception $e) {
             return redirect()
                 ->route('admin.sales.home')
-                ->withErrors('Failed to laod sale. ' . $e->getMessage());
+                ->withErrors('Failed to load sale. ' . $e->getMessage());
         }
     }
 
     public function editSale(Request $request) {
-        return 1;
+        return $request;
     }
 
     public function deleteSale(Request $request) {

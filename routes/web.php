@@ -171,6 +171,7 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
 
         // edit sale
         Route::get('{id}/edit', 'AdminController@showEditSaleForm')->where('id', '[0-9]+')->name('edit');
+        Route::put('{id}/edit', 'AdminController@editSale')->where('id', '[0-9]+')->name('edit');
 
         // delete sale
         Route::delete('delete', 'AdminController@deleteSale')->name('delete');
