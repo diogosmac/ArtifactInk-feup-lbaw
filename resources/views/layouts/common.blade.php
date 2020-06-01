@@ -148,7 +148,7 @@
                       Total
                     </div>
                     <div id="price-total" class="d-inline p-2">
-                      33.33 €
+                
                     </div>
                   </div>
                   <div class="dropdown-divider"></div>
@@ -313,7 +313,7 @@
                   Total
                 </div>
                 <div id="price-total" class="d-inline p-2">
-                  33.33 €
+           
                 </div>
               </div>
               <div class="dropdown-divider"></div>
