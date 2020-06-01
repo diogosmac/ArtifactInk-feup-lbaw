@@ -206,6 +206,13 @@ function addSaleItem(event) {
     // swap event listeners
     this.removeEventListener('click', addSaleItem);
     this.addEventListener('click', removeSaleItem);
+    // add <input hidden> tag
+    let tag = document.createElement("input");
+    tag.setAttribute("type", "hidden");
+    tag.setAttribute("id", "item-" + id);
+    tag.setAttribute("name", "item[" + id + "]");
+    tag.setAttribute("value", id);
+    saleForm.appendChild(tag);
     event.preventDefault();
 }
 
@@ -226,6 +233,9 @@ function removeSaleItem() {
     // swap event listeners
     this.removeEventListener('click', removeSaleItem);
     this.addEventListener('click', addSaleItem);
+    // remove <input hidden> tag
+    let tag = document.getElementById('item-' + id);
+    tag.remove();
     event.preventDefault();
 }
 /**

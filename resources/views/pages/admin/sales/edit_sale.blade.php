@@ -42,7 +42,7 @@
         </div>
       </div>
       @foreach($sale->items->pluck('id') as $id_item)
-      <input id='item-{{ $id_item }}' type="hidden" name='items[{{ $loop->index }}]' value="{{ $id_item }}">
+      <input id='item-{{ $id_item }}' type="hidden" name='items[{{ $sale->items[$loop->index]->id }}]' value="{{ $id_item }}">
       @endforeach
       <input type="hidden" name='id' value="{{ $sale->id }}">
     </form>
