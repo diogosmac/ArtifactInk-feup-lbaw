@@ -28,8 +28,6 @@
     border-top: .1em var(--main-color-alpha);
 }
 
-
-
 .checkout-table span.total{
     color: var(--main-red);
 }
