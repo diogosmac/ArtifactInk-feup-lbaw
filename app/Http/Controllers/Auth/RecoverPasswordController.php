@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Item;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EmailService\EmailServiceController;
 use Illuminate\Support\Facades\Hash;
@@ -55,6 +56,13 @@ class RecoverPasswordController extends Controller
         $name = $user->name;
         $email = $user->email;
         $date_of_birth = $user->date_of_birth;
+        
+        $items = array('Ink', 'Machine', 'Gloves', 'Mask');
+
+        $email_service = new EmailServiceController();
+        print($email_service->htmlNewsletterEmail('Tiago', $items));
+        return;
+
         $now = Carbon::now();
 
         $hash = Hash::make($name . $email . $date_of_birth . $now);
