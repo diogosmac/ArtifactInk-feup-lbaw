@@ -31,6 +31,8 @@ DROP TABLE IF EXISTS "address";
 DROP TABLE IF EXISTS "country";
 DROP TABLE IF EXISTS "user";
 DROP TABLE IF EXISTS "profile_picture";
+DROP TABLE IF EXISTS "recover_password_tokens";
+
 
 -- Drop Types
 
@@ -58,6 +60,13 @@ CREATE TYPE MESSAGE_SENDER AS ENUM ('user', 'admin');
 
 -- Tables
 
+CREATE TABLE "recover_password_tokens" (
+    "id" SERIAL PRIMARY KEY,
+    "email" TEXT NOT NULL,
+    "token" TEXT NOT NULL,
+    "created_at" TIMESTAMP NOT NULL DEFAULT now()
+);
+
 CREATE TABLE "profile_picture" (
     "id" SERIAL PRIMARY KEY,
     "link" TEXT
@@ -71,7 +80,8 @@ CREATE TABLE "user" (
     "email" TEXT NOT NULL CONSTRAINT user_email_uk UNIQUE,
     "phone" TEXT,
     "password" TEXT NOT NULL,
-    "remember_token" VARCHAR
+    "remember_token" VARCHAR,
+    "is_banned" BOOLEAN NOT NULL DEFAULT FALSE
 );
 
 CREATE TABLE "country" (
@@ -248,7 +258,8 @@ CREATE TABLE "support_chat_message" (
 );
 
 CREATE TABLE "newsletter_subscriber" (
-    "email" TEXT PRIMARY KEY,
+    "id" SERIAL PRIMARY KEY,
+    "email" TEXT NOT NULL CONSTRAINT newsletter_subscriber_email UNIQUE,
     "date" DATE NOT NULL DEFAULT now()
 );
 
@@ -2103,6 +2114,7 @@ INSERT INTO "support_chat_message" ("id_user", "time", "body", "sender") VALUES
     (1, '2020-03-22 19:10:25-00', 'Help me please!!! Do needles hurt? :(', 'user'),
     (1, '2020-03-22 19:10:25-00', 'Hello, thank you for contacting us, yes they do go ''ouch''', 'admin');
 -------- newsletter_subscriber --------
+ALTER SEQUENCE newsletter_subscriber_id_seq RESTART WITH 1;
 INSERT INTO "newsletter_subscriber" ("email", "date") VALUES
     ('mmiell0@phpbb.com', '2020-03-25'),
     ('gashpole1@sfgate.com', '2020-03-18'),

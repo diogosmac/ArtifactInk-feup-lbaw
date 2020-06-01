@@ -8,7 +8,8 @@ let add_wishlist_buttons = document.querySelectorAll('button.li-wishlist');
 for (let i = 0; i < add_wishlist_buttons.length; i++) {
     add_wishlist_buttons[i].addEventListener('click', (event) => {
         let id = add_wishlist_buttons[i].getAttribute('data-id');
-        
+        if (id == 'archived')
+            return;
         sendAjaxRequest('post', '/profile/wishlist', {id_item: id}, addToWishlistHandler);
         event.preventDefault();
     }, false)

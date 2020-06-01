@@ -16,7 +16,6 @@
 
 //use Illuminate\Routing\Route;
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('sign_in', 'Auth\LoginController@showLoginForm')->name('sign_in');
@@ -24,18 +23,19 @@ Route::post('sign_in', 'Auth\LoginController@login');
 Route::get('sign_out', 'Auth\LoginController@logout')->name('sign_out');
 Route::get('sign_up', 'Auth\RegisterController@showRegistrationForm')->name('sign_up');
 Route::post('sign_up', 'Auth\RegisterController@register');
-
-//profile
-Route::view('recover_password', 'auth/recover_password');
+Route::get('recover_password', 'Auth\RecoverPasswordController@showRecoverPasswordForm')->name('recover_password');
+Route::post('recover_password', 'Auth\RecoverPasswordController@requestRecoverPassword');
+Route::get('reset_password/{token}', 'Auth\RecoverPasswordController@showResetPasswordForm')->name('reset_password');
+Route::post('reset_password', 'Auth\RecoverPasswordController@requestSetPassword');
 
 //routes for debugging pages - remove later
 Route::get('/', 'ItemController@showHomepage')->name('home'); //todo reply function indide in all pages 
 
 Route::get('search','SearchController@showSearch')->name('search');
 
-Route::get('product/{id}', 'ItemController@show');
+Route::get('product/{id}-{slug?}', 'ItemController@show');
 
-Route::get('profile','UserController@showProfile');
+Route::get('category/{id}-{slug?}', 'CategoryController@show')->name('category');
 
 //profile pages and stuff related 
 Route::prefix('profile')->name('profile.')->group(function() {
@@ -47,7 +47,7 @@ Route::prefix('profile')->name('profile.')->group(function() {
 
     Route::put('/','UserController@updateProfile')->name('home'); 
     
-    Route::put('delete','UserController@deleteProfile')->name('delete');
+    Route::delete('/','UserController@deleteProfile')->name('delete');
     
     // Addresses
     Route::post('address','AddressController@addAddress')->name('address'); 
@@ -76,6 +76,9 @@ Route::prefix('profile')->name('profile.')->group(function() {
     Route::post('reviews', 'ReviewController@addReview')->name('reviews');
     
     Route::put('reviews', 'ReviewController@updateReview')->name('reviews');
+
+    Route::delete('reviews', 'ReviewController@deleteReview')->name('reviews');
+
 
     
     // Wishlist
@@ -125,14 +128,17 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
         // view products
         Route::get('/', 'AdminController@showProducts')->name('home');
 
-        // add product form
+        // add product
         Route::get('add', 'AdminController@showAddProductForm')->name('add');
-        // add product action
         Route::post('add', 'AdminController@addProduct')->name('add');
 
         // edit product
-        // $url = route('profile', ['id' => 1]);
         Route::get('{id}/edit', 'AdminController@showEditProductForm')->where('id', '[0-9]+')->name('edit');
+        Route::post('edit', 'AdminController@editProduct')->name('edit_product');
+
+        // archive/unarchive product
+        Route::put('archive', 'AdminController@archiveItem')->name('archive');
+        Route::put('unarchive', 'AdminController@unarchiveItem')->name('unarchive');
     });
 
     // categories
@@ -145,7 +151,13 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
     Route::get('reviews', 'AdminController@showReviews')->name('reviews');
 
     // users
-    Route::get('users', 'AdminController@showUsers')->name('users');
+    Route::prefix('users')->name('users.')->group(function () {
+        // home;
+        Route::get('/', 'AdminController@showUsers')->name('home');
+        // ban/unban users
+        Route::put('ban', 'AdminController@banUser')->name('ban');
+        Route::put('unban', 'AdminController@unbanUser')->name('unban');
+    });
 
     // sales
     Route::prefix('sales')->name('sales.')->group(function () {
@@ -174,6 +186,9 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
     Route::get('support_chat', 'AdminController@showSupportChat')->name('support_chat');
 });
 
+// newsletter subscription
+Route::post('newsletter', 'NewsletterSubscriberController@subscribe')->name('newsletter');
+
 //static pages 
 Route::view('about_us', 'pages.info.about_us');
 
@@ -184,7 +199,3 @@ Route::view('payments_and_shipment', 'pages.info.payments_and_shipment');
 Route::view('returns_and_replacements', 'pages.info.returns_and_replacements');
 
 Route::view('warranty', 'pages.info.warranty');
-
-//Esta é só para o tiago
-
-Route::view('password_reset', 'auth.password_reset'); 

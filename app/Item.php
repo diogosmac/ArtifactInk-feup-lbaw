@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+use SebastianBergmann\Environment\Console;
 
 class Item extends Model
 {
@@ -69,8 +71,27 @@ class Item extends Model
             return $query;
         }
         return $query->
-        whereRaw('setweight(to_tsvector(\'english\', "item"."name"), \'A\') || setweight(to_tsvector(\'english\', "item"."description"), \'B\') || setweight(to_tsvector(\'english\', "item"."brand"), \'C\' ) @@ plainto_tsquery(\'english\', ?)', [$search])->
-        orderByRaw('ts_rank_cd(to_tsvector("item"."name" || \' \' || "item"."description"|| \' \' || "item"."brand"), plainto_tsquery(\'english\', ?)) DESC', [$search]);
+            whereRaw('setweight(to_tsvector(\'english\', "item"."name"), \'A\') || setweight(to_tsvector(\'english\', "item"."description"), \'B\') || setweight(to_tsvector(\'english\', "item"."brand"), \'C\' ) @@ plainto_tsquery(\'english\', ?)', [$search])->
+            where('status', 'active');
+    }
+
+    public static function sortBestMatch($query, $search, $order) {
+        $expression = 'ts_rank_cd(to_tsvector("item"."name" || \' \' || "item"."description"|| \' \' || "item"."brand"), plainto_tsquery(\'english\', ?)) ';
+        if ($order == 'asc') {
+            $expression = $expression . 'ASC';
+        } else {
+            $expression = $expression . 'DESC';
+        }
+
+        return $query->orderByRaw($expression, [$search]);
+    }
+
+    public function getUrlAttribute(): string {
+        return action('ItemController@show', [$this->id, $this->getSlug()]);
+    }
+
+    public function getSlug(): string {
+        return Str::slug($this->name, "-");
     }
 
 }

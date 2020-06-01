@@ -3,6 +3,17 @@
 @section('title', ' - Sign In')
 
 @section('content')
+
+{{-- Error Alert --}}
+@if(session('error'))
+  <div class="alert alert-danger alert-dismissible fade show sticky-top mx-auto" role="alert">
+    {{session('error')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
+
 <form class="form-signin" method="POST" action="{{ route('sign_in') }}">
     {{ csrf_field() }}
 
@@ -25,7 +36,7 @@
         </div>
         <div class="form-group password-input">
             <label for="exampleInputPassword1">Password</label>
-            <a href="{{ url('recover_password') }}"> Forget your password?</a>
+            <a href="{{ url('recover_password') }}"> Forgot your password?</a>
             <input type="password" class="form-control" name="password" id="exampleInputPassword1" required>
             @if ($errors->has('password'))
             <span class="error">
@@ -64,3 +75,4 @@
     <footer class="copyright"> Copyright © ArtifactInk 2020 </footer>
 </div>
 @endsection
+

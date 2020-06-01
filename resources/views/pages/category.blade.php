@@ -1,16 +1,15 @@
 @extends('layouts.common')
 
-@section('title', ' - Search \'' . $query . '\'')
+@section('title', ' - ' . $category->name)
 
 <script src="{{ asset('js/search.js') }}" defer></script>
 
 @section('content')
 <section class="mx-auto my-4">
-    <h3>Search for '<?= $query ?>'</h3>
-    <form action="search" method="GET">
+    <h3>{{ $category->name }}</h3>
+    <form action="{{ $url }}" method="GET">
         <div class="d-flex flex-row justify-content-between align-items-center">
             <div>
-                <input type="hidden" name="query" value="<?= $query ?>">
                 <div class="input-group my-3" id="searchOrder">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="searchResultSortOrder">Order by</label>
@@ -19,10 +18,10 @@
                         @if(isset($orderBy))
                             value="<?= $orderBy ?>"
                         @else
-                            value="bestMatch"
+                            value="id"
                         @endif
                         >
-                        <option value="bestMatch">Best Match</option>
+                        <option value="name">Name</option>
                         <option value="price">Price</option>
                         <option value="rating">Rating</option>
                     </select>
@@ -52,43 +51,34 @@
         <div class="container-fluid">
             <div class="row">
                 <div id="filters" class="d-none d-md-block col-md-3 my-2">
-                    @include('partials.search.filters', ['categories' => $categories, 'brands' => $brands])
+                    @include('partials.search.filters', [])
                 </div>
                 <div id="mobileFilters" class="collapse d-md-none col-md-3 my-2">
-                    @include('partials.search.filters', ['categories' => $categories, 'brands' => $brands])
+                    @include('partials.search.filters', [])
                 </div>
                 <section class="col-md-9">
                     <div class="tab-content mx-auto" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <div class="row justify-content-start">
-                                @if(count($items) == 0)
-                                <h5 class="pl-3">No products were found. Consider adjusting your search parameters!</h5>
-                                @else
-                                    @foreach($items as $item)
+                                @foreach($items as $item)
                                     <div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
                                         @include('partials.item.item_card', ['item' => $item, 'picture' => $item->images()->get()->first()])
                                     </div>
-                                    @endforeach
-                                @endif
+                                @endforeach
                             </div>
                         </div>
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <ul class="list-group">
-                                @if(count($items) == 0)
-                                    <h5>No products were found. Consider adjusting your search parameters!</h5>
-                                @else
-                                    @foreach($items as $item)
-                                        @include('partials.item.item_card_alt', ['item' => $item, 'picture' => $item->images()->get()->first()])
-                                    @endforeach
-                                @endif
+                                @foreach($items as $item)
+								    @include('partials.item.item_card_alt', ['item' => $item, 'picture' => $item->images()->get()->first()])
+							    @endforeach
                             </ul>
                         </div>
                     </div>
-                    {{$items->appends(request()->except('page'))->links()}}                    
+                    {{$items->appends(request()->except('page'))->links()}}
                 </section>
             </div>
         </div>
     </form>
 </section>
-    
 @endsection

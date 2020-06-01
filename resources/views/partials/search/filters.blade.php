@@ -1,40 +1,48 @@
 <aside class="d-flex flex-column justify-content-center bg-light rounded p-2">
         <h4 class="text-start">Filters</h4>
+        @if (count($categories) > 0)
         <div>
             <label class="mt-2" for="categories">Categories</label>
-            <div id="categories" class="rounded border border-secondary p-2" style="max-height:10em; overflow-y: scroll">
-                <?php for ($i = 1; $i < 6; $i++) { ?>
-
-                    <div class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input" id="category<?= $i ?>">
-                        <label class="custom-control-label" for="category<?= $i ?>">Category <?= $i ?></label>
+            <div id="categories" class="rounded border border-secondary px-2" style="max-height:10em; overflow-y: scroll">
+                <?php for ($i = 0; $i < count($categories); $i++) {
+                        $category = $categories[$i];
+                        $categoryId = $category['id'];
+                        $categoryName = $category['name'];
+                    ?>
+                    <div class="custom-control custom-checkbox my-2">
+                        <input type="checkbox" class="custom-control-input categoryCheckbox" name="category[]" id="category<?= $i ?>" value="<?= $categoryId ?>">
+                        <label class="custom-control-label" for="category<?= $i ?>"><?= $categoryName ?></label>
                     </div>
                 <?php } ?>
             </div>
         </div>
+        @endif
         <div>
             <label class="mt-3" for="brands">Brands</label>
-            <div id="brands" class="rounded border border-secondary p-2" style="max-height:10em; overflow-y: scroll">
-                <?php for ($i = 1; $i < 6; $i++) { ?>
-
-                    <div class="custom-control custom-checkbox mb-3">
-                        <input type="checkbox" class="custom-control-input" id="brand<?= $i ?>">
-                        <label class="custom-control-label" for="brand<?= $i ?>">Brand <?= $i ?></label>
+            <div id="brands" class="rounded border border-secondary px-2" style="max-height:10em; overflow-y: scroll">
+                <?php for ($i = 0; $i < count($brands); $i++) {
+                        $brand = $brands[$i];
+                    ?>
+                    <div class="custom-control custom-checkbox my-2">
+                        <input type="checkbox" class="custom-control-input brandCheckbox" name="brand[]" id="brand<?= $i ?>"  value="<?= $brand ?>">
+                        <label class="custom-control-label" for="brand<?= $i ?>"><?= $brand ?></label>
                     </div>
                 <?php } ?>
             </div>
         </div>
         <div class="custom-control custom-switch my-3">
-            <input type="checkbox" class="custom-control-input" id="stockSwitch">
-            <label class="custom-control-label" for="stockSwitch">In-Stock</label>
+            <input type="checkbox" class="custom-control-input" name="inStock" id="stockSwitch">
+            <label class="custom-control-label" for="stockSwitch">In Stock</label>
         </div>
-        <div>
-            <label id="minPriceLabel" for="minPrice">Minimum Price</label>
-            <input type="range" class="custom-range" value="20" min="0" max="500" step="2" id="minPrice">
+        <div class="range-slider mt-0 mb-3 align-items-center">
+            <label id="priceRangeLabel" class="w-100 d-flex justify-content-start" for="price">
+                Price Range
+            </label>
+            <input type="range" class="custom-range" value="0" min="0" max="500" step="1" name="minPrice" id="minPrice">
+            <input type="range" class="custom-range" value="500" min="0" max="500" step="1" name="maxPrice" id="maxPrice">
         </div>
-        <div>
-            <label id="maxPriceLabel" for="maxPrice">Maximum Price</label>
-            <input type="range" class="custom-range" value="100" min="0" max="500" step="2" id="maxPrice">
-        </div>
-        <button class="btn btn-primary button my-2" type="submit">Apply</button>
+        <center>
+            <h3 id="priceRangeDisplay">N/A</h3>
+        </center>
+        <button class="btn btn-primary button my-2" id="filterSubmit" type="submit">Apply</button>
     </aside>

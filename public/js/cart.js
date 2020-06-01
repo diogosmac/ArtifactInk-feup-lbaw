@@ -145,6 +145,8 @@ let add_to_cart_button = document.querySelectorAll('.add-to-cart-btn');
 //add butn click actions 
 for(let i=0; i < add_to_cart_button.length; i++){
     let id_item = add_to_cart_button[i].getAttribute("data-product-type");
+    if (id_item == 'archived')
+        continue;
     add_to_cart_button[i].addEventListener('click',add_to_cart.bind(null,id_item), false);
 }
 

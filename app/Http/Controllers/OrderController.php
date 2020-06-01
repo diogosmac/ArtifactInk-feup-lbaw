@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -86,19 +87,14 @@ class OrderController extends Controller
     echo $order; 
 
     try {
-        //create new order
-        //$order->save();
         \DB::select('SELECT public."checkout_transaction"(?,?,?)',[Auth::user()->id, $address_id, $payment_id]);
-        //add tp users table
-        //$userAddresses->attach($address->id);
-
-    } catch (PDOException $e) {
-        return redirect()->route('/');
+    } catch (\Exception $e) {
+       return redirect()->back()->withErrors($e->getMessage());
     }
 
     //empty cart 
 
 
-    //return redirect()->route('/');
+    return redirect()->route('home')->with('status',"Order has been processed");
    }
 }

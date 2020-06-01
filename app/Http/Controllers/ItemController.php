@@ -15,14 +15,18 @@ class ItemController extends Controller
     /**
      * Display item
      */
-    public function show($id_item) {
+    public function show($id_item, $slug='') {
         try {
             $item = Item::findOrFail($id_item);
             $pictures = $item->images()->get();
             $reviews = $item->reviews()->orderBy('date', 'desc')->get();
             
             if ($item != null) {
-                return view('pages.product', ['item' => $item, 'pictures' => $pictures, 'reviews' => $reviews]);
+                if ($slug !== $item->getSlug()) {
+                    return redirect()->to($item->getUrlAttribute());
+                } else {
+                    return view('pages.product', ['item' => $item, 'pictures' => $pictures, 'reviews' => $reviews]);
+                }
             } else {
                 return response(json_encode("This product does not exist"), 404);
             }
@@ -53,7 +57,7 @@ class ItemController extends Controller
          * m = minimum votes required 
          * */ 
 
-        $items = Item::whereNotNull('rating')->take(25)->orderBy('rating', 'desc')->get();
+        $items = Item::whereNotNull('rating')->where('status', 'active')->take(25)->orderBy('rating', 'desc')->get();
 
         $pictures = array();
 		foreach ($items as $i) {
@@ -71,7 +75,7 @@ class ItemController extends Controller
         $items = DB::table('item')->
         join('item_sale', 'item.id', '=', 'item_sale.id_item')->
         join('sale', 'sale.id', '=', 'item_sale.id_sale')->
-        where('status', '=', 'active')->
+        where('status', 'active')->
         whereDate('end', '<=', Carbon::now()->toDateString())->
         select('item.*')->
         select(DB::raw('item.id, item.name, brand, item.price, stock, rating, status, 
@@ -98,7 +102,7 @@ class ItemController extends Controller
         
         $items = DB::table('item')->
         join('item_purchase', 'item.id', '=', 'item_purchase.id_item')->
-        where('status', '=', 'active')->
+        where('status', 'active')->
         groupBy('item.id')->
         select('item.*')->
         select(DB::raw('id, name, brand, item.price, stock, rating, status, count(*) as purchase_count'))->

@@ -70,6 +70,7 @@
 
   <script src="{{ asset('js/product_card.js') }}" defer></script>
   <script src="{{ asset('js/cart.js') }}" defer></script>
+  <script src="{{ asset('js/confirmText.js') }}" defer></script>
   <script src="{{ asset('js/wishlist.js') }}" defer></script>
   <script src="{{ asset('js/review.js') }}" defer></script>
   <script src="{{ asset('js/checkout_list.js') }}" defer></script>
@@ -147,7 +148,7 @@
                       Total
                     </div>
                     <div id="price-total" class="d-inline p-2">
-                      33.33 €
+                
                     </div>
                   </div>
                   <div class="dropdown-divider"></div>
@@ -312,7 +313,7 @@
                   Total
                 </div>
                 <div id="price-total" class="d-inline p-2">
-                  33.33 €
+           
                 </div>
               </div>
               <div class="dropdown-divider"></div>
@@ -414,16 +415,17 @@
                 </div>
                 <div class="row">
                   <div>
-                    <form>
+                    <form action="{{ route('newsletter') }}" method="POST">
+                      @csrf
                       <div class="form-group">
                         <label for="newsletter_email" class="col-form-label-sm ">Subscribe to our
                           Newsletter</label>
 
                         <div class="input-group mb-3">
-                          <input type="email" class="form-control-sm" id="newsletter_email" aria-describedby="emailHelp"
+                          <input type="email" name="email" class="form-control-sm" id="newsletter_email" aria-describedby="emailHelp"
                             aria-describedby="button-newsletter">
                           <div class="input-group-append">
-                            <button class="btn btn-secondary btn-sm text" type="button"
+                            <button class="btn btn-secondary btn-sm text" type="submit"
                               id="button-nwesletter">Subscribe</button>
                           </div>
                         </div>
@@ -441,6 +443,28 @@
       </footer>
     </div>
 </body>
+
+{{-- Success Alert --}}
+@if(session('status'))
+  <div class="alert alert-success alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    {{session('status')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
+
+{{-- Error Alert --}}
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    @foreach ($errors->all() as $error)
+    <p>{{ $error }}</p>
+    @endforeach
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
 
 </html>
   

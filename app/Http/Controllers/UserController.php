@@ -60,6 +60,7 @@ class UserController extends Controller
   }
 
   public function updateProfile(Request $request){
+    if (!Auth::check()) return redirect('/');
     
     $user = Auth::user();
 
@@ -67,11 +68,15 @@ class UserController extends Controller
     $date_of_birth = $request['date_of_birth']; 
     $phone = $request['phone']; 
     $email = $request['email'];
-    $picture = $request['picture']; 
+    $picture = $request['picture'];
 
-    if($picture != null){
-        $filename = $user->profilePicture()->get()->first()->link;
-        $picture->storeAs('public/img_user', $filename);
+    if($picture != null) {
+      // validate image
+      $this->validate($request, [
+        'picture' => 'image|mimes:jpeg,jpg,png',
+      ]);
+      $filename = $user->profilePicture()->get()->first()->link;
+      $picture->storeAs('public/img_user', $filename);
     } 
     
     //form validation
@@ -120,7 +125,30 @@ class UserController extends Controller
   }
 
   public function deleteProfile(){
-    //todo - it can be done with a trigger 
+    if (!Auth::check()) return redirect('/sign_in');
+    
+    $user = Auth::user();
+
+    $profilePicture = $user->profilePicture()->get()->first();
+
+    // Delete user 
+    try {
+      $user->delete();
+    } catch (\Exception $e) {
+      return redirect()->back()->withErrors(['delete' => 'Error trying to delete your account']);
+    }
+
+    // Delete profile pic if its not default
+    if ($profilePicture->id != 0) {
+      try {
+        $profilePicture->delete();
+        Storage::delete('public/img_user/' . $profilePicture->link);
+      } catch (\Exception $e) {
+        // ! Do something?
+      }
+    }
+
+    return redirect()->intended();
   }
 
   /**
