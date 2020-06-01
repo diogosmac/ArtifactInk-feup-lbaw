@@ -45,7 +45,33 @@
 
             </div>
             <div class="py-2 col-sm-3 d-flex flex-column justify-content-between align-items-end li-price-button">
-                <h3 class="font-weight-bold" style="color: var(--main-red)">{{$item->price}} €</h3>
+                <div class="row d-flex align-items-center">
+                    @if ($item->status == 'active')
+                        <?php 
+                            $sales = $item->sales;
+                            $currentSale = 0;
+                            $price = $item->price;
+                            foreach ($sales as $sale) {
+                                $new_sale = 0;
+                                if ($sale->type == 'percentage') {
+                                    $new_sale = 0.01 * $sale->percentage_amount * $price;
+                                } else if ($sale->type == 'fixed') {
+                                    $new_sale = $sale->fixed_amount;
+                                }
+                                if ($new_sale > $currentSale) {
+                                    $currentSale = $new_sale;
+                                }
+                            }
+                            $price = round($price - $currentSale, 2);
+                        ?>
+                            @if ($item->price != $price)
+                                <h3 class="pr-2 old-price">{{ $item->price . '€' }}</h3>
+                            @endif
+                            <h3 class="font-weight-bold pr-3" style="color: var(--main-red)">{{ $price }}€</h3>
+                    @else
+                        <h3>N/A</h3>
+                    @endif
+                </div>
                 <a href="#" class="btn button add-to-cart-btn">Add to Cart</a>
             </div>
         </div>
