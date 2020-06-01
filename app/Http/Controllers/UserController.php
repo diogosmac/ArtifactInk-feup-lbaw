@@ -31,7 +31,7 @@ class UserController extends Controller
 
     $countries = Country::get();
 
-    $profilePicture = $user->profilePicture()->get()->first();
+    $profilePicture = $user->profilePicture->first();
 
     $paymentMethods = $user->payment_methods()->orderBy('id_payment_method')->get();
     $addresses = $user->addresses()->orderBy('id_address')->get();
@@ -53,7 +53,7 @@ class UserController extends Controller
       'phone' => $user->phone
     ); 
 
-    $profilePicture = $user->profilePicture()->get()->first();
+    $profilePicture = $user->profilePicture->first();
 
     return view('pages.profile.edit', ['userInfo' => $userInfo, 'profilePicture' => $profilePicture]);    
 
@@ -75,7 +75,7 @@ class UserController extends Controller
       $this->validate($request, [
         'picture' => 'image|mimes:jpeg,jpg,png',
       ]);
-      $filename = $user->profilePicture()->get()->first()->link;
+      $filename = $user->profilePicture->first()->link;
       $picture->storeAs('public/img_user', $filename);
     } 
     
@@ -129,7 +129,7 @@ class UserController extends Controller
     
     $user = Auth::user();
 
-    $profilePicture = $user->profilePicture()->get()->first();
+    $profilePicture = $user->profilePicture->first();
 
     // Delete user 
     try {

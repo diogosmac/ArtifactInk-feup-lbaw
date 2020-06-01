@@ -48,7 +48,7 @@
                 <div class="row d-flex align-items-center">
                     @if ($item->status == 'active')
                     <?php
-                        $sales = $item->sales()->get();
+                        $sales = $item->sales;
                         $currentSale = 0;
                         $price = $item->price;
                         foreach ($sales as $sale) {

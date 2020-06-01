@@ -179,7 +179,7 @@
           </select>
         </div>
         <?php 
-                $sales = $item->sales()->get();
+                $sales = $item->sales;
                 $currentSale = 0;
                 $price = $item->price;
                 foreach ($sales as $sale) {

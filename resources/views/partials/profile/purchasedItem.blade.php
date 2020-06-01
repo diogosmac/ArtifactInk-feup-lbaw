@@ -1,7 +1,7 @@
 <div class="row align-items-center">
   <div class="col-md-3" id="purchase-history-item-picture">
     <a href="/product/{{$item->id}}">
-      <img src="{{ asset('storage/img_product/' . $item->images()->get()->first()->link) }}" alt="Ink" class="img-fluid">
+      <img src="{{ asset('storage/img_product/' . $item->images->first()->link) }}" alt="Ink" class="img-fluid">
     </a>
   </div>
   <div class="col my-2" id="purchase-history-item-data">

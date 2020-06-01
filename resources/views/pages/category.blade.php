@@ -16,7 +16,7 @@
                     </div>
                     <select class="custom-select" name="orderBy" id="searchResultSortOrder"
                         @if(isset($orderBy))
-                            value="<?= $orderBy ?>"
+                            value="{{ $orderBy }}"
                         @else
                             value="id"
                         @endif

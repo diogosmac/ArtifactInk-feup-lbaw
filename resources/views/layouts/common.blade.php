@@ -170,7 +170,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuAccount">
                   <img class="profile-pic-bubble"
-                    src="{{ asset('storage/img_user/' . Auth::user()->profilePicture()->get()->first()->link) }}"
+                    src="{{ asset('storage/img_user/' . Auth::user()->profilePicture->first()->link) }}"
                     alt="{{ Auth::user()->name}}">
                   <h5 class="dropdown-header">{{ Auth::user()->name}}</h5>
                   <div class="dropdown-divider"></div>
@@ -283,7 +283,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuAccount">
               <img class="profile-pic-bubble"
-                src="{{ asset('storage/img_user/' . Auth::user()->profilePicture()->get()->first()->link) }}" alt="{{ Auth::user()->name}}">
+                src="{{ asset('storage/img_user/' . Auth::user()->profilePicture->first()->link) }}" alt="{{ Auth::user()->name}}">
               <h5 class="dropdown-header">{{ Auth::user()->name}}</h5>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{ url('/profile') }}">My Account</a>
