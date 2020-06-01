@@ -65,9 +65,26 @@
                                 <h5 class="pl-3">No products were found. Consider adjusting your search parameters!</h5>
                                 @else
                                     @foreach($items as $item)
-                                    <div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
-                                        @include('partials.item.item_card', ['item' => $item, 'picture' => $item->images()->get()->first()])
-                                    </div>
+                                        <?php 
+                                            $sales = $item->sales;
+                                            $currentSale = 0;
+                                            $price = $item->price;
+                                            foreach ($sales as $sale) {
+                                                $new_sale = 0;
+                                                if ($sale->type == 'percentage') {
+                                                    $new_sale = 0.01 * $sale->percentage_amount * $price;
+                                                } else if ($sale->type == 'fixed') {
+                                                    $new_sale = $sale->fixed_amount;
+                                                }
+                                                if ($new_sale > $currentSale) {
+                                                    $currentSale = $new_sale;
+                                                }
+                                            }
+                                            $price = round($price - $currentSale, 2);
+                                        ?>
+                                        <div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
+                                            @include('partials.item.item_card', ['item' => $item, 'price' => $price, 'picture' => $item->images->first()])
+                                        </div>
                                     @endforeach
                                 @endif
                             </div>
@@ -78,7 +95,7 @@
                                     <h5>No products were found. Consider adjusting your search parameters!</h5>
                                 @else
                                     @foreach($items as $item)
-                                        @include('partials.item.item_card_alt', ['item' => $item, 'picture' => $item->images()->get()->first()])
+                                        @include('partials.item.item_card_alt', ['item' => $item, 'picture' => $item->images->first()])
                                     @endforeach
                                 @endif
                             </ul>
