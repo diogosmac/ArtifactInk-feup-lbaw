@@ -16,7 +16,6 @@
 
 //use Illuminate\Routing\Route;
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('sign_in', 'Auth\LoginController@showLoginForm')->name('sign_in');
@@ -135,11 +134,11 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
 
         // edit product
         Route::get('{id}/edit', 'AdminController@showEditProductForm')->where('id', '[0-9]+')->name('edit');
-        Route::post('/edit', 'AdminController@editProduct')->name('edit_product');
+        Route::post('edit', 'AdminController@editProduct')->name('edit_product');
 
         // archive/unarchive product
-        Route::put('/archive', 'AdminController@archiveItem')->name('archive');
-        Route::put('/unarchive', 'AdminController@unarchiveItem')->name('unarchive');
+        Route::put('archive', 'AdminController@archiveItem')->name('archive');
+        Route::put('unarchive', 'AdminController@unarchiveItem')->name('unarchive');
     });
 
     // categories
@@ -152,7 +151,13 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
     Route::get('reviews', 'AdminController@showReviews')->name('reviews');
 
     // users
-    Route::get('users', 'AdminController@showUsers')->name('users');
+    Route::prefix('users')->name('users.')->group(function () {
+        // home;
+        Route::get('/', 'AdminController@showUsers')->name('home');
+        // ban/unban users
+        Route::put('ban', 'AdminController@banUser')->name('ban');
+        Route::put('unban', 'AdminController@unbanUser')->name('unban');
+    });
 
     // sales
     Route::prefix('sales')->name('sales.')->group(function () {
@@ -161,9 +166,14 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
 
         // create sale
         Route::get('add', 'AdminController@showAddSaleForm')->name('add');
+        Route::post('add', 'AdminController@addSale')->name('add');
 
         // edit sale
         Route::get('{id}/edit', 'AdminController@showEditSaleForm')->where('id', '[0-9]+')->name('edit');
+        Route::put('{id}/edit', 'AdminController@editSale')->where('id', '[0-9]+')->name('edit');
+
+        // delete sale
+        Route::delete('delete', 'AdminController@deleteSale')->name('delete');
     });
 
     // newsletter

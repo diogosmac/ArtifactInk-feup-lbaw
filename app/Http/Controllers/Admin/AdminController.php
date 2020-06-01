@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\SearchController;
 use App\Item;
 use App\ItemPicture;
+use App\Sale;
+use App\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 
@@ -196,23 +198,43 @@ class AdminController extends Controller
     }
 
     public function archiveItem(Request $request) {
-        // get item
-        $item = Item::find($request->id_item);
+        try {
+            // get item
+            $item = Item::findOrFail($request->id_item);
 
-        $item->status = 'archived';
-        $item->save();
+            if ($item != null) {
+                // set new status
+                $item->status = 'archived';
+                $item->save();
+                // return item id
+                return response()->json(['id_item' => $item->id]);
+            } else {
+                return response(json_encode("This product does not exist"), 404);
+            }
 
-        return response()->json(['id_item' => $item->id]);
+        } catch (\Exception $e) {
+            return response(json_encode($e->getMessage()), 400);
+        }
     }
 
     public function unarchiveItem(Request $request) {
-        // get item
-        $item = Item::find($request->id_item);
+        try {
+            // get item
+            $item = Item::findOrFail($request->id_item);
+            
+            if ($item != null) {
+                // set new status
+                $item->status = 'active';
+                $item->save();
+                // return item id
+                return response()->json(['id_item' => $item->id]);
+            } else {
+                return response(json_encode("This product does not exist"), 404);
+            }
 
-        $item->status = 'active';
-        $item->save();
-
-        return response()->json(['id_item' => $item->id]);
+        } catch (\Exception $e) {
+            return response(json_encode($e->getMessage()), 400);
+        }
     }
 
     /*
@@ -248,7 +270,52 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showUsers() {
-        return view('pages.admin.users');
+        $users = User::orderBy('id', 'asc');
+
+        // TODO search
+
+        $users = $users->paginate(10)->withPath('');
+        return view('pages.admin.users', ['users' => $users]);
+    }
+
+    public function banUser(Request $request) {
+        try {
+            // get user
+            $user = User::findOrFail($request->id_user);
+
+            if ($user != null) {
+                // set new status
+                $user->is_banned = true;
+                $user->save();
+                // return user id
+                return response()->json(['id_user' => $user->id]);
+            } else {
+                return response(json_encode("This user does not exist"), 404);
+            }
+
+        } catch (\Exception $e) {
+            return response(json_encode($e->getMessage()), 400);
+        }
+    }
+
+    public function unbanUser(Request $request) {
+        try {
+            // get user
+            $user = User::findOrFail($request->id_user);
+
+            if ($user != null) {
+                // set new status
+                $user->is_banned = false;
+                $user->save();
+                // return user id
+                return response()->json(['id_user' => $user->id]);
+            } else {
+                return response(json_encode("This user does not exist"), 404);
+            }
+
+        } catch (\Exception $e) {
+            return response(json_encode($e->getMessage()), 400);
+        }
     }
 
     /*
@@ -257,22 +324,92 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showSales() {
-        return view('pages.admin.sales.sales');
+        $sales = Sale::orderBy('id', 'asc');
+
+        $sales = $sales->paginate(10)->withPath('');
+        return view('pages.admin.sales.sales', ['sales' => $sales]);
     }
 
     public function showAddSaleForm() {
-        return view('pages.admin.sales.add_sale');
+        $items = Item::all();
+        return view('pages.admin.sales.add_sale', ['products' => $items]);
+    }
+
+    private function validateSale(Request $request) {
+        //validation rules.
+        $rules = [
+            'name' => 'required|string|max:255',
+            'type' => 'required|string',
+            'value' => 'required_if:type,fixed|numeric|max:100',
+            'value' => 'required_if:type,percentage|numeric|max:100',
+            'start' => 'required|date',
+            'end' => 'required|date|after_or_equal:start',
+            'items' => 'required|array',
+            'items.*' => 'required|numeric|exists:App\Item,id'
+            
+        ];
+
+        //custom validation error messages.
+        $messages = [
+            'pictures.*.mimes' => 'Only jpeg, jpg or png images are allowed',
+            'pictures.*.image' => 'Uploaded file must be an image',
+        ];
+
+        // validate the request.
+        $request->validate($rules, $messages);
+    }
+
+    public function addSale(Request $request) {
+        return $request;
     }
 
     public function showEditSaleForm($id_sale) {
-        // TODO GET SALE OBJECT
-        $sale = (object) array(
-            "id" => $id_sale,
-            "name" => "Inktober Fest",
-            "startDate" => "2020-03-01",
-            "endDate" => "2020-04-01"
-        );
-        return view('pages.admin.sales.edit_sale', ['sale' => $sale]);
+        try {
+            $sale = Sale::findOrFail($id_sale);
+            $sale_items = $sale->items()->orderBy('id', 'asc')->get();
+            $sale_item_ids = $sale_items->pluck('id');
+            $non_sale_items = Item::whereNotIn('id', $sale_item_ids)->orderBy('id', 'asc')->get();
+            
+            if ($sale != null) {
+                // delete sale
+                return view('pages.admin.sales.edit_sale', ['sale' => $sale, 'items_sale' => $sale_items, 'items' => $non_sale_items]);
+
+            } else {
+                return redirect()
+                    ->route('admin.sales.home')
+                    ->withErrors('Failed to load sale.');
+            }
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('admin.sales.home')
+                ->withErrors('Failed to load sale. ' . $e->getMessage());
+        }
+    }
+
+    public function editSale(Request $request) {
+        return $request;
+    }
+
+    public function deleteSale(Request $request) {
+        try {
+            $sale = Sale::findOrFail($request->id);
+            
+            if ($sale != null) {
+                // delete sale
+                $sale->delete();
+                return redirect()
+                    ->route('admin.sales.home')
+                    ->with('status', 'Sale ' . $sale->name . ' deleted successfuly.');
+            } else {
+                return redirect()
+                    ->route('admin.sales.home')
+                    ->withErrors('Failed to delete sale.');
+            }
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('admin.sales.home')
+                ->withErrors('Failed to delete sale. ' . $e->getMessage());
+        }
     }
 
     /*
