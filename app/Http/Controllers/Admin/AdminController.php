@@ -347,22 +347,24 @@ class AdminController extends Controller
 
     public function deleteSale(Request $request) {
         try {
-            $sale = Sale::findOrFail($request->id_sale);
+            $sale = Sale::findOrFail($request->id);
             
             if ($sale != null) {
                 // delete sale
                 $sale->delete();
                 return redirect()
-                    ->route('admin.home')
+                    ->route('admin.sales.home')
                     ->with('status', 'Sale ' . $sale->name . ' deleted successfuly.');
             } else {
                 return redirect()
-                    ->route('admin.home')
-                    ->with('Errors', 'Failed to delete sale.');
-            }
+                    ->route('admin.sales.home')
+                    ->withErrors('Failed to delete sale.');
+                }
         } catch (\Exception $e) {
-            return response('Error deleting sale');
-        }
+            return redirect()
+                ->route('admin.sales.home')
+                ->withErrors('EXCEPTION: Failed to delete sale. ' . $e->getMessage());
+            }
     }
 
     /*
