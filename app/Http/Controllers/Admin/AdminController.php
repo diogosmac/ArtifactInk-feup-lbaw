@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\SearchController;
 use App\Item;
 use App\ItemPicture;
+use App\Sale;
 use App\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
@@ -323,7 +324,10 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showSales() {
-        return view('pages.admin.sales.sales');
+        $sales = Sale::orderBy('id', 'asc');
+
+        $sales = $sales->paginate(10)->withPath('');
+        return view('pages.admin.sales.sales', ['sales' => $sales]);
     }
 
     public function showAddSaleForm() {
@@ -339,6 +343,26 @@ class AdminController extends Controller
             "endDate" => "2020-04-01"
         );
         return view('pages.admin.sales.edit_sale', ['sale' => $sale]);
+    }
+
+    public function deleteSale(Request $request) {
+        try {
+            $sale = Sale::findOrFail($request->id_sale);
+            
+            if ($sale != null) {
+                // delete sale
+                $sale->delete();
+                return redirect()
+                    ->route('admin.home')
+                    ->with('status', 'Sale ' . $sale->name . ' deleted successfuly.');
+            } else {
+                return redirect()
+                    ->route('admin.home')
+                    ->with('Errors', 'Failed to delete sale.');
+            }
+        } catch (\Exception $e) {
+            return response('Error deleting sale');
+        }
     }
 
     /*
