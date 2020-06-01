@@ -67,25 +67,34 @@ class EmailServiceController extends Controller
         return $this->sendEmail($email, $name, 'Reset Password Request', $content);
     }
 
-    public function sendNewsletterEmail($email, $name, $items) {
+    /**
+     * @param User's email
+     * @param User's name 
+     * @param Email subject
+     * @param Email header
+     * @param Email body
+     * @param Items to send (List of Item ids)
+     * @return HTMLEmail String
+     */
+    public function sendNewsletterEmail($email, $name, $subject, $header, $body, $items) {
         if (!isset($email) || !isset($items)) {
             return false;
         }
 
-        print($email);
-        print_r($items);
-
-        $content = $this->htmlNewsletterEmail($items);
-
-        return $this->sendEmail($email, $name, 'Artifact Ink Newsletter', $content);
+        $content = $this->htmlNewsletterEmail($header, $body, $items);
+        
+        return $this->sendEmail($email, $name, $subject, $content);
     }
 
 
     /**
+     * @param Email header
+     * @param Email body
      * @param Items to send (List of Item ids)
      * @return HTMLEmail String
      */
-    public function htmlNewsletterEmail($items) {
+    public function htmlNewsletterEmail($header, $body, $items) {
+        $paragraphs = $this->newsletterParagraphs($body);
         return "<html>
         <head>
             <title>Artifact Ink</title>
@@ -200,10 +209,8 @@ class EmailServiceController extends Controller
                       <td style=\"max-width:40em;\">
                         <img src=\"https://web.fe.up.pt/~up201705985/images/artifact_ink_logo_letters.png\" alt=\"Logo\" width=\"400\" style=\"display: block;margin-left: auto;margin-right: auto; padding-bottom: 2em;\">
                         <div class=\"content\">
-                            <h3 class=\"highlight\">Hey y'all,</h3>
-                            <p>In Artifact Ink we work to bring the best products with the best prices to our custumers. 
-                            Fresh deals come out every month than make people want us as their prime supplier.</p>
-                            <p>Here are the deals we thought you would like to know about.</p>
+                            <h3 class=\"highlight\">$header</h3>
+                            $paragraphs
                         </div>
                       </td>
                     </tr>
@@ -211,12 +218,21 @@ class EmailServiceController extends Controller
                 "<tr>
                     <td style=\"max-width:40em; padding-left: 3em;\">
                     <div class=\"content\">
-                    <p>Thank you,<br>The Artifact Ink Team</p>
+                    <p>Carefully sent by,<br><br>The Artifact Ink Team</p>
                     </div>
                     </td>
                 </tr>
                 </table>
                 </div></body></html>";
+    }
+
+    public function newsletterParagraphs($body) {
+        $paragraphs = explode("\n", str_replace("\r", "", $body));
+        $content = "";
+        foreach ($paragraphs as $paragraph) {
+            $content = $content . "<p>$paragraph</p>";
+        }
+        return $content;        
     }
 
     /**
@@ -227,7 +243,7 @@ class EmailServiceController extends Controller
         if (!isset($items)) {
             return "";
         }
-
+        
         $content = "<tr>";
         for ($i = 0; $i < count($items); $i++) {
             if ($i / 2 > 0 && $i % 2 == 0)
