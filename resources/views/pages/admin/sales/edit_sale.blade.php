@@ -31,8 +31,6 @@
       <input type="hidden" name='items[]' value="{{ $sale->items }}">
     </form>
 
-    {{ $sale->items }}
-
     <div class="mx-auto mt-2">
       <div class="row">
         <div class="col-md-6 col-sm-12">
@@ -105,23 +103,7 @@
               </tr>
             </thead>
             <tbody>
-              @php
-              $products = array(
-                (object) array(
-                  "id" => 1,
-                  "name" => "Dynamic Black Ink 100ml",
-                  "price" => 117.99,
-                  "img" => "23_skeleton_with_geometry.png"
-                ),
-                (object) array(
-                  "id" => 2,
-                  "name" => "Super cool skeleton",
-                  "price" => 230.00,
-                  "img" => "23_skeleton_with_geometry.png"
-              )
-              );
-              @endphp
-              @each('partials.admin.sale_add_product_row', [], 'product')
+              @each('partials.admin.sale_add_product_row', $items, 'product')
             </tbody>
           </table>
         </div>
@@ -196,7 +178,7 @@
               </tr>
             </thead>
             <tbody>
-              @each('partials.admin.sale_remove_product_row', $products, 'product')
+              @each('partials.admin.sale_remove_product_row', $items_sale, 'product')
             </tbody>
           </table>
         </div>
