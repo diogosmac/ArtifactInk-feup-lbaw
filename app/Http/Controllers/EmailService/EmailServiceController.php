@@ -13,7 +13,7 @@ use Illuminate\Support\Carbon;
 
 class EmailServiceController extends Controller
 {
-    public function sendEmail($email, $name, $content) {
+    public function sendEmail($email, $name, $subject, $content) {
         // Configure API key authorization: api-key
         $config = \SendinBlue\Client\Configuration::getDefaultConfiguration()->setApiKey('api-key', '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');
 
@@ -28,8 +28,8 @@ class EmailServiceController extends Controller
         );
         $sendSmtpEmail = new \SendinBlue\Client\Model\SendSmtpEmail(); // \SendinBlue\Client\Model\SendSmtpEmail | Values to send a transactional email
         $sendSmtpEmail['sender'] = array('email' => 'general@artifactink.pt', 'name' => 'Artifact Ink');
-        $sendSmtpEmail['to'] = array(array('email' => /*$email*/'tiago.silva.99@hotmail.com', 'name' => $name));
-        $sendSmtpEmail['subject'] = 'Reset Password Request';
+        $sendSmtpEmail['to'] = array(array('email' => $email/*'tiago.silva.99@hotmail.com'*/, 'name' => $name));
+        $sendSmtpEmail['subject'] = $subject;
         
         $sendSmtpEmail['htmlContent'] = $content;
         $sendSmtpEmail['textContent'] = 'SENDINBLUE AUTO EMAIL';
@@ -54,7 +54,7 @@ class EmailServiceController extends Controller
 
         $content = $this->htmlResetPasswordEmail($name, $url);
 
-        return $this->sendEmail($email, $name, $content);
+        return $this->sendEmail($email, $name, 'Reset Password Request', $content);
     }
 
     public function sendConfirmResetPasswordEmail($email, $name) {
@@ -64,7 +64,7 @@ class EmailServiceController extends Controller
 
         $content = $this->htmlConfirmResetPasswordEmail($name);
 
-        return $this->sendEmail($email, $name, $content);
+        return $this->sendEmail($email, $name, 'Reset Password Request', $content);
     }
 
     public function sendNewsletterEmail($email, $name, $items) {
@@ -77,7 +77,7 @@ class EmailServiceController extends Controller
 
         $content = $this->htmlNewsletterEmail($items);
 
-        return $this->sendEmail($email, $name, $content);
+        return $this->sendEmail($email, $name, 'Artifact Ink Newsletter', $content);
     }
 
 
