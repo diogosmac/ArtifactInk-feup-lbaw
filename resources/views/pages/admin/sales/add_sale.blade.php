@@ -8,12 +8,12 @@
 
     <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap border-bottom mt-2">
       <h1>Add Sale</h1>
-      <button type="submit" class="btn button" form="add-sale" value="Submit">
+      <button type="submit" class="btn button" form="sale-form" value="Submit">
         Submit
       </button>
     </div>
 
-    <form action="{{ route('admin.sales.add') }}" method="POST" id="add-sale">
+    <form action="{{ route('admin.sales.add') }}" method="POST" id="sale-form">
       @csrf
       <div class="form-row">
         <div class="form-group col-md-4">
@@ -40,7 +40,6 @@
           <input required name="end" type="date" class="form-control" min="0" id="inputEndDate">
         </div>
       </div>
-        <input type="hidden" name='items[]'>
     </form>
 
     <div class="mx-auto mt-2">
@@ -112,7 +111,7 @@
             <th scope="col"></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id='add-item-list'>
           @each('partials.admin.sale_add_product_row', $products, 'product')
         </tbody>
       </table>
@@ -185,7 +184,7 @@
         <th scope="col"></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody id='item-list'>
       @each('partials.admin.sale_remove_product_row', [], 'product')
     </tbody>
   </table>

@@ -8,12 +8,12 @@
 
     <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap border-bottom mt-2">
       <h1>Edit Sale</h1>
-      <button id="submit-sale-button" type="submit" form="edit-sale" value="Submit" class="btn button">
+      <button id="submit-sale-button" type="submit" form="sale-form" value="Submit" class="btn button">
         Submit
       </button>
     </div>
 
-    <form action="{{ route('admin.sales.edit', ['id' => $sale->id]) }}" method="POST" id="edit-sale">
+    <form action="{{ route('admin.sales.edit', ['id' => $sale->id]) }}" method="POST" id="sale-form">
       @csrf
       @method('PUT')
       <div class="form-row">
@@ -203,4 +203,7 @@
 
   </div>
 </main>
+
+
+
 @endsection
