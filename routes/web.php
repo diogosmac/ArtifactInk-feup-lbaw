@@ -168,6 +168,7 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
 
         // create sale
         Route::get('add', 'AdminController@showAddSaleForm')->name('add');
+        Route::post('add', 'AdminController@addSale')->name('add');
 
         // edit sale
         Route::get('{id}/edit', 'AdminController@showEditSaleForm')->where('id', '[0-9]+')->name('edit');

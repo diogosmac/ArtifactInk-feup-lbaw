@@ -331,11 +331,36 @@ class AdminController extends Controller
     }
 
     public function showAddSaleForm() {
-        return view('pages.admin.sales.add_sale', ['products' => []]);
+        $items = Item::all();
+        return view('pages.admin.sales.add_sale', ['products' => $items]);
     }
 
-    public function addSale() {
-        return 1;
+    private function validateSale(Request $request) {
+        //validation rules.
+        $rules = [
+            'name' => 'required|string|max:255',
+            'type' => 'required|string',
+            'value' => 'required_if:type,fixed|numeric|max:100',
+            'value' => 'required_if:type,percentage|numeric|max:100',
+            'start' => 'required|date',
+            'end' => 'required|date|after_or_equal:start',
+            'items' => 'required|array',
+            'items.*' => 'required|numeric|exists:App\Item,id'
+            
+        ];
+
+        //custom validation error messages.
+        $messages = [
+            'pictures.*.mimes' => 'Only jpeg, jpg or png images are allowed',
+            'pictures.*.image' => 'Uploaded file must be an image',
+        ];
+
+        // validate the request.
+        $request->validate($rules, $messages);
+    }
+
+    public function addSale(Request $request) {
+        return $request;
     }
 
     public function showEditSaleForm($id_sale) {

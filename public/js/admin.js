@@ -170,7 +170,7 @@ let addItemList;
 let itemList;
 let saleForm;
 function addSaleItemsForm() {
-    saleForm = document.getElementById('edit-sale');
+    saleForm = document.getElementById('sale-form');
     itemList = document.getElementById('item-list');
     addItemList = document.getElementById('add-item-list');
     if (saleForm == null)
