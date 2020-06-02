@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\AdminNotification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EmailService\EmailServiceController;
@@ -11,6 +12,7 @@ use App\ItemPicture;
 use App\NewsletterSubscriber;
 use App\Sale;
 use App\User;
+use Exception;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 
@@ -22,7 +24,20 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view('pages.admin.home');
+        $notifications = AdminNotification::all()->sortByDesc('sent');
+        return view('pages.admin.home', ['notifications' => $notifications]);
+    }
+
+    public function clearNotification(Request $request) {
+        $notification_id = $request->notification_id;
+
+        try {
+            AdminNotification::destroy($notification_id);
+        } catch (Exception $e) {
+            return response('Internal Server Error', 500);
+        }
+
+        return response()->json(['notification_id' => $notification_id]);
     }
 
     /*

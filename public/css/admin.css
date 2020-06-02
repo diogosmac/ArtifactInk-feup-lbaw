@@ -136,3 +136,9 @@ select optgroup{
 .chat-message-card-body {
     padding: 0.75rem !important;
 }
+
+tr.admin-notification {
+    opacity: 1;
+    -webkit-transition: opacity 250ms ease-out;
+    transition: opacity 250ms ease-out;
+}
