@@ -36,21 +36,23 @@ class SpecialsController extends Controller
         $maxPrice = Input::get('maxPrice', 500);
 
         $items = $items
-            ->whereHas('sales', function ($items) use ($minPrice, $maxPrice) {
+            ->where(function ($items) use ($minPrice, $maxPrice) {
                 $items
-                    ->whereRaw('
-                        "sale"."type" = \'fixed\'
-                        and "item"."price" - "sale"."fixed_amount" >= ' . $minPrice . '
-                        and "item"."price" - "sale"."fixed_amount" <= ' . $maxPrice)
-                    ->orWhereRaw('
-                        "sale"."type" = \'percentage\'
-                        and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") >= ' . $minPrice . '
-                        and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") <= ' . $maxPrice);
-            })
-            ->orWhereDoesntHave('sales')
-                ->where('price', '>=', $minPrice)
-                ->where('price', '<=', $maxPrice);
-
+                    ->whereHas('sales', function ($items) use ($minPrice, $maxPrice) {
+                        $items
+                            ->whereRaw('
+                                ( "sale"."type" = \'fixed\'
+                                and "item"."price" - "sale"."fixed_amount" >= ' . $minPrice . '
+                                and "item"."price" - "sale"."fixed_amount" <= ' . $maxPrice . ' )')
+                            ->orWhereRaw('
+                                ( "sale"."type" = \'percentage\'
+                                and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") >= ' . $minPrice . '
+                                and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") <= ' . $maxPrice . ' )');
+                    })
+                    ->orWhereDoesntHave('sales')
+                    ->where('item.price', '>=', $minPrice)
+                    ->where('item.price', '<=', $maxPrice);
+            });
 
         $items = $items->take(24)->get();
         $finalItems = array();
@@ -116,20 +118,23 @@ class SpecialsController extends Controller
         $maxPrice = Input::get('maxPrice', 500);
 
         $items = $items
-            ->whereHas('sales', function ($items) use ($minPrice, $maxPrice) {
+            ->where(function ($items) use ($minPrice, $maxPrice) {
                 $items
-                    ->whereRaw('
-                        "sale"."type" = \'fixed\'
-                        and "item"."price" - "sale"."fixed_amount" >= ' . $minPrice . '
-                        and "item"."price" - "sale"."fixed_amount" <= ' . $maxPrice)
-                    ->orWhereRaw('
-                        "sale"."type" = \'percentage\'
-                        and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") >= ' . $minPrice . '
-                        and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") <= ' . $maxPrice);
-            })
-            ->orWhereDoesntHave('sales')
-                ->where('price', '>=', $minPrice)
-                ->where('price', '<=', $maxPrice);
+                    ->whereHas('sales', function ($items) use ($minPrice, $maxPrice) {
+                        $items
+                            ->whereRaw('
+                                ( "sale"."type" = \'fixed\'
+                                and "item"."price" - "sale"."fixed_amount" >= ' . $minPrice . '
+                                and "item"."price" - "sale"."fixed_amount" <= ' . $maxPrice . ' )')
+                            ->orWhereRaw('
+                                ( "sale"."type" = \'percentage\'
+                                and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") >= ' . $minPrice . '
+                                and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") <= ' . $maxPrice . ' )');
+                    })
+                    ->orWhereDoesntHave('sales')
+                    ->where('item.price', '>=', $minPrice)
+                    ->where('item.price', '<=', $maxPrice);
+            });
 
         $items = $items->get();
         $finalItems = array();
@@ -195,20 +200,23 @@ class SpecialsController extends Controller
         $maxPrice = Input::get('maxPrice', 500);
 
         $items = $items
-            ->whereHas('sales', function ($items) use ($minPrice, $maxPrice) {
+            ->where(function ($items) use ($minPrice, $maxPrice) {
                 $items
-                    ->whereRaw('
-                        "sale"."type" = \'fixed\'
-                        and "item"."price" - "sale"."fixed_amount" >= ' . $minPrice . '
-                        and "item"."price" - "sale"."fixed_amount" <= ' . $maxPrice)
-                    ->orWhereRaw('
-                        "sale"."type" = \'percentage\'
-                        and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") >= ' . $minPrice . '
-                        and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") <= ' . $maxPrice);
-            })
-            ->orWhereDoesntHave('sales')
-                ->where('price', '>=', $minPrice)
-                ->where('price', '<=', $maxPrice);
+                    ->whereHas('sales', function ($items) use ($minPrice, $maxPrice) {
+                        $items
+                            ->whereRaw('
+                                ( "sale"."type" = \'fixed\'
+                                and "item"."price" - "sale"."fixed_amount" >= ' . $minPrice . '
+                                and "item"."price" - "sale"."fixed_amount" <= ' . $maxPrice . ' )')
+                            ->orWhereRaw('
+                                ( "sale"."type" = \'percentage\'
+                                and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") >= ' . $minPrice . '
+                                and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") <= ' . $maxPrice . ' )');
+                    })
+                    ->orWhereDoesntHave('sales')
+                    ->where('item.price', '>=', $minPrice)
+                    ->where('item.price', '<=', $maxPrice);
+            });
 
         $items = $items->take(24)->get();
         $finalItems = array();

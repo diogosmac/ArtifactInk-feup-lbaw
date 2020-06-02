@@ -117,52 +117,50 @@ function setDesc() {
 }
 
 function setSortOrder() {
-    if (sortOrderVal == 'none')
-        return;
-    else if (sortOrderVal == 'asc')
+    if (sortOrderVal == 'asc')
         setAsc();
     else if (sortOrderVal == 'desc')
         setDesc();
-    else
-        console.log("Oopsie-daisies");
+    else if (sortOrderVal == 'none')
+        return;
 }
 
 function checkInputs() {
     
-    if (orderBy != null)
-        orderBy.disabled = (orderBy.value == 'bestMatch' || orderBy.value == 'name');
-
-    if (minSlider != null)
-        minSlider.disabled = (minSlider.value == 0);
-    
-    if (maxSlider != null)
-        maxSlider.disabled = (maxSlider.value == 500);
-
+    for (input of document.querySelectorAll('input')) {
+        if (input.display == 'none')
+            input.disabled = true;
     }
+
+    if (orderBy != null) {
+        orderBy.disabled = (orderBy.value == 'bestMatch' || orderBy.value == 'name');
+    }
+
+    if (minSlider != null) {
+        minSlider.disabled = (minSlider.value == 0);
+    }
+    
+    if (maxSlider != null) {
+        maxSlider.disabled = (maxSlider.value == 500);
+    }
+
+}
 
 
 window.onload = function () {
 
     var filters = document.getElementById('filters')
+    var mobileFilters = document.getElementById('mobileFilters');
     if (filters != null) {
         var filtersDisplay = window.getComputedStyle(filters).display;
-        if (filtersDisplay === 'none') {
-            var inputs = filters.getElementsByTagName('input');
-            for (input of inputs) {
-                input.disabled = true;
-            }
+        if (filtersDisplay == 'none') {
+            filters.remove();
         }
-    }
-
-    var mobileFilters = document.getElementById('mobileFilters')
-    var mobileFiltersDisplay = window.getComputedStyle(mobileFilters).display;
-    if (mobileFiltersDisplay === 'none') {
-        var inputs = mobileFilters.getElementsByTagName('input');
-        for (input of inputs) {
-            input.disabled = true;
+        else {
+            mobileFilters.remove();
         }
-    }
 
+    }
 
     orderBy = document.getElementById('searchResultSortOrder');
 
@@ -170,6 +168,7 @@ window.onload = function () {
     for (slider of minSliders) {
         if (slider.disabled == false) {
             minSlider = slider;
+            console.log(slider);
             break;
         }
     }
