@@ -338,31 +338,64 @@ class AdminController extends Controller
     }
 
     private function validateSale(Request $request) {
-        //validation rules.
+        //validation rules
         $rules = [
             'name' => 'required|string|max:255',
             'type' => 'required|string',
-            'value' => 'required_if:type,fixed|numeric|max:100',
-            'value' => 'required_if:type,percentage|numeric|max:100',
             'start' => 'required|date',
             'end' => 'required|date|after_or_equal:start',
-            'items' => 'required|array',
-            'items.*' => 'required|numeric|exists:App\Item,id'
-            
+            'item' => 'required|array',
+            'item.*.*' => 'required|numeric|exists:App\Item,id'
         ];
 
         //custom validation error messages.
         $messages = [
-            'pictures.*.mimes' => 'Only jpeg, jpg or png images are allowed',
-            'pictures.*.image' => 'Uploaded file must be an image',
+            'item.*' => 'At least one item must be selected',
+            'value' => 'Discount value is too high'
         ];
 
         // validate the request.
         $request->validate($rules, $messages);
+        return;
+        // get lowest price item on sale
+        $min_price = Item::find($request->item)->min('price');
+        // add new rules
+        $new_rules = [
+            'value' => 'bail|required_if:type,\'percentage\'|numeric|max:100',
+            'value' => 'bail|required_if:type,fixed|numeric|max:' . $min_price,
+        ];
+
+        // re-validate the request.
+        $request->validate($new_rules, $messages);
     }
 
     public function addSale(Request $request) {
-        return $request;
+        // validate request
+        $this->validateSale($request);
+        // create new sale
+        $new_sale = new Sale;
+        $new_sale->name = $request->name;
+        $new_sale->type = $request->type;
+        // pick type
+        if ($request->type == 'percentage') {
+            $new_sale->percentage_amount = $request->value;
+            $new_sale->fixed_amount = null;
+        } else {
+            $new_sale->fixed_amount = $request->value;
+            $new_sale->percentage_amount = null;
+        }
+        $new_sale->start = $request->start;
+        $new_sale->end = $request->end;
+        $new_sale->save();
+
+        // create item sales
+        foreach($request->item as $id_item) {
+            $new_sale->items()->attach(1, ['id_item' => $id_item, 'id_sale' => $new_sale->id]);
+        }
+
+        return redirect()
+            ->intended(route('admin.sales.home'))
+            ->with('status','Sale ' . $new_sale->name . ' added successfuly!');
     }
 
     public function showEditSaleForm($id_sale) {
@@ -451,10 +484,14 @@ class AdminController extends Controller
         $email_service = new EmailServiceController();
         foreach ($subscribers as $subscriber) {
             if (!$email_service->sendNewsletterEmail($subscriber->email, 'Newsletter Subscriber', $subject, $title, $body, $items))   
-                return redirect()->back()->withErrors(['error' => trans('A Network Error occurred. Please try again.')]);   
+                return redirect()
+                    ->back()
+                    ->withErrors('A Network Error occurred. Please try again.');   
         }
         
-        return redirect()->back()->with(['status' => trans('The newsletter was sent to all subscribers')]);
+        return redirect()
+            ->back()
+            ->with('status', 'The newsletter was sent to ' . $subscribers->count() . ' subscribers');
     }
 
     /*
