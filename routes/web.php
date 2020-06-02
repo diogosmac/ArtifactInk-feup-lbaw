@@ -163,6 +163,7 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
 
     // reviews
     Route::get('reviews', 'AdminController@showReviews')->name('reviews');
+    Route::delete('reviews', 'AdminController@deleteReview')->name('reviews');
 
     // users
     Route::prefix('users')->name('users.')->group(function () {

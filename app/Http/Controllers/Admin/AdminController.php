@@ -13,6 +13,7 @@ use App\Http\Controllers\SearchController;
 use App\Item;
 use App\ItemPicture;
 use App\NewsletterSubscriber;
+use App\Review;
 use App\Sale;
 use App\Store;
 use App\User;
@@ -282,7 +283,31 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showReviews() {
-        return view('pages.admin.reviews');
+        $reviews = Review::orderBy('date', 'desc');
+        $reviews = $reviews->paginate(10)->withPath('');
+        return view('pages.admin.reviews', ['reviews' => $reviews]);
+    }
+
+    public function deleteReview(Request $request) {
+        try {
+            // get review
+            $review = Review::findOrFail($request->id);
+            if ($review != null) {
+                // delete sale
+                $review->delete();
+                return redirect()
+                    ->route('admin.reviews')
+                    ->with('status', 'Review ' . $review->name . ' deleted successfuly.');
+            } else {
+                return redirect()
+                    ->route('admin.reviews')
+                    ->withErrors('Failed to delete review.');
+            }
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('admin.reviews')
+                ->withErrors('Failed to delete review. ' . $e->getMessage());
+        }
     }
 
     /*

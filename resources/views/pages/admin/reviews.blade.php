@@ -64,7 +64,6 @@
           <th scope="col">#</th>
           <th scope="col">User</th>
           <th scope="col">Item</th>
-          <th scope="col">Order</th>
           <th scope="col">Timestamp</th>
           <th scope="col">Score</th>
           <th scope="col">Content</th>
@@ -72,74 +71,35 @@
         </tr>
       </thead>
       <tbody>
-        @php
-        $reviews = array(
-          // review 3
-          (object) array(
-            "id" => 3,
-            "user" => "miguel102@gmail.com",
-            "title" => "Good product",
-            "body" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem dolorem, adipisci tempora esse repellendus ab reprehenderit consequatur assumenda dolorum deserunt dolore eum qui necessitatibus cupiditate nostrum aut repellat natus mollitia!",
-            "score" => 4.5,
-            "timestamp" => "Sunday, 08-Mar-20 12:34:17",
-            "order" => 13,
-            // item
-            "item" => (object) array(
-              'id' => 234,
-              'img' => "6_skull.jpg",
-              'name' => "Dynamic Black Ink 100ml",
-              'price' => 17.99,
-              'category' => "Ink",
-              'subcategory' => "Black",
-              'stock' => 34
-            )
-          ),
-          // review 2
-          (object) array(
-            "id" => 2,
-            "user" => "outromiguel102@gmail.com",
-            "title" => "Another Good product",
-            "body" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem dolorem, adipisci tempora esse repellendus ab reprehenderit consequatur assumenda dolorum deserunt dolore eum qui necessitatibus cupiditate nostrum aut repellat natus mollitia!",
-            "score" => 4.7,
-            "timestamp" => "Sunday, 08-Mar-20 12:34:17",
-            "order" => 4,
-            // item
-            "item" => (object) array(
-              'id' => 234,
-              'img' => "23_skeleton_with_geometry.png",
-              'name' => "Dynamic Black Ink 100ml",
-              'price' => 17.99,
-              'category' => "Ink",
-              'subcategory' => "Black",
-              'stock' => 34
-            )
-          ),
-          // review 1
-          (object) array(
-            "id" => 1,
-            "user" => "maisoutromiguel102@gmail.com",
-            "title" => "Yet Another Good product",
-            "body" => "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem dolorem, adipisci tempora esse repellendus ab reprehenderit consequatur assumenda dolorum deserunt dolore eum qui necessitatibus cupiditate nostrum aut repellat natus mollitia!",
-            "score" => 4.9,
-            "timestamp" => "Sunday, 08-Mar-20 12:34:17",
-            "order" => 98,
-            // item
-            "item" => (object) array(
-              'id' => 234,
-              'img' => "148_surgical_mask.jpg",
-              'name' => "Dynamic Black Ink 100ml",
-              'price' => 17.99,
-              'category' => "Ink",
-              'subcategory' => "Black",
-              'stock' => 34
-            )
-          )
-        );
-        @endphp
         @each('partials.admin.review_row', $reviews, 'review')
       </tbody>
     </table>
 
+    {{ $reviews->onEachSide(1)->appends(request()->except('page'))->links() }}
+
   </div>
 </main>
+
+{{-- Success Alert --}}
+@if(session('status'))
+  <div class="alert alert-success alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    {{session('status')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
+
+{{-- Alert --}}
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    @foreach ($errors->all() as $error)
+    <p>{{ $error }}</p>
+    @endforeach
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
+
 @endsection

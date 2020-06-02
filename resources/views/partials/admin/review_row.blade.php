@@ -1,6 +1,6 @@
 <tr>
   <th class="align-middle" scope="row">{{ $review->id }}</th>
-  <td class="align-middle">{{ $review->user }}</td>
+  <td class="align-middle">{{ $review->user->name }}</td>
   <td class="align-middle">
     <button type="button" class="btn button-secondary" data-toggle="modal" data-target="#viewReview{{ $review->id }}Item">
       View Item #{{ $review->item->id }}
@@ -31,11 +31,11 @@
               <tbody>
                 <tr>
                   <th class="align-middle" scope="row">{{ $review->item->id }}</th>
-                  <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="{{ asset('storage/img_product/' . $review->item->img) }}"></td>
+                  <td class="align-middle col-2"><img class="img-fluid img-thumbnail" src="{{ asset('storage/img_product/' . $review->item->images->first()->link) }}"></td>
                   <td class="align-middle">{{ $review->item->name }}</td>
                   <td class="align-middle">{{ $review->item->price }}€</td>
-                  <td class="align-middle">{{ $review->item->category }}</td>
-                  <td class="align-middle">{{ $review->item->subcategory }}</td>
+                  <td class="align-middle">{{ $review->item->category->name }}</td>
+                  <td class="align-middle">{{ $review->item->category->parent->name }}</td>
                   <td class="align-middle">{{ $review->item->stock }}</td>
                 </tr>
               </tbody>
@@ -48,12 +48,7 @@
       </div>
     </div>
   </td>
-  <td class="align-middle">
-    <button type="button" class="btn button-secondary" onclick="location.href='{{ url('/admin/orders?order=' . $review->order) }}'">
-      Go to Order #{{ $review->order }}
-    </button>
-  </td>
-  <td class="align-middle">{{ $review->timestamp }}</td>
+  <td class="align-middle">{{ $review->date }}</td>
   <td class="align-middle">{{ $review->score }}</td>
   <td class="align-middle">
     <button type="button" class="btn button-secondary" data-toggle="modal" data-target="#viewReview{{ $review->id }}Content">
@@ -64,7 +59,7 @@
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="viewContent{{ $review->id }}Modal">Review {{ $review->id }}</h5>
+            <h5 class="modal-title" id="viewContent{{ $review->id }}Modal">{{ $review->title }}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -80,8 +75,13 @@
     </div>
   </td>
   <td class="align-middle">
-    <button type="button" class="btn btn-link a_link">
-      Delete
-    </button>
+    <form action="{{ route('admin.reviews') }}" method="POST">
+      @csrf
+      @method('DELETE')
+      <input type="hidden" name="id" value="{{ $review->id }}">
+      <button type="submit" value="submit" class="btn btn-link a_link">
+        Remove
+      </button>
+    </form>
   </td>
 </tr>
