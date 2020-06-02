@@ -203,7 +203,7 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
     
     // info
     Route::get('info', 'AdminController@showInfo')->name('info');
-
+    Route::put('info', 'AdminController@editInfo')->name('info');
     
     // support message
     Route::get('support_chat', 'AdminController@showSupportChat')->name('support_chat');
