@@ -222,7 +222,17 @@ function add_to_cart_hadler(){
         new_product.appendChild(li); 
 
         cart_list.appendChild(new_product);
+
+        //update to total price
+        if(document.getElementById('price-total').innerHTML === ""){
+            document.getElementById('price-total').innerHTML = response.item.price + ' €';
+            document.getElementById('total-label').innerHTML = "Total: "
+        }else{
+            let oldPrice = document.getElementById('price-total').innerHTML.substring(0,document.getElementById('price-total').innerHTML.length-1); 
+            document.getElementById('price-total').innerHTML = oldPrice*1 + response.item.price *1 + ' €';
+        }
       
+
     }  
 }
 
@@ -244,6 +254,9 @@ if(priceNav !== null){
 }
    
 //disable checkout if no cart 
-console.log(document.querySelectorAll('tr.checkout-item-list').length)
-if(document.querySelectorAll('tr.checkout-item-list').length == 0 )
-    document.querySelector('#checkout-buttons-div a').classList.add('disabled')
+
+if(document.querySelectorAll('#checkout-buttons-div a')[0] !== undefined){
+    if(document.querySelectorAll('tr.checkout-item-list').length == 0 )
+        document.querySelector('#checkout-buttons-div a').classList.add('disabled')
+}
+    
