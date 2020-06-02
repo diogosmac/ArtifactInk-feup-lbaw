@@ -31,7 +31,7 @@ function updateShipping(){
 
         shipping_price = 1.99; 
 
-        document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice +shipping_price + " €"; 
+        document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = (totalPrice +shipping_price).toFixed(2) + " €"; 
         
         document.getElementById('shipping-confirm').innerHTML = 'Standard Shipping - '+ 1.99 +'€'; 
         
@@ -40,13 +40,13 @@ function updateShipping(){
 
         shipping_price = 4.99; 
 
-        document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice + shipping_price + " €"; 
+        document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = (totalPrice + shipping_price).toFixed(2) + " €"; 
 
         document.getElementById('shipping-confirm').innerHTML = 'Express Shipping - '+ 4.99 +'€'; 
     } 
 }
 
-document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = totalPrice +shipping_price + " €"; 
+document.querySelectorAll('ul#checkout-items-list li  strong')[0].innerHTML = (totalPrice +shipping_price).toFixed(2) + " €"; 
 document.querySelectorAll('div#checkout-list span.badge-pill')[0].innerHTML = totalQty; 
 
 //SHIPPING DATES 
