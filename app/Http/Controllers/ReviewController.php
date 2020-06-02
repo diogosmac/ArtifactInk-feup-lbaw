@@ -99,8 +99,8 @@ class ReviewController extends Controller
       ReportNotification::create(['id_notif' => $notif->id, 'id_review' => $review->id]);
 
     } catch (Exception $e){
-      return redirect()->back()->withErrors(['report' => 'Could not report review']); 
+      return redirect()->back()->withErrors(['Could not report review']); 
     }
-    return redirect()->back();
+    return redirect()->back()->with(['status' => 'The review was reported to the website administrators.']);
   }
 }
