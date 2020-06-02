@@ -7,6 +7,7 @@ use App\Item;
 use App\Http\Controllers\CartController;
 use App\ItemPicture;
 use App\User;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 
@@ -40,7 +41,7 @@ class ItemController extends Controller
         $top_rated = ItemController::top_rated();
         $featured_deals = ItemController::featured_deals();
         $best_sellers = ItemController::best_sellers();
-        $cart_items = CartController::get_user_cart_items();
+        // $cart_items = CartController::get_user_cart_items();
         
         return view('pages.home', [ 'top_rated' => $top_rated, 
                                     'featured_deals' => $featured_deals, 
@@ -48,7 +49,7 @@ class ItemController extends Controller
                                     ]); 
     }
 
-    public function top_rated() {
+    public static function top_rated($filters=FALSE) {
         /**
          * (True Rating) = (v ÷ (v+m)) * R
          * 
@@ -57,13 +58,19 @@ class ItemController extends Controller
          * m = minimum votes required 
          * */ 
 
-        $items = Item::whereNotNull('rating')->where('status', 'active')->take(25)->orderBy('rating', 'desc')->get();
+        $items = Item::whereNotNull('rating')->where('status', 'active')->orderBy('rating', 'desc');
+
+        $data = [];
 
         $finalItems = array();
         $prices = array();
         $pictures = array();
 
-        foreach ($items as $i) {
+        if (!$filters) {
+            $items = $items->take(4);
+        }
+
+        foreach ($items->get() as $i) {
             $item = Item::findOrFail($i->id);
             array_push($finalItems, $item);
 
@@ -85,18 +92,27 @@ class ItemController extends Controller
             array_push($prices, $price);
 
             array_push($pictures, $item->images->first());
-		}
+        }
+        
+        $data['title'] = 'Top Rated';
+        $data['slug'] = 'top_rated';
+        $data['prices'] = $prices;
+        $data['pictures'] = $pictures;
+        if (!$filters) {
+            $data['items'] = $finalItems;
+        }
+        
+        if ($filters) {
+            $data['items'] = $items;
+            $data['categories'] = SearchController::getCategories($finalItems);
+            $data['brands'] = SearchController::getBrands($finalItems);
+        }
 
-        return [
-            'title' => 'Top Rated',
-            'items' => $finalItems,
-            'prices' => $prices,
-            'pictures' => $pictures,
-        ];
+        return $data;
 
     }
 
-    public function featured_deals() {
+    public static function featured_deals($filters=FALSE) {
         /**
          * Most percentage of price
          */
@@ -111,14 +127,19 @@ class ItemController extends Controller
             WHEN fixed_amount IS NULL THEN percentage_amount
             WHEN percentage_amount IS NULL THEN fixed_amount/price * 100
         END AS deal_value'))->
-        orderByDesc('deal_value')->
-        get()->toArray();
+        orderByDesc('deal_value');
+
+        $data = [];
 
         $finalItems = array();
         $prices = array();
         $pictures = array();
 
-		foreach ($items as $i) {
+        if (!$filters) {
+            $items = $items->take(4);
+        }
+
+		foreach ($items->get()->toArray() as $i) {
             $item = Item::findOrFail($i->id);
             array_push($finalItems, $item);
             
@@ -142,19 +163,28 @@ class ItemController extends Controller
             array_push($pictures, $item->images->first());
         }
 
-        return [
-            'title' => 'Featured Deals',
-            'items' => $finalItems,
-            'prices' => $prices,
-            'pictures' => $pictures,
-        ];
+        $data['title'] = 'Featured Deals';
+        $data['slug'] = 'featured_deals';
+        $data['prices'] = $prices;
+        $data['pictures'] = $pictures;
+        if (!$filters) {
+            $data['items'] = $finalItems;
+        }
+
+        if ($filters) {
+            $data['items'] = $items;
+            $data['categories'] = SearchController::getCategories($finalItems);
+            $data['brands'] = SearchController::getBrands($finalItems);
+        }
+
+        return $data;
 
     }
 
     /**
-     * 25 Most ordered items 
+     * Most ordered items
      */
-    public function best_sellers() {
+    public static function best_sellers($filters=FALSE) {
         
         $items = DB::table('item')->
         join('item_purchase', 'item.id', '=', 'item_purchase.id_item')->
@@ -162,15 +192,19 @@ class ItemController extends Controller
         groupBy('item.id')->
         select('item.*')->
         select(DB::raw('id, name, brand, item.price, stock, rating, status, count(*) as purchase_count'))->
-        orderByDesc('purchase_count')->
-        take(25)->
-        get()->toArray();
+        orderByDesc('purchase_count');
+
+        $data = [];
 
         $finalItems = array();
         $prices = array();
         $pictures = array();
 
-        foreach ($items as $i) {
+        if (!$filters) {
+            $items = $items->take(4);
+        }
+
+        foreach ($items->get()->toArray() as $i) {
             $item = Item::findOrFail($i->id);
             array_push($finalItems, $item);
 
@@ -194,12 +228,21 @@ class ItemController extends Controller
             array_push($pictures, $item->images->first());
         }
 
-        return [
-            'title' => 'Best Sellers',
-            'items' => $finalItems,
-            'prices' => $prices,
-            'pictures' => $pictures,
-        ];
+        $data['title'] = 'Best Sellers';
+        $data['slug'] = 'best_sellers';
+        $data['prices'] = $prices;
+        $data['pictures'] = $pictures;
+        if (!$filters) {
+            $data['items'] = $finalItems;
+        }
+
+        if ($filters) {
+            $data['items'] = $items;
+            $data['categories'] = SearchController::getCategories($finalItems);
+            $data['brands'] = SearchController::getBrands($finalItems);
+        }
+
+        return $data;
 
     }   
 

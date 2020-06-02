@@ -1,16 +1,17 @@
-var orderBy = document.getElementById('searchResultSortOrder');
+var orderBy;
 
-var minSlider = document.getElementById('minPrice');
-var maxSlider = document.getElementById('maxPrice');
+var minSlider;
+var maxSlider;
 var minValue = 0;
 var maxValue = 500;
 
-var ascSort = document.getElementById('sortAsc');
-var descSort = document.getElementById('sortDesc');
-var sortOrder = document.getElementById('sortOrder');
+var ascSort;
+var descSort;
+var sortOrder;
 var sortOrderVal = 'none';
 
-var submitButton = document.getElementById('filterSubmit');
+var submitButton;
+
 
 function updateMin() {
     minValue = parseFloat(minSlider.value);
@@ -127,11 +128,18 @@ function setSortOrder() {
 }
 
 function checkInputs() {
-    orderBy.disabled = (orderBy.value == 'bestMatch' || orderBy.value == 'name');
+    
+    if (orderBy != null)
+        orderBy.disabled = (orderBy.value == 'bestMatch' || orderBy.value == 'name');
 
-    minSlider.disabled = (minValue == 0);
-    maxSlider.disabled = (maxValue == 500);
-}
+    if (minSlider != null)
+        minSlider.disabled = (minSlider.value == 0);
+    
+    if (maxSlider != null)
+        maxSlider.disabled = (maxSlider.value == 500);
+
+    }
+
 
 window.onload = function () {
 
@@ -155,19 +163,87 @@ window.onload = function () {
         }
     }
 
-    ascSort.onclick = setAsc;
-    descSort.onclick = setDesc;
+
+    orderBy = document.getElementById('searchResultSortOrder');
+
+    var minSliders = document.querySelectorAll('#minPrice');
+    for (slider of minSliders) {
+        if (slider.disabled == false) {
+            minSlider = slider;
+            break;
+        }
+    }
+
+    var maxSliders = document.querySelectorAll('#maxPrice');
+    for (slider of maxSliders) {
+        if (slider.disabled == false) {
+            maxSlider = slider;
+            break;
+        }
+    }
+
+    var ascSorts = document.querySelectorAll('#sortAsc');
+    for (sort of ascSorts) {
+        if (sort.disabled == false) {
+            ascSort = sort;
+            break;
+        }
+    }
+
+    var descSorts = document.querySelectorAll('#sortDesc');
+    for (sort of descSorts) {
+        if (sort.disabled == false) {
+            descSort = sort;
+            break;
+        }
+    }
+
+    var sortOrders = document.querySelectorAll('#sortOrder');
+    for (order of sortOrders) {
+        if (order.disabled == false) {
+            sortOrder = order;
+            break;
+        }
+    }
+
+    var submitButtons = document.querySelectorAll('#filterSubmit');
+    for (button of submitButtons) {
+        if (button.disabled == false) {
+            submitButton = button;
+            break;
+        }
+    }
+
+
+    if (ascSort != null) {
+        ascSort.onclick = setAsc;
+    }
+
+    if (descSort != null) {
+        descSort.onclick = setDesc;
+    }
     
-    minSlider.oninput = getPriceRangeVals;
-    maxSlider.oninput = getPriceRangeVals;
+    if (minSlider != null) {
+        minSlider.oninput = getPriceRangeVals;
+    }
+    
+    if (maxSlider != null) {
+        maxSlider.oninput = getPriceRangeVals;
+    }
 
-    submitButton.onclick = checkInputs;
+    if (submitButton != null) {
+        submitButton.onclick = checkInputs;
+    }
 
-    sortOrder.disabled = true;
+    if (sortOrder != null) {
+        sortOrder.disabled = true;
+    }
 
     this.parseURL();
     
-    this.setSortOrder();
+    if (sortOrder != null) {
+        this.setSortOrder();
+    }
     
     this.getPriceRangeVals();
 

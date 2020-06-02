@@ -71,7 +71,10 @@ class Item extends Model
             return $query;
         }
         return $query->
-            whereRaw('setweight(to_tsvector(\'english\', "item"."name"), \'A\') || setweight(to_tsvector(\'english\', "item"."description"), \'B\') || setweight(to_tsvector(\'english\', "item"."brand"), \'C\' ) @@ plainto_tsquery(\'english\', ?)', [$search])->
+            whereRaw(
+                'setweight(to_tsvector(\'english\', "item"."name"), \'A\') ||
+                 setweight(to_tsvector(\'english\', "item"."description"), \'B\') ||
+                 setweight(to_tsvector(\'english\', "item"."brand"), \'C\' ) @@ plainto_tsquery(\'english\', ?)', [$search])->
             where('status', 'active');
     }
 

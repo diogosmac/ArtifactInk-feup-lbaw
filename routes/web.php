@@ -16,6 +16,7 @@
 
 //use Illuminate\Routing\Route;
 
+use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('sign_in', 'Auth\LoginController@showLoginForm')->name('sign_in');
@@ -36,6 +37,13 @@ Route::get('search','SearchController@showSearch')->name('search');
 Route::get('product/{id}-{slug?}', 'ItemController@show');
 
 Route::get('category/{id}-{slug?}', 'CategoryController@show')->name('category');
+
+//routes for store specials
+Route::get('top_rated', 'SpecialsController@showTopRated');
+
+Route::get('featured_deals', 'SpecialsController@showFeaturedDeals');
+
+Route::get('best_sellers', 'SpecialsController@showBestSellers');
 
 //profile pages and stuff related 
 Route::prefix('profile')->name('profile.')->group(function() {

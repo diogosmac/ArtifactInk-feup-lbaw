@@ -109,9 +109,7 @@
                 <input type="text" name="query" class="form-control" placeholder="Search" aria-describedby="search-button" required>
                 <div class="input-group-append">
                   <button class="btn btn-outline-success" type="submit" id="search-button">
-                    <!--<a href="{{ url('/search') }}">-->
                       <i class="fas fa-search"></i>
-                    <!--</a>-->
                   </button>
                 </div>
               </div>
