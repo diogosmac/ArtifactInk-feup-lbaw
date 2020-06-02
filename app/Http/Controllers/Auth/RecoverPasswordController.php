@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Item;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EmailService\EmailServiceController;
 use Illuminate\Support\Facades\Hash;

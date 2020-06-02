@@ -100,10 +100,6 @@
   </div>
 </main>
 
-</div>
-</div>
-@endsection
-
 {{-- Success Alert --}}
 @if(session('status'))
   <div class="alert alert-success alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
@@ -113,3 +109,6 @@
     </button>
   </div>
 @endif
+
+@endsection
+

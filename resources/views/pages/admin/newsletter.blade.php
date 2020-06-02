@@ -8,25 +8,28 @@
 
     <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap border-bottom mt-2">
       <h1>Newsletter</h1>
-      <button type="button" class="btn button" data-toggle="modal" data-target="#addQuestionModal">
+      <button type="submit" form="sale-form" class="btn button">
         Send Newsletter
       </button>
     </div>
 
     <div class="mx-auto mt-2">
-      <form>
+      <form action="{{ route('admin.newsletter') }}" method="POST" id="sale-form">
+        @csrf
         <div class="form-group">
           <label for="subjectInput">Subject</label>
-          <input type="Text" class="form-control" id="subjectInput" placeholder="Write e-mail subject...">
+          <input required name='subject' type="Text" class="form-control" id="subjectInput" placeholder="Write e-mail subject...">
         </div>
         <div class="form-group">
           <label for="titleInput">Title</label>
-          <input type="Text" class="form-control" id="titleInput" placeholder="Write e-mail topic...">
+          <input required name='title' type="Text" class="form-control" id="titleInput" placeholder="Write e-mail topic...">
         </div>
         <div class="form-group">
           <label for="titleInput">Body</label>
-          <textarea class="form-control" id="titleInput" rows="5" placeholder="Write e-mail body"></textarea>
+          <textarea required name='body' class="form-control" id="titleInput" rows="5" placeholder="Write e-mail body"></textarea>
         </div>
+      </form>
+
 
         <div class="row">
           <div class="col-md-6 col-sm-12">
@@ -98,23 +101,7 @@
                   <th scope="col"></th>
                 </tr>
               </thead>
-              <tbody>
-                @php
-                $products = array(
-                  (object) array(
-                    "id" => 1,
-                    "name" => "Dynamic Black Ink 100ml",
-                    "price" => 117.99,
-                    "img" => "23_skeleton_with_geometry.png"
-                  ),
-                  (object) array(
-                    "id" => 2,
-                    "name" => "Super cool skeleton",
-                    "price" => 230.00,
-                    "img" => "23_skeleton_with_geometry.png"
-                )
-                );
-                @endphp
+              <tbody id='add-item-list'>
                 @each('partials.admin.sale_add_product_row', $products, 'product')
               </tbody>
             </table>
@@ -189,14 +176,12 @@
                   <th scope="col"></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id='item-list'>
                 @each('partials.admin.sale_remove_product_row', [], 'product')
               </tbody>
             </table>
           </div>
         </div>
-
-      </form>
     </div>
   </div>
 </main>
