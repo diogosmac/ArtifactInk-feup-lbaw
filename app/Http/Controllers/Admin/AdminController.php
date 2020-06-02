@@ -425,14 +425,30 @@ class AdminController extends Controller
     }
 
     public function sendNewsletter(Request $request) {
-        $subscribers = NewsletterSubscriber::all();
-        $email_service = new EmailServiceController();
+        // Validation rules.
+        $rules = [
+            'subject' => 'required|string|max:64',
+            'title' => 'required|string',
+            'body' => 'required|string|'
+        ];
+
+        // custom validation error messages.
+        $messages = [
+            'subject' => 'Invalid subject',
+            'title' => 'Invalid title',
+            'body' => 'Invalid body'
+        ];
+
+        // validate the request.
+        $request->validate($rules, $messages);
 
         $subject = $request['subject'];
         $title = $request['title'];
         $body = $request['body'];
         $items = $request['item'];
 
+        $subscribers = NewsletterSubscriber::all();
+        $email_service = new EmailServiceController();
         foreach ($subscribers as $subscriber) {
             if (!$email_service->sendNewsletterEmail($subscriber->email, 'Newsletter Subscriber', $subject, $title, $body, $items))   
                 return redirect()->back()->withErrors(['error' => trans('A Network Error occurred. Please try again.')]);   
