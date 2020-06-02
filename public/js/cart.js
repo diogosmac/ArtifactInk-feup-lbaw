@@ -182,6 +182,7 @@ function add_to_cart_hadler(){
 
         //create A 
         let a = document.createElement('a');
+        a.setAttribute('href','/product/'+ response.item.id)
         a.setAttribute('class','item-link-cart'); 
         a.className += ' d-flex'; 
         a.className += ' justify-content-between'

@@ -27,5 +27,6 @@
         <span class="mx-1 cart-item-list-price"> {{ $price }} </span>
     </h6>
     <h6 class="ml-2 badge badge-primary badge-pill cart-item-list-quant">{{ $cart_item->pivot->quantity }} </h6>
+  </a>
 </li>
-</a>
+
