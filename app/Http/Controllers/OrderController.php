@@ -41,39 +41,6 @@ class OrderController extends Controller
     $pp_email_new  = $request['ppEmail']; 
 
     //PRINT VALUES 
-    print_r($address_id); 
-    echo " - "; 
-    print_r($payment_id); 
-    echo " - "; 
-    print_r($total); 
-    echo " - "; 
-    print_r($new_addr); 
-    echo " - "; 
-    print_r($new_payment); 
-    echo " - "; 
-    print_r($date); 
-    echo " - "; 
-
-    print_r($street_new); 
-    echo " - "; 
-    print_r($country_new); 
-    echo " - "; 
-    print_r($postal_code_new); 
-    echo " - "; 
-    print_r($city_new); 
-    echo " - "; 
-
-    print_r($cc_number_new); 
-    echo " - "; 
-    print_r($cc_cvv_new); 
-    echo " - "; 
-    print_r($cc_expiration_new); 
-    echo " - "; 
-    print_r($cc_name_new); 
-    echo " - "; 
-    print_r($pp_email_new);
-    echo " - "; 
-
 
     //new address 
     if($new_addr == "true"){
@@ -97,7 +64,6 @@ class OrderController extends Controller
         $address_id = $address->id;  
     }
 
-    
     //new payment method 
     if($new_payment == "true"){
         $userPaymentMethods = Auth::user()->payment_methods();

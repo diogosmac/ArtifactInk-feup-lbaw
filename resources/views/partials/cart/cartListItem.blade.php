@@ -1,5 +1,6 @@
-<a class="item-link-cart" href="{{ url('/product/' . $cart_item->id) }}">
-<li class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
+
+<li class="cart-item-list list-group-item  d-flex justify-content-between align-items-center py-5">
+  <a class="item-link-cart  d-flex justify-content-between align-items-center" href="{{ url('/product/' . $cart_item->id) }}">
     <span>
       <img class="mr-1 cart-item-list-img" src="{{ asset('storage/img_product/' . $cart_picture->link) }}"
         alt="{{ $cart_item->name }}">

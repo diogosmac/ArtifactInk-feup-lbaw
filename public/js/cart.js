@@ -171,11 +171,6 @@ function add_to_cart_hadler(){
         
         let cart_list = document.querySelector('ul.list-cart'); 
 
-        //create A
-        let new_product = document.createElement('a'); 
-        new_product.classList.add('item-link-cart'); 
-        new_product.href = "/product/"+response.item.id;
-
         //create Li 
         let li = document.createElement('li'); 
         li.setAttribute('class', 'cart-item-list'); 
@@ -183,6 +178,14 @@ function add_to_cart_hadler(){
         li.className += ' d-flex';
         li.className += ' justify-content-between';
         li.className += ' align-items-center';
+        li.className += ' py-5';
+
+        //create A 
+        let a = document.createElement('a');
+        a.setAttribute('class','item-link-cart'); 
+        a.className += ' d-flex'; 
+        a.className += ' justify-content-between'
+        a.className += ' align-items-center'; 
 
         //create span 
         let span = document.createElement('span'); 
@@ -193,18 +196,16 @@ function add_to_cart_hadler(){
         img.setAttribute('alt',response.item.name); 
         img.setAttribute('src','/storage/img_product/' + response.picture.link); 
 
-       // img.alt = response.item.name; 
-        //img.src = 'TODO'
-
         //create h5
         let h5 = document.createElement('h5'); 
         h5.setAttribute('class','cart-item-list-name')
+        h5.className += ' text-wrap'; 
         h5.innerHTML = response.item.name; 
 
         //create h6 price
         let h6_price = document.createElement('h6'); 
         h6_price.setAttribute('class','cart-item-list-price')
-        h6_price.innerHTML = response.item.price; 
+        h6_price.innerHTML = response.item.price + ' €'; 
 
         //create h6 quantity 
         let h6_qty = document.createElement('h6'); 
@@ -215,14 +216,14 @@ function add_to_cart_hadler(){
         h6_qty.innerHTML = response.item.pivot.quantity;
 
         span.appendChild(img); 
-        li.appendChild(span);
-        li.appendChild(h5); 
-        li.appendChild(h6_price); 
-        li.appendChild(h6_qty); 
+        a.appendChild(span);
+        a.appendChild(h5); 
+        a.appendChild(h6_price); 
+        a.appendChild(h6_qty); 
 
-        new_product.appendChild(li); 
+        li.appendChild(a); 
 
-        cart_list.appendChild(new_product);
+        cart_list.appendChild(li);
 
         //update to total price
         if(document.getElementById('price-total').innerHTML === ""){
@@ -240,9 +241,9 @@ function add_to_cart_hadler(){
 //cart list on navbar 
 
 let priceNav = null;
-let cartItemsNav = document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart a li');
-let listPriceNav =  document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart a li .cart-item-list-price');
-let listQtyNav =  document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart a li .cart-item-list-quant'); 
+let cartItemsNav = document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart li a');
+let listPriceNav =  document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart li a .cart-item-list-price');
+let listQtyNav =  document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart li a .cart-item-list-quant'); 
 
 for(let i = 0; i< cartItemsNav.length/2; i++ ){
     priceNav += listPriceNav[i].innerHTML * listQtyNav[i].innerHTML; 

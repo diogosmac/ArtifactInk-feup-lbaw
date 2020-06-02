@@ -78,8 +78,9 @@
                     <i class="fas fa-trash"></i>
                     Remove
                 </button>
-                <button type="button" class="dropdown-item btn button text-center add-to-cart-btn" data-product-type="{{ $item->id }}" style="z-index: 200;">Add to cart</button>
-             
+                <button type="button" class="dropdown-item btn button add-to-cart-btn wishlist-add-to-cart-btn w-auto" data-product-type="{{ $item->id }}" style="z-index: 200;">
+                    Add to cart
+                </button>
             </div>
         </div>
     </div>
