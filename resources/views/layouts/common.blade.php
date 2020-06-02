@@ -373,7 +373,7 @@
                 </li>
                 <li></li>
 
-                <li id="copyright-desktop" class="mt-3"> Copyright © ArtifactInk 2020
+                <li id="copyright-desktop" class="mt-3"> Copyright &copy; ArtifactInk 2020
                 <li>
 
               </ul>
@@ -382,11 +382,13 @@
               <p class="text-uppercase"> CONTACTS </p>
               <ul class="list-inline">
                 <li>
-                  <a href="#" class="list-inline-item font-weight-bold text-dark">Store 1</a>
+                  <a href="#" class="list-inline-item font-weight-bold text-dark">Email</a>
                 </li>
-                <li> Lorem ipsum dolor sit amet.</li>
-                <li> Lorem ipsum dolor sit amet.</li>
-                <li> Lorem ipsum dolor sit amet.
+                <li> contact@artifactink.com </li>
+                <li>
+                  <a href="#" class="list-inline-item font-weight-bold text-dark">Phone</a>
+                </li>
+                <li> (+351) 916 425 350 </li>
                 <li>
               </ul>
             </div>

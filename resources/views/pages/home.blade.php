@@ -13,26 +13,15 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="https://www.thetattooshop.com/uk/media/aw_rbslider/slides/Desktop.DynamicInk3for50.UK_1.jpg" class="d-block image-fit" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Lorem, ipsum.
-                    </h5>
-                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </div>
+                <div class="carousel-caption d-none d-md-block"></div>
             </div>
             <div class="carousel-item">
                 <img src="https://www.thetattooshop.com/uk/media/aw_rbslider/slides/Desktop.DynamicInk3for50.UK_1.jpg" class="d-block image-fit" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Lorem, ipsum.</h5>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </div>
+                <div class="carousel-caption d-none d-md-block"></div>
             </div>
             <div class="carousel-item">
                 <img src="https://www.thetattooshop.com/uk/media/aw_rbslider/slides/Desktop.DynamicInk3for50.UK_1.jpg" class="d-block image-fit" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Lorem, ipsum dolor.
-                    </h5>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </div>
+                <div class="carousel-caption d-none d-md-block"></div>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselPreviewCaptions" role="button" data-slide="prev">
