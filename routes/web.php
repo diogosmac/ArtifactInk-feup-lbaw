@@ -16,6 +16,7 @@
 
 //use Illuminate\Routing\Route;
 
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('sign_in', 'Auth\LoginController@showLoginForm')->name('sign_in');
@@ -124,6 +125,8 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
 
     // home
     Route::get('/', 'AdminController@index')->name('home');
+
+    Route::delete('/clear_notification', 'AdminController@clearNotification')->name('clear_notification');
 
     // products routes
     Route::prefix('products')->name('products.')->group(function () {

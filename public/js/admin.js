@@ -16,6 +16,41 @@ function sendAjaxRequest(method, url, data, handler) {
 }
 
 /**
+ * Clear Notifications
+ * 
+ */
+
+ let clearNotificationButtons
+ function addClearNotificationListeners() {
+    clearNotificationButtons = document.querySelectorAll("button.clear-notification-button")
+    if (clearNotificationButtons.length == 0)
+        return;
+    
+    for (let i = 0; i < clearNotificationButtons.length; i++) {
+        clearNotificationButtons[i].addEventListener(
+            'click',
+            (event) => {
+                let notificationId = clearNotificationButtons[i].parentNode.parentNode.getAttribute('notification_id')
+                sendAjaxRequest('delete', '/admin/clear_notification', { notification_id: notificationId }, clearNotificationHandler)
+                event.preventDefault();
+            }
+        )
+    }
+ }
+
+ function clearNotificationHandler() {
+    if (this.status != 200)
+        return;
+
+    let response = JSON.parse(this.responseText);
+    let notification_id = response.notification_id;    
+    let row = document.getElementById('notification'+notification_id)
+    
+    row.style.opacity = '0';
+    setTimeout(function(){ row.remove(); }, 250);
+ }
+
+/**
  * 
  * ARCHIVE/UNARCHIVE ITEMS
  * 
@@ -293,6 +328,7 @@ function cancelGeneralInfo() {
 
 // perform actions when window loads
 window.addEventListener('load', function () {
+    addClearNotificationListeners();
     addArchiveListeners();
     addBanListeners();
     addSaleItemsForm();
