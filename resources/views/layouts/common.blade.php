@@ -349,7 +349,7 @@
                 <li>
                   <a href="#" class="list-inline-item font-weight-bold text-dark">Address</a>
                 </li>
-                <li> {{ $store_address->street }}, {{ $store_address->city }}, {{ $store_address->postal_code }} </li>
+                <li> {{ $store_address->street }}, {{ $store_address->city }}, {{ $store_address->postal_code }}, {{ $store_address->country->name }} </li>
               </ul>
             </div>
             <div class="col-sm-3">

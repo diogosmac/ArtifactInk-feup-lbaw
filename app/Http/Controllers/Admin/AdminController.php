@@ -269,7 +269,7 @@ class AdminController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | Categories
+    | Orders
     |--------------------------------------------------------------------------
     */
     public function showOrders() {
@@ -698,16 +698,19 @@ class AdminController extends Controller
             // get store information
             $store = Store::get()->first();
             $store_address = Address::find($store->address->id);
+            // update address
             $store_address->id_country = $request->id_country;
             $store_address->city = $request->city;
             $store_address->street = $request->street;
             $store_address->postal_code = $request->postal_code;
+            // update store info
             $store->email = $request->email;
             $store->phone = $request->phone;
             $store->about_us = $request->about_us;
             $store->payments_shipment = $request->payments_shipment;
             $store->returns = $request->returns;
             $store->warranty = $request->warranty;
+            // save changes
             $store->save();
             $store_address->save();
             // render view
