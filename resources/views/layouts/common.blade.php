@@ -273,13 +273,13 @@
             </div>
           </div>
           <div class="btn-group">
-            <a class="btn " href="#" role="button" id="dropdownMenuAccount" data-toggle="dropdown" aria-haspopup="true"
+            <a class="btn " href="#" role="button" id="dropdownMenuAccountMobile" data-toggle="dropdown" aria-haspopup="true"
               aria-expanded="false">
               <span>
                 <i class="fas fa-user"></i>
               </span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuAccount">
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuAccountMobile">
               <img class="profile-pic-bubble"
                 src="{{ asset('storage/img_user/' . Auth::user()->profilePicture->first()->link) }}" alt="{{ Auth::user()->name}}">
               <h5 class="dropdown-header">{{ Auth::user()->name}}</h5>
