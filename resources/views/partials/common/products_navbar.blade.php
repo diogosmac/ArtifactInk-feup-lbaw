@@ -13,7 +13,7 @@
             <a class="btn btn-secondary one-line" href="{{ url('/category/' . $parent_category->id) }}" role="button" aria-haspopup="true" aria-expanded="false">
               {{ $parent_category->name }}
             </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <div class="dropdown-menu">
               @foreach ($parent_category->children as $child_category)
                 <a class="dropdown-item" href="{{ url('/category/' . $child_category->id) }}">{{ $child_category->name }}</a>
               @endforeach

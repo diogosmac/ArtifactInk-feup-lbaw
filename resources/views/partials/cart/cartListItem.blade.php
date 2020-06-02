@@ -1,5 +1,5 @@
 <a class="item-link-cart" href="{{ url('/product/' . $cart_item->id) }}">
-  <li class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
+<li class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
     <span>
       <img class="mr-1 cart-item-list-img" src="{{ asset('storage/img_product/' . $cart_picture->link) }}"
         alt="{{ $cart_item->name }}">
@@ -26,5 +26,5 @@
         <span class="mx-1 cart-item-list-price"> {{ $price }} </span>
     </h6>
     <h6 class="ml-2 badge badge-primary badge-pill cart-item-list-quant">{{ $cart_item->pivot->quantity }} </h6>
-  </li>
+</li>
 </a>

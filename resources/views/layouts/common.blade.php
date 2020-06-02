@@ -225,8 +225,8 @@
       <!-- mobile nav -->
       <nav id="mobile-main-nav" class="navbar navbar-expand-lg navbar-custom-top">
         <div class="container">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarBotSupportedContent"
-            aria-controls="navbarBotSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarBotSupportedContentMobile"
+            aria-controls="navbarBotSupportedContentMobile" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon navbar-toggler-mobile ">
               <i class="fas fa-bars"></i>
             </span>
@@ -329,16 +329,16 @@
           @include('partials.common.products_navbar_mobile')
       </nav>
       <nav id="searchMobile">
+      <form class="m-0" action="{{route('search')}}" method="get">
         <div class="input-group" id="search-mobile">
-          <input type="text" class="form-control" placeholder="Search" aria-describedby="search-button">
+          <input type="text" name="query" class="form-control" placeholder="Search" aria-describedby="search-button-mobile" required>
           <div class="input-group-append">
-            <button class="btn btn-outline-success" type="button" id="search-button">
-              <a href="{{ url('/search') }}">
+            <button class="btn btn-outline-success" type="submit" id="search-button-mobile">
                 <i class="fas fa-search"></i>
-              </a>
             </button>
           </div>
         </div>
+      </form>
       </nav>
 
       <!-- products Navbar -->
@@ -353,8 +353,8 @@
           <div class="row">
             <div class="col-sm-1"></div>
             <div class="col-sm-4 border-right">
+              <p class="text-uppercase font-weight-light"> Information</p>
               <ul class="list-inline">
-                <p class="text-uppercase font-weight-light"> Information</p>
                 <li>
                   <a href="{{ url('/about_us') }}" class="list-inline-item font-weight-normal  text-dark ">About us</a>
                 </li>
@@ -373,15 +373,16 @@
                 <li>
                   <a href="{{ url('/warranty') }}" class="list-inline-item font-weight-normal text-dark ">Warranty</a>
                 </li>
-                <br>
-                <li id="copyright-desktop"> Copyright © ArtifactInk 2020
+                <li></li>
+
+                <li id="copyright-desktop" class="mt-3"> Copyright © ArtifactInk 2020
                 <li>
 
               </ul>
             </div>
             <div class="col-sm-3">
+              <p class="text-uppercase"> CONTACTS </p>
               <ul class="list-inline">
-                <p class="text-uppercase"> CONTACTS </p>
                 <li>
                   <a href="#" class="list-inline-item font-weight-bold text-dark">Store 1</a>
                 </li>
@@ -422,11 +423,9 @@
                           Newsletter</label>
 
                         <div class="input-group mb-3">
-                          <input type="email" name="email" class="form-control-sm" id="newsletter_email" aria-describedby="emailHelp"
-                            aria-describedby="button-newsletter">
+                          <input type="email" name="email" class="form-control-sm" id="newsletter_email" aria-describedby="button-newsletter">
                           <div class="input-group-append">
-                            <button class="btn btn-secondary btn-sm text" type="submit"
-                              id="button-nwesletter">Subscribe</button>
+                            <button class="btn btn-secondary btn-sm text" type="submit" id="button-newsletter">Subscribe</button>
                           </div>
                         </div>
                       </div>

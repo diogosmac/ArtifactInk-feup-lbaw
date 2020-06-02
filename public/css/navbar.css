@@ -91,23 +91,23 @@ a.btn.btn-secondary:active {
     z-index: 0;
 }
 
-#search-button {
+#search-button, #search-button-mobile {
     border-radius: 0;
     background-color: white;
     border: none;
 }
 
-#search-button:active {
+#search-button:active, #search-button-mobile:active {
     background-color: white;
     box-shadow: 0;
 }
 
-#search-button:focus {
+#search-button:focus, , #search-button-mobile:focus {
     box-shadow: none;
     z-index: 0;
 }
 
-#search-button i {
+#search-button i, #search-button-mobile i {
     color: var(--main-red-alpha);
 }
 
