@@ -13,6 +13,7 @@ use App\Http\Controllers\SearchController;
 use App\Item;
 use App\ItemPicture;
 use App\NewsletterSubscriber;
+use App\Review;
 use App\Sale;
 use App\Store;
 use App\User;
@@ -282,6 +283,13 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showReviews() {
+        $reviews = Review::orderBy('date', 'desc');
+        $reviews = $reviews->paginate(10)->withPath('');
+        return view('pages.admin.reviews', ['reviews' => $reviews]);
+    }
+
+    public function deleteReview(Request $request) {
+        return $request;
         return view('pages.admin.reviews');
     }
 
