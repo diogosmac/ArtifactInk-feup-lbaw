@@ -124,7 +124,9 @@ main {
 #wishlist-add-to-cart {
     width: fit-content;
 }
-
+.wishlist-add-to-cart-btn{
+    padding: .5em .7em;
+}
 /* PROFILE PAGE > WISHLIST - END */
 
 

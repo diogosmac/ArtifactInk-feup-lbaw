@@ -163,17 +163,13 @@ function add_to_cart(id_item){
 
 
 function add_to_cart_hadler(){
-    if (this.status != 200) 
-        alert(this.status); 
+    if (this.status != 200){
+        document.querySelector('html').appendChild(error_msg);
+    }
     else{
         let response = JSON.parse(this.responseText);
         
         let cart_list = document.querySelector('ul.list-cart'); 
-
-        //create A
-        let new_product = document.createElement('a'); 
-        new_product.classList.add('item-link-cart'); 
-        new_product.href = "/product/"+response.item.id;
 
         //create Li 
         let li = document.createElement('li'); 
@@ -182,6 +178,14 @@ function add_to_cart_hadler(){
         li.className += ' d-flex';
         li.className += ' justify-content-between';
         li.className += ' align-items-center';
+        li.className += ' py-5';
+
+        //create A 
+        let a = document.createElement('a');
+        a.setAttribute('class','item-link-cart'); 
+        a.className += ' d-flex'; 
+        a.className += ' justify-content-between'
+        a.className += ' align-items-center'; 
 
         //create span 
         let span = document.createElement('span'); 
@@ -192,18 +196,16 @@ function add_to_cart_hadler(){
         img.setAttribute('alt',response.item.name); 
         img.setAttribute('src','/storage/img_product/' + response.picture.link); 
 
-       // img.alt = response.item.name; 
-        //img.src = 'TODO'
-
         //create h5
         let h5 = document.createElement('h5'); 
         h5.setAttribute('class','cart-item-list-name')
+        h5.className += ' text-wrap'; 
         h5.innerHTML = response.item.name; 
 
         //create h6 price
         let h6_price = document.createElement('h6'); 
         h6_price.setAttribute('class','cart-item-list-price')
-        h6_price.innerHTML = response.item.price; 
+        h6_price.innerHTML = response.item.price + ' €'; 
 
         //create h6 quantity 
         let h6_qty = document.createElement('h6'); 
@@ -214,32 +216,83 @@ function add_to_cart_hadler(){
         h6_qty.innerHTML = response.item.pivot.quantity;
 
         span.appendChild(img); 
-        li.appendChild(span);
-        li.appendChild(h5); 
-        li.appendChild(h6_price); 
-        li.appendChild(h6_qty); 
+        a.appendChild(span);
+        a.appendChild(h5); 
+        a.appendChild(h6_price); 
+        a.appendChild(h6_qty); 
 
-        new_product.appendChild(li); 
+        li.appendChild(a); 
 
-        cart_list.appendChild(new_product);
+        cart_list.appendChild(li);
+
+        //update to total price
+        if(document.getElementById('price-total').innerHTML === ""){
+            document.getElementById('price-total').innerHTML = response.item.price + ' €';
+            document.getElementById('total-label').innerHTML = "Total: "
+        }else{
+            let oldPrice = document.getElementById('price-total').innerHTML.substring(0,document.getElementById('price-total').innerHTML.length-1); 
+            document.getElementById('price-total').innerHTML = (oldPrice*1 + response.item.price *1).toFixed(2) + ' €';
+        }
       
+        document.querySelector('html').appendChild(success_msg);
     }  
 }
 
 //cart list on navbar 
 
 let priceNav = null;
-let cartItemsNav = document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart a li');
-let listPriceNav =  document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart a li .cart-item-list-price');
-let listQtyNav =  document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart a li .cart-item-list-quant'); 
+let cartItemsNav = document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart li a');
+let listPriceNav =  document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart li a .cart-item-list-price');
+let listQtyNav =  document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart li a .cart-item-list-quant'); 
 
 for(let i = 0; i< cartItemsNav.length/2; i++ ){
     priceNav += listPriceNav[i].innerHTML * listQtyNav[i].innerHTML; 
 }
 
 if(priceNav !== null){
-    document.querySelectorAll('div.dropdown-cart div.cart-list-total #price-total')[0].innerHTML = priceNav + " €"; 
+    document.querySelectorAll('#price-total')[0].innerHTML = priceNav + " €"; 
 }else{ 
-    document.querySelectorAll('div.dropdown-cart div.cart-list-total #total-label')[0].innerHTML= "Cart is Empty";
+    document.querySelectorAll('#total-label')[0].innerHTML= "Cart is Empty";
 }
-   
+
+
+//disable checkout if no cart 
+
+if(document.querySelectorAll('#checkout-buttons-div a')[0] !== undefined){
+    if(document.querySelectorAll('tr.checkout-item-list').length == 0 )
+        document.querySelector('#checkout-buttons-div a').classList.add('disabled')
+}
+    
+
+//success
+let success_msg = document.createElement('div'); 
+success_msg.setAttribute('role','alert'); 
+success_msg.setAttribute('style','max-width: 40em;'); 
+success_msg.setAttribute('class','alert');
+success_msg.classList.add('alert-success'); 
+success_msg.classList.add('alert-dismissible'); 
+success_msg.classList.add('fade'); 
+success_msg.classList.add('show'); 
+success_msg.classList.add('fixed-top'); 
+success_msg.classList.add('mx-auto'); 
+success_msg.innerHTML = ` 
+    <p>Product successfully added to your cart</p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>`;
+//error 
+let error_msg = document.createElement('div'); 
+error_msg.setAttribute('role','alert'); 
+error_msg.setAttribute('style','max-width: 40em;'); 
+error_msg.setAttribute('class','alert');
+error_msg.classList.add('alert-danger'); 
+error_msg.classList.add('alert-dismissible'); 
+error_msg.classList.add('fade'); 
+error_msg.classList.add('show'); 
+error_msg.classList.add('fixed-top'); 
+error_msg.classList.add('mx-auto'); 
+
+error_msg.innerHTML = `  <p>Failed Adding item to cart</p>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>`

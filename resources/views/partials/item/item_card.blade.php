@@ -1,9 +1,9 @@
 @if(isset($item) && isset($picture) && isset($price))
 <div class="my-3 mx-2 card product-card rounded-0" style="width: 15em;">
     <div class="card-img-overlay d-flex justify-content-end h-25">
-        <a href="#" class="card-link">
-            <i class="fas fa-heart"></i>
-        </a>
+        <button class="btn btn-link li-wishlist card-link" data-id="{{$item->id}}" type="button">
+              <i class="fas fa-heart"></i>
+        </button>
     </div>
     <div class="p-1">
         <a href="/product/{{ $item->id }}" class="card-img-link">
@@ -28,8 +28,9 @@
         </div>
     </div>
     <div class="p-1" style="z-index: 200;">
-        <a href="#" class="dropdown-item btn button text-center add-to-cart-btn" style="z-index: 200;">Add to cart</a>
+        <button class="dropdown-item btn button text-center add-to-cart-btn" data-product-type="{{ $item->id }}" style="z-index: 200;">Add to cart</button>
     </div>
 </div>
 @else <?php print('Undefined variable (item/picture)'); ?>
 @endif
+

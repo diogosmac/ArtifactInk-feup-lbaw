@@ -56,3 +56,14 @@ a#pills-home-tab,a#pills-profile-tab{
     margin-top: .15em;
     border: 0cm;
 }
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+.pv-archiveText {
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    max-width: 50%;
+  }
