@@ -3,9 +3,9 @@
       <div class="row" id="purchase-address">
             {{ $order->address->street }}
             <br>
-            {{$order->address->city . ', ' . $order->address->postal_code}} 
+            {{ $order->address->city . ', ' . $order->address->postal_code }} 
             <br>
-            {{$order->address->country->name}}
+            {{ $order->address->country->name }}
       </div>
       <div class="row" id="purchase-details">
         <span> {{ $order->date }} </span>
@@ -18,6 +18,6 @@
         @endforeach       
       </div>
       <div class="row" id="purchase-total">
-        <span>{{$order->total}} €</span>
+        <span>{{ $order->total }} €</span>
       </div>
   </section>
