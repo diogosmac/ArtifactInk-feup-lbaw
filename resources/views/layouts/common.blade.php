@@ -172,8 +172,8 @@
                     alt="{{ Auth::user()->name}}">
                   <h5 class="dropdown-header">{{ Auth::user()->name}}</h5>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/profile">My Account</a>
-                  <a class="dropdown-item" href="#">My Order</a>
+                  <a class="dropdown-item" href="{{url('profile')}}">My Account</a>
+                  <a class="dropdown-item" href="{{url('profile/purchased_history')}}">My Order</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="{{ url('sign_out') }}">Sign Out</a>
                 </div>
@@ -238,38 +238,17 @@
               width="125">
           </a>
           @if (Auth::check())
-          <a class="nav-link" href="#">
+          <a class="nav-link" href="{{ url('/profile/wishlist') }}">
             <span>
               <i class="fas fa-heart"></i>
             </span>
           </a>
           <div class="btn-group">
-            <a class="btn" href="#" role="button" id="dropdownMenuCart" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
+            <a class="btn"  href="{{ url('/cart') }}" >
               <span>
                 <i class="fas fa-shopping-cart"></i>
               </span>
             </a>
-            <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
-              <div class="panel-body">
-                <ul class="list-group list-cart">
-                @isset($cart_items)
-                  @foreach($cart_items['items'] as $cart_item )
-                    @include('partials.cart.cartListItem', ['cart_item'=>$cart_item, 'cart_picture'=>$cart_items['pictures'][$loop->index]])
-                  @endforeach
-                @endisset
-                </ul>
-              </div>
-              <div class="d-inline cart-list-total">
-                <div id="total-label" class="d-inline p-2">
-                </div>
-                <div id="price-total" class="d-inline p-2">
-                 
-                </div>
-              </div>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item checkout-button" href="{{ url('/cart') }}">View Cart</a>
-            </div>
           </div>
           <div class="btn-group">
             <a class="btn " href="#" role="button" id="dropdownMenuAccount" data-toggle="dropdown" aria-haspopup="true"
@@ -284,40 +263,18 @@
               <h5 class="dropdown-header">{{ Auth::user()->name}}</h5>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{ url('/profile') }}">My Account</a>
-              <a class="dropdown-item" href="#">My Order</a>
+              <a class="dropdown-item" href="{{ url('profile/purchased_history') }}">My Order</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{ url('sign_out') }}">Sign Out</a>
             </div>
           </div>
           @else
           <div class="btn-group">
-            <a class="btn" href="#" role="button" id="dropdownMenuCart" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
+            <a class="btn"  href="{{ url('/cart') }}" >
               <span>
                 <i class="fas fa-shopping-cart"></i>
               </span>
             </a>
-            <div class="dropdown-menu dropdown-cart dropdown-menu-right" aria-labelledby="dropdownMenuCart">
-              <div class="panel-body">
-                <ul class="list-group list-cart">
-                @isset($cart_items)
-                  @foreach($cart_items['items'] as $cart_item )
-                    @include('partials.cart.cartListItem', ['cart_item'=>$cart_item, 'cart_picture'=>$cart_items['pictures'][$loop->index]])
-                  @endforeach
-                @endisset
-                </ul>
-              </div>
-              <div class="d-inline cart-list-total">
-                <div id="total-label" class="d-inline p-2">
-                </div>
-                <div id="price-total" class="d-inline p-2">
-           
-                </div>
-              </div>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item checkout-button" href="{{ url('/cart') }}">View Cart</a>
-            </div>
-
             <a class="nav-link" href="{{ route('sign_in') }}">Sign In</a>
             <!--TODO THINK ABOUT THIS <a class="nav-link" href="{{ route('sign_up') }}">Sign Up</a> -->
             @endif
