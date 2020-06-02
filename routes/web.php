@@ -196,6 +196,8 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
 
     // faqs
     Route::get('faqs', 'AdminController@showFaqs')->name('faqs');
+    Route::post('faqs', 'AdminController@addFaq')->name('faqs');
+    Route::put('faqs', 'AdminController@editFaq')->name('faqs');
 
     
     // info
