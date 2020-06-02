@@ -243,15 +243,17 @@ class EmailServiceController extends Controller
         if (!isset($items)) {
             return "";
         }
-        
+                
         $content = "<tr>";
-        for ($i = 0; $i < count($items); $i++) {
-            if ($i / 2 > 0 && $i % 2 == 0)
+        $index = 0;
+        foreach ($items as $itemId) {
+            if ($index / 2 > 0 && $index % 2 == 0)
                 $content = $content . "</tr><tr>";
 
-            $item = Item::find($items[$i]);
+            $item = Item::find($itemId);
             if (isset($item))
                 $content = $content . $this->newsletterItem($item);
+            $index++;
         }
             
         $content = $content . "</tr>";
@@ -275,7 +277,7 @@ class EmailServiceController extends Controller
         $item_url = route('product', ['id' => $item->id, 'slug' => $item->getSlug()]);
         $item_image_url = "https://web.fe.up.pt/~up201705985/images/img_product/" . $item->images()->first()->link;
         $new_price = null;
-
+        $discount = "";
         if (isset($sale)) {
             if ($sale->type == "percentage") {
                 $new_price = $price * (100 - $sale->percentage_amount);
@@ -290,7 +292,7 @@ class EmailServiceController extends Controller
 
         return "<td style=\"max-width:20em; padding: 1.5em; text-align: center;\">
                 <p style=\"font-size: 14px; line-height: 1.2; word-break: break-word; text-align: center; mso-line-height-alt: 17px; margin: 0;\">
-                    <strong> . $name . </strong>
+                    <strong> $name </strong>
                 </p>
                 <div style=\"color:#2d485d; font-family:Montserrat, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;\">
                     <div style=\"line-height: 1.2; font-size: 12px; color: #2d485d; font-family: Montserrat, sans-serif; mso-line-height-alt: 14px;\">
