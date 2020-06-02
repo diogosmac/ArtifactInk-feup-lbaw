@@ -249,11 +249,12 @@ for(let i = 0; i< cartItemsNav.length/2; i++ ){
 }
 
 if(priceNav !== null){
-    document.querySelectorAll('div.dropdown-cart div.cart-list-total #price-total')[0].innerHTML = priceNav.toFixed(2) + " €"; 
+    document.querySelectorAll('#price-total')[0].innerHTML = priceNav + " €"; 
 }else{ 
-    document.querySelectorAll('div.dropdown-cart div.cart-list-total #total-label')[0].innerHTML= "Cart is Empty";
+    document.querySelectorAll('#total-label')[0].innerHTML= "Cart is Empty";
 }
-   
+
+
 //disable checkout if no cart 
 
 if(document.querySelectorAll('#checkout-buttons-div a')[0] !== undefined){

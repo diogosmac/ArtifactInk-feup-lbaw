@@ -262,7 +262,6 @@
               </div>
               <div class="d-inline cart-list-total">
                 <div id="total-label" class="d-inline p-2">
-                  Total
                 </div>
                 <div id="price-total" class="d-inline p-2">
                  
@@ -310,7 +309,6 @@
               </div>
               <div class="d-inline cart-list-total">
                 <div id="total-label" class="d-inline p-2">
-                  Total
                 </div>
                 <div id="price-total" class="d-inline p-2">
            
