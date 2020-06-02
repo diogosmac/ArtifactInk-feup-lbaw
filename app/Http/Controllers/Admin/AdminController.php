@@ -289,8 +289,25 @@ class AdminController extends Controller
     }
 
     public function deleteReview(Request $request) {
-        return $request;
-        return view('pages.admin.reviews');
+        try {
+            // get review
+            $review = Review::findOrFail($request->id);
+            if ($review != null) {
+                // delete sale
+                $review->delete();
+                return redirect()
+                    ->route('admin.reviews')
+                    ->with('status', 'Review ' . $review->name . ' deleted successfuly.');
+            } else {
+                return redirect()
+                    ->route('admin.reviews')
+                    ->withErrors('Failed to delete review.');
+            }
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('admin.reviews')
+                ->withErrors('Failed to delete review. ' . $e->getMessage());
+        }
     }
 
     /*

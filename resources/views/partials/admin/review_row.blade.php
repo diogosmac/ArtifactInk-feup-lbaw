@@ -75,8 +75,13 @@
     </div>
   </td>
   <td class="align-middle">
-    <button type="button" class="btn btn-link a_link">
-      Delete
-    </button>
+    <form action="{{ route('admin.reviews') }}" method="POST">
+      @csrf
+      @method('DELETE')
+      <input type="hidden" name="id" value="{{ $review->id }}">
+      <button type="submit" value="submit" class="btn btn-link a_link">
+        Remove
+      </button>
+    </form>
   </td>
 </tr>
