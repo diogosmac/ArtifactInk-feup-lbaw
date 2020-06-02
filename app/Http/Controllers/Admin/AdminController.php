@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Address;
 use App\AdminNotification;
+use App\Country;
 use App\Faq;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,6 +14,7 @@ use App\Item;
 use App\ItemPicture;
 use App\NewsletterSubscriber;
 use App\Sale;
+use App\Store;
 use App\User;
 use Exception;
 use Illuminate\Support\Facades\Storage;
@@ -266,7 +269,7 @@ class AdminController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | Categories
+    | Orders
     |--------------------------------------------------------------------------
     */
     public function showOrders() {
@@ -683,7 +686,42 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showInfo() {
-        return view('pages.admin.info');
+        // get store information
+        $store = Store::get()->first();
+        $countries = Country::all();
+        // render view
+        return view('pages.admin.info', ['store' => $store, 'countries' => $countries]);
+    }
+
+    public function editInfo(Request $request) {
+        try {
+            // get store information
+            $store = Store::get()->first();
+            $store_address = Address::find($store->address->id);
+            // update address
+            $store_address->id_country = $request->id_country;
+            $store_address->city = $request->city;
+            $store_address->street = $request->street;
+            $store_address->postal_code = $request->postal_code;
+            // update store info
+            $store->email = $request->email;
+            $store->phone = $request->phone;
+            $store->about_us = $request->about_us;
+            $store->payments_shipment = $request->payments_shipment;
+            $store->returns = $request->returns;
+            $store->warranty = $request->warranty;
+            // save changes
+            $store->save();
+            $store_address->save();
+            // render view
+            return redirect()
+                ->route('admin.info')
+                ->with('status', 'Store information edited successfuly');
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('admin.info')
+                ->withErrors('Failed to update store info. ' . $e->getMessage());
+        }
     }
 
     /*
