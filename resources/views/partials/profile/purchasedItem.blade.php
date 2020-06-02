@@ -15,7 +15,7 @@
     </div>
   </div>
   @if (Auth::user()->reviews->where('id_item', '=', $item->id)->count() == 0)
-    <div>
+    <div class="ml-2">
       <button type="button" class="btn button-secondary float-right" id="profile-edit-review-button" data-toggle="modal" data-target="#writeReview{{$item->id}}">
         Write a review
       </button>

@@ -4,8 +4,11 @@
 
 @section('info')
     <section id="history">
-        @foreach($orders as $order)
-            @include('partials.profile.historyItem', ['order' => $order])
-        @endforeach
+        @for ($i = 0; $i < count($orders); $i++)
+            @if ($i > 0)
+                <hr>
+            @endif
+            @include('partials.profile.historyItem', ['order' => $orders[$i]])
+        @endfor
     </section>
 @endsection
