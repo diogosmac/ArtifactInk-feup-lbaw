@@ -16,6 +16,7 @@
 
 //use Illuminate\Routing\Route;
 
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,14 @@ Route::get('product/{id}-{slug?}', 'ItemController@show')->name('product');
 
 Route::get('category/{id}-{slug?}', 'CategoryController@show')->name('category');
 
+//routes for store specials
+Route::get('top_rated', 'SpecialsController@showTopRated');
+
+Route::get('featured_deals', 'SpecialsController@showFeaturedDeals');
+
+Route::get('best_sellers', 'SpecialsController@showBestSellers');
+
+//route to report review
 Route::post('report_review', 'ReviewController@reportReview')->name('report_review');
 
 //profile pages and stuff related 
