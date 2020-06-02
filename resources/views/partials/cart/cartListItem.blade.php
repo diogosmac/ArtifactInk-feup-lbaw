@@ -1,10 +1,10 @@
 <a class="item-link-cart" href="{{ url('/product/' . $cart_item->id) }}">
   <li class="cart-item-list list-group-item d-flex justify-content-between align-items-center">
     <span>
-      <img class="cart-item-list-img" src="{{ asset('storage/img_product/' . $cart_picture->link) }}"
+      <img class="mr-1 cart-item-list-img" src="{{ asset('storage/img_product/' . $cart_picture->link) }}"
         alt="{{ $cart_item->name }}">
     </span>
-    <h5 class="cart-item-list-name"> {{ $cart_item->name }} </h5>
+    <h5 class="mx-1 cart-item-list-name"> {{ $cart_item->name }} </h5>
     <?php
         $sales = $cart_item->sales;
         $currentSale = 0;
@@ -23,8 +23,8 @@
         $price = round($price - $currentSale, 2);
     ?>
     <h6>
-        <span class="cart-item-list-price"> {{ $price }}€ </span>
+        <span class="mx-1 cart-item-list-price"> {{ $price }} </span>
     </h6>
-    <h6 class="badge badge-primary badge-pill cart-item-list-quant">{{ $cart_item->pivot->quantity }} </h6>
+    <h6 class="ml-2 badge badge-primary badge-pill cart-item-list-quant">{{ $cart_item->pivot->quantity }} </h6>
   </li>
 </a>

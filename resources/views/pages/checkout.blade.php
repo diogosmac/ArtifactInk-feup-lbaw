@@ -74,7 +74,7 @@
             </div>
 
             <div class="mb-3">
-              <button class="btn button-secondary" id="new_addr_btn" type="button">New Adddress</button>
+              <button class="btn button-secondary" id="new_addr_btn" type="button">New Address</button>
             </div>
 
             <div id="new-addr-form">
@@ -83,7 +83,7 @@
                 <input type="text" class="form-control" id="streetAdd"
                   placeholder="Type your Street name - Number - Floor" name="street" value="{{ old('') }}">
                 <div class="invalid-feedback">
-                  Please enter your shipping adddress.
+                  Please enter your shipping address.
                 </div>
               </div>
 
