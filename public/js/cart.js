@@ -230,7 +230,7 @@ function add_to_cart_hadler(){
             document.getElementById('total-label').innerHTML = "Total: "
         }else{
             let oldPrice = document.getElementById('price-total').innerHTML.substring(0,document.getElementById('price-total').innerHTML.length-1); 
-            document.getElementById('price-total').innerHTML = oldPrice*1 + response.item.price *1 + ' €';
+            document.getElementById('price-total').innerHTML = (oldPrice*1 + response.item.price *1).toFixed(2) + ' €';
         }
       
         document.querySelector('html').appendChild(success_msg);
@@ -249,7 +249,7 @@ for(let i = 0; i< cartItemsNav.length/2; i++ ){
 }
 
 if(priceNav !== null){
-    document.querySelectorAll('div.dropdown-cart div.cart-list-total #price-total')[0].innerHTML = priceNav + " €"; 
+    document.querySelectorAll('div.dropdown-cart div.cart-list-total #price-total')[0].innerHTML = priceNav.toFixed(2) + " €"; 
 }else{ 
     document.querySelectorAll('div.dropdown-cart div.cart-list-total #total-label')[0].innerHTML= "Cart is Empty";
 }
