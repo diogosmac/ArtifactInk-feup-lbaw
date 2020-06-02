@@ -20,6 +20,7 @@
 }
 
 .range-slider input::-webkit-slider-thumb {
+    background: var(--main-red-alpha);
     pointer-events: all;
     position: relative;
     z-index: 1;
