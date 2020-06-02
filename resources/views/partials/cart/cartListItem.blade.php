@@ -23,10 +23,7 @@
         $price = round($price - $currentSale, 2);
     ?>
     <h6>
-        @if ($price != $cart_item->price)
-        <span class="old-price"> {{ $cart_item->price }} </span>
-        @endif
-        <span class="cart-item-list-price"> {{ $price }} </span>
+        <span class="cart-item-list-price"> {{ $price }}€ </span>
     </h6>
     <h6 class="badge badge-primary badge-pill cart-item-list-quant">{{ $cart_item->pivot->quantity }} </h6>
   </li>

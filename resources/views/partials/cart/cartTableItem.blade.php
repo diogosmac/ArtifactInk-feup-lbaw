@@ -26,20 +26,12 @@
         }
         $price = round($price - $currentSale, 2);
     ?>
-    
-    <?php // PARA MOSTRAR O PREÇO ANTIGO ?>
-    @if ($price == $item->price)
-        <td colspan="0" class="item-price">{{ $item->price }}</td>
-    @else
-        <td colspan="0">
-            <span class="old-price"> {{ $item->price}} </span>
-            <span class="item-price"> {{ $price }} </span>
-        </td>
-    @endif
-    
-    <?php // PARA NÃO MOSTRAR O PREÇO ANTIGO ?>
-    {{-- <td colspan="0" class="item-price"> {{ $price }} </td> --}}
-
+    <td colspan="0">
+        @if ($price != $item->price)
+            <span class="old-price"> {{ $item->price }} </span>
+        @endif
+        <span class="item-price"> {{ $price }}€ </span>
+    </td>    
     <td colspan="0">
         <button type="button" class="btn btn-link a_link sub-button">
             <i class="fas fa-minus"></i>
