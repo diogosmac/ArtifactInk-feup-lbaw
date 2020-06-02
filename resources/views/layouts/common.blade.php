@@ -343,7 +343,9 @@
       @include('partials.common.products_navbar')
       </div>
 
-      @yield('content')
+      <div class="content">
+          @yield('content')
+      </div>
 
       <!-- Footer-->
       <footer class="mt-2">
