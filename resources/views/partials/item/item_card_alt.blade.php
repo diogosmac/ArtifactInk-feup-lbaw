@@ -72,7 +72,7 @@
                         <h3>N/A</h3>
                     @endif
                 </div>
-                <a href="#" class="btn button add-to-cart-btn">Add to Cart</a>
+                    <button class="dropdown-item btn button text-center add-to-cart-btn" data-product-type="{{ $item->id }}" style="z-index: 200;">Add to cart</button>
             </div>
         </div>
     </div>
