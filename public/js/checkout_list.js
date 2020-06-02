@@ -26,6 +26,13 @@ for(let i =0; i< items_mobile.length; i++){
         //update item quant 
         value.innerHTML = (parseFloat(price)*parseFloat(item_quant.innerHTML)).toFixed(2) +'€'
         update_total_price_mobile();
+
+        let id = items[i].getAttribute('data-id');
+        let old_quantity = item_quant.innerHTML;
+        let quantity = parseInt(old_quantity) + 1;
+
+        sendAjaxRequest('put', '/cart', {id_item: id, quantity: quantity}, addQuantityHandler);
+        event.preventDefault();
     },false)
 
     sub_button.addEventListener('click',()=>{
@@ -36,6 +43,13 @@ for(let i =0; i< items_mobile.length; i++){
         //update item quant 
         value.innerHTML = (parseFloat(price)*parseFloat(item_quant.innerHTML)).toFixed(2) +'€'
         update_total_price_mobile();
+
+        let id = items[i].getAttribute('data-id');
+        let old_quantity = item_quant.innerHTML;
+        let quantity = parseInt(old_quantity) - 1;
+
+        if (quantity > 0)
+            sendAjaxRequest('put', '/cart', {id_item: id, quantity: quantity}, subtractQuantityHandler); 
     },false)
 
     //remove button 
@@ -44,6 +58,10 @@ for(let i =0; i< items_mobile.length; i++){
         items_mobile[i].innerHTML = " "
         update_total_price_mobile();
         items_mobile[i].remove();
+
+        let id = items[i].getAttribute('data-id');
+        sendAjaxRequest('delete', '/cart', {id_item: id}, removeItemHandler); // bind attributes
+
     },false)
 
     //update item quant 
