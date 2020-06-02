@@ -52,15 +52,24 @@ class SearchController extends Controller
             $query = $query->where('stock', '>', 0);
         }
 
-        if (Input::has('minPrice')) {
-            $minPrice = Input::get('minPrice');
-            $query = $query->where('price', '>=', $minPrice);
-        }
+        $minPrice = Input::get('minPrice', 0);
+        $maxPrice = Input::get('maxPrice', 500);
 
-        if (Input::has('maxPrice')) {
-            $maxPrice = Input::get('maxPrice');
-            $query = $query->where('price', '<=', $maxPrice);
-        }
+        $query = $query
+            ->whereHas('sales', function($query) use ($minPrice, $maxPrice) {
+                $query
+                    ->whereRaw('
+                        "sale"."type" = \'fixed\'
+                        and "item"."price" - "sale"."fixed_amount" >= ' . $minPrice . '
+                        and "item"."price" - "sale"."fixed_amount" <= ' . $maxPrice)
+                    ->orWhereRaw('
+                        "sale"."type" = \'percentage\'
+                        and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") >= ' . $minPrice . '
+                        and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") <= ' . $maxPrice);
+            })
+            ->orWhereDoesntHave('sales')
+                ->where('price', '>=', $minPrice)
+                ->where('price', '<=', $maxPrice);
 
         $items = $query->paginate(18)->withPath('');
         
