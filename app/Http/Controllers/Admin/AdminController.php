@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\AdminNotification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\EmailService\EmailServiceController;
 use App\Http\Controllers\SearchController;
 use App\Item;
 use App\ItemPicture;
+use App\NewsletterSubscriber;
+use App\Sale;
 use App\User;
+use Exception;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
 
@@ -19,7 +24,20 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view('pages.admin.home');
+        $notifications = AdminNotification::all()->sortByDesc('sent');
+        return view('pages.admin.home', ['notifications' => $notifications]);
+    }
+
+    public function clearNotification(Request $request) {
+        $notification_id = $request->notification_id;
+
+        try {
+            AdminNotification::destroy($notification_id);
+        } catch (Exception $e) {
+            return response('Internal Server Error', 500);
+        }
+
+        return response()->json(['notification_id' => $notification_id]);
     }
 
     /*
@@ -323,22 +341,165 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showSales() {
-        return view('pages.admin.sales.sales');
+        $sales = Sale::orderBy('id', 'asc');
+
+        $sales = $sales->paginate(10)->withPath('');
+        return view('pages.admin.sales.sales', ['sales' => $sales]);
     }
 
     public function showAddSaleForm() {
-        return view('pages.admin.sales.add_sale');
+        $items = Item::all();
+        return view('pages.admin.sales.add_sale', ['products' => $items]);
+    }
+
+    private function validateSale(Request $request) {
+        //validation rules
+        $rules = [
+            'name' => 'required|string|max:255',
+            'type' => 'required|string',
+            'start' => 'required|date',
+            'end' => 'required|date|after_or_equal:start',
+            'item' => 'required|array',
+            'item.*.*' => 'required|numeric|exists:App\Item,id'
+        ];
+
+        //custom validation error messages.
+        $messages = [
+            'item.*' => 'At least one item must be selected',
+            'value' => 'Discount value is too high'
+        ];
+
+        // validate the request.
+        $request->validate($rules, $messages);
+        return;
+        // get lowest price item on sale
+        $min_price = Item::find($request->item)->min('price');
+        // add new rules
+        $new_rules = [
+            'value' => 'bail|required_if:type,\'percentage\'|numeric|max:100',
+            'value' => 'bail|required_if:type,fixed|numeric|max:' . $min_price,
+        ];
+
+        // re-validate the request.
+        $request->validate($new_rules, $messages);
+    }
+
+    public function addSale(Request $request) {
+        // validate request
+        $this->validateSale($request);
+        // create new sale
+        $new_sale = new Sale;
+        $new_sale->name = $request->name;
+        $new_sale->type = $request->type;
+        // pick type
+        if ($request->type == 'percentage') {
+            $new_sale->percentage_amount = $request->value;
+            $new_sale->fixed_amount = null;
+        } else {
+            $new_sale->fixed_amount = $request->value;
+            $new_sale->percentage_amount = null;
+        }
+        $new_sale->start = $request->start;
+        $new_sale->end = $request->end;
+        $new_sale->save();
+
+        // create item sales
+        foreach($request->item as $id_item) {
+            $new_sale->items()->attach(1, ['id_item' => $id_item, 'id_sale' => $new_sale->id]);
+        }
+
+        return redirect()
+            ->intended(route('admin.sales.home'))
+            ->with('status','Sale ' . $new_sale->name . ' added successfuly!');
     }
 
     public function showEditSaleForm($id_sale) {
-        // TODO GET SALE OBJECT
-        $sale = (object) array(
-            "id" => $id_sale,
-            "name" => "Inktober Fest",
-            "startDate" => "2020-03-01",
-            "endDate" => "2020-04-01"
-        );
-        return view('pages.admin.sales.edit_sale', ['sale' => $sale]);
+        try {
+            $sale = Sale::findOrFail($id_sale);
+            $sale_items = $sale->items()->orderBy('id', 'asc')->get();
+            $sale_item_ids = $sale_items->pluck('id');
+            $non_sale_items = Item::whereNotIn('id', $sale_item_ids)->orderBy('id', 'asc')->get();
+            
+            if ($sale != null) {
+                return view('pages.admin.sales.edit_sale', [
+                    'sale' => $sale,
+                    'items_sale' => $sale_items,
+                    'items' => $non_sale_items
+                ]);
+            } else {
+                return redirect()
+                    ->route('admin.sales.home')
+                    ->withErrors('Failed to load sale.');
+            }
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('admin.sales.home')
+                ->withErrors('Failed to load sale. ' . $e->getMessage());
+        }
+    }
+
+    public function editSale(Request $request) {
+        // validate request
+        $this->validateSale($request);
+        try {
+            $sale = Sale::findOrFail($request->id);
+            
+            if ($sale != null) {
+                $sale->name = $request->name;
+                $sale->type = $request->type;
+                if ($request->type == 'percentage') {
+                    $sale->percentage_amount = $request->value;
+                    $sale->fixed_amount = null;
+                } else {
+                    $sale->fixed_amount = $request->value;
+                    $sale->percentage_amount = null;
+                }
+                $sale->start = $request->start;
+                $sale->end = $request->end;
+                $sale->save();
+
+                // delete old items sales
+                $sale->items()->sync([]);
+                // create new item sales
+                foreach($request->item as $id_item) {
+                    $sale->items()->attach(1, ['id_item' => $id_item, 'id_sale' => $sale->id]);
+                }
+
+                return redirect()
+                    ->route('admin.sales.home')
+                    ->with('status', 'Sale ' . $sale->name . ' edited successfuly');
+            } else {
+                return redirect()
+                    ->route('admin.sales.edit', ['id' => $sale->id])
+                    ->withErrors('Failed to edit sale.');
+            }
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('admin.sales.edit', ['id' => $sale->id])
+                ->withErrors('Failed to edit sale. ' . $e->getMessage());
+        }
+    }
+
+    public function deleteSale(Request $request) {
+        try {
+            $sale = Sale::findOrFail($request->id);
+            
+            if ($sale != null) {
+                // delete sale
+                $sale->delete();
+                return redirect()
+                    ->route('admin.sales.home')
+                    ->with('status', 'Sale ' . $sale->name . ' deleted successfuly.');
+            } else {
+                return redirect()
+                    ->route('admin.sales.home')
+                    ->withErrors('Failed to delete sale.');
+            }
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('admin.sales.home')
+                ->withErrors('Failed to delete sale. ' . $e->getMessage());
+        }
     }
 
     /*
@@ -347,7 +508,45 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showNewsletter() {
-        return view('pages.admin.newsletter');
+        $items = Item::all();
+        return view('pages.admin.newsletter', ['products' => $items]);
+    }
+
+    public function sendNewsletter(Request $request) {
+        // Validation rules.
+        $rules = [
+            'subject' => 'required|string|max:64',
+            'title' => 'required|string',
+            'body' => 'required|string|'
+        ];
+
+        // custom validation error messages.
+        $messages = [
+            'subject' => 'Invalid subject',
+            'title' => 'Invalid title',
+            'body' => 'Invalid body'
+        ];
+
+        // validate the request.
+        $request->validate($rules, $messages);
+
+        $subject = $request['subject'];
+        $title = $request['title'];
+        $body = $request['body'];
+        $items = $request['item'];
+
+        $subscribers = NewsletterSubscriber::all();
+        $email_service = new EmailServiceController();
+        foreach ($subscribers as $subscriber) {
+            if (!$email_service->sendNewsletterEmail($subscriber->email, 'Newsletter Subscriber', $subject, $title, $body, $items))   
+                return redirect()
+                    ->back()
+                    ->withErrors('A Network Error occurred. Please try again.');   
+        }
+        
+        return redirect()
+            ->back()
+            ->with('status', 'The newsletter was sent to ' . $subscribers->count() . ' subscribers');
     }
 
     /*

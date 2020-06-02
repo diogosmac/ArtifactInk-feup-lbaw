@@ -6,7 +6,7 @@
 
 @section('content')
 <section class="mx-auto my-4">
-    <h3>Search for '<?= $query ?>'</h3>
+    <h3 class="ml-3">Search for '<?= $query ?>'</h3>
     <form action="search" method="GET">
         <div class="d-flex flex-row justify-content-between align-items-center">
             <div>
@@ -44,7 +44,7 @@
                 </ul>
             </div>
         </div>
-        <div class="d-md-none my-2">
+        <div class="d-md-none my-2 ml-3">
             <button class="btn btn-primary button collapsed" type="button" data-toggle="collapse" data-target="#mobileFilters" aria-expanded="false" aria-controls="mobileFilters">
                 Filters
             </button>

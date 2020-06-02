@@ -12,7 +12,7 @@
           {{ $review->score }}/5 &nbsp;<i class="fas fa-star"></i>
         </div>
         {{ date("F jS Y", strtotime($review->date)) }}
-        <a href="" class="py-2 text-center a_link">Report Review</a>
+        <button class="btn btn-link a_link" type="button" data-toggle="modal" data-target="#confirmReportReview{{ $review->id }}">Report Review</button>
       </div>
     </div>
     <div class="col-8">
@@ -21,6 +21,9 @@
     </div>
   </div>
 </div>
+
+<!-- Confirm Report Review (supports mobile)-->
+@include('partials.pop-ups.confirm_report_review')
 
 <div class="d-flex flex-column justify-content-center p-0 pb-2 mb-5 d-md-none border-bottom border-dark">
   <div class="container-fluid d-flex flex-row justify-content-center px-0 pb-4">
@@ -36,7 +39,8 @@
         {{ $review->score }}/5 &nbsp;<i class="fas fa-star"></i>
         </div>
         {{ date("F jS Y", strtotime($review->date)) }}
-        <a href="" class="py-2 text-center a_link">Report Review</a>
+        <button class="btn btn-link a_link" type="button" data-toggle="modal" data-target="#confirmReportReview{{ $review->id }}">Report Review</button>
+
       </div>
     </div>
   </div>

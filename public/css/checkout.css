@@ -28,8 +28,6 @@
     border-top: .1em var(--main-color-alpha);
 }
 
-
-
 .checkout-table span.total{
     color: var(--main-red);
 }
@@ -65,6 +63,23 @@ div.checkout-box thead th{
 #new-addr-form{
     display: none;
 }
+
+#new-payment-form{
+    display: none;
+}
+
+.payment-form2{
+    display: none;
+}
+
+#checkout-payment{
+    display: none;
+}
+
+#checkout-confirm{
+    display: none;
+}
+
 
 
 
@@ -108,18 +123,18 @@ div.progress{
     border-radius: 0% !important;
 }
 
-.progress-checkout li.disabled a{
+.progress-checkout li.disabled button{
     color: var(--main-white);
 }
 
-.progress-checkout li a{
+.progress-checkout li button{
     color: var(--main-red-alpha);
     border-radius: 0% !important;
     border: solid .1em;
     
 }
 
-.progress-checkout li a:hover{
+.progress-checkout li button:hover{
     color: var(--text-color-white);
     background-color: var(--main-red);
     

@@ -14,6 +14,16 @@ class Order extends Model
     protected $table = 'order';
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'date', 'total', 'status', 'id_user', 'id_address', 'id_payment_method'
+    ];
+
+
+    /**
      * Indicates if the model should be timestamped.
      *
      * @var bool

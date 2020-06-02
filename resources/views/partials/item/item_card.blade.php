@@ -13,7 +13,7 @@
         </a>
     </div>
     <div class="p-1 d-flex flex-column justify-content-center text-center card-body border-top border-dark">
-        <span class="detail">
+        <div class="detail">
             <h5 class="card-title font-weight-bold">{{ $item->name }}</h5>
             <h5 class="card-price font-weight-bold">
                 @if ($item->status == 'active')
@@ -25,7 +25,7 @@
                     N/A
                 @endif
             </h5>
-        </span>
+        </div>
     </div>
     <div class="p-1" style="z-index: 200;">
         <a href="#" class="dropdown-item btn button text-center add-to-cart-btn" style="z-index: 200;">Add to cart</a>

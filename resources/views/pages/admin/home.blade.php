@@ -62,34 +62,6 @@
         </thead>
         <tbody>
 
-          @php
-            $notifications = array(
-              (object) array(
-                'id' => 1,
-                'category' => "Users",
-                'description' => "User miguel123 just signed up",
-                'timestamp' => "Sunday, 08-Mar-20 12:34:17"
-              ),
-              (object) array(
-                'id' => 2,
-                'category' => "Users",
-                'description' => "User miguel123 just signed up",
-                'timestamp' => "Sunday, 08-Mar-20 12:34:17"
-              ),
-              (object) array(
-                'id' => 3,
-                'category' => "Users",
-                'description' => "User miguel123 just signed up",
-                'timestamp' => "Sunday, 08-Mar-20 12:34:17"
-              ),
-              (object) array(
-                'id' => 4,
-                'category' => "Users",
-                'description' => "User miguel123 just signed up",
-                'timestamp' => "Sunday, 08-Mar-20 12:34:17"
-              ),
-            );
-          @endphp
           @each('partials.admin.notification_row', $notifications, 'notification')
 
         </tbody>

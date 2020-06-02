@@ -147,7 +147,7 @@
 
       <div class="col my-2" id="profile-address">
         @foreach($addresses as $address)
-        @include('partials.profile.address', ['address' => $address, 'loop' => $loop->iteration])
+          @include('partials.profile.address', ['address' => $address, 'loop' => $loop->iteration])
         @endforeach
       </div>
 
@@ -261,7 +261,7 @@
 
       <div class="col my-2" id="profile-card">
         @foreach($paymentMethods as $paymentMethod)
-        @include('partials.profile.paymentMethod', ['paymentMethod' => $paymentMethod, 'loop' => $loop->iteration])
+          @include('partials.profile.paymentMethod', ['paymentMethod' => $paymentMethod, 'loop' => $loop->iteration])
         @endforeach
       </div>
 

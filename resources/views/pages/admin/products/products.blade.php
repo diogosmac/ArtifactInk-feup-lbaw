@@ -95,14 +95,10 @@
     </tbody>
   </table>
 
-  {{ $products->onEachSide(1)->links() }}
+  {{ $products->onEachSide(1)->appends(request()->except('page'))->links() }}
 
   </div>
 </main>
-
-</div>
-</div>
-@endsection
 
 {{-- Success Alert --}}
 @if(session('status'))
@@ -113,3 +109,6 @@
     </button>
   </div>
 @endif
+
+@endsection
+

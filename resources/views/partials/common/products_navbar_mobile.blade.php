@@ -1,4 +1,4 @@
-<div class="collapse navbar-collapse" id="navbarBotSupportedContent">
+<div class="collapse navbar-collapse" id="navbarBotSupportedContentMobile">
   <ul class="navbar-nav nav-fill w-100">
     @foreach ($parent_categories as $parent_category)
     <li class="nav-item ">

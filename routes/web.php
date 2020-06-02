@@ -17,6 +17,7 @@
 //use Illuminate\Routing\Route;
 
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('sign_in', 'Auth\LoginController@showLoginForm')->name('sign_in');
@@ -34,7 +35,7 @@ Route::get('/', 'ItemController@showHomepage')->name('home'); //todo reply funct
 
 Route::get('search','SearchController@showSearch')->name('search');
 
-Route::get('product/{id}-{slug?}', 'ItemController@show');
+Route::get('product/{id}-{slug?}', 'ItemController@show')->name('product');
 
 Route::get('category/{id}-{slug?}', 'CategoryController@show')->name('category');
 
@@ -44,6 +45,9 @@ Route::get('top_rated', 'SpecialsController@showTopRated');
 Route::get('featured_deals', 'SpecialsController@showFeaturedDeals');
 
 Route::get('best_sellers', 'SpecialsController@showBestSellers');
+
+//route to report review
+Route::post('report_review', 'ReviewController@reportReview')->name('report_review');
 
 //profile pages and stuff related 
 Route::prefix('profile')->name('profile.')->group(function() {
@@ -111,12 +115,12 @@ Route::delete('cart', 'CartController@delete_from_cart');
 Route::put('cart', 'CartController@update_item_quantity');
 
 // Checkout
-Route::prefix('/checkout')->name('checkout.')->namespace('Checkout')->group(function () {
-    Route::view('shipping', 'pages.checkout.shipping')->name('shipping');
+Route::prefix('checkout')->name('checkout.')->group(function () {
+   
+    Route::get('/','UserController@showCheckout')->name('home');
 
-    Route::view('payment', 'pages.checkout.payment')->name('payment');
+    Route::post('/','OrderController@addOrder')->name('home'); 
 
-    Route::view('confirm', 'pages.checkout.confirm')->name('confirm');
 });
 
 // admin routes
@@ -130,6 +134,8 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
 
     // home
     Route::get('/', 'AdminController@index')->name('home');
+
+    Route::delete('/clear_notification', 'AdminController@clearNotification')->name('clear_notification');
 
     // products routes
     Route::prefix('products')->name('products.')->group(function () {
@@ -174,13 +180,19 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
 
         // create sale
         Route::get('add', 'AdminController@showAddSaleForm')->name('add');
+        Route::post('add', 'AdminController@addSale')->name('add');
 
         // edit sale
         Route::get('{id}/edit', 'AdminController@showEditSaleForm')->where('id', '[0-9]+')->name('edit');
+        Route::put('{id}/edit', 'AdminController@editSale')->where('id', '[0-9]+')->name('edit');
+
+        // delete sale
+        Route::delete('delete', 'AdminController@deleteSale')->name('delete');
     });
 
     // newsletter
     Route::get('newsletter', 'AdminController@showNewsletter')->name('newsletter');
+    Route::post('newsletter', 'AdminController@sendNewsletter')->name('newsletter');
 
     // faqs
     Route::get('faqs', 'AdminController@showFaqs')->name('faqs');

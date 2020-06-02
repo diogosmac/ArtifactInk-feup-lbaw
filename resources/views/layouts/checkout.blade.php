@@ -65,8 +65,7 @@
 
   <!-- todo distribute scripts -->
 
-  <script src="{{ asset('js/payment.js') }}" defer></script>
-  <script src="{{ asset('js/address.js') }}" defer></script>
+  <script src="{{ asset('js/checkout.js') }}" defer></script>
   <script type="text/javascript">
     // Fix for Firefox autofocus CSS bug
     // See: http://stackoverflow.com/questions/18943276/html-5-autofocus-messes-up-css-loading/18945951#18945951
@@ -99,18 +98,18 @@
                   <span>
                     <i class="fas fa-user"></i>
                   </span>
-                  John Doe
+                  {{ Auth::user()->name}}
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuAccount">
-                  <img class="profile-pic-bubble"
-                    src="https://www.diretoriodigital.com.br/wp-content/uploads/2013/05/Team-Member-3.jpg"
-                    alt="John Doe">
-                  <h5 class="dropdown-header">John Doe</h5>
+                <img class="profile-pic-bubble"
+                    src="{{ asset('storage/img_user/' . Auth::user()->profilePicture()->get()->first()->link) }}"
+                    alt="{{ Auth::user()->name}}">
+                  <h5 class="dropdown-header">{{ Auth::user()->name}}</h5>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/pages/profile.php">My Account</a>
+                  <a class="dropdown-item" href="{{ url('/profile') }}">My Account</a>
                   <a class="dropdown-item" href="#">My Order</a>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Sign Out</a>
+                  <a class="dropdown-item" href="{{ url('sign_out') }}">Sign Out</a>
                 </div>
               </div>
             </li>
@@ -217,4 +216,28 @@
   </div>
 </body>
 
+
+{{-- Success Alert --}}
+@if(session('status'))
+  <div class="alert alert-success alert-dismissible fade show fixed-top mx-auto " style="max-width: 40em;" role="alert">
+    {{session('status')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
+
+{{-- Error Alert --}}
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    @foreach ($errors->all() as $error)
+    <p>{{ $error }}</p>
+    @endforeach
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
+
 </html>
+

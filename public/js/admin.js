@@ -16,6 +16,41 @@ function sendAjaxRequest(method, url, data, handler) {
 }
 
 /**
+ * Clear Notifications
+ * 
+ */
+
+ let clearNotificationButtons
+ function addClearNotificationListeners() {
+    clearNotificationButtons = document.querySelectorAll("button.clear-notification-button")
+    if (clearNotificationButtons.length == 0)
+        return;
+    
+    for (let i = 0; i < clearNotificationButtons.length; i++) {
+        clearNotificationButtons[i].addEventListener(
+            'click',
+            (event) => {
+                let notificationId = clearNotificationButtons[i].parentNode.parentNode.getAttribute('notification_id')
+                sendAjaxRequest('delete', '/admin/clear_notification', { notification_id: notificationId }, clearNotificationHandler)
+                event.preventDefault();
+            }
+        )
+    }
+ }
+
+ function clearNotificationHandler() {
+    if (this.status != 200)
+        return;
+
+    let response = JSON.parse(this.responseText);
+    let notification_id = response.notification_id;    
+    let row = document.getElementById('notification'+notification_id)
+    
+    row.style.opacity = '0';
+    setTimeout(function(){ row.remove(); }, 250);
+ }
+
+/**
  * 
  * ARCHIVE/UNARCHIVE ITEMS
  * 
@@ -163,6 +198,83 @@ function unbanUserHandler() {
 
 /**
  * 
+ * SALE ITEMS
+ * 
+ */
+let addItemList;
+let itemList;
+let saleForm;
+function addSaleItemsForm() {
+    saleForm = document.getElementById('sale-form');
+    itemList = document.getElementById('item-list');
+    addItemList = document.getElementById('add-item-list');
+    if (saleForm == null)
+        return;
+    
+    let addItemRows = document.getElementsByClassName('sale-add-product-row');
+    let removeItemRows = document.getElementsByClassName('sale-remove-product-row');
+    for (let i = 0; i < addItemRows.length; i++) {
+        let addButton = addItemRows[i].getElementsByClassName('add-item-button')[0];
+        addButton.addEventListener('click', addSaleItem);
+    }
+
+    for (let i = 0; i < removeItemRows.length; i++) {
+        let removeButton = removeItemRows[i].getElementsByClassName('remove-item-button')[0];
+        removeButton.addEventListener('click', removeSaleItem);
+    }
+}
+
+function addSaleItem(event) {
+    // get product id and row
+    let id = this.getAttribute('product-id');
+    let row = document.querySelector('tr[product-id="' + id + '"]');
+    // swap rows
+    row.parentNode.removeChild(row);
+    itemList.insertBefore(row, itemList.firstChild);
+    // change button style
+    this.classList.remove('button-secondary');
+    this.classList.remove('add-item-button');
+    this.classList.add('btn-link');
+    this.classList.add('a_link');
+    this.classList.add('remove-item-button');
+    this.innerHTML = "Remove"
+    // swap event listeners
+    this.removeEventListener('click', addSaleItem);
+    this.addEventListener('click', removeSaleItem);
+    // add <input hidden> tag
+    let tag = document.createElement("input");
+    tag.setAttribute("type", "hidden");
+    tag.setAttribute("id", "item-" + id);
+    tag.setAttribute("name", "item[" + id + "]");
+    tag.setAttribute("value", id);
+    saleForm.appendChild(tag);
+    event.preventDefault();
+}
+
+function removeSaleItem() {
+    // get product id and row
+    let id = this.getAttribute('product-id');
+    let row = document.querySelector('tr[product-id="' + id + '"]');
+    // swap rows
+    row.parentNode.removeChild(row);
+    addItemList.insertBefore(row, addItemList.firstChild);
+    // change button style
+    this.classList.remove('btn-link');
+    this.classList.remove('a_link');
+    this.classList.remove('remove-item-button');
+    this.classList.add('button-secondary');
+    this.classList.add('add-item-button');
+    this.innerHTML = "Add"
+    // swap event listeners
+    this.removeEventListener('click', removeSaleItem);
+    this.addEventListener('click', addSaleItem);
+    // remove <input hidden> tag
+    let tag = document.getElementById('item-' + id);
+    tag.remove();
+    event.preventDefault();
+}
+/**
+ * 
  * GENERAL INFO
  * 
  */
@@ -216,8 +328,10 @@ function cancelGeneralInfo() {
 
 // perform actions when window loads
 window.addEventListener('load', function () {
+    addClearNotificationListeners();
     addArchiveListeners();
     addBanListeners();
+    addSaleItemsForm();
     if (document.getElementById("generalInfo") != null)
         generalInfo = document.getElementById("generalInfo").innerHTML;
 });

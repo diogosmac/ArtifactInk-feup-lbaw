@@ -9,7 +9,29 @@
             {{ $item->name }}
         </a>
     </th>
-    <td colspan="0" class="item-price">{{ $item->price }}</td>
+    <?php
+        $sales = $item->sales;
+        $currentSale = 0;
+        $price = $item->price;
+        foreach ($sales as $sale) {
+            $new_sale = 0;
+            if ($sale->type == 'percentage') {
+                $new_sale = 0.01 * $sale->percentage_amount * $price;
+            } else if ($sale->type == 'fixed') {
+                $new_sale = $sale->fixed_amount;
+            }
+            if ($new_sale > $currentSale) {
+                $currentSale = $new_sale;
+            }
+        }
+        $price = round($price - $currentSale, 2);
+    ?>
+    <td colspan="0">
+        @if ($price != $item->price)
+            <span class="old-price"> {{ $item->price }} </span>
+        @endif
+        <span class="item-price"> {{ $price }}€ </span>
+    </td>    
     <td colspan="0">
         <button type="button" class="btn btn-link a_link sub-button">
             <i class="fas fa-minus"></i>
