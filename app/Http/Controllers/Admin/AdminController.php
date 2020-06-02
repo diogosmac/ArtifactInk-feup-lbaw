@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\AdminNotification;
+use App\Faq;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\EmailService\EmailServiceController;
@@ -555,7 +556,125 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showFaqs() {
-        return view('pages.admin.faqs');
+        // get faqs
+        $faqs = Faq::orderBy('order', 'asc')->get();
+        return view('pages.admin.faqs', ['faqs' => $faqs]);
+    }
+
+    private function validateFaq(Request $request) {
+        // get max order number
+        $max_order = Faq::max('order') + 1;
+
+        // Validation rules.
+        $rules = [
+            'question' => 'required|string',
+            'answer' => 'required|string',
+            'order' => 'required|numeric|min:1|max:' . $max_order
+        ];
+
+        // validate the request.
+        $request->validate($rules);
+    }
+
+    public function addFaq(Request $request) {
+        // validate request
+        $this->validateFaq($request);
+        // update other FAQs order
+        $faqs_to_update = Faq::where('order', '>=', $request->order)
+            ->orderBy('order', 'desc')
+            ->get();
+        foreach($faqs_to_update as $faq) {
+            $faq->order = $faq->order + 1;
+            $faq->save();
+        }
+        
+        // create new FAQ
+        $new_faq = new Faq;
+        $new_faq->question = $request->question;
+        $new_faq->answer = $request->answer;
+        $new_faq->order = $request->order;
+        $new_faq->save();
+
+        return redirect()
+            ->route('admin.faqs')
+            ->with('status', 'FAQ added successfuly');
+    }
+
+    public function editFaq(Request $request) {
+        // validate request
+        $this->validateFaq($request);
+        try {
+            $faq = Faq::findOrFail($request->id);
+            // check if exists
+            if ($faq != null) {
+                // update FAQs order
+                $faqs_to_update = Faq::where('order', '>', $faq->order)
+                    ->orderBy('order', 'asc')
+                    ->get();
+                $faq->order = Faq::max('order') + 1;
+                $faq->save();
+                foreach($faqs_to_update as $faq_update) {
+                    $faq_update->order = $faq_update->order - 1;
+                    $faq_update->save();
+                }
+                // update next FAQs order
+                $faqs_to_update = Faq::where('order', '>=', $request->order)
+                    ->orderBy('order', 'desc')
+                    ->get();
+                foreach($faqs_to_update as $faq_update) {
+                    $faq_update->order = $faq_update->order + 1;
+                    $faq_update->save();
+                }
+                // update FAQ
+                $faq->question = $request->question;
+                $faq->answer = $request->answer;
+                $faq->order = $request->order;
+                $faq->save();
+
+                return redirect()
+                    ->route('admin.faqs')
+                    ->with('status', 'FAQ edited successfuly');
+            } else {
+                return redirect()
+                    ->route('admin.faqs')
+                    ->withErrors('Failed to edit FAQ.');
+            }
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('admin.faqs')
+                ->withErrors('Failed to edit FAQ. ' . $e->getMessage());
+        }
+    }
+
+    public function deleteFaq(Request $request) {
+        try {
+            $faq = Faq::findOrFail($request->id);
+            // check if exists
+            if ($faq != null) {
+                // delete FAQ
+                $faq->delete();
+                // update FAQs order
+                $faqs_to_update = Faq::where('order', '>', $faq->order)
+                    ->orderBy('order', 'asc')
+                    ->get();
+                foreach($faqs_to_update as $faq_update) {
+                    $faq_update->order = $faq_update->order - 1;
+                    $faq_update->save();
+                }
+
+                return redirect()
+                    ->route('admin.faqs')
+                    ->with('status', 'FAQ deleted successfuly');
+            } else {
+                return redirect()
+                    ->route('admin.faqs')
+                    ->withErrors('Failed to delete FAQ.');
+            }
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('admin.faqs')
+                ->withErrors('Failed to delete FAQ. ' . $e->getMessage());
+        }
     }
 
     /*

@@ -2,29 +2,6 @@
 
 @section('title', ' Admin - FAQs')
 
-@php
-  $questions = array(
-    (object) array(
-      "id" => 1,
-      "question" => "Lorem ipsum dolor?",
-      "answer" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra dui libero, a venenatis justo fermentum at. Cras id tellus quis ex aliquam egestas. Pellentesque vel erat vitae libero semper consectetur. Mauris ligula ante, aliquet interdum lobortis non, elementum non dolor. Vestibulum sodales pulvinar pellentesque. Sed eget volutpat metus, non vulputate nulla. Nulla in elit quam. Donec pulvinar, felis hendrerit molestie volutpat, lectus risus luctus ipsum, ut suscipit nibh dolor eu arcu. Ut efficitur commodo fermentum. Sed et laoreet diam, vel mattis diam.",
-      "number" => 1
-    ),
-    (object) array(
-      "id" => 2,
-      "question" => "Lorem ipsum dolor sit?",
-      "answer" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra dui libero, a venenatis justo fermentum at. Cras id tellus quis ex aliquam egestas. Pellentesque vel erat vitae libero semper consectetur. Mauris ligula ante, aliquet interdum lobortis non, elementum non dolor. Vestibulum sodales pulvinar pellentesque. Sed eget volutpat metus, non vulputate nulla. Nulla in elit quam. Donec pulvinar, felis hendrerit molestie volutpat, lectus risus luctus ipsum, ut suscipit nibh dolor eu arcu. Ut efficitur commodo fermentum. Sed et laoreet diam, vel mattis diam.",
-      "number" => 2
-    ),
-    (object) array(
-      "id" => 3,
-      "question" => "Lorem ipsum dolor sit amet?",
-      "answer" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus viverra dui libero, a venenatis justo fermentum at. Cras id tellus quis ex aliquam egestas. Pellentesque vel erat vitae libero semper consectetur. Mauris ligula ante, aliquet interdum lobortis non, elementum non dolor. Vestibulum sodales pulvinar pellentesque. Sed eget volutpat metus, non vulputate nulla. Nulla in elit quam. Donec pulvinar, felis hendrerit molestie volutpat, lectus risus luctus ipsum, ut suscipit nibh dolor eu arcu. Ut efficitur commodo fermentum. Sed et laoreet diam, vel mattis diam.",
-      "number" => 3
-    )
-  );
-@endphp
-
 @section('content')
 <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
   <div class="container">
@@ -45,22 +22,23 @@
               </button>
             </div>
             <div class="modal-body">
-              <form>
+              <form action="{{ route('admin.faqs') }}" method="POST" id="faq-form">
+                @csrf
                 <div class="form-group">
                   <label for="questionTitle">Question</label>
-                  <input type="text" class="form-control" id="questionTitle" placeholder="Write question here...">
+                  <input required name='question' type="text" class="form-control" id="questionTitle" placeholder="Write question here...">
                 </div>
                 <div class="form-group">
                   <label for="questionAnswer">Answer</label>
-                  <textarea class="form-control" id="questionAnswer" rows="5" placeholder="Write answer here..."></textarea>
+                  <textarea required name='answer' class="form-control" id="questionAnswer" rows="5" placeholder="Write answer here..."></textarea>
                 </div>
                 <div class="form-group">
                   <label for="questionNumber">Question number:</label>
-                  <select class="form-control" id="questionNumber">
-                    @foreach ($questions as $question)
-                        <option>{{ $question->number }}</option>
+                  <select required name='order' class="form-control" id="questionNumber">
+                    @foreach ($faqs as $faq)
+                        <option>{{ $faq->order }}</option>
                       @if ($loop->last)
-                        <option selected>{{ $question->number + 1 }}</option>
+                        <option selected>{{ $faq->order + 1 }}</option>
                       @endif
                     @endforeach
                   </select>
@@ -69,7 +47,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
-              <button type="button" class="btn button">Add Question</button>
+              <button type="submit" class="btn button" form="faq-form" value="Submit">Add Question</button>
             </div>
           </div>
         </div>
@@ -77,8 +55,36 @@
     </div>
 
     <div class="mx-auto my-2">
-      @each('partials.admin.faq', $questions, 'question')
+      @foreach($faqs as $faq)
+      @include('partials.admin.faq', [
+        'faq' => $faq,
+        'count' => count($faqs)
+      ])
+      @endforeach
     </div>
   </div>
 </main>
+
+{{-- Alert --}}
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    @foreach ($errors->all() as $error)
+    <p>{{ $error }}</p>
+    @endforeach
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
+
+{{-- Success Alert --}}
+@if(session('status'))
+  <div class="alert alert-success alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    {{session('status')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
+
 @endsection
