@@ -215,7 +215,7 @@ Route::post('newsletter', 'NewsletterSubscriberController@subscribe')->name('new
 //static pages 
 Route::view('about_us', 'pages.info.about_us');
 
-Route::view('faq', 'pages.info.faq');
+Route::get('faq', 'StaticPagesController@showFaqs')->name('faq');
 
 Route::view('payments_and_shipment', 'pages.info.payments_and_shipment');
 

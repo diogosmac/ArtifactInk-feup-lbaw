@@ -7,7 +7,7 @@
     <article class="bg-light p-4">
       <h1 class="px-2">FAQ</h1>
       <div class="accordion mt-4" id="faqs">
-        @include('partials.info.faqQuestion')
+        @each('partials.info.faqQuestion', $faqs, 'faq')
       </div>
     </article>
   </section>
