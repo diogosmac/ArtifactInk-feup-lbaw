@@ -484,10 +484,14 @@ class AdminController extends Controller
         $email_service = new EmailServiceController();
         foreach ($subscribers as $subscriber) {
             if (!$email_service->sendNewsletterEmail($subscriber->email, 'Newsletter Subscriber', $subject, $title, $body, $items))   
-                return redirect()->back()->withErrors(['error' => trans('A Network Error occurred. Please try again.')]);   
+                return redirect()
+                    ->back()
+                    ->withErrors('A Network Error occurred. Please try again.');   
         }
         
-        return redirect()->back()->with(['status' => trans('The newsletter was sent to all subscribers')]);
+        return redirect()
+            ->back()
+            ->with('status', 'The newsletter was sent to ' . $subscribers->count() . ' subscribers');
     }
 
     /*
