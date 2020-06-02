@@ -279,8 +279,11 @@ CREATE TABLE "faq" (
 );
 
 CREATE TABLE "store" (
-    "id_address" INTEGER PRIMARY KEY REFERENCES address ("id") ON UPDATE CASCADE,
-    "phone" TEXT NOT NULL
+    "id" SERIAL PRIMARY KEY,
+    "id_address" INTEGER REFERENCES address ("id") ON UPDATE CASCADE,
+    "phone" TEXT NOT NULL,
+    "email" TEXT NOT NULL CONSTRAINT store_email_uk UNIQUE,
+    "description" TEXT NOT NULL
 );
 
 -- Indexes
@@ -2159,5 +2162,5 @@ INSERT INTO "faq" ("order", "question", "answer") VALUES
     (2, 'What is your return policy?', 'There is none, lmaaaooo!'),
     (3, 'Can i submit my own designs for sale?', 'No, our designs are exclusive and we don''t accept designs from other people.');
 -------- store --------
-INSERT INTO "store" ("id_address", "phone") VALUES
-    (1, '935697241');
+INSERT INTO "store" ("id_address", "phone", "email", "description") VALUES
+    (1, '935697241', 'contact@artifaktink.pt', 'Initially, the idea was to start a tattoo studio bringing a different quality to Luxembourg. The concept opened its doors in Clausen, the old quarter of the capital, with only one tattoo artist: X Dragonking. With the approach of a studio in the era of time, with a personalized welcome service and equal to the demand of the public, the team quickly strengthened itself of several other international artists. In the meantime, a second studio opened in Thailand, home to some of the original studio’s resident artists. In 2018, a Portuguese tattoo artist, who won some awards on several tattoo conventions, joined the team, which saw its studio number increase to three, with the opening of the studio in Porto. In 2019 the second studio opens its doors in Porto-Portugal, in order to be able to meet the growing demand of the public in the south of the country. Since then, the group has been constantly pushing its limits and striving to satisfy its clientele. Today, the Artifact Ink group has 4 studios and nearly 40 members: artists, piercers, managers and associates.');
