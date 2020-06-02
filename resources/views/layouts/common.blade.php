@@ -341,12 +341,15 @@
                 <li>
                   <a href="#" class="list-inline-item font-weight-bold text-dark">Email</a>
                 </li>
-                <li> contact@artifactink.com </li>
+                <li> {{ $store_email }} </li>
                 <li>
                   <a href="#" class="list-inline-item font-weight-bold text-dark">Phone</a>
                 </li>
-                <li> (+351) 916 425 350 </li>
+                <li> {{ $store_phone }} </li>
                 <li>
+                  <a href="#" class="list-inline-item font-weight-bold text-dark">Address</a>
+                </li>
+                <li> {{ $store_address->street }}, {{ $store_address->city }}, {{ $store_address->postal_code }} </li>
               </ul>
             </div>
             <div class="col-sm-3">

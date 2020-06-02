@@ -213,12 +213,8 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
 Route::post('newsletter', 'NewsletterSubscriberController@subscribe')->name('newsletter');
 
 //static pages 
-Route::view('about_us', 'pages.info.about_us');
-
+Route::get('about_us', 'StaticPagesController@showAboutUs')->name('about_us');
 Route::get('faq', 'StaticPagesController@showFaqs')->name('faq');
-
-Route::view('payments_and_shipment', 'pages.info.payments_and_shipment');
-
-Route::view('returns_and_replacements', 'pages.info.returns_and_replacements');
-
-Route::view('warranty', 'pages.info.warranty');
+Route::get('payments_and_shipment', 'StaticPagesController@showPaymentsShipment')->name('payments_and_shipment');
+Route::get('returns_and_replacements', 'StaticPagesController@showReturns')->name('returns_and_replacements');
+Route::get('warranty', 'StaticPagesController@showWarranty')->name('warranty');
