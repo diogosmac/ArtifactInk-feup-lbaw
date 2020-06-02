@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\EmailService\EmailServiceController;
 use App\Http\Controllers\SearchController;
 use App\Item;
 use App\ItemPicture;
+use App\NewsletterSubscriber;
 use App\Sale;
 use App\User;
 use Illuminate\Support\Facades\Storage;
@@ -423,7 +425,20 @@ class AdminController extends Controller
     }
 
     public function sendNewsletter(Request $request) {
-        return $request;
+        $subscribers = NewsletterSubscriber::all();
+        $email_service = new EmailServiceController();
+
+        $subject = $request['subject'];
+        $title = $request['title'];
+        $body = $request['body'];
+        $items = $request['item'];
+
+        foreach ($subscribers as $subscriber) {
+            if (!$email_service->sendNewsletterEmail($subscriber->email, 'Newsletter Subscriber', $subject, $title, $body, $items))   
+                return redirect()->back()->withErrors(['error' => trans('A Network Error occurred. Please try again.')]);   
+        }
+        
+        return redirect()->back()->with(['status' => trans('The newsletter was sent to all subscribers')]);
     }
 
     /*
