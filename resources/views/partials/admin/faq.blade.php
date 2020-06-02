@@ -4,6 +4,14 @@
     <button type="button" class="btn button-secondary" data-toggle="modal" data-target="#editQuestion{{ $faq->id }}Modal">
       Edit
     </button>
+    <button type="submit" form="delete-faq-{{ $faq->id }}" class='btn btn-link a_link'>
+      Delete
+    </button>
+    <form action="{{ route('admin.faqs') }}" method="POST" id="delete-faq-{{ $faq->id }}">
+      @csrf
+      @method('DELETE')
+      <input type="hidden" name='id' value="{{ $faq->id }}">
+    </form>
     <div class="modal fade" id="editQuestion{{ $faq->id }}Modal" tabindex="-1" role="dialog" aria-labelledby="question{{ $faq->id }}Modal" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">

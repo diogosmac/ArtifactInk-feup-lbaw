@@ -646,6 +646,37 @@ class AdminController extends Controller
         }
     }
 
+    public function deleteFaq(Request $request) {
+        try {
+            $faq = Faq::findOrFail($request->id);
+            // check if exists
+            if ($faq != null) {
+                // delete FAQ
+                $faq->delete();
+                // update FAQs order
+                $faqs_to_update = Faq::where('order', '>', $faq->order)
+                    ->orderBy('order', 'asc')
+                    ->get();
+                foreach($faqs_to_update as $faq_update) {
+                    $faq_update->order = $faq_update->order - 1;
+                    $faq_update->save();
+                }
+
+                return redirect()
+                    ->route('admin.faqs')
+                    ->with('status', 'FAQ deleted successfuly');
+            } else {
+                return redirect()
+                    ->route('admin.faqs')
+                    ->withErrors('Failed to delete FAQ.');
+            }
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('admin.faqs')
+                ->withErrors('Failed to delete FAQ. ' . $e->getMessage());
+        }
+    }
+
     /*
     |--------------------------------------------------------------------------
     | Info
