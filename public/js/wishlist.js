@@ -19,7 +19,7 @@ for (let i = 0; i < add_wishlist_buttons.length; i++) {
 //let cards_wishlist_buttons = document.querySelectorAll('');
 
 function addToWishlistHandler() {
-    // Success alert
+    document.querySelector('html').appendChild(wishlist_succ_msg); 
 }
 
 /**
@@ -48,3 +48,40 @@ function removeFromWishlistHandler() {
     let item = document.querySelector('li.wishlist-item[data-id="' + id + '"]');
     item.remove();
 }
+
+//success
+let wishlist_succ_msg = document.createElement('div'); 
+wishlist_succ_msg.setAttribute('role','alert'); 
+wishlist_succ_msg.setAttribute('style','max-width: 40em;'); 
+wishlist_succ_msg.setAttribute('class','alert');
+wishlist_succ_msg.classList.add('alert-success'); 
+wishlist_succ_msg.classList.add('alert-dismissible'); 
+wishlist_succ_msg.classList.add('fade'); 
+wishlist_succ_msg.classList.add('show'); 
+wishlist_succ_msg.classList.add('fixed-top'); 
+wishlist_succ_msg.classList.add('mx-auto'); 
+wishlist_succ_msg.innerHTML = ` 
+    <p>Product successfully added to your wishlist</p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>`
+    
+//error 
+/* IF TO UUSE CHANGE ITS NAME 
+let error_msg = document.createElement('div'); 
+error_msg.setAttribute('role','alert'); 
+error_msg.setAttribute('style','max-width: 40em;'); 
+error_msg.setAttribute('class','alert');
+error_msg.classList.add('alert-danger'); 
+error_msg.classList.add('alert-dismissible'); 
+error_msg.classList.add('fade'); 
+error_msg.classList.add('show'); 
+error_msg.classList.add('fixed-top'); 
+error_msg.classList.add('mx-auto'); 
+
+error_msg.innerHTML = `  <p>Failed Adding item to your wishlist</p>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>`
+
+*/
