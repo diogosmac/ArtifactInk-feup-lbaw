@@ -18,7 +18,7 @@
                 <div class="py-2 d-flex flex-row bd-highlight justify-content-between">
                     <div>
                         @include('partials.rating_stars', ['rating' => $item->rating ] )
-                        <a href="/product/{{ $item->id }}#specs" class="px-2 a_link"> (<!--No ratings-->)</a>
+                        <a href="/product/{{ $item->id }}#specs" class="px-2 a_link"> {{ count($item->reviews) }} </a>
                     </div>
                 </div>
                 <div class="py-1 d-flex flex-row bd-highlight justify-content-between">
