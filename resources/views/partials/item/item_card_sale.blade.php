@@ -27,6 +27,6 @@
         </span>
     </div>
     <div class="p-1" style="z-index: 200;">
-        <a href="#" class="dropdown-item btn button text-center add-to-cart-btn" style="z-index: 200;">Add to cart</a>
+        <button class="dropdown-item btn button text-center add-to-cart-btn" data-product-type="{{ $item->id }}" style="z-index: 200;">Add to cart</button>
     </div>
 </div>

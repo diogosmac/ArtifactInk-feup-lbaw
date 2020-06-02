@@ -163,8 +163,9 @@ function add_to_cart(id_item){
 
 
 function add_to_cart_hadler(){
-    if (this.status != 200) 
-        alert(this.status); 
+    if (this.status != 200){
+        document.querySelector('html').appendChild(error_msg);
+    }
     else{
         let response = JSON.parse(this.responseText);
         
@@ -232,7 +233,7 @@ function add_to_cart_hadler(){
             document.getElementById('price-total').innerHTML = oldPrice*1 + response.item.price *1 + ' €';
         }
       
-
+        document.querySelector('html').appendChild(success_msg);
     }  
 }
 
@@ -260,3 +261,36 @@ if(document.querySelectorAll('#checkout-buttons-div a')[0] !== undefined){
         document.querySelector('#checkout-buttons-div a').classList.add('disabled')
 }
     
+
+//success
+let success_msg = document.createElement('div'); 
+success_msg.setAttribute('role','alert'); 
+success_msg.setAttribute('style','max-width: 40em;'); 
+success_msg.setAttribute('class','alert');
+success_msg.classList.add('alert-success'); 
+success_msg.classList.add('alert-dismissible'); 
+success_msg.classList.add('fade'); 
+success_msg.classList.add('show'); 
+success_msg.classList.add('fixed-top'); 
+success_msg.classList.add('mx-auto'); 
+success_msg.innerHTML = ` 
+    <p>Product successfully added to your cart</p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>`;
+//error 
+let error_msg = document.createElement('div'); 
+error_msg.setAttribute('role','alert'); 
+error_msg.setAttribute('style','max-width: 40em;'); 
+error_msg.setAttribute('class','alert');
+error_msg.classList.add('alert-danger'); 
+error_msg.classList.add('alert-dismissible'); 
+error_msg.classList.add('fade'); 
+error_msg.classList.add('show'); 
+error_msg.classList.add('fixed-top'); 
+error_msg.classList.add('mx-auto'); 
+
+error_msg.innerHTML = `  <p>Failed Adding item to cart</p>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>`
