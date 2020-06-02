@@ -42,7 +42,7 @@
         </div>
       </div>
       @foreach($sale->items->pluck('id') as $id_item)
-      <input id='item-{{ $id_item }}' type="hidden" name='items[{{ $sale->items[$loop->index]->id }}]' value="{{ $id_item }}">
+      <input id='item-{{ $id_item }}' type="hidden" name='item[{{ $sale->items[$loop->index]->id }}]' value="{{ $id_item }}">
       @endforeach
       <input type="hidden" name='id' value="{{ $sale->id }}">
     </form>
@@ -204,6 +204,16 @@
   </div>
 </main>
 
-
+{{-- Alert --}}
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    @foreach ($errors->all() as $error)
+    <p>{{ $error }}</p>
+    @endforeach
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
 
 @endsection
