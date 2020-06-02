@@ -243,3 +243,7 @@ if(priceNav !== null){
     document.querySelectorAll('div.dropdown-cart div.cart-list-total #total-label')[0].innerHTML= "Cart is Empty";
 }
    
+//disable checkout if no cart 
+console.log(document.querySelectorAll('tr.checkout-item-list').length)
+if(document.querySelectorAll('tr.checkout-item-list').length == 0 )
+    document.querySelector('#checkout-buttons-div a').classList.add('disabled')
