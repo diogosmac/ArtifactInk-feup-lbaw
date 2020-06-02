@@ -421,9 +421,11 @@ class AdminController extends Controller
             $non_sale_items = Item::whereNotIn('id', $sale_item_ids)->orderBy('id', 'asc')->get();
             
             if ($sale != null) {
-                // delete sale
-                return view('pages.admin.sales.edit_sale', ['sale' => $sale, 'items_sale' => $sale_items, 'items' => $non_sale_items]);
-
+                return view('pages.admin.sales.edit_sale', [
+                    'sale' => $sale,
+                    'items_sale' => $sale_items,
+                    'items' => $non_sale_items
+                ]);
             } else {
                 return redirect()
                     ->route('admin.sales.home')
@@ -437,7 +439,45 @@ class AdminController extends Controller
     }
 
     public function editSale(Request $request) {
-        return $request;
+        // validate request
+        $this->validateSale($request);
+        try {
+            $sale = Sale::findOrFail($request->id);
+            
+            if ($sale != null) {
+                $sale->name = $request->name;
+                $sale->type = $request->type;
+                if ($request->type == 'percentage') {
+                    $sale->percentage_amount = $request->value;
+                    $sale->fixed_amount = null;
+                } else {
+                    $sale->fixed_amount = $request->value;
+                    $sale->percentage_amount = null;
+                }
+                $sale->start = $request->start;
+                $sale->end = $request->end;
+                $sale->save();
+
+                // delete old items sales
+                $sale->items()->sync([]);
+                // create new item sales
+                foreach($request->item as $id_item) {
+                    $sale->items()->attach(1, ['id_item' => $id_item, 'id_sale' => $sale->id]);
+                }
+
+                return redirect()
+                    ->route('admin.sales.home')
+                    ->with('status', 'Sale ' . $sale->name . ' edited successfuly');
+            } else {
+                return redirect()
+                    ->route('admin.sales.edit', ['id' => $sale->id])
+                    ->withErrors('Failed to edit sale.');
+            }
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('admin.sales.edit', ['id' => $sale->id])
+                ->withErrors('Failed to edit sale. ' . $e->getMessage());
+        }
     }
 
     public function deleteSale(Request $request) {
