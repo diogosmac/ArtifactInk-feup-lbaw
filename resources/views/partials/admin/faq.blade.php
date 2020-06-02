@@ -14,18 +14,21 @@
             </button>
           </div>
           <div class="modal-body">
-            <form>
+            <form action="{{ route('admin.faqs') }}" method="POST" id="faq-form-{{ $faq->id }}">
+              @csrf
+              @method('PUT')
+              <input type="hidden" name='id' value="{{ $faq->id }}">
               <div class="form-group">
                 <label for="question{{ $faq->id }}Title">Question</label>
-                <input type="text" class="form-control" id="question<{{ $faq->id }}Title" value="{{ $faq->question }}" placeholder="Write question here...">
+                <input required name='question' type="text" class="form-control" id="question<{{ $faq->id }}Title" value="{{ $faq->question }}" placeholder="Write question here...">
               </div>
               <div class="form-group">
                 <label for="question{{ $faq->id }}Answer">Answer</label>
-                <textarea class="form-control" id="{{ $faq->id }}Answer" rows="5" placeholder="Write answer here...">{{ $faq->answer }}</textarea>
+                <textarea required name='answer' class="form-control" id="{{ $faq->id }}Answer" rows="5" placeholder="Write answer here...">{{ $faq->answer }}</textarea>
               </div>
               <div class="form-group">
                 <label for="question{{ $faq->id }}Number">Question number:</label>
-                <select class="form-control" id="question1Number">
+                <select required name='order' class="form-control" id="question1Number">
                   @for ($i = 1; $i <= $count; $i++)
                     <option {{ ($faq->order == $i) ? 'selected' : '' }}>{{ $i }}</option>
                   @endfor
@@ -35,7 +38,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
-            <button type="button" class="btn button">Edit Question</button>
+            <button type="submit" class="btn button" form="faq-form-{{ $faq->id }}" value="Submit">Edit Question</button>
           </div>
         </div>
       </div>

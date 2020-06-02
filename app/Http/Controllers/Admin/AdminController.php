@@ -603,21 +603,28 @@ class AdminController extends Controller
     public function editFaq(Request $request) {
         // validate request
         $this->validateFaq($request);
-
         try {
             $faq = Faq::findOrFail($request->id);
-            
+            // check if exists
             if ($faq != null) {
-
-                // update other FAQs order
+                // update FAQs order
+                $faqs_to_update = Faq::where('order', '>', $faq->order)
+                    ->orderBy('order', 'asc')
+                    ->get();
+                $faq->order = Faq::max('order') + 1;
+                $faq->save();
+                foreach($faqs_to_update as $faq_update) {
+                    $faq_update->order = $faq_update->order - 1;
+                    $faq_update->save();
+                }
+                // update next FAQs order
                 $faqs_to_update = Faq::where('order', '>=', $request->order)
                     ->orderBy('order', 'desc')
                     ->get();
-                foreach($faqs_to_update as $faq) {
-                    $faq->order = $faq->order + 1;
-                    $faq->save();
+                foreach($faqs_to_update as $faq_update) {
+                    $faq_update->order = $faq_update->order + 1;
+                    $faq_update->save();
                 }
-                
                 // update FAQ
                 $faq->question = $request->question;
                 $faq->answer = $request->answer;
