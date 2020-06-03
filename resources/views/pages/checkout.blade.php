@@ -235,7 +235,6 @@
               <div class="col-md-6 mb-3">
                 <label for="cc-name-add">Name on card</label>
                 <input type="text" class="form-control" id="cc-name-add" placeholder="Type the cardholder name" name="ccName">
-                <small class="text-muted">Full name as displayed on card</small>
                 <div class="invalid-feedback">
                   Name on card is required
                 </div>
@@ -251,7 +250,7 @@
             <div class="row">
               <div class="col-md-3 mb-3">
                 <label for="cc-expiration-add">Expiry Date: </label>
-                <input type="date" class="form-control" id="cc-expiration-add" placeholder="" cc="ccDate">
+                <input type="date" class="form-control" id="cc-expiration-add" placeholder="" name="ccDate">
                 <div class="invalid-feedback">
                   Expiration date required
                 </div>
@@ -285,7 +284,6 @@
             <div>
               <button type="button" class="btn button" id="next-payment">Next</button>
             </div>
-
           </div>
 
         </div>

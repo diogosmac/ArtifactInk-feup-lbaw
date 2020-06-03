@@ -43,10 +43,17 @@ class OrderController extends Controller
 
     $pp_email_new  = $request['ppEmail']; 
 
-    //PRINT VALUES 
-
     //new address 
     if($new_addr == "true"){
+
+        $this->validate($request, [
+            'street' => 'required|max:255', 
+            'postalCode' => 'required|max:20', 
+            'city' => 'required|max:255', 
+            'country' => 'required'
+        ]);
+
+
         $address = new Address; 
         $address->street = $street_new; 
         $address->postal_code = $postal_code_new; 
@@ -72,7 +79,14 @@ class OrderController extends Controller
         $userPaymentMethods = Auth::user()->payment_methods();
         //if creditcard
         if(empty($pp_email_new)){
-            
+           
+            $this->validate($request, [
+                'ccName' => 'required|max:255', 
+                'ccNumber' => 'required|max:20', 
+                'ccDate' => 'required|date|after:today', 
+                'ccCVV' => 'required'
+              ]);
+
             $creditCard = new CreditCard;
             $creditCard->name = $cc_name_new; 
             $creditCard->number = $cc_number_new; 
@@ -98,6 +112,12 @@ class OrderController extends Controller
             $payment_id =  PaymentMethod::where('id_cc',$creditCard->id)->first()->id;
 
         }else{//if paypal
+
+            $this->validate($request, [
+                'ppEmail' => 'required|email'
+              ]);
+
+              
             $paypal= new Paypal; 
             $paypal->email = $pp_email_new; 
     
@@ -130,8 +150,6 @@ class OrderController extends Controller
     $order->id_address = $address_id; 
     $order->id_payment = $payment_id; 
     $order->status = "processing"; 
-
-    echo $order; 
     
     $items = Auth::user()->cart_items()->get()->toArray();
 
