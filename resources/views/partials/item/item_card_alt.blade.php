@@ -5,7 +5,7 @@
             <div class="col-sm-3 px-1">
                 <a href="/product/{{ $item->id }}" class="list-img-link">
                     <div>
-                        <img src="{{ asset('storage/img_product/' . $picture->link) }}" class="card-img-top image-fit" alt="...">
+                        <img src="{{ asset('storage/img_product/' . $picture->link) }}" class="card-img-top image-fit" style="max-height:200px;" alt="">
                     </div>
                 </a>
             </div>

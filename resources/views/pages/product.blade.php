@@ -31,7 +31,7 @@
                 @else
                 <div class="carousel-item" data-interval="false">
                   @endif
-                  <img id="active" src="{{ asset('storage/img_product/' . $picture->link) }}" alt="Product Photo">
+                  <img src="{{ asset('storage/img_product/' . $picture->link) }}" class="active-img" alt="Product Photo">
                 </div>
                 @endforeach
               <a class="carousel-control-prev" href="#productGallery" role="button" data-slide="prev">
@@ -48,7 +48,7 @@
           <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
               @foreach($pictures as $picture)
               <div class="p-2 bd-highlight text-center">
-                <img id="thumbnail" src="{{ asset('storage/img_product/' . $picture->link) }}" alt="Product Thumbnail" class="image-fit">
+                <img src="{{ asset('storage/img_product/' . $picture->link) }}" alt="Product Thumbnail" class="thumbnail image-fit">
               </div>
               @endforeach
             </div>
@@ -165,7 +165,7 @@
               @else
               <div class="carousel-item" data-interval="false">
                 @endif
-                <img id="active" src="{{ asset('storage/img_product/' . $picture->link) }}" alt="Product Photo">
+                <img src="{{ asset('storage/img_product/' . $picture->link) }}" id="active-img" alt="Product Photo">
               </div>
               @endforeach
             <a class="carousel-control-prev" href="#productGalleryMobile" role="button" data-slide="prev">
@@ -181,7 +181,7 @@
         <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
           @foreach($pictures as $picture)
           <div class="p-2 bd-highlight text-center">
-            <img id="thumbnail" src="{{ asset('storage/img_product/' . $picture->link) }}" alt="Product Thumbnail" class="image-fit">
+            <img src="{{ asset('storage/img_product/' . $picture->link) }}" alt="Product Thumbnail" class="thumbnail image-fit">
           </div>
           @endforeach
         </div>
@@ -284,9 +284,9 @@
             <h5>{{ $item->rating }}/5</h5>
             @endif
           </div>
-          <div class="d-flex align-items-center">
+          <!--<div class="d-flex align-items-center">
             <button type="button" class="btn btn-primary button">Write a review</button>
-          </div>
+          </div>-->
         </div>
 
         @unless(count($reviews) == 0)
@@ -297,9 +297,6 @@
             </div>
             <select class="custom-select" id="reviewOrder">
               <option value="1" selected>Newer</option>
-              <option value="2">Older</option>
-              <option value="3">Rating Lower to Higher</option>
-              <option value="4">Rating Higher to Lower</option>
             </select>
           </div>
           <div class="py-4">
