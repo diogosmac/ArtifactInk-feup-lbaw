@@ -102,6 +102,7 @@
                   $currentSale = $new_sale;
                 }
               } else if ($sale->type == 'fixed') {
+                $amount = $sale->fixed_amount;
                 if ($amount > $currentSale) {
                   $currentSale = $amount;
                   $output = "(-" . $amount . "€) ";
@@ -226,6 +227,7 @@
               $currentSale = $new_sale;
             }
           } else if ($sale->type == 'fixed') {
+            $amount = $sale->fixed_amount;
             if ($amount > $currentSale) {
               $currentSale = $amount;
               $output = "(-" . $amount . "€) ";
