@@ -52,10 +52,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div id="filters" class="d-none d-md-block col-md-3 my-2">
-                    @include('partials.search.filters', ['categories' => $categories, 'brands' => $brands])
+                    @include('partials.search.filters', ['categories' => $categories, 'brands' => $brands, 'maxPrice' => $maxPrice])
                 </div>
                 <div id="mobileFilters" class="collapse d-md-none col-md-3 my-2">
-                    @include('partials.search.filters', ['categories' => $categories, 'brands' => $brands])
+                    @include('partials.search.filters', ['categories' => $categories, 'brands' => $brands, 'maxPrice' => $maxPrice])
                 </div>
                 <section class="col-md-9">
                     <div class="tab-content mx-auto" id="pills-tabContent">
@@ -65,7 +65,7 @@
                                 <h5 class="pl-3">No products were found. Consider adjusting your search parameters!</h5>
                                 @else
                                     @foreach($items as $item)
-                                        <?php 
+                                        @php 
                                             $sales = $item->sales;
                                             $currentSale = 0;
                                             $price = $item->price;
@@ -81,7 +81,7 @@
                                                 }
                                             }
                                             $price = round($price - $currentSale, 2);
-                                        ?>
+                                        @endphp
                                         <div class="p-0 col-12 col-sm-6 col-lg-4 d-flex justify-content-center">
                                             @include('partials.item.item_card', ['item' => $item, 'price' => $price, 'picture' => $item->images->first()])
                                         </div>
