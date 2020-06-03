@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Country;
 use App\User;
 use App\ProfilePicture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Image;
 
 class UserController extends Controller
 {
@@ -40,7 +42,7 @@ class UserController extends Controller
 
   }
 
-  public function showEditProfile(){ //todo consider auth - althought its already checked before 
+  public function showEditProfile(){ 
     
     if (!Auth::check()) return redirect('/');
     
@@ -75,8 +77,9 @@ class UserController extends Controller
       $this->validate($request, [
         'picture' => 'image|mimes:jpeg,jpg,png',
       ]);
+
       $filename = $user->profilePicture->first()->link;
-      $picture->storeAs('public/img_user', $filename);
+      Image::make($picture)->fit(250,250)->save('storage/img_user/'. $filename); 
     } 
     
     //form validation

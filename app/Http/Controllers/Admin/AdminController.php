@@ -24,6 +24,7 @@ use App\User;
 use Exception;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
+use Image;
 
 class AdminController extends Controller
 {
@@ -164,7 +165,13 @@ class AdminController extends Controller
             $item_picture->link = $picture_name;
             $item_picture->save();
             // store uploaded image
-            $picture->storeAs('public/img_product', $picture_name);
+            //$picture->storeAs('public/img_product', $picture_name);
+
+            Image::make($picture)->resize(null, 400, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+              })->save('storage/img_product/'. $picture_name); 
+
             $picture_id = $picture_id + 1;
         }
 
@@ -227,7 +234,13 @@ class AdminController extends Controller
             $item_picture->link = $picture_name;
             $item_picture->save();
             // store uploaded image
-            $picture->storeAs('public/img_product', $picture_name);
+            //$picture->storeAs('public/img_product', $picture_name);
+
+            Image::make($picture)->resize(null, 400, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+              })->save('storage/img_product/'. $picture_name); 
+
             $picture_id = $picture_id + 1;
         }
 
@@ -543,19 +556,25 @@ class AdminController extends Controller
         //custom validation error messages.
         $messages = [
             'item.*' => 'At least one item must be selected',
-            'value' => 'Discount value is too high'
+            'value.*' => 'Discount value is too high'
         ];
 
         // validate the request.
         $request->validate($rules, $messages);
-        return;
-        // get lowest price item on sale
-        $min_price = Item::find($request->item)->min('price');
-        // add new rules
-        $new_rules = [
-            'value' => 'bail|required_if:type,\'percentage\'|numeric|max:100',
-            'value' => 'bail|required_if:type,fixed|numeric|max:' . $min_price,
-        ];
+        // add new rules depending on type
+        $new_rules = [];
+        if ($request->type == 'percentage') {
+            $new_rules = [
+                'value' => 'required|numeric|max:100|min:0',
+            ];
+        }
+        else {
+            // get lowest price item on sale
+            $min_price = Item::find($request->item)->min('price');
+            $new_rules = [
+                'value' => 'required|numeric|min:0|max:' . $min_price,
+            ];
+        }
 
         // re-validate the request.
         $request->validate($new_rules, $messages);

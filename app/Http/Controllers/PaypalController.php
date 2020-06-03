@@ -19,7 +19,6 @@ class PaypalController extends Controller
 
         $userPaymentMethods = Auth::user()->payment_methods();
 
-        //todo validate 
         $email = $request['email']; 
 
         $paypal= new Paypal;

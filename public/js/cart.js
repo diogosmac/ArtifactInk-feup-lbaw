@@ -251,7 +251,7 @@ let cartItemsNav = document.querySelectorAll('div.dropdown-cart div.panel-body u
 let listPriceNav =  document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart li a .cart-item-list-price');
 let listQtyNav =  document.querySelectorAll('div.dropdown-cart div.panel-body ul.list-cart li a .cart-item-list-quant'); 
 
-for(let i = 0; i< cartItemsNav.length/2; i++ ){
+for(let i = 0; i< cartItemsNav.length; i++ ){
     priceNav += listPriceNav[i].innerHTML * listQtyNav[i].innerHTML; 
 }
 

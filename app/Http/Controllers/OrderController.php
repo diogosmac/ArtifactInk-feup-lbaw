@@ -21,13 +21,13 @@ class OrderController extends Controller
     */
    public function addOrder(Request $request){
 
+    if (!Auth::check()) return redirect('/sign_in');
+
     //request fields test 
     $address_id = $request['addrOld']; 
     $payment_id = $request['paymentOld']; 
-    $total = $request['total'];
     $new_addr = $request['address'];
-    $new_payment = $request['payment'];
-    $date = date('m/d/Y h:i:s a', time());
+    $new_payment = $request['payment']; 
 
     //request fields for new info 
     $street_new = $request['street']; 
@@ -35,6 +35,9 @@ class OrderController extends Controller
     $postal_code_new = $request['postalCode']; 
     $city_new = $request['city']; 
 
+    //debug
+   // echo $new_addr; 
+   // echo §$new_payment; 
 
     $cc_number_new = $request['ccNumber']; 
     $cc_cvv_new = $request['ccCVV']; 
@@ -43,9 +46,10 @@ class OrderController extends Controller
 
     $pp_email_new  = $request['ppEmail']; 
 
+ 
     //new address 
     if($new_addr == "true"){
-
+        $userAddresses = Auth::user()->addresses();
         $this->validate($request, [
             'street' => 'required|max:255', 
             'postalCode' => 'required|max:20', 
@@ -53,14 +57,12 @@ class OrderController extends Controller
             'country' => 'required'
         ]);
 
-
         $address = new Address; 
         $address->street = $street_new; 
         $address->postal_code = $postal_code_new; 
         $address->city = $city_new; 
         $address->id_country = $country_new; 
 
-        $userAddresses = Auth::user()->addresses();
         try{
             //create new address 
            $address->save(); 
@@ -134,23 +136,14 @@ class OrderController extends Controller
                 $userPaymentMethods->attach($payment_method->id);
                 
             } catch (Exception $e) {
-                return redirect()->back()->withErrors("Failed creating new Paypal paymenmt method!");
+               return redirect()->back()->withErrors("Failed creating new Paypal paymenmt method!");
             }
             
             $payment_id =  PaymentMethod::where('id_pp',$paypal->id)->first()->id;
 
         }
     }
-
-    //process
-    $order = new Order; 
-    $order->total = $total; 
-    $order->id_user = Auth::user()->id; 
-    $order->date = $date; 
-    $order->id_address = $address_id; 
-    $order->id_payment = $payment_id; 
-    $order->status = "processing"; 
-    
+   
     $items = Auth::user()->cart_items()->get()->toArray();
 
     try {
