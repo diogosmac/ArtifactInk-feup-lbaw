@@ -14,12 +14,15 @@ use App\Item;
 use App\ItemPicture;
 use App\NewsletterSubscriber;
 use App\Review;
+use App\OutOfStockNotification;
+use App\ReportNotification;
 use App\Sale;
 use App\Store;
 use App\User;
 use Exception;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
+use SebastianBergmann\CodeCoverage\Report\Xml\Report;
 
 class AdminController extends Controller
 {
@@ -30,7 +33,17 @@ class AdminController extends Controller
      */
     public function index(){
         $notifications = AdminNotification::all()->sortByDesc('sent');
-        return view('pages.admin.home', ['notifications' => $notifications]);
+
+        $detail_notifications = array();
+        foreach ($notifications as $notification){
+            $detail = ReportNotification::find($notification->id);
+            if ($detail == null) {
+                $detail = OutOfStockNotification::find($notification->id);
+            }
+            array_push($detail_notifications, $detail);
+        }
+
+        return view('pages.admin.home', ['notifications' => $notifications, 'detail' => $detail_notifications]);
     }
 
     public function clearNotification(Request $request) {
