@@ -14,7 +14,9 @@
     </div>
     <div class="p-1 d-flex flex-column justify-content-center text-center card-body border-top border-dark">
         <div class="detail">
-            <h5 class="card-title font-weight-bold">{{ $item->name }}</h5>
+            <a href="/product/{{ $item->id }}" class="text-dark">
+                <h5 class="card-title font-weight-bold">{{ $item->name }}</h5>
+            </a>
             <h5 class="card-price font-weight-bold">
                 @if ($item->status == 'active')
                     @if ($item->price != $price)

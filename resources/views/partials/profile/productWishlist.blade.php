@@ -3,7 +3,9 @@
         <div class="row">
             <div class="col-sm-3">
                 <a href="{{ url('/product/' . $item->id) }}" class="list-img-link">
-                    <img src="{{ asset('storage/img_product/' . $picture->link) }}" class="card-img-top" alt="...">
+                    <div>
+                        <img src="{{ asset('storage/img_product/' . $picture->link) }}" class="card-img-top image-fit" style="max-height:200px;" alt="">
+                    </div>
                 </a>
             </div>
             <div class="col-sm-6">
