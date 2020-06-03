@@ -47,25 +47,25 @@
             <div class="py-2 col-sm-3 d-flex flex-column justify-content-between align-items-end li-price-button">
                 <div class="row d-flex align-items-center">
                     @if ($item->status == 'active')
-                    <?php
-                        $sales = $item->sales;
-                        $currentSale = 0;
-                        $price = $item->price;
-                        foreach ($sales as $sale) {
-                            if ($sale->type == 'percentage') {
-                                $new_sale = 0.01 * $sale->percentage_amount * $price;
-                                if ($new_sale > $currentSale) {
-                                    $currentSale = $new_sale;
-                                }
-                            } else if ($sale->type == 'fixed') {
-                                if ($amount > $currentSale) {
-                                    $currentSale = $amount;
-                                    $output = "(-" . $amount . "€) ";
+                        @php
+                            $sales = $item->sales;
+                            $currentSale = 0;
+                            $price = $item->price;
+                            foreach ($sales as $sale) {
+                                if ($sale->type == 'percentage') {
+                                    $new_sale = 0.01 * $sale->percentage_amount * $price;
+                                    if ($new_sale > $currentSale) {
+                                        $currentSale = $new_sale;
+                                    }
+                                } else if ($sale->type == 'fixed') {
+                                    if ($amount > $currentSale) {
+                                        $currentSale = $amount;
+                                        $output = "(-" . $amount . "€) ";
+                                    }
                                 }
                             }
-                        }
-                        $price = round($price - $currentSale, 2);
-                        ?>
+                            $price = round($price - $currentSale, 2);
+                        @endphp
                         @if ($currentSale > 0)
                             <h3 class="pr-2 old-price">{{ $item->price . '€' }}</h3>
                         @endif

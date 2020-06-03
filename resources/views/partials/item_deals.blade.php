@@ -13,7 +13,12 @@
                         $price = $data['prices'][$i];
                         $picture = $data['pictures'][$i];
                     ?>
-                    <div class="p-0 col-12 col-sm-6 col-lg-3 d-flex justify-content-center">@include('partials.item.item_card', ['item'=>$item, 'price' => $price, 'picture' => $picture])</div>
+                    <div class="p-0 col-12 col-sm-6 col-lg-3 d-flex justify-content-center">
+                        @include('partials.item.item_card', [
+                            'item' => $item, 
+                            'price' => $price, 
+                            'picture' => $picture])
+                    </div>
                 @endfor
             </div>
         </div>

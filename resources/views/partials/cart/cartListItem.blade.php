@@ -6,7 +6,7 @@
         alt="{{ $cart_item->name }}">
     </span>
     <h5 class="mx-1 cart-item-list-name"> {{ $cart_item->name }} </h5>
-    <?php
+    @php
         $sales = $cart_item->sales;
         $currentSale = 0;
         $price = $cart_item->price;
@@ -22,7 +22,7 @@
             }
         }
         $price = round($price - $currentSale, 2);
-    ?>
+    @endphp
     <h6>
         <span class="mx-1 cart-item-list-price"> {{ $price }} </span>
     </h6>

@@ -17,6 +17,7 @@ class SpecialsController extends Controller
 
         $data = ItemController::top_rated(TRUE);
         $items = $data['items'];
+        $maxPrice = $data['maxPrice'];
 
         if (Input::has('category')) {
             $filterCategories = Input::get('category');
@@ -33,7 +34,7 @@ class SpecialsController extends Controller
         }
 
         $minPrice = Input::get('minPrice', 0);
-        $maxPrice = Input::get('maxPrice', 500);
+        $maxPrice = Input::get('maxPrice', $maxPrice);
 
         $items = $items
             ->where(function ($items) use ($minPrice, $maxPrice) {
@@ -50,8 +51,8 @@ class SpecialsController extends Controller
                                 and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") <= ' . $maxPrice . ' )');
                     })
                     ->orWhereDoesntHave('sales')
-                    ->where('item.price', '>=', $minPrice)
-                    ->where('item.price', '<=', $maxPrice);
+                        ->where('item.price', '>=', $minPrice)
+                        ->where('item.price', '<=', $maxPrice);
             });
 
         $items = $items->take(24)->get();
@@ -91,6 +92,7 @@ class SpecialsController extends Controller
             'pictures' => $data['pictures'],
             'categories' => $data['categories'],
             'brands' => $data['brands'],
+            'maxPrice' => $data['maxPrice'],
         ]);
     
     }
@@ -99,6 +101,7 @@ class SpecialsController extends Controller
 
         $data = ItemController::featured_deals(TRUE);
         $items = $data['items'];
+        $maxPrice = $data['maxPrice'];
 
         if (Input::has('category')) {
             $filterCategories = Input::get('category');
@@ -115,7 +118,7 @@ class SpecialsController extends Controller
         }
 
         $minPrice = Input::get('minPrice', 0);
-        $maxPrice = Input::get('maxPrice', 500);
+        $maxPrice = Input::get('maxPrice', $maxPrice);
 
         $items = $items
             ->where(function ($items) use ($minPrice, $maxPrice) {
@@ -132,8 +135,8 @@ class SpecialsController extends Controller
                                 and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") <= ' . $maxPrice . ' )');
                     })
                     ->orWhereDoesntHave('sales')
-                    ->where('item.price', '>=', $minPrice)
-                    ->where('item.price', '<=', $maxPrice);
+                        ->where('item.price', '>=', $minPrice)
+                        ->where('item.price', '<=', $maxPrice);
             });
 
         $items = $items->get();
@@ -173,6 +176,7 @@ class SpecialsController extends Controller
             'pictures' => $data['pictures'],
             'categories' => $data['categories'],
             'brands' => $data['brands'],
+            'maxPrice' => $data['maxPrice'],
         ]);
     
     }
@@ -181,6 +185,7 @@ class SpecialsController extends Controller
 
         $data = ItemController::best_sellers(TRUE);
         $items = $data['items'];
+        $maxPrice = $data['maxPrice'];
 
         if (Input::has('category')) {
             $filterCategories = Input::get('category');
@@ -197,7 +202,7 @@ class SpecialsController extends Controller
         }
 
         $minPrice = Input::get('minPrice', 0);
-        $maxPrice = Input::get('maxPrice', 500);
+        $maxPrice = Input::get('maxPrice', $maxPrice);
 
         $items = $items
             ->where(function ($items) use ($minPrice, $maxPrice) {
@@ -214,8 +219,8 @@ class SpecialsController extends Controller
                                 and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") <= ' . $maxPrice . ' )');
                     })
                     ->orWhereDoesntHave('sales')
-                    ->where('item.price', '>=', $minPrice)
-                    ->where('item.price', '<=', $maxPrice);
+                        ->where('item.price', '>=', $minPrice)
+                        ->where('item.price', '<=', $maxPrice);
             });
 
         $items = $items->take(24)->get();
@@ -255,6 +260,7 @@ class SpecialsController extends Controller
             'pictures' => $data['pictures'],
             'categories' => $data['categories'],
             'brands' => $data['brands'],
+            'maxPrice' => $data['maxPrice'],
         ]);
     
     }

@@ -73,25 +73,22 @@
               </select>
             </div>
             @if ($item->status == 'active')
-                <?php 
-                    $sales = $item->sales;
-                    $currentSale = 0;
-                    $price = $item->price;
-                    foreach ($sales as $sale) {
-                        if ($sale->type == 'percentage') {
-                            $new_sale = 0.01 * $sale->percentage_amount * $price;
-                            if ($new_sale > $currentSale) {
+                @php 
+                        $sales = $item->sales;
+                        $currentSale = 0;
+                        $price = $item->price;
+                        foreach ($sales as $sale) {
+                            $new_sale = 0;
+                            if ($sale->type == 'percentage') {
+                                $new_sale = 0.01 * $sale->percentage_amount * $price;
+                            } else if ($sale->type == 'fixed') {
+                                $new_sale = $sale->fixed_amount;
+                            }
+                            if ($new_sale > $currentSale)
                                 $currentSale = $new_sale;
-                            }
-                        } else if ($sale->type == 'fixed') {
-                            if ($amount > $currentSale) {
-                                $currentSale = $amount;
-                                $output = "(-" . $amount . "€) ";
-                            }
                         }
-                    }
-                    $price = round($price - $currentSale, 2);
-                ?>
+                        $price = round($price - $currentSale, 2);
+                @endphp
                 <div class="row d-flex align-items-center">
                     @if ($currentSale > 0)
                         <h3 class="pr-2 old-price">{{ $item->price . '€' }}</h3>
@@ -103,12 +100,12 @@
             @endif
           </div>
           <div class="d-flex flex-row justify-content-between align-items-end bd-highlight my-3">
-            <?php 
+            @php 
                 if ($item->status == 'active')
                     $value = $item->id;
                 else
                     $value = 'archived';    
-            ?>
+            @endphp
             <button class="btn btn-link li-wishlist" data-id="{{ $value }}" type="button">
               <i class="fas fa-heart"></i>
               Add to whishlist
@@ -178,28 +175,25 @@
                 @endif
           </select>
         </div>
-        <?php 
+        @php 
                 $sales = $item->sales;
                 $currentSale = 0;
                 $price = $item->price;
                 foreach ($sales as $sale) {
+                    $new_sale = 0;
                     if ($sale->type == 'percentage') {
                         $new_sale = 0.01 * $sale->percentage_amount * $price;
-                        if ($new_sale > $currentSale) {
-                            $currentSale = $new_sale;
-                        }
                     } else if ($sale->type == 'fixed') {
-                        if ($amount > $currentSale) {
-                            $currentSale = $amount;
-                            $output = "(-" . $amount . "€) ";
-                        }
+                        $new_sale = $sale->fixed_amount;
                     }
+                    if ($new_sale > $currentSale)
+                        $currentSale = $new_sale;
                 }
                 $price = round($price - $currentSale, 2);
-        ?>
+        @endphp
         <div class="row d-flex align-items-center mr-1">
             @if ($currentSale > 0)
-                <h4 class="pr-2 old-price">{{ '( ' . $item->price . '€ )' }}</h4>
+                <h4 class="pr-2 old-price">{{ $item->price }}</h4>
             @endif
             <h2>{{ $price }}€</h2>
         </div>
