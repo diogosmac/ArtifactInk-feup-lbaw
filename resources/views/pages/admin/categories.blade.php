@@ -6,7 +6,7 @@
 <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
   <div class="container">
 
-    <div class="mb-4 border-bottom mt-2">
+    <div class="mb-4 mt-2">
       <h1>Categories</h1>
     </div>
 
