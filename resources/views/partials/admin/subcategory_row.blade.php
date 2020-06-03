@@ -43,6 +43,11 @@
       </div>
     </div>
 
-    <button type="button" class="btn btn-link a_link">Delete</button>
+    <button type="submit" form="delete-subcategory-{{ $subcategory->id }}" class="btn btn-link a_link">Delete</button>
+    <form action="{{ route('admin.categories') }}" method="POST" id="delete-subcategory-{{ $subcategory->id }}">
+      @csrf
+      @method('DELETE')
+      <input type="hidden" name="id" value="{{ $subcategory->id }}">
+    </form>
   </td>
 </tr>
