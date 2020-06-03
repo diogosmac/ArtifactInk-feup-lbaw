@@ -24,6 +24,7 @@ use App\User;
 use Exception;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
+use Image;
 
 class AdminController extends Controller
 {
@@ -164,7 +165,13 @@ class AdminController extends Controller
             $item_picture->link = $picture_name;
             $item_picture->save();
             // store uploaded image
-            $picture->storeAs('public/img_product', $picture_name);
+            //$picture->storeAs('public/img_product', $picture_name);
+
+            Image::make($picture)->resize(null, 400, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+              })->save('storage/img_product/'. $picture_name); 
+
             $picture_id = $picture_id + 1;
         }
 
@@ -227,7 +234,13 @@ class AdminController extends Controller
             $item_picture->link = $picture_name;
             $item_picture->save();
             // store uploaded image
-            $picture->storeAs('public/img_product', $picture_name);
+            //$picture->storeAs('public/img_product', $picture_name);
+
+            Image::make($picture)->resize(null, 400, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+              })->save('storage/img_product/'. $picture_name); 
+
             $picture_id = $picture_id + 1;
         }
 
