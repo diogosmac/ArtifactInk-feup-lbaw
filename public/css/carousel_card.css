@@ -1,5 +1,5 @@
 /* Preview Carousel Height*/
-.carousel-item img {
+.carousel-item img.image-fit {
     max-height: 350px; /* input your desired height here */
     background-color: black;
 }
