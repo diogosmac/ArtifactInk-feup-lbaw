@@ -28,6 +28,14 @@ class AdminNotification extends Model {
         'body'
     ];
 
+    public function report_notification() {
+        return $this->hasOne('App\ReportNotification', 'id_notif');
+    }
+
+    public function out_of_stock_notification() {
+        return $this->hasOne('App\OutOfStockNotification', 'id_notif');
+    }
+
 }
 
 ?>

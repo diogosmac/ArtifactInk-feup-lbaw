@@ -8,9 +8,9 @@
   <td class="align-middle">{{ $notification->body }}</td>
   <td class="align-middle">{{ date_format(date_create($notification->sent),"Y-m-d H:i:s") }}</td>
   @if($detail instanceof App\OutOfStockNotification)
-  <td><button class="btn button-secondary" onclick="location.href='{{ route('admin.products.edit', ['id' => $notification->out_of_stock_notification->id_item]) }}'">View</a></td>
+  <td><button class="btn button-secondary" onclick="location.href='{{ route('admin.products.edit', ['id' => $detail->id_item]) }}'">View</a></td>
   @else
-  <td><button class="btn button-secondary" onclick="location.href='{{ route('admin.reviews') }}'">View</a></td> <!--['id' => $notification->report_notification->id_review]-->
+  <td><button class="btn button-secondary" onclick="location.href='{{ route('admin.reviews') }}'">View</a></td> <!--['id' => $detail->id_review]-->
   @endif
   <td><button class="btn btn-link a_link clear-notification-button">Clear</button></td>
 </tr>
