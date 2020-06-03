@@ -17,16 +17,19 @@
               </button>
             </div>
             <div class="modal-body">
-              <form>
+              <form action="{{ route('admin.categories') }}" method="POST" id="edit-category-{{ $category->id }}">
+                @csrf
+                @method('PUT')
                 <div class="form-group">
                   <label for="categoryName">Name</label>
                   <input required name="name" type="text" class="form-control" id="categoryName" value="{{ $category->name }}">
+                  <input required name="id" type="hidden" class="form-control" value="{{ $category->id }}">
                 </div>
               </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
-              <button type="button" class="btn button">Submit</button>
+              <button type="submit" form="edit-category-{{ $category->id }}" class="btn button">Submit</button>
             </div>
           </div>
         </div>

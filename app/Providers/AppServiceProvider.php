@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Make categories accessible everywhere
         View::composer(['*'], function($view) {
-            $view->with('parent_categories', Category::where('id_parent', null)->get());
+            $view->with('parent_categories', Category::whereNull('id_parent')->orderBy('id', 'asc')->get());
             $view->with('cart_items', CartController::get_user_cart_items());
             $view->with('store_address', Store::get()->first()->address);
             $view->with('store_email', Store::get()->first()->email);

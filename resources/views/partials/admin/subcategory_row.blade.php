@@ -17,10 +17,13 @@
             </button>
           </div>
           <div class="modal-body">
-            <form>
+            <form action="{{ route('admin.categories') }}" method="POST" id="edit-subcategory-{{ $subcategory->id }}">
+              @csrf
+              @method('PUT')
+              <input required name="id" type="hidden" class="form-control" value="{{ $subcategory->id }}">
               <div class="form-group">
                 <label for="subcategoryName">Name</label>
-                <input type="text" class="form-control" id="subcategoryName" value="{{ $subcategory->name }}">
+                <input required name="name" type="text" class="form-control" id="subcategoryName" value="{{ $subcategory->name }}">
               </div>
               <div class="form-group">
                 <label for="subcategoryCategory">Parent Category</label>
@@ -34,7 +37,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
-            <button type="button" class="btn button">Submit</button>
+            <button type="submit" form="edit-subcategory-{{ $subcategory->id }}" class="btn button">Submit</button>
           </div>
         </div>
       </div>
