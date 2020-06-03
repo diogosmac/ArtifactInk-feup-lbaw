@@ -6,14 +6,14 @@
 <main class="col-md-9 ml-sm-auto col-lg-10 px-4">
   <div class="container">
 
-    <div class="mb-4 border-bottom mt-2">
+    <div class="mb-4 mt-2 border-bottom">
       <h1>Categories</h1>
     </div>
 
     <div class="mx-auto mt-2">
       <div class="row">
         <div class="col-md-6 col-sm-12">
-          <div class="d-flex justify-content-between align-items-center flex-wrap mt-2">
+          <div class="d-flex justify-content-between align-items-center flex-wrap my-2">
             <h3>Category</h3>
             <button type="button" class="btn button" data-toggle="modal" data-target="#addCategory">
               New Category
@@ -46,9 +46,6 @@
             </div>
           </div>
 
-          <div class="input-group my-3 mr-sm-2">
-            <input class="form-control" placeholder="Search" aria-label="Search">
-          </div>
           <table class="table table-striped text-center">
             <thead>
               <tr>
@@ -63,7 +60,7 @@
           </table>
         </div>
         <div class="col-md-6 col-sm-12">
-          <div class="d-flex justify-content-between align-items-center flex-wrap mt-2">
+          <div class="d-flex justify-content-between align-items-center flex-wrap my-2">
             <h3>Subcategory</h3>
             <button type="button" class="btn button" data-toggle="modal" data-target="#addSubcategory">
               New Subcategory
@@ -103,9 +100,7 @@
               </div>
             </div>
           </div>
-          <div class="input-group my-3 mr-sm-2">
-            <input class="form-control" placeholder="Search" aria-label="Search">
-          </div>
+          
           <table class="table table-striped text-center">
             <thead>
               <tr>
