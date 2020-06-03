@@ -292,9 +292,9 @@
             <h5>{{ $item->rating }}/5</h5>
             @endif
           </div>
-          <div class="d-flex align-items-center">
+          <!--<div class="d-flex align-items-center">
             <button type="button" class="btn btn-primary button">Write a review</button>
-          </div>
+          </div>-->
         </div>
 
         @unless(count($reviews) == 0)
@@ -305,9 +305,6 @@
             </div>
             <select class="custom-select" id="reviewOrder">
               <option value="1" selected>Newer</option>
-              <option value="2">Older</option>
-              <option value="3">Rating Lower to Higher</option>
-              <option value="4">Rating Higher to Lower</option>
             </select>
           </div>
           <div class="py-4">
