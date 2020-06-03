@@ -80,63 +80,35 @@
         </tr>
       </thead>
       <tbody>
-        @php
-        $orders = array(
-          // order 1
-          (object) array(
-            "id" => 2,
-            "user" => "miguel102@cenas.com",
-            "timestamp" => "Sunday, 08-Mar-20 12:34:17",
-            "total" => "99.99",
-            "paymentMethod" => "MasterCard",
-            "status" => "Shipped",
-            "items" => array(
-              // item purchase 1
-              (object) array(
-                "id" => 45,
-                "img" => "1_mom_love.jpg",
-                "name" => "Dynamic Black Ink 100ml",
-                "price" => 9.99,
-                "quantity" => 1,
-                "totalPrice" => 9.99,
-              ),
-              // item purchase 2
-              (object) array(
-                "id" => 23,
-                "img" => "106_stealth_ii_black.jpg",
-                "name" => "MakePain Tattoo Machine #1",
-                "price" => 119.99,
-                "quantity" => 1,
-                "totalPrice" => 119.99,
-              )
-            )
-          ),
-          // order 2
-          (object) array(
-            "id" => 1,
-            "user" => "miguel102@outracenas.org",
-            "timestamp" => "Sunday, 08-Mar-20 12:34:17",
-            "total" => "199.99",
-            "paymentMethod" => "PayPal",
-            "status" => "Arrived",
-            "items" => array(
-              // item purchase 1
-              (object) array(
-                "id" => 45,
-                "img" => "1_mom_love.jpg",
-                "name" => "Dynamic Black Ink 100ml",
-                "price" => 9.99,
-                "quantity" => 1,
-                "totalPrice" => 9.99,
-              )
-            )
-          )
-        );
-        @endphp
         @each('partials.admin.order_row', $orders, 'order')
       </tbody>
     </table>
 
+    {{ $orders->onEachSide(1)->appends(request()->except('page'))->links() }}
+
   </div>
 </main>
+
+{{-- Success Alert --}}
+@if(session('status'))
+  <div class="alert alert-success alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    {{session('status')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
+
+{{-- Alert --}}
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    @foreach ($errors->all() as $error)
+    <p>{{ $error }}</p>
+    @endforeach
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
+
 @endsection
