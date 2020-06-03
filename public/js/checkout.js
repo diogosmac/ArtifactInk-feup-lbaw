@@ -316,7 +316,6 @@ let payment_selected = document.getElementById('payment-input-group');
 //updatePayment(); 
 
 function updatePayment(){
-    console.log(new_payment); 
     if(document.querySelector('#new-payment-form').style.display == "none" || document.querySelector('#new-payment-form').style.display === ""){
         
         new_payment = false; 
