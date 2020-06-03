@@ -178,11 +178,13 @@ class OrderController extends Controller
     foreach ($items as $item) {
         $updated_item = Item::find($item['id']);
         if ($updated_item->stock == 0) {
+            $notif = null;
             try {
                 $notif = AdminNotification::create(['body' => "Item #$updated_item->id is out of stock"]);
                 OutOfStockNotification::create(['id_notif' => $notif->id, 'id_item' => $updated_item->id]);
             } catch (Exception $e){
-                //return redirect()->back()->withErrors('Could not report review'); 
+                if ($notif != null) 
+                    $notif->delete();
             }
         }
     } 
