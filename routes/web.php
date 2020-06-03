@@ -157,6 +157,8 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
 
     // categories
     Route::get('categories', 'AdminController@showCategories')->name('categories');
+    Route::post('categories', 'AdminController@addCategory')->name('categories');
+    Route::put('categories', 'AdminController@editCategory')->name('categories');
 
     // orders
     Route::get('orders', 'AdminController@showOrders')->name('orders');
