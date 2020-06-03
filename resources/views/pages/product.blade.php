@@ -15,26 +15,25 @@
     <div class="container-fluid d-none d-md-block">
       <div class="row">
         <div class="product-pictures col-6">
-          <div id="productGallery" class="carousel slide text-center" data-ride="carousel">
-            <ol class="carousel-indicators">
-              @for($i = 0; $i < count($pictures); $i++) 
-                @if ($i==0) <li data-target="#productGallery" data-slide-to="0" class="active"></li>
+          <div id="productGallery" class="carousel slide text-center" data-interval="false" data-ride="carousel">
+            <ol class="carousel-indicators mb-1">
+              @for($i = 0; $i < count($pictures); $i++) @if ($i==0) <li data-target="#productGallery" data-slide-to="0" class="bg-dark active">
+                </li>
                 @else
-                <li data-target="#productGallery" data-slide-to="{{$i}}"></li>
+                <li data-target="#productGallery" data-slide-to="{{$i}}" class="bg-dark"></li>
                 @endif
-              @endfor
+                @endfor
             </ol>
             <div class="carousel-inner">
               @foreach($pictures as $picture)
               @if($loop->index == 0)
-              <div class="carousel-item active">
+              <div class="carousel-item active" data-interval="false">
                 @else
-                <div class="carousel-item">
+                <div class="carousel-item" data-interval="false">
                   @endif
                   <img id="active" src="{{ asset('storage/img_product/' . $picture->link) }}" alt="Product Photo">
                 </div>
                 @endforeach
-              </div>
               <a class="carousel-control-prev" href="#productGallery" role="button" data-slide="prev">
                 <span class="sr-only">Previous</span>
                 <i class="fas fa-angle-left text-dark pl-4" style="font-size: 28px;"></i>
@@ -52,178 +51,204 @@
               @endforeach
             </div>
           </div>
-          <div id="product-basics" class="col-6 d-flex flex-column justify-content-start float-left">
-            <h2>{{ $item->name }}</h2>
-            <div class="d-flex flex-row align-items-center bd-highlight mb-3">
-              @for ($i = 0; $i < 5; $i++) @if (($item->rating - $i) >= 1)
-                <i class="fas fa-star"></i>
-                @elseif (($item->rating - $i) > 0)
-                <i class="fas fa-star-half-alt"></i>
-                @else
-                <i class="far fa-star"></i>
-                @endif
-                @endfor
-                <a href="#specs" class="px-3 a_link">{{ count($reviews) }}</a>
-            </div>
-            <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
-              @if ($item->stock > 0 && $item->status == 'active')
-              <h4>Available</h4>
-              <i class="fas fa-circle px-2 pt-1" style="color: green"></i>
+        </div>
+        <div id="product-basics" class="col-6 d-flex flex-column justify-content-start float-left">
+          <h2>{{ $item->name }}</h2>
+          <div class="d-flex flex-row align-items-center bd-highlight mb-3">
+            @for ($i = 0; $i < 5; $i++) @if (($item->rating - $i) >= 1)
+              <i class="fas fa-star"></i>
+              @elseif (($item->rating - $i) > 0)
+              <i class="fas fa-star-half-alt"></i>
               @else
-              <h4>Unavailable</h4>
-              <i class="fas fa-circle px-2 pt-1" style="color: red"></i>
+              <i class="far fa-star"></i>
               @endif
-            </div>
-            <div class="d-flex flex-row justify-content-between bd-highlight mb-3 pb-1">
-              <div class="input-group mb-3 w-50 pt-2">
-                <div class="input-group-prepend">
-                  <label class="input-group-text" for="productQuantity">Quantity</label>
-                </div>
-                <select class="custom-select" id="productQuantity">
-                  @if ($item->status == 'active')
-                  @for ($i = 1; $i <= $item->stock; $i++)
-                    <option value="{{ $i }}">{{ $i }}</option>
-                    @endfor
-                    @else
-                    <option value="0">0</option>
-                    @endif
-                </select>
+              @endfor
+              <a href="#specs" class="px-3 a_link">{{ count($reviews) }}</a>
+          </div>
+          <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
+            @if ($item->stock > 0 && $item->status == 'active')
+            <h4>Available</h4>
+            <i class="fas fa-circle px-2 pt-1" style="color: green"></i>
+            @else
+            <h4>Unavailable</h4>
+            <i class="fas fa-circle px-2 pt-1" style="color: red"></i>
+            @endif
+          </div>
+          <div class="d-flex flex-row justify-content-between bd-highlight mb-3 pb-1">
+            <div class="input-group mb-3 w-50 pt-2">
+              <div class="input-group-prepend">
+                <label class="input-group-text" for="productQuantity">Quantity</label>
               </div>
-              @if ($item->status == 'active')
-              <?php
-              $sales = $item->sales;
-              $currentSale = 0;
-              $price = $item->price;
-              foreach ($sales as $sale) {
-                if ($sale->type == 'percentage') {
-                  $new_sale = 0.01 * $sale->percentage_amount * $price;
-                  if ($new_sale > $currentSale) {
-                    $currentSale = $new_sale;
-                  }
-                } else if ($sale->type == 'fixed') {
-                  if ($amount > $currentSale) {
-                    $currentSale = $amount;
-                    $output = "(-" . $amount . "€) ";
-                  }
+              <select class="custom-select" id="productQuantity">
+                @if ($item->status == 'active')
+                @for ($i = 1; $i <= $item->stock; $i++)
+                  <option value="{{ $i }}">{{ $i }}</option>
+                  @endfor
+                  @else
+                  <option value="0">0</option>
+                  @endif
+              </select>
+            </div>
+            @if ($item->status == 'active')
+            <?php
+            $sales = $item->sales;
+            $currentSale = 0;
+            $price = $item->price;
+            foreach ($sales as $sale) {
+              if ($sale->type == 'percentage') {
+                $new_sale = 0.01 * $sale->percentage_amount * $price;
+                if ($new_sale > $currentSale) {
+                  $currentSale = $new_sale;
+                }
+              } else if ($sale->type == 'fixed') {
+                if ($amount > $currentSale) {
+                  $currentSale = $amount;
+                  $output = "(-" . $amount . "€) ";
                 }
               }
-              $price = round($price - $currentSale, 2);
-              ?>
-              <div class="row d-flex align-items-center">
-                @if ($currentSale > 0)
-                <h3 class="pr-2 old-price">{{ $item->price . '€' }}</h3>
-                @endif
-                <h1>{{ $price }}€</h1>
-              </div>
-              @else
-              <h1>N/A</h1>
+            }
+            $price = round($price - $currentSale, 2);
+            ?>
+            <div class="row d-flex align-items-center">
+              @if ($currentSale > 0)
+              <h3 class="pr-2 old-price">{{ $item->price . '€' }}</h3>
               @endif
+              <h1>{{ $price }}€</h1>
             </div>
-            <div class="d-flex flex-row justify-content-between align-items-end bd-highlight my-3">
-              <?php
-              if ($item->status == 'active')
-                $value = $item->id;
-              else
-                $value = 'archived';
-              ?>
-              <button class="btn btn-link li-wishlist" data-id="{{ $value }}" type="button">
-                <i class="fas fa-heart"></i>
-                Add to whishlist
-              </button>
-              <button class="btn btn-primary button add-to-cart-btn" data-product-type="{{ $value }}" type="submit"> Add to Cart</button>
-            </div>
+            @else
+            <h1>N/A</h1>
+            @endif
+          </div>
+          <div class="d-flex flex-row justify-content-between align-items-end bd-highlight my-3">
+            <?php
+            if ($item->status == 'active')
+              $value = $item->id;
+            else
+              $value = 'archived';
+            ?>
+            <button class="btn btn-link li-wishlist" data-id="{{ $value }}" type="button">
+              <i class="fas fa-heart"></i>
+              Add to whishlist
+            </button>
+            <button class="btn btn-primary button add-to-cart-btn" data-product-type="{{ $value }}" type="submit"> Add to Cart</button>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="d-flex flex-column justify-content-center mx-2 mx-sm-3 d-md-none mx-2">
-        <h2>{{ $item->name }}</h2>
-        <div class="d-flex flex-row align-items-center bd-highlight mb-3">
-          @for ($i = 0; $i < 5; $i++) @if (($item->rating - $i) >= 1)
-            <i class="fas fa-star"></i>
-            @elseif (($item->rating - $i) > 0)
-            <i class="fas fa-star-half-alt"></i>
-            @else
-            <i class="far fa-star"></i>
-            @endif
-            @endfor
-            <a href="#specs" class="px-3 a_link">{{ count($reviews) }}</a>
-        </div>
-
-        <div class="product-pictures">
-          @foreach($pictures as $picture)
-          @if ($loop->first)
-          <div class="text-center">
-            <img id="active" src="{{ asset('storage/img_product/' . $picture->link) }}" alt="Product Photo">
-          </div>
-          <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
-            @endif
-            <div class="p-2 bd-highlight text-center">
-              <img id="thumbnail" src="{{ asset('storage/img_product/' . $picture->link) }}" alt="Product Thumbnail" class="image-fit">
-            </div>
-            @if ($loop->last)
-          </div>
+    <div class="d-flex flex-column justify-content-center mx-2 mx-sm-3 d-md-none mx-2">
+      <h2>{{ $item->name }}</h2>
+      <div class="d-flex flex-row align-items-center bd-highlight mb-3">
+        @for ($i = 0; $i < 5; $i++) @if (($item->rating - $i) >= 1)
+          <i class="fas fa-star"></i>
+          @elseif (($item->rating - $i) > 0)
+          <i class="fas fa-star-half-alt"></i>
+          @else
+          <i class="far fa-star"></i>
           @endif
+          @endfor
+          <a href="#specs" class="px-3 a_link">{{ count($reviews) }}</a>
+      </div>
+
+      <div class="product-pictures align-self-center">
+        <div id="productGalleryMobile" class="carousel slide text-center" data-interval="false" data-ride="carousel">
+          <ol class="carousel-indicators mb-1">
+            @for($i = 0; $i < count($pictures); $i++) @if ($i==0) <li data-target="#productGalleryMobile" data-slide-to="0" class="bg-dark active">
+              </li>
+              @else
+              <li data-target="#productGalleryMobile" data-slide-to="{{$i}}" class="bg-dark"></li>
+              @endif
+              @endfor
+          </ol>
+          <div class="carousel-inner">
+            @foreach($pictures as $picture)
+            @if($loop->index == 0)
+            <div class="carousel-item active" data-interval="false">
+              @else
+              <div class="carousel-item" data-interval="false">
+                @endif
+                <img id="active" src="{{ asset('storage/img_product/' . $picture->link) }}" alt="Product Photo">
+              </div>
+              @endforeach
+            <a class="carousel-control-prev" href="#productGalleryMobile" role="button" data-slide="prev">
+              <span class="sr-only">Previous</span>
+              <i class="fas fa-angle-left text-dark pr-4" style="font-size: 28px;"></i>
+            </a>
+            <a class="carousel-control-next" href="#productGalleryMobile" role="button" data-slide="next">
+              <i class="fas fa-angle-right text-dark pl-4" style="font-size: 28px;"></i>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+        <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
+          @foreach($pictures as $picture)
+          <div class="p-2 bd-highlight text-center">
+            <img id="thumbnail" src="{{ asset('storage/img_product/' . $picture->link) }}" alt="Product Thumbnail" class="image-fit">
+          </div>
           @endforeach
         </div>
-        <div class="d-flex flex-row justify-content-start bd-highlight mb-3 py-3 px-0">
-          @if ($item->stock > 0 && $item->status == 'active')
-          <h4>Available</h4>
-          <i class="fas fa-circle px-2 pt-1" style="color: green"></i>
-          @else
-          <h4>Unavailable</h4>
-          <i class="fas fa-circle px-2 pt-1" style="color: red"></i>
-          @endif
-        </div>
-        <div class="d-flex flex-row justify-content-between bd-highlight mb-3 pb-1">
-          <div class="input-group mb-3 w-50 pt-2">
-            <div class="input-group-prepend">
-              <label class="input-group-text" for="productQuantityMobile">Quantity</label>
-            </div>
-            <select class="custom-select" id="productQuantityMobile">
-              @if ($item->status == 'active')
-              @for ($i = 1; $i <= $item->stock; $i++)
-                <option value="{{ $i }}">{{ $i }}</option>
-                @endfor
-                @else
-                <option value="0">0</option>
-                @endif
-            </select>
+      </div>
+
+      <div class="d-flex flex-row justify-content-start bd-highlight mt-5 px-0">
+        @if ($item->stock > 0 && $item->status == 'active')
+        <h4>Available</h4>
+        <i class="fas fa-circle px-2 pt-1" style="color: green"></i>
+        @else
+        <h4>Unavailable</h4>
+        <i class="fas fa-circle px-2 pt-1" style="color: red"></i>
+        @endif
+      </div>
+
+      <div class="d-flex flex-row justify-content-between bd-highlight mb-3 pb-1">
+        <div class="input-group mb-3 w-50 pt-2">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="productQuantityMobile">Quantity</label>
           </div>
-          <?php
-          $sales = $item->sales;
-          $currentSale = 0;
-          $price = $item->price;
-          foreach ($sales as $sale) {
-            if ($sale->type == 'percentage') {
-              $new_sale = 0.01 * $sale->percentage_amount * $price;
-              if ($new_sale > $currentSale) {
-                $currentSale = $new_sale;
-              }
-            } else if ($sale->type == 'fixed') {
-              if ($amount > $currentSale) {
-                $currentSale = $amount;
-                $output = "(-" . $amount . "€) ";
-              }
+          <select class="custom-select" id="productQuantityMobile">
+            @if ($item->status == 'active')
+            @for ($i = 1; $i <= $item->stock; $i++)
+              <option value="{{ $i }}">{{ $i }}</option>
+              @endfor
+              @else
+              <option value="0">0</option>
+              @endif
+          </select>
+        </div>
+        <?php
+        $sales = $item->sales;
+        $currentSale = 0;
+        $price = $item->price;
+        foreach ($sales as $sale) {
+          if ($sale->type == 'percentage') {
+            $new_sale = 0.01 * $sale->percentage_amount * $price;
+            if ($new_sale > $currentSale) {
+              $currentSale = $new_sale;
+            }
+          } else if ($sale->type == 'fixed') {
+            if ($amount > $currentSale) {
+              $currentSale = $amount;
+              $output = "(-" . $amount . "€) ";
             }
           }
-          $price = round($price - $currentSale, 2);
-          ?>
-          <div class="row d-flex align-items-center mr-1">
-            @if ($currentSale > 0)
-            <h4 class="pr-2 old-price">{{ '( ' . $item->price . '€ )' }}</h4>
-            @endif
-            <h2>{{ $price }}€</h2>
-          </div>
-        </div>
-        <div class="d-flex flex-row justify-content-between bd-highlight my-2">
-          <button class="btn btn-link li-wishlist" data-id="{{ $item->id }}" type="button">
-            <i class="fas fa-heart"></i>
-            Add to whishlist
-          </button>
-          <button class="btn btn-primary button add-to-cart-btn" data-product-type="{{ $value }}" data-device-type="mobile" type="submit"> Add to Cart</button>
+        }
+        $price = round($price - $currentSale, 2);
+        ?>
+        <div class="row d-flex align-items-center mr-1">
+          @if ($currentSale > 0)
+          <h4 class="pr-2 old-price">{{ '( ' . $item->price . '€ )' }}</h4>
+          @endif
+          <h2>{{ $price }}€</h2>
         </div>
       </div>
+
+      <div class="d-flex flex-row justify-content-between bd-highlight my-2">
+        <button class="btn btn-link li-wishlist" data-id="{{ $item->id }}" type="button">
+          <i class="fas fa-heart"></i>
+          Add to whishlist
+        </button>
+        <button class="btn btn-primary button add-to-cart-btn" data-product-type="{{ $value }}" data-device-type="mobile" type="submit"> Add to Cart</button>
+      </div>
+    </div>
   </section>
 
   <hr class="w-75">
