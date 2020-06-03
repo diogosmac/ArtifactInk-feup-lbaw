@@ -4,30 +4,32 @@
         <div>
             <label class="mt-2" for="categories">Categories</label>
             <div id="categories" class="rounded border border-secondary px-2" style="max-height:10em; overflow-y: scroll">
-                <?php for ($i = 0; $i < count($categories); $i++) {
+                @for ($i = 0; $i < count($categories); $i++)
+                    @php
                         $category = $categories[$i];
                         $categoryId = $category['id'];
                         $categoryName = $category['name'];
-                    ?>
+                    @endphp
                     <div class="custom-control custom-checkbox my-2">
                         <input type="checkbox" class="custom-control-input categoryCheckbox" name="category[]" id="category<?= $i ?>" value="<?= $categoryId ?>">
                         <label class="custom-control-label" for="category<?= $i ?>"><?= $categoryName ?></label>
                     </div>
-                <?php } ?>
+                @endfor
             </div>
         </div>
         @endif
         <div>
             <label class="mt-3" for="brands">Brands</label>
             <div id="brands" class="rounded border border-secondary px-2" style="max-height:10em; overflow-y: scroll">
-                <?php for ($i = 0; $i < count($brands); $i++) {
+                @for ($i = 0; $i < count($brands); $i++)
+                    @php
                         $brand = $brands[$i];
-                    ?>
+                    @endphp
                     <div class="custom-control custom-checkbox my-2">
                         <input type="checkbox" class="custom-control-input brandCheckbox" name="brand[]" id="brand<?=$i?>"  value="<?= $brand ?>">
                         <label class="custom-control-label" for="brand<?= $i ?>"><?= $brand ?></label>
                     </div>
-                <?php } ?>
+                @endfor
             </div>
         </div>
         <div class="custom-control custom-switch my-3">
@@ -38,8 +40,8 @@
             <label id="priceRangeLabel" class="w-100 d-flex justify-content-start" for="price">
                 Price Range
             </label>
-            <input type="range" class="custom-range" style="color: var(--main-red)" value="0" min="0" max="500" step="1" name="minPrice" id="minPrice">
-            <input type="range" class="custom-range" style="color: var(--main-red)" value="500" min="0" max="500" step="1" name="maxPrice" id="maxPrice">
+            <input type="range" class="custom-range" style="color: var(--main-red)" value="0" min="0" max="{{ $maxPrice }}" step="1" name="minPrice" id="minPrice">
+            <input type="range" class="custom-range" style="color: var(--main-red)" value="{{ $maxPrice }}" min="0" max="{{ $maxPrice }}" step="1" name="maxPrice" id="maxPrice">
         </div>
         <center>
             <h3 id="priceRangeDisplay">N/A</h3>

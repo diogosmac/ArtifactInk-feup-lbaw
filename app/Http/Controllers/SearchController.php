@@ -20,6 +20,7 @@ class SearchController extends Controller
 
         $categories = SearchController::getCategories($queryResults);
         $brands = SearchController::getBrands($queryResults);
+        $absoluteMax = $queryResults->max('price');
 
         $orderBy = 'bestMatch';
         if (Input::has('orderBy')) {
@@ -53,7 +54,7 @@ class SearchController extends Controller
         }
 
         $minPrice = Input::get('minPrice', 0);
-        $maxPrice = Input::get('maxPrice', 500);
+        $maxPrice = Input::get('maxPrice', $absoluteMax);
 
         $query = $query
             ->where(function ($query) use ($minPrice, $maxPrice) {
@@ -79,6 +80,7 @@ class SearchController extends Controller
         $filterVars['categories'] = $categories;
         $filterVars['brands'] = $brands;
         $filterVars['items'] = $items;
+        $filterVars['maxPrice'] = ceil($absoluteMax);
 
         return view('pages.search', $filterVars);
 

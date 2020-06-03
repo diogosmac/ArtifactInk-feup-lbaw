@@ -66,6 +66,13 @@ class Item extends Model
         return $this->belongsToMany('App\ItemSubscriber', 'item_subscription', 'id_item', 'email_subscriber');
     }
 
+    /**
+     * An item is purchased many times
+     */
+    public function purchases() {
+        return $this->belongsToMany('App\Order', 'item_purchase', 'id_item', 'id_order')->withPivot(['price', 'quantity']);
+    }
+
     public function scopeSearch($query, $search) {
         if (!$search) {
             return $query;

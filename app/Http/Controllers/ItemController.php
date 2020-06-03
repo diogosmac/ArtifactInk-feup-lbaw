@@ -58,7 +58,9 @@ class ItemController extends Controller
          * m = minimum votes required 
          * */ 
 
-        $items = Item::whereNotNull('rating')->where('status', 'active')->orderBy('rating', 'desc');
+        $items = Item::whereNotNull('rating')
+            ->where('status', 'active')
+            ->orderBy('rating', 'desc');
 
         $data = [];
 
@@ -70,7 +72,10 @@ class ItemController extends Controller
             $items = $items->take(4);
         }
 
-        foreach ($items->get() as $i) {
+        $allItems = $items->get();
+        $absoluteMax = $allItems->max('price');
+
+        foreach ($allItems as $i) {
             $item = Item::findOrFail($i->id);
             array_push($finalItems, $item);
 
@@ -106,6 +111,7 @@ class ItemController extends Controller
             $data['items'] = $items;
             $data['categories'] = SearchController::getCategories($finalItems);
             $data['brands'] = SearchController::getBrands($finalItems);
+            $data['maxPrice'] = ceil($absoluteMax);
         }
 
         return $data;
@@ -116,18 +122,18 @@ class ItemController extends Controller
         /**
          * Most percentage of price
          */
-        $items = DB::table('item')->
-        join('item_sale', 'item.id', '=', 'item_sale.id_item')->
-        join('sale', 'sale.id', '=', 'item_sale.id_sale')->
-        where('status', 'active')->
-        whereDate('end', '<=', Carbon::now()->toDateString())->
-        select('item.*')->
-        select(DB::raw('item.id, item.name, brand, item.price, stock, rating, status, 
-        CASE 
-            WHEN fixed_amount IS NULL THEN percentage_amount
-            WHEN percentage_amount IS NULL THEN fixed_amount/price * 100
-        END AS deal_value'))->
-        orderByDesc('deal_value');
+        $items = Item::select('item.*')
+            ->where('status', 'active')
+            ->whereHas('sales')
+            ->join('item_sale', 'item.id', '=', 'item_sale.id_item')
+            ->join('sale', 'sale.id', '=', 'item_sale.id_sale')
+            // ->whereDate('sale.start', '<=', Carbon::now()->toDateString())
+            ->whereDate('sale.end', '<=', Carbon::now()->toDateString())
+            ->orderByRaw('
+                CASE
+                    WHEN fixed_amount IS NULL THEN percentage_amount
+                    WHEN percentage_amount IS NULL THEN fixed_amount / price * 100
+                END DESC');
 
         $data = [];
 
@@ -139,10 +145,13 @@ class ItemController extends Controller
             $items = $items->take(4);
         }
 
-		foreach ($items->get()->toArray() as $i) {
+        $allItems = $items->get();
+        $absoluteMax = $allItems->max('price');
+
+        foreach ($allItems as $i) {
             $item = Item::findOrFail($i->id);
             array_push($finalItems, $item);
-            
+
             $sales = $item->sales;
             $currentSale = 0;
             $price = $item->price;
@@ -162,7 +171,7 @@ class ItemController extends Controller
 
             array_push($pictures, $item->images->first());
         }
-
+        
         $data['title'] = 'Featured Deals';
         $data['slug'] = 'featured_deals';
         $data['prices'] = $prices;
@@ -175,6 +184,7 @@ class ItemController extends Controller
             $data['items'] = $items;
             $data['categories'] = SearchController::getCategories($finalItems);
             $data['brands'] = SearchController::getBrands($finalItems);
+            $data['maxPrice'] = ceil($absoluteMax);
         }
 
         return $data;
@@ -186,14 +196,13 @@ class ItemController extends Controller
      */
     public static function best_sellers($filters=FALSE) {
         
-        $items = DB::table('item')->
-        join('item_purchase', 'item.id', '=', 'item_purchase.id_item')->
-        where('status', 'active')->
-        groupBy('item.id')->
-        select('item.*')->
-        select(DB::raw('id, name, brand, item.price, stock, rating, status, count(*) as purchase_count'))->
-        orderByDesc('purchase_count');
-
+        $items = Item::selectRaw('item.*, count(*) as purchase_count')
+            ->groupBy('item.id')
+            ->where('status', 'active')
+            ->whereHas('purchases')
+            ->join('item_purchase', 'item.id', '=', 'item_purchase.id_item')
+            ->orderByDesc('purchase_count');
+                
         $data = [];
 
         $finalItems = array();
@@ -204,8 +213,11 @@ class ItemController extends Controller
             $items = $items->take(4);
         }
 
-        foreach ($items->get()->toArray() as $i) {
-            $item = Item::findOrFail($i->id);
+        $allItems = $items->get();
+        $absoluteMax = $allItems->max('price');
+
+        foreach ($allItems->toArray() as $i) {
+            $item = Item::findOrFail($i['id']);
             array_push($finalItems, $item);
 
             $sales = $item->sales;
@@ -240,6 +252,7 @@ class ItemController extends Controller
             $data['items'] = $items;
             $data['categories'] = SearchController::getCategories($finalItems);
             $data['brands'] = SearchController::getBrands($finalItems);
+            $data['maxPrice'] = ceil($absoluteMax);
         }
 
         return $data;

@@ -31,6 +31,8 @@
         <button class="dropdown-item btn button text-center add-to-cart-btn" data-product-type="{{ $item->id }}" style="z-index: 200;">Add to cart</button>
     </div>
 </div>
-@else <?php print('Undefined variable (item/picture)'); ?>
+@else
+    @php
+        print('Undefined variable (item/picture)');
+    @endphp
 @endif
-

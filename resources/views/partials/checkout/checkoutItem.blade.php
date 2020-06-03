@@ -5,7 +5,7 @@
     </div>
     <div class="w-50 d-flex align-items-center justify-content-end" style="height: auto">
         <span class="mx-1 badge badge-secondary badge-pill">{{ $cartItem->pivot->quantity}}</span>
-        <?php
+        @php
             $sales = $cartItem->sales;
             $currentSale = 0;
             $price = $cartItem->price;
@@ -21,7 +21,7 @@
                 }
             }
             $price = round($price - $currentSale, 2);
-        ?>
+        @endphp
         <span class="ml-1 text-muted">{{ $price }}€</span>
     </div>
     
