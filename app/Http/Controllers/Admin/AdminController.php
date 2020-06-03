@@ -14,6 +14,7 @@ use App\Http\Controllers\SearchController;
 use App\Item;
 use App\ItemPicture;
 use App\NewsletterSubscriber;
+use App\Order;
 use App\Review;
 use App\OutOfStockNotification;
 use App\ReportNotification;
@@ -396,7 +397,32 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showOrders() {
-        return view('pages.admin.orders');
+        $orders = Order::orderBy('date', 'desc')->paginate(10)->withPath('');
+        return view('pages.admin.orders', ['orders' => $orders]);
+    }
+
+    public function updateOrder(Request $request) {
+        try {
+            // get order
+            $order = Order::findOrFail($request->id);
+            if ($order != null) {
+                // update order
+                $order->status = $request->status;
+                $order->save();
+                
+                return redirect()
+                    ->route('admin.orders')
+                    ->with('status', 'Order ' . $order->name . ' updated successfuly.');
+            } else {
+                return redirect()
+                    ->route('admin.orders')
+                    ->withErrors('Failed to update order.');
+            }
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('admin.orders')
+                ->withErrors('Failed to update order. ' . $e->getMessage());
+        }
     }
 
     /*

@@ -163,6 +163,7 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
 
     // orders
     Route::get('orders', 'AdminController@showOrders')->name('orders');
+    Route::put('orders', 'AdminController@updateOrder')->name('orders');
 
     // reviews
     Route::get('reviews', 'AdminController@showReviews')->name('reviews');

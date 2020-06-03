@@ -28,7 +28,7 @@ class Order extends Model
      *
      * @var bool
      */
-    public $timestamps = true;
+    public $timestamps = false;
 
     /**
      * An order belongs to one user
@@ -42,6 +42,13 @@ class Order extends Model
      */
     public function address() {
         return $this->belongsTo('App\Address', 'id_address');
+    }
+
+    /**
+     * An order belongs to a payment method
+     */
+    public function payment() {
+        return $this->belongsTo('App\PaymentMethod', 'id_payment_method');
     }
 
     /**
