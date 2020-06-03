@@ -24,14 +24,7 @@
               </div>
               <div class="form-group">
                 <label for="subcategoryCategory">Parent Category</label>
-                <select class="custom-select" id="subcategoryCategory">
-                  @php
-                    $parent_categories = array(
-                      (object) array("id" => 3, "name" => "Ink"),
-                      (object) array("id" => 2, "name" => "Machines"),
-                      (object) array("id" => 1, "name" => "Designs")
-                    );
-                  @endphp
+                <select required name="id_parent" class="custom-select" id="subcategoryCategory">
                   @foreach($parent_categories as $parent_category)
                     <option {{ ($parent_category->id == $subcategory->id_parent) ? 'selected' : '' }} value="{{ $parent_category->id }}">{{ $parent_category->name }}</option>
                   @endforeach

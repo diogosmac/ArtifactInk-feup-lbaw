@@ -20,7 +20,7 @@
               <form>
                 <div class="form-group">
                   <label for="categoryName">Name</label>
-                  <input type="text" class="form-control" id="categoryName" value="{{ $category->name }}">
+                  <input required name="name" type="text" class="form-control" id="categoryName" value="{{ $category->name }}">
                 </div>
               </form>
             </div>

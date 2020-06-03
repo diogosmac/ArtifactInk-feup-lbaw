@@ -29,16 +29,17 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form>
+                    <form action="{{ route('admin.categories') }}" method="POST" id="add-category">
+                      @csrf
                       <div class="form-group">
                         <label for="categoryName">Name</label>
-                        <input type="text" class="form-control" id="categoryName" placeholder="Write name here...">
+                        <input required name="name" type="text" class="form-control" id="categoryName" placeholder="Write name here...">
                       </div>
                     </form>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn button">Submit</button>
+                    <button type="submit" form="add-category" class="btn button">Submit</button>
                   </div>
                 </div>
               </div>
@@ -57,13 +58,6 @@
               </tr>
             </thead>
             <tbody>
-              @php
-              $categories = array(
-                (object) array("id" => 3, "name" => "Ink"),
-                (object) array("id" => 2, "name" => "Machines"),
-                (object) array("id" => 1, "name" => "Designs")
-              );
-              @endphp
               @each('partials.admin.category_row', $categories, 'category')
             </tbody>
           </table>
@@ -85,24 +79,17 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <form>
+                    <form action="{{ route('admin.categories') }}" method="POST" id="add-subcategory">
+                      @csrf
                       <div class="form-group">
                         <label for="subcategoryName">Name</label>
-                        <input type="text" class="form-control" id="subcategoryName" placeholder="Write name here...">
+                        <input required name="name" type="text" class="form-control" id="subcategoryName" placeholder="Write name here...">
                       </div>
                       <div class="form-group">
                         <label for="subcategoryCategory">Parent Category</label>
-                        <select class="custom-select" id="subcategoryCategory">
-                        @php
-                          $parent_categories = array(
-                            (object) array("id" => 4, "name" => "Ink"),
-                            (object) array("id" => 3, "name" => "Machines"),
-                            (object) array("id" => 2, "name" => "Designs"),
-                            (object) array("id" => 1, "name" => "Furniture"),
-                          );
-                        @endphp
-                        @foreach($parent_categories as $parent_category)
-                          <option value="{{ $parent_category->id }}">{{ $parent_category->name }}</option>
+                        <select required name='id_parent' class="custom-select" id="subcategoryCategory">
+                        @foreach($categories as $category)
+                          <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
                         </select>
                       </div>
@@ -110,7 +97,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-link a_link" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn button">Submit</button>
+                    <button type="submit" form="add-subcategory" class="btn button">Submit</button>
                   </div>
                 </div>
               </div>
@@ -128,14 +115,6 @@
               </tr>
             </thead>
             <tbody>
-              @php
-              $subcategories = array(
-                (object) array("id" => 7, "id_parent" => 3, "name" => "Black"),
-                (object) array("id" => 6, "id_parent" => 2, "name" => "MakePain Machines"),
-                (object) array("id" => 5, "id_parent" => 1, "name" => "Dotwork"),
-                (object) array("id" => 4, "id_parent" => 1, "name" => "Realism")
-              );
-              @endphp
               @each('partials.admin.subcategory_row', $subcategories, 'subcategory')
             </tbody>
           </table>
@@ -145,4 +124,27 @@
 
   </div>
 </main>
+
+{{-- Success Alert --}}
+@if(session('status'))
+  <div class="alert alert-success alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    {{session('status')}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+@endif
+
+{{-- Alert --}}
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show fixed-top mx-auto" style="max-width: 40em;" role="alert">
+    @foreach ($errors->all() as $error)
+    <p>{{ $error }}</p>
+    @endforeach
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+@endif
+
 @endsection
