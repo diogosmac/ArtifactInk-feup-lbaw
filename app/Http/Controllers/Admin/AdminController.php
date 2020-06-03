@@ -43,7 +43,10 @@ class AdminController extends Controller
             array_push($detail_notifications, $detail);
         }
 
-        return view('pages.admin.home', ['notifications' => $notifications, 'detail' => $detail_notifications]);
+        return view('pages.admin.home', [
+            'notifications' => $notifications,
+            'detail' => $detail_notifications,
+        ]);
     }
 
     public function clearNotification(Request $request) {
