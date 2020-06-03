@@ -58,6 +58,8 @@
             <th scope="col">Category</th>
             <th scope="col">Description</th>
             <th scope="col">Timestamp</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
