@@ -251,7 +251,7 @@ for(let i = 0; i< cartItemsNav.length/2; i++ ){
 }
 
 if(priceNav !== null){
-    document.querySelectorAll('#price-total')[0].innerHTML = priceNav + " €"; 
+    document.querySelectorAll('#price-total')[0].innerHTML = priceNav.toFixed(2) + " €"; 
 }else{ 
     document.querySelectorAll('#total-label')[0].innerHTML= "Cart is Empty";
 }
