@@ -279,8 +279,8 @@ class AdminController extends Controller
     */
     public function showCategories() {
         // get categories and subcategories
-        $categories = Category::whereNull('id_parent')->get();
-        $subcategories = Category::whereNotNull('id_parent')->get();
+        $categories = Category::whereNull('id_parent')->orderBy('id', 'asc')->get();
+        $subcategories = Category::whereNotNull('id_parent')->orderBy('id_parent', 'asc')->get();
 
         return view('pages.admin.categories', [
             'categories' => $categories,
@@ -318,8 +318,73 @@ class AdminController extends Controller
     }
 
     public function editCategory(Request $request) {
-        return $request;
-        return view('pages.admin.categories');
+        // validate request
+        $this->validateCategory($request);
+        try {
+            // get category
+            $category = Category::findOrFail($request->id);
+
+            if ($category != null) {
+                // set new category attributes
+                $category->name = $request->name;
+                if ($request->has('id_parent')) {
+                    $category->id_parent = $request->id_parent;
+                } else {
+                    $category->id_parent = null;
+                }
+                $category->save();
+                // return item id
+                return redirect()
+                    ->intended(route('admin.categories'))
+                    ->with('status','Category ' . $category->name . ' edited successfuly!');
+            } else {
+                return redirect()
+                    ->intended(route('admin.categories'))
+                    ->withErrors('Category not found!');
+            }
+
+        } catch (\Exception $e) {
+            return redirect()
+                ->intended(route('admin.categories'))
+                ->withErrors('Failed to edit category. ' . $e->getMessage());
+        }
+    }
+
+    public function deleteCategory(Request $request) {
+        // validate request
+        try {
+            // get category
+            $category = Category::findOrFail($request->id);
+
+            if ($category != null) {
+                // check if any child categories
+                if ($category->children->count() > 0) {
+                    return redirect()
+                        ->intended(route('admin.categories'))
+                        ->withErrors('Category ' . $category->name . ' has subcategories associated and cannot be deleted!');
+                }
+                // check if any items categories
+                if ($category->item->count() > 0) {
+                    return redirect()
+                        ->intended(route('admin.categories'))
+                        ->withErrors('Category ' . $category->name . ' has items associated and cannot be deleted!');
+                }
+                // now delete it
+                $category->delete();
+                return redirect()
+                    ->intended(route('admin.categories'))
+                    ->with('status','Category ' . $category->name . ' deleted successfuly!');
+            } else {
+                return redirect()
+                    ->intended(route('admin.categories'))
+                    ->withErrors('Category not found!');
+            }
+
+        } catch (\Exception $e) {
+            return redirect()
+                ->intended(route('admin.categories'))
+                ->withErrors('Failed to delete category. ' . $e->getMessage());
+        }
     }
 
     /*
