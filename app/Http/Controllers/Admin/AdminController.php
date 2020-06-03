@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Address;
 use App\AdminNotification;
+use App\Category;
 use App\Country;
 use App\Faq;
 use Illuminate\Http\Request;
@@ -22,7 +23,6 @@ use App\User;
 use Exception;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
-use SebastianBergmann\CodeCoverage\Report\Xml\Report;
 
 class AdminController extends Controller
 {
@@ -278,6 +278,47 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showCategories() {
+        // get categories and subcategories
+        $categories = Category::whereNull('id_parent')->get();
+        $subcategories = Category::whereNotNull('id_parent')->get();
+
+        return view('pages.admin.categories', [
+            'categories' => $categories,
+            'subcategories' => $subcategories
+        ]);
+    }
+
+    private function validateCategory(Request $request) {
+        //validation rules.
+        $rules = [
+            'name' => 'required|string|max:32',
+            'id_parent' => 'sometimes|numeric|exists:category'
+        ];
+
+        // validate the request.
+        $request->validate($rules);
+    }
+
+    public function addCategory(Request $request) {
+        // validate request
+        $this->validateCategory($request);
+
+        $category = new Category;
+        $category->name = $request->name;
+        if ($request->has('id_parent')) {
+            $category->id_parent = $request->id_parent;
+        } else {
+            $category->id_parent = null;
+        }
+        $category->save();
+
+        return redirect()
+            ->intended(route('admin.categories'))
+            ->with('status','Category ' . $category->name . ' added successfuly!');
+    }
+
+    public function editCategory(Request $request) {
+        return $request;
         return view('pages.admin.categories');
     }
 
