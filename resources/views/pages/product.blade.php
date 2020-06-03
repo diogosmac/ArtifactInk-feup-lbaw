@@ -14,7 +14,7 @@
     </nav>
     <div class="container-fluid d-none d-md-block">
       <div class="row">
-        <div id="product-pictures" class="col-6">
+        <div class="product-pictures col-6">
           @foreach($pictures as $picture)
             @if ($loop->first)
               <div class="text-center">
@@ -60,9 +60,9 @@
           <div class="d-flex flex-row justify-content-between bd-highlight mb-3 pb-1">
             <div class="input-group mb-3 w-50 pt-2">
               <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Quantity</label>
+                <label class="input-group-text" for="productQuantity">Quantity</label>
               </div>
-              <select class="custom-select" id="inputGroupSelect01">
+              <select class="custom-select" id="productQuantity">
                 @if ($item->status == 'active')
                     @for ($i = 1; $i <= $item->stock; $i++)
                         <option value="{{ $i }}">{{ $i }}</option>
@@ -134,7 +134,7 @@
         <a href="#specs" class="px-3 a_link">{{ count($reviews) }}</a>
       </div>
     
-      <div id="product-pictures">
+      <div class="product-pictures">
         @foreach($pictures as $picture)
           @if ($loop->first)
             <div class="text-center">
@@ -166,9 +166,9 @@
       <div class="d-flex flex-row justify-content-between bd-highlight mb-3 pb-1">
         <div class="input-group mb-3 w-50 pt-2">
           <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Quantity</label>
+            <label class="input-group-text" for="productQuantityMobile">Quantity</label>
           </div>
-          <select class="custom-select" id="inputGroupSelect01">
+          <select class="custom-select" id="productQuantityMobile">
                 @if ($item->status == 'active')
                     @for ($i = 1; $i <= $item->stock; $i++)
                         <option value="{{ $i }}">{{ $i }}</option>
@@ -209,7 +209,7 @@
           <i class="fas fa-heart"></i>
           Add to whishlist
         </button>
-        <input class="btn btn-primary button" type="submit" value="Add to Cart">
+        <button class="btn btn-primary button add-to-cart-btn" data-product-type="{{ $value }}" data-device-type="mobile" type="submit"> Add to Cart</button>
       </div>
     </div>
   </section>
@@ -223,17 +223,17 @@
   <section id="specs" class="mx-auto">
     <nav>
       <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active a_link" id="nav-specs-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Technical Specs</a>
-        <a class="nav-item nav-link a_link" id="nav-reviews-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Reviews</a>
+        <a class="nav-item nav-link active a_link" id="nav-specs-tab" data-toggle="tab" href="#nav-specs" role="tab" aria-controls="nav-specs" aria-selected="true">Technical Specs</a>
+        <a class="nav-item nav-link a_link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-controls="nav-reviews" aria-selected="false">Reviews</a>
       </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
       
-      <div class="tab-pane fade show active bg-light p-5" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <div class="tab-pane fade show active bg-light p-5" id="nav-specs" role="tabpanel" aria-labelledby="nav-specs-tab">
         <p>{{ $item->description }}</p>
       </div>
 
-      <div class="tab-pane fade bg-light p-4" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <div class="tab-pane fade bg-light p-4" id="nav-reviews" role="tabpanel" aria-labelledby="nav-reviews-tab">
         <div class="d-flex flex-row bd-highlight justify-content-around my-2">
           <div class="d-flex flex-column align-items-center">
           @if(count($reviews) == 0)
@@ -262,9 +262,9 @@
         <div class="border-top border-dark my-4">
           <div class="input-group my-3 col-lg-3">
             <div class="input-group-prepend">
-              <label class="input-group-text" for="inputGroupSelect01">Order by</label>
+              <label class="input-group-text" for="reviewOrder">Order by</label>
             </div>
-            <select class="custom-select" id="inputGroupSelect01">
+            <select class="custom-select" id="reviewOrder">
               <option value="1" selected>Newer</option>
               <option value="2">Older</option>
               <option value="3">Rating Lower to Higher</option>
@@ -278,8 +278,6 @@
         @endunless
       </div>
     </div>
-    <?php //draw_review_popup(); 
-    ?>
   </section>
 </main>
 

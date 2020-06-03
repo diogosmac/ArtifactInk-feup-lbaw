@@ -147,15 +147,20 @@ for(let i=0; i < add_to_cart_button.length; i++){
     let id_item = add_to_cart_button[i].getAttribute("data-product-type");
     if (id_item == 'archived')
         continue;
-    add_to_cart_button[i].addEventListener('click',add_to_cart.bind(null,id_item), false);
+    let mobile = add_to_cart_button[i].getAttribute("data-device-type");
+    add_to_cart_button[i].addEventListener('click',add_to_cart.bind(null,id_item, mobile), false);
 }
 
-function add_to_cart(id_item){
+function add_to_cart(id_item, mobile){
 
     let quantity = 1; 
-    //let qty_selector = document.querySelector('#inputGroupSelect01').value; 
-    if(document.getElementById('inputGroupSelect01') !== null)
-        quantity = document.getElementById('inputGroupSelect01').value; 
+    if (mobile == null || mobile == "") {
+        if(document.getElementById('productQuantity') !== null)
+            quantity = document.getElementById('productQuantity').value; 
+    } else {
+        if(document.getElementById('productQuantityMobile') !== null)
+            quantity = document.getElementById('productQuantityMobile').value;
+    }
 
     console.log('add to cart: '+id_item+ ' qty: '+quantity); 
     sendAjaxRequest('post', '/cart', {id_item: id_item,quantity: quantity}, add_to_cart_hadler);
