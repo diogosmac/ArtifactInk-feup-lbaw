@@ -552,14 +552,14 @@ class AdminController extends Controller
         $new_rules = [];
         if ($request->type == 'percentage') {
             $new_rules = [
-                'value' => 'numeric|max:100',
+                'value' => 'numeric|max:100|min:0',
             ];
         }
         else {
             // get lowest price item on sale
             $min_price = Item::find($request->item)->min('price');
             $new_rules = [
-                'value' => 'numeric|max:' . $min_price,
+                'value' => 'numeric|min:0|max:' . $min_price,
             ];
         }
 
