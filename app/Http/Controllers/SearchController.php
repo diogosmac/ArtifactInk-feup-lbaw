@@ -56,20 +56,23 @@ class SearchController extends Controller
         $maxPrice = Input::get('maxPrice', 500);
 
         $query = $query
-            ->whereHas('sales', function($query) use ($minPrice, $maxPrice) {
+            ->where(function ($query) use ($minPrice, $maxPrice) {
                 $query
-                    ->whereRaw('
-                        "sale"."type" = \'fixed\'
-                        and "item"."price" - "sale"."fixed_amount" >= ' . $minPrice . '
-                        and "item"."price" - "sale"."fixed_amount" <= ' . $maxPrice)
-                    ->orWhereRaw('
-                        "sale"."type" = \'percentage\'
-                        and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") >= ' . $minPrice . '
-                        and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") <= ' . $maxPrice);
-            })
-            ->orWhereDoesntHave('sales')
-                ->where('price', '>=', $minPrice)
-                ->where('price', '<=', $maxPrice);
+                    ->whereHas('sales', function ($query) use ($minPrice, $maxPrice) {
+                        $query
+                            ->whereRaw('
+                                ( "sale"."type" = \'fixed\'
+                                and "item"."price" - "sale"."fixed_amount" >= ' . $minPrice . '
+                                and "item"."price" - "sale"."fixed_amount" <= ' . $maxPrice . ' )')
+                            ->orWhereRaw('
+                                ( "sale"."type" = \'percentage\'
+                                and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") >= ' . $minPrice . '
+                                and "item"."price" * 0.01 * (100 - "sale"."percentage_amount") <= ' . $maxPrice . ' )');
+                    })
+                    ->orWhereDoesntHave('sales')
+                        ->where('item.price', '>=', $minPrice)
+                        ->where('item.price', '<=', $maxPrice);
+            });
 
         $items = $query->paginate(18)->withPath('');
         

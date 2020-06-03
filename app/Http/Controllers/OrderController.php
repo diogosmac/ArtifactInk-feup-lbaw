@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Address;
+use App\AdminNotification;
 use App\CreditCard;
+use App\Item;
 use App\Order;
+use App\OutOfStockNotification;
 use App\PaymentMethod;
 use App\Paypal;
 use Exception;
@@ -129,6 +132,8 @@ class OrderController extends Controller
     $order->status = "processing"; 
 
     echo $order; 
+    
+    $items = Auth::user()->cart_items()->get()->toArray();
 
     try {
         \DB::select('SELECT public."checkout_transaction"(?,?,?)',[Auth::user()->id, $address_id, $payment_id]);
@@ -136,8 +141,19 @@ class OrderController extends Controller
        return redirect()->back()->withErrors($e->getMessage());
     }
 
-    //empty cart 
-
+    foreach ($items as $item) {
+        $updated_item = Item::find($item['id']);
+        if ($updated_item->stock == 0) {
+            $notif = null;
+            try {
+                $notif = AdminNotification::create(['body' => "Item #$updated_item->id is out of stock"]);
+                OutOfStockNotification::create(['id_notif' => $notif->id, 'id_item' => $updated_item->id]);
+            } catch (Exception $e){
+                if ($notif != null) 
+                    $notif->delete();
+            }
+        }
+    } 
 
     return redirect()->route('home')->with('status',"Order has been processed"); 
 

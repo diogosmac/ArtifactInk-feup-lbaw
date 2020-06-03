@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Address;
 use App\AdminNotification;
+use App\Country;
 use App\Faq;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,11 +13,16 @@ use App\Http\Controllers\SearchController;
 use App\Item;
 use App\ItemPicture;
 use App\NewsletterSubscriber;
+use App\Review;
+use App\OutOfStockNotification;
+use App\ReportNotification;
 use App\Sale;
+use App\Store;
 use App\User;
 use Exception;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
+use SebastianBergmann\CodeCoverage\Report\Xml\Report;
 
 class AdminController extends Controller
 {
@@ -26,7 +33,17 @@ class AdminController extends Controller
      */
     public function index(){
         $notifications = AdminNotification::all()->sortByDesc('sent');
-        return view('pages.admin.home', ['notifications' => $notifications]);
+
+        $detail_notifications = array();
+        foreach ($notifications as $notification){
+            $detail = ReportNotification::find($notification->id);
+            if ($detail == null) {
+                $detail = OutOfStockNotification::find($notification->id);
+            }
+            array_push($detail_notifications, $detail);
+        }
+
+        return view('pages.admin.home', ['notifications' => $notifications, 'detail' => $detail_notifications]);
     }
 
     public function clearNotification(Request $request) {
@@ -266,7 +283,7 @@ class AdminController extends Controller
 
     /*
     |--------------------------------------------------------------------------
-    | Categories
+    | Orders
     |--------------------------------------------------------------------------
     */
     public function showOrders() {
@@ -279,7 +296,31 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showReviews() {
-        return view('pages.admin.reviews');
+        $reviews = Review::orderBy('date', 'desc');
+        $reviews = $reviews->paginate(10)->withPath('');
+        return view('pages.admin.reviews', ['reviews' => $reviews]);
+    }
+
+    public function deleteReview(Request $request) {
+        try {
+            // get review
+            $review = Review::findOrFail($request->id);
+            if ($review != null) {
+                // delete sale
+                $review->delete();
+                return redirect()
+                    ->route('admin.reviews')
+                    ->with('status', 'Review ' . $review->name . ' deleted successfuly.');
+            } else {
+                return redirect()
+                    ->route('admin.reviews')
+                    ->withErrors('Failed to delete review.');
+            }
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('admin.reviews')
+                ->withErrors('Failed to delete review. ' . $e->getMessage());
+        }
     }
 
     /*
@@ -683,7 +724,42 @@ class AdminController extends Controller
     |--------------------------------------------------------------------------
     */
     public function showInfo() {
-        return view('pages.admin.info');
+        // get store information
+        $store = Store::get()->first();
+        $countries = Country::all();
+        // render view
+        return view('pages.admin.info', ['store' => $store, 'countries' => $countries]);
+    }
+
+    public function editInfo(Request $request) {
+        try {
+            // get store information
+            $store = Store::get()->first();
+            $store_address = Address::find($store->address->id);
+            // update address
+            $store_address->id_country = $request->id_country;
+            $store_address->city = $request->city;
+            $store_address->street = $request->street;
+            $store_address->postal_code = $request->postal_code;
+            // update store info
+            $store->email = $request->email;
+            $store->phone = $request->phone;
+            $store->about_us = $request->about_us;
+            $store->payments_shipment = $request->payments_shipment;
+            $store->returns = $request->returns;
+            $store->warranty = $request->warranty;
+            // save changes
+            $store->save();
+            $store_address->save();
+            // render view
+            return redirect()
+                ->route('admin.info')
+                ->with('status', 'Store information edited successfuly');
+        } catch (\Exception $e) {
+            return redirect()
+                ->route('admin.info')
+                ->withErrors('Failed to update store info. ' . $e->getMessage());
+        }
     }
 
     /*

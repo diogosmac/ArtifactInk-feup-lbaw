@@ -58,12 +58,12 @@
                       </a>
                       @endif
 
-                      @if(Request::path() === 'profile/review')
-                      <a class="nav-link active text-center profile-tab" href="{{ url('/profile/review') }}">
+                      @if(Request::path() === 'profile/reviews')
+                      <a class="nav-link active text-center profile-tab" href="{{ url('/profile/reviews') }}">
                         <i class="fas fa-pen pr-2"></i>Reviews
                       </a>
                       @else
-                      <a class="nav-link text-center profile-tab" href="{{ url('/profile/review') }}">
+                      <a class="nav-link text-center profile-tab" href="{{ url('/profile/reviews') }}">
                         <i class="fas fa-pen pr-2"></i>Reviews
                       </a>
                       @endif

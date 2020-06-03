@@ -163,6 +163,7 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
 
     // reviews
     Route::get('reviews', 'AdminController@showReviews')->name('reviews');
+    Route::delete('reviews', 'AdminController@deleteReview')->name('reviews');
 
     // users
     Route::prefix('users')->name('users.')->group(function () {
@@ -203,7 +204,7 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
     
     // info
     Route::get('info', 'AdminController@showInfo')->name('info');
-
+    Route::put('info', 'AdminController@editInfo')->name('info');
     
     // support message
     Route::get('support_chat', 'AdminController@showSupportChat')->name('support_chat');
@@ -213,12 +214,8 @@ Route::prefix('/admin')->name('admin.')->namespace('Admin')->group(function () {
 Route::post('newsletter', 'NewsletterSubscriberController@subscribe')->name('newsletter');
 
 //static pages 
-Route::view('about_us', 'pages.info.about_us');
-
+Route::get('about_us', 'StaticPagesController@showAboutUs')->name('about_us');
 Route::get('faq', 'StaticPagesController@showFaqs')->name('faq');
-
-Route::view('payments_and_shipment', 'pages.info.payments_and_shipment');
-
-Route::view('returns_and_replacements', 'pages.info.returns_and_replacements');
-
-Route::view('warranty', 'pages.info.warranty');
+Route::get('payments_and_shipment', 'StaticPagesController@showPaymentsShipment')->name('payments_and_shipment');
+Route::get('returns_and_replacements', 'StaticPagesController@showReturns')->name('returns_and_replacements');
+Route::get('warranty', 'StaticPagesController@showWarranty')->name('warranty');

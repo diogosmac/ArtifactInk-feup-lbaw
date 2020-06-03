@@ -24,7 +24,7 @@
                         $brand = $brands[$i];
                     ?>
                     <div class="custom-control custom-checkbox my-2">
-                        <input type="checkbox" class="custom-control-input brandCheckbox" name="brand[]" id="brand<?= $i ?>"  value="<?= $brand ?>">
+                        <input type="checkbox" class="custom-control-input brandCheckbox" name="brand[]" id="brand<?=$i?>"  value="<?= $brand ?>">
                         <label class="custom-control-label" for="brand<?= $i ?>"><?= $brand ?></label>
                     </div>
                 <?php } ?>
@@ -38,8 +38,8 @@
             <label id="priceRangeLabel" class="w-100 d-flex justify-content-start" for="price">
                 Price Range
             </label>
-            <input type="range" class="custom-range" value="0" min="0" max="500" step="1" name="minPrice" id="minPrice">
-            <input type="range" class="custom-range" value="500" min="0" max="500" step="1" name="maxPrice" id="maxPrice">
+            <input type="range" class="custom-range" style="color: var(--main-red)" value="0" min="0" max="500" step="1" name="minPrice" id="minPrice">
+            <input type="range" class="custom-range" style="color: var(--main-red)" value="500" min="0" max="500" step="1" name="maxPrice" id="maxPrice">
         </div>
         <center>
             <h3 id="priceRangeDisplay">N/A</h3>
