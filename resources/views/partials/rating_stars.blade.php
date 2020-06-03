@@ -1,4 +1,4 @@
-<?php 
+@php 
 
 for($i = 1; $i <= 5; $i++) {
     if ($rating > $i - 0.25):
@@ -9,4 +9,4 @@ for($i = 1; $i <= 5; $i++) {
         echo '<i class="far fa-star"></i>';
     endif;
 }   
-?>
+@endphp

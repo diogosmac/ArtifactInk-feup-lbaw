@@ -47,7 +47,7 @@
             <div class="py-2 col-sm-3 d-flex flex-column justify-content-between align-items-end li-price-button">
                 <div class="row d-flex align-items-center">
                     @if ($item->status == 'active')
-                        <?php 
+                        @php 
                             $sales = $item->sales;
                             $currentSale = 0;
                             $price = $item->price;
@@ -63,7 +63,7 @@
                                 }
                             }
                             $price = round($price - $currentSale, 2);
-                        ?>
+                        @endphp
                             @if ($item->price != $price)
                                 <h4 class="pr-2 old-price">{{ $item->price . '€' }}</h4>
                             @endif
@@ -77,5 +77,8 @@
         </div>
     </div>
 </li>
-@else <?php print('Undefined variable (item/picture)'); ?>
+@else
+    @php
+        print('Undefined variable (item/picture)');
+    @endphp
 @endif

@@ -141,7 +141,7 @@ function checkInputs() {
     }
     
     if (maxSlider != null) {
-        maxSlider.disabled = (maxSlider.value == 500);
+        maxSlider.disabled = (maxSlider.value == maxSlider.max);
     }
 
 }

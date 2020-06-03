@@ -9,7 +9,7 @@
             {{ $item->name }}
         </a>
     </th>
-    <?php
+    @php
         $sales = $item->sales;
         $currentSale = 0;
         $price = $item->price;
@@ -25,7 +25,7 @@
             }
         }
         $price = round($price - $currentSale, 2);
-    ?>
+    @endphp
     <td colspan="0">
         @if ($price != $item->price)
             <span class="old-price"> {{ $item->price }} </span>

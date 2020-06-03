@@ -32,7 +32,9 @@ class CategoryController extends Controller
             $sortOrder = Input::get('sortOrder', $defaultSortOrder);
             $items = $items->orderBy($orderBy, $sortOrder);
 
+            $allItems = $items->get();
             $brands = SearchController::getBrands($items->get());
+            $absoluteMax = $allItems->max('price');
 
             if (Input::has('brand')) {
                 $items = $items->whereIn('brand', Input::get('brand'));
@@ -45,7 +47,8 @@ class CategoryController extends Controller
             $minPrice = Input::get('minPrice', 0);
             $items = $items->where('price', '>=', $minPrice);
 
-            $maxPrice = Input::get('maxPrice', 500);
+            // $maxPrice = Input::get('maxPrice', Item::where('id_category', $id_item)->max('price'));
+            $maxPrice = Input::get('maxPrice', $absoluteMax);
             $items = $items->where('price', '<=', $maxPrice);
 
             $items = $items->paginate(18)->withPath('');
@@ -61,6 +64,7 @@ class CategoryController extends Controller
                             'items' => $items,
                             'categories' => array(),
                             'brands' => $brands,
+                            'maxPrice' => ceil($absoluteMax),
                         ]);
                 }
             } else {
