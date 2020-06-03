@@ -1585,20 +1585,20 @@ INSERT INTO "item_purchase" ("id_item", "id_order", "price", "quantity") VALUES
 -------- review --------
 ALTER SEQUENCE review_id_seq RESTART WITH 1;
 INSERT INTO "review" ("id_item", "id_user", "title", "body", "score", "date") VALUES
-    (148, 31, 'Suspendisse potenti.', 'Aenean fermentum.', 2, '2020-03-16'),
-    (226, 98, 'Etiam vel augue.', 'Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue. Aliquam erat volutpat.', 5, '2020-03-08'),
-    (160, 10, 'Etiam pretium iaculis justo.', 'Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.', 1, '2020-03-28'),
-    (174, 5, 'Suspendisse accumsan tortor quis turpis.', 'Quisque ut erat.', 4, '2020-03-15'),
-    (208, 53, 'Pellentesque viverra pede ac diam.', 'Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.', 4, '2020-03-20'),
-    (46, 45, 'Fusce consequat.', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.', 2, '2020-02-28'),
-    (69, 8, 'In congue.', 'Morbi a ipsum. Integer a nibh.', 2, '2020-03-07'),
-    (165, 63, 'Curabitur at ipsum ac tellus semper interdum.', 'Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', 3, '2020-03-15'),
-    (78, 15, 'Morbi non quam nec dui luctus rutrum.', 'Quisque ut erat.', 2, '2020-03-10'),
-    (187, 29, 'Phasellus id sapien in sapien iaculis congue.', 'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis. Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl.', 1, '2020-03-23'),
-    (20, 20, 'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla.', 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae, Duis faucibus accumsan odio.', 4, '2020-03-09'),
-    (164, 43, 'Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci.', 'Vestibulum sed magna at nunc commodo placerat. Praesent blandit.', 1, '2020-03-24'),
-    (93, 56, 'Nunc purus.', 'Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.', 3, '2020-03-12'),
-    (30, 17, 'Curabitur gravida nisi at nibh.', 'Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin interdum mauris non ligula pellentesque ultrices.', 2, '2020-03-07');
+    (148, 31, 'Durable, but underwhelming.', 'Has not faded with time, however has very weak colors :/', 2, '2020-03-16'),
+    (226, 98, 'Safe and reliable.', 'Strong and dependable, unlike my ex-wife Karen. Would recommend to fellow professionals!', 5, '2020-03-08'),
+    (160, 10, 'Disappointingly frail.', 'After paying a hefty amount for this machine, I expected perfection, or at least a very high standard of quality. I am sad to say that the manufacturing quality did not match my expectations, as it lasted less than two months before breaking.', 1, '2020-03-28'),
+    (174, 5, 'Good bang for your buck.', 'Sure, this isn''t the absolute best machine on the market, but it does the job very well. Absolutely exceeded expectations!', 4, '2020-03-15'),
+    (208, 53, 'Bueno y asequible.', 'Lo recibi como regalo de un colega, y no estoy decepcionado.', 4, '2020-03-20'),
+    (46, 45, 'Not durable at all!', 'Seriously, this is the least resistant ink I''ve ever used! At least it has good colors...', 2, '2020-02-28'),
+    (69, 8, 'It looks like ketchup. No, seriously.', 'We all know how Eternal Ink is a bit hit or miss with their products, but this one really took me by surprise. Would not reccomend, go with World Famous instead.', 2, '2020-03-07'),
+    (165, 63, 'Mediocre performance, but for a great price.', 'I would recommend this machine to you if you were a beginner, but not if you were a professional. It''s fine for learning the craft, but if someone is paying you for a tattoo, you owe them quality that this machine can''t provide.', 3, '2020-03-15'),
+    (78, 15, 'Mediocre as usual. Get your act together, Eternal Ink!', 'Seeing as they were one of the most prominent brands in the game, it really pains me to see the recent decline in quality that Eternal has showed us.', 2, '2020-03-10'),
+    (187, 29, 'Don''t buy this. Just trust me.', 'When I was in prison, before I changed my ways, I was involved with the tattoo artists on the inside. I''ve seen nails do the job better than these needles.', 1, '2020-03-23'),
+    (20, 20, 'Really good complement to the other designs on my sleeve.', 'As a nature person since I was little, I have a personal taste for nature-related designs, and this Hive was a great compliment to the other "pets" that now inhabit my left arm :)', 4, '2020-03-09'),
+    (164, 43, 'Mehrere Mängel, Spät angekommen, Schon kaputt.', 'Als ich diese Maschine kaufte, wusste ich nicht genau, was mich erwarten würde. Jetzt habe ich gelernt, der Marke Stealth nicht zu vertrauen.', 1, '2020-03-24'),
+    (93, 56, 'Beau, mais fragile, comme une fleur.', 'Bien qu''elle montre de bonnes couleurs, cette encre n''a pas assez vieilli pour que je veuille la réutiliser.', 3, '2020-03-12'),
+    (30, 17, 'I like it, but my wife didn''t.', 'Although I see nothing wrong with the design, clearly Karen didn''t think the same, and so, in addition to the 45.99€ that I paid for it, this tattoo ended up costing me half of all my property.', 2, '2020-03-07');
 -------- cart --------
 INSERT INTO "cart" ("id_user", "id_item", "quantity", "date_added") VALUES
     (1, 36, 2, '2020-03-29'),
