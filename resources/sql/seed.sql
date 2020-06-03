@@ -1938,7 +1938,7 @@ INSERT INTO "item_picture" ("id_item", "link") VALUES
 ALTER SEQUENCE admin_notification_id_seq RESTART WITH 1;
 INSERT INTO "admin_notification" ("body", "sent") VALUES
     ('Item #34 out of stock', '2020-03-22 19:10:25-00'),
-    ('Report notification on review #1', '2020-03-25 14:10:25-00'),
+    ('Review #1 was reported by a user', '2020-03-25 14:10:25-00'),
     ('Item #14 out of stock', '2020-03-24 15:10:45-00'),
     ('Item #24 out of stock', '2020-03-22 11:0:25-00');
 -------- out_of_stock_notification --------

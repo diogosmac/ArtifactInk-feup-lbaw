@@ -61,9 +61,9 @@
           </tr>
         </thead>
         <tbody>
-
-          @each('partials.admin.notification_row', $notifications, 'notification')
-
+          @foreach($notifications as $notification)
+            @include('partials.admin.notification_row', ['notification' => $notification, 'detail' => $detail[$loop->index]])
+          @endforeach
         </tbody>
       </table>
     </div>

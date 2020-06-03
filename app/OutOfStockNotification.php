@@ -12,12 +12,23 @@ class OutOfStockNotification extends Model {
      */
     protected $table = 'out_of_stock_notification';
 
+    protected $primaryKey = 'id_notif';
+
     /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
      */
     public $timestamps = true;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id_notif','id_item'
+    ];
 }
 
 ?>
