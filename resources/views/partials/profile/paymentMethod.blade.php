@@ -104,7 +104,7 @@
   </div>
 
   @else
-  <span>PayPayl
+  <span>PayPal
     <br>
     {{'Email associated: ' . $paymentMethod->paypal->email}}
   </span>

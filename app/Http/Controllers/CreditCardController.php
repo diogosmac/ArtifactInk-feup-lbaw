@@ -83,7 +83,8 @@ class CreditCardController extends Controller
     public function deleteCreditCard(Request $request){
         
         try {
-            CreditCard::where('id', $request['id'])->delete(); 
+            $payment_id = PaymentMethod::where('id_cc',$request['id'] )->first()->id;  
+            Auth::user()->payment_methods()->detach($payment_id);
          } catch (PDOException $e) {
              return response('error deleting address');
          }

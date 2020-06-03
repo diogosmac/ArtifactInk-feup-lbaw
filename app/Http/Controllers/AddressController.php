@@ -79,7 +79,7 @@ class AddressController extends Controller
 
               
         try {
-           Address::where('id', $request['id'])->delete(); 
+            Auth::user()->addresses()->detach($request['id']);
 		} catch (PDOException $e) {
 			return response('deleted Addresses');
 		}

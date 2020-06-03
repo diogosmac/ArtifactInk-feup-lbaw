@@ -72,7 +72,8 @@ class PaypalController extends Controller
 
     public function deletePaypal(Request $request){
         try {
-            Paypal::where('id', $request['id'])->delete(); 
+            $payment_id = PaymentMethod::where('id_pp',$request['id'] )->first()->id;  
+            Auth::user()->payment_methods()->detach($payment_id);
          } catch (PDOException $e) {
              return response('error deleting address');
          }
