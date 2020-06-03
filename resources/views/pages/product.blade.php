@@ -43,14 +43,15 @@
                 <span class="sr-only">Next</span>
               </a>
             </div>
-            <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
+            
+          </div>
+          <div class="d-flex flex-row bd-highlight justify-content-center" style="max-height: 25%">
               @foreach($pictures as $picture)
               <div class="p-2 bd-highlight text-center">
                 <img id="thumbnail" src="{{ asset('storage/img_product/' . $picture->link) }}" alt="Product Thumbnail" class="image-fit">
               </div>
               @endforeach
             </div>
-          </div>
         </div>
         <div id="product-basics" class="col-6 d-flex flex-column justify-content-start float-left">
           <h2>{{ $item->name }}</h2>
