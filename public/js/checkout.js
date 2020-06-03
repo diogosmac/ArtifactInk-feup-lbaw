@@ -24,7 +24,6 @@ updateShipping();
 standard_shipping_radio.addEventListener('click', updateShipping, false );
 express_shipping_radio.addEventListener('click',updateShipping, false ); 
 
-
 function updateShipping(){
    if(standard_shipping_radio.checked){
         document.querySelector('#shipping-cost').innerHTML = 1.99 +' €'; 
@@ -289,7 +288,7 @@ let addr1_confirm =  document.getElementById('addr1-confirm');
 let addr2_confirm =  document.getElementById('addr2-confirm'); 
 let addr_selected = document.getElementById('address-input-group'); 
 
-updateAddress(); 
+//updateAddress(); 
 
 function updateAddress(){
     if( document.querySelector('#new-addr-form').style.display == "none" || document.querySelector('#new-addr-form').style.display === "" ){
@@ -314,11 +313,12 @@ let payment1_confirm = document.getElementById('payment1-confirm');
 let payment2_confirm = document.getElementById('payment2-confirm');
 let payment_selected = document.getElementById('payment-input-group');
 
-updatePayment(); 
+//updatePayment(); 
 
 function updatePayment(){
-    
+    console.log(new_payment); 
     if(document.querySelector('#new-payment-form').style.display == "none" || document.querySelector('#new-payment-form').style.display === ""){
+        
         new_payment = false; 
 
         let str_payment = payment_selected.options[payment_selected.selectedIndex].innerHTML; 
@@ -375,16 +375,12 @@ document.querySelector('form').addEventListener('submit',()=>{
         } 
     }
     
-    //if paypal selected open paypal API 
-
-    //else process naturally 
-
-
 },false)
 
 //CONTROL FORM IF CAN MOVE THROUGH PAGES 
 
 function controlForm(){
+
     switch(curr_page){
         case 1:
     
@@ -394,6 +390,9 @@ function controlForm(){
             }
             if(document.getElementById('standard-shipping').checked == false && document.getElementById('express-shipping').checked == false)
                 return false;
+            //if there are no adresses dont bloack next 
+            if(document.getElementById('address-input-group').childNodes.length === 1  && new_addr == false)
+                return false; 
         break; 
             
         case 2:  
@@ -412,6 +411,8 @@ function controlForm(){
                         return false; 
                 }
             }
+            if(document.getElementById('payment-input-group').childNodes.length === 1  && new_payment == false)
+                return false; 
         break;
         
         default: 

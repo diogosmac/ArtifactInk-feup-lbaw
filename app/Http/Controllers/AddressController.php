@@ -31,8 +31,6 @@ class AddressController extends Controller
         $address->city = $city; 
         $address->id_country = $id_country;  
         
-        //todo validate 
-
         try {
             //create new address 
             $address->save(); 
@@ -48,9 +46,6 @@ class AddressController extends Controller
     public function updateAddress(Request $request){
         
         if (!Auth::check()) return redirect('/sign_in');
-
-        //Todo validate 
-        //todo fix a bug where it updated to the last postition 
 
         $this->validate($request, [
             'street' => 'required|max:255', 
